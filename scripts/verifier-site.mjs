@@ -193,7 +193,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   }
 
   // Le fichier de la présentation : numéro de diapo, liens vers Tilleul et le formulaire
-  const diapos = await (await ctx.request.get(base + '/diapos/ux-ia.html')).text();
+  const diapos = await (await ctx.request.get(base + '/diapos/ux-ia/')).text();
   verifier('diapos : liens vers /tilleul/ et /formulaires/adresse/ (plus de localhost)', diapos.includes("FORM_URL: '/formulaires/adresse/'") && diapos.includes("SITE_URL: '/tilleul/?cours=non'") && !/localhost:5173/.test(diapos.match(/urls:\s*\{[\s\S]*?\}/)?.[0] ?? ''));
 
   // Page « avant / après »

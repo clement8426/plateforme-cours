@@ -82,7 +82,7 @@ const uxIa: Cours = {
     'Comprendre ce qu’un outil d’audit mesure, et ce qu’il ne voit pas.',
     'Utiliser l’IA pour auditer, planifier et corriger, sans oublier les bases.',
   ],
-  diapos: { href: '/diapos/ux-ia.html', apercu: '/apercus/ux-ia-diapos.jpg' },
+  diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   demo: {
     titre: 'Tilleul, la boutique piégée',
     description: 'Une boutique de céramiques très soignée, avec douze défauts d’UX. Le mode cours les révèle un par un, explique pourquoi ils gênent, et les corrige en direct.',

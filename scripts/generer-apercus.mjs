@@ -21,7 +21,7 @@ mkdirSync(dossier, { recursive: true });
 const navigateur = await chromium.launch();
 const page = await navigateur.newPage({ viewport: { width: 1440, height: 810 }, deviceScaleFactor: 1 });
 
-await page.goto(`${base}/diapos/ux-ia.html`);
+await page.goto(`${base}/diapos/ux-ia/`);
 await page.waitForTimeout(1500);
 await page.addStyleTag({ content: '#retour-cours { display: none !important; }' }); // le lien de retour n'appartient pas à l'aperçu
 await page.screenshot({ path: dossier + 'ux-ia-diapos.jpg', type: 'jpeg', quality: 82 });

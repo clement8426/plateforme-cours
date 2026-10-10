@@ -7,7 +7,7 @@
 //  1. le lien vers Tilleul (SITE_URL) pointe vers /tilleul/, et celui du formulaire (FORM_URL) vers /formulaires/adresse/ ;
 //  2. un « pont » se branche sur la plateforme (voir PONT ci-dessous) pour que le plein écran
 //     garde toujours un bouton « Quitter » visible, et que Échap en sorte.
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const args = process.argv.slice(2);
@@ -85,6 +85,8 @@ if (!html.includes('</body>')) {
 html = html.replace(/<script id="pont-plateforme">[\s\S]*?<\/script>\s*/, '');
 html = html.replace('</body>', `${PONT}</body>`);
 
-const sortie = resolve(import.meta.dirname, '..', 'public', 'diapos', `${nom}.html`);
-writeFileSync(sortie, html);
-console.log(`Diapos intégrées : public/diapos/${nom}.html (retour : ${retour})`);
+// Un dossier avec index.html : l'adresse /diapos/<nom>/ marche partout (Vercel renvoie 404 pour un .html avec trailingSlash).
+const dossier = resolve(import.meta.dirname, '..', 'public', 'diapos', nom);
+mkdirSync(dossier, { recursive: true });
+writeFileSync(resolve(dossier, 'index.html'), html);
+console.log(`Diapos intégrées : public/diapos/${nom}/index.html (retour : ${retour})`);
