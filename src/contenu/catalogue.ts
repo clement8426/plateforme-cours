@@ -20,7 +20,7 @@ export type Exercice = {
   lien?: { texte: string; href: string };
   suite?: { texte: string; href: string };
   telechargement?: { texte: string; href: string; nom: string };
-  revelation?: { texte: string; href: string; aide: string }; // à ouvrir après l'exercice : la solution
+  revelation?: { texte: string; href: string }; // bouton vers la solution, à ouvrir après l'exercice
 };
 
 export type Cours = {
@@ -145,7 +145,6 @@ const uxIa: Cours = {
       revelation: {
         texte: 'Comparer avec la version réparée',
         href: '/ux/ux-ia/comparer/formulaire-adresse/',
-        aide: 'À ouvrir après l’exercice : le formulaire avant et après, avec les sept défauts expliqués.',
       },
     },
   ],

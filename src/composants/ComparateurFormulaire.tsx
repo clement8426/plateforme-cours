@@ -133,6 +133,18 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
           {mode === 'cote' ? 'Les deux versions sont affichées côte à côte.' : `${titres[mode]} affichée.`}
         </p>
 
+        {mode !== 'depart' && (
+          <div className="consentement">
+            <label>
+              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} />
+              <span>Utiliser le vrai service Photon pour les suggestions d’adresse</span>
+            </label>
+            <p>
+              Par défaut, les suggestions sont simulées dans votre navigateur (une cinquantaine de rues de Suisse romande et des grandes villes) et rien n’est envoyé. Pour chercher n’importe quelle adresse, cochez la case : ce que vous tapez dans « Rue et numéro » part alors vers photon.komoot.io, un service extérieur. Utilisez une adresse fictive.
+            </p>
+          </div>
+        )}
+
         <div className={`vitrines vitrines-${mode}`}>
           {(['depart', 'repare'] as Cle[]).map((cle) => (
             <section key={cle} className={`vitrine vitrine-${cle}`} hidden={!visibles.includes(cle)} aria-label={titres[cle]}>
@@ -148,17 +160,6 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
           ))}
         </div>
 
-        {mode !== 'depart' && (
-          <div className="consentement">
-            <label>
-              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} />
-              <span>Utiliser le vrai service Photon pour les suggestions d’adresse</span>
-            </label>
-            <p>
-              Désactivé par défaut : les suggestions sont simulées dans votre navigateur et rien n’est envoyé. Si vous l’activez, ce que vous tapez dans « Rue et numéro » part vers photon.komoot.io, un service extérieur : utilisez une adresse fictive.
-            </p>
-          </div>
-        )}
       </div>
 
       <aside className="comparateur-defauts" aria-labelledby="titre-defauts">

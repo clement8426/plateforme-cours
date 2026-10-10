@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import FilAriane from '@/composants/FilAriane';
 import InviteCopiable from '@/composants/InviteCopiable';
@@ -51,17 +52,12 @@ export default async function PageExercices(props: ParamsCours) {
                   </ul>
                 </div>
               )}
-              {e.revelation && (
-                <div className="revelation">
-                  <p>{e.revelation.aide}</p>
-                  <a className="bouton-secondaire" href={e.revelation.href}>{e.revelation.texte}</a>
-                </div>
-              )}
-              {(e.lien || e.suite || e.telechargement) && (
+              {(e.lien || e.suite || e.telechargement || e.revelation) && (
                 <div className="actions">
                   {e.lien && <a className="bouton" href={e.lien.href}>{e.lien.texte}</a>}
                   {e.suite && <a className="bouton-secondaire" href={e.suite.href}>{e.suite.texte}</a>}
                   {e.telechargement && <a className="bouton-secondaire" href={e.telechargement.href} download={e.telechargement.nom}>{e.telechargement.texte}</a>}
+                  {e.revelation && <Link className="bouton-secondaire" href={e.revelation.href}>{e.revelation.texte}</Link>}
                 </div>
               )}
             </div>
