@@ -1,0 +1,253 @@
+{
+  "lexique": [
+    {
+      "terme": "UX",
+      "nom": "UX, User Experience",
+      "def": "Ce que l’on vit en utilisant un produit : le parcours et le ressenti.",
+      "cle": "ui-ux"
+    },
+    {
+      "terme": "UI",
+      "nom": "UI, User Interface",
+      "def": "Le visuel d’un produit : couleurs, boutons, typographie.",
+      "cle": "ui-ux"
+    },
+    {
+      "terme": "Cible",
+      "def": "Les personnes pour qui l’on conçoit. Une UX se juge toujours par rapport à elles.",
+      "cle": "cible"
+    },
+    {
+      "terme": "Persona",
+      "def": "Portrait fictif d’un utilisateur type, construit à partir d’observations réelles.",
+      "cle": "cible"
+    },
+    {
+      "terme": "Tunnel de conversion",
+      "nom": "Tunnel de conversion (funnel)",
+      "def": "Le parcours de l’arrivée jusqu’à l’objectif, achat ou formulaire.",
+      "cle": "tunnel"
+    },
+    {
+      "terme": "Abandon de panier",
+      "def": "Un visiteur remplit son panier, puis quitte le site sans payer.",
+      "cle": "abandon"
+    },
+    {
+      "terme": "Honeycomb",
+      "def": "Modèle de Peter Morville qui décrit une bonne expérience en sept facettes.",
+      "cle": "honeycomb"
+    },
+    {
+      "terme": "Design system",
+      "def": "Les règles visuelles partagées d’un produit (couleurs, polices, rayons, espacements), rangées en variables réutilisables.",
+      "cle": "design-system"
+    },
+    {
+      "terme": "Friction",
+      "def": "Tout ce qui demande un effort inutile pour décider ou pour atteindre un élément.",
+      "cle": "hick"
+    },
+    {
+      "terme": "Loi de Hick",
+      "def": "Plus il y a de choix, plus la décision prend du temps.",
+      "cle": "hick"
+    },
+    {
+      "terme": "Loi de Fitts",
+      "def": "Une cible petite et éloignée est plus longue à atteindre.",
+      "cle": "fitts"
+    },
+    {
+      "terme": "Accessibilité",
+      "def": "Un produit utilisable par toute la cible, y compris avec une limitation visuelle, auditive ou motrice.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Texte alternatif",
+      "def": "Description d’une image, lue par les lecteurs d’écran et affichée si l’image ne charge pas.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Contraste",
+      "def": "Écart de luminosité entre un texte et son fond. Le seuil courant est de 4,5 pour 1.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Accessibility Act",
+      "nom": "European Accessibility Act",
+      "def": "Directive européenne qui impose l’accessibilité à de nombreux produits et services numériques depuis le 28 juin 2025.",
+      "cle": "loi"
+    },
+    {
+      "terme": "Carte de chaleur",
+      "nom": "Carte de chaleur (heatmap)",
+      "def": "Image qui montre en couleurs chaudes les zones les plus cliquées d’une page.",
+      "cle": "hotjar"
+    },
+    {
+      "terme": "Microcopie",
+      "def": "Les petits textes d’une interface : boutons, messages d’erreur, aides.",
+      "cle": "microcopie"
+    },
+    {
+      "terme": "Performance perçue",
+      "def": "La vitesse ressentie par l’utilisateur, qui peut différer de la vitesse réelle.",
+      "cle": "attente"
+    },
+    {
+      "terme": "Skeleton loader",
+      "def": "Silhouette grise de la page, affichée pendant le chargement.",
+      "cle": "attente"
+    },
+    {
+      "terme": "Effet élastique",
+      "nom": "Effet élastique (rubber banding)",
+      "def": "Réglage d’un jeu en temps réel pour garder les joueurs proches les uns des autres.",
+      "cle": "emotion"
+    },
+    {
+      "terme": "MCP",
+      "nom": "MCP (Model Context Protocol)",
+      "def": "Le protocole qui relie une IA à un outil, pour qu’elle l’utilise directement.",
+      "cle": "solution"
+    },
+    {
+      "terme": "Penpot",
+      "def": "Outil de design libre et gratuit, équivalent de Figma, que l’IA peut piloter via MCP.",
+      "cle": "solution"
+    },
+    {
+      "terme": "Autocomplétion",
+      "def": "Des suggestions proposées pendant la saisie, à choisir d’un clic ou au clavier.",
+      "cle": "form-photon"
+    },
+    {
+      "terme": "Moodboard",
+      "def": "Planche d’inspiration qui fixe un style et des couleurs avant de créer.",
+      "cle": "methode"
+    },
+    {
+      "terme": "Vectoriel",
+      "def": "Image décrite par des formes, nette à toute taille, à l’inverse d’une image en pixels.",
+      "cle": "methode"
+    },
+    {
+      "terme": "Audit",
+      "def": "Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.",
+      "cle": "revelation"
+    }
+  ],
+  "references": [
+    {
+      "titre": "Photon, recherche d’adresses OpenStreetMap",
+      "source": "komoot",
+      "url": "https://github.com/komoot/photon"
+    },
+    {
+      "titre": "Motif « combobox » (liste de suggestions)",
+      "source": "W3C, WAI-ARIA",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+    },
+    {
+      "titre": "Le serveur MCP de Penpot",
+      "source": "Penpot",
+      "url": "https://penpot.app/ai/mcp-server"
+    },
+    {
+      "titre": "Limites du serveur MCP de Figma",
+      "source": "Figma",
+      "url": "https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/"
+    },
+    {
+      "titre": "Abandon de panier : taux et raisons",
+      "source": "Baymard Institute, 2025",
+      "url": "https://baymard.com/lists/cart-abandonment-rate"
+    },
+    {
+      "titre": "Réduire les champs du tunnel de commande",
+      "source": "Baymard Institute, 2024",
+      "url": "https://baymard.com/blog/checkout-flow-average-form-fields"
+    },
+    {
+      "titre": "« The $300 Million Button »",
+      "source": "Jared Spool, 2009",
+      "url": "https://articles.centercentre.com/three_hund_million_button/"
+    },
+    {
+      "titre": "« User Experience Design », le Honeycomb",
+      "source": "Peter Morville, 2004",
+      "url": "https://semanticstudios.com/user_experience_design/"
+    },
+    {
+      "titre": "Loi de Hick",
+      "source": "Laws of UX",
+      "url": "https://lawsofux.com/hicks-law/"
+    },
+    {
+      "titre": "Loi de Fitts",
+      "source": "Laws of UX",
+      "url": "https://lawsofux.com/fittss-law/"
+    },
+    {
+      "titre": "Contraste minimum, critère 1.4.3",
+      "source": "W3C, WCAG",
+      "url": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+    },
+    {
+      "titre": "Directive (UE) 2019/882, l’European Accessibility Act",
+      "source": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882"
+    },
+    {
+      "titre": "Accessibilité : obligations et sanctions en France",
+      "source": "DGCCRF",
+      "url": "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite"
+    },
+    {
+      "titre": "Amendes par pays",
+      "source": "Fieldfisher, 2025",
+      "url": "https://www.fieldfisher.com/en/insights/understanding-the-european-accessibility-act-risks-of-non-compliance-and-key-authorities"
+    },
+    {
+      "titre": "Révision partielle de la LHand",
+      "source": "Confédération suisse, BFEH",
+      "url": "https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand"
+    },
+    {
+      "titre": "Pa11y, audit d’accessibilité",
+      "source": "pa11y.org",
+      "url": "https://pa11y.org/"
+    },
+    {
+      "titre": "Lighthouse",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/lighthouse/overview"
+    },
+    {
+      "titre": "« Let Your Users Wait »",
+      "source": "UX Magazine",
+      "url": "https://uxmag.com/articles/let-your-users-wait"
+    },
+    {
+      "titre": "Attente fabriquée : « Just wait… trust me »",
+      "source": "Université du Michigan, 2017",
+      "url": "https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/"
+    },
+    {
+      "titre": "Robinhood retire ses confettis",
+      "source": "CNBC, 2021",
+      "url": "https://www.cnbc.com/2021/03/31/robinhood-gets-rid-of-confetti-feature-amid-scrutiny-over-gamification.html"
+    },
+    {
+      "titre": "Mario Kart et le rubber banding",
+      "source": "Wikipédia",
+      "url": "https://en.wikipedia.org/wiki/Mario_Kart"
+    },
+    {
+      "titre": "« 2026 : l’été où les affiches IA ont inondé la France »",
+      "source": "Next, 2026",
+      "url": "https://next.ink/253290/2026-lete-ou-les-affiches-ia-ont-inonde-la-france/"
+    }
+  ]
+}

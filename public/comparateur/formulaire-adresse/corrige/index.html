@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier Rayon · Adresse de livraison</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="marque"><span class="logo" aria-hidden="true"></span>Atelier Rayon</header>
+    <section class="carte" aria-labelledby="titre">
+      <p class="etape">Étape 2 sur 3</p>
+      <h1 id="titre">Adresse de livraison</h1>
+      <p class="intro">Votre vélo révisé est livré chez vous sous 48 heures.</p>
+
+      <div class="resume" id="resume" tabindex="-1" hidden>
+        <p class="resume-titre">Deux minutes de plus et c’est bon : vérifiez ces champs.</p>
+        <ul id="resume-liste"></ul>
+      </div>
+
+      <form id="formulaire" novalidate>
+        <div class="ligne">
+          <div class="champ">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prenom" autocomplete="given-name" required aria-describedby="prenom-erreur">
+            <p class="erreur" id="prenom-erreur" hidden></p>
+          </div>
+          <div class="champ">
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" autocomplete="family-name" required aria-describedby="nom-erreur">
+            <p class="erreur" id="nom-erreur" hidden></p>
+          </div>
+        </div>
+
+        <div class="champ">
+          <label for="rue">Rue et numéro</label>
+          <p class="aide" id="rue-aide">Commencez à taper, puis choisissez votre adresse dans la liste.</p>
+          <div class="combo">
+            <input id="rue" name="rue" autocomplete="address-line1" required
+                   role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions"
+                   aria-describedby="rue-aide rue-erreur">
+            <span class="charge" id="charge" aria-hidden="true" hidden></span>
+            <ul class="suggestions" id="suggestions" role="listbox" aria-label="Adresses proposées" hidden></ul>
+          </div>
+          <p class="statut" id="statut" role="status" aria-live="polite"></p>
+          <p class="erreur" id="rue-erreur" hidden></p>
+        </div>
+
+        <div class="champ">
+          <label for="complement">Complément d’adresse <span class="facultatif">(facultatif)</span></label>
+          <input id="complement" name="complement" autocomplete="address-line2">
+        </div>
+
+        <div class="ligne ligne-npa">
+          <div class="champ">
+            <label for="npa">NPA</label>
+            <input id="npa" name="npa" autocomplete="postal-code" inputmode="numeric" maxlength="4" required aria-describedby="npa-erreur">
+          </div>
+          <div class="champ">
+            <label for="localite">Localité</label>
+            <input id="localite" name="localite" autocomplete="address-level2" required aria-describedby="localite-erreur">
+          </div>
+        </div>
+        <p class="erreur" id="npa-erreur" hidden></p>
+        <p class="erreur" id="localite-erreur" hidden></p>
+
+        <div class="champ">
+          <label for="telephone">Téléphone</label>
+          <p class="aide" id="telephone-aide">Le livreur vous appelle 30 minutes avant d’arriver.</p>
+          <input id="telephone" name="telephone" type="tel" autocomplete="tel" required aria-describedby="telephone-aide telephone-erreur">
+          <p class="erreur" id="telephone-erreur" hidden></p>
+        </div>
+
+        <div class="champ">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-erreur">
+          <p class="erreur" id="email-erreur" hidden></p>
+        </div>
+
+        <button type="submit" id="envoyer"><span class="bouton-texte">Valider l’adresse de livraison</span></button>
+      </form>
+      <div class="merci" id="merci" tabindex="-1" hidden>
+        <p class="merci-titre">C’est noté !</p>
+        <p>Votre vélo sera livré à l’adresse indiquée. Vous recevrez un SMS la veille.</p>
+      </div>
+    </section>
+    <p class="pied">Boutique fictive, créée pour un exercice. Le formulaire n’envoie aucune donnée.<br>
+      Suggestions d’adresses (simulées dans cette démonstration, sauf accord de votre part) : <a href="https://photon.komoot.io">Photon</a>, données © <a href="https://www.openstreetmap.org/copyright">contributeurs OpenStreetMap</a>.</p>
+  </main>
+  <script src="demo-photon.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

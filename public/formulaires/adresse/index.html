@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier Rayon · Adresse de livraison</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="marque"><span class="logo" aria-hidden="true"></span>Atelier Rayon</header>
+    <section class="carte">
+      <p class="etape">Étape 2 sur 3</p>
+      <h1>Adresse de livraison</h1>
+      <p class="intro">Votre vélo révisé est livré chez vous sous 48 heures.</p>
+      <p class="erreur-globale" id="erreur" hidden></p>
+      <form id="formulaire" autocomplete="off" novalidate>
+        <div class="ligne">
+          <div class="champ"><label>Prénom</label><input name="prenom" class="i-a"></div>
+          <div class="champ"><label>Nom</label><input name="nom" class="i-b"></div>
+        </div>
+        <input name="email" placeholder="E-mail" class="i-c">
+        <input name="telephone" placeholder="Téléphone" class="i-a">
+        <div class="ligne">
+          <input name="npa" placeholder="NPA" class="i-d">
+          <input name="localite" placeholder="Localité" class="i-b">
+        </div>
+        <input name="rue" placeholder="Rue et numéro" class="i-c">
+        <input name="complement" placeholder="Complément d’adresse (facultatif)" class="i-d">
+        <button type="submit">Soumettre</button>
+      </form>
+    </section>
+    <p class="pied">Boutique fictive, créée pour un exercice. Aucune donnée n’est envoyée.</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
