@@ -105,9 +105,9 @@ const uxIa: Cours = {
       apercu: '/apercus/tilleul.jpg',
       scene: 'tilleul',
       deroule: [
-        { texte: 'Sans aide, faites le parcours d’un client : accueil, collection, fiche produit, panier, commande. Pensez à voix haute.' },
-        { texte: 'À chaque étape, demandez à la salle où ça gêne, et rangez les réponses dans les six blocs.' },
-        { texte: 'Passez en mode cours : les pastilles révèlent les douze défauts. Ouvrez-en un par bloc.' },
+        { texte: 'Sans aide, faites le parcours d’un client en pensant à voix haute : accueil, collection, fiche du vase Dune, panier, commande.' },
+        { texte: 'Demandez à la salle où ça gêne : la fenêtre qui surgit, la collection vide 4 secondes, « Ajouter au panier » introuvable, les options cochées d’office…' },
+        { texte: 'Passez en mode cours : les pastilles révèlent les douze défauts, rangés dans les six blocs. Ouvrez-en un par bloc.' },
         { texte: 'Cliquez sur « Améliorer » : le défaut est corrigé en direct. Comparez avant et après.' },
         { texte: 'Montrez ce que l’audit automatique voit, et ce qu’il rate.', action: { texte: 'Diapo de la révélation', href: '/ux/ux-ia/diapos/?diapo=35' } },
       ],

@@ -88,6 +88,16 @@ try {
   if (!script.includes('photon.komoot.io')) {
     console.warn('Avertissement : la version réparée ne contient plus d’appel à Photon. Le fichier de simulation est quand même ajouté.');
   }
+  // Recherche réelle plus juste : la proximité de Neuchâtel ne passe plus avant la ville tapée
+  // (« Bahnhofstrasse 1 Zürich » donne bien Zurich), et on demande 10 résultats pour en garder 5 après les doublons.
+  const avant = "limit: '5', countrycode: 'CH', lat: '46.99', lon: '6.93' })";
+  const apres = "limit: '10', countrycode: 'CH', lat: '46.99', lon: '6.93', location_bias_scale: '0.1' })";
+  const doublons = '    cache.set(q, features);\n    afficher(features);';
+  if (script.includes(avant) && script.includes(doublons)) {
+    writeFileSync(join(cible, 'corrige', 'script.js'), script.replace(avant, apres).replace(doublons, '    cache.set(q, features.slice(0, 5));\n    afficher(features.slice(0, 5));'));
+  } else {
+    console.warn('Avertissement : réglages de la recherche Photon non reconnus, la version réparée est publiée telle quelle.');
+  }
   copyFileSync(join(racine, 'scripts', 'modeles', 'demo-photon.js'), join(cible, 'corrige', 'demo-photon.js'));
   const index = join(cible, 'corrige', 'index.html');
   let html = readFileSync(index, 'utf8');

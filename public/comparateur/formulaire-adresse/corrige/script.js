@@ -122,7 +122,7 @@ async function chercher(q) {
   charge.hidden = false; statut.textContent = 'Recherche…';
   try {
     // limite à la Suisse, résultats proches de Neuchâtel en premier, 5 suggestions au plus
-    const url = PHOTON + '?' + new URLSearchParams({ q, lang: 'fr', limit: '5', countrycode: 'CH', lat: '46.99', lon: '6.93' }) + '&layer=house&layer=street';
+    const url = PHOTON + '?' + new URLSearchParams({ q, lang: 'fr', limit: '10', countrycode: 'CH', lat: '46.99', lon: '6.93', location_bias_scale: '0.1' }) + '&layer=house&layer=street';
     const r = await fetch(url, { signal: requete.signal });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
@@ -130,8 +130,8 @@ async function chercher(q) {
     const features = data.features.filter(f => f.properties.postcode && (f.properties.street || f.properties.name)).filter(f => {
       const a = texteAdresse(f.properties), cle = a.ligne + a.lieu; if (vus.has(cle)) return false; vus.add(cle); return true;
     });
-    cache.set(q, features);
-    afficher(features);
+    cache.set(q, features.slice(0, 5));
+    afficher(features.slice(0, 5));
   } catch (err) {
     if (err.name === 'AbortError') return;
     fermer();

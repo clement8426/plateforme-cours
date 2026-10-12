@@ -36,6 +36,8 @@ else console.warn('Avertissement : SITE_URL introuvable, le lien vers Tilleul n�
 
 // Un chemin comme /ux/ux-ia/ peut être converti en « C:/Program Files/Git/ux/ux-ia/ » par Git Bash sous Windows : on refuse.
 // Le formulaire de l'exercice C (diapos 29 à 31) est publié par « npm run formulaire » : le lien des diapos y mène.
+// La démonstration de l'affiche : la page du site, en adresse relative.
+html = html.replace(/AFFICHE_URL: '[^']*'/, "AFFICHE_URL: '/ux/ux-ia/demos/affiche/'");
 const FORM_URL = /FORM_URL: '[^']*'/;
 if (FORM_URL.test(html)) html = html.replace(FORM_URL, "FORM_URL: '/formulaires/adresse/'");
 

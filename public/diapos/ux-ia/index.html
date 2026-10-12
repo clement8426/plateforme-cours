@@ -747,6 +747,17 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   [data-step] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
   #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
 }
+.oeil h3, .col-titre { font: 600 var(--fs-big)/1.15 var(--font-title); letter-spacing: -.01em; }
+.mini-produit { display: grid; gap: 8px; margin: 18px 0 14px; padding: 22px; border-radius: var(--r-m); background: #FFFCF5; color: #2A2622; border: 2px solid var(--line); }
+.mini-image { aspect-ratio: 16 / 10; border-radius: 14px; background: linear-gradient(160deg, #EFE3D2, #D9C2A5); display: grid; }
+.mini-image svg { width: 100%; height: 100%; }
+.mini-nom { font: 600 var(--fs-lead)/1.2 var(--font-title); }
+.mini-prix { font-size: var(--fs-body); font-weight: 600; }
+.mini-prix s { color: #C9C1B4; font-weight: 400; margin-right: 14px; }
+.trouvailles { display: grid; gap: 26px; }
+.trouvailles li { display: grid; grid-template-columns: 150px minmax(0, 1fr); align-items: baseline; gap: 20px; }
+.trouvailles b { font: 800 84px/1 var(--font-title); letter-spacing: -.03em; color: var(--accent-text); }
+.trouvailles span { font-size: var(--fs-lead); line-height: 1.3; }
 .option.bonus { border-style: dashed; background: transparent; box-shadow: none; }
 .option.bonus .option-lettre { color: var(--muted); }
 .blocs-natures { margin-top: 28px; }
@@ -1363,12 +1374,25 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <section class="slide" data-part="3" data-key="revelation">
   <h2 class="title">La révélation : ce qu’on ne voit pas à l’œil nu</h2>
   <div class="body g12">
-    <div class="c8 audits">
-      <div class="case" data-case="IMG_LIGHTHOUSE" data-kind="img" data-alt="Rapport Lighthouse de la page collection : score d’accessibilité de 89, deux audits en échec, images sans texte alternatif et contraste insuffisant"></div>
-      <div class="case" data-case="IMG_PA11Y" data-kind="img" data-alt="Sortie de Pa11y sur la fiche produit : 3 erreurs, une image sans texte alternatif et deux contrastes à 1,69 pour 1"></div>
+    <div class="c5 stack-m">
+      <article class="card oeil" data-step="1">
+        <h3>À l’œil nu</h3>
+        <div class="mini-produit">
+          <div class="mini-image" role="img" aria-label="Photo du vase Dune, sans texte alternatif"><svg viewBox="0 0 160 100" aria-hidden="true"><path d="M72 14h16v9c0 5 15 12 15 33 0 20-11 32-23 32S57 76 57 56c0-21 15-28 15-33z" fill="#B7643F"/><ellipse cx="80" cy="14" rx="10" ry="3" fill="#8F4A2C"/></svg></div>
+          <p class="mini-nom">Vase Dune</p>
+          <p class="mini-prix"><s>CHF 84.00</s> CHF 68.00</p>
+        </div>
+        <p class="note">Tout a l’air soigné.</p>
+      </article>
     </div>
-    <div class="c4">
-      <div class="zones" data-comp="zones" data-zones="audits"></div>
+    <div class="c7 stack-m">
+      <h3 class="col-titre" data-step="2">L’outil d’audit, lui, trouve :</h3>
+      <ul class="trouvailles">
+        <li data-step="2"><b>10</b><span>images sans texte alternatif : un lecteur d’écran ne peut pas les décrire.</span></li>
+        <li data-step="3"><b>11</b><span>textes trop pâles, dont les prix barrés : 1,69:1 au lieu de 4,5:1.</span></li>
+        <li data-step="4"><b>89</b><span>sur 100 au score d’accessibilité de Lighthouse. Un bon score, malgré tout ça.</span></li>
+      </ul>
+      <p class="lead strong" data-step="5">L’outil mesure. Il ne dit pas si un texte alternatif a du sens.</p>
     </div>
   </div>
 </section>
@@ -1452,19 +1476,16 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="3" data-key="exercice">
-  <h2 class="title">Exercice : créer une affiche promo</h2>
+  <h2 class="title">Bonus : l’affiche, en direct ou en atelier</h2>
   <div class="body g12">
     <div class="c6 stack-m">
-      <div class="brief-line">
-        <p class="lead strong">Thème :</p>
-        <div class="case" data-case="THEME_EXERCICE" data-kind="text" data-label="Thème de l’affiche"></div>
-      </div>
-      <p class="lead">Trois informations obligatoires : quoi, quand, où. Outil libre.</p>
-      <p class="lead">On compare ensuite ce qui se lit en premier.</p>
-      <div class="case" data-case="DUREE_EXERCICE" data-kind="number" data-label="Durée de l’exercice, en minutes"></div>
+      <p class="lead"><strong>En direct :</strong> le test des 3 secondes. Deux affiches, 3 secondes chacune : quoi, quand, où ?</p>
+      <div class="case" data-case="AFFICHE_URL" data-kind="link" data-label="La démonstration sur le site"></div>
+      <p class="lead"><strong>En atelier :</strong> chacun crée une affiche A4 pour la promo de Tilleul. Trois informations : quoi, quand, où.</p>
+      <div class="case" data-case="DUREE_EXERCICE" data-kind="number" data-label="Durée de l’atelier, en minutes"></div>
     </div>
     <div class="c6">
-      <div class="countdown" data-comp="countdown" data-source="DUREE_EXERCICE" data-name="Minuteur de l’exercice"></div>
+      <div class="countdown" data-comp="countdown" data-source="DUREE_EXERCICE" data-name="Minuteur de l’atelier"></div>
     </div>
   </div>
 </section>
@@ -1584,7 +1605,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p>L’IA accélère, les bases décident.</p></li>
     </ol>
     <div class="c4 stack-m end-col">
-      <div class="case" data-case="CONTACT" data-kind="text" data-label="Contact"></div>
+      <div class="case" data-case="EXERCICES_URL" data-kind="qr" data-label="Les exercices à refaire chez vous"></div>
       <p class="lead strong">Questions bienvenues.</p>
     </div>
   </div>
@@ -1673,10 +1694,12 @@ const CONFIG = {
   },
   urls: {
     LINK_UXMAG_ARTICLE: 'https://uxmag.com/articles/let-your-users-wait',
-    SITE_URL: '/tilleul/?cours=non', // adresse du site Tilleul lancé avec npm run dev
-    FORM_URL: '/formulaires/adresse/', // adresse du formulaire de l'exercice C (fichier index.html ouvert dans le navigateur, ou serveur local)
+    SITE_URL: '/tilleul/?cours=non', // Tilleul en ligne, sans le mode cours
+    FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
     QR_KAHOOT: '',
-    PLUGIN_URL: '' // adresse GitHub du plugin (slide 32) : le QR code se génère tout seul
+    PLUGIN_URL: '', // adresse GitHub du plugin (slide 32) : le QR code se génère tout seul
+    EXERCICES_URL: 'https://github.com/clement8426/ux-ia-exercices', // les exercices à refaire chez soi (slide 47)
+    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 41)
   },
   // Cases image : chemin relatif ou URL (exemple : 'images/figma.png').
   // Les affiches ratées, les deux rapports d'audit, les captures du Kahoot et le résultat d'audit ont une image intégrée
@@ -1878,18 +1901,19 @@ const CONFIG = {
     31: 'Chrome DevTools MCP (Google) enregistre une trace de performance et en tire des pistes. Par défaut, il envoie l’adresse de la page à Google pour les données réelles : l’option --no-performance-crux l’évite.\nUnlighthouse : Lighthouse sur toutes les pages d’un site d’un coup, gratuit et open source.\nPiège : si on demande « rends le chargement plus rassurant », l’IA peut ajouter une fausse barre de progression, voire ralentir une action déjà instantanée. Le test de la slide 19 : l’utilisateur serait-il d’accord s’il le savait ?',
     32: 'Le plugin rassemble les prompts de cette partie : questions de départ, six blocs, rapport.\nChaque constat est marqué : mesuré par un outil, indice à confirmer, ou avis de l’IA.\nAdresse GitHub : à renseigner dans CONFIG.urls.PLUGIN_URL, le QR code se génère tout seul. Plugin en cours de construction.',
     33: 'Le parachute du cours : selon le temps qui reste, une ou deux démonstrations, ou aucune.\nA, Tilleul (8 min) : la démonstration par défaut, depuis le site (Démonstrations, Tilleul).\nB, le formulaire (14 min) : si le temps le permet, ou à la place de Tilleul.\nBonus, l’affiche : seulement s’il reste du temps.\nCe qui n’est pas montré se refait chez soi : le dépôt GitHub du cours, avec un prompt à copier dans son agent.',
-    34: 'Depuis le site : Démonstrations, Tilleul, interrupteur « Sans aide ». Mimer le client : accueil, collection, fiche produit, ajout au panier, panier, commande.\nTilleul cache douze défauts (le mode cours les révèle tous). En direct, s’arrêter sur quatre, dans l’ordre du parcours :\n1. Fiche produit : « Ajouter au panier » ne donne aucun retour pendant 1,2 seconde (performance perçue).\n2. Panier : le total est caché, puis le tunnel impose de créer un compte (friction).\n3. Tunnel : trois boutons « Soumettre » et « Erreur champ 4 » si le téléphone est vide (microcopie).\n4. Invisible à l’œil : images sans texte alternatif, prix barrés en gris trop clair (accessibilité).\nPuis passer en « Mode cours » pour révéler les douze.',
-    35: 'Défauts invisibles à l’œil nu : images sans texte alternatif, contraste insuffisant (1,69:1 sur les prix barrés).\nLighthouse : score d’accessibilité 89 sur la page collection, deux audits en échec. Pa11y : 21 erreurs sur 4 pages, 10 images et 11 contrastes.\nPas de terminal à montrer : un agent peut lancer Pa11y lui-même, c’est le prompt du bloc 3.',
+    34: 'Depuis le site : Démonstrations, Tilleul, interrupteur « Sans aide ». Penser à voix haute, mimer le client. Tilleul cache douze défauts ; en direct, s’arrêter sur ceux du parcours :\nAccueil : une fenêtre surgit et culpabilise (« Non merci, je préfère payer plein tarif ») (microcopie).\nCollection : quatre secondes de page vide, puis tout saute (performance perçue) ; trente filtres pour six produits (friction).\nFiche du vase Dune : « Ajouter au panier » est un petit lien gris tout en bas (friction) ; après le clic, trois secondes sans rien (performance perçue).\nPanier : trois options payantes cochées d’office, pas de total, puis compte obligatoire (friction).\nCommande : tous les boutons disent « Soumettre », et « Erreur 0x4F : champ 4 invalide » vide les champs (microcopie).\nPuis passer en « Mode cours » : les pastilles révèlent les douze, avec « Améliorer » pour corriger en direct.',
+    35: 'À l’œil, la fiche produit est soignée. L’audit automatique trouve ce qui ne se voit pas.\nPa11y, sur 4 pages de Tilleul : 21 erreurs, dont 10 images sans texte alternatif et 11 contrastes insuffisants (1,69:1 sur les prix barrés, il faut 4,5:1).\nLighthouse, page collection : 89 sur 100 en accessibilité. Un bon score qui cache quand même ces erreurs.\nCe que l’outil ne voit pas : l’image d’accueil a un texte alternatif qui vaut « image ». Il passe l’audit, mais ne dit rien. C’est là que l’humain, ou l’IA, juge.\nPas de terminal à montrer : un agent lance Pa11y lui-même (prompt du bloc 3, diapo 28).',
     36: 'Exercice B, au choix avec Tilleul. Depuis le site : Démonstrations, Le formulaire d’adresse, version de départ. Lancer le chrono, laisser remplir avec une adresse fictive en Suisse.\nConsigne : noter tout ce qui gêne. L’écran est soigné, les défauts sont ailleurs.\nArrêter le chrono quand la majorité a fini : ce temps servira de comparaison après les corrections.',
     37: 'Faire deviner bloc par bloc, puis révéler.\nDesign system : hauteurs 40, 44, 48 et 52 px, arrondis 0, 6, 10 et 14 px.\nFriction : autocomplete="off" bloque le remplissage du navigateur, NPA et localité avant la rue.\nAccessibilité : axe-core trouve 2 erreurs, les étiquettes Prénom et Nom non reliées. Le reste ne se voit qu’à l’usage.\nAnalyse comportementale : Hotjar a retiré son analyse de formulaires, l’abandon se voit dans les enregistrements de sessions.\nMicrocopie : « Erreur champ 1 », bouton « Soumettre », placeholders qui disparaissent dès qu’on tape.\nPerformance perçue : 1,8 seconde d’envoi sans retour, on clique deux fois.',
     38: 'Corriger avec l’IA défaut par défaut, l’autocomplétion en dernier : taper « Rue du Seyon 10 » dans la version corrigée.\nMessage : un designer dessine le champ, mais l’autocomplétion demande du code et des choix techniques (quelle API, quel délai, que faire si elle ne répond pas).\nPhoton : gratuit, sans clé, données OpenStreetMap, serveur public en usage raisonnable. Nominatim interdit l’autocomplétion sur son serveur public.\nCe qu’on tape part chez un tiers : adresse fictive en exercice, mention dans la politique de confidentialité sur un vrai site.',
     39: 'Un A4 collé au mur : pas de verso, pas de deuxième chance, tout d’un coup d’œil. Une page web défile.\nNe garder que l’information réellement nécessaire.',
     40: 'Deux affiches réelles, d’allure générée par IA (non vérifié). La première a été publiée par le magazine étapes, la seconde vient d’une recherche d’images, origine inconnue.\n1. Trop d’informations : tout est écrit, donc rien ne ressort.\n2. Un style vu partout : rubans, ardoises, collage de photos, lettrage au pinceau. Quand toutes les affiches se ressemblent, on ne les remarque plus.\nCe qu’il faut faire : une idée, trois informations, une hiérarchie claire.\nÀ citer : l’article de Next sur les affiches IA de l’été 2026 (slide Références).',
-    41: 'Trois informations imposées (quoi, quand, où) pour que le débrief compare les hiérarchies, pas la maîtrise d’un outil.\nÀ la fin, demander à l’oral quels outils ont été utilisés : c’est la transition vers ma méthode.',
+    41: 'Bonus. En direct, depuis le site : Démonstrations, L’affiche qui se lit en 3 secondes. Lancer l’affiche A sans rien annoncer, demander quoi, quand, où, révéler, puis l’affiche B.\nEn atelier, s’il reste du temps : trois informations imposées (quoi, quand, où) pour que le débrief compare les hiérarchies, pas la maîtrise d’un outil. À la fin, demander quels outils ont été utilisés : c’est la transition vers ma méthode.',
     42: 'À dire à l’oral : c’est ma méthode, pas la seule possible. Elle marche avec Figma comme avec Penpot.\nMoodboard généré par IA (style, couleurs).\nDesign system dans Figma (logos vectoriels, couleurs, composants).\nClaude relié à Figma reconstruit l’affiche proprement.\nExport vectoriel.\nOnglet 1 : même un logo SVG envoyé à une IA image n’est pas copié, il est régénéré en pixels, avec de petits défauts de courbes, de proportions et d’anti-aliasing, et la vectorisation est perdue.\nOnglet 2 : mêmes composants, mêmes couleurs, même rayon, de l’A4 à la banderole de 4 m. Une IA image régénère un résultat différent à chaque format.',
     43: 'Ce que je montre en démo : l’affiche construite par Claude dans Penpot, à partir de mes composants.\nPourquoi construire plutôt que générer : une IA image régénère tout en pixels, le texte se déforme, le logo change, et l’image ne se modifie pas. Construite via MCP, l’affiche garde un vrai texte, le logo d’origine, et se décline à tous les formats.\nL’IA image reste utile pour les ingrédients : ambiance, illustration, texture.\nPourquoi Penpot : outil libre et gratuit, son MCP officiel tourne en local, sans quota. Il est jeune, présenté comme expérimental début 2026.\nFigma (vérifié en octobre 2026) : sur le plan gratuit Starter, 20 appels MCP par mois (réponse de l’équipe Figma sur son forum, automne 2026 ; l’ancien guide GitHub de Figma indiquait 6). Les sièges View ou Collab des offres payantes restent à 6 par mois. Les sièges Dev ou Full payants ont une limite par minute, bien plus large.\nLes deux se combinent : créer avec l’IA dans Penpot, exporter en SVG, reprendre dans Figma.\nMCP : le protocole qui relie une IA à un outil pour qu’elle l’utilise directement.',
     45: 'Petit modèle : automatisation mécanique (lancer Pa11y, structurer le rapport).\nGrand modèle : analyse et plan de correction priorisé, qui croise l’audit et les réponses du Kahoot.\nModèle intermédiaire : exécution des corrections, bloc par bloc.\nNoms à donner à l’oral, ils changent vite : un modèle léger, Opus pour le plan, Sonnet pour l’exécution.',
     46: 'Filet de sécurité si l’agent ou le réseau lâche : dans Tilleul, le mode cours corrige chaque défaut avec « Améliorer », ou tout d’un coup avec « Tout améliorer ».\nL’image de la page d’accueil a un texte alternatif qui vaut « image » : l’audit ne la signale pas.\nC’est ici que se prouve « l’IA accélère, les bases décident » : l’audit signale un texte alternatif manquant, pas un texte alternatif inutile ni un bouton « Soumettre ».\nOn ne corrige pas tout en direct : certaines corrections n’ont pas besoin de l’IA.\nHors programme, seulement si on me le demande : piloter l’IA à la voix depuis le téléphone.',
+    47: 'Les trois idées à emporter.\nLe QR code mène au dépôt GitHub des exercices : Tilleul, le formulaire, l’affiche en bonus, avec les prompts des six blocs à copier dans son agent.',
     48: 'Bonus, à montrer seulement s’il reste du temps ou si on me pose la question.\nGame design et UX se croisent sans se confondre : le jeu crée volontairement de la difficulté et de l’émotion, l’UX retire les obstacles.\nDans Mario Kart, les objets tirés dépendent du classement : puissants pour ceux qui sont loin derrière, défensifs pour le premier. C’est le rubber banding, l’effet élastique. La simulation le montre avec un coup de pouce de vitesse, c’est une simplification.\nContre-exemple : Robinhood a retiré ses confettis après des critiques sur la gamification du trading, un « waouh » mal dosé.'
   }
 };
