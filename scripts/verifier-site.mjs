@@ -103,8 +103,8 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.goto(base + '/');
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
-  const reprendre = p.getByRole('link', { name: /Reprendre : L’affiche/ });
-  verifier('après les diapos : « Reprendre : L’affiche qui se lit en 3 secondes »', await reprendre.isVisible(), (await p.locator('.accueil .actions').innerText()).replace(/\n/g, ' | '));
+  const reprendre = p.getByRole('link', { name: /Reprendre : Tilleul/ });
+  verifier('après les diapos : « Reprendre : Tilleul, la boutique piégée »', await reprendre.isVisible(), (await p.locator('.accueil .actions').innerText()).replace(/\n/g, ' | '));
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.goto(base + '/ux/ux-ia/demos/tilleul/');
@@ -142,10 +142,10 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.waitForLoadState('networkidle');
   verifier('page du cours : 3 parties et 3 démonstrations', (await p.locator('.partie').count()) === 3 && (await p.locator('.demo-carte').count()) === 3);
   verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/ux-ia-exercices');
-  await p.getByRole('link', { name: /Diapo 22/ }).click();
-  await p.waitForURL('**/diapos/?diapo=22');
+  await p.getByRole('link', { name: /Diapo 20/ }).click();
+  await p.waitForURL('**/diapos/?diapo=20');
   await p.waitForTimeout(800);
-  verifier('« Diapo 22 » ouvre les diapos à la diapo 22', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#22'));
+  verifier('« Diapo 20 » ouvre les diapos à la diapo 20', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#20'));
 
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   verifier('démo de l’affiche : un déroulé en 5 étapes', (await p.locator('.deroule-demo li').count()) === 5);
@@ -154,7 +154,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   verifier('test des 3 secondes : l’affiche s’affiche', await p.locator('.affiche-a').isVisible());
   await p.getByRole('button', { name: 'Révéler l’affiche' }).click({ timeout: 6000 });
   verifier('… puis se cache et se révèle avec quoi, quand, où entourés', (await p.locator('.marque-info').count()) === 3);
-  verifier('lien vers l’exercice sur GitHub', (await p.getByRole('link', { name: /Ouvrir l’exercice sur GitHub/ }).getAttribute('href')).endsWith('/tree/main/01-affiche-promo'));
+  verifier('lien vers l’exercice sur GitHub', (await p.getByRole('link', { name: /Ouvrir l’exercice sur GitHub/ }).getAttribute('href')).endsWith('/tree/main/bonus-affiche-promo'));
 
   await p.goto(base + '/ux/ux-ia/demos/tilleul/');
   const avant = await p.locator('iframe.cadre-site').getAttribute('src');

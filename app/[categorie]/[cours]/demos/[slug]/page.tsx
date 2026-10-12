@@ -48,7 +48,7 @@ export default async function PageDemo(props: Props) {
         <h1>{demo.titre}</h1>
         <p className="chapeau">{demo.resume}</p>
         <div className="demo-meta">
-          <p className="duree">{demo.duree} en direct</p>
+          <p className="duree">{demo.duree} en direct{demo.bonus ? ', en bonus' : ''}</p>
           <PucesBlocs blocs={demo.blocs} />
         </div>
       </header>

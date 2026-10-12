@@ -74,7 +74,7 @@ export default async function PageCours(props: ParamsCours) {
                         <img src={d.apercu} alt="" width={1440} height={900} loading="lazy" />
                         <div className="demo-carte-texte">
                           <h4><Link href={`${base}/demos/${d.slug}/`}>{d.titre}</Link></h4>
-                          <p>{d.resume}</p>
+                          <p>{d.bonus ? <strong>Bonus, si le temps le permet. </strong> : null}{d.resume}</p>
                           <PucesBlocs blocs={d.blocs} />
                           <BadgeVu cours={cle} etape={d.slug} nom={d.titre} />
                         </div>

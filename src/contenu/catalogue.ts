@@ -23,6 +23,7 @@ export type Demo = {
   deroule: EtapeDemo[];
   aRetenir: string[];
   exercice: string;
+  bonus?: boolean; // à montrer seulement s'il reste du temps
 };
 
 // Le déroulé du cours, calé sur les trois parties des diapos.
@@ -80,7 +81,7 @@ const uxIa: Cours = {
   slug: 'ux-ia',
   titre: 'UX × IA',
   accroche: 'Rendre un produit pratique, puis le corriger avec l’IA.',
-  duree: 'Environ 1 h 45, plus 15 minutes en option',
+  duree: 'Environ 1 h 30, selon les démonstrations choisies',
   public: 'Débutants, aucun prérequis technique',
   objectifs: [
     'Distinguer l’UX (le vécu) de l’UI (le visuel).',
@@ -90,33 +91,11 @@ const uxIa: Cours = {
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
-    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 21] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [22, 34] },
-    { titre: 'Pratique', resume: 'Trois démonstrations à faire devant la salle, puis à refaire chez soi.', duree: '45 min', diapos: [35, 49], demos: true },
+    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 19] },
+    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [20, 32] },
+    { titre: 'Pratique', resume: 'Une ou deux démonstrations devant la salle, selon le temps qui reste. Tout se refait chez soi.', duree: '25 à 40 min', diapos: [33, 47], demos: true },
   ],
   demos: [
-    {
-      slug: 'affiche',
-      titre: 'L’affiche qui se lit en 3 secondes',
-      resume: 'Deux affiches pour la même promotion. Montrez chacune 3 secondes à la salle : laquelle a été retenue ?',
-      blocs: ['design-system', 'microcopie'],
-      duree: '8 minutes',
-      apercu: '/apercus/demo-affiche.jpg',
-      scene: 'affiche',
-      deroule: [
-        { texte: 'Lancez le test avec l’affiche A, sans rien annoncer.' },
-        { texte: 'Demandez à la salle : quoi, quand, où ? Notez les réponses.' },
-        { texte: 'Révélez l’affiche : tout y était, mais rien ne ressortait.' },
-        { texte: 'Refaites le test avec l’affiche B, puis comparez les réponses.' },
-        { texte: 'Montrez la méthode : construire l’affiche avec un agent relié à Penpot, plutôt que la générer en image.', action: { texte: 'Diapo de la méthode', href: '/ux/ux-ia/diapos/?diapo=39' } },
-      ],
-      aRetenir: [
-        'Trois informations, pas une de plus : quoi, quand, où.',
-        'Une seule chose en très grand : l’œil sait par où commencer.',
-        'Une IA d’images régénère tout en pixels. Un agent relié à Penpot construit une affiche modifiable.',
-      ],
-      exercice: '01-affiche-promo',
-    },
     {
       slug: 'tilleul',
       titre: 'Tilleul, la boutique piégée',
@@ -130,14 +109,14 @@ const uxIa: Cours = {
         { texte: 'À chaque étape, demandez à la salle où ça gêne, et rangez les réponses dans les six blocs.' },
         { texte: 'Passez en mode cours : les pastilles révèlent les douze défauts. Ouvrez-en un par bloc.' },
         { texte: 'Cliquez sur « Améliorer » : le défaut est corrigé en direct. Comparez avant et après.' },
-        { texte: 'Montrez ce que l’audit automatique voit, et ce qu’il rate.', action: { texte: 'Diapo de la révélation', href: '/ux/ux-ia/diapos/?diapo=42' } },
+        { texte: 'Montrez ce que l’audit automatique voit, et ce qu’il rate.', action: { texte: 'Diapo de la révélation', href: '/ux/ux-ia/diapos/?diapo=35' } },
       ],
       aRetenir: [
         'Un site soigné peut être pénible à utiliser.',
         'Chaque défaut se range dans un bloc, et gêne quelqu’un de précis.',
         'L’audit automatique voit un contraste trop faible, pas un bouton « Soumettre ».',
       ],
-      exercice: '02-audit-tilleul',
+      exercice: '01-audit-tilleul',
     },
     {
       slug: 'formulaire-adresse',
@@ -160,7 +139,30 @@ const uxIa: Cours = {
         'Le navigateur sait remplir une adresse, si on le laisse faire.',
         'Une erreur dit quoi corriger, en toutes lettres, pas seulement en rouge.',
       ],
-      exercice: '03-formulaire-adresse',
+      exercice: '02-formulaire-adresse',
+    },
+    {
+      slug: 'affiche',
+      titre: 'L’affiche qui se lit en 3 secondes',
+      resume: 'Deux affiches pour la même promotion. Montrez chacune 3 secondes à la salle : laquelle a été retenue ?',
+      blocs: ['design-system', 'microcopie'],
+      duree: '8 minutes',
+      apercu: '/apercus/demo-affiche.jpg',
+      scene: 'affiche',
+      deroule: [
+        { texte: 'Lancez le test avec l’affiche A, sans rien annoncer.' },
+        { texte: 'Demandez à la salle : quoi, quand, où ? Notez les réponses.' },
+        { texte: 'Révélez l’affiche : tout y était, mais rien ne ressortait.' },
+        { texte: 'Refaites le test avec l’affiche B, puis comparez les réponses.' },
+        { texte: 'Montrez la méthode : construire l’affiche avec un agent relié à Penpot, plutôt que la générer en image.', action: { texte: 'Diapo de la méthode', href: '/ux/ux-ia/diapos/?diapo=42' } },
+      ],
+      aRetenir: [
+        'Trois informations, pas une de plus : quoi, quand, où.',
+        'Une seule chose en très grand : l’œil sait par où commencer.',
+        'Une IA d’images régénère tout en pixels. Un agent relié à Penpot construit une affiche modifiable.',
+      ],
+      exercice: 'bonus-affiche-promo',
+      bonus: true,
     },
   ],
   depot: 'https://github.com/clement8426/ux-ia-exercices',
