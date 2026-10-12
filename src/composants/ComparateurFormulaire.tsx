@@ -178,11 +178,11 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
                 </h3>
                 <div id={`defaut-${d.id}`} className="defaut-corps" hidden={!estOuvert}>
                   <dl>
-                    <div><dt>Version de départ</dt><dd>{d.depart}</dd></div>
-                    <div><dt>Version réparée</dt><dd>{d.repare}</dd></div>
-                    <div><dt>Pourquoi c’est un problème</dt><dd>{d.pourquoi}</dd></div>
+                    <div><dt>Avant</dt><dd>{d.depart}</dd></div>
+                    <div><dt>Après</dt><dd>{d.repare}</dd></div>
+                    <div><dt>Pourquoi</dt><dd>{d.pourquoi}</dd></div>
                     <div><dt>À essayer</dt><dd>{d.essayer}</dd></div>
-                    <div className="defaut-outil"><dt>Ce que mesure l’outil d’audit</dt><dd>{d.outil}</dd></div>
+                    <div className="defaut-outil"><dt>L’outil d’audit</dt><dd>{d.outil}</dd></div>
                   </dl>
                   <div className="actions">
                     <button type="button" className="bouton-secondaire" onClick={() => appliquer(d.id, true)}>Montrer dans le formulaire</button>

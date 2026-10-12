@@ -259,6 +259,28 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   }
 }
 
+// 7. Contraste élevé : le bouton bascule, le choix tient au rechargement, et axe passe dans les deux thèmes
+for (const schema of ['light', 'dark']) {
+  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: schema });
+  const p = await ctx.newPage();
+  await p.goto(base + '/ux/ux-ia/');
+  await p.getByRole('button', { name: 'Contraste élevé' }).click();
+  await p.reload();
+  await p.waitForLoadState('networkidle');
+  const etat = await p.evaluate(() => [document.documentElement.dataset.contraste, document.querySelector('.bouton-contraste').getAttribute('aria-pressed')]);
+  verifier(`contraste élevé (${schema === 'dark' ? 'sombre' : 'clair'}) : activé et mémorisé`, etat[0] === 'eleve' && etat[1] === 'true', etat.join(','));
+  const violations = [];
+  for (const u of ['/', '/ux/ux-ia/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/']) {
+    await p.goto(base + u);
+    await p.waitForLoadState('networkidle');
+    await p.waitForTimeout(800);
+    const r = await new AxeBuilder({ page: p }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).exclude('iframe').analyze();
+    for (const v of r.violations) violations.push(`${u} ${v.id} ${v.nodes[0].target.join(' ')}`);
+  }
+  verifier(`contraste élevé (${schema === 'dark' ? 'sombre' : 'clair'}) : axe sans erreur sur 5 pages`, violations.length === 0, violations.join(' | '));
+  await ctx.close();
+}
+
 await b.close();
 console.log(ok.every(Boolean) ? '\nTOUT PASSE' : `\nÉCHECS : ${ok.filter((x) => !x).length}`);
 

@@ -13,7 +13,7 @@
   --surface-2: #E9EBEF;
   --ligne: #DCDFE5;
   --encre: #14161B;
-  --discret: #555B66;
+  --discret: #4A505A;
   --bleu: #2B44E8;
   --bleu-doux: #E6E9FD;
   --sur-bleu: #FFFFFF;
@@ -45,7 +45,7 @@
     --surface-2: #22262E;
     --ligne: #2E333D;
     --encre: #ECEDF0;
-    --discret: #A6ABB6;
+    --discret: #B4B9C3;
     --bleu: #93A3FF;
     --bleu-doux: #232A4D;
     --sur-bleu: #0F1115;
@@ -104,6 +104,33 @@ img { display: block; max-width: 100%; height: auto; }
 .entete nav a:hover { color: var(--encre); }
 .entete nav a[aria-current] { color: var(--encre); border-color: var(--encre); }
 .pied { width: calc(100% - 2 * var(--gouttiere)); max-width: var(--largeur); margin: 0 auto; padding: 28px 0 36px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; border-top: 1px solid var(--ligne); color: var(--discret); font-size: 15px; }
+
+/* ---------- contraste élevé (bouton de l'en-tête) : pour la projection en salle ---------- */
+.entete-outils { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
+.bouton-contraste { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--ligne); border-radius: 999px; background: var(--surface); color: var(--encre); font: 600 15px/1 var(--police-texte), sans-serif; cursor: pointer; }
+.bouton-contraste svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+.bouton-contraste svg path { fill: currentColor; stroke: none; }
+.bouton-contraste:hover { border-color: var(--encre); }
+.bouton-contraste[aria-pressed="true"] { background: var(--encre); color: var(--fond); border-color: var(--encre); }
+:root[data-contraste="eleve"] {
+  --fond: #FFFFFF; --surface: #FFFFFF; --surface-2: #E2E4E8; --ligne: #5F6570;
+  --encre: #000000; --discret: #1E2228; --bleu: #1A2FCC; --bleu-doux: #DDE2FF; --vert: #04533C;
+  --b-design: #4E2F6B; --b-friction: #7F2C0C; --b-access: #154676; --b-comportement: #5A4A08; --b-micro: #1C5A3F; --b-perf: #7E1B36;
+  --ombre: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-contraste="eleve"] {
+    --fond: #000000; --surface: #0B0C0F; --surface-2: #23262D; --ligne: #A3A9B4;
+    --encre: #FFFFFF; --discret: #E8EAEE; --bleu: #B8C2FF; --bleu-doux: #1C2350; --vert: #8DF0C8;
+    --b-design: #DCC8FA; --b-friction: #FFC2A6; --b-access: #BFDBFA; --b-comportement: #F2DE96; --b-micro: #9DEBC5; --b-perf: #FFC1D2;
+  }
+}
+:root[data-contraste="eleve"] body { font-size: 19px; }
+:root[data-contraste="eleve"] :is(.fil ol, .puces-blocs, .partie-infos, .reperes dt, .demo-carte p, .deroule-demo li, .defaut-bloc, .defaut-corps dt, .consentement p, .vitrine-titre, .references span, .astuce, .pied, .depot li, .deroule-demo .lien-fleche) { font-size: 17px; }
+:root[data-contraste="eleve"] :is(.demo-carte, .cours-carte, .deroule-demo li, .encart, .depot, .bouton-secondaire, .bascule, .consentement, .vitrine, .apercu-diapos, .cadre-site, .cadre-diapos) { border-width: 2px; }
+:root[data-contraste="eleve"] .defaut-titre { font-size: 21px; }
+:root[data-contraste="eleve"] a:not(.bouton, .bouton-secondaire, .lien-fleche, .marque) { text-decoration-thickness: 2px; }
+:root[data-contraste="eleve"] .puces-blocs li::before, :root[data-contraste="eleve"] .defaut-bloc::before { width: 12px; height: 12px; }
 
 /* ---------- mise en page commune ---------- */
 .page { width: 100%; max-width: calc(var(--largeur) + 2 * var(--gouttiere)); margin: 0 auto; padding: 12px var(--gouttiere) 88px; }

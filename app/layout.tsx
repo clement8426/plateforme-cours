@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
 import Link from 'next/link';
+import BoutonContraste from '@/composants/BoutonContraste';
 import EnregistrementPwa from '@/composants/EnregistrementPwa';
 import NavPrincipale from '@/composants/NavPrincipale';
 import { CATEGORIES } from '@/contenu/catalogue';
@@ -27,7 +28,11 @@ export const viewport: Viewport = {
 
 export default function Racine({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${titre.variable} ${texte.variable}`}>
+    <html lang="fr" className={`${titre.variable} ${texte.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Contraste élevé : choix mémorisé, sinon réglage du système (prefers-contrast). Appliqué avant l'affichage. */}
+        <script dangerouslySetInnerHTML={{ __html: "try{var c=localStorage.getItem('contraste');if(!c&&matchMedia('(prefers-contrast: more)').matches)c='eleve';if(c)document.documentElement.dataset.contraste=c}catch(e){}" }} />
+      </head>
       <body>
         <a className="evitement" href="#contenu">Aller au contenu</a>
         <div className="six" aria-hidden="true"><span /><span /><span /><span /><span /><span /></div>
@@ -36,7 +41,10 @@ export default function Racine({ children }: { children: React.ReactNode }) {
             <span className="marque-signe" aria-hidden="true">CB</span>
             <span>Les cours de Clément&nbsp;Bastien</span>
           </Link>
-          <NavPrincipale liens={CATEGORIES.map((c) => ({ slug: c.slug, court: c.court }))} />
+          <div className="entete-outils">
+            <NavPrincipale liens={CATEGORIES.map((c) => ({ slug: c.slug, court: c.court }))} />
+            <BoutonContraste />
+          </div>
         </header>
         <main id="contenu">{children}</main>
         <footer className="pied">
