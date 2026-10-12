@@ -37,7 +37,7 @@ export default function Accueil() {
             ? c.cours.map((cours) => (
               <li key={cours.slug} className="cours-carte">
                 <h3><Link href={`/${c.slug}/${cours.slug}/`}>{cours.titre}</Link></h3>
-                <p>{cours.accroche} {cours.demos.length} démonstrations interactives.</p>
+                <p>{cours.accroche}{cours.demos.length > 0 && ` ${cours.demos.length} démonstrations interactives.`}</p>
                 <p className="cours-meta">{cours.duree.replace(/^Environ /, '')}<Fleche /></p>
               </li>
             ))

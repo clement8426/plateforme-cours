@@ -2,6 +2,7 @@
 // Pour ajouter un cours, on ajoute une entrée ici ; les pages se génèrent toutes seules.
 import type { BlocId } from './blocs';
 import { typoProfonde } from './typo';
+import sourcesIa from './ia-donnees-sources.json';
 import sourcesUx from './ux-ia-sources.json';
 
 export type Reference = { titre: string; source: string; url: string };
@@ -54,7 +55,8 @@ export type Categorie = {
 
 // Range les références dans des groupes lisibles, du plus général au plus pratique.
 // Une adresse non reconnue tombe dans « Autres lectures » : rien ne se perd si le fichier des sources change.
-const REGLES_GROUPES: { nom: string; bloc?: BlocId; adresses: string[] }[] = [
+type RegleGroupe = { nom: string; bloc?: BlocId; adresses: string[] };
+const REGLES_GROUPES: RegleGroupe[] = [
   { nom: 'Le modèle de référence', adresses: ['semanticstudios'] },
   { nom: 'Friction : décider et atteindre', bloc: 'friction', adresses: ['lawsofux.com', 'baymard.com', 'centercentre'] },
   // Avant « Accessibilité » : l'adresse du motif combobox (W3C) y serait sinon rangée par « w3.org ».
@@ -66,9 +68,9 @@ const REGLES_GROUPES: { nom: string; bloc?: BlocId; adresses: string[] }[] = [
   { nom: 'L’IA dans la création', adresses: ['next.ink', 'penpot.app', 'developers.figma.com'] },
 ];
 
-function grouper(references: Reference[]): GroupeReferences[] {
+function grouper(references: Reference[], regles: RegleGroupe[] = REGLES_GROUPES): GroupeReferences[] {
   const restantes = [...references];
-  const groupes: GroupeReferences[] = REGLES_GROUPES.map((regle) => {
+  const groupes: GroupeReferences[] = regles.map((regle) => {
     const trouvees = restantes.filter((r) => regle.adresses.some((a) => r.url.includes(a)));
     trouvees.forEach((r) => restantes.splice(restantes.indexOf(r), 1));
     return { nom: regle.nom, bloc: regle.bloc, references: trouvees };
@@ -170,6 +172,39 @@ const uxIa: Cours = {
   references: grouper(sourcesUx.references),
 };
 
+// Le cours « IA, données et responsabilité » : ses sources, rangées du droit suisse aux cas réels.
+const REGLES_IA: RegleGroupe[] = [
+  { nom: 'Protection des données en Suisse', adresses: ['edoeb', 'fedlex.admin.ch', 'privatim', 'efd.admin'] },
+  { nom: 'Droit européen et AI Act', adresses: ['eur-lex', 'edps'] },
+  { nom: 'Cloud Act et États-Unis', adresses: ['justice.gov', 'dataprivacyframework', 'village-justice'] },
+  { nom: 'Fournisseurs d’IA', adresses: ['anthropic', 'openai', 'infomaniak', 'fedlex.data'] },
+  { nom: 'Cas réels', adresses: ['nbcnews', 'punto-informatico'] },
+];
+
+const iaDonnees: Cours = {
+  slug: 'ia-donnees',
+  titre: 'IA, données et responsabilité',
+  accroche: 'Ce que l’on peut confier à une IA, ce que l’on ne doit pas lui confier, et ce que l’on risque.',
+  duree: 'Environ 1 h 30',
+  public: 'Professionnels qui traitent des données de clients, sans prérequis technique',
+  objectifs: [
+    'Distinguer un chat d’un agent, et savoir où part ce que l’on envoie à une IA.',
+    'Reconnaître une donnée personnelle, une donnée sensible et une donnée sous secret.',
+    'Savoir qui répond de quoi : AI Act, RGPD, nLPD, secret professionnel, Cloud Act.',
+    'Choisir le bon chemin pour chaque donnée : en local, une IA suisse, ou un fournisseur américain.',
+  ],
+  diapos: { href: '/diapos/ia-donnees/', apercu: '/apercus/ia-donnees-diapos.jpg' },
+  parties: [
+    { titre: 'Comprendre l’outil', resume: 'Un chat répond, un agent agit. Le trajet d’un prompt, et qui voit quoi selon l’offre.', duree: '19 min', diapos: [1, 8] },
+    { titre: 'Que puis-je envoyer ?', resume: 'Donnée personnelle, sensible ou sous secret, l’anonymisation, et les risques propres aux agents.', duree: '18 min', diapos: [9, 14] },
+    { titre: 'Et si ça tourne mal ?', resume: 'AI Act, RGPD, nLPD, secret professionnel, Cloud Act : qui est visé, et ce que ça coûte.', duree: '27 min', diapos: [15, 26] },
+    { titre: 'Les bons réflexes', resume: 'Trois questions avant d’envoyer, des briques locales et suisses, et le routage selon la sensibilité.', duree: '24 min', diapos: [27, 33] },
+  ],
+  demos: [],
+  lexique: sourcesIa.lexique,
+  references: grouper(sourcesIa.references, REGLES_IA),
+};
+
 export const CATEGORIES: Categorie[] = typoProfonde([
   {
     slug: 'ux',
@@ -183,7 +218,7 @@ export const CATEGORIES: Categorie[] = typoProfonde([
     nom: 'IA : obligations et législation',
     court: 'IA et législation',
     description: 'Ce que l’AI Act européen et le droit suisse demandent aux entreprises qui utilisent l’IA.',
-    cours: [],
+    cours: [iaDonnees],
   },
 ]);
 

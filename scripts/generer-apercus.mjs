@@ -26,6 +26,11 @@ await page.waitForTimeout(1500);
 await page.addStyleTag({ content: '#retour-cours { display: none !important; }' }); // le lien de retour n'appartient pas à l'aperçu
 await page.screenshot({ path: dossier + 'ux-ia-diapos.jpg', type: 'jpeg', quality: 82 });
 
+await page.goto(`${base}/diapos/ia-donnees/`);
+await page.waitForTimeout(1500);
+await page.addStyleTag({ content: '#retour-cours { display: none !important; }' });
+await page.screenshot({ path: dossier + 'ia-donnees-diapos.jpg', type: 'jpeg', quality: 82 });
+
 await page.goto(`${base}/tilleul/`);
 await page.waitForTimeout(1200); // la fenêtre surgit après 1,5 s : on capture avant
 await page.screenshot({ path: dossier + 'tilleul.jpg', type: 'jpeg', quality: 82 });

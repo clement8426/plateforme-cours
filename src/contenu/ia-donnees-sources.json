@@ -1,0 +1,240 @@
+{
+  "lexique": [
+    {
+      "terme": "Agent IA",
+      "def": "Une IA qui agit : elle lit des fichiers, ouvre des pages, envoie des messages pour accomplir une mission.",
+      "cle": "agent"
+    },
+    {
+      "terme": "Prompt",
+      "def": "Le texte, et les fichiers, que l’on envoie à une IA. Il quitte ton ordinateur dès que tu l’envoies.",
+      "cle": "trajet"
+    },
+    {
+      "terme": "API",
+      "nom": "API, interface de programmation",
+      "def": "L’accès direct à un modèle depuis un logiciel, payé à l’usage. Par défaut, les données n’entraînent pas le modèle.",
+      "cle": "offres"
+    },
+    {
+      "terme": "Donnée sensible",
+      "def": "Santé, religion, opinions, données biométriques, entre autres (art. 5 let. c nLPD). Protection renforcée.",
+      "cle": "niveaux"
+    },
+    {
+      "terme": "Anonymisation",
+      "def": "Rendre impossible, pour quiconque, de retrouver la personne. Retirer le nom ne suffit presque jamais.",
+      "cle": "anonymiser"
+    },
+    {
+      "terme": "Pseudonymisation",
+      "def": "Remplacer le nom par un code. Reste une donnée personnelle tant que la correspondance existe.",
+      "cle": "anonymiser"
+    },
+    {
+      "terme": "Injection de prompt",
+      "def": "Une consigne cachée dans une page ou un document, que l’IA lit et suit à la place de la tienne.",
+      "cle": "injection"
+    },
+    {
+      "terme": "AI Act",
+      "nom": "AI Act, règlement européen sur l’IA",
+      "def": "Règlement (UE) 2024/1689 qui classe les usages de l’IA par niveau de risque, du minimal à l’interdit.",
+      "cle": "ai-act"
+    },
+    {
+      "terme": "Déployeur",
+      "def": "Celui qui utilise un système d’IA dans son activité, sans l’avoir développé. Notre étude d’avocats en est un.",
+      "cle": "ai-act"
+    },
+    {
+      "terme": "Littératie IA",
+      "def": "Obligation de former les équipes qui utilisent l’IA, en vigueur depuis février 2025.",
+      "cle": "ai-act"
+    },
+    {
+      "terme": "GPAI",
+      "nom": "GPAI, modèle d’IA à usage général",
+      "def": "Grand modèle polyvalent, comme ceux derrière Claude ou ChatGPT. Ses fournisseurs ont des obligations propres depuis août 2025.",
+      "cle": "ai-act-amendes"
+    },
+    {
+      "terme": "RGPD",
+      "def": "Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.",
+      "cle": "rgpd"
+    },
+    {
+      "terme": "nLPD",
+      "nom": "nLPD, nouvelle loi fédérale sur la protection des données",
+      "def": "La loi suisse, en vigueur depuis le 1er septembre 2023. Ses amendes visent la personne responsable.",
+      "cle": "nlpd"
+    },
+    {
+      "terme": "PFPDT",
+      "nom": "PFPDT, Préposé fédéral à la protection des données",
+      "def": "L’autorité suisse de surveillance. Il enquête et ordonne des mesures, mais ne prononce pas les amendes pénales.",
+      "cle": "nlpd"
+    },
+    {
+      "terme": "Secret professionnel",
+      "nom": "Secret professionnel, art. 321 CP",
+      "def": "Obligation de taire ce que l’on apprend dans certaines professions. Violation : jusqu’à 3 ans de peine privative de liberté.",
+      "cle": "qui-paie"
+    },
+    {
+      "terme": "Cloud Act",
+      "def": "Loi américaine de 2018 : les autorités américaines peuvent exiger d’une entreprise américaine des données stockées hors des États-Unis.",
+      "cle": "cloud-act"
+    },
+    {
+      "terme": "FISA 702",
+      "def": "Texte américain sur la surveillance de renseignement, distinct du Cloud Act, qui s’y ajoute.",
+      "cle": "cloud-act"
+    },
+    {
+      "terme": "DPF",
+      "nom": "DPF, Swiss-US Data Privacy Framework",
+      "def": "Depuis le 15 septembre 2024, les entreprises américaines certifiées sont réputées offrir une protection adéquate.",
+      "cle": "tension"
+    },
+    {
+      "terme": "Clauses types",
+      "nom": "Clauses contractuelles types",
+      "def": "Contrat standard qui encadre un transfert de données vers un pays sans protection adéquate.",
+      "cle": "tension"
+    },
+    {
+      "terme": "Transfert à l’étranger",
+      "def": "Toute communication de données personnelles hors de Suisse, y compris un prompt envoyé à un service américain (art. 16 ss nLPD).",
+      "cle": "synthese"
+    },
+    {
+      "terme": "privatim",
+      "def": "La conférence des préposés suisses à la protection des données.",
+      "cle": "etat"
+    },
+    {
+      "terme": "OCR",
+      "nom": "OCR, reconnaissance de caractères",
+      "def": "Transforme l’image d’un document scanné en texte exploitable.",
+      "cle": "briques"
+    },
+    {
+      "terme": "Whisper",
+      "def": "Modèle open source qui transcrit la voix en texte, utilisable hors ligne.",
+      "cle": "briques"
+    },
+    {
+      "terme": "Fedlex",
+      "def": "La plateforme officielle du droit fédéral suisse, interrogeable librement, sans clé.",
+      "cle": "briques"
+    },
+    {
+      "terme": "Infomaniak",
+      "def": "Hébergeur suisse qui propose des modèles d’IA ouverts par API, hébergés en Suisse.",
+      "cle": "chemins"
+    },
+    {
+      "terme": "OpenRouter",
+      "def": "Service américain qui donne accès à de nombreux modèles avec une seule clé. Utile pour comparer, pas pour le sensible.",
+      "cle": "routage"
+    },
+    {
+      "terme": "Routage",
+      "def": "Choisir où envoyer une donnée selon sa sensibilité : un modèle américain pour le public, une IA suisse pour le sensible.",
+      "cle": "routage"
+    }
+  ],
+  "references": [
+    {
+      "titre": "Externalisation de données par la Suva vers un cloud de Microsoft",
+      "source": "PFPDT, 2022",
+      "url": "https://www.edoeb.admin.ch/fr/13062022-externalisation-de-donnees-personnelles-par-la-suva-vers-un-cloud-de-microsoft"
+    },
+    {
+      "titre": "IA et protection des données",
+      "source": "PFPDT",
+      "url": "https://www.edoeb.admin.ch/fr/ia-et-protection-des-donnees"
+    },
+    {
+      "titre": "Le nouveau Swiss-US Data Privacy Framework",
+      "source": "PFPDT, 2024",
+      "url": "https://www.edoeb.admin.ch/en/15082024-new-swiss-us-data-privacy-framework"
+    },
+    {
+      "titre": "Résolution sur l’externalisation dans le cloud",
+      "source": "privatim, 2025",
+      "url": "https://www.privatim.ch/fr/actualite/"
+    },
+    {
+      "titre": "Loi fédérale sur la protection des données (RS 235.1)",
+      "source": "Fedlex",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+    },
+    {
+      "titre": "Code pénal suisse (RS 311.0), art. 321",
+      "source": "Fedlex",
+      "url": "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/fr"
+    },
+    {
+      "titre": "Microsoft 365 dans l’administration fédérale",
+      "source": "DFF, 2025",
+      "url": "https://www.efd.admin.ch/fr/newnsb/frKHCNmrngH8I3vO8ip7o"
+    },
+    {
+      "titre": "Évaluation juridique du Cloud Act au regard du RGPD",
+      "source": "EDPB et EDPS, 2019",
+      "url": "https://edps.europa.eu/sites/edp/files/publication/19-07-10_edpb_edps_cloudact_annex_en.pdf"
+    },
+    {
+      "titre": "Règlement (UE) 2024/1689 sur l’intelligence artificielle",
+      "source": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+    },
+    {
+      "titre": "CLOUD Act Resources",
+      "source": "U.S. Department of Justice",
+      "url": "https://www.justice.gov/criminal/cloud-act-resources"
+    },
+    {
+      "titre": "Liste officielle des entreprises certifiées DPF",
+      "source": "dataprivacyframework.gov",
+      "url": "https://www.dataprivacyframework.gov/list"
+    },
+    {
+      "titre": "Politique de confidentialité",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/legal/privacy"
+    },
+    {
+      "titre": "Government User Data Request Policy",
+      "source": "OpenAI",
+      "url": "https://cdn.openai.com/pdf/openai-law-enforcement-policy-v.2025-12.pdf"
+    },
+    {
+      "titre": "API compatible OpenAI des AI Tools",
+      "source": "Infomaniak",
+      "url": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions"
+    },
+    {
+      "titre": "Point d’accès SPARQL de Fedlex",
+      "source": "Chancellerie fédérale",
+      "url": "https://fedlex.data.admin.ch/sparqlendpoint"
+    },
+    {
+      "titre": "Microsoft devant le Sénat et le Cloud Act (analyse)",
+      "source": "Village de la Justice",
+      "url": "https://www.village-justice.com/articles/utilisation-microsoft-365-est-pas-conforme-rgpd,54051.html"
+    },
+    {
+      "titre": "Samsung interdit ChatGPT à ses employés après une fuite de code",
+      "source": "NBC News, 2023",
+      "url": "https://www.nbcnews.com/tech/tech-news/samsung-bans-use-chatgpt-employees-misuse-chatbot-rcna82407"
+    },
+    {
+      "titre": "Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI",
+      "source": "Punto Informatico, 2026",
+      "url": "https://www.punto-informatico.it/openai-annullata-multa-violazione-privacy/"
+    }
+  ]
+}

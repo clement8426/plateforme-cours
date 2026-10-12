@@ -32,7 +32,7 @@ export default async function PageCategorie({ params }: Props) {
           {categorie.cours.length ? categorie.cours.map((c) => (
             <li key={c.slug} className="cours-carte">
               <h3><Link href={`/${categorie.slug}/${c.slug}/`}>{c.titre}</Link></h3>
-              <p>{c.accroche} {c.demos.length} démonstrations interactives.</p>
+              <p>{c.accroche}{c.demos.length > 0 && ` ${c.demos.length} démonstrations interactives.`}</p>
               <p className="cours-meta">
                 {c.duree.replace(/^Environ /, '')}
                 <span className="fleche" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>

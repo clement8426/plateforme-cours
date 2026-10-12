@@ -37,7 +37,7 @@ export default async function PageCours(props: ParamsCours) {
           </dl>
           <div className="actions">
             {cours.diapos && <Link className="bouton" href={`${base}/diapos/`}>Ouvrir les diapos</Link>}
-            <Link className="bouton-secondaire" href="#demos">Voir les démonstrations</Link>
+            {cours.demos.length > 0 && <Link className="bouton-secondaire" href="#demos">Voir les démonstrations</Link>}
           </div>
         </header>
         {cours.diapos && (
@@ -49,7 +49,7 @@ export default async function PageCours(props: ParamsCours) {
 
       <section className="section" aria-labelledby="titre-deroule">
         <h2 id="titre-deroule" className="titre-section">Le déroulé</h2>
-        <p className="intro-section">Trois parties, dans l’ordre des diapos.</p>
+        <p className="intro-section">{['Deux', 'Trois', 'Quatre', 'Cinq'][cours.parties.length - 2] ?? cours.parties.length} parties, dans l’ordre des diapos.</p>
         <ol className="deroule">
           {cours.parties.map((p, i) => (
             <li key={p.titre} className="partie" id={p.demos ? 'demos' : undefined}>
