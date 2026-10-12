@@ -1,4 +1,4 @@
-// Prend les captures d'aperçu des diapos et de Tilleul, affichées sur la page du cours.
+// Prend les captures d'aperçu des diapos, de Tilleul et des démonstrations, affichées sur la page du cours.
 // La plateforme doit être servie (npm run build puis npm start) ; Playwright est pris sur la machine.
 // Usage : PLAYWRIGHT_DEPUIS=../ux-outils/node_modules/playwright npm run apercus
 import { mkdirSync } from 'node:fs';
@@ -29,6 +29,27 @@ await page.screenshot({ path: dossier + 'ux-ia-diapos.jpg', type: 'jpeg', qualit
 await page.goto(`${base}/tilleul/`);
 await page.waitForTimeout(1200); // la fenêtre surgit après 1,5 s : on capture avant
 await page.screenshot({ path: dossier + 'tilleul.jpg', type: 'jpeg', quality: 82 });
+
+// Démonstration de l'affiche : les deux affiches révélées, côte à côte.
+await page.setViewportSize({ width: 1440, height: 900 });
+const affiches = [];
+for (const nom of [/Affiche A/, /Affiche B/]) {
+  await page.goto(`${base}/ux/ux-ia/demos/affiche/`);
+  await page.getByRole('radio', { name: nom }).check();
+  await page.getByRole('button', { name: /Lancer le test/ }).click();
+  await page.getByRole('button', { name: 'Révéler l’affiche' }).click({ timeout: 10000 });
+  await page.waitForTimeout(300);
+  affiches.push((await page.locator('.affiche-cadre').screenshot()).toString('base64'));
+}
+await page.setContent(`<body style="margin:0;width:1440px;height:900px;display:flex;gap:56px;align-items:center;justify-content:center;background:#E9EBEF">${affiches.map((a) => `<img src="data:image/png;base64,${a}" style="height:780px;border-radius:6px;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)">`).join('')}</body>`);
+await page.screenshot({ path: dossier + 'demo-affiche.jpg', type: 'jpeg', quality: 82 });
+
+// Démonstration du formulaire : les deux versions côte à côte.
+await page.goto(`${base}/ux/ux-ia/demos/formulaire-adresse/?version=cote`);
+await page.waitForTimeout(1500);
+const scene = page.locator('.comparateur-scene');
+const boite = await scene.boundingBox();
+await page.screenshot({ path: dossier + 'demo-formulaire.jpg', type: 'jpeg', quality: 82, fullPage: true, clip: { x: boite.x, y: boite.y, width: boite.width, height: Math.round(boite.width / 1.6) } });
 
 await navigateur.close();
 console.log('Aperçus enregistrés dans public/apercus/.');

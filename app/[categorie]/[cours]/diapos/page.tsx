@@ -28,7 +28,7 @@ export default async function PageDiapos(props: ParamsCours) {
       <header className="tete tete-compacte">
         <h1>Les diapos</h1>
       </header>
-      <LecteurDiapos href={cours.diapos.href} titre={cours.titre} />
+      <LecteurDiapos href={cours.diapos.href} titre={cours.titre} parties={cours.parties.map((p) => ({ titre: p.titre, diapo: p.diapos[0] }))} />
       <MarqueVu cours={`${categorie.slug}/${cours.slug}`} etape="diapos" />
     </div>
   );

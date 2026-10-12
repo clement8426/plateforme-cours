@@ -8,20 +8,25 @@ export type Reference = { titre: string; source: string; url: string };
 export type Terme = { terme: string; nom?: string; def: string };
 export type GroupeReferences = { nom: string; bloc?: BlocId; references: Reference[] };
 
-export type Exercice = {
+// Une démonstration : faite en direct devant la salle, avec son déroulé et une scène interactive.
+// L'exercice à refaire chez soi est dans le dépôt GitHub du cours (champ « exercice » : le dossier).
+export type EtapeDemo = { texte: string; action?: { texte: string; href: string; nouvelOnglet?: boolean } };
+export type Demo = {
   slug: string;
   titre: string;
   resume: string;
+  blocs: BlocId[];
   duree: string;
-  optionnel?: boolean; // exercice bonus, à passer si le temps manque
-  consignes: string[];
-  invite?: { titre: string; texte: string }; // texte à copier-coller dans l'assistant IA
-  aSavoir?: string[];
-  lien?: { texte: string; href: string };
-  suite?: { texte: string; href: string };
-  telechargement?: { texte: string; href: string; nom: string };
-  revelation?: { texte: string; href: string }; // bouton vers la solution, à ouvrir après l'exercice
+  apercu: string;
+  scene: 'affiche' | 'tilleul' | 'comparateur';
+  comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
+  deroule: EtapeDemo[];
+  aRetenir: string[];
+  exercice: string;
 };
+
+// Le déroulé du cours, calé sur les trois parties des diapos.
+export type Partie = { titre: string; resume: string; duree: string; diapos: [number, number]; demos?: boolean };
 
 export type Cours = {
   slug: string;
@@ -31,9 +36,9 @@ export type Cours = {
   public: string;
   objectifs: string[];
   diapos?: { href: string; apercu: string };
-  demo?: { titre: string; description: string; href: string; apercu: string };
-  comparateurs?: string[]; // pages « avant / après » du cours (voir comparateurs.ts)
-  exercices: Exercice[];
+  parties: Partie[];
+  demos: Demo[];
+  depot?: string; // dépôt GitHub des exercices à refaire chez soi
   lexique: Terme[];
   references: GroupeReferences[];
 };
@@ -84,71 +89,81 @@ const uxIa: Cours = {
     'Choisir entre un outil simple, une conversation et un agent IA, et lui donner les bonnes clés : l’intention, la cible, le ton.',
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
-  demo: {
-    titre: 'Tilleul, la boutique piégée',
-    description: 'Une boutique de céramiques très soignée, avec douze défauts d’UX. Le mode cours les révèle un par un, explique pourquoi ils gênent, et les corrige en direct.',
-    href: '/tilleul/',
-    apercu: '/apercus/tilleul.jpg',
-  },
-  comparateurs: ['formulaire-adresse'],
-  exercices: [
+  parties: [
+    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 21] },
+    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [22, 34] },
+    { titre: 'Pratique', resume: 'Trois démonstrations à faire devant la salle, puis à refaire chez soi.', duree: '45 min', diapos: [35, 49], demos: true },
+  ],
+  demos: [
     {
-      slug: 'reperer-les-defauts',
-      titre: 'Repérer les défauts d’un site e-commerce',
-      resume: 'Faites vos courses sur Tilleul sans aide, notez tout ce qui vous gêne, puis comparez avec le mode cours.',
-      duree: '15 minutes',
-      consignes: [
-        'Ouvrez Tilleul sans le mode cours.',
-        'Faites le parcours d’un client : accueil, collection, fiche produit, ajout au panier, panier, commande.',
-        'Notez chaque moment où vous hésitez, attendez ou vous trompez, et classez-le dans l’un des six blocs.',
-        'Refaites une partie du parcours au clavier seulement, avec la touche Tab.',
-        'Ouvrez enfin le mode cours : combien des douze défauts aviez-vous trouvés ?',
+      slug: 'affiche',
+      titre: 'L’affiche qui se lit en 3 secondes',
+      resume: 'Deux affiches pour la même promotion. Montrez chacune 3 secondes à la salle : laquelle a été retenue ?',
+      blocs: ['design-system', 'microcopie'],
+      duree: '8 minutes',
+      apercu: '/apercus/demo-affiche.jpg',
+      scene: 'affiche',
+      deroule: [
+        { texte: 'Lancez le test avec l’affiche A, sans rien annoncer.' },
+        { texte: 'Demandez à la salle : quoi, quand, où ? Notez les réponses.' },
+        { texte: 'Révélez l’affiche : tout y était, mais rien ne ressortait.' },
+        { texte: 'Refaites le test avec l’affiche B, puis comparez les réponses.' },
+        { texte: 'Montrez la méthode : construire l’affiche avec un agent relié à Penpot, plutôt que la générer en image.', action: { texte: 'Diapo de la méthode', href: '/ux/ux-ia/diapos/?diapo=39' } },
       ],
-      lien: { texte: 'Ouvrir Tilleul sans aide', href: '/tilleul/?cours=non' },
-      suite: { texte: 'Voir la révélation (mode cours)', href: '/tilleul/' },
+      aRetenir: [
+        'Trois informations, pas une de plus : quoi, quand, où.',
+        'Une seule chose en très grand : l’œil sait par où commencer.',
+        'Une IA d’images régénère tout en pixels. Un agent relié à Penpot construit une affiche modifiable.',
+      ],
+      exercice: '01-affiche-promo',
     },
     {
-      slug: 'affiche-promo',
-      titre: 'Créer une affiche promo',
-      resume: 'Une affiche A4 n’a pas de deuxième chance : tout doit se lire d’un coup d’œil.',
-      duree: '8 minutes',
-      consignes: [
-        'Créez une affiche A4 pour la promotion annoncée par votre formateur.',
-        'Trois informations sont obligatoires : quoi, quand, où.',
-        'Ne gardez que l’information réellement nécessaire.',
-        'Outil libre : papier, Canva, Figma ou une IA générative.',
-        'En groupe, comparez ce qui se lit en premier sur chaque affiche.',
+      slug: 'tilleul',
+      titre: 'Tilleul, la boutique piégée',
+      resume: 'Une boutique de céramiques très soignée, avec douze défauts d’UX. Faites le parcours devant la salle, puis révélez les défauts avec le mode cours.',
+      blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
+      duree: '15 minutes',
+      apercu: '/apercus/tilleul.jpg',
+      scene: 'tilleul',
+      deroule: [
+        { texte: 'Sans aide, faites le parcours d’un client : accueil, collection, fiche produit, panier, commande. Pensez à voix haute.' },
+        { texte: 'À chaque étape, demandez à la salle où ça gêne, et rangez les réponses dans les six blocs.' },
+        { texte: 'Passez en mode cours : les pastilles révèlent les douze défauts. Ouvrez-en un par bloc.' },
+        { texte: 'Cliquez sur « Améliorer » : le défaut est corrigé en direct. Comparez avant et après.' },
+        { texte: 'Montrez ce que l’audit automatique voit, et ce qu’il rate.', action: { texte: 'Diapo de la révélation', href: '/ux/ux-ia/diapos/?diapo=42' } },
       ],
+      aRetenir: [
+        'Un site soigné peut être pénible à utiliser.',
+        'Chaque défaut se range dans un bloc, et gêne quelqu’un de précis.',
+        'L’audit automatique voit un contraste trop faible, pas un bouton « Soumettre ».',
+      ],
+      exercice: '02-audit-tilleul',
     },
     {
       slug: 'formulaire-adresse',
-      titre: 'Réparer un formulaire d’adresse',
-      resume: 'Un formulaire d’adresse très soigné cache un défaut par bloc du cours. Remplissez-le, notez ce qui gêne, puis faites-le corriger par l’IA.',
-      duree: '14 minutes',
-      optionnel: true,
-      consignes: [
-        'Remplissez le formulaire, chrono lancé, avec une adresse fictive en Suisse. Ne mettez pas vos vraies coordonnées.',
-        'Notez tout ce qui vous gêne, même un détail : ce qui ralentit, ce qui fait douter, ce qui énerve. L’écran est soigné : cherchez ailleurs.',
-        'Corrigez avec l’IA : donnez le dossier à votre assistant (Claude, ChatGPT, Codex…) et demandez-lui de corriger ce que vous avez repéré, défaut par défaut.',
-        'Dernière étape, l’autocomplétion : demandez à l’assistant d’ajouter les suggestions d’adresse, avec l’invite ci-dessous.',
+      titre: 'Le formulaire d’adresse, avant et après',
+      resume: 'Le même formulaire, deux versions. Remplissez la première devant la salle, passez à la version réparée, puis ouvrez les sept défauts un par un.',
+      blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
+      duree: '12 minutes',
+      apercu: '/apercus/demo-formulaire.jpg',
+      scene: 'comparateur',
+      comparateur: 'formulaire-adresse',
+      deroule: [
+        { texte: 'Remplissez la version de départ avec une adresse fictive, chrono lancé, et envoyez-la.' },
+        { texte: 'Demandez à la salle ce qui a gêné : l’écran est soigné, les défauts sont ailleurs.' },
+        { texte: 'Passez à la version réparée et refaites la même chose.' },
+        { texte: 'Tapez « Rue du Seyon 10 » dans « Rue et numéro » : l’autocomplétion, c’est de l’UX qui demande du code.' },
+        { texte: 'Ouvrez les défauts un par un : « Montrer dans le formulaire » surligne l’élément concerné.' },
       ],
-      invite: {
-        titre: 'Invite pour l’autocomplétion',
-        texte: 'Ajoute l’autocomplétion d’adresse sur le champ « Rue et numéro » avec l’API Photon (https://photon.komoot.io/api/), gratuite et sans clé. Limite les résultats à la Suisse, attends 300 ms après la dernière frappe et 3 caractères minimum avant de chercher, propose 5 adresses au plus, remplis le NPA et la localité au clic, rends la liste utilisable au clavier, garde la saisie manuelle possible si rien ne convient, et affiche l’attribution « © contributeurs OpenStreetMap ».',
-      },
-      aSavoir: [
-        'Le serveur public de Photon est gratuit pour un usage raisonnable : pas de recherche à chaque frappe sans délai.',
-        'L’autocomplétion envoie ce que vous tapez à un service tiers : c’est pourquoi l’adresse doit être fictive.',
-        'Le formulaire de départ, lui, n’envoie aucune donnée.',
+      aRetenir: [
+        'Un formulaire joli peut cacher un défaut par bloc.',
+        'Le navigateur sait remplir une adresse, si on le laisse faire.',
+        'Une erreur dit quoi corriger, en toutes lettres, pas seulement en rouge.',
       ],
-      lien: { texte: 'Ouvrir le formulaire', href: '/formulaires/adresse/' },
-      telechargement: { texte: 'Télécharger le dossier à donner à l’IA', href: '/telechargements/formulaire-adresse.zip', nom: 'formulaire-adresse.zip' },
-      revelation: {
-        texte: 'Comparer avec la version réparée',
-        href: '/ux/ux-ia/comparer/formulaire-adresse/',
-      },
+      exercice: '03-formulaire-adresse',
     },
   ],
+  depot: 'https://github.com/clement8426/ux-ia-exercices',
   lexique: sourcesUx.lexique,
   references: grouper(sourcesUx.references),
 };
@@ -178,5 +193,7 @@ export const premierCours = () => {
   for (const categorie of CATEGORIES) if (categorie.cours[0]) return { categorie, cours: categorie.cours[0] };
   return null;
 };
+
+export const trouverDemo = (cours: Cours, slug: string) => cours.demos.find((d) => d.slug === slug);
 
 export const compterReferences = (cours: Cours) => cours.references.reduce((n, g) => n + g.references.length, 0);

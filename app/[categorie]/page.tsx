@@ -28,25 +28,21 @@ export default async function PageCategorie({ params }: Props) {
 
       <section aria-labelledby="titre-cours">
         <h2 id="titre-cours" className="visuellement-cache">Les cours de ce thème</h2>
-        <ul className="themes">
-          {categorie.cours.length ? categorie.cours.map((c, i) => (
-            <li key={c.slug} className={`theme-carte${i === 0 ? ' est-ouverte' : ''}`}>
-              <h3 className="theme-titre"><Link href={`/${categorie.slug}/${c.slug}/`}>{c.titre}</Link></h3>
-              <p className="theme-description">{c.accroche}</p>
-              <p className="theme-etat">
-                {c.duree}
-                <span className="fleche" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </span>
+        <ul className="liste-cours">
+          {categorie.cours.length ? categorie.cours.map((c) => (
+            <li key={c.slug} className="cours-carte">
+              <h3><Link href={`/${categorie.slug}/${c.slug}/`}>{c.titre}</Link></h3>
+              <p>{c.accroche} {c.demos.length} démonstrations interactives.</p>
+              <p className="cours-meta">
+                {c.duree.replace(/^Environ /, '')}
+                <span className="fleche" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
               </p>
             </li>
           )) : (
-            <li className="theme-carte est-vide">
-              <h3 className="theme-titre">Premier cours en préparation</h3>
-              <p className="theme-description">
-                Les diapos et les exercices de ce thème arrivent bientôt. En attendant, le cours <Link href="/ux/ux-ia/">UX × IA</Link> est déjà disponible.
-              </p>
-              <p className="theme-etat">Bientôt</p>
+            <li className="cours-carte est-vide">
+              <h3>Premier cours en préparation</h3>
+              <p>Les diapos et les démonstrations de ce thème arrivent bientôt. En attendant, le cours <Link href="/ux/ux-ia/">UX × IA</Link> est disponible.</p>
+              <p className="etat-prepa">Bientôt</p>
             </li>
           )}
         </ul>

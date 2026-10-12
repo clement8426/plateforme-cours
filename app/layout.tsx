@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#F6F2EA' },
-    { media: '(prefers-color-scheme: dark)', color: '#151B18' },
+    { media: '(prefers-color-scheme: light)', color: '#F3F4F6' },
+    { media: '(prefers-color-scheme: dark)', color: '#0F1115' },
   ],
 };
 
@@ -30,6 +30,7 @@ export default function Racine({ children }: { children: React.ReactNode }) {
     <html lang="fr" className={`${titre.variable} ${texte.variable}`}>
       <body>
         <a className="evitement" href="#contenu">Aller au contenu</a>
+        <div className="six" aria-hidden="true"><span /><span /><span /><span /><span /><span /></div>
         <header className="entete">
           <Link className="marque" href="/">
             <span className="marque-signe" aria-hidden="true">CB</span>

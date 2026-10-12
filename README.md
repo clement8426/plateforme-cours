@@ -1,6 +1,6 @@
 # Plateforme de cours
 
-Le site des cours de Clément Bastien : diapos, démonstrations et exercices interactifs, rangés par thème.
+Le site des cours de Clément Bastien : diapos et démonstrations interactives, rangées par thème. Les exercices à refaire chez soi sont dans un dépôt GitHub à part ([ux-ia-exercices](https://github.com/clement8426/ux-ia-exercices)).
 Site **entièrement statique** : pas de compte, pas de base de données, aucune donnée personnelle collectée.
 Il s'installe comme une application (PWA) et les pages déjà consultées restent lisibles hors connexion.
 
@@ -40,7 +40,7 @@ Le script contrôle, sur toutes les pages : l'accessibilité automatique (axe, W
 
 ## Ajouter ou modifier un cours
 
-Tout le contenu est décrit dans `src/contenu/catalogue.ts` : thèmes, cours, exercices, objectifs. Les pages se génèrent toutes seules.
+Tout le contenu est décrit dans `src/contenu/catalogue.ts` : thèmes, cours, déroulé en trois parties, démonstrations, objectifs, adresse du dépôt d'exercices. Les pages se génèrent toutes seules.
 
 - **Un nouveau thème** : ajouter une entrée dans `CATEGORIES`, avec un nom court pour le menu (`court`). Sans cours, il s'affiche « En préparation ».
 - **Un nouveau cours** : ajouter un objet `Cours` dans la liste `cours` de son thème. Le premier cours disponible est celui que l'accueil met en avant.
@@ -64,7 +64,7 @@ Sous Git Bash, faites précéder la commande de `MSYS_NO_PATHCONV=1` (le script 
 ## Tilleul et les aperçus
 
 - **Tilleul**, la boutique interactive, vit dans `public/tilleul/`. Après une modification de Tilleul : `npm run tilleul` (Tilleul doit se trouver dans `../boutique-tilleul`, ou indiquez `TILLEUL_DIR`).
-- **Les aperçus** de la page d'un cours (première diapo, Tilleul) sont de vraies captures : `PLAYWRIGHT_DEPUIS=../ux-outils/node_modules/playwright npm run apercus`, avec le site servi. À refaire quand les diapos ou Tilleul changent.
+- **Les aperçus** de la page d'un cours (première diapo, Tilleul, démonstrations) sont de vraies captures : `PLAYWRIGHT_DEPUIS=../ux-outils/node_modules/playwright npm run apercus`, avec le site servi. À refaire quand les diapos ou Tilleul changent.
 - **Les liens profonds** : `/tilleul/?defaut=N` ouvre Tilleul sur le défaut N (les pastilles de l'accueil les utilisent) ; `?cours=non` ouvre Tilleul sans le panneau.
 
 ## Icônes
@@ -75,24 +75,23 @@ L'icône de l'application est `public/icones/icone.svg`. Si vous la changez, ré
 
 Elles sont écrites en tête de `app/globals.css` et s'appliquent à tout ajout :
 
-1. **Trois étages de taille**, chacun d'au moins 1,5 fois le suivant : titre de page, titre de section, texte.
-2. **Le très gras (800) est réservé aux titres de page.** Sections en 650, éléments en 600, texte en 400.
-3. **Un accent, un sens** : bleu = ce qu'on peut cliquer ; turquoise = ce qui est fait ; corail = attention ; safran = signature, jamais porteur d'information. Les six blocs du cours ont leurs couleurs (`--b-*`), les mêmes que dans Tilleul.
-4. **Un seul bandeau sombre par page** : le point focal. Il se retourne en thème sombre (parchemin).
-5. **Tout texte respecte le contraste AA (4,5:1)**, dans les deux thèmes. Les couleurs de blocs ont été calculées pour cela : ne les modifiez pas sans recalculer.
-6. **Cibles tactiles d'au moins 44 px** pour tout ce qui se clique, sauf les liens dans une phrase.
+1. **Trois étages de taille** : titre de page, titre de section, texte. Les titres d'éléments restent proches du texte.
+2. **Le bleu ne sert qu'à ce qui se clique.** Les couleurs des six blocs (`--b-*`, les mêmes que dans Tilleul) ne servent qu'à désigner un bloc : en bande en haut de page, ou en puces.
+3. **Une carte blanche = une chose qu'on ouvre.** Pas de carte décorative, pas de bordure de couleur sur un côté.
+4. **Tout texte respecte le contraste AA (4,5:1)**, dans les deux thèmes. Les couleurs de blocs ont été calculées pour cela : ne les modifiez pas sans recalculer.
+5. **Cibles tactiles d'au moins 44 px** pour tout ce qui se clique, sauf les liens dans une phrase.
 
 ## Mémoire de progression
 
-Les étapes d'un cours déjà ouvertes sont marquées « Vue », et l'accueil propose « Reprendre ». Cette mémoire vit dans le navigateur de la personne (`localStorage`), sans compte et sans rien envoyer : elle n'existe que sur l'appareil. Si le stockage est bloqué, le site fonctionne sans.
+Les démonstrations déjà faites sont marquées « Vue », et l'accueil propose « Reprendre ». Cette mémoire vit dans le navigateur de la personne (`localStorage`), sans compte et sans rien envoyer : elle n'existe que sur l'appareil. Si le stockage est bloqué, le site fonctionne sans.
 
 ## Organisation
 
 ```
-app/                      pages (accueil, thème, cours, diapos, exercices, sources, hors connexion)
+app/                      pages (accueil, thème, cours, diapos, démonstrations, sources, hors connexion)
 src/contenu/catalogue.ts  tout le contenu
 src/contenu/blocs.ts      les six blocs et leurs couleurs
-src/composants/           navigation, parcours, mémoire, lecteur de diapos, fil d'Ariane
+src/composants/           navigation, mémoire, lecteur de diapos, scènes des démonstrations (affiche, Tilleul, comparateur)
 public/sw.js              service worker (lecture hors connexion)
 public/tilleul/           Tilleul construit pour /tilleul/
 public/diapos/            les présentations HTML préparées
@@ -100,12 +99,21 @@ public/apercus/           les aperçus de la page d'un cours
 scripts/                  diapos, Tilleul, aperçus, icônes, serveur local, étape après construction, vérification
 ```
 
-## Comparaison avant / après (exercice du formulaire d’adresse)
+## Les démonstrations
 
-Page : `/ux/ux-ia/comparer/formulaire-adresse/` (liée depuis l’exercice et depuis la page du cours).
-Elle affiche le formulaire de départ et le formulaire réparé, avec une bascule (départ, réparé, côte à côte) et sept défauts expliqués qui se surlignent dans le formulaire.
+Une page par démonstration, `/ux/ux-ia/demos/<slug>/` : le déroulé à suivre devant la salle, une scène interactive, ce qu'il faut retenir, et le lien vers l'exercice correspondant dans le dépôt GitHub.
+
+- **L'affiche qui se lit en 3 secondes** (`affiche`) : deux affiches pour la même promotion, montrées 3 secondes, puis révélées avec quoi, quand et où entourés.
+- **Tilleul, la boutique piégée** (`tilleul`) : la boutique dans un cadre, avec un interrupteur « Sans aide » / « Mode cours ».
+- **Le formulaire d'adresse, avant et après** (`formulaire-adresse`) : la comparaison des deux versions et les sept défauts.
+
+Les anciennes adresses (`/exercices/`, `/comparer/formulaire-adresse/`) redirigent vers les nouvelles. Le contenu est dans `src/contenu/catalogue.ts` (déroulé, à retenir, dossier de l'exercice).
+
+Les diapos s'ouvrent à une diapo précise avec `?diapo=22`.
+
+### La comparaison du formulaire
 
 - Mise à jour : `npm run comparateur -- ../Downloads/formulaire-adresse-formateur.zip` ne publie que `casse/` et `corrige/` (jamais `SOLUTIONS.md` ni le README formateur).
-- Compromis : la version réparée est publique. C’est voulu pour cette page, mais l’exercice renvoie vers elle seulement après les consignes.
+- Compromis : la version réparée est publique. C’est voulu : c'est la démonstration.
 - Vie privée : les suggestions d’adresse sont simulées dans le navigateur (`scripts/modeles/demo-photon.js`). Le vrai service Photon n’est appelé que si la personne coche la case prévue.
-- Contenu de la page : `src/contenu/comparateurs.ts`.
+- Contenu des défauts : `src/contenu/comparateurs.ts`.

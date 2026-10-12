@@ -17,7 +17,7 @@ const b = await chromium.launch();
 const ok = [];
 const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'OK    ' : 'ÉCHEC ', nom, detail); };
 
-const PAGES = ['/', '/ux/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/exercices/', '/ux/ux-ia/comparer/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
+const PAGES = ['/', '/ux/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/tilleul/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
 // 1. Accessibilité automatique, deux thèmes, deux tailles
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
@@ -80,13 +80,13 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const courant = await p.evaluate(() => [...document.querySelectorAll('nav[aria-label="Thèmes"] a')].map((a) => `${a.textContent}:${a.getAttribute('aria-current')}`));
   verifier('navigation : le thème courant est annoncé', courant.some((c) => c === 'UX et design:true'), JSON.stringify(courant));
   const contour = await p.evaluate(() => {
-    const el = document.querySelector('.etape h3 a'); el.focus();
-    const carte = el.closest('.etape'); const s = getComputedStyle(carte);
+    const el = document.querySelector('.demo-carte h4 a'); el.focus();
+    const carte = el.closest('.demo-carte'); const s = getComputedStyle(carte);
     return { carte: s.outlineStyle, lien: getComputedStyle(el).outlineStyle };
   });
-  verifier('focus d’une étape : le contour entoure toute la carte', contour.carte === 'solid', JSON.stringify(contour));
+  verifier('focus d’une démonstration : le contour entoure toute la carte', contour.carte === 'solid', JSON.stringify(contour));
   await p.goto(base + '/ux/ux-ia/');
-  const cibles = await p.evaluate(() => [...document.querySelectorAll('header a, .etape h3 a, .bouton, .bouton-secondaire, .fil a')].map((e) => ({ t: e.textContent.trim().slice(0, 24), h: Math.round(e.getBoundingClientRect().height), w: Math.round(e.getBoundingClientRect().width) })).filter((e) => e.h < 44 && e.w > 0));
+  const cibles = await p.evaluate(() => [...document.querySelectorAll('header a, .demo-carte h4 a, .bouton, .bouton-secondaire, .fil a')].map((e) => ({ t: e.textContent.trim().slice(0, 24), h: Math.round(e.getBoundingClientRect().height), w: Math.round(e.getBoundingClientRect().width) })).filter((e) => e.h < 44 && e.w > 0));
   console.log('      cibles < 44 px de haut :', JSON.stringify(cibles));
   await ctx.close();
 }
@@ -103,19 +103,18 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.goto(base + '/');
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
-  const reprendre = p.getByRole('link', { name: /Reprendre : Tilleul/ });
-  verifier('après les diapos : « Reprendre : Tilleul »', await reprendre.isVisible(), (await p.locator('.demarrer').innerText()).replace(/\n/g, ' | '));
+  const reprendre = p.getByRole('link', { name: /Reprendre : L’affiche/ });
+  verifier('après les diapos : « Reprendre : L’affiche qui se lit en 3 secondes »', await reprendre.isVisible(), (await p.locator('.accueil .actions').innerText()).replace(/\n/g, ' | '));
+  await p.goto(base + '/ux/ux-ia/demos/affiche/');
+  await p.getByRole('button', { name: /Lancer le test/ }).click();
+  await p.goto(base + '/ux/ux-ia/demos/tilleul/');
+  await p.getByRole('radio', { name: 'Mode cours' }).check();
+  await p.waitForTimeout(300);
   await p.goto(base + '/ux/ux-ia/');
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
-  verifier('page du cours : l’étape 1 est marquée « Vue »', (await p.locator('.etape').nth(0).locator('.vu').count()) === 1 && (await p.locator('.etape .vu').count()) === 1);
-  await p.getByRole('link', { name: 'Tilleul, la boutique piégée' }).click();
-  await p.waitForTimeout(800);
-  await p.goBack();
-  await p.waitForLoadState('networkidle');
-  await p.waitForTimeout(400);
-  verifier('un clic sur Tilleul marque l’étape 2 comme « Vue »', (await p.locator('.etape .vu').count()) === 2);
-  for (const u of ['/ux/ux-ia/exercices/', '/ux/ux-ia/sources/']) { await p.goto(base + u); await p.waitForLoadState('networkidle'); }
+  verifier('page du cours : les démos de l’affiche et de Tilleul sont marquées « Vue »', (await p.locator('.demo-carte .vu').count()) === 2);
+  for (const u of ['/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/']) { await p.goto(base + u); await p.waitForLoadState('networkidle'); }
   await p.goto(base + '/');
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
@@ -135,27 +134,43 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await ctx.close();
 }
 
-// 5. Lien profond vers Tilleul depuis les pastilles
+// 5. Les démonstrations : déroulé, scènes, liens vers le dépôt, anciennes adresses
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
   const p = await ctx.newPage();
-  await p.goto(base + '/');
+  await p.goto(base + '/ux/ux-ia/');
   await p.waitForLoadState('networkidle');
-  await p.waitForTimeout(1500);
-  await p.locator('a.pastille').first().click();
-  await p.waitForURL('**/tilleul/**');
-  await p.waitForTimeout(1500);
-  verifier('pastille 1 : Tilleul s’ouvre sur le défaut 1', (await p.locator('.cours-corps h2').innerText()).includes('bouton principal'), await p.locator('.cours-corps h2').innerText());
-  await p.goto(base + '/');
-  await p.waitForTimeout(1500);
-  await p.locator('a.pastille').nth(2).click();
-  await p.waitForURL('**/tilleul/**');
-  await p.waitForTimeout(2500);
-  verifier('pastille 3 : Tilleul s’ouvre sur le défaut 4, à la fiche produit', (await p.locator('.cours-corps h2').innerText()).includes('petit et loin') && new URL(p.url()).pathname.includes('/produit/'), `${await p.locator('.cours-corps h2').innerText()} @ ${new URL(p.url()).pathname}`);
-  // ?cours=non reste respecté
+  verifier('page du cours : 3 parties et 3 démonstrations', (await p.locator('.partie').count()) === 3 && (await p.locator('.demo-carte').count()) === 3);
+  verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/ux-ia-exercices');
+  await p.getByRole('link', { name: /Diapo 22/ }).click();
+  await p.waitForURL('**/diapos/?diapo=22');
+  await p.waitForTimeout(800);
+  verifier('« Diapo 22 » ouvre les diapos à la diapo 22', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#22'));
+
+  await p.goto(base + '/ux/ux-ia/demos/affiche/');
+  verifier('démo de l’affiche : un déroulé en 5 étapes', (await p.locator('.deroule-demo li').count()) === 5);
+  await p.getByRole('button', { name: /Lancer le test/ }).click();
+  await p.waitForTimeout(2300);
+  verifier('test des 3 secondes : l’affiche s’affiche', await p.locator('.affiche-a').isVisible());
+  await p.getByRole('button', { name: 'Révéler l’affiche' }).click({ timeout: 6000 });
+  verifier('… puis se cache et se révèle avec quoi, quand, où entourés', (await p.locator('.marque-info').count()) === 3);
+  verifier('lien vers l’exercice sur GitHub', (await p.getByRole('link', { name: /Ouvrir l’exercice sur GitHub/ }).getAttribute('href')).endsWith('/tree/main/01-affiche-promo'));
+
+  await p.goto(base + '/ux/ux-ia/demos/tilleul/');
+  const avant = await p.locator('iframe.cadre-site').getAttribute('src');
+  await p.getByRole('radio', { name: 'Mode cours' }).check();
+  const apres = await p.locator('iframe.cadre-site').getAttribute('src');
+  verifier('démo Tilleul : l’interrupteur passe de « sans aide » au mode cours', avant === '/tilleul/?cours=non' && apres === '/tilleul/');
   await p.goto(base + '/tilleul/?cours=non&defaut=1');
   await p.waitForTimeout(1500);
   verifier('?cours=non : pas de panneau, même avec ?defaut', (await p.locator('.cours-panneau').count()) === 0);
+
+  await p.goto(base + '/ux/ux-ia/exercices/');
+  await p.waitForURL('**/ux/ux-ia/', { timeout: 5000 }).catch(() => {});
+  verifier('ancienne page des exercices : redirige vers le cours', new URL(p.url()).pathname === '/ux/ux-ia/', p.url());
+  await p.goto(base + '/ux/ux-ia/comparer/formulaire-adresse/');
+  await p.waitForURL('**/demos/formulaire-adresse/', { timeout: 5000 }).catch(() => {});
+  verifier('ancienne comparaison : redirige vers la démo du formulaire', p.url().endsWith('/ux/ux-ia/demos/formulaire-adresse/'), p.url());
   await ctx.close();
 }
 
@@ -163,18 +178,6 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, permissions: ['clipboard-read', 'clipboard-write'] });
   const p = await ctx.newPage();
-  await p.goto(base + '/ux/ux-ia/exercices/');
-  await p.waitForLoadState('networkidle');
-  const titres = await p.locator('.exercice h2').allInnerTexts();
-  verifier('page des exercices : 3 exercices dont « Réparer un formulaire d’adresse »', titres.length === 3 && titres.some((t) => t.includes('formulaire d’adresse')), JSON.stringify(titres));
-  const duree = await p.locator('#formulaire-adresse .duree').innerText();
-  verifier('l’exercice est annoncé comme optionnel', duree.includes('en option'), duree);
-  await p.locator('.invite button').click();
-  await p.waitForTimeout(300);
-  const copie = await p.evaluate(() => navigator.clipboard.readText());
-  verifier('le bouton copie l’invite Photon dans le presse-papiers', copie.includes('API Photon') && copie.includes('300 ms') && copie.includes('contributeurs OpenStreetMap'), copie.slice(0, 60));
-  verifier('le bouton confirme « Invite copiée »', await p.getByRole('button', { name: 'Invite copiée' }).isVisible());
-
   const formulaire = await ctx.request.get(base + '/formulaires/adresse/');
   const html = await formulaire.text();
   verifier('le formulaire est en ligne (version de départ, bouton « Soumettre »)', formulaire.ok() && html.includes('Soumettre') && !html.includes('combobox'));
@@ -201,7 +204,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
     const pc = await ctx.newPage();
     const demandes = [];
     await pc.route('**/*', (route) => { const u = route.request().url(); if (!u.startsWith(base)) { demandes.push(u); return route.abort(); } return route.continue(); });
-    await pc.goto(base + '/ux/ux-ia/comparer/formulaire-adresse/');
+    await pc.goto(base + '/ux/ux-ia/demos/formulaire-adresse/');
     await pc.waitForLoadState('networkidle');
     await pc.waitForTimeout(800);
     const cadres = pc.locator('iframe');

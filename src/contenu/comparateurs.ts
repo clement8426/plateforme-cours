@@ -73,7 +73,7 @@ const formulaireAdresse: Comparateur = {
       depart: 'Aucune aide pour saisir la rue : tout se tape à la main, sans savoir si l’adresse existe.',
       repare: 'Des suggestions d’adresse apparaissent après 3 caractères et une pause de 300 ms. Elles se parcourent au clavier, remplissent le NPA et la localité au clic, et la saisie manuelle reste possible.',
       pourquoi: 'C’est le gain le plus visible, mais ce n’est plus un travail de designer : il faut un service d’adresses, des délais, la navigation au clavier. L’UX dépasse l’UI.',
-      essayer: 'Dans la version réparée, tapez « Rue du Seyon 10 », puis choisissez avec les flèches et Entrée. Les suggestions sont simulées ici ; la case sous le formulaire active le vrai service.',
+      essayer: 'Dans la version réparée, tapez « Rue du Seyon 10 », puis choisissez avec les flèches et Entrée. Les suggestions sont simulées ici ; la case au-dessus des formulaires active le vrai service.',
       outil: 'Ne se mesure pas de façon générale : l’outil ne voit pas une fonction absente. C’est une personne qui la remarque.',
       lien: { texte: 'Motif « combobox », WAI-ARIA', url: 'https://www.w3.org/WAI/ARIA/apg/patterns/combobox/' },
       cibles: { depart: ['input[name="rue"]'], repare: ['#rue'] },
