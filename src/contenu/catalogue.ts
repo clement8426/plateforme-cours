@@ -19,7 +19,7 @@ export type Demo = {
   blocs: BlocId[];
   duree: string;
   apercu: string;
-  scene: 'affiche' | 'tilleul' | 'comparateur';
+  scene: 'affiche' | 'tilleul' | 'comparateur' | 'dossier' | 'reidentification';
   comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
   deroule: EtapeDemo[];
   aRetenir: string[];
@@ -198,9 +198,55 @@ const iaDonnees: Cours = {
     { titre: 'Comprendre l’outil', resume: 'Un chat répond, un agent agit. Le trajet d’un prompt, et qui voit quoi selon l’offre.', duree: '19 min', diapos: [1, 8] },
     { titre: 'Que puis-je envoyer ?', resume: 'Donnée personnelle, sensible ou sous secret, l’anonymisation, et les risques propres aux agents.', duree: '18 min', diapos: [9, 14] },
     { titre: 'Et si ça tourne mal ?', resume: 'AI Act, RGPD, nLPD, secret professionnel, Cloud Act : qui est visé, et ce que ça coûte.', duree: '27 min', diapos: [15, 26] },
-    { titre: 'Les bons réflexes', resume: 'Trois questions avant d’envoyer, des briques locales et suisses, et le routage selon la sensibilité.', duree: '24 min', diapos: [27, 33] },
+    { titre: 'Les bons réflexes', resume: 'Trois questions avant d’envoyer, des briques locales et suisses, et le routage selon la sensibilité.', duree: '24 min', diapos: [27, 33], demos: true },
   ],
-  demos: [],
+  demos: [
+    {
+      slug: 'dossier-mme-fictive',
+      titre: 'Le dossier de Mme Fictive, avant et après',
+      resume: 'La même tâche faite deux fois : un scan abîmé et une note vocale à transformer en compte rendu. Une fois en trois clics dans un chat américain, une fois avec une chaîne locale et suisse.',
+      blocs: ['sensible', 'transfert', 'responsabilite'],
+      duree: '12 minutes',
+      apercu: '/apercus/demo-dossier.jpg',
+      scene: 'dossier',
+      deroule: [
+        { texte: 'Montrez la version 1 : tout est collé dans un chat grand public américain. Trois clics, le compte rendu est prêt.' },
+        { texte: 'Demandez à la salle : qu’est-ce qui a quitté l’étude, et vers où ?' },
+        { texte: 'Passez à la version 2 : lecture et transcription sur l’ordinateur, rédaction par une IA suisse, la loi tirée de Fedlex, une relecture.' },
+        { texte: 'Ouvrez les sept défauts de la version 1 : ce qui ne va pas, la loi concernée, qui en répond.' },
+        { texte: 'Montrez l’erreur de lecture du scan : la version 1 l’a recopiée, la relecture de la version 2 l’arrête.' },
+      ],
+      aRetenir: [
+        'Le résultat est le même, les risques sont très différents.',
+        'La version sûre n’est pas forcément plus lente, une fois les briques en place.',
+        'L’IA générative n’intervient qu’à la fin, sur du texte.',
+      ],
+      exercice: '02-dossier-avant-apres',
+    },
+    {
+      slug: 'reidentification',
+      titre: 'Retrouver la personne en trois indices',
+      resume: 'Un compte rendu dont le nom a été retiré, à côté d’un annuaire public fictif. Indice après indice, la salle retrouve la personne.',
+      blocs: ['personnelles', 'sensible'],
+      duree: '8 minutes',
+      apercu: '/apercus/demo-reidentification.jpg',
+      scene: 'reidentification',
+      deroule: [
+        { texte: 'Affichez le compte rendu sans nom : est-il anonyme ? Faites voter la salle.' },
+        { texte: 'Révélez les indices un par un : métier, âge, localité. La salle élimine les profils.' },
+        { texte: 'En général, il ne reste qu’une personne au troisième indice. La date le confirme.' },
+        { texte: 'Passez à la version généralisée et rejouez : il reste six personnes, impossible de savoir.' },
+      ],
+      aRetenir: [
+        'Retirer le nom ne rend pas une donnée anonyme.',
+        'Ce sont les indices combinés qui identifient quelqu’un.',
+        'Généraliser garde ce qui sert au raisonnement, et rend la personne introuvable.',
+      ],
+      exercice: 'bonus-reidentification',
+      bonus: true,
+    },
+  ],
+  depot: 'https://github.com/clement8426/ia-donnees-exercices',
   lexique: sourcesIa.lexique,
   references: grouper(sourcesIa.references, REGLES_IA),
 };

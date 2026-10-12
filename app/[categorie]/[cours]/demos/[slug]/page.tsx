@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import AfficheTest from '@/composants/AfficheTest';
 import ComparateurFormulaire from '@/composants/ComparateurFormulaire';
+import DossierAvantApres from '@/composants/DossierAvantApres';
+import Reidentification from '@/composants/Reidentification';
 import FilAriane from '@/composants/FilAriane';
 import MarqueVu from '@/composants/MarqueVu';
 import PucesBlocs from '@/composants/PucesBlocs';
@@ -37,7 +39,7 @@ export default async function PageDemo(props: Props) {
   const comparateur = demo.comparateur ? trouverComparateur(demo.comparateur) : undefined;
 
   return (
-    <div className={`page${demo.scene === 'comparateur' ? ' page-large' : ''}`}>
+    <div className={`page${['comparateur', 'dossier', 'reidentification'].includes(demo.scene) ? ' page-large' : ''}`}>
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `${base}/` },
@@ -69,6 +71,8 @@ export default async function PageDemo(props: Props) {
         {demo.scene === 'affiche' && <AfficheTest cours={cle} />}
         {demo.scene === 'tilleul' && <SceneTilleul cours={cle} />}
         {demo.scene === 'comparateur' && comparateur && <ComparateurFormulaire comparateur={comparateur} />}
+        {demo.scene === 'dossier' && <DossierAvantApres cours={cle} />}
+        {demo.scene === 'reidentification' && <Reidentification cours={cle} />}
       </div>
 
       <div className="demo-bas">
