@@ -109,8 +109,8 @@
     {
       "terme": "MCP",
       "nom": "MCP (Model Context Protocol)",
-      "def": "Le protocole qui relie une IA à un outil, pour qu’elle l’utilise directement.",
-      "cle": "solution"
+      "def": "Une prise standard qui branche un outil (navigateur, Figma, Clarity…) sur une IA, pour qu’elle l’utilise directement.",
+      "cle": "mcp"
     },
     {
       "terme": "Penpot",
@@ -136,6 +136,11 @@
       "terme": "Audit",
       "def": "Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.",
       "cle": "revelation"
+    },
+    {
+      "terme": "Agent IA",
+      "def": "Une IA qui agit : elle ouvre des pages, clique, lance des outils et modifie des fichiers pour accomplir une mission.",
+      "cle": "agent"
     }
   ],
   "references": [
@@ -248,6 +253,36 @@
       "titre": "« 2026 : l’été où les affiches IA ont inondé la France »",
       "source": "Next, 2026",
       "url": "https://next.ink/253290/2026-lete-ou-les-affiches-ia-ont-inonde-la-france/"
+    },
+    {
+      "titre": "Model Context Protocol, la documentation",
+      "source": "modelcontextprotocol.io",
+      "url": "https://modelcontextprotocol.io/"
+    },
+    {
+      "titre": "Playwright MCP : la page lue comme un arbre d’accessibilité",
+      "source": "Microsoft, Playwright",
+      "url": "https://playwright.dev/mcp/snapshots"
+    },
+    {
+      "titre": "Chrome DevTools MCP",
+      "source": "Google, ChromeDevTools",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+    },
+    {
+      "titre": "Le serveur MCP de Microsoft Clarity",
+      "source": "Microsoft Clarity",
+      "url": "https://clarity.microsoft.com/blog/introducing-the-microsoft-clarity-mcp-server-a-smarter-way-to-fetch-analytics-with-ai/"
+    },
+    {
+      "titre": "Unlighthouse : Lighthouse sur tout un site",
+      "source": "unlighthouse.dev",
+      "url": "https://unlighthouse.dev/"
+    },
+    {
+      "titre": "« What Would GPT Click » : utilisateurs simulés contre vrais utilisateurs",
+      "source": "arXiv, 2026",
+      "url": "https://arxiv.org/abs/2605.18302"
     }
   ]
 }

@@ -55,7 +55,8 @@ const REGLES_GROUPES: { nom: string; bloc?: BlocId; adresses: string[] }[] = [
   { nom: 'Formulaires et autocomplétion', adresses: ['github.com/komoot', 'w3.org/WAI/ARIA'] },
   { nom: 'Accessibilité et obligations légales', bloc: 'accessibilite', adresses: ['w3.org', 'eur-lex', 'economie.gouv', 'fieldfisher', 'ebgb.admin'] },
   { nom: 'Performance perçue et émotion', bloc: 'performance', adresses: ['uxmag', 'umich', 'cnbc', 'wikipedia'] },
-  { nom: 'Outils d’audit', adresses: ['pa11y', 'developer.chrome'] },
+  { nom: 'Outils d’audit', adresses: ['pa11y', 'developer.chrome', 'unlighthouse'] },
+  { nom: 'Agents IA et MCP', adresses: ['modelcontextprotocol', 'playwright.dev', 'chrome-devtools-mcp', 'clarity.microsoft', 'arxiv.org'] },
   { nom: 'L’IA dans la création', adresses: ['next.ink', 'penpot.app', 'developers.figma.com'] },
 ];
 
@@ -74,13 +75,13 @@ const uxIa: Cours = {
   slug: 'ux-ia',
   titre: 'UX × IA',
   accroche: 'Rendre un produit pratique, puis le corriger avec l’IA.',
-  duree: 'Environ 1 h 20, plus 15 minutes en option',
+  duree: 'Environ 1 h 45, plus 15 minutes en option',
   public: 'Débutants, aucun prérequis technique',
   objectifs: [
     'Distinguer l’UX (le vécu) de l’UI (le visuel).',
     'Repérer les défauts d’un site avec six blocs : design system, friction, accessibilité, analyse comportementale, microcopie, performance perçue.',
     'Comprendre ce qu’un outil d’audit mesure, et ce qu’il ne voit pas.',
-    'Utiliser l’IA pour auditer, planifier et corriger, sans oublier les bases.',
+    'Choisir entre un outil simple, une conversation et un agent IA, et lui donner les bonnes clés : l’intention, la cible, le ton.',
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   demo: {

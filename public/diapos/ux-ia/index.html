@@ -454,7 +454,7 @@ input[type="color"] { width: 140px; height: var(--hit); padding: 4px; border: 2p
 .ct-min { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ct-ratio-box { display: grid; gap: 4px; }
 .ct-cap { font-size: var(--fs-min); font-weight: 600; color: var(--muted); }
-.ct-aide { display: grid; gap: 12px; padding: 22px 28px 24px; }
+.ct-aide { display: grid; gap: 10px; padding: 20px 28px 18px; }
 .ct-aide h3 { margin: 0; }
 .ct-aide ul { display: grid; gap: 8px; list-style: none; padding: 0; margin: 0; }
 .ct-aide li { font-size: var(--fs-min); line-height: 1.25; }
@@ -747,6 +747,41 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   [data-step] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
   #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
 }
+/* ========== Partie 2 : l'IA, bloc par bloc ========== */
+.paire { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.paire .card h3 { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; font: 600 var(--fs-big)/1.1 var(--font-title); letter-spacing: -.01em; }
+.paire .card h3 .ico { font-size: 52px; color: var(--accent-text); }
+.paire .card p { font-size: var(--fs-lead); line-height: 1.3; }
+.card.accent { border-color: var(--accent-text); background: var(--accent-soft); }
+.agent-nom { display: grid; gap: 4px; padding-left: 28px; border-left: 6px solid var(--accent-fill); font-size: var(--fs-min); color: var(--muted); }
+.agent-nom strong { font: 700 var(--fs-big)/1.1 var(--font-title); color: var(--text); }
+.hub { display: flex; align-items: center; gap: 28px; }
+.hub > .ico { font-size: 56px; color: var(--accent-text); flex: none; }
+.hub-agent { min-height: 88px; padding: 0 34px; border-color: var(--accent-text); background: var(--accent-fill); color: var(--on-accent); font-weight: 700; font-size: var(--fs-lead); }
+.hub-agent .ico { color: var(--on-accent); font-size: 44px; }
+.offre { display: grid; gap: 10px; }
+.offre .prix { font: 700 var(--fs-big)/1.1 var(--font-title); color: var(--accent-text); }
+.alternatives { padding: 28px 36px; }
+.alternatives p { font-size: var(--fs-lead); line-height: 1.3; color: var(--muted); }
+.alternatives strong { color: var(--text); }
+.cles-liste p { font-size: var(--fs-big); line-height: 1.15; font-weight: 500; }
+.cles-liste strong { font-weight: 700; }
+.ia-bloc { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; align-content: start; gap: 28px 32px; height: 100%; }
+.ia-col { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; min-height: 0; }
+.ia-col .card { padding: 24px 32px; }
+.ia-col h3 { font: 600 var(--fs-min)/1.2 var(--font-body); color: var(--muted); margin-bottom: 6px; }
+.ia-agent h3 { color: var(--accent-text); }
+.ia-col p { font-size: var(--fs-body); line-height: 1.3; }
+.ia-agent { border-color: var(--accent-text); background: var(--accent-soft); }
+.prompt { display: grid; align-content: start; gap: 14px; margin: 0; padding: 30px 36px; border-radius: var(--r-l); border-left: 10px solid var(--accent-fill); background: var(--surface); box-shadow: var(--shadow); min-height: 0; }
+.prompt figcaption { font: 600 var(--fs-min)/1.2 var(--font-body); color: var(--accent-text); }
+.prompt blockquote { margin: 0; font-size: var(--fs-lead); line-height: 1.36; }
+.ia-garde { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.ia-garde p { display: flex; align-items: flex-start; gap: 18px; padding: 20px 26px; border-radius: var(--r-m); background: var(--surface-2); font-size: var(--fs-min); line-height: 1.3; }
+.ia-garde .ico { flex: none; font-size: 40px; margin-top: 2px; color: var(--accent-text); }
+.plugin-etapes { display: grid; gap: 22px; }
+.plugin-etapes li { display: flex; align-items: center; gap: 24px; }
+.plugin-etapes p { font-size: var(--fs-lead); line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -1076,9 +1111,246 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : PRATIQUE (slides 22 à 33) ================= -->
+<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 22 à 34) ================= -->
 
-<section class="slide" data-part="2" data-key="choix">
+<section class="slide" data-part="2" data-key="agent">
+  <h2 class="title">Un agent IA ne répond pas : il agit</h2>
+  <div class="body stack-l">
+    <div class="paire">
+      <article class="card" data-step="1">
+        <h3><i data-icon="text"></i>Une conversation</h3>
+        <p>Vous posez une question, l’IA répond. Vous copiez, collez, recommencez.</p>
+      </article>
+      <article class="card accent" data-step="2">
+        <h3><i data-icon="cursor"></i>Un agent</h3>
+        <p>Vous donnez une mission. Il ouvre le site, clique, lance des outils, modifie les fichiers, puis vous rend compte.</p>
+      </article>
+    </div>
+    <div class="paire" data-step="3">
+      <p class="agent-nom"><strong>Claude</strong> Claude Code, Claude dans Chrome</p>
+      <p class="agent-nom"><strong>ChatGPT</strong> Codex, l’agent de l’application ChatGPT</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="mcp">
+  <h2 class="title">MCP : une prise universelle pour brancher des outils</h2>
+  <div class="body stack-m">
+    <div class="hub" data-step="1">
+      <span class="chip hub-agent"><i data-icon="cursor"></i>Votre agent</span>
+      <i data-icon="arrow"></i>
+      <ul class="chips">
+        <li class="chip"><i data-icon="compass"></i>Navigateur</li>
+        <li class="chip"><i data-icon="frame"></i>Figma, Penpot</li>
+        <li class="chip"><i data-icon="eye"></i>Clarity</li>
+        <li class="chip"><i data-icon="code"></i>Votre code</li>
+      </ul>
+    </div>
+    <p class="lead" data-step="1">Comme l’USB-C : un seul format, beaucoup d’appareils.</p>
+    <div class="paire">
+      <article class="card" data-step="2"><p><strong>Sans MCP</strong>, je copie les chiffres de Clarity dans le chat.</p></article>
+      <article class="card accent" data-step="3"><p><strong>Avec le MCP de Clarity</strong>, l’agent va chercher lui-même mes vraies données.</p></article>
+    </div>
+    <p class="note" data-step="4">Skill ou plugin : un paquet prêt à l’emploi, avec les consignes et les outils pour une tâche.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="quel-agent">
+  <h2 class="title">Quel agent choisir ? Restons simples</h2>
+  <div class="body stack-l">
+    <div class="paire">
+      <article class="card accent offre" data-step="1">
+        <h3>Claude Pro</h3>
+        <p class="prix">environ 20 francs par mois</p>
+        <p>Claude Code inclus.</p>
+      </article>
+      <article class="card accent offre" data-step="1">
+        <h3>ChatGPT Plus</h3>
+        <p class="prix">environ 20 francs par mois</p>
+        <p>Codex inclus.</p>
+      </article>
+    </div>
+    <article class="card alternatives" data-step="2">
+      <p><strong>Il existe aussi OpenCode, Hermes Agent…</strong> Gratuits et open source, mais on les relie souvent à une clé API payée à l’usage : la facture peut vite grimper.</p>
+    </article>
+    <p class="lead strong" data-step="3">Dans ce cours : du simple, prêt à l’emploi, à prix fixe.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="methode-ia">
+  <h2 class="title">L’outil mesure, l’IA juge, vous décidez</h2>
+  <div class="body stack-l">
+    <div class="options">
+      <article class="card option" data-step="1">
+        <p class="option-lettre" aria-hidden="true">1</p>
+        <h3>Un outil classique</h3>
+        <p>Gratuit, fiable, sans IA : il mesure.</p>
+      </article>
+      <article class="card option" data-step="2">
+        <p class="option-lettre" aria-hidden="true">2</p>
+        <h3>Une conversation</h3>
+        <p>Vous décrivez, l’IA conseille.</p>
+      </article>
+      <article class="card option" data-step="3">
+        <p class="option-lettre" aria-hidden="true">3</p>
+        <h3>Un agent</h3>
+        <p>Il ouvre, teste, corrige.</p>
+      </article>
+    </div>
+    <p class="lead strong" data-step="4">Si un outil simple suffit, pas besoin d’IA.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="cles">
+  <h2 class="title">Avant de lancer l’agent, donnez-lui les clés</h2>
+  <div class="body g12">
+    <ol class="c8 keep cles-liste">
+      <li data-step="1"><span class="keep-n" aria-hidden="true">1</span><p><strong>L’intention</strong> : un seul style de titre, par exemple.</p></li>
+      <li data-step="2"><span class="keep-n" aria-hidden="true">2</span><p><strong>La cible</strong> : qui, sur quel appareil, pour faire quoi.</p></li>
+      <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p><strong>Le ton</strong> : comment parle la marque, avec des exemples.</p></li>
+      <li data-step="4"><span class="keep-n" aria-hidden="true">4</span><p><strong>Les pages</strong> : lesquelles regarder, où s’arrêter.</p></li>
+    </ol>
+    <div class="c4 stack-m end-col">
+      <p class="lead strong" data-step="5">L’IA trouve et corrige vite. Le reste, c’est vous.</p>
+      <p class="note" data-step="5">Un bon agent commence par vous poser ces questions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-design-system">
+  <h2 class="title">Bloc 1, design system : comparer les pages entre elles</h2>
+  <div class="body ia-bloc">
+    <div class="ia-col">
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>L’aperçu CSS de Chrome : toutes les couleurs et polices d’une page.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il visite 3 ou 4 pages différentes, en ligne ou dans le code, à trois largeurs d’écran, et lit les vrais styles.</p></article>
+    </div>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Visite l’accueil, une liste, une fiche et un formulaire, à 375, 768 et 1440 px. Compare titres, boutons, champs, couleurs et espacements d’une page à l’autre. Liste les incohérences avec les valeurs mesurées. Demande-moi l’intention avant de corriger.</blockquote></figure>
+    <div class="ia-garde" data-step="4">
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’intention. Deux styles de titre, c’est voulu ou non ?</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : que ses corrections respectent vos choix.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-friction">
+  <h2 class="title">Bloc 2, friction : un test utilisateur simulé</h2>
+  <div class="body ia-bloc">
+    <div class="ia-col">
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Cinq vraies personnes, un chrono, compter les clics.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il joue votre cible et fait le parcours dans un vrai navigateur.</p></article>
+    </div>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Tu es [la cible], sur téléphone. Objectif : [acheter un vase]. Fais le parcours et arrête-toi avant de payer ou d’envoyer quoi que ce soit. Note chaque pop-up, hésitation, détour et étape inutile. Compte les clics.</blockquote></figure>
+    <div class="ia-garde" data-step="4">
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, l’objectif, et où s’arrêter.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : ce sont des pistes. Confirmez avec de vraies personnes.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-attention">
+  <h2 class="title">Attention : un agent sur un site en ligne</h2>
+  <div class="body">
+    <div class="options">
+      <article class="card option" data-step="1">
+        <p class="option-lettre" aria-hidden="true">1</p>
+        <h3>Il peut être bloqué</h3>
+        <p>Protections anti-robots, comme Cloudflare, et CAPTCHA. Il ne doit pas les contourner.</p>
+      </article>
+      <article class="card option" data-step="2">
+        <p class="option-lettre" aria-hidden="true">2</p>
+        <h3>Il peut fausser vos données</h3>
+        <p>Faux comptes, fausses commandes, e-mails envoyés, statistiques polluées.</p>
+      </article>
+      <article class="card option" data-step="3">
+        <p class="option-lettre" aria-hidden="true">3</p>
+        <h3>La solution</h3>
+        <p>Une copie de test du site, ou l’arrêt avant chaque envoi.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-accessibilite">
+  <h2 class="title">Bloc 3, accessibilité : l’audit, puis le jugement</h2>
+  <div class="body ia-bloc">
+    <div class="ia-col">
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Lighthouse, WAVE, Pa11y, et la touche Tab.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il lance l’audit, navigue au clavier, lit la page comme un lecteur d’écran, puis corrige le code.</p></article>
+    </div>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Audite ces pages avec Pa11y et Lighthouse. Parcours-les uniquement au clavier. Explique chaque erreur simplement et dis qui elle gêne. Vérifie que chaque texte alternatif décrit vraiment son image. Puis corrige.</blockquote></figure>
+    <div class="ia-garde" data-step="4">
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, par exemple des seniors.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>Bon à savoir</strong> : un texte alternatif « image » passe l’audit. Là, l’IA fait mieux que l’outil.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-comportement">
+  <h2 class="title">Bloc 4, comportement : interroger vos vraies données</h2>
+  <div class="body ia-bloc">
+    <div class="ia-col">
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Clarity ou Hotjar : cartes de chaleur, enregistrements, entonnoirs.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Branché par MCP à Clarity ou à Contentsquare (Hotjar), il interroge vos données en français.</p></article>
+    </div>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Sur les 30 derniers jours, où les visiteurs sur mobile abandonnent-ils la commande ? Où cliquent-ils sans résultat ? Donne des hypothèses à vérifier, pas des conclusions.</blockquote></figure>
+    <div class="ia-garde" data-step="4">
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une question précise, sur des pages précises.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : les chiffres disent où, pas pourquoi. Et le consentement des visiteurs.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-microcopie">
+  <h2 class="title">Bloc 5, microcopie : relever les textes, puis réécrire</h2>
+  <div class="body ia-bloc">
+    <div class="ia-col">
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Relire à voix haute, avec un guide de ton.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il demande les pages clés, provoque les erreurs pour voir les vrais messages, et relève tous les textes.</p></article>
+    </div>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Sur le formulaire et le panier, envoie le formulaire vide, puis avec un e-mail mal écrit. Relève boutons, erreurs et aides. Pour [la cible], lesquels sont vagues, techniques ou inquiétants ? Deux variantes chacun, dans ce ton : [exemples].</blockquote></figure>
+    <div class="ia-garde" data-step="4">
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une fiche de ton, avec trois ou quatre exemples.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : que les textes ne sont pas devenus passe‑partout.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-performance">
+  <h2 class="title">Bloc 6, performance perçue : tester en conditions réelles</h2>
+  <div class="body ia-bloc">
+    <div class="ia-col">
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>PageSpeed Insights, Lighthouse, ou Unlighthouse pour tout le site.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il enregistre le chargement sur une connexion lente, puis ajoute des retours immédiats.</p></article>
+    </div>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Simule un téléphone avec une connexion lente. Après chaque clic important, combien de temps reste-t-on sans retour visible ? Propose un retour immédiat ou un squelette de chargement, sans jamais ajouter d’attente.</blockquote></figure>
+    <div class="ia-garde" data-step="4">
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’appareil et la connexion de la cible.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : aucune fausse attente, comme sur la slide 19.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="plugin">
+  <h2 class="title">Je vous offre un outil</h2>
+  <div class="body g12">
+    <div class="c7 stack-m">
+      <p class="lead strong">Un plugin pour Claude, gratuit, sur GitHub.</p>
+      <ol class="plugin-etapes">
+        <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p>Il vous pose les questions : cible, intention, ton.</p></li>
+        <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p>Il passe les six blocs avec de vrais outils.</p></li>
+        <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p>Il vous rend un rapport trié : mesuré, indice ou avis.</p></li>
+      </ol>
+      <p class="note" data-step="4">Sans Claude ? Les mêmes prompts, à copier-coller, marchent dans ChatGPT.</p>
+    </div>
+    <div class="c5">
+      <div class="case" data-case="PLUGIN_URL" data-kind="qr" data-label="Adresse du plugin sur GitHub"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARTIE 3 : PRATIQUE (slides 35 à 49) ================= -->
+
+<section class="slide" data-part="3" data-key="choix">
   <h2 class="title">À vous de choisir l’exercice</h2>
   <div class="body">
     <div class="options">
@@ -1101,7 +1373,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="support">
+<section class="slide" data-part="3" data-key="support">
   <h2 class="title">Mêmes lois, autre support</h2>
   <div class="body stack-m">
     <div class="g12">
@@ -1118,7 +1390,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="defauts">
+<section class="slide" data-part="3" data-key="defauts">
   <h2 class="title">Qu’est-ce qui ne va pas ?</h2>
   <div class="body g12">
     <div class="c8 posters">
@@ -1131,7 +1403,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="exercice">
+<section class="slide" data-part="3" data-key="exercice">
   <h2 class="title">Exercice : créer une affiche promo</h2>
   <div class="body g12">
     <div class="c6 stack-m">
@@ -1149,7 +1421,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="methode">
+<section class="slide" data-part="3" data-key="methode">
   <h2 class="title">Une méthode : moodboard IA, puis Figma ou Penpot</h2>
   <div class="body g12">
     <div class="c4 stack-m">
@@ -1183,7 +1455,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="solution">
+<section class="slide" data-part="3" data-key="solution">
   <h2 class="title">La solution : construire l’affiche avec l’IA, pas la générer</h2>
   <div class="body g12">
     <div class="c8 duel">
@@ -1212,7 +1484,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="parcours">
+<section class="slide" data-part="3" data-key="parcours">
   <h2 class="title">Démo : le parcours du site cassé</h2>
   <div class="body stack-l">
     <ol class="stepper" aria-label="Parcours de l’utilisateur sur le site">
@@ -1228,7 +1500,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="revelation">
+<section class="slide" data-part="3" data-key="revelation">
   <h2 class="title">La révélation : ce qu’on ne voit pas à l’œil nu</h2>
   <div class="body g12">
     <div class="c8 audits">
@@ -1241,7 +1513,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="form-exercice">
+<section class="slide" data-part="3" data-key="form-exercice">
   <h2 class="title">Exercice : remplir un formulaire d’adresse</h2>
   <div class="body g12">
     <div class="c7 stack-l">
@@ -1258,14 +1530,14 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="form-defauts">
+<section class="slide" data-part="3" data-key="form-defauts">
   <h2 class="title">Le formulaire : joli, mais un défaut par bloc</h2>
   <div class="body">
     <div class="fd" data-comp="form-defauts"></div>
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="form-photon">
+<section class="slide" data-part="3" data-key="form-photon">
   <h2 class="title">L’autocomplétion : de l’UX qui demande du code</h2>
   <div class="body g12">
     <ul class="c6 atouts">
@@ -1287,7 +1559,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="kahoot">
+<section class="slide" data-part="3" data-key="kahoot">
   <h2 class="title">Kahoot : que retenez-vous ?</h2>
   <div class="body g12">
     <div class="c4 stack-s">
@@ -1303,7 +1575,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 3 : IA (slides 34 à 36) ================= -->
+<!-- ----- Pratique, suite : la démo avec l’IA et la conclusion (slides 47 à 49) ----- -->
 
 <section class="slide" data-part="3" data-key="bon-modele">
   <h2 class="title">Le bon modèle pour la bonne tâche</h2>
@@ -1345,7 +1617,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= ANNEXES (slides 37 et 38) ================= -->
+<!-- ================= ANNEXES (slides 50 et 51) ================= -->
 
 <section class="slide" data-part="4" data-key="lexique">
   <h2 class="title">Lexique : les mots du cours, en une phrase</h2>
@@ -1385,18 +1657,19 @@ const CONFIG = {
 
   minutes: [
     0.5, 2, 1.5, 1, 2, 1.5, 1.5, 2.5, 1, 2.5, 1, 2, 2, 1.5, 2, 2.5, 2, 1.5, 3, 2, 1, // slides 1 à 21 : théorie
-    2, 1.5, 3, 8, 3.5, 3, 5, 3, 6, 4, 4, 6,                                     // slides 22 à 33 : pratique (30 à 32 : exercice C, bonus)
-    3, 6, 2,                                                                    // slides 34 à 36 : IA
-    0, 0                                                                        // slides 37 et 38 : annexes, hors budget
+    2, 2.5, 1.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, 1.5,                        // slides 22 à 34 : l'IA, bloc par bloc
+    2, 1.5, 3, 8, 3.5, 3, 5, 3, 6, 4, 4, 6,                                     // slides 35 à 46 : pratique (43 à 45 : exercice C, bonus)
+    3, 6, 2,                                                                    // slides 47 à 49 : pratique, la démo avec l'IA et la conclusion
+    0, 0                                                                        // slides 50 et 51 : annexes, hors budget
   ],
   parties: [
     { nom: 'Théorie', de: 1, a: 21 },
-    { nom: 'Pratique', de: 22, a: 33 },
-    { nom: 'IA', de: 34, a: 36 },
-    { nom: 'Annexes', de: 37, a: 38, hors: true } // hors du cours : lexique et références
+    { nom: 'L’IA, bloc par bloc', de: 22, a: 34 },
+    { nom: 'Pratique', de: 35, a: 49 },
+    { nom: 'Annexes', de: 50, a: 51, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [20, 30, 31, 32],
+  bonus: [20, 43, 44, 45],
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -1412,7 +1685,8 @@ const CONFIG = {
     LINK_UXMAG_ARTICLE: 'https://uxmag.com/articles/let-your-users-wait',
     SITE_URL: '/tilleul/?cours=non', // adresse du site Tilleul lancé avec npm run dev
     FORM_URL: '/formulaires/adresse/', // adresse du formulaire de l'exercice C (fichier index.html ouvert dans le navigateur, ou serveur local)
-    QR_KAHOOT: ''
+    QR_KAHOOT: '',
+    PLUGIN_URL: '' // adresse GitHub du plugin (slide 34) : le QR code se génère tout seul
   },
   // Cases image : chemin relatif ou URL (exemple : 'images/figma.png').
   // Les affiches ratées, les deux rapports d'audit, les captures du Kahoot et le résultat d'audit ont une image intégrée
@@ -1467,11 +1741,10 @@ const CONFIG = {
   // Aide de lecture du vérificateur de contraste (slide 15)
   aideContraste: [
     'De 1 (illisible) à 21 (noir sur blanc).',
-    'AA : le niveau de référence. AAA : le niveau renforcé.',
-    'Gros texte : 24 px et plus.'
+    'Gros texte : 24 px et plus, ou 19 px en gras.'
   ],
 
-  // Exercice C, formulaire d'adresse (slide 31) : un défaut planté par bloc
+  // Exercice C, formulaire d'adresse (slide 44) : un défaut planté par bloc
   formulaire: [
     { bloc: 'Design system', defaut: 'Quatre hauteurs et quatre arrondis de champs différents.' },
     { bloc: 'Friction', defaut: 'Le NPA avant la rue, et le remplissage automatique du navigateur bloqué.' },
@@ -1511,12 +1784,13 @@ const CONFIG = {
     { terme: 'Performance perçue', def: 'La vitesse ressentie par l’utilisateur, qui peut différer de la vitesse réelle.', cle: 'attente' },
     { terme: 'Skeleton loader', def: 'Silhouette grise de la page, affichée pendant le chargement.', cle: 'attente' },
     { terme: 'Effet élastique', nom: 'Effet élastique (rubber banding)', def: 'Réglage d’un jeu en temps réel pour garder les joueurs proches les uns des autres.', cle: 'emotion' },
-    { terme: 'MCP', nom: 'MCP (Model Context Protocol)', def: 'Le protocole qui relie une IA à un outil, pour qu’elle l’utilise directement.', cle: 'solution' },
+    { terme: 'MCP', nom: 'MCP (Model Context Protocol)', def: 'Une prise standard qui branche un outil (navigateur, Figma, Clarity…) sur une IA, pour qu’elle l’utilise directement.', cle: 'mcp' },
     { terme: 'Penpot', def: 'Outil de design libre et gratuit, équivalent de Figma, que l’IA peut piloter via MCP.', cle: 'solution' },
     { terme: 'Autocomplétion', def: 'Des suggestions proposées pendant la saisie, à choisir d’un clic ou au clavier.', cle: 'form-photon' },
     { terme: 'Moodboard', def: 'Planche d’inspiration qui fixe un style et des couleurs avant de créer.', cle: 'methode' },
     { terme: 'Vectoriel', def: 'Image décrite par des formes, nette à toute taille, à l’inverse d’une image en pixels.', cle: 'methode' },
-    { terme: 'Audit', def: 'Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.', cle: 'revelation' }
+    { terme: 'Audit', def: 'Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.', cle: 'revelation' },
+    { terme: 'Agent IA', def: 'Une IA qui agit : elle ouvre des pages, clique, lance des outils et modifie des fichiers pour accomplir une mission.', cle: 'agent' }
   ],
 
   // Références (dernière slide), neuf par page. Ajoute les tiennes ici : { titre, source, url }.
@@ -1542,7 +1816,13 @@ const CONFIG = {
     { titre: 'Attente fabriquée : « Just wait… trust me »', source: 'Université du Michigan, 2017', url: 'https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/' },
     { titre: 'Robinhood retire ses confettis', source: 'CNBC, 2021', url: 'https://www.cnbc.com/2021/03/31/robinhood-gets-rid-of-confetti-feature-amid-scrutiny-over-gamification.html' },
     { titre: 'Mario Kart et le rubber banding', source: 'Wikipédia', url: 'https://en.wikipedia.org/wiki/Mario_Kart' },
-    { titre: '« 2026 : l’été où les affiches IA ont inondé la France »', source: 'Next, 2026', url: 'https://next.ink/253290/2026-lete-ou-les-affiches-ia-ont-inonde-la-france/' }
+    { titre: '« 2026 : l’été où les affiches IA ont inondé la France »', source: 'Next, 2026', url: 'https://next.ink/253290/2026-lete-ou-les-affiches-ia-ont-inonde-la-france/' },
+    { titre: 'Model Context Protocol, la documentation', source: 'modelcontextprotocol.io', url: 'https://modelcontextprotocol.io/' },
+    { titre: 'Playwright MCP : la page lue comme un arbre d’accessibilité', source: 'Microsoft, Playwright', url: 'https://playwright.dev/mcp/snapshots' },
+    { titre: 'Chrome DevTools MCP', source: 'Google, ChromeDevTools', url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp' },
+    { titre: 'Le serveur MCP de Microsoft Clarity', source: 'Microsoft Clarity', url: 'https://clarity.microsoft.com/blog/introducing-the-microsoft-clarity-mcp-server-a-smarter-way-to-fetch-analytics-with-ai/' },
+    { titre: 'Unlighthouse : Lighthouse sur tout un site', source: 'unlighthouse.dev', url: 'https://unlighthouse.dev/' },
+    { titre: '« What Would GPT Click » : utilisateurs simulés contre vrais utilisateurs', source: 'arXiv, 2026', url: 'https://arxiv.org/abs/2605.18302' }
   ],
 
   // Honeycomb de Peter Morville (slide 10)
@@ -1559,18 +1839,22 @@ const CONFIG = {
   // Vue présentateur : trois mots-clés par slide
   motsCles: [
     ['pratique', 'corriger', 'IA'], ['chef de projet', 'full-stack', 'cybersécurité'], ['trois parties', 'interactif', 'questions bienvenues'],
-    ['à main levée', 'UI', 'UX'], ['visuel', 'vécu', 'pas designer'], ['tunnel', 'étapes', 'cas réel'], ['70 %', 'frais, compte, longueur', 'Baymard'],
-    ['cible', 'seniors', 'ados'], ['modèles', 'pas de recette', 'synthèse'], ['Utile', 'Accessible', 'Désirable'],
-    ['six blocs', 'grille', 'pratique'], ['variables', 'cohérence', 'réutilisable'], ['décider', 'Hick', 'choix'],
-    ['atteindre', 'Fitts', 'taille et distance'], ['texte alternatif', 'contraste', 'clavier'], ['1 personne sur 5', 'amendes', 'LHand'],
-    ['Hotjar', 'par quoi commencer', 'consentement'], ['bouton', 'message d’erreur', 'clarté'], ['vraie attente', 'attente fabriquée', 'le test'],
-    ['effet élastique', 'frustration', 'confettis'], ['blocs', 'facettes', 'cible'], ['affiche', 'site', 'à main levée'],
-    ['A4', 'défilement', 'nécessaire'], ['trop d’infos', 'style vu partout', 'quoi faire'], ['quoi, quand, où', 'outil libre', 'hiérarchie'],
-    ['moodboard', 'vecteur', 'formats'], ['construire', 'Penpot', 'sans quota'], ['parcours', 'gêne', 'tunnel de commande'], ['Lighthouse', 'Pa11y', 'invisible'],
+    ['à main levée', 'UI', 'UX'], ['visuel', 'vécu', 'pas designer'], ['tunnel', 'étapes', 'cas réel'],
+    ['70 %', 'frais, compte, longueur', 'Baymard'], ['cible', 'seniors', 'ados'], ['modèles', 'pas de recette', 'synthèse'],
+    ['Utile', 'Accessible', 'Désirable'], ['six blocs', 'grille', 'pratique'], ['variables', 'cohérence', 'réutilisable'],
+    ['décider', 'Hick', 'choix'], ['atteindre', 'Fitts', 'taille et distance'], ['texte alternatif', 'contraste', 'clavier'],
+    ['1 personne sur 5', 'amendes', 'LHand'], ['Hotjar', 'par quoi commencer', 'consentement'], ['bouton', 'message d’erreur', 'clarté'],
+    ['vraie attente', 'attente fabriquée', 'le test'], ['effet élastique', 'frustration', 'confettis'], ['blocs', 'facettes', 'cible'],
+    ['conversation', 'agent', 'Claude, ChatGPT'], ['MCP', 'prise universelle', 'skill, plugin'], ['20 francs', 'prix fixe', 'clé API'],
+    ['outil', 'IA', 'vous décidez'], ['intention', 'cible', 'ton'], ['plusieurs pages', 'styles réels', 'intention'],
+    ['test simulé', 'où s’arrêter', 'vrais humains'], ['anti-robots', 'fausses données', 'copie de test'], ['Pa11y', 'clavier', 'texte alternatif'],
+    ['Clarity', 'MCP', 'où, pas pourquoi'], ['pages clés', 'provoquer les erreurs', 'fiche de ton'], ['connexion lente', 'retour immédiat', 'pas de fausse attente'],
+    ['plugin', 'GitHub', 'rapport trié'], ['affiche', 'site', 'à main levée'], ['A4', 'défilement', 'nécessaire'],
+    ['trop d’infos', 'style vu partout', 'quoi faire'], ['quoi, quand, où', 'outil libre', 'hiérarchie'], ['moodboard', 'vecteur', 'formats'],
+    ['construire', 'Penpot', 'sans quota'], ['parcours', 'gêne', 'tunnel de commande'], ['Lighthouse', 'Pa11y', 'invisible'],
     ['chrono', 'adresse fictive', 'ce qui gêne'], ['six blocs', 'deviner', 'révéler'], ['Photon', '300 ms', 'saisie manuelle'],
-    ['QR code', 'PIN', 'quiz'], ['petit modèle', 'grand modèle', 'coût'],
-    ['audit', 'ce que l’outil rate', 'pas tout corriger'], ['pratique', 'cible', 'bases'],
-    ['lexique', 'définitions', 'questions'], ['références', 'liens', 'aller plus loin']
+    ['QR code', 'PIN', 'quiz'], ['petit modèle', 'grand modèle', 'coût'], ['audit', 'ce que l’outil rate', 'pas tout corriger'],
+    ['pratique', 'cible', 'bases'], ['lexique', 'définitions', 'questions'], ['références', 'liens', 'aller plus loin']
   ],
 
   // Vue présentateur : ce qui se dit à l'oral, quand la slide en affiche une version courte
@@ -1592,19 +1876,32 @@ const CONFIG = {
     20: 'Slide bonus : à passer si le temps manque.\nDans Mario Kart, les objets tirés dépendent du classement : puissants pour ceux qui sont loin derrière, défensifs pour le premier. C’est ce qu’on appelle le rubber banding, l’effet élastique. La simulation le montre avec un coup de pouce de vitesse, c’est une simplification.\nCe n’est pas une place attribuée à l’avance. C’est un choix de design délibéré pour éviter la frustration et maintenir l’engagement. C’est du game design, cousin de l’UX.\nÀ montrer : baisser ma vitesse, élastique désactivé puis activé.\nContre-exemple : Robinhood a retiré ses confettis après des critiques sur la gamification du trading, un « waouh » mal dosé.',
     21: 'Ce rapprochement entre blocs et facettes est ma lecture, pas une correspondance officielle de Morville.',
     4: 'À main levée : pour chaque phrase, qui dit UI, qui dit UX ? Puis révéler.',
-    22: 'Trois exercices au choix, le temps en permet deux : vote à main levée. Si c’est équilibré : l’affiche, puis le site. Le formulaire (C) est marqué bonus, il peut aussi se faire à la maison.',
-    30: 'Exercice C, slide bonus. Ouvrir le formulaire Atelier Rayon (version de départ), lancer le chrono, laisser remplir avec une adresse fictive en Suisse.\nConsigne : noter tout ce qui gêne. L’écran est soigné, les défauts sont ailleurs.\nArrêter le chrono quand la majorité a fini : ce temps servira de comparaison après les corrections.',
-    31: 'Faire deviner bloc par bloc, puis révéler.\nDesign system : hauteurs 40, 44, 48 et 52 px, arrondis 0, 6, 10 et 14 px.\nFriction : autocomplete="off" bloque le remplissage du navigateur, NPA et localité avant la rue.\nAccessibilité : axe-core trouve 2 erreurs, les étiquettes Prénom et Nom non reliées. Le reste ne se voit qu’à l’usage.\nAnalyse comportementale : Hotjar a retiré son analyse de formulaires, l’abandon se voit dans les enregistrements de sessions.\nMicrocopie : « Erreur champ 1 », bouton « Soumettre », placeholders qui disparaissent dès qu’on tape.\nPerformance perçue : 1,8 seconde d’envoi sans retour, on clique deux fois.',
-    32: 'Corriger avec l’IA défaut par défaut, l’autocomplétion en dernier : taper « Rue du Seyon 10 » dans la version corrigée.\nMessage : un designer dessine le champ, mais l’autocomplétion demande du code et des choix techniques (quelle API, quel délai, que faire si elle ne répond pas).\nPhoton : gratuit, sans clé, données OpenStreetMap, serveur public en usage raisonnable. Nominatim interdit l’autocomplétion sur son serveur public.\nCe qu’on tape part chez un tiers : adresse fictive en exercice, mention dans la politique de confidentialité sur un vrai site.',
-    23: 'Un A4 collé au mur : pas de verso, pas de deuxième chance, tout d’un coup d’œil. Une page web défile.\nNe garder que l’information réellement nécessaire.',
-    25: 'Trois informations imposées (quoi, quand, où) pour que le débrief compare les hiérarchies, pas la maîtrise d’un outil.\nÀ la fin, demander à l’oral quels outils ont été utilisés : c’est la transition vers ma méthode.',
-    24: 'Deux affiches réelles, d’allure générée par IA (non vérifié). La première a été publiée par le magazine étapes, la seconde vient d’une recherche d’images, origine inconnue.\n1. Trop d’informations : tout est écrit, donc rien ne ressort.\n2. Un style vu partout : rubans, ardoises, collage de photos, lettrage au pinceau. Quand toutes les affiches se ressemblent, on ne les remarque plus.\nCe qu’il faut faire : une idée, trois informations, une hiérarchie claire.\nÀ citer : l’article de Next sur les affiches IA de l’été 2026 (slide Références).',
-    27: 'Ce que je montre en démo : l’affiche construite par Claude dans Penpot, à partir de mes composants.\nPourquoi construire plutôt que générer : une IA image régénère tout en pixels, le texte se déforme, le logo change, et l’image ne se modifie pas. Construite via MCP, l’affiche garde un vrai texte, le logo d’origine, et se décline à tous les formats.\nL’IA image reste utile pour les ingrédients : ambiance, illustration, texture.\nPourquoi Penpot : outil libre et gratuit, son MCP officiel tourne en local, sans quota. Il est jeune, présenté comme expérimental début 2026.\nFigma : son MCP est limité à 20 appels par mois avec un siège gratuit ou Collab, 200 par jour sur un siège Professional payant.\nLes deux se combinent : créer avec l’IA dans Penpot, exporter en SVG, reprendre dans Figma.\nMCP : le protocole qui relie une IA à un outil pour qu’elle l’utilise directement.',
-    26: 'À dire à l’oral : c’est ma méthode, pas la seule possible. Elle marche avec Figma comme avec Penpot.\nMoodboard généré par IA (style, couleurs).\nDesign system dans Figma (logos vectoriels, couleurs, composants).\nClaude relié à Figma reconstruit l’affiche proprement.\nExport vectoriel.\nOnglet 1 : même un logo SVG envoyé à une IA image n’est pas copié, il est régénéré en pixels, avec de petits défauts de courbes, de proportions et d’anti-aliasing, et la vectorisation est perdue.\nOnglet 2 : mêmes composants, mêmes couleurs, même rayon, de l’A4 à la banderole de 4 m. Une IA image régénère un résultat différent à chaque format.',
-    28: 'Site Tilleul (npm run dev). Mimer l’utilisateur : accueil, collection, fiche produit, ajout au panier, panier, tunnel de commande.\nLes quatre défauts, dans l’ordre du parcours :\n1. Fiche produit : « Ajouter au panier » ne donne aucun retour pendant 1,2 seconde (performance perçue).\n2. Panier : le total est caché, puis le tunnel impose de créer un compte (friction).\n3. Tunnel : trois boutons « Soumettre » et « Erreur champ 4 » si le téléphone est vide (microcopie).\n4. Invisible à l’œil : images sans texte alternatif, prix barrés en gris trop clair (accessibilité).',
-    29: 'Défauts invisibles à l’œil nu : images sans texte alternatif, contraste insuffisant (1,69:1 sur les prix barrés).\nLighthouse : score d’accessibilité 89 sur la page collection, deux audits en échec. Pa11y : 21 erreurs sur 4 pages, 10 images et 11 contrastes.\nCommandes : npx pa11y http://localhost:5173/boutique',
-    34: 'Petit modèle : automatisation mécanique (lancer Pa11y, structurer le rapport).\nGrand modèle : analyse et plan de correction priorisé, qui croise l’audit et les réponses du Kahoot.\nModèle intermédiaire : exécution des corrections, bloc par bloc.\nNoms à donner à l’oral, ils changent vite : un modèle léger, Opus pour le plan, Sonnet pour l’exécution.',
-    35: 'Hors programme, seulement si on me le demande : piloter l’IA à la voix depuis le téléphone (Remote Control de Claude Code, Codex).\nFilet de sécurité : npm run corrige applique les quatre corrections d’un coup, npm run casse remet les défauts.\nL’image de la page d’accueil a un texte alternatif qui vaut « image » : l’audit ne la signale pas.\nC’est ici que se prouve « l’IA accélère, les bases décident » : l’audit signale un texte alternatif manquant, pas un texte alternatif inutile ni un bouton « Soumettre ».\nOn ne corrige pas tout en direct : certaines corrections n’ont pas besoin de l’IA.'
+    35: 'Trois exercices au choix, le temps en permet deux : vote à main levée. Si c’est équilibré : l’affiche, puis le site. Le formulaire (C) est marqué bonus, il peut aussi se faire à la maison.',
+    43: 'Exercice C, slide bonus. Ouvrir le formulaire Atelier Rayon (version de départ), lancer le chrono, laisser remplir avec une adresse fictive en Suisse.\nConsigne : noter tout ce qui gêne. L’écran est soigné, les défauts sont ailleurs.\nArrêter le chrono quand la majorité a fini : ce temps servira de comparaison après les corrections.',
+    44: 'Faire deviner bloc par bloc, puis révéler.\nDesign system : hauteurs 40, 44, 48 et 52 px, arrondis 0, 6, 10 et 14 px.\nFriction : autocomplete="off" bloque le remplissage du navigateur, NPA et localité avant la rue.\nAccessibilité : axe-core trouve 2 erreurs, les étiquettes Prénom et Nom non reliées. Le reste ne se voit qu’à l’usage.\nAnalyse comportementale : Hotjar a retiré son analyse de formulaires, l’abandon se voit dans les enregistrements de sessions.\nMicrocopie : « Erreur champ 1 », bouton « Soumettre », placeholders qui disparaissent dès qu’on tape.\nPerformance perçue : 1,8 seconde d’envoi sans retour, on clique deux fois.',
+    45: 'Corriger avec l’IA défaut par défaut, l’autocomplétion en dernier : taper « Rue du Seyon 10 » dans la version corrigée.\nMessage : un designer dessine le champ, mais l’autocomplétion demande du code et des choix techniques (quelle API, quel délai, que faire si elle ne répond pas).\nPhoton : gratuit, sans clé, données OpenStreetMap, serveur public en usage raisonnable. Nominatim interdit l’autocomplétion sur son serveur public.\nCe qu’on tape part chez un tiers : adresse fictive en exercice, mention dans la politique de confidentialité sur un vrai site.',
+    36: 'Un A4 collé au mur : pas de verso, pas de deuxième chance, tout d’un coup d’œil. Une page web défile.\nNe garder que l’information réellement nécessaire.',
+    38: 'Trois informations imposées (quoi, quand, où) pour que le débrief compare les hiérarchies, pas la maîtrise d’un outil.\nÀ la fin, demander à l’oral quels outils ont été utilisés : c’est la transition vers ma méthode.',
+    37: 'Deux affiches réelles, d’allure générée par IA (non vérifié). La première a été publiée par le magazine étapes, la seconde vient d’une recherche d’images, origine inconnue.\n1. Trop d’informations : tout est écrit, donc rien ne ressort.\n2. Un style vu partout : rubans, ardoises, collage de photos, lettrage au pinceau. Quand toutes les affiches se ressemblent, on ne les remarque plus.\nCe qu’il faut faire : une idée, trois informations, une hiérarchie claire.\nÀ citer : l’article de Next sur les affiches IA de l’été 2026 (slide Références).',
+    40: 'Ce que je montre en démo : l’affiche construite par Claude dans Penpot, à partir de mes composants.\nPourquoi construire plutôt que générer : une IA image régénère tout en pixels, le texte se déforme, le logo change, et l’image ne se modifie pas. Construite via MCP, l’affiche garde un vrai texte, le logo d’origine, et se décline à tous les formats.\nL’IA image reste utile pour les ingrédients : ambiance, illustration, texture.\nPourquoi Penpot : outil libre et gratuit, son MCP officiel tourne en local, sans quota. Il est jeune, présenté comme expérimental début 2026.\nFigma : son MCP est limité à 20 appels par mois avec un siège gratuit ou Collab, 200 par jour sur un siège Professional payant.\nLes deux se combinent : créer avec l’IA dans Penpot, exporter en SVG, reprendre dans Figma.\nMCP : le protocole qui relie une IA à un outil pour qu’elle l’utilise directement.',
+    39: 'À dire à l’oral : c’est ma méthode, pas la seule possible. Elle marche avec Figma comme avec Penpot.\nMoodboard généré par IA (style, couleurs).\nDesign system dans Figma (logos vectoriels, couleurs, composants).\nClaude relié à Figma reconstruit l’affiche proprement.\nExport vectoriel.\nOnglet 1 : même un logo SVG envoyé à une IA image n’est pas copié, il est régénéré en pixels, avec de petits défauts de courbes, de proportions et d’anti-aliasing, et la vectorisation est perdue.\nOnglet 2 : mêmes composants, mêmes couleurs, même rayon, de l’A4 à la banderole de 4 m. Une IA image régénère un résultat différent à chaque format.',
+    41: 'Site Tilleul (npm run dev). Mimer l’utilisateur : accueil, collection, fiche produit, ajout au panier, panier, tunnel de commande.\nLes quatre défauts, dans l’ordre du parcours :\n1. Fiche produit : « Ajouter au panier » ne donne aucun retour pendant 1,2 seconde (performance perçue).\n2. Panier : le total est caché, puis le tunnel impose de créer un compte (friction).\n3. Tunnel : trois boutons « Soumettre » et « Erreur champ 4 » si le téléphone est vide (microcopie).\n4. Invisible à l’œil : images sans texte alternatif, prix barrés en gris trop clair (accessibilité).',
+    42: 'Défauts invisibles à l’œil nu : images sans texte alternatif, contraste insuffisant (1,69:1 sur les prix barrés).\nLighthouse : score d’accessibilité 89 sur la page collection, deux audits en échec. Pa11y : 21 erreurs sur 4 pages, 10 images et 11 contrastes.\nCommandes : npx pa11y http://localhost:5173/boutique',
+    47: 'Petit modèle : automatisation mécanique (lancer Pa11y, structurer le rapport).\nGrand modèle : analyse et plan de correction priorisé, qui croise l’audit et les réponses du Kahoot.\nModèle intermédiaire : exécution des corrections, bloc par bloc.\nNoms à donner à l’oral, ils changent vite : un modèle léger, Opus pour le plan, Sonnet pour l’exécution.',
+    48: 'Hors programme, seulement si on me le demande : piloter l’IA à la voix depuis le téléphone (Remote Control de Claude Code, Codex).\nFilet de sécurité : npm run corrige applique les quatre corrections d’un coup, npm run casse remet les défauts.\nL’image de la page d’accueil a un texte alternatif qui vaut « image » : l’audit ne la signale pas.\nC’est ici que se prouve « l’IA accélère, les bases décident » : l’audit signale un texte alternatif manquant, pas un texte alternatif inutile ni un bouton « Soumettre ».\nOn ne corrige pas tout en direct : certaines corrections n’ont pas besoin de l’IA.',
+    22: 'La différence, c’est l’action : un agent enchaîne seul plusieurs étapes, on lui confie une mission.\nClaude : Claude Code (terminal ou application de bureau), Claude dans Chrome (extension, offres payantes).\nChatGPT : Codex, et l’agent de l’application de bureau, qui a son propre navigateur depuis l’arrêt du navigateur Atlas en août 2026.',
+    23: 'MCP, Model Context Protocol : un standard ouvert présenté par Anthropic fin 2024, adopté depuis par OpenAI et la plupart des outils.\nLe MCP ne rend pas l’IA plus intelligente : il lui donne accès aux bons outils.\nExemples réels : Playwright MCP (Microsoft, navigateur), Chrome DevTools MCP (Google), Figma et Penpot, Clarity (MCP officiel de Microsoft).\nSkill : des consignes rangées dans un dossier, chargées quand la tâche s’y prête. Plugin : un paquet de skills, d’outils et de MCP qu’on installe d’un coup.',
+    24: 'Prix d’octobre 2026, à vérifier avant le cours : Claude Pro et ChatGPT Plus coûtent 20 dollars par mois (Claude Pro : 17 dollars par mois en paiement annuel). Les limites d’usage changent souvent.\nOpenCode : agent de code open source (licence MIT), compatible avec plus de 75 fournisseurs de modèles.\nHermes Agent : agent open source de Nous Research.\nLe logiciel est gratuit, mais on paie le modèle à l’usage avec une clé API, parfois aussi un serveur : la facture dépend de l’usage, sans plafond.',
+    25: 'Trois façons de travailler, de la plus simple à la plus puissante : on choisit la plus simple qui suffit.\nExemple : pour connaître un rapport de contraste, un vérificateur gratuit suffit. Pour savoir si un texte alternatif décrit bien son image, il faut du jugement : là, l’IA aide.',
+    26: 'Ces quatre clés valent pour tous les blocs qui suivent.\nL’intention : l’IA voit une incohérence, elle ne sait pas si elle est voulue.\nLa cible : sans elle, l’IA juge pour un utilisateur moyen qui n’existe pas.\nLe ton : sans exemples, elle écrit des textes passe-partout, comme les affiches qui se ressemblent toutes.\nLes pages : un agent à qui on donne juste une adresse se perd. Il doit savoir quelles pages regarder et où s’arrêter.',
+    27: 'Un agent qui navigue lit les styles calculés de chaque élément : des valeurs exactes, pas une estimation à partir d’une image.\nIl travaille sur le site en ligne, ou directement dans le code s’il a accès au dépôt.\nSans IA : le panneau CSS Overview de Chrome. Dans Figma : Design Lint, open source.\nSuite possible : reconstruire les composants dans Figma ou Penpot grâce à leur MCP. L’écriture sur le canevas de Figma est encore en bêta en 2026.',
+    28: 'L’agent joue un rôle : on lui donne la cible et l’objectif, il fait le parcours dans un vrai navigateur (Playwright MCP, Chrome DevTools MCP, Claude dans Chrome).\nIl note les obstacles : pop-ups, choix trop nombreux, boutons difficiles à atteindre, compte obligatoire.\nLimite : des études de 2026 montrent que les utilisateurs simulés ne se comportent pas comme de vraies personnes. Ce sont des pistes, à confirmer avec cinq vrais utilisateurs.',
+    29: 'Un blocage anti-robots n’est pas une friction pour vos vrais clients : ne pas le compter comme tel.\nContourner un CAPTCHA ou une protection est interdit par les conditions d’utilisation de la plupart des sites.\nLes fausses données faussent ensuite le bloc 4 (analyse comportementale), le CRM et les ventes. Travailler sur une copie de test, ou filtrer ces visites.',
+    30: 'L’audit automatique vérifie qu’un texte alternatif existe, pas qu’il a du sens : alt="image" passe, mais un lecteur d’écran lit juste « image ». C’est le cas sur la page d’accueil de Tilleul.\nUn agent qui voit l’image et lit sa description peut juger si elles correspondent.\nPlaywright MCP transmet à l’IA l’arbre d’accessibilité de la page : titres, boutons et champs avec leurs noms, comme un lecteur d’écran.\nPa11y, Lighthouse et axe existent aussi en MCP.',
+    31: 'Clarity : gratuit, avec un MCP officiel de Microsoft et une clé API.\nHotjar fait désormais partie de Contentsquare, qui a son propre MCP officiel. Conditions de l’offre gratuite à vérifier avant le cours.\nLes chiffres disent où les gens partent, pas pourquoi : l’IA proposera une explication avec assurance. Lui demander des hypothèses, puis les vérifier.\nDonnées personnelles : informer les visiteurs, recueillir le consentement quand il est requis. Les envoyer à une IA, c’est les partager avec un service de plus.',
+    32: 'Un agent qui reçoit juste une adresse se perd : il doit demander les pages clés (formulaire, panier, pages d’erreur).\nIl provoque les erreurs pour lire les vrais messages, invisibles tant que tout se passe bien.\nSans fiche de ton, l’IA écrit des textes corrects mais passe-partout. La fiche : tutoiement ou vouvoiement, humour ou non, trois ou quatre phrases « comme on parle chez nous ».\nSans IA : Vale, un correcteur de style open source, applique des règles du type « jamais Soumettre ».',
+    33: 'Chrome DevTools MCP (Google) enregistre une trace de performance et en tire des pistes. Par défaut, il envoie l’adresse de la page à Google pour les données réelles : l’option --no-performance-crux l’évite.\nUnlighthouse : Lighthouse sur toutes les pages d’un site d’un coup, gratuit et open source.\nPiège : si on demande « rends le chargement plus rassurant », l’IA peut ajouter une fausse barre de progression, voire ralentir une action déjà instantanée. Le test de la slide 19 : l’utilisateur serait-il d’accord s’il le savait ?',
+    34: 'Le plugin rassemble les prompts de cette partie : questions de départ, six blocs, rapport.\nChaque constat est marqué : mesuré par un outil, indice à confirmer, ou avis de l’IA.\nAdresse GitHub : à renseigner dans CONFIG.urls.PLUGIN_URL, le QR code se génère tout seul. Plugin en cours de construction.'
   }
 };
 
