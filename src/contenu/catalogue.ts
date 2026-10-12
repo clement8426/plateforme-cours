@@ -106,9 +106,9 @@ const uxIa: Cours = {
       scene: 'tilleul',
       deroule: [
         { texte: 'Sans aide, faites le parcours d’un client en pensant à voix haute : accueil, collection, fiche du vase Dune, panier, commande.' },
-        { texte: 'Demandez à la salle où ça gêne : la fenêtre qui surgit, la collection vide 4 secondes, « Ajouter au panier » introuvable, les options cochées d’office…' },
-        { texte: 'Passez en mode cours : les pastilles révèlent les douze défauts, rangés dans les six blocs. Ouvrez-en un par bloc.' },
-        { texte: 'Cliquez sur « Améliorer » : le défaut est corrigé en direct. Comparez avant et après.' },
+        { texte: 'Passez en mode cours, puis « Chercher » (touche C) : la salle dit où ça gêne, vous cliquez. Chaque bonne réponse fait apparaître le défaut.' },
+        { texte: 'Ce que personne n’a trouvé : « Révéler » (R) le montre. « Visite guidée » (V) parcourt les douze, page par page.' },
+        { texte: 'Sur chaque défaut, basculez Avant / Après (touche A) pour montrer la correction en direct.' },
         { texte: 'Montrez ce que l’audit automatique voit, et ce qu’il rate.', action: { texte: 'Diapo de la révélation', href: '/ux/ux-ia/diapos/?diapo=35' } },
       ],
       aRetenir: [
