@@ -935,7 +935,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <!-- ================= PARTIE 4 : LES BONS RÉFLEXES (slides 27 à 33) ================= -->
 
 <section class="slide" data-part="4" data-key="arbre">
-  <h2 class="title">Trois questions avant d’envoyer quoi que ce soit</h2>
+  <h2 class="title">Avant d’envoyer à une IA : trois questions</h2>
   <div class="body">
     <div class="arbre" data-comp="arbre"></div>
   </div>
@@ -1171,13 +1171,13 @@ const CONFIG = {
 
   // Slide 27 : l'arbre de décision
   arbre: {
-    q1: { question: 'La donnée concerne-t-elle une personne identifiable ?', aide: 'Nom, adresse, numéro AVS, photo, ou un détail qui permet de la retrouver.', oui: 'q2', non: 'vert' },
-    q2: { question: 'Est-elle sensible, ou couverte par un secret professionnel ?', aide: 'Santé, religion, opinions, biométrie, ou ce qu’un avocat ou un médecin apprend dans son métier.', oui: 'rouge', non: 'q3' },
-    q3: { question: 'Peut-on vraiment l’anonymiser, sans perdre ce qui sert ?', aide: 'Retirer le nom ne suffit pas : âge, lieu, date et métier suffisent souvent.', oui: 'vertAnon', non: 'orange' },
-    vert: { feu: 'vert', titre: 'Tous les outils sont possibles', txt: 'Texte public, document vierge, données fictives : on peut même comparer les modèles américains.' },
+    q1: { question: 'Est-ce médical, intime, ou couvert par un secret professionnel ?', aide: 'PDF, tableur, photo ou audio : c’est le contenu qui compte. Santé, religion, opinions, biométrie, condamnations, ou ce qu’un médecin, un avocat ou un banquier apprend dans son métier.', oui: 'rouge', non: 'q2' },
+    q2: { question: 'Est-ce réservé à certaines personnes, ou cela parle-t-il de quelqu’un ?', aide: 'Réservé : vous, votre chef, l’équipe ou un client seulement. Quelqu’un : un nom, un visage, une voix, une adresse e-mail, ou des indices qui permettent de le retrouver.', oui: 'q3', non: 'vert' },
+    q3: { question: 'Peut-on vraiment l’anonymiser, sans perdre ce qui sert ?', aide: 'Retirer le nom ne suffit pas : âge, lieu, date et métier suffisent souvent. Un secret d’affaires, lui, ne s’anonymise pas.', oui: 'vertAnon', non: 'orange' },
+    vert: { feu: 'vert', titre: 'Tous les outils sont possibles', txt: 'Ce que tout le monde peut déjà lire : site web, brochure, texte de loi, modèle vierge, données fictives. ChatGPT, Claude ou Gemini, au choix.' },
     vertAnon: { feu: 'vert', titre: 'Anonymiser d’abord, puis envoyer', txt: 'Généraliser l’âge, le lieu et la date, retirer les noms. Une deuxième personne relit.' },
-    orange: { feu: 'orange', titre: 'Offre entreprise sous contrat, ou IA suisse', txt: 'Contrat de traitement, analyse du transfert, pas d’entraînement. Dans le doute : l’IA suisse.' },
-    rouge: { feu: 'rouge', titre: 'Local ou IA suisse, en appel direct', txt: 'OCR et Whisper sur l’ordinateur, rédaction par un modèle hébergé en Suisse, sans intermédiaire américain.' }
+    orange: { feu: 'orange', titre: 'Offre entreprise sous contrat, ou IA suisse', txt: 'Pas d’entraînement, pas d’historique, un contrat de traitement des données. Dans le doute : l’IA hébergée en Suisse.' },
+    rouge: { feu: 'rouge', titre: 'Sur l’ordinateur, ou IA hébergée en Suisse', txt: 'Lecture et transcription sur l’ordinateur, rédaction par un modèle open source hébergé en Suisse, sous contrat (Infomaniak, par exemple). Jamais un chat grand public.' }
   },
 
   // Slide 28 : les briques de la démo
