@@ -18,7 +18,7 @@ export type Demo = {
   blocs: BlocId[];
   duree: string;
   apercu: string;
-  scene: 'affiche' | 'tilleul' | 'comparateur' | 'dossier' | 'reidentification';
+  scene: 'affiche' | 'tilleul' | 'comparateur' | 'dossier' | 'reidentification' | 'tri';
   comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
   modeEmploi: string[]; // trois gestes, pour quelqu'un qui découvre la démo seul
   aRetenir: string[];
@@ -214,6 +214,26 @@ const iaDonnees: Cours = {
         'L’IA générative n’intervient qu’à la fin, sur du texte.',
       ],
       exercice: '02-dossier-mme-fictive',
+    },
+    {
+      slug: 'puis-je-l-envoyer',
+      titre: 'Puis-je l’envoyer à une IA ?',
+      resume: 'Douze fichiers de l’étude : un PDF, des tableurs, une photo, un audio, une capture d’écran. Pour chacun, trois questions, et la couleur tombe : vert, orange ou rouge.',
+      blocs: ['sensible', 'personnelles', 'transfert'],
+      duree: '15 minutes',
+      apercu: '/apercus/demo-tri.jpg',
+      scene: 'tri',
+      modeEmploi: [
+        'Choisissez un fichier dans la liste. Regardez ce qu’il contient, et ce que vous voulez en faire.',
+        'Répondez aux trois questions, dans l’ordre. La couleur tombe, avec l’outil qui convient.',
+        'Comparez avec la réponse attendue, puis passez au fichier suivant. Chaque fichier se télécharge.',
+      ],
+      aRetenir: [
+        'Le format ne compte pas : PDF, tableur, photo ou audio, c’est le contenu qui décide.',
+        'Une seule colonne, ou un détail à l’arrière-plan d’une capture, peut faire passer un fichier au rouge.',
+        'Trois questions, toujours dans le même ordre : sensible ou secret ? réservé ou personnel ? anonymisable ?',
+      ],
+      exercice: '03-puis-je-l-envoyer',
     },
     {
       slug: 'reidentification',

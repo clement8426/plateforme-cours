@@ -5,6 +5,7 @@ import AfficheTest from '@/composants/AfficheTest';
 import ComparateurFormulaire from '@/composants/ComparateurFormulaire';
 import DossierAvantApres from '@/composants/DossierAvantApres';
 import Reidentification from '@/composants/Reidentification';
+import TriFichiers from '@/composants/TriFichiers';
 import FilAriane from '@/composants/FilAriane';
 import MarqueVu from '@/composants/MarqueVu';
 import PucesBlocs from '@/composants/PucesBlocs';
@@ -39,7 +40,7 @@ export default async function PageDemo(props: Props) {
   const comparateur = demo.comparateur ? trouverComparateur(demo.comparateur) : undefined;
 
   return (
-    <div className={`page${['comparateur', 'dossier', 'reidentification'].includes(demo.scene) ? ' page-large' : ''}`}>
+    <div className={`page${['comparateur', 'dossier', 'reidentification', 'tri'].includes(demo.scene) ? ' page-large' : ''}`}>
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `${base}/` },
@@ -68,6 +69,7 @@ export default async function PageDemo(props: Props) {
         {demo.scene === 'comparateur' && comparateur && <ComparateurFormulaire comparateur={comparateur} />}
         {demo.scene === 'dossier' && <DossierAvantApres cours={cle} />}
         {demo.scene === 'reidentification' && <Reidentification cours={cle} />}
+        {demo.scene === 'tri' && <TriFichiers cours={cle} />}
       </div>
 
 

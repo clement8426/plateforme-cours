@@ -487,6 +487,42 @@ html.theatre { overflow: hidden; }
 .juste { background: var(--vert-doux); color: inherit; padding: 0 3px; border-radius: 4px; }
 @media (max-width: 1000px) { .dossier { grid-template-columns: 1fr; } }
 
+/* « Puis-je l'envoyer ? » : douze fichiers à trier */
+.tri { --feu-vert: var(--vert); --feu-orange: #A15C07; --feu-rouge: var(--b-sensible); display: grid; grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.tri-gauche { display: grid; gap: 12px; }
+.tri-score { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; font-weight: 600; }
+.tri-liste { display: grid; gap: 6px; padding: 0; list-style: none; }
+.tri-fichier { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 8px 14px; border: 1px solid var(--ligne); border-radius: 12px; background: var(--surface); color: var(--encre); font: 500 16px/1.3 var(--police-texte), sans-serif; text-align: left; cursor: pointer; }
+.tri-fichier:hover { border-color: var(--encre); }
+.tri-fichier.est-choisi { border: 2px solid var(--encre); padding: 7px 13px; }
+.tri-format { font-size: 13px; font-weight: 600; color: var(--discret); }
+.tri-etat { font-size: 13px; font-weight: 600; color: var(--discret); white-space: nowrap; }
+.tri-etat::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 50%; border: 2px solid var(--ligne); vertical-align: -1px; }
+.tri-etat.est-vert::before { background: var(--feu-vert); border-color: var(--feu-vert); }
+.tri-etat.est-orange::before { background: var(--feu-orange); border-color: var(--feu-orange); }
+.tri-etat.est-rouge::before { background: var(--feu-rouge); border-color: var(--feu-rouge); }
+.tri-etat:not([class*="est-"]) { font-weight: 500; }
+.tri-panneau { display: grid; gap: 12px; padding: clamp(18px, 2.5vw, 28px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); scroll-margin-top: 16px; }
+@media (min-width: 1001px) { .tri-panneau { position: sticky; top: 16px; } }
+.tri-panneau .titre-section { font-size: clamp(22px, 2.4vw, 28px); }
+.tri-but { font-size: 18px; }
+.tri-apercu { display: grid; gap: 8px; }
+.tri-apercu pre { margin: 0; padding: 14px 16px; border-radius: 10px; background: var(--fond); border: 1px solid var(--ligne); font: 14px/1.55 ui-monospace, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+.tri-apercu img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--ligne); }
+.tri-apercu audio { width: 100%; }
+.lien-telecharger { justify-self: start; font-size: 15px; }
+.tri-chemin { display: grid; gap: 4px; padding: 0; list-style: none; font-size: 15px; color: var(--discret); }
+.tri-chemin strong { display: inline-block; min-width: 3em; color: var(--encre); }
+.tri-question { display: grid; gap: 8px; padding-top: 4px; }
+.tri-question h3 { font-size: 20px; line-height: 1.3; }
+.tri-question p { color: var(--discret); }
+.tri-verdict { --c: var(--feu-vert); display: grid; gap: 8px; padding: 16px 18px; border: 2px solid var(--c); border-radius: 12px; background: color-mix(in srgb, var(--c) 10%, var(--surface)); }
+.tri-verdict.est-orange { --c: var(--feu-orange); }
+.tri-verdict.est-rouge { --c: var(--feu-rouge); }
+.tri-verdict h3 { font-size: 20px; line-height: 1.3; }
+@media (max-width: 1000px) { .tri { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .tri-fichier { grid-template-columns: minmax(0, 1fr) auto; } .tri-fichier .tri-format { grid-column: 1 / -1; } }
+
 /* la réidentification : des indices cliquables, puis réglables */
 .reid-fragment { display: inline; padding: 0 4px; border: 0; border-radius: 4px; background: #FFF1C2; color: #1E2129; font: inherit; text-decoration: underline dashed 1px; text-underline-offset: 4px; cursor: pointer; }
 button.reid-fragment:hover { background: #FFE38A; }
