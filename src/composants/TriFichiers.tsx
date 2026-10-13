@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { FICHIERS, QUESTIONS, RESULTATS, couleurDe, type Couleur } from '@/contenu/tri-fichiers';
+import { CHEMINS, FICHIERS, QUESTIONS, RESULTATS, couleurDe, type Couleur } from '@/contenu/tri-fichiers';
 import { marquerVu } from './memoire';
 
 // Démonstration « Puis-je l'envoyer à une IA ? » : on choisit un fichier, on répond aux trois questions,
@@ -18,6 +18,9 @@ export default function TriFichiers({ cours }: { cours: string }) {
   const rep = reponses[fichier.id] ?? [];
   const resultat = couleurDe(rep);
   const question = resultat ? null : QUESTIONS[rep.length];
+  const attendu = CHEMINS[fichier.attendu];
+  const ecart = resultat ? rep.findIndex((r, k) => r !== attendu[k]) : -1; // la première question ratée
+  const ouiNon = (b: boolean) => (b ? 'Oui' : 'Non');
 
   const faits = FICHIERS.filter((f) => couleurDe(reponses[f.id] ?? []));
   const justes = faits.filter((f) => couleurDe(reponses[f.id]) === f.attendu);
@@ -50,8 +53,8 @@ export default function TriFichiers({ cours }: { cours: string }) {
                 <button type="button" className={'tri-fichier' + (f.id === choisi ? ' est-choisi' : '')} aria-current={f.id === choisi ? 'true' : undefined} onClick={() => ouvrir(f.id)}>
                   <span className="tri-format">{f.format}</span>
                   <span className="tri-titre">{f.titre}</span>
-                  <span className={'tri-etat' + (c ? ` est-${PASTILLE[c]}` : '')}>
-                    {c ? <>{RESULTATS[c].nom}{c === f.attendu ? ' ✓' : ' ✗'}<span className="visuellement-cache">{c === f.attendu ? ', juste' : ', à revoir'}</span></> : 'À trier'}
+                  <span className={'tri-etat' + (c ? ` est-${PASTILLE[f.attendu]}` : '')}>
+                    {c ? <>{RESULTATS[f.attendu].nom}{c === f.attendu ? ' ✓' : ', à revoir'}<span className="visuellement-cache">{c === f.attendu ? ', juste' : ''}</span></> : 'À trier'}
                   </span>
                 </button>
               </li>
@@ -79,7 +82,12 @@ export default function TriFichiers({ cours }: { cours: string }) {
 
         {rep.length > 0 && (
           <ol className="tri-chemin" aria-label="Vos réponses">
-            {rep.map((r, k) => <li key={k}><strong>{r ? 'Oui' : 'Non'}</strong> {QUESTIONS[k].question}</li>)}
+            {rep.map((r, k) => (
+              <li key={k} className={resultat ? (r === attendu[k] ? 'est-juste' : 'est-faux') : undefined}>
+                <strong>{ouiNon(r)}</strong> {QUESTIONS[k].question}
+                {resultat && r !== attendu[k] && <span className="tri-correction"> La bonne réponse : {ouiNon(attendu[k])}.</span>}
+              </li>
+            ))}
           </ol>
         )}
 
@@ -96,7 +104,8 @@ export default function TriFichiers({ cours }: { cours: string }) {
 
         {resultat && (
           <div className={`tri-verdict est-${PASTILLE[fichier.attendu]}`}>
-            <h3>{resultat === fichier.attendu ? `Juste : ${RESULTATS[resultat].nom.toLowerCase()}` : `Vous avez dit ${RESULTATS[resultat].nom.toLowerCase()}. La bonne réponse : ${RESULTATS[fichier.attendu].nom.toLowerCase()}`}</h3>
+            <p className="tri-feu"><span className="tri-feu-pastille" aria-hidden="true" />Ce fichier est {RESULTATS[fichier.attendu].nom.toLowerCase()}</p>
+            <h3>{ecart < 0 ? 'Juste : vos réponses mènent à la bonne couleur.' : `Pas tout à fait : à la question ${ecart + 1}, il fallait répondre « ${ouiNon(attendu[ecart])} ».`}</h3>
             <p>{fichier.pourquoi}</p>
             <p><strong>Avec quel outil :</strong> {RESULTATS[fichier.attendu].outil}</p>
             <div className="actions">

@@ -36,24 +36,30 @@ Le mandat peut être révoqué en tout temps par le client.
 Document fictif, créé pour un exercice. Aucune donnée réelle.
 `);
 
-ecrire('modele-lettre-relance.txt', `[Nom du client]
-[Adresse]
-[NPA et localité]
+ecrire('annonce-emploi.txt', `OFFRE D'EMPLOI
+Assistante ou assistant juridique, 80 à 100 %
+Étude Fictive Avocats, Rue de l'Exemple 12, 2000 Neuchâtel
 
-Neuchâtel, le [date]
+Publiée le 1er octobre 2026 sur www.etude-fictive.example et sur une plateforme d'emploi.
 
-Concerne : votre dossier [référence]
+Vos tâches
+- Suivre les délais de procédure et tenir l'agenda des avocats.
+- Rédiger les courriers courants et mettre en forme les mémoires.
+- Accueillir les clients, au téléphone et à la réception, en français et en allemand.
 
-Madame, Monsieur,
+Votre profil
+- CFC d'employé·e de commerce, ou formation équivalente.
+- Deux ans d'expérience dans une étude ou une fiduciaire.
+- Allemand courant, à l'oral comme à l'écrit.
 
-Sauf erreur de notre part, notre note d'honoraires n° [numéro] du [date] reste impayée à ce jour.
-Nous vous remercions de bien vouloir procéder à son règlement dans un délai de 30 jours.
+Ce que nous offrons
+- Une équipe de dix personnes, à deux minutes de la gare.
+- Cinq semaines de vacances et une formation continue payée par l'étude.
 
-Avec nos salutations distinguées.
+Entrée en fonction : 1er janvier 2027.
+Dossier complet à envoyer à emploi@etude-fictive.example avant le 31 octobre 2026.
 
-Étude Fictive Avocats
-
-Modèle fictif, créé pour un exercice.
+Annonce fictive, créée pour un exercice.
 `);
 
 ecrire('budget-2027.csv', `Poste;Budget 2026 (CHF);Budget 2027 (CHF);Commentaire
@@ -227,7 +233,7 @@ $s.Dispose()
 }
 
 // ---------- Copie dans le dépôt des exercices ----------
-const noms = ['brochure-etude.pdf', 'conditions-generales.txt', 'modele-lettre-relance.txt', 'cv-candidate.pdf', 'budget-2027.csv', 'contrat-bail-bureaux.pdf', 'email-devis-imprimante.eml', 'planning-absences-octobre.csv', 'photo-tableau-blanc.png', 'note-vocale-associe.wav', 'liste-clients.csv', 'capture-erreur-logiciel.png'];
+const noms = ['brochure-etude.pdf', 'conditions-generales.txt', 'annonce-emploi.txt', 'cv-candidate.pdf', 'budget-2027.csv', 'contrat-bail-bureaux.pdf', 'email-devis-imprimante.eml', 'planning-absences-octobre.csv', 'photo-tableau-blanc.png', 'note-vocale-associe.wav', 'liste-clients.csv', 'capture-erreur-logiciel.png'];
 if (existsSync(resolve(depot, '..', '..'))) {
   mkdirSync(depot, { recursive: true });
   for (const n of noms) copyFileSync(join(site, n), join(depot, n));

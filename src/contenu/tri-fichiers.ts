@@ -32,6 +32,14 @@ export const RESULTATS: Record<Couleur, { nom: string; outil: string }> = {
   rouge: { nom: 'Rouge', outil: 'Sur l’ordinateur, ou une IA hébergée en Suisse sous contrat. Jamais un chat grand public.' },
 };
 
+// Les réponses attendues, question par question, pour chaque couleur.
+export const CHEMINS: Record<Couleur, boolean[]> = {
+  rouge: [true],
+  vert: [false, false],
+  vertAnon: [false, true, true],
+  orange: [false, true, false],
+};
+
 // Les réponses aux trois questions donnent la couleur : oui à la 1 → rouge ; non à la 2 → vert ; puis la 3 tranche.
 export function couleurDe(reponses: boolean[]): Couleur | null {
   if (reponses.length === 0) return null;
@@ -56,10 +64,10 @@ export const FICHIERS: FichierTri[] = [
     attendu: 'vert', pourquoi: 'Un texte public, publié sur le site de l’étude.',
   },
   {
-    id: 'modele', fichier: 'modele-lettre-relance.txt', format: 'Texte', titre: 'Un modèle de lettre de relance',
-    but: 'Vous voulez un ton plus aimable.',
-    apercu: { type: 'texte', contenu: '[Nom du client]\n[Adresse]\nConcerne : votre dossier [référence]\nSauf erreur de notre part, notre note d’honoraires n° [numéro] du [date] reste impayée à ce jour.' },
-    attendu: 'vert', pourquoi: 'Des cases vides : aucune personne, aucun dossier. Attention le jour où on le remplit.',
+    id: 'annonce', fichier: 'annonce-emploi.txt', format: 'Texte', titre: 'L’annonce d’emploi',
+    but: 'Vous voulez la rendre plus attrayante.',
+    apercu: { type: 'texte', contenu: 'Assistante ou assistant juridique, 80 à 100 %\nÉtude Fictive Avocats, Neuchâtel\nPubliée le 1er octobre 2026 sur www.etude-fictive.example et sur une plateforme d’emploi.\nVos tâches : suivi des délais, courriers, accueil des clients en français et en allemand.\nEntrée en fonction : 1er janvier 2027.' },
+    attendu: 'vert', pourquoi: 'Elle est déjà publiée : tout le monde peut la lire. Aucune personne n’y est nommée.',
   },
   {
     id: 'cv', fichier: 'cv-candidate.pdf', format: 'PDF', titre: 'Le CV d’une candidate',
