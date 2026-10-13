@@ -80,7 +80,7 @@ export default function AfficheTest({ cours }: { cours: string }) {
   const choisir = (v: Version) => { setVersion(v); setPhase('pret'); };
 
   const consignes: Record<Phase, string> = {
-    pret: 'Personne ne regarde l’affiche avant le test. Lancez-le quand la salle est prête.',
+    pret: 'Personne ne regarde l’affiche avant le test. Lancez-le quand vous voulez.',
     decompte: 'Regardez bien…',
     montre: 'Mémorisez ce que vous pouvez.',
     cache: 'Qu’avez-vous retenu ? Quoi, quand, où ?',

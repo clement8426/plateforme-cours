@@ -61,11 +61,6 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
           <p>Vous travaillez dans une étude d’avocats à Neuchâtel. Votre cliente, Mme Fictive, s’est fait opérer du genou et demande à son assurance de payer. L’avocat vous demande un compte rendu pour demain.</p>
           <p>Vous avez deux pièces : un rapport médical scanné et un message vocal. À chaque étape, choisissez comment vous faites.</p>
         </div>
-        <div className="actions dossier-raccourcis">
-          <button type="button" className="bouton-secondaire" onClick={() => remplir(false)}>Version en trois clics</button>
-          <button type="button" className="bouton-secondaire" onClick={() => remplir(true)}>Version sûre</button>
-          {Object.keys(choix).length > 0 && <button type="button" className="bouton-secondaire" onClick={() => setChoix({})}>Recommencer</button>}
-        </div>
         {ETAPES.map((e, k) => (
           <fieldset key={e.id} className={'dossier-etape' + (choix[e.id] ? ' est-faite' : '')}>
             <legend><span className="dossier-num">{k + 1}</span>{e.titre}</legend>
@@ -114,6 +109,17 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
             <p>Mme Fictive, 52 ans, infirmière, a été opérée du <mark className={choix.envoi === 'direct' ? 'erreur-ocr' : 'juste'}>{choix.envoi === 'direct' ? 'genou droit' : 'genou gauche'}</mark> le 12 mars 2026. Elle demande la prise en charge par son assurance.</p>
             <p className="note-fictif">{choix.envoi === 'direct' ? 'Le scan flou a été mal lu, et personne n’a relu : l’erreur part à l’assurance, signée par l’avocat.' : 'Le mot douteux a été relu : le compte rendu est juste.'} Dans les deux cas, il a fallu quatre clics.</p>
           </article>
+        )}
+        {fini && (
+          <section className="dossier-comparer" aria-labelledby="titre-comparer">
+            <h3 id="titre-comparer">Comparer avec</h3>
+            <p>Remplace vos quatre choix d’un coup, pour voir la différence.</p>
+            <div className="actions">
+              <button type="button" className="bouton-secondaire" onClick={() => remplir(false)}>Tous les choix les plus rapides</button>
+              <button type="button" className="bouton-secondaire" onClick={() => remplir(true)}>Tous les choix sûrs</button>
+              <button type="button" className="bouton-secondaire" onClick={() => setChoix({})}>Recommencer</button>
+            </div>
+          </section>
         )}
         <p className="note-fictif">Personnes, étude et « ChatGénéral » fictifs. Les articles cités sont réels : à vérifier dans les sources du cours.</p>
       </aside>

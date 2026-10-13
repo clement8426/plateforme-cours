@@ -1252,59 +1252,10 @@ const CONFIG = {
   ],
 
   // Vue présentateur : trois mots-clés par slide
-  motsCles: [
-    ['confier', 'ne pas confier', 'risquer'], ['mains levées', 'pas de jugement', 'pourcentage'], ['avocats', 'trois pays', 'données de santé'],
-    ['scan', 'note vocale', 'à qui ?'], ['chat', 'agent', 'accès'], ['saisir', 'garder', 'exiger'],
-    ['quatre offres', 'contrat', 'juridiction'], ['voter', 'révéler', 'Cloud Act'],
-    ['personnelle', 'sensible', 'secret'], ['classer', 'débattre', 'révéler'], ['nom retiré', 'réidentification', 'généraliser'],
-    ['accès', 'actions', 'injection'], ['texte caché', 'agent obéit', 'validation'], ['moindre droit', 'validation humaine', 'journal'],
-    ['quatre cas', 'vote', 'responsable'], ['quatre niveaux', 'déployeur', 'art. 50'], ['35 M€', 'deviner', 'PME : le plus bas'],
-    ['entreprise', 'art. 3 al. 2', '20 M€'], ['personne', '250 000 CHF', 'sur plainte'], ['entreprise', 'personne', 'art. 321 CP'],
-    ['nationalité', 'mandat pénal', 'FISA 702'], ['adéquat', 'clauses types', 'DPF'], ['transfert', 'cas Suva', 'cumul'],
-    ['Samsung', 'Italie', 'fuite'], ['Confédération', 'privatim', 'chiffrer soi-même'], ['cinq cadres', 'cinq cibles', 'PME'],
-    ['trois questions', 'feu', 'recommencer'], ['local', 'Infomaniak', 'Fedlex'], ['grand public', 'entreprise', 'juridiction'],
-    ['sensible ?', 'OpenRouter', 'appel direct'], ['OCR', 'Whisper', 'relire'], ['binômes', 'six pièces', 'corrigé'],
-    ['transfert', 'droits', 'personne'], ['lexique', 'définitions', 'questions'], ['sources', 'officielles', 'vérifier']
-  ],
+  motsCles: [],
 
   // Vue présentateur : ce qui se dit à l'oral
-  notes: {
-    1: 'On ne parle pas de l’IA qui fait rêver. On parle de ce que chacun engage quand il copie un document dans ChatGPT ou dans Claude.\nQuatre questions dans l’ordre : qu’est-ce qu’un agent, que peut-on envoyer, que risque-t-on, quels réflexes.\nRègle de la séance : uniquement des données fictives, y compris pendant la démo.',
-    2: 'Demander de lever la main, compter, régler les deux compteurs devant la salle.\nNe juger personne : la plupart l’ont fait, le formateur aussi. C’est justement pour ça qu’on est là.\nRelance possible : et un document d’un client ou d’un patient ?',
-    3: 'Une étude d’avocats fictive en Suisse romande : droit du travail, assurances, droit médical.\nClients et parties adverses en Suisse, en France et en Allemagne : courant dans l’Arc jurassien, avec les frontaliers.\nCe qui rend le cas intéressant : des données de santé, donc sensibles, et trois pays.',
-    4: 'La tâche du jour : un rapport médical scanné de mauvaise qualité et une note vocale qui demande un résumé.\nPoser la question et laisser un silence. La réponse sera souvent « à ChatGPT » : ne pas corriger, on y revient à la fin.',
-    5: 'Un chat répond : tu lis, tu décides, tu copies. Un agent agit : il a accès à ta messagerie, tes fichiers, ton navigateur.\nExemples concrets : Claude ou ChatGPT avec accès aux mails, un assistant qui classe les pièces, un navigateur piloté par IA.\nLa phrase à garder : plus l’IA a d’accès, plus une erreur coûte cher.',
-    6: 'Cliquer sur chaque étape dans l’ordre.\nLe point qui surprend : le texte est chiffré pendant le trajet, mais lu en clair par le serveur. Sinon le modèle ne pourrait pas répondre.\nLes durées changent selon l’offre et le fournisseur : renvoyer aux conditions, à vérifier la veille.',
-    7: 'Faire défiler les quatre offres. Demander avant chaque clic : à votre avis, ça change quoi ?\nLe message : payer améliore le contrat, pas la juridiction. Seuls la Suisse et le local changent la colonne Juridiction.',
-    8: 'Lire chaque affirmation, faire voter à main levée, puis révéler.\nLa quatrième est vraie : c’est la bonne nouvelle de l’API. Mais ça reste un transfert à l’étranger, on le verra dans la partie 3.',
-    9: 'Trois niveaux. Personnelle : tout ce qui identifie. Sensible : santé, religion, opinions, biométrie (art. 5 let. c nLPD). Sous secret : ce qu’un avocat, un médecin ou leurs auxiliaires apprennent dans leur métier.\nPour l’étude, presque tout est au troisième niveau.',
-    10: 'Lire chaque carte, faire voter la salle à voix haute, puis cliquer pour révéler.\nLes cartes orange créent le débat : c’est voulu. Le compte rendu « anonymisé » sert de transition vers la slide suivante.\nSamsung : en 2023, du code source interne collé dans ChatGPT.',
-    11: 'Passer de l’original au nom retiré : demander si c’est anonyme. Non : une infirmière de 52 ans au Locle, opérée ce jour-là, se reconnaît.\nPuis la version généralisée : on garde ce qui sert au raisonnement, on retire ce qui désigne.\nPseudonymiser n’est pas anonymiser.',
-    12: 'Trois risques propres aux agents. Accès étendu, actions à ta place, et l’injection de prompt, qu’on va voir en direct.',
-    13: 'Montrer d’abord le document comme un humain le voit : rien d’anormal.\nBasculer l’interrupteur : le texte caché apparaît. Écrit en blanc sur blanc ou en tout petit, l’humain ne le voit pas, l’agent le lit.\nSi l’agent peut envoyer des mails sans validation, il obéit. Le cas est fictif mais le mécanisme est documenté.',
-    14: 'Quatre règles simples avant de brancher un agent. Insister sur la validation humaine avant tout envoi, paiement ou suppression.\nLa comparaison du stagiaire marque bien : on ne lui donne pas les clés du coffre le premier jour.',
-    15: 'Une slide de débat, environ deux minutes par cas.\nLire la situation, faire voter à main levée sur les quatre choix, puis révéler.\nPoint clé : en Suisse, la nLPD et le secret professionnel visent des personnes, pas seulement l’entreprise. Les chiffres viennent juste après, pour comprendre ces réponses.\nRappel : pas un avis juridique.',
-    16: 'L’AI Act classe les usages en quatre niveaux. Il s’applique à une entreprise suisse dès qu’un résultat produit par une IA est utilisé dans l’UE.\nPour l’étude : simple déployeur, obligations légères : former ses équipes depuis février 2025, transparence de l’art. 50 depuis le 2 août 2026.\nOmnibus IA, en vigueur depuis le 27 juillet 2026 : haut risque reporté au 2 décembre 2027.',
-    17: 'Faire deviner carte par carte, puis révéler.\nLe point à ne pas rater : grande entreprise, le plus élevé des deux montants ; PME ou start-up, le plus bas (art. 99 al. 6).',
-    18: 'RGPD : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.\nUne entreprise suisse y est soumise quand elle offre des services à des personnes dans l’UE (art. 3 al. 2). C’est l’activité qui compte, pas la nationalité.',
-    19: 'La slide qui marque le plus : jusqu’à 250 000 francs, contre la personne responsable.\nNuances : seulement l’intention, sur plainte, poursuivie par les autorités pénales cantonales. Le PFPDT surveille et ordonne des mesures. Amende en principe non assurable.',
-    20: 'Trois colonnes : l’entreprise, la personne, l’avocat.\nPour un avocat, le plus lourd n’est pas la protection des données, c’est l’art. 321 CP : jusqu’à trois ans. S’ajoute l’art. 13 LLCA. Même logique pour les médecins.',
-    21: 'Cloud Act, 2018 : les autorités américaines peuvent exiger d’une entreprise américaine les données qu’elle détient, même stockées en Europe.\nExemple : en juin 2025, devant le Sénat français, Microsoft a reconnu ne pas pouvoir garantir que des données européennes ne seraient pas transmises.',
-    22: 'Côté suisse et européen : transfert seulement vers un pays adéquat ou avec des garanties. Le Cloud Act permet un accès hors de ces canaux.\nDepuis septembre 2024, les entreprises américaines certifiées DPF sont réputées adéquates. Vérifier la liste le jour même sur dataprivacyframework.gov.',
-    23: 'La slide qui relie tout : un prompt vers un fournisseur américain est une communication à l’étranger.\nCas Suva 2022 et privatim 2025. Avec des clients en France et en Allemagne, le RGPD s’ajoute.',
-    24: 'Quatre dates, une histoire.\nSuva : l’autorité suisse s’en mêle. Samsung : la fuite vient d’un employé de bonne foi. Italie : 15 M€ contre OpenAI, puis annulés par le tribunal de Rome en mars 2026.\nLa morale : une sanction se conteste, une fuite ne se rattrape pas.',
-    25: 'Décembre 2025 : la Confédération passe à Microsoft 365, mais garde les documents « sensible » chez elle.\nprivatim : SaaS international pour des données sensibles seulement si l’organe chiffre lui-même.\nÉquilibré : position débattue, qui vise le public. Mais si l’État fait du routage, une étude a de bonnes raisons d’en faire.',
-    26: 'Récapitulatif rapide, sans relire les chiffres. Retenir les cibles : l’entreprise, la personne, l’avocat, le fournisseur.\nBon moment pour les questions avant les réflexes.',
-    27: 'Faire répondre la salle à chaque question, cliquer, puis recommencer avec un autre exemple tiré du feu tricolore.\nExemples à tester : le rapport médical (rouge), le CV (vert après anonymisation), le texte de loi (vert).',
-    28: 'On découpe en briques. OCR et transcription en local, gratuitement, sans carte graphique ; rédaction par un modèle ouvert en Suisse ; Fedlex pour l’article exact.\nTester la démo la veille. Plan B : ocrmypdf et whisper.cpp.',
-    29: 'Trois chemins pour le même dossier. Payer une offre entreprise améliore le contrat, pas la juridiction. Conditions à revérifier la veille.',
-    30: 'Basculer l’interrupteur devant la salle.\nLe piège : OpenRouter est une société américaine. Excellent pour comparer, mais un dossier sensible y transiterait par un intermédiaire soumis au Cloud Act.',
-    31: 'La démo en direct, avec les fichiers fictifs. Montrer les quatre étapes, et surtout la dernière : l’humain relit.\nSi la démo plante : montrer les captures préparées, ce n’est pas grave.',
-    32: 'En binômes, huit minutes : pour chaque pièce, vert, orange ou rouge, et quel outil.\nLancer le minuteur. Corriger pièce par pièce avec la salle.\nLa liste des clients surprend : le simple fait d’être client d’un avocat est couvert par le secret.',
-    33: 'Les quatre messages, puis la phrase de fin : si vous ne savez pas où va la donnée, ne l’envoyez pas.\nOuvrir les questions.',
-    34: 'Annexe : à ouvrir si une question porte sur un terme. Chaque définition renvoie à la slide qui l’explique.',
-    35: 'Tout repose sur des sources officielles ou des articles de presse vérifiables.\nRappel : support pédagogique, pas un avis juridique.'
-  }
+  notes: {}
 };
 
 (() => {

@@ -84,6 +84,26 @@ if (!html.includes('</body>')) {
   console.error('Balise </body> introuvable : fichier inattendu.');
   process.exit(1);
 }
+// Le site est ouvert aux élèves : les notes orales et les mots-clés de la vue présentateur ne sont pas publiés.
+// Ils restent dans le fichier d'origine, d'où le formateur présente.
+function vider(cle, ouvrant, fermant) {
+  const debut = html.indexOf(`\n  ${cle}: ${ouvrant}`);
+  if (debut < 0) return console.warn(`Avertissement : « ${cle} » introuvable dans CONFIG.`);
+  let i = html.indexOf(ouvrant, debut);
+  const depart = i;
+  let profondeur = 0;
+  for (; i < html.length; i += 1) {
+    const c = html[i];
+    if (c === "'" || c === '"' || c === '`') { // on saute les chaînes
+      for (i += 1; i < html.length && html[i] !== c; i += 1) if (html[i] === '\\') i += 1;
+    } else if (c === ouvrant) profondeur += 1;
+    else if (c === fermant && --profondeur === 0) break;
+  }
+  html = html.slice(0, depart) + ouvrant + fermant + html.slice(i + 1);
+}
+vider('notes', '{', '}');
+vider('motsCles', '[', ']');
+
 html = html.replace(/<script id="pont-plateforme">[\s\S]*?<\/script>\s*/, '');
 html = html.replace('</body>', `${PONT}</body>`);
 

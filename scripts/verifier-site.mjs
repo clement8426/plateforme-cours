@@ -137,7 +137,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   verifier('« Diapo 20 » ouvre les diapos à la diapo 20', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#20'));
 
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
-  verifier('démo de l’affiche : un déroulé en 5 étapes', (await p.locator('.deroule-demo li').count()) === 5);
+  verifier('démo de l’affiche : aucune note du formateur en ligne', (await p.locator('.deroule-demo, .deroule-formateur').count()) === 0 && !(await p.content()).includes('Pour présenter en direct'));
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.waitForTimeout(2300);
   verifier('test des 3 secondes : l’affiche s’affiche', await p.locator('.affiche-a').isVisible());

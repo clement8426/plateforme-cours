@@ -50,7 +50,7 @@ export default async function PageDemo(props: Props) {
         <h1>{demo.titre}</h1>
         <p className="chapeau">{demo.resume}</p>
         <div className="demo-meta">
-          <p className="duree">{demo.duree} en direct{demo.bonus ? ', en bonus' : ''}</p>
+          <p className="duree">{demo.duree}{demo.bonus ? ', en bonus' : ''}</p>
           <PucesBlocs blocs={demo.blocs} />
         </div>
       </header>
@@ -70,17 +70,6 @@ export default async function PageDemo(props: Props) {
         {demo.scene === 'reidentification' && <Reidentification cours={cle} />}
       </div>
 
-      <section className="deroule-formateur" aria-labelledby="titre-deroule">
-        <h2 id="titre-deroule">Pour présenter en direct</h2>
-        <ol className="deroule-demo">
-          {demo.deroule.map((e) => (
-            <li key={e.texte}>
-              <p>{e.texte}</p>
-              {e.action && <Link className="lien-fleche" href={e.action.href}>{e.action.texte}</Link>}
-            </li>
-          ))}
-        </ol>
-      </section>
 
       <div className="demo-bas">
         <section className="encart" aria-labelledby="titre-retenir">

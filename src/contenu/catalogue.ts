@@ -9,9 +9,8 @@ export type Reference = { titre: string; source: string; url: string };
 export type Terme = { terme: string; nom?: string; def: string };
 export type GroupeReferences = { nom: string; bloc?: BlocId; references: Reference[] };
 
-// Une démonstration : faite en direct devant la salle, avec son déroulé et une scène interactive.
+// Une démonstration : une scène interactive, avec son mode d'emploi. Les notes du formateur ne sont pas sur le site.
 // L'exercice à refaire chez soi est dans le dépôt GitHub du cours (champ « exercice » : le dossier).
-export type EtapeDemo = { texte: string; action?: { texte: string; href: string; nouvelOnglet?: boolean } };
 export type Demo = {
   slug: string;
   titre: string;
@@ -22,7 +21,6 @@ export type Demo = {
   scene: 'affiche' | 'tilleul' | 'comparateur' | 'dossier' | 'reidentification';
   comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
   modeEmploi: string[]; // trois gestes, pour quelqu'un qui découvre la démo seul
-  deroule: EtapeDemo[]; // pour le formateur, en direct
   aRetenir: string[];
   exercice: string;
   bonus?: boolean; // à montrer seulement s'il reste du temps
@@ -96,7 +94,7 @@ const uxIa: Cours = {
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 19] },
     { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [20, 32] },
-    { titre: 'Pratique', resume: 'Une ou deux démonstrations devant la salle, selon le temps qui reste. Tout se refait chez soi.', duree: '25 à 40 min', diapos: [33, 47], demos: true },
+    { titre: 'Pratique', resume: 'Une ou deux démonstrations, selon le temps qui reste. Tout se refait chez soi.', duree: '25 à 40 min', diapos: [33, 47], demos: true },
   ],
   demos: [
     {
@@ -111,13 +109,6 @@ const uxIa: Cours = {
         'En « Sans aide », faites vos courses comme un client. Qu’est-ce qui vous agace ?',
         'Passez en « Mode cours », puis « Chercher les problèmes » : cliquez là où quelque chose vous gêne.',
         'Bloqué ? « Révéler » montre les problèmes de la page, et Avant / Après montre la correction.',
-      ],
-      deroule: [
-        { texte: 'Sans aide, faites le parcours d’un client en pensant à voix haute : accueil, collection, fiche du vase Dune, panier, commande.' },
-        { texte: 'Passez en mode cours, puis « Chercher » (touche C) : la salle dit où ça gêne, vous cliquez. Chaque bonne réponse fait apparaître le défaut.' },
-        { texte: 'Ce que personne n’a trouvé : « Révéler » (R) le montre. « Visite guidée » (V) parcourt les douze, page par page.' },
-        { texte: 'Sur chaque défaut, basculez Avant / Après (touche A) pour montrer la correction en direct.' },
-        { texte: 'Montrez ce que l’audit automatique voit, et ce qu’il rate.', action: { texte: 'Diapo de la révélation', href: '/ux/ux-ia/diapos/?diapo=35' } },
       ],
       aRetenir: [
         'Un site soigné peut être pénible à utiliser.',
@@ -140,13 +131,6 @@ const uxIa: Cours = {
         'À droite, ouvrez chaque problème : ce qui gênait, et ce qui a été réparé.',
       ],
       comparateur: 'formulaire-adresse',
-      deroule: [
-        { texte: 'Remplissez la version de départ avec une adresse fictive, chrono lancé, et envoyez-la.' },
-        { texte: 'Demandez à la salle ce qui a gêné : l’écran est soigné, les défauts sont ailleurs.' },
-        { texte: 'Passez à la version réparée et refaites la même chose.' },
-        { texte: 'Tapez « Rue du Seyon 10 » dans « Rue et numéro » : l’autocomplétion, c’est de l’UX qui demande du code.' },
-        { texte: 'Ouvrez les défauts un par un : « Montrer dans le formulaire » surligne l’élément concerné.' },
-      ],
       aRetenir: [
         'Un formulaire joli peut cacher un défaut par bloc.',
         'Le navigateur sait remplir une adresse, si on le laisse faire.',
@@ -166,13 +150,6 @@ const uxIa: Cours = {
         'Lancez le test : l’affiche apparaît seulement 3 secondes.',
         'Qu’avez-vous retenu ? Quoi, quand, où ?',
         'Révélez l’affiche, puis refaites le test avec l’autre affiche.',
-      ],
-      deroule: [
-        { texte: 'Lancez le test avec l’affiche A, sans rien annoncer.' },
-        { texte: 'Demandez à la salle : quoi, quand, où ? Notez les réponses.' },
-        { texte: 'Révélez l’affiche : tout y était, mais rien ne ressortait.' },
-        { texte: 'Refaites le test avec l’affiche B, puis comparez les réponses.' },
-        { texte: 'Montrez la méthode : construire l’affiche avec un agent relié à Penpot, plutôt que la générer en image.', action: { texte: 'Diapo de la méthode', href: '/ux/ux-ia/diapos/?diapo=42' } },
       ],
       aRetenir: [
         'Trois informations, pas une de plus : quoi, quand, où.',
@@ -228,14 +205,7 @@ const iaDonnees: Cours = {
       modeEmploi: [
         'À gauche, choisissez pour chaque étape comment traiter la pièce du dossier.',
         'À droite, les risques s’allument ou s’éteignent. Cliquez sur un risque : la loi, et qui en répond.',
-        'À la fin, lisez le compte rendu obtenu. Puis comparez avec « Version sûre ».',
-      ],
-      deroule: [
-        { texte: 'Faites voter la salle à chaque étape, en commençant par le plus rapide : tout dans le chat.' },
-        { texte: 'Montrez les risques allumés : ouvrez-en deux ou trois, la loi et qui paie.' },
-        { texte: 'Montrez le compte rendu : sans relecture, « genou droit » part chez la cliente.' },
-        { texte: 'Cliquez sur « Version sûre » : même nombre de clics, plus aucun risque.' },
-        { texte: 'Concluez : l’IA générative n’intervient qu’à la fin, sur du texte.' },
+        'À la fin, lisez le compte rendu obtenu. Puis, avec « Comparer avec », voyez la version la plus rapide et la version sûre.',
       ],
       aRetenir: [
         'Le résultat est le même, les risques sont très différents.',
@@ -256,12 +226,6 @@ const iaDonnees: Cours = {
         'Retrouver : cliquez sur les mots surlignés du compte rendu. Les habitants qui ne correspondent plus s’effacent.',
         'Protéger : rendez chaque indice moins précis, jusqu’à ce qu’au moins cinq personnes correspondent.',
         'Essayez aussi un seul indice : la date suffit, à cause d’un message du club de gym.',
-      ],
-      deroule: [
-        { texte: 'Affichez le compte rendu sans nom : est-il anonyme ? Faites voter la salle.' },
-        { texte: 'Cliquez sur les indices proposés par la salle : métier, âge, localité. Il reste une personne au troisième.' },
-        { texte: 'Montrez que la date seule suffit : un message public du club de gym.' },
-        { texte: 'Passez à « Protéger » : la salle généralise chaque indice jusqu’à cinq personnes possibles.' },
       ],
       aRetenir: [
         'Retirer le nom ne rend pas une donnée anonyme.',

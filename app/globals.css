@@ -129,8 +129,8 @@ img { display: block; max-width: 100%; height: auto; }
     --b-design: #DCC8FA; --b-friction: #FFC2A6; --b-access: #BFDBFA; --b-comportement: #F2DE96; --b-micro: #9DEBC5; --b-perf: #FFC1D2;
   }
 :root[data-contraste="eleve"] body { font-size: 19px; }
-:root[data-contraste="eleve"] :is(.fil ol, .puces-blocs, .partie-infos, .reperes dt, .demo-carte p, .deroule-demo li, .defaut-bloc, .defaut-corps dt, .consentement p, .vitrine-titre, .references span, .astuce, .pied, .depot li, .deroule-demo .lien-fleche) { font-size: 17px; }
-:root[data-contraste="eleve"] :is(.demo-carte, .cours-carte, .deroule-demo li, .encart, .depot, .bouton-secondaire, .bascule, .consentement, .vitrine, .apercu-diapos, .cadre-site, .cadre-diapos) { border-width: 2px; }
+:root[data-contraste="eleve"] :is(.fil ol, .puces-blocs, .partie-infos, .reperes dt, .demo-carte p, .defaut-bloc, .defaut-corps dt, .consentement p, .vitrine-titre, .references span, .astuce, .pied, .depot li, .deroule-demo .lien-fleche) { font-size: 17px; }
+:root[data-contraste="eleve"] :is(.demo-carte, .cours-carte, .encart, .depot, .bouton-secondaire, .bascule, .consentement, .vitrine, .apercu-diapos, .cadre-site, .cadre-diapos) { border-width: 2px; }
 :root[data-contraste="eleve"] .defaut-titre { font-size: 21px; }
 :root[data-contraste="eleve"] a:not(.bouton, .bouton-secondaire, .lien-fleche, .marque) { text-decoration-thickness: 2px; }
 :root[data-contraste="eleve"] .puces-blocs li::before, :root[data-contraste="eleve"] .defaut-bloc::before { width: 12px; height: 12px; }
@@ -265,10 +265,6 @@ img { display: block; max-width: 100%; height: auto; }
 .demo-tete h1 { font-size: var(--t-section); line-height: 1.1; }
 .demo-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
 .demo-meta .duree { font-weight: 600; }
-.deroule-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; padding: 0; list-style: none; counter-reset: pas; }
-.deroule-demo li { counter-increment: pas; display: grid; grid-template-rows: auto 1fr auto; gap: 8px; padding: 14px 16px 16px; border: 1px solid var(--ligne); border-radius: 12px; background: var(--surface); font-size: 15px; line-height: 1.45; }
-.deroule-demo li::before { content: counter(pas); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--encre); color: var(--fond); font: 700 14px/1 var(--police-titre), sans-serif; }
-.deroule-demo .lien-fleche { min-height: 32px; font-size: 15px; }
 .scene { margin-top: 24px; }
 .demo-bas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: clamp(32px, 4vw, 56px); }
 .encart { display: grid; gap: 12px; align-content: start; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
@@ -392,15 +388,13 @@ html.theatre { overflow: hidden; }
 @media (max-width: 1000px) { .comparateur { grid-template-columns: 1fr; } }
 @media (max-width: 1100px) { .vitrines-cote { grid-template-columns: 1fr; } }
 
-/* ---------- le mode d'emploi d'une démo (pour qui la découvre seul) et le déroulé du formateur ---------- */
+/* ---------- le mode d'emploi d'une démo (pour qui la découvre seul) et rien pour le formateur : ses notes ne sont pas sur le site ---------- */
 .mode-emploi { display: grid; gap: 10px; margin-bottom: 20px; padding: 16px 20px; border-radius: var(--rayon); background: var(--bleu-doux); }
 .mode-emploi h2 { font-size: 18px; }
 .mode-emploi ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 24px; padding: 0; list-style: none; counter-reset: geste; }
 .mode-emploi li { counter-increment: geste; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 16px; line-height: 1.45; }
 .mode-emploi li::before { content: counter(geste); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--bleu); color: var(--sur-bleu); font: 700 14px/1 var(--police-titre), sans-serif; }
 @media (max-width: 860px) { .mode-emploi ol { grid-template-columns: 1fr; } }
-.deroule-formateur { margin-top: clamp(32px, 4vw, 48px); }
-.deroule-formateur h2 { margin-bottom: 12px; font-size: 22px; }
 .photon-option { display: grid; gap: 4px; margin-top: 12px; color: var(--discret); font-size: 14px; }
 .photon-option label { display: flex; align-items: center; gap: 10px; min-height: 32px; color: var(--encre); font-size: 15px; font-weight: 600; cursor: pointer; }
 .photon-option input { flex: none; width: 20px; height: 20px; accent-color: var(--bleu); }
@@ -438,7 +432,6 @@ html.theatre { overflow: hidden; }
 /* le dossier de Mme Fictive : des choix, des risques qui s'allument */
 .dossier { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, 1fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
 .dossier-etapes { display: grid; gap: 14px; }
-.dossier-raccourcis { margin-bottom: 2px; }
 .dossier-etape { display: grid; gap: 8px; margin: 0; padding: 16px 18px 18px; border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
 .dossier-etape legend { display: flex; align-items: center; gap: 10px; padding: 0 6px; margin-left: -6px; font: 650 19px/1.2 var(--police-titre), sans-serif; }
 .dossier-num { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--encre); color: var(--fond); font-size: 14px; }
@@ -470,6 +463,9 @@ html.theatre { overflow: hidden; }
 .dossier-detail strong { color: var(--encre); }
 .dossier-resultat { display: grid; gap: 6px; padding: 16px 18px; border-radius: var(--rayon); background: var(--surface); border: 1px solid var(--ligne); }
 .dossier-resultat h3 { font-size: 18px; }
+.dossier-comparer { display: grid; gap: 8px; }
+.dossier-comparer h3 { font-size: 18px; }
+.dossier-comparer p { color: var(--discret); font-size: 15px; }
 .juste { background: var(--vert-doux); color: inherit; padding: 0 3px; border-radius: 4px; }
 @media (max-width: 1000px) { .dossier { grid-template-columns: 1fr; } }
 

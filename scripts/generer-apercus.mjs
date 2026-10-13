@@ -58,8 +58,9 @@ await page.screenshot({ path: dossier + 'demo-formulaire.jpg', type: 'jpeg', qua
 
 // Démonstrations du cours « IA, données et responsabilité »
 await page.goto(`${base}/ia-legislation/ia-donnees/demos/dossier-mme-fictive/?v=1`);
-await page.getByRole('button', { name: 'Version en trois clics' }).click();
+for (const nom of [/^Le joindre/, /^L’envoyer au chat/, /^Le chat en ligne gratuit/, /^L’envoyer tel quel/]) await page.getByRole('radio', { name: nom }).check();
 await page.waitForTimeout(400);
+await page.evaluate(() => window.scrollTo(0, 0));
 const boiteDossier = await page.locator('.dossier').boundingBox();
 await page.screenshot({ path: dossier + 'demo-dossier.jpg', type: 'jpeg', quality: 82, fullPage: true, clip: { x: boiteDossier.x, y: boiteDossier.y, width: boiteDossier.width, height: Math.round(boiteDossier.width / 1.6) } });
 await page.goto(`${base}/ia-legislation/ia-donnees/demos/reidentification/`);
