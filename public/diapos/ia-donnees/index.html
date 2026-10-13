@@ -50,7 +50,7 @@
   --shadow: none; --decor-mix: 12%;
 }
 :root {
-  /* tailles fluides, bornées : 1cqw = 1 % de la largeur de la scène (19,2 px à 1920) */
+  /* tailles fluides, bornées : 1cqw = 1 % de la largeur de la scène (19,2 px à 1920) */
   --fs-title: clamp(46px, 2.8cqw, 56px);
   --fs-big: clamp(40px, 2.4cqw, 48px);
   --fs-lead: clamp(30px, 1.82cqw, 36px);
@@ -634,7 +634,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li class="card place" data-step="2"><i data-icon="users"></i><h3>France</h3><p>Clients et parties adverses</p></li>
       <li class="card place" data-step="3"><i data-icon="users"></i><h3>Allemagne</h3><p>Clients et parties adverses</p></li>
     </ul>
-    <p class="lead strong" data-step="4">Des données de santé, trois pays : potentiellement trois régimes juridiques.</p>
+    <p class="lead strong" data-step="4">Des données de santé, trois pays : la loi suisse, et un même règlement européen pour la France et l’Allemagne.</p>
   </div>
 </section>
 
@@ -642,7 +642,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Un dossier scanné, une note vocale, un résumé demandé</h2>
   <div class="body stack-l">
     <div class="paire">
-      <article class="card" data-step="1"><h3><i data-icon="file"></i>Document scanné</h3><p>Rapport médical de qualité moyenne, à transformer en texte exploitable.</p></article>
+      <article class="card" data-step="1"><h3><i data-icon="file"></i>Document scanné</h3><p>Un rapport médical scanné, un peu flou, à transformer en texte modifiable.</p></article>
       <article class="card" data-step="2"><h3><i data-icon="mic"></i>Note vocale</h3><p>Un collaborateur demande un résumé rapide, à l’oral.</p></article>
     </div>
     <p class="statement" data-step="3">À qui envoyer tout ça ? On y répondra à la fin.</p>
@@ -688,8 +688,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Trois niveaux de données à reconnaître</h2>
   <div class="body stack-l">
     <ul class="places">
-      <li class="card place" data-step="1"><i data-icon="user"></i><h3>Personnelle</h3><p>Tout ce qui identifie quelqu’un : nom, adresse, numéro AVS, photo.</p></li>
-      <li class="card place" data-step="2"><i data-icon="heart"></i><h3>Sensible</h3><p>Santé, religion, opinions, données biométriques (art. 5 let. c nLPD).</p></li>
+      <li class="card place" data-step="1"><i data-icon="user"></i><h3>Personnelle</h3><p>Toute information sur une personne reconnaissable : nom, numéro AVS, photo, mais aussi salaire ou absences.</p></li>
+      <li class="card place" data-step="2"><i data-icon="heart"></i><h3>Sensible</h3><p>Santé, religion, opinions, biométrie, poursuites pénales, entre autres (art. 5 let. c nLPD).</p></li>
       <li class="card place hot" data-step="3"><i data-icon="lock"></i><h3>Sous secret</h3><p>Ce qu’un avocat ou un médecin apprend dans son métier (art. 321 CP).</p></li>
     </ul>
     <p class="lead strong" data-step="4">Plus on monte, moins l’outil grand public est une option.</p>
@@ -769,7 +769,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="card accent" data-step="1">
       <p class="lead"><b>Pour notre étude :</b> un simple déployeur, sans usage à haut risque. Les grosses amendes visent surtout les fournisseurs et les pratiques interdites.</p>
     </div>
-    <p class="note" data-step="2">Ses obligations : former ses équipes (depuis février 2025), transparence de l’art. 50 (depuis le 2 août 2026). Omnibus IA : haut risque reporté au 2 décembre 2027.</p>
+    <p class="note" data-step="2">Ses obligations : prendre des mesures pour former ses équipes (art. 4, assoupli par l’Omnibus IA en 2026). Transparence de l’art. 50 : seulement si elle publie des contenus générés par IA. Haut risque reporté au 2 décembre 2027.</p>
   </div>
 </section>
 
@@ -784,7 +784,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="3" data-key="rgpd">
-  <h2 class="title">RGPD : la cible, c’est l’entreprise</h2>
+  <h2 class="title">RGPD : les amendes visent l’entreprise</h2>
   <div class="body g12">
     <div class="c5">
       <div class="card stat hero-stat">
@@ -795,7 +795,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c7">
       <ul class="points">
         <li data-step="1">S’applique à une entreprise hors UE qui offre des services à des personnes dans l’UE (art. 3 al. 2).</li>
-        <li data-step="2">Pour notre étude : les clients français et allemands entrent dans ce cadre.</li>
+        <li data-step="2">Pour notre étude : si elle cherche des clients en France ou en Allemagne, elle entre probablement dans ce cadre.</li>
         <li data-step="3">Les transferts illicites relèvent du palier le plus haut.</li>
       </ul>
     </div>
@@ -808,7 +808,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c5">
       <div class="card stat hero-stat accent">
         <p class="stat-big">250 000</p>
-        <p class="stat-unit">francs suisses d’amende, contre la personne responsable</p>
+        <p class="stat-unit">francs suisses d’amende, contre une personne : celle qui a agi, ou la direction qui a laissé faire</p>
       </div>
     </div>
     <div class="c7">
@@ -827,15 +827,15 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Qui paie ? Pour un avocat, le plus lourd reste le secret professionnel</h2>
   <div class="body">
     <ul class="payers">
-      <li class="card payer" data-step="1"><p class="payer-qui">L’entreprise</p><p class="payer-val">20 à 35 M€</p><p>RGPD et AI Act, ou un pourcentage du chiffre d’affaires.</p></li>
-      <li class="card payer" data-step="2"><p class="payer-qui">La personne responsable</p><p class="payer-val">250 000 CHF</p><p>nLPD, art. 61 et 62 : amende personnelle.</p></li>
+      <li class="card payer" data-step="1"><p class="payer-qui">L’entreprise</p><p class="payer-val">20 M€</p><p>RGPD, ou 4 % du chiffre d’affaires. Pour un usage courant de l’IA, l’AI Act s’arrête à 15 M€.</p></li>
+      <li class="card payer" data-step="2"><p class="payer-qui">La personne qui a agi ou décidé</p><p class="payer-val">250 000 CHF</p><p>nLPD, art. 61 et 62 : amende personnelle.</p></li>
       <li class="card payer hot" data-step="3"><p class="payer-qui">L’avocat lui-même</p><p class="payer-val">3 ans</p><p>Code pénal, art. 321 : peine privative de liberté ou pécuniaire. Plus l’art. 13 LLCA.</p></li>
     </ul>
   </div>
 </section>
 
 <section class="slide" data-part="3" data-key="cloud-act">
-  <h2 class="title">Cloud Act : la nationalité de l’entreprise prime sur le lieu du serveur</h2>
+  <h2 class="title">Cloud Act : ce qui compte, c’est l’entreprise, pas le lieu du serveur</h2>
   <div class="body stack-m">
     <div class="chain">
       <div class="card node"><h3>Utilisateur suisse</h3><p>Envoie un dossier à un fournisseur américain</p></div>
@@ -874,16 +874,16 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </article>
     </div>
     <div class="card accent" data-step="1">
-      <p class="lead">Depuis le 15 septembre 2024, les entreprises américaines certifiées <b>Swiss-US DPF</b> sont réputées adéquates. Anthropic et OpenAI n’y figurent pas, selon les analyses publiées.</p>
+      <p class="lead">Depuis le 15 septembre 2024, les entreprises américaines certifiées <b>Swiss-US DPF</b> sont réputées adéquates. Qui est certifié : à vérifier le jour même sur la liste officielle. OpenAI, selon ses conditions, passe par des clauses types.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="3" data-key="synthese">
-  <h2 class="title">Un prompt vers un fournisseur américain, c’est un transfert à l’étranger</h2>
+  <h2 class="title">Des données personnelles vers un fournisseur américain : un transfert à l’étranger</h2>
   <div class="body stack-m">
     <ol class="flow">
-      <li data-step="1"><span class="flow-n">1</span><p><b>Le déclencheur.</b> Envoyer un dossier à Claude ou à GPT, abonnement ou API, est une communication à l’étranger (art. 16 ss nLPD).</p></li>
+      <li data-step="1"><span class="flow-n">1</span><p><b>Le déclencheur.</b> Envoyer un dossier avec des données personnelles à Claude ou à ChatGPT, abonnement ou API, est une communication à l’étranger (art. 16 ss nLPD).</p></li>
       <li data-step="2"><span class="flow-n">2</span><p><b>Le précédent.</b> Cas Suva (2022) : le PFPDT juge insuffisant de dire que le risque d’accès est faible. privatim (2025) va dans le même sens.</p></li>
       <li data-step="3"><span class="flow-n">3</span><p><b>Le cumul.</b> Avec des clients en France ou en Allemagne, le RGPD s’ajoute à la nLPD et au secret professionnel.</p></li>
     </ol>
@@ -898,7 +898,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li class="card" data-step="1"><p class="tl-date">Juin 2022</p><p class="tl-qui">Suva, Suisse</p><p>Le PFPDT estime qu’un cloud Microsoft hébergé en Suisse reste un transfert vers les USA.</p></li>
       <li class="card" data-step="2"><p class="tl-date">Avril 2023</p><p class="tl-qui">Samsung</p><p>Un ingénieur colle du code source interne dans ChatGPT. Un mois plus tard, Samsung interdit l’IA générative à ses employés.</p></li>
       <li class="card" data-step="3"><p class="tl-date">Déc. 2024</p><p class="tl-qui">Italie</p><p>L’autorité italienne inflige 15 M€ à OpenAI pour des manquements au RGPD liés à ChatGPT.</p></li>
-      <li class="card" data-step="4"><p class="tl-date">Mars 2026</p><p class="tl-qui">Tribunal de Rome</p><p>Le tribunal annule cette amende. La procédure aura duré plus d’un an.</p></li>
+      <li class="card" data-step="4"><p class="tl-date">Mars 2026</p><p class="tl-qui">Tribunal de Rome</p><p>Le tribunal annule l’amende : l’autorité italienne n’était pas compétente. Le fond n’a pas été jugé.</p></li>
     </ol>
     <p class="lead strong" data-step="5">Une sanction se conteste. Une fuite, elle, ne se rattrape pas.</p>
   </div>
@@ -908,8 +908,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Même l’État suisse fait du routage</h2>
   <div class="body stack-l">
     <div class="paire">
-      <article class="card" data-step="1"><h3><i data-icon="building"></i>Confédération, 2025</h3><p>Microsoft 365 sur environ 54 000 postes, mais les documents classés « sensible » restent stockés localement.</p></article>
-      <article class="card" data-step="2"><h3><i data-icon="shield"></i>privatim, 2025</h3><p>Données sensibles ou sous secret : un SaaS international seulement si l’organe chiffre lui-même, sans accès du fournisseur à la clé.</p></article>
+      <article class="card" data-step="1"><h3><i data-icon="building"></i>Confédération, décembre 2025</h3><p>Microsoft 365 sur environ 54 000 postes, mais interdit d’y enregistrer les données sensibles et les documents confidentiels.</p></article>
+      <article class="card" data-step="2"><h3><i data-icon="shield"></i>privatim, 2025</h3><p>Données sensibles ou sous secret : un logiciel en ligne d’un fournisseur étranger seulement si l’organe chiffre lui-même, sans accès du fournisseur à la clé.</p></article>
     </div>
     <p class="note" data-step="3">Position débattue, qui vise les organes publics et non le privé. Elle fixe pourtant le niveau d’exigence pour les données sensibles.</p>
   </div>
@@ -921,14 +921,14 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <table class="tbl">
       <thead><tr><th>Cadre</th><th>Cible</th><th>Maximum</th><th>Autorité</th></tr></thead>
       <tbody>
-        <tr><td>AI Act</td><td>L’entreprise</td><td class="num">35 M€ ou 7 % du CA</td><td>Surveillance UE</td></tr>
+        <tr><td>AI Act</td><td>L’entreprise</td><td class="num">15 M€ ou 3 % du CA</td><td>Surveillance UE</td></tr>
         <tr><td>RGPD</td><td>L’entreprise</td><td class="num">20 M€ ou 4 % du CA</td><td>Protection des données UE</td></tr>
-        <tr><td>nLPD</td><td>La personne responsable</td><td class="num">250 000 CHF</td><td>Pénal cantonal, sur plainte</td></tr>
-        <tr><td>Art. 321 CP</td><td>L’avocat</td><td class="num">3 ans de prison</td><td>Pénal cantonal</td></tr>
+        <tr><td>nLPD</td><td>La personne qui a agi ou décidé</td><td class="num">250 000 CHF</td><td>Pénal cantonal, sur plainte</td></tr>
+        <tr><td>Art. 321 CP</td><td>L’avocat</td><td class="num">Jusqu’à 3 ans de prison</td><td>Pénal cantonal</td></tr>
         <tr><td>Cloud Act</td><td>Le fournisseur</td><td class="num">Remise des données</td><td>Justice américaine</td></tr>
       </tbody>
     </table>
-    <p class="note">AI Act : pour une PME, c’est le montant le plus bas des deux qui s’applique (art. 99 al. 6).</p>
+    <p class="note">AI Act : 35 M€ ou 7 % seulement pour les pratiques interdites. Pour une PME, le montant le plus bas des deux (art. 99 al. 6).</p>
   </div>
 </section>
 
@@ -955,11 +955,11 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <table class="tbl tbl-3">
       <thead><tr><th></th><th>Claude ou ChatGPT, grand public</th><th>API ou Enterprise</th><th>Infomaniak, modèle ouvert</th></tr></thead>
       <tbody>
-        <tr><td>Entité</td><td>Américaine (OpenAI : filiale irlandaise)</td><td>Américaine (OpenAI : filiale irlandaise)</td><td>Suisse</td></tr>
+        <tr><td>Entité</td><td>Maison mère américaine</td><td>Maison mère américaine, contrat souvent avec une filiale irlandaise</td><td>Suisse</td></tr>
         <tr><td>Cloud Act</td><td class="ko">Exposé</td><td class="ko">Exposé</td><td class="ok">Non exposé</td></tr>
-        <tr><td>Certification DPF</td><td>Aucun des deux</td><td>Aucun des deux</td><td>Inutile</td></tr>
+        <tr><td>Certification DPF</td><td>À vérifier sur la liste officielle</td><td>À vérifier sur la liste officielle</td><td>Inutile</td></tr>
         <tr><td>Entraînement</td><td>Possible, selon réglages</td><td>Non par défaut</td><td>Non, selon Infomaniak</td></tr>
-        <tr><td>Base nLPD</td><td>Clauses et analyse du risque</td><td>Contrat, clauses et analyse</td><td>Pas de transfert</td></tr>
+        <tr><td>Base nLPD</td><td>Aucun contrat possible</td><td>Contrat, clauses et analyse</td><td>Pas de transfert</td></tr>
       </tbody>
     </table>
     <p class="note">Payer une offre entreprise améliore le contrat, pas la juridiction. Conditions à revérifier la veille de l’atelier.</p>
@@ -980,7 +980,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <ol class="flow">
         <li data-step="1"><span class="flow-n">1</span><p><b>Lire.</b> Le rapport médical scanné passe dans l’OCR, sur l’ordinateur.</p></li>
         <li data-step="2"><span class="flow-n">2</span><p><b>Transcrire.</b> Whisper transforme la note vocale en texte, hors ligne.</p></li>
-        <li data-step="3"><span class="flow-n">3</span><p><b>Rédiger.</b> Le texte seul part chez Infomaniak, qui rédige le compte rendu.</p></li>
+        <li data-step="3"><span class="flow-n">3</span><p><b>Rédiger.</b> Le texte seul part chez Infomaniak, sous contrat de confidentialité, qui rédige le compte rendu.</p></li>
         <li data-step="4"><span class="flow-n">4</span><p><b>Relire.</b> Un humain vérifie : l’OCR et le modèle se trompent.</p></li>
       </ol>
     </div>
@@ -1005,7 +1005,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Cartographier avant de connecter</h2>
   <div class="body stack-l">
     <ol class="keep compact">
-      <li data-step="1"><span class="keep-n">1</span><p>Un prompt est un transfert de données.</p></li>
+      <li data-step="1"><span class="keep-n">1</span><p>Un prompt avec des données personnelles est un transfert.</p></li>
       <li data-step="2"><span class="keep-n">2</span><p>Sensible ou sous secret : local ou IA suisse.</p></li>
       <li data-step="3"><span class="keep-n">3</span><p>Un agent n’a que les droits strictement utiles.</p></li>
       <li data-step="4"><span class="keep-n">4</span><p>nLPD et secret professionnel visent la personne.</p></li>
@@ -1083,9 +1083,9 @@ const CONFIG = {
   trajet: [
     { nom: 'Saisir', chip: 'Ton écran', ou: 'Navigateur', titre: 'Tu tapes ou tu colles', txt: 'Le texte est encore chez toi. Le mode privé n’y change rien : il efface seulement l’historique de ton navigateur.' },
     { nom: 'Envoyer', chip: 'Internet', ou: 'Chiffré en route', titre: 'Le texte part chez le fournisseur', txt: 'Chiffré pendant le transport, puis lu en clair par le serveur, souvent aux USA. Sinon, le modèle ne pourrait pas répondre.' },
-    { nom: 'Garder', chip: 'Serveurs', ou: 'Jours ou plus', titre: 'Il est conservé', txt: 'Historique, journaux, contrôle des abus. Chez Anthropic, une conversation supprimée est effacée des serveurs dans les 30 jours.', note: 'Chaque offre a ses durées : à lire dans les conditions.' },
+    { nom: 'Garder', chip: 'Serveurs', ou: 'Jours ou plus', titre: 'Il est conservé', txt: 'Historique, journaux, contrôle des abus. Chez Anthropic, une conversation supprimée est effacée sous 30 jours. Gardée, elle peut l’être jusqu’à 5 ans si l’on accepte l’entraînement.', note: 'Chaque offre a ses durées : à lire dans les conditions.' },
     { nom: 'Entraîner', chip: 'Modèle', ou: 'Selon l’offre', titre: 'Il peut servir à entraîner', txt: 'Offre grand public : selon tes réglages. API et offres entreprise : non, par défaut.' },
-    { nom: 'Exiger', chip: 'Autorités', ou: 'Cloud Act', titre: 'Il peut être exigé', txt: 'Un fournisseur américain doit remettre les données sur mandat, même si elles sont stockées en Europe.' }
+    { nom: 'Exiger', chip: 'Autorités', ou: 'Cloud Act', titre: 'Il peut être exigé', txt: 'Un fournisseur soumis à la justice américaine peut être obligé de remettre les données, même stockées en Europe.' }
   ],
 
   // Slide 7 : qui voit quoi selon l'offre. Ton : 'ok' rassurant, 'mid' à surveiller, 'ko' risque.
@@ -1102,10 +1102,10 @@ const CONFIG = {
   // Slide 8 : vrai ou faux
   vraiFaux: [
     { txt: 'En navigation privée, l’IA ne garde rien.', vrai: false, why: 'Le mode privé n’efface que l’historique local. Le serveur reçoit tout.' },
-    { txt: 'Supprimer une conversation l’efface tout de suite chez le fournisseur.', vrai: false, why: 'Il faut des jours ou des semaines : jusqu’à 30 jours chez Anthropic.' },
+    { txt: 'Supprimer une conversation l’efface tout de suite chez le fournisseur.', vrai: false, why: 'Il faut des jours ou des semaines : jusqu’à 30 jours chez Anthropic.' },
     { txt: 'Avec un abonnement payant, mes données restent en Suisse.', vrai: false, why: 'Payer ne déplace ni les serveurs ni la juridiction.' },
     { txt: 'Par l’API, mes données n’entraînent pas le modèle, par défaut.', vrai: true, why: 'Vrai chez Anthropic et OpenAI. Mais c’est toujours un transfert à l’étranger.' },
-    { txt: 'Un serveur en Europe me protège du Cloud Act.', vrai: false, why: 'C’est la nationalité du fournisseur qui compte, pas le lieu du serveur.' }
+    { txt: 'Un serveur en Europe me protège du Cloud Act.', vrai: false, why: 'Ce qui compte, c’est que le fournisseur réponde à la justice américaine, pas le lieu du serveur.' }
   ],
 
   // Slide 10 : le feu tricolore
@@ -1115,23 +1115,23 @@ const CONFIG = {
     rouge: { nom: 'Rouge', def: 'Local ou IA suisse' }
   },
   tri: [
-    { nom: 'Le texte de l’art. 321 CP', feu: 'vert', why: 'Texte public.' },
+    { nom: 'Un article de loi publié sur Fedlex', feu: 'vert', why: 'Texte public : tout le monde peut déjà le lire.' },
     { nom: 'Une lettre type vierge', feu: 'vert', why: 'Aucune personne dedans.' },
-    { nom: 'Des statistiques par canton', feu: 'vert', why: 'Agrégées, personne n’est visé.' },
+    { nom: 'Des statistiques sur de grands nombres', feu: 'vert', why: 'Agrégées sur assez de personnes : personne n’est visé. Sur trois cas, si.' },
     { nom: 'Le planning de l’équipe', feu: 'orange', why: 'Des prénoms : données personnelles.' },
     { nom: 'Un CV avec nom et adresse', feu: 'orange', why: 'Personnel. Anonymiser avant.' },
-    { nom: 'Le code source de l’étude', feu: 'orange', why: 'Secret d’affaires, cas Samsung.' },
+    { nom: 'Le budget interne de l’étude', feu: 'orange', why: 'Réservé à la direction : secret d’affaires, comme le code de Samsung en 2023.' },
     { nom: 'Un compte rendu « anonymisé »', feu: 'orange', why: 'Âge, lieu, date : souvent réidentifiable.' },
     { nom: 'Le mail d’un client sur son litige', feu: 'rouge', why: 'Secret professionnel.' },
     { nom: 'Un rapport médical', feu: 'rouge', why: 'Donnée sensible, et sous secret.' },
-    { nom: 'La copie d’une pièce d’identité', feu: 'rouge', why: 'Risque d’usurpation d’identité.' }
+    { nom: 'La pièce d’identité d’un client', feu: 'rouge', why: 'Sous secret professionnel, et risque d’usurpation d’identité.' }
   ],
 
   // Slide 11 : trois versions du même texte (fictif)
   anonymisation: [
-    { id: 'orig', nom: 'Original', niveau: 100, risque: 'certaine', html: 'Mme <mark>Sophie Fictive</mark>, <mark>infirmière</mark> de <mark>52 ans</mark> au <mark>Locle</mark>, opérée du genou le <mark>13 août 2026</mark> à <mark>La Chaux-de-Fonds</mark>, conteste le refus de son assurance.', why: 'Tout y est : n’importe qui la reconnaît.' },
-    { id: 'nom', nom: 'Nom retiré', niveau: 80, risque: 'élevée', html: 'Mme <mark>X</mark>, infirmière de 52 ans au Locle, opérée du genou le 13 août 2026 à La Chaux-de-Fonds, conteste le refus de son assurance.', why: 'Une infirmière de 52 ans au Locle, opérée ce jour-là : ses collègues la reconnaissent.' },
-    { id: 'gen', nom: 'Généralisé', niveau: 15, risque: 'faible', html: 'Une <mark>soignante</mark> de <mark>50 à 60 ans</mark>, dans l’<mark>Arc jurassien</mark>, opérée du genou en <mark>2026</mark>, conteste le refus de son assurance.', why: 'On garde ce qui sert au raisonnement juridique, on retire ce qui désigne la personne.' }
+    { id: 'orig', nom: 'Original', niveau: 100, risque: 'certaine', html: 'Mme <mark>Sophie Fictive</mark>, <mark>infirmière</mark> de <mark>52 ans</mark> au <mark>Locle</mark>, opérée du genou le <mark>13 août 2026</mark> à <mark>La Chaux-de-Fonds</mark>, conteste le refus de son assurance.', why: 'Tout y est : n’importe qui la reconnaît.' },
+    { id: 'nom', nom: 'Nom retiré', niveau: 80, risque: 'élevée', html: 'Mme <mark>X</mark>, infirmière de 52 ans au Locle, opérée du genou le 13 août 2026 à La Chaux-de-Fonds, conteste le refus de son assurance.', why: 'Une infirmière de 52 ans au Locle, opérée ce jour-là : ses collègues la reconnaissent.' },
+    { id: 'gen', nom: 'Généralisé', niveau: 15, risque: 'faible', html: 'Une <mark>soignante</mark> de <mark>50 à 60 ans</mark>, dans l’<mark>Arc jurassien</mark>, opérée du genou en <mark>2026</mark>, conteste le refus de son assurance.', why: 'On garde ce qui sert au raisonnement juridique, on retire ce qui désigne la personne.' }
   ],
 
   // Slide 13 : le document piégé (fictif)
@@ -1150,9 +1150,9 @@ const CONFIG = {
   votesResponsable: ['La personne qui a agi', 'L’étude', 'Le fournisseur', 'Personne'],
   responsables: [
     { titre: 'La stagiaire pressée', situation: 'Une stagiaire colle le rapport médical d’un client dans ChatGPT grand public pour gagner du temps. Personne ne lui a jamais rien dit.', bons: ['La personne qui a agi', 'L’étude'],
-      reponse: 'Les deux. Elle a révélé un secret ; l’étude ne l’a ni formée ni équipée. Le secret professionnel couvre aussi les auxiliaires.', lois: ['Art. 321 CP', 'nLPD art. 62', 'AI Act art. 4 : former'] },
+      reponse: 'Les deux, surtout l’étude, qui ne l’a ni formée ni équipée. Elle risque des poursuites si elle savait que c’était confidentiel : seule l’intention est punie. Le secret couvre aussi les auxiliaires.', lois: ['Art. 321 CP', 'nLPD art. 62', 'AI Act art. 4 : former'] },
     { titre: 'L’API sans contrat', situation: 'Un associé branche l’outil de l’étude sur une API américaine, sans contrat ni analyse du transfert. Des dossiers de clients français y passent.', bons: ['La personne qui a agi', 'L’étude'],
-      reponse: 'L’étude, au titre du RGPD pour ses clients français. Et en Suisse, la personne qui a décidé ce transfert, même associée.', lois: ['RGPD : transferts', 'nLPD art. 16 et 61'] },
+      reponse: 'L’étude, au titre du RGPD si elle cherche des clients en France. Et en Suisse, la personne qui a décidé ce transfert, même associée.', lois: ['RGPD : transferts', 'nLPD art. 16 et 61'] },
     { titre: 'L’agent piégé', situation: 'Un agent lit un document piégé et envoie un dossier à une adresse inconnue. Il pouvait envoyer des mails sans validation.', bons: ['L’étude'],
       reponse: 'L’étude : elle lui a donné ces droits sans contrôle. C’est une violation de la sécurité des données, à annoncer vite.', lois: ['nLPD art. 24 : PFPDT', 'RGPD art. 33 : 72 h'] },
     { titre: 'La demande américaine', situation: 'Les autorités américaines exigent d’un fournisseur d’IA les conversations de l’étude, dans une enquête pénale.', bons: ['Le fournisseur', 'L’étude'],
@@ -1163,10 +1163,10 @@ const CONFIG = {
   amendesTitre: 'Amende maximale selon l’infraction : devinez',
   amendesNote: 'Règlement (UE) 2024/1689, art. 99.',
   amendes: [
-    { pays: 'Pratiques interdites', montant: '35 M€', detail: 'ou 7 % du CA mondial' },
-    { pays: 'Haut risque et transparence', montant: '15 M€', detail: 'ou 3 % du CA mondial' },
-    { pays: 'Fournisseurs de modèles GPAI', montant: '15 M€', detail: 'ou 3 % du CA mondial' },
-    { pays: 'Infos trompeuses aux autorités', montant: '7,5 M€', detail: 'ou 1 % du CA mondial' }
+    { pays: 'Pratiques interdites', montant: '35 M€', detail: 'ou 7 % du CA mondial' },
+    { pays: 'Haut risque et transparence', montant: '15 M€', detail: 'ou 3 % du CA mondial' },
+    { pays: 'Fournisseurs de modèles GPAI', montant: '15 M€', detail: 'ou 3 % du CA mondial' },
+    { pays: 'Infos trompeuses aux autorités', montant: '7,5 M€', detail: 'ou 1 % du CA mondial' }
   ],
 
   // Slide 27 : l'arbre de décision
@@ -1194,7 +1194,7 @@ const CONFIG = {
     { piece: 'La note vocale de l’associé sur le dossier', sol: 'Rouge : Whisper en local.' },
     { piece: 'Le mail de la partie adverse, avec sa pièce jointe', sol: 'Rouge : IA suisse, et jamais un agent qui agit seul.' },
     { piece: 'Une lettre de relance vierge, sans nom', sol: 'Vert : n’importe quel outil.' },
-    { piece: 'Le texte de l’art. 321 CP', sol: 'Vert : texte public, sur Fedlex.' },
+    { piece: 'Un article de loi copié depuis Fedlex', sol: 'Vert : texte public.' },
     { piece: 'La liste des clients avec leurs adresses', sol: 'Rouge : être client est déjà un secret. Pas d’IA externe.' }
   ],
 
@@ -1204,23 +1204,23 @@ const CONFIG = {
     { terme: 'Prompt', def: 'Le texte, et les fichiers, que l’on envoie à une IA. Il quitte ton ordinateur dès que tu l’envoies.', cle: 'trajet' },
     { terme: 'API', nom: 'API, interface de programmation', def: 'L’accès direct à un modèle depuis un logiciel, payé à l’usage. Par défaut, les données n’entraînent pas le modèle.', cle: 'offres' },
     { terme: 'Donnée sensible', def: 'Santé, religion, opinions, données biométriques, entre autres (art. 5 let. c nLPD). Protection renforcée.', cle: 'niveaux' },
-    { terme: 'Anonymisation', def: 'Rendre impossible, pour quiconque, de retrouver la personne. Retirer le nom ne suffit presque jamais.', cle: 'anonymiser' },
-    { terme: 'Pseudonymisation', def: 'Remplacer le nom par un code. Reste une donnée personnelle tant que la correspondance existe.', cle: 'anonymiser' },
+    { terme: 'Anonymisation', def: 'Rendre impossible de retrouver la personne sans effort démesuré. Retirer le nom ne suffit presque jamais.', cle: 'anonymiser' },
+    { terme: 'Pseudonymisation', def: 'Remplacer le nom par un code. Reste une donnée personnelle pour qui peut faire le lien avec la table de correspondance.', cle: 'anonymiser' },
     { terme: 'Injection de prompt', def: 'Une consigne cachée dans une page ou un document, que l’IA lit et suit à la place de la tienne.', cle: 'injection' },
     { terme: 'AI Act', nom: 'AI Act, règlement européen sur l’IA', def: 'Règlement (UE) 2024/1689 qui classe les usages de l’IA par niveau de risque, du minimal à l’interdit.', cle: 'ai-act' },
     { terme: 'Déployeur', def: 'Celui qui utilise un système d’IA dans son activité, sans l’avoir développé. Notre étude d’avocats en est un.', cle: 'ai-act' },
-    { terme: 'Littératie IA', def: 'Obligation de former les équipes qui utilisent l’IA, en vigueur depuis février 2025.', cle: 'ai-act' },
+    { terme: 'Littératie IA', def: 'Obligation de prendre des mesures pour former les équipes qui utilisent l’IA (art. 4 de l’AI Act), depuis février 2025, assouplie par l’Omnibus IA en 2026.', cle: 'ai-act' },
     { terme: 'GPAI', nom: 'GPAI, modèle d’IA à usage général', def: 'Grand modèle polyvalent, comme ceux derrière Claude ou ChatGPT. Ses fournisseurs ont des obligations propres depuis août 2025.', cle: 'ai-act-amendes' },
-    { terme: 'RGPD', def: 'Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.', cle: 'rgpd' },
+    { terme: 'RGPD', def: 'Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.', cle: 'rgpd' },
     { terme: 'nLPD', nom: 'nLPD, nouvelle loi fédérale sur la protection des données', def: 'La loi suisse, en vigueur depuis le 1er septembre 2023. Ses amendes visent la personne responsable.', cle: 'nlpd' },
     { terme: 'PFPDT', nom: 'PFPDT, Préposé fédéral à la protection des données', def: 'L’autorité suisse de surveillance. Il enquête et ordonne des mesures, mais ne prononce pas les amendes pénales.', cle: 'nlpd' },
-    { terme: 'Secret professionnel', nom: 'Secret professionnel, art. 321 CP', def: 'Obligation de taire ce que l’on apprend dans certaines professions. Violation : jusqu’à 3 ans de peine privative de liberté.', cle: 'qui-paie' },
+    { terme: 'Secret professionnel', nom: 'Secret professionnel, art. 321 CP', def: 'Obligation de taire ce que l’on apprend dans certaines professions. Violation : jusqu’à 3 ans de peine privative de liberté.', cle: 'qui-paie' },
     { terme: 'Cloud Act', def: 'Loi américaine de 2018 : les autorités américaines peuvent exiger d’une entreprise américaine des données stockées hors des États-Unis.', cle: 'cloud-act' },
     { terme: 'FISA 702', def: 'Texte américain sur la surveillance de renseignement, distinct du Cloud Act, qui s’y ajoute.', cle: 'cloud-act' },
     { terme: 'DPF', nom: 'DPF, Swiss-US Data Privacy Framework', def: 'Depuis le 15 septembre 2024, les entreprises américaines certifiées sont réputées offrir une protection adéquate.', cle: 'tension' },
     { terme: 'Clauses types', nom: 'Clauses contractuelles types', def: 'Contrat standard qui encadre un transfert de données vers un pays sans protection adéquate.', cle: 'tension' },
-    { terme: 'Transfert à l’étranger', def: 'Toute communication de données personnelles hors de Suisse, y compris un prompt envoyé à un service américain (art. 16 ss nLPD).', cle: 'synthese' },
-    { terme: 'privatim', def: 'La conférence des préposés suisses à la protection des données.', cle: 'etat' },
+    { terme: 'Transfert à l’étranger', def: 'Toute communication de données personnelles hors de Suisse, y compris un prompt qui en contient, envoyé à un service américain (art. 16 ss nLPD).', cle: 'synthese' },
+    { terme: 'privatim', def: 'La conférence des préposés cantonaux et communaux à la protection des données.', cle: 'etat' },
     { terme: 'OCR', nom: 'OCR, reconnaissance de caractères', def: 'Transforme l’image d’un document scanné en texte exploitable.', cle: 'briques' },
     { terme: 'Whisper', def: 'Modèle open source qui transcrit la voix en texte, utilisable hors ligne.', cle: 'briques' },
     { terme: 'Fedlex', def: 'La plateforme officielle du droit fédéral suisse, interrogeable librement, sans clé.', cle: 'briques' },
@@ -1248,7 +1248,11 @@ const CONFIG = {
     { titre: 'Point d’accès SPARQL de Fedlex', source: 'Chancellerie fédérale', url: 'https://fedlex.data.admin.ch/sparqlendpoint' },
     { titre: 'Microsoft devant le Sénat et le Cloud Act (analyse)', source: 'Village de la Justice', url: 'https://www.village-justice.com/articles/utilisation-microsoft-365-est-pas-conforme-rgpd,54051.html' },
     { titre: 'Samsung interdit ChatGPT à ses employés après une fuite de code', source: 'NBC News, 2023', url: 'https://www.nbcnews.com/tech/tech-news/samsung-bans-use-chatgpt-employees-misuse-chatbot-rcna82407' },
-    { titre: 'Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI', source: 'Punto Informatico, 2026', url: 'https://www.punto-informatico.it/openai-annullata-multa-violazione-privacy/' }
+    { titre: 'Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI', source: 'Punto Informatico, 2026', url: 'https://www.punto-informatico.it/openai-annullata-multa-violazione-privacy/' },
+    { titre: 'Pourquoi le tribunal de Rome a annulé la sanction : la compétence', source: 'Cybersecurity360, 2026', url: 'https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/' },
+    { titre: 'Règlement (UE) 2026/1744, Omnibus IA', source: 'EUR-Lex', url: 'https://eur-lex.europa.eu/eli/reg/2026/1744/oj' },
+    { titre: 'Mise à jour des conditions grand public de Claude', source: 'Anthropic, 2025', url: 'https://www.anthropic.com/news/updates-to-our-consumer-terms' },
+    { titre: 'Résolution sur l’externalisation de données sensibles dans le cloud', source: 'privatim, via le canton de Fribourg, 2025', url: 'https://www.fr.ch/de/oedsmb/news/privatim-verabschiedet-eine-resolution-zur-auslagerung-von-besonders-schuetzenswerten-personendaten-in-die-cloud' }
   ],
 
   // Vue présentateur : trois mots-clés par slide
@@ -1558,7 +1562,7 @@ const CONFIG = {
     $('#pv-title').textContent = titles[i];
     const keys = $('#pv-keys'); keys.textContent = ''; (CONFIG.motsCles[i] || []).forEach(k => keys.append(h('li', { text: k })));
     const clock = $('#pv-clock'); clock.textContent = mmss(ms); clock.dataset.state = ts;
-    $('#pv-budget').textContent = fr((ts === 'ok' ? 'Dans le budget' : ts === 'warn' ? 'Dépassement de plus de 10 %' : 'Dépassement de plus de 25 %') + '. Budget cumulé : ' + num(cum[i], 1) + ' min sur ' + num(TOTAL, 1) + '.');
+    $('#pv-budget').textContent = fr((ts === 'ok' ? 'Dans le budget' : ts === 'warn' ? 'Dépassement de plus de 10 %' : 'Dépassement de plus de 25 %') + '. Budget cumulé : ' + num(cum[i], 1) + ' min sur ' + num(TOTAL, 1) + '.');
     $('#pv-toggle').textContent = st.timer.running ? 'Pause' : 'Démarrer';
     $('#pv-next').textContent = i < N - 1 ? fr((i + 2) + '. ' + titles[i + 1]) : 'Fin de la présentation.';
     const note = CONFIG.notes[i + 1]; $('#pv-notes-box').hidden = !note; $('#pv-notes').textContent = note ? fr(note) : '';

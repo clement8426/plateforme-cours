@@ -106,7 +106,7 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
         {fini && (
           <article className="dossier-resultat">
             <h3>Le compte rendu envoyé à l’assurance</h3>
-            <p>Mme Fictive, 52 ans, infirmière, a été opérée du <mark className={choix.envoi === 'direct' ? 'erreur-ocr' : 'juste'}>{choix.envoi === 'direct' ? 'genou droit' : 'genou gauche'}</mark> le 12 mars 2026. Elle demande la prise en charge par son assurance.</p>
+            <p>Mme Fictive, 52 ans, infirmière, a été opérée du <mark className={choix.envoi === 'direct' ? 'erreur-ocr' : 'juste'}>{choix.envoi === 'direct' ? 'genou droit' : 'genou gauche'}</mark> le 13 août 2026. Elle demande la prise en charge par son assurance.</p>
             <p className="note-fictif">{choix.envoi === 'direct' ? 'Le scan flou a été mal lu, et personne n’a relu : l’erreur part à l’assurance, signée par l’avocat.' : 'Le mot douteux a été relu : le compte rendu est juste.'} Dans les deux cas, il a fallu quatre clics.</p>
           </article>
         )}
