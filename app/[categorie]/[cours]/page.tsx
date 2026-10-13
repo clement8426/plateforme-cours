@@ -24,6 +24,35 @@ export default async function PageCours(props: ParamsCours) {
   const base = `/${categorie.slug}/${cours.slug}`;
   const cle = `${categorie.slug}/${cours.slug}`;
 
+  if (cours.enPreparation) {
+    return (
+      <div className="page">
+        <FilAriane etapes={[{ nom: categorie.nom, href: `/${categorie.slug}/` }, { nom: cours.titre }]} />
+        <header className="tete">
+          <p className="etat-prepa">En préparation</p>
+          <h1>{cours.titre}</h1>
+          <p className="chapeau">{cours.accroche}</p>
+          <dl className="reperes">
+            <div><dt>Pour qui</dt><dd>{cours.public}</dd></div>
+          </dl>
+        </header>
+        <section className="section objectifs" aria-labelledby="titre-objectifs">
+          <h2 id="titre-objectifs" className="titre-section">Ce que vous apprendrez</h2>
+          <ul>
+            {cours.objectifs.map((o) => <li key={o}>{o}</li>)}
+          </ul>
+        </section>
+        <section className="section lien-ligne" aria-labelledby="titre-attente">
+          <div>
+            <h2 id="titre-attente">Les diapos et les démonstrations arrivent bientôt</h2>
+            <p>En attendant, les autres cours sont en ligne.</p>
+          </div>
+          <Link className="bouton-secondaire" href="/#cours">Voir les cours<Fleche /></Link>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="page">
       <FilAriane etapes={[{ nom: categorie.nom, href: `/${categorie.slug}/` }, { nom: cours.titre }]} />

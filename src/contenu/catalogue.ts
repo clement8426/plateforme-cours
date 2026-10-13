@@ -42,6 +42,7 @@ export type Cours = {
   depot?: string; // dépôt GitHub des exercices à refaire chez soi
   lexique: Terme[];
   references: GroupeReferences[];
+  enPreparation?: boolean; // annoncé : une page de présentation seulement, sans diapos ni démonstrations
 };
 
 export type Categorie = {
@@ -241,6 +242,45 @@ const iaDonnees: Cours = {
   references: grouper(sourcesIa.references, REGLES_IA),
 };
 
+// Deux cours annoncés : seule leur page de présentation est en ligne.
+const appSuisse: Cours = {
+  slug: 'app-hebergee-suisse',
+  titre: 'Une app web et mobile, hébergée en Suisse',
+  accroche: 'Construire une application web et mobile sur votre propre serveur en Suisse : les données restent chez vous, hors de portée du Cloud Act.',
+  duree: 'À venir',
+  public: 'Personnes qui développent, ou qui veulent comprendre où vont les données de leur application',
+  objectifs: [
+    'Comprendre ce que change le lieu d’hébergement : nLPD, RGPD et Cloud Act.',
+    'Installer Supabase (base de données, comptes, fichiers) sur un serveur privé chez Infomaniak.',
+    'Brancher une application web et une application mobile sur ce serveur.',
+    'Sécuriser, mettre à jour et sauvegarder ce serveur soi-même.',
+  ],
+  parties: [],
+  demos: [],
+  lexique: [],
+  references: [],
+  enPreparation: true,
+};
+
+const wordpressBoutique: Cours = {
+  slug: 'wordpress-e-commerce',
+  titre: 'Une boutique en ligne avec WordPress',
+  accroche: 'Pourquoi WordPress plutôt qu’un abonnement Shopify ou un site généré par Lovable, maintenant que l’IA aide à construire la boutique.',
+  duree: 'À venir',
+  public: 'Commerçants, indépendants, et toute personne qui veut vendre en ligne',
+  objectifs: [
+    'Comparer le vrai coût sur trois ans : abonnement, commissions, extensions, hébergement.',
+    'Savoir à qui appartiennent la boutique et ses données, selon la solution choisie.',
+    'Construire une boutique WordPress et WooCommerce avec l’aide de l’IA.',
+    'Connaître ce que cela demande ensuite : mises à jour, sécurité, maintenance.',
+  ],
+  parties: [],
+  demos: [],
+  lexique: [],
+  references: [],
+  enPreparation: true,
+};
+
 export const CATEGORIES: Categorie[] = typoProfonde([
   {
     slug: 'ux',
@@ -256,6 +296,13 @@ export const CATEGORIES: Categorie[] = typoProfonde([
     description: 'Ce que l’AI Act européen et le droit suisse demandent aux entreprises qui utilisent l’IA.',
     cours: [iaDonnees],
   },
+  {
+    slug: 'developpement',
+    nom: 'Développement et hébergement',
+    court: 'Développement',
+    description: 'Construire des sites et des applications, et choisir où les héberger : coût, données, indépendance.',
+    cours: [appSuisse, wordpressBoutique],
+  },
 ]);
 
 export const trouverCategorie = (slug: string) => CATEGORIES.find((c) => c.slug === slug);
@@ -263,7 +310,10 @@ export const trouverCours = (categorie: string, cours: string) => trouverCategor
 
 // Le premier cours disponible : celui que l'accueil met en avant.
 export const premierCours = () => {
-  for (const categorie of CATEGORIES) if (categorie.cours[0]) return { categorie, cours: categorie.cours[0] };
+  for (const categorie of CATEGORIES) {
+    const cours = categorie.cours.find((c) => !c.enPreparation);
+    if (cours) return { categorie, cours };
+  }
   return null;
 };
 

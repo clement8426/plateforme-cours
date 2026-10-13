@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import Redirection from '@/composants/Redirection';
-import { tousLesCours } from '@/contenu/parametres';
+import { tousLesCoursPublies } from '@/contenu/parametres';
 
 // Ancienne page des exercices : les exercices sont devenus des démonstrations.
 export const dynamicParams = false;
-export const generateStaticParams = tousLesCours;
+export const generateStaticParams = tousLesCoursPublies;
 export const metadata: Metadata = { title: 'Démonstrations', robots: { index: false } };
 
 export default async function AnciensExercices({ params }: { params: Promise<{ categorie: string; cours: string }> }) {

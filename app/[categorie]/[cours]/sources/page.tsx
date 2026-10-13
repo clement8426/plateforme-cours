@@ -4,10 +4,10 @@ import FilAriane from '@/composants/FilAriane';
 import MarqueVu from '@/composants/MarqueVu';
 import { BLOCS } from '@/contenu/blocs';
 import { compterReferences } from '@/contenu/catalogue';
-import { type ParamsCours, lireCours, tousLesCours } from '@/contenu/parametres';
+import { type ParamsCours, lireCours, tousLesCoursPublies } from '@/contenu/parametres';
 
 export const dynamicParams = false;
-export const generateStaticParams = tousLesCours;
+export const generateStaticParams = tousLesCoursPublies;
 
 export async function generateMetadata(props: ParamsCours): Promise<Metadata> {
   const { cours } = await lireCours(props);
