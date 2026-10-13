@@ -186,6 +186,11 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .case input[type="text"], .case input[type="url"], .case input[type="number"] { flex: 1; min-width: 0; height: var(--hit); padding: 0 24px; border-radius: var(--r-btn); border: 2px solid var(--edge); background: var(--surface); color: var(--text); font-size: var(--fs-body); font-weight: 600; }
 .case input::placeholder { color: var(--muted); font-weight: 400; opacity: 1; }
 .case.narrow { max-width: 1100px; }
+.case.case-fixe { border: 0; min-height: 0; justify-items: start; align-content: start; gap: 10px; background: none; }
+.case.case-fixe .btn { justify-self: start; }
+.case-fixe-titre { font-size: var(--fs-min); font-weight: 600; }
+.case-fixe .case-qr { justify-self: start; padding: 0; }
+.case-fixe-url { font-size: var(--fs-meta); color: var(--muted); overflow-wrap: anywhere; }
 .case-qr { display: grid; place-items: center; padding: 0 20px 20px; }
 .case-qr svg { width: 300px; height: 300px; border-radius: 12px; }
 .case-qr p { font-size: var(--fs-min); color: var(--muted); text-align: center; padding: 20px 0; }
@@ -1085,7 +1090,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <li data-step="2">Attente fabriquée : à manier avec soin.</li>
         <li data-step="3">Le test : l’utilisateur serait-il d’accord s’il le savait ?</li>
       </ul>
-      <div class="case" data-case="LINK_UXMAG_ARTICLE" data-kind="link" data-label="Article « Let Your Users Wait », UX Magazine"></div>
+      <div class="case" data-case="LINK_UXMAG_ARTICLE" data-kind="link" data-fixe data-texte="Lire l’article, UX Magazine" data-label="Article « Let Your Users Wait », UX Magazine"></div>
     </div>
     <div class="c7">
       <div class="perf" data-comp="perf"></div>
@@ -1367,7 +1372,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li data-step="6" data-keep><span>Tunnel de commande</span></li>
     </ol>
     <p class="question">Où est-ce que ça gêne ?</p>
-    <div class="case narrow" data-case="SITE_URL" data-kind="link" data-label="Adresse du site de démonstration"></div>
+    <div class="case narrow" data-case="SITE_URL" data-kind="link" data-fixe data-texte="Ouvrir Tilleul, sans aide" data-label="Adresse du site de démonstration"></div>
   </div>
 </section>
 
@@ -1406,7 +1411,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <li data-step="1">Notez tout ce qui vous gêne.</li>
         <li data-step="2">L’écran est soigné : cherchez ailleurs.</li>
       </ul>
-      <div class="case narrow" data-case="FORM_URL" data-kind="link" data-label="Adresse du formulaire de l’exercice"></div>
+      <div class="case narrow" data-case="FORM_URL" data-kind="link" data-fixe data-texte="Ouvrir le formulaire" data-label="Adresse du formulaire de l’exercice"></div>
     </div>
     <div class="c5">
       <div class="stopwatch" data-comp="stopwatch" data-label="Chrono du formulaire"></div>
@@ -1480,7 +1485,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c6 stack-m">
       <p class="lead"><strong>En direct :</strong> le test des 3 secondes. Deux affiches, 3 secondes chacune : quoi, quand, où ?</p>
-      <div class="case" data-case="AFFICHE_URL" data-kind="link" data-label="La démonstration sur le site"></div>
+      <div class="case" data-case="AFFICHE_URL" data-kind="link" data-fixe data-texte="Ouvrir la démonstration" data-label="La démonstration sur le site"></div>
       <p class="lead"><strong>En atelier :</strong> chacun crée une affiche A4 pour la promo de Tilleul. Trois informations : quoi, quand, où.</p>
       <div class="case" data-case="DUREE_EXERCICE" data-kind="number" data-label="Durée de l’atelier, en minutes"></div>
     </div>
@@ -1605,7 +1610,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p>L’IA accélère, les bases décident.</p></li>
     </ol>
     <div class="c4 stack-m end-col">
-      <div class="case" data-case="EXERCICES_URL" data-kind="qr" data-label="Les exercices à refaire chez vous"></div>
+      <div class="case" data-case="EXERCICES_URL" data-kind="qr" data-fixe data-label="Les exercices à refaire chez vous"></div>
       <p class="lead strong">Questions bienvenues.</p>
     </div>
   </div>
@@ -2376,6 +2381,21 @@ const IMAGES_INTEGREES = {
       const slide = slides.indexOf(box.closest('.slide')) + 1;
       const c = { id, kind, opt, slide, box, value: '', listeners: [], empty: () => !c.value };
       const changed = () => { box.classList.toggle('filled', !!c.value); c.listeners.forEach(f => f(c.value)); sync(); };
+      if (box.hasAttribute('data-fixe') && (kind === 'link' || kind === 'qr')) {
+        let url = '';
+        try { url = CONFIG.urls[id] ? new URL(CONFIG.urls[id], location.href).href : ''; } catch (e) { url = ''; }
+        box.classList.add('case-fixe');
+        if (kind === 'qr') {
+          const qr = h('div', { class: 'case-qr' });
+          const svg = url ? QR.svg(url) : null;
+          if (svg) qr.innerHTML = svg;
+          box.append(h('p', { class: 'case-fixe-titre', text: box.dataset.label }), qr, h('p', { class: 'case-fixe-url', text: url.replace(/^https?:\/\//, '').replace(/\/$/, '') }));
+        } else {
+          box.append(h('a', { class: 'btn primary', href: url || '#', target: '_blank', rel: 'noopener noreferrer' }, icon('external'), h('span', { text: box.dataset.texte || box.dataset.label })));
+        }
+        c.value = url; cases.push(c); changed();
+        return;
+      }
       if (kind === 'img') {
         const idEl = h('span', { class: 'case-id', text: id });
         const hint = h('span', { class: 'case-hint', text: 'Dépose une image ici' + (opt ? ' (optionnelle)' : '') });

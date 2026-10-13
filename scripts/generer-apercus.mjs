@@ -58,12 +58,13 @@ await page.screenshot({ path: dossier + 'demo-formulaire.jpg', type: 'jpeg', qua
 
 // Démonstrations du cours « IA, données et responsabilité »
 await page.goto(`${base}/ia-legislation/ia-donnees/demos/dossier-mme-fictive/?v=1`);
-await page.getByRole('radio', { name: 'Côte à côte' }).check();
+await page.getByRole('button', { name: 'Version en trois clics' }).click();
 await page.waitForTimeout(400);
-const boiteDossier = await page.locator('.comparateur-scene').boundingBox();
+const boiteDossier = await page.locator('.dossier').boundingBox();
 await page.screenshot({ path: dossier + 'demo-dossier.jpg', type: 'jpeg', quality: 82, fullPage: true, clip: { x: boiteDossier.x, y: boiteDossier.y, width: boiteDossier.width, height: Math.round(boiteDossier.width / 1.6) } });
 await page.goto(`${base}/ia-legislation/ia-donnees/demos/reidentification/`);
-for (let i = 0; i < 2; i++) await page.getByRole('button', { name: /Indice suivant/ }).click();
+await page.getByRole('button', { name: /Indice métier/ }).click();
+await page.getByRole('button', { name: /Indice âge/ }).click();
 await page.waitForTimeout(500);
 const boiteReid = await page.locator('.reid').boundingBox();
 await page.screenshot({ path: dossier + 'demo-reidentification.jpg', type: 'jpeg', quality: 82, fullPage: true, clip: { x: boiteReid.x, y: boiteReid.y, width: boiteReid.width, height: Math.round(boiteReid.width / 1.6) } });

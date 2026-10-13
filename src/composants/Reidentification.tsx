@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { marquerVu } from './memoire';
 
-// Bonus « Retrouver la personne en trois indices » : un compte rendu sans nom, un annuaire public fictif.
-// Indice après indice, les profils qui ne correspondent plus s'effacent. La version généralisée rend le jeu impossible.
+// Bonus « Retrouver la personne en trois indices », en deux temps.
+// 1. Retrouver : on clique sur les indices du compte rendu ; les habitants qui ne correspondent plus s'effacent.
+// 2. Protéger : on généralise chaque indice jusqu'à ce qu'au moins cinq personnes correspondent.
 // Tout est fictif : la vallée, les localités, les personnes.
 
 type Profil = { nom: string; age: number; metier: string; sante: boolean; lieu: string; nouvelle?: string };
@@ -32,82 +33,114 @@ const PROFILS: Profil[] = [
   { nom: 'Bruno Moule', age: 66, metier: 'Retraité', sante: false, lieu: 'Saint-Exemple' },
 ];
 
-type Indice = { nom: string; valeur: string; garde: (p: Profil) => boolean };
-const VERSIONS: Record<'brute' | 'generalisee', { texte: string; indices: Indice[] }> = {
-  brute: {
-    texte: 'La patiente, infirmière de 52 ans domiciliée aux Combes, a été opérée du genou gauche le 12 mars 2026. Elle demande la prise en charge par son assurance.',
-    indices: [
-      { nom: 'Métier', valeur: 'infirmière', garde: (p) => /^infirmi/i.test(p.metier) },
-      { nom: 'Âge', valeur: '52 ans', garde: (p) => p.age === 52 },
-      { nom: 'Localité', valeur: 'Les Combes', garde: (p) => p.lieu === 'Les Combes' },
-      { nom: 'Date', valeur: '12 mars', garde: (p) => Boolean(p.nouvelle?.includes('12 mars')) },
-    ],
-  },
-  generalisee: {
-    texte: 'La patiente, qui travaille dans la santé et a entre 45 et 60 ans, habite la vallée. Elle a été opérée au printemps 2026. Elle demande la prise en charge par son assurance.',
-    indices: [
-      { nom: 'Métier', valeur: 'dans la santé', garde: (p) => p.sante },
-      { nom: 'Âge', valeur: '45 à 60 ans', garde: (p) => p.age >= 45 && p.age <= 60 },
-      { nom: 'Localité', valeur: 'la vallée', garde: () => true },
-      { nom: 'Date', valeur: 'printemps 2026', garde: () => true },
-    ],
-  },
-};
+// Chaque indice, du plus précis au plus général.
+type Niveau = { texte: string; garde: (p: Profil) => boolean };
+type Indice = { id: string; nom: string; niveaux: Niveau[] };
+const INDICES: Indice[] = [
+  { id: 'metier', nom: 'Métier', niveaux: [
+    { texte: 'infirmière', garde: (p) => p.metier === 'Infirmière' },
+    { texte: 'qui travaille dans la santé', garde: (p) => p.sante },
+  ] },
+  { id: 'age', nom: 'Âge', niveaux: [
+    { texte: 'de 52 ans', garde: (p) => p.age === 52 },
+    { texte: 'de 50 à 54 ans', garde: (p) => p.age >= 50 && p.age <= 54 },
+    { texte: 'de 45 à 60 ans', garde: (p) => p.age >= 45 && p.age <= 60 },
+  ] },
+  { id: 'lieu', nom: 'Localité', niveaux: [
+    { texte: 'domiciliée aux Combes', garde: (p) => p.lieu === 'Les Combes' },
+    { texte: 'domiciliée dans la vallée', garde: () => true },
+  ] },
+  { id: 'date', nom: 'Date', niveaux: [
+    { texte: 'le 12 mars 2026', garde: (p) => Boolean(p.nouvelle?.includes('12 mars')) },
+    { texte: 'au printemps 2026', garde: () => true },
+  ] },
+];
+const SEUIL = 5; // au moins cinq personnes possibles : on ne peut plus savoir qui c'est
 
 export default function Reidentification({ cours }: { cours: string }) {
-  const [version, setVersion] = useState<'brute' | 'generalisee'>('brute');
-  const [nb, setNb] = useState(0); // indices révélés
-  const { texte, indices } = VERSIONS[version];
-  const actifs = indices.slice(0, nb);
-  const restants = PROFILS.filter((p) => actifs.every((i) => i.garde(p)));
-  const fin = nb === indices.length;
+  const [temps, setTemps] = useState<'retrouver' | 'proteger'>('retrouver');
+  const [utilises, setUtilises] = useState<string[]>([]); // indices cliqués (temps 1)
+  const [niveaux, setNiveaux] = useState<Record<string, number>>({ metier: 0, age: 0, lieu: 0, date: 0 }); // temps 2
 
-  const choisir = (v: 'brute' | 'generalisee') => { setVersion(v); setNb(0); };
-  const suivant = () => { setNb((n) => Math.min(n + 1, indices.length)); marquerVu(cours, 'reidentification'); };
+  const niveau = (i: Indice) => i.niveaux[temps === 'proteger' ? niveaux[i.id] : 0];
+  const actifs = temps === 'proteger' ? INDICES : INDICES.filter((i) => utilises.includes(i.id));
+  const restants = PROFILS.filter((p) => actifs.every((i) => niveau(i).garde(p)));
+  const trouvee = temps === 'retrouver' && restants.length === 1;
+  const protegee = temps === 'proteger' && restants.length >= SEUIL;
 
-  let verdict = `${restants.length} personnes possibles.`;
-  if (restants.length === 1) verdict = `Une seule personne possible : ${restants[0].nom}.`;
-  else if (fin) verdict = `${restants.length} personnes possibles : impossible de savoir qui c’est.`;
+  const utiliser = (id: string) => { if (!utilises.includes(id)) setUtilises([...utilises, id]); marquerVu(cours, 'reidentification'); };
+  const passer = (t: 'retrouver' | 'proteger') => { setTemps(t); setUtilises([]); setNiveaux({ metier: 0, age: 0, lieu: 0, date: 0 }); };
+
+  // Le compte rendu : chaque indice est un fragment cliquable (temps 1) ou réglable (temps 2).
+  const fragment = (i: Indice) => {
+    const texte = niveau(i).texte;
+    if (temps === 'proteger') return <mark className="reid-fragment est-reglable">{texte}</mark>;
+    const deja = utilises.includes(i.id);
+    return (
+      <button type="button" className={'reid-fragment' + (deja ? ' est-utilise' : '')} onClick={() => utiliser(i.id)} aria-pressed={deja} aria-label={`Indice ${i.nom.toLowerCase()} : ${texte}`}>
+        {texte}
+      </button>
+    );
+  };
+  const [metier, age, lieu, date] = INDICES;
+
+  let verdict = '';
+  if (temps === 'retrouver') {
+    verdict = utilises.length === 0 ? 'Cliquez sur un indice du texte.' : trouvee ? `Retrouvée : ${restants[0].nom}, avec ${utilises.length} indice${utilises.length > 1 ? 's' : ''}.` : `${restants.length} personnes possibles.`;
+  } else {
+    verdict = protegee ? `Protégée : ${restants.length} personnes correspondent, impossible de savoir qui c’est.` : restants.length === 1 ? `Encore reconnaissable : une seule personne, ${restants[0].nom}.` : `${restants.length} personnes possibles. Visez au moins ${SEUIL}.`;
+  }
 
   return (
     <section className="reid" aria-label="Retrouver la personne">
       <div className="reid-gauche">
         <fieldset className="bascule">
-          <legend className="visuellement-cache">Version du compte rendu</legend>
-          {(['brute', 'generalisee'] as const).map((v) => (
-            <label key={v} className={version === v ? 'est-choisi' : undefined}>
-              <input type="radio" name="reid-version" value={v} checked={version === v} onChange={() => choisir(v)} />
-              <span>{v === 'brute' ? 'Nom retiré' : 'Version généralisée'}</span>
-            </label>
-          ))}
+          <legend className="visuellement-cache">Étape du jeu</legend>
+          <label className={temps === 'retrouver' ? 'est-choisi' : undefined}>
+            <input type="radio" name="reid-temps" checked={temps === 'retrouver'} onChange={() => passer('retrouver')} />
+            <span>1. Retrouver</span>
+          </label>
+          <label className={temps === 'proteger' ? 'est-choisi' : undefined}>
+            <input type="radio" name="reid-temps" checked={temps === 'proteger'} onChange={() => passer('proteger')} />
+            <span>2. Protéger</span>
+          </label>
         </fieldset>
+
         <article className="reid-document">
           <p className="maquette-etiquette">Compte rendu, nom retiré</p>
-          <p>{texte}</p>
+          <p>
+            La patiente, {fragment(metier)} {fragment(age)}, {fragment(lieu)}, a été opérée du genou gauche {fragment(date)}. Elle demande la prise en charge par son assurance.
+          </p>
         </article>
-        <ol className="reid-indices">
-          {indices.map((i, k) => (
-            <li key={i.nom} className={k < nb ? 'est-revele' : undefined}>
-              <span>{i.nom}</span>
-              <strong>{k < nb ? i.valeur : '?'}</strong>
-            </li>
-          ))}
-        </ol>
-        <div className="actions">
-          {!fin && <button type="button" className="bouton" onClick={suivant}>Indice suivant ({nb + 1} / {indices.length})</button>}
-          {nb > 0 && <button type="button" className="bouton-secondaire" onClick={() => setNb(0)}>Recommencer</button>}
-        </div>
-        <p className="reid-verdict" role="status">{verdict}</p>
+
+        {temps === 'proteger' && (
+          <div className="reid-reglages">
+            <p>Rendez chaque indice moins précis :</p>
+            {INDICES.map((i) => (
+              <div key={i.id} className="reid-reglage" role="group" aria-label={i.nom}>
+                <span>{i.nom}</span>
+                <div className="reid-niveaux">
+                  {i.niveaux.map((n, k) => (
+                    <button key={n.texte} type="button" aria-pressed={niveaux[i.id] === k} onClick={() => { setNiveaux({ ...niveaux, [i.id]: k }); marquerVu(cours, 'reidentification'); }}>{n.texte}</button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <p className={'reid-verdict' + (trouvee ? ' est-alerte' : '') + (protegee ? ' est-ok' : '')} role="status">{verdict}</p>
+        {trouvee && <button type="button" className="bouton" onClick={() => passer('proteger')}>Maintenant, protégez-la</button>}
+        {temps === 'retrouver' && utilises.length > 0 && !trouvee && <button type="button" className="bouton-secondaire" onClick={() => setUtilises([])}>Recommencer</button>}
       </div>
 
       <div className="reid-annuaire">
-        <p className="maquette-etiquette">Annuaire public de la vallée (fictif), 20 habitants</p>
+        <p className="maquette-etiquette">Annuaire public de la vallée (fictif) : {restants.length} sur {PROFILS.length} possibles</p>
         <ul>
           {PROFILS.map((p) => {
             const garde = restants.includes(p);
-            const trouve = garde && restants.length === 1;
             return (
-              <li key={p.nom} className={(garde ? '' : 'est-ecarte') + (trouve ? ' est-trouve' : '')} aria-hidden={!garde}>
+              <li key={p.nom} className={(garde ? '' : 'est-ecarte') + (garde && restants.length === 1 ? ' est-trouve' : '')} aria-hidden={!garde}>
                 <strong>{p.nom}</strong>
                 <span>{p.age} ans, {p.metier.toLowerCase()}</span>
                 <span>{p.lieu}</span>

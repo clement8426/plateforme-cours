@@ -435,6 +435,56 @@ html.theatre { overflow: hidden; }
 .note-fictif { margin-top: 14px; color: var(--discret); font-size: 14px; }
 @media (max-width: 560px) { .chat { grid-template-columns: 1fr; } }
 
+/* le dossier de Mme Fictive : des choix, des risques qui s'allument */
+.dossier { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, 1fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.dossier-etapes { display: grid; gap: 14px; }
+.dossier-raccourcis { margin-bottom: 2px; }
+.dossier-etape { display: grid; gap: 8px; margin: 0; padding: 16px 18px 18px; border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
+.dossier-etape legend { display: flex; align-items: center; gap: 10px; padding: 0 6px; margin-left: -6px; font: 650 19px/1.2 var(--police-titre), sans-serif; }
+.dossier-num { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--encre); color: var(--fond); font-size: 14px; }
+.dossier-etape.est-faite .dossier-num { background: var(--vert); color: #fff; }
+.dossier-piece { color: var(--discret); }
+.dossier-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+.dossier-option { position: relative; display: grid; gap: 2px; align-content: start; padding: 12px 14px; border: 2px solid var(--ligne); border-radius: 12px; cursor: pointer; }
+.dossier-option input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.dossier-option:hover { border-color: var(--encre); }
+.dossier-option:has(input:focus-visible) { outline: 3px solid var(--bleu); outline-offset: 2px; }
+.dossier-option span { color: var(--discret); font-size: 14px; }
+.dossier-option.est-risque { border-color: var(--b-sensible); background: color-mix(in srgb, var(--b-sensible) 9%, var(--surface)); }
+.dossier-option.est-sur { border-color: var(--vert); background: var(--vert-doux); }
+.dossier-risques { display: grid; gap: 12px; }
+@media (min-width: 1000px) { .dossier-risques { position: sticky; top: 16px; } }
+.dossier-risques .titre-section { font-size: 22px; }
+.dossier-compteur { font: 650 20px/1.3 var(--police-titre), sans-serif; }
+.dossier-tuiles { display: grid; gap: 6px; padding: 0; list-style: none; }
+.dossier-tuiles li { border: 1px solid var(--ligne); border-radius: 12px; background: var(--surface); transition: background-color .2s ease, border-color .2s ease; }
+.dossier-tuiles li.est-actif { border-color: var(--b-sensible); background: color-mix(in srgb, var(--b-sensible) 10%, var(--surface)); }
+.dossier-tuiles li.est-evite { opacity: .75; }
+.dossier-tuiles button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 8px 12px; border: 0; background: none; color: var(--encre); font: 600 16px/1.3 var(--police-texte), sans-serif; text-align: left; cursor: pointer; }
+.dossier-etat { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--bloc); font-size: 13px; font-weight: 800; }
+.est-actif .dossier-etat { background: var(--b-sensible); border-color: var(--b-sensible); color: #fff; }
+.est-evite .dossier-etat { background: var(--vert); border-color: var(--vert); color: #fff; }
+.dossier-detail { display: grid; gap: 4px; padding: 0 12px 12px 46px; font-size: 15px; color: var(--discret); }
+.dossier-detail strong { color: var(--encre); }
+.dossier-resultat { display: grid; gap: 6px; padding: 16px 18px; border-radius: var(--rayon); background: var(--surface); border: 1px solid var(--ligne); }
+.dossier-resultat h3 { font-size: 18px; }
+.juste { background: var(--vert-doux); color: inherit; padding: 0 3px; border-radius: 4px; }
+@media (max-width: 1000px) { .dossier { grid-template-columns: 1fr; } }
+
+/* la réidentification : des indices cliquables, puis réglables */
+.reid-fragment { display: inline; padding: 0 4px; border: 0; border-radius: 4px; background: #FFF1C2; color: #1E2129; font: inherit; text-decoration: underline dashed 1px; text-underline-offset: 4px; cursor: pointer; }
+button.reid-fragment:hover { background: #FFE38A; }
+.reid-fragment.est-utilise { color: #1E2129; background: #F9D9D2; text-decoration: none; }
+.reid-fragment.est-reglable { text-decoration: none; color: #1E2129; background: #E3F1F4; }
+.reid-reglages { display: grid; gap: 10px; }
+.reid-reglage { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: center; gap: 10px; }
+.reid-reglage > span { font-weight: 600; font-size: 15px; }
+.reid-niveaux { display: flex; flex-wrap: wrap; gap: 6px; }
+.reid-niveaux button { min-height: 40px; padding: 0 12px; border: 1px solid var(--ligne); border-radius: 10px; background: var(--surface); color: var(--encre); font: 500 14px/1.2 var(--police-texte), sans-serif; cursor: pointer; }
+.reid-niveaux button[aria-pressed="true"] { border-color: var(--encre); background: var(--encre); color: var(--fond); }
+.reid-verdict.est-alerte { color: var(--b-sensible); }
+.reid-verdict.est-ok { color: var(--vert); }
+
 .reid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
 .reid-gauche { display: grid; gap: 16px; }
 .reid-document { padding: 18px 20px; border-radius: var(--rayon); background: var(--surface); border: 1px solid var(--ligne); font-size: 18px; line-height: 1.55; }
