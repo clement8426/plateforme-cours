@@ -55,15 +55,10 @@ export default async function PageDemo(props: Props) {
         </div>
       </header>
 
-      <section aria-labelledby="titre-deroule">
-        <h2 id="titre-deroule" className="visuellement-cache">Le déroulé de la démonstration</h2>
-        <ol className="deroule-demo">
-          {demo.deroule.map((e) => (
-            <li key={e.texte}>
-              <p>{e.texte}</p>
-              {e.action && <Link className="lien-fleche" href={e.action.href}>{e.action.texte}</Link>}
-            </li>
-          ))}
+      <section className="mode-emploi" aria-labelledby="titre-mode-emploi">
+        <h2 id="titre-mode-emploi">Comment ça marche</h2>
+        <ol>
+          {demo.modeEmploi.map((e) => <li key={e}>{e}</li>)}
         </ol>
       </section>
 
@@ -74,6 +69,18 @@ export default async function PageDemo(props: Props) {
         {demo.scene === 'dossier' && <DossierAvantApres cours={cle} />}
         {demo.scene === 'reidentification' && <Reidentification cours={cle} />}
       </div>
+
+      <section className="deroule-formateur" aria-labelledby="titre-deroule">
+        <h2 id="titre-deroule">Pour présenter en direct</h2>
+        <ol className="deroule-demo">
+          {demo.deroule.map((e) => (
+            <li key={e.texte}>
+              <p>{e.texte}</p>
+              {e.action && <Link className="lien-fleche" href={e.action.href}>{e.action.texte}</Link>}
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <div className="demo-bas">
         <section className="encart" aria-labelledby="titre-retenir">

@@ -211,11 +211,11 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
     verifier('comparer : deux cadres, un seul visible au départ', (await cadres.count()) === 2 && (await cadres.nth(0).isVisible()) && !(await cadres.nth(1).isVisible()));
     const rep = pc.frameLocator('iframe').nth(0).locator('input').first();
     await rep.fill('Valeur tapée');
-    await pc.getByRole('radio', { name: 'Version réparée' }).check();
+    await pc.getByRole('radio', { name: 'Après', exact: true }).check();
     verifier('comparer : la bascule affiche la version réparée', (await cadres.nth(1).isVisible()) && !(await cadres.nth(0).isVisible()));
-    await pc.getByRole('radio', { name: 'Version de départ' }).check();
+    await pc.getByRole('radio', { name: 'Avant', exact: true }).check();
     verifier('comparer : la saisie survit à la bascule', (await rep.inputValue()) === 'Valeur tapée');
-    await pc.getByRole('radio', { name: 'Côte à côte' }).check();
+    await pc.getByRole('radio', { name: 'Les deux' }).check();
     verifier('comparer : côte à côte affiche les deux', (await cadres.nth(0).isVisible()) && (await cadres.nth(1).isVisible()));
     await pc.getByRole('button', { name: /Ordre|champ|Aspect|autocompl|Autocompl/i }).first().click();
     await pc.getByRole('button', { name: 'Montrer dans le formulaire' }).first().click();
@@ -230,7 +230,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
     const sugg = await frR.locator('#suggestions').innerText().catch(() => '');
     verifier('comparer : suggestions simulées affichées', /Seyon/.test(sugg), sugg.slice(0, 50));
     verifier('comparer : aucune requête externe par défaut', demandes.length === 0, demandes.join(', '));
-    await pc.getByLabel(/vrai service Photon/).check();
+    await pc.getByLabel(/toutes les adresses de Suisse/).check();
     await frR.locator('#rue').fill('');
     await frR.locator('#rue').fill('Rue du Seyon 12');
     await pc.waitForTimeout(1500);

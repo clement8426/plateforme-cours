@@ -21,7 +21,8 @@ export type Demo = {
   apercu: string;
   scene: 'affiche' | 'tilleul' | 'comparateur' | 'dossier' | 'reidentification';
   comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
-  deroule: EtapeDemo[];
+  modeEmploi: string[]; // trois gestes, pour quelqu'un qui découvre la démo seul
+  deroule: EtapeDemo[]; // pour le formateur, en direct
   aRetenir: string[];
   exercice: string;
   bonus?: boolean; // à montrer seulement s'il reste du temps
@@ -101,11 +102,16 @@ const uxIa: Cours = {
     {
       slug: 'tilleul',
       titre: 'Tilleul, la boutique piégée',
-      resume: 'Une boutique de céramiques très soignée, avec douze défauts d’UX. Faites le parcours devant la salle, puis révélez les défauts avec le mode cours.',
+      resume: 'Une boutique de céramiques très soignée, qui cache douze problèmes d’UX. Trouvez-les en jouant, puis voyez-les corrigés.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
       duree: '15 minutes',
       apercu: '/apercus/tilleul.jpg',
       scene: 'tilleul',
+      modeEmploi: [
+        'En « Sans aide », faites vos courses comme un client. Qu’est-ce qui vous agace ?',
+        'Passez en « Mode cours », puis « Chercher les problèmes » : cliquez là où quelque chose vous gêne.',
+        'Bloqué ? « Révéler » montre les problèmes de la page, et Avant / Après montre la correction.',
+      ],
       deroule: [
         { texte: 'Sans aide, faites le parcours d’un client en pensant à voix haute : accueil, collection, fiche du vase Dune, panier, commande.' },
         { texte: 'Passez en mode cours, puis « Chercher » (touche C) : la salle dit où ça gêne, vous cliquez. Chaque bonne réponse fait apparaître le défaut.' },
@@ -123,11 +129,16 @@ const uxIa: Cours = {
     {
       slug: 'formulaire-adresse',
       titre: 'Le formulaire d’adresse, avant et après',
-      resume: 'Le même formulaire, deux versions. Remplissez la première devant la salle, passez à la version réparée, puis ouvrez les sept défauts un par un.',
+      resume: 'Le même formulaire d’adresse, avant et après réparation. Remplissez les deux : sept problèmes ont disparu.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
       duree: '12 minutes',
       apercu: '/apercus/demo-formulaire.jpg',
       scene: 'comparateur',
+      modeEmploi: [
+        'Remplissez le formulaire « Avant » avec une adresse inventée, puis envoyez-le.',
+        'Faites pareil avec « Après ». Dans « Rue et numéro », tapez par exemple « Rue du Seyon 10 ».',
+        'À droite, ouvrez chaque problème : ce qui gênait, et ce qui a été réparé.',
+      ],
       comparateur: 'formulaire-adresse',
       deroule: [
         { texte: 'Remplissez la version de départ avec une adresse fictive, chrono lancé, et envoyez-la.' },
@@ -146,11 +157,16 @@ const uxIa: Cours = {
     {
       slug: 'affiche',
       titre: 'L’affiche qui se lit en 3 secondes',
-      resume: 'Deux affiches pour la même promotion. Montrez chacune 3 secondes à la salle : laquelle a été retenue ?',
+      resume: 'Deux affiches pour la même promotion, montrées 3 secondes chacune. Laquelle retient-on ?',
       blocs: ['design-system', 'microcopie'],
       duree: '8 minutes',
       apercu: '/apercus/demo-affiche.jpg',
       scene: 'affiche',
+      modeEmploi: [
+        'Lancez le test : l’affiche apparaît seulement 3 secondes.',
+        'Qu’avez-vous retenu ? Quoi, quand, où ?',
+        'Révélez l’affiche, puis refaites le test avec l’autre affiche.',
+      ],
       deroule: [
         { texte: 'Lancez le test avec l’affiche A, sans rien annoncer.' },
         { texte: 'Demandez à la salle : quoi, quand, où ? Notez les réponses.' },
@@ -209,6 +225,11 @@ const iaDonnees: Cours = {
       duree: '12 minutes',
       apercu: '/apercus/demo-dossier.jpg',
       scene: 'dossier',
+      modeEmploi: [
+        'Regardez la version 1 : tout part dans un chat grand public américain.',
+        'Passez à la version 2 : la même tâche, faite sans exposer la cliente.',
+        'À droite, ouvrez chaque problème : ce qui ne va pas, la loi, qui en répond.',
+      ],
       deroule: [
         { texte: 'Montrez la version 1 : tout est collé dans un chat grand public américain. Trois clics, le compte rendu est prêt.' },
         { texte: 'Demandez à la salle : qu’est-ce qui a quitté l’étude, et vers où ?' },
@@ -231,6 +252,11 @@ const iaDonnees: Cours = {
       duree: '8 minutes',
       apercu: '/apercus/demo-reidentification.jpg',
       scene: 'reidentification',
+      modeEmploi: [
+        'Lisez le compte rendu : le nom a été retiré. Est-ce anonyme pour autant ?',
+        'Cliquez sur « Indice suivant » : les habitants qui ne correspondent plus s’effacent.',
+        'Puis recommencez avec la version généralisée.',
+      ],
       deroule: [
         { texte: 'Affichez le compte rendu sans nom : est-il anonyme ? Faites voter la salle.' },
         { texte: 'Révélez les indices un par un : métier, âge, localité. La salle élimine les profils.' },

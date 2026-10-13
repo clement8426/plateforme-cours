@@ -391,6 +391,19 @@ html.theatre { overflow: hidden; }
 @media (max-width: 1000px) { .comparateur { grid-template-columns: 1fr; } }
 @media (max-width: 1100px) { .vitrines-cote { grid-template-columns: 1fr; } }
 
+/* ---------- le mode d'emploi d'une démo (pour qui la découvre seul) et le déroulé du formateur ---------- */
+.mode-emploi { display: grid; gap: 10px; margin-bottom: 20px; padding: 16px 20px; border-radius: var(--rayon); background: var(--bleu-doux); }
+.mode-emploi h2 { font-size: 18px; }
+.mode-emploi ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 24px; padding: 0; list-style: none; counter-reset: geste; }
+.mode-emploi li { counter-increment: geste; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 16px; line-height: 1.45; }
+.mode-emploi li::before { content: counter(geste); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--bleu); color: var(--sur-bleu); font: 700 14px/1 var(--police-titre), sans-serif; }
+@media (max-width: 860px) { .mode-emploi ol { grid-template-columns: 1fr; } }
+.deroule-formateur { margin-top: clamp(32px, 4vw, 48px); }
+.deroule-formateur h2 { margin-bottom: 12px; font-size: 22px; }
+.photon-option { display: grid; gap: 4px; margin-top: 12px; color: var(--discret); font-size: 14px; }
+.photon-option label { display: flex; align-items: center; gap: 10px; min-height: 32px; color: var(--encre); font-size: 15px; font-weight: 600; cursor: pointer; }
+.photon-option input { flex: none; width: 20px; height: 20px; accent-color: var(--bleu); }
+
 /* ---------- démos du cours « IA, données et responsabilité » ---------- */
 .maquette { margin: 0; padding: 18px; background: #FBF8F2; color: #1F2421; font: 400 15px/1.5 var(--police-texte), sans-serif; }
 .maquette-etiquette { margin-bottom: 8px; color: var(--discret); font-size: 13px; font-weight: 600; }

@@ -8,9 +8,9 @@ type Mode = 'depart' | 'repare' | 'cote';
 type Cle = 'depart' | 'repare';
 
 const MODES: { id: Mode; texte: string }[] = [
-  { id: 'depart', texte: 'Version de départ' },
-  { id: 'repare', texte: 'Version réparée' },
-  { id: 'cote', texte: 'Côte à côte' },
+  { id: 'depart', texte: 'Avant' },
+  { id: 'repare', texte: 'Après' },
+  { id: 'cote', texte: 'Les deux' },
 ];
 const STYLE_ID = 'uxo-surlignage';
 
@@ -115,7 +115,7 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
 
   useEffect(() => { appliquer(ouvert, false); }, [ouvert, mode, chargements, appliquer]);
 
-  const titres: Record<Cle, string> = { depart: 'Version de départ', repare: 'Version réparée' };
+  const titres: Record<Cle, string> = { depart: 'Avant : le formulaire d’origine', repare: 'Après : le formulaire réparé' };
 
   return (
     <div className="comparateur" ref={racine}>
@@ -130,20 +130,9 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
           ))}
         </fieldset>
         <p className="visuellement-cache" role="status">
-          {mode === 'cote' ? 'Les deux versions sont affichées côte à côte.' : `${titres[mode]} affichée.`}
+          {mode === 'cote' ? 'Les deux versions sont affichées côte à côte.' : `Version affichée : ${titres[mode]}.`}
         </p>
 
-        {mode !== 'depart' && (
-          <div className="consentement">
-            <label>
-              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} />
-              <span>Utiliser le vrai service Photon pour les suggestions d’adresse</span>
-            </label>
-            <p>
-              Par défaut, les suggestions sont simulées dans votre navigateur (une cinquantaine de rues de Suisse romande et des grandes villes) et rien n’est envoyé. Pour chercher n’importe quelle adresse, cochez la case : ce que vous tapez dans « Rue et numéro » part alors vers photon.komoot.io, un service extérieur. Utilisez une adresse fictive.
-            </p>
-          </div>
-        )}
 
         <div className={`vitrines vitrines-${mode}`}>
           {(['depart', 'repare'] as Cle[]).map((cle) => (
@@ -160,10 +149,19 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
           ))}
         </div>
 
+        {mode !== 'depart' && (
+          <p className="photon-option">
+            <label>
+              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} />
+              <span>Chercher dans toutes les adresses de Suisse (service Photon)</span>
+            </label>
+            <span>Sans cette case, une liste d’exemple est utilisée et rien ne quitte votre navigateur. Avec, ce que vous tapez part vers un service extérieur : inventez l’adresse.</span>
+          </p>
+        )}
       </div>
 
       <aside className="comparateur-defauts" aria-labelledby="titre-defauts">
-        <h2 id="titre-defauts" className="titre-section">Les défauts, un par bloc du cours</h2>
+        <h2 id="titre-defauts" className="titre-section">Les sept problèmes réparés</h2>
         <ol className="defauts">
           {comparateur.defauts.map((d) => {
             const estOuvert = ouvert === d.id;
