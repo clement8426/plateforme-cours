@@ -161,7 +161,7 @@ const uxIa: Cours = {
       bonus: true,
     },
   ],
-  depot: 'https://github.com/clement8426/ux-ia-exercices',
+  depot: 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia',
   lexique: sourcesUx.lexique,
   references: grouper(sourcesUx.references),
 };
@@ -213,7 +213,7 @@ const iaDonnees: Cours = {
         'La version sûre n’est pas forcément plus lente, une fois les briques en place.',
         'L’IA générative n’intervient qu’à la fin, sur du texte.',
       ],
-      exercice: '02-dossier-avant-apres',
+      exercice: '02-dossier-mme-fictive',
     },
     {
       slug: 'reidentification',
@@ -237,7 +237,7 @@ const iaDonnees: Cours = {
       bonus: true,
     },
   ],
-  depot: 'https://github.com/clement8426/ia-donnees-exercices',
+  depot: 'https://github.com/clement8426/le-labo/tree/main/ia-legislation/ia-donnees',
   lexique: sourcesIa.lexique,
   references: grouper(sourcesIa.references, REGLES_IA),
 };

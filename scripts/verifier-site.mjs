@@ -130,7 +130,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.goto(base + '/ux/ux-ia/');
   await p.waitForLoadState('networkidle');
   verifier('page du cours : 3 parties et 3 démonstrations', (await p.locator('.partie').count()) === 3 && (await p.locator('.demo-carte').count()) === 3);
-  verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/ux-ia-exercices');
+  verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia');
   await p.getByRole('link', { name: /Diapo 20/ }).click();
   await p.waitForURL('**/diapos/?diapo=20');
   await p.waitForTimeout(800);
