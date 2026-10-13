@@ -247,7 +247,7 @@ const iaDonnees: Cours = {
     {
       slug: 'reidentification',
       titre: 'Retrouver la personne en trois indices',
-      resume: 'Un compte rendu dont le nom a été retiré, et l’annuaire public d’une vallée fictive. Retrouvez la personne en cliquant sur les indices, puis réécrivez le texte pour la protéger.',
+      resume: 'Un compte rendu dont le nom a été retiré, et un annuaire public du canton de Neuchâtel, aux habitants fictifs. Retrouvez la personne en cliquant sur les indices, puis réécrivez le texte pour la protéger.',
       blocs: ['personnelles', 'sensible'],
       duree: '8 minutes',
       apercu: '/apercus/demo-reidentification.jpg',

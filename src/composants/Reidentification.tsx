@@ -6,31 +6,31 @@ import { marquerVu } from './memoire';
 // Bonus « Retrouver la personne en trois indices », en deux temps.
 // 1. Retrouver : on clique sur les indices du compte rendu ; les habitants qui ne correspondent plus s'effacent.
 // 2. Protéger : on généralise chaque indice jusqu'à ce qu'au moins cinq personnes correspondent.
-// Tout est fictif : la vallée, les localités, les personnes.
+// Les localités du canton de Neuchâtel sont réelles ; les personnes et les messages sont fictifs.
 
-type Profil = { nom: string; age: number; metier: string; sante: boolean; lieu: string; nouvelle?: string };
+type Profil = { nom: string; age: number; metier: string; sante: boolean; lieu: string; region: string; nouvelle?: string };
 
 const PROFILS: Profil[] = [
-  { nom: 'Martine Exemple', age: 52, metier: 'Infirmière', sante: true, lieu: 'Les Combes', nouvelle: 'Club de gym : bon rétablissement à Martine, opérée le 12 mars !' },
-  { nom: 'Sophie Témoin', age: 52, metier: 'Infirmière', sante: true, lieu: 'Val-Fictif' },
-  { nom: 'Claire Modèle', age: 34, metier: 'Infirmière', sante: true, lieu: 'Les Combes' },
-  { nom: 'Luc Dupré', age: 47, metier: 'Infirmier', sante: true, lieu: 'Saint-Exemple' },
-  { nom: 'Anne Fictive', age: 61, metier: 'Infirmière', sante: true, lieu: 'Val-Fictif' },
-  { nom: 'Paul Essai', age: 55, metier: 'Pharmacien', sante: true, lieu: 'Les Combes' },
-  { nom: 'Nora Brouillon', age: 50, metier: 'Physiothérapeute', sante: true, lieu: 'Saint-Exemple' },
-  { nom: 'Yves Esquisse', age: 58, metier: 'Médecin', sante: true, lieu: 'Val-Fictif' },
-  { nom: 'Julie Maquette', age: 52, metier: 'Enseignante', sante: false, lieu: 'Les Combes', nouvelle: 'Marché du samedi : stand de Julie, confitures maison.' },
-  { nom: 'Marc Prototype', age: 49, metier: 'Garagiste', sante: false, lieu: 'Les Combes' },
-  { nom: 'Lina Croquis', age: 27, metier: 'Boulangère', sante: false, lieu: 'Val-Fictif' },
-  { nom: 'Hugo Ébauche', age: 63, metier: 'Agriculteur', sante: false, lieu: 'Saint-Exemple' },
-  { nom: 'Eva Gabarit', age: 52, metier: 'Comptable', sante: false, lieu: 'Saint-Exemple' },
-  { nom: 'Tom Patron', age: 38, metier: 'Électricien', sante: false, lieu: 'Les Combes' },
-  { nom: 'Rita Spécimen', age: 44, metier: 'Secrétaire', sante: false, lieu: 'Val-Fictif', nouvelle: 'Chorale : Rita reprend la direction en avril.' },
-  { nom: 'Jean Calque', age: 71, metier: 'Retraité', sante: false, lieu: 'Les Combes' },
-  { nom: 'Inès Trame', age: 31, metier: 'Graphiste', sante: false, lieu: 'Saint-Exemple' },
-  { nom: 'Omar Canevas', age: 56, metier: 'Menuisier', sante: false, lieu: 'Val-Fictif' },
-  { nom: 'Léa Pochoir', age: 19, metier: 'Apprentie', sante: false, lieu: 'Les Combes' },
-  { nom: 'Bruno Moule', age: 66, metier: 'Retraité', sante: false, lieu: 'Saint-Exemple' },
+  { nom: 'Sandrine Jeanneret', age: 52, metier: 'Infirmière', sante: true, lieu: 'Fleurier', region: 'Val-de-Travers', nouvelle: 'Société de gym de Fleurier : bon rétablissement à Sandrine, opérée le 12 mars !' },
+  { nom: 'Nathalie Perret', age: 52, metier: 'Infirmière', sante: true, lieu: 'La Chaux-de-Fonds', region: 'Montagnes' },
+  { nom: 'Laura Matthey', age: 34, metier: 'Infirmière', sante: true, lieu: 'Fleurier', region: 'Val-de-Travers' },
+  { nom: 'Olivier Huguenin', age: 47, metier: 'Infirmier', sante: true, lieu: 'Couvet', region: 'Val-de-Travers' },
+  { nom: 'Monique Robert', age: 61, metier: 'Infirmière', sante: true, lieu: 'Le Locle', region: 'Montagnes' },
+  { nom: 'Pierre-Alain Vuille', age: 55, metier: 'Pharmacien', sante: true, lieu: 'Fleurier', region: 'Val-de-Travers' },
+  { nom: 'Céline Ducommun', age: 50, metier: 'Physiothérapeute', sante: true, lieu: 'Neuchâtel', region: 'Littoral' },
+  { nom: 'Jean-Marc Calame', age: 58, metier: 'Médecin', sante: true, lieu: 'La Chaux-de-Fonds', region: 'Montagnes' },
+  { nom: 'Isabelle Borel', age: 52, metier: 'Enseignante', sante: false, lieu: 'Fleurier', region: 'Val-de-Travers', nouvelle: 'Marché de Fleurier : le stand d’Isabelle et ses confitures maison.' },
+  { nom: 'Thierry Gerber', age: 49, metier: 'Garagiste', sante: false, lieu: 'Couvet', region: 'Val-de-Travers' },
+  { nom: 'Chloé Favre', age: 27, metier: 'Boulangère', sante: false, lieu: 'Le Locle', region: 'Montagnes' },
+  { nom: 'Claude-Alain Jacot', age: 63, metier: 'Agriculteur', sante: false, lieu: 'La Brévine', region: 'Montagnes' },
+  { nom: 'Valérie Sandoz', age: 52, metier: 'Comptable', sante: false, lieu: 'Neuchâtel', region: 'Littoral' },
+  { nom: 'Kevin Girard', age: 38, metier: 'Électricien', sante: false, lieu: 'Fleurier', region: 'Val-de-Travers' },
+  { nom: 'Françoise Maire', age: 44, metier: 'Secrétaire', sante: false, lieu: 'La Chaux-de-Fonds', region: 'Montagnes', nouvelle: 'Chorale : Françoise reprend la direction en avril.' },
+  { nom: 'Roger Dubois', age: 71, metier: 'Retraité', sante: false, lieu: 'Môtiers', region: 'Val-de-Travers' },
+  { nom: 'Mélanie Rochat', age: 31, metier: 'Graphiste', sante: false, lieu: 'Neuchâtel', region: 'Littoral' },
+  { nom: 'Luca Rossi', age: 56, metier: 'Menuisier', sante: false, lieu: 'Le Locle', region: 'Montagnes' },
+  { nom: 'Léa Monnier', age: 19, metier: 'Apprentie', sante: false, lieu: 'Fleurier', region: 'Val-de-Travers' },
+  { nom: 'Bernard Steiner', age: 66, metier: 'Retraité', sante: false, lieu: 'Boudry', region: 'Littoral' },
 ];
 
 // Chaque indice, du plus précis au plus général.
@@ -47,8 +47,9 @@ const INDICES: Indice[] = [
     { texte: 'de 45 à 60 ans', garde: (p) => p.age >= 45 && p.age <= 60 },
   ] },
   { id: 'lieu', nom: 'Localité', niveaux: [
-    { texte: 'domiciliée aux Combes', garde: (p) => p.lieu === 'Les Combes' },
-    { texte: 'domiciliée dans la vallée', garde: () => true },
+    { texte: 'domiciliée à Fleurier', garde: (p) => p.lieu === 'Fleurier' },
+    { texte: 'domiciliée au Val-de-Travers', garde: (p) => p.region === 'Val-de-Travers' },
+    { texte: 'domiciliée dans le canton de Neuchâtel', garde: () => true },
   ] },
   { id: 'date', nom: 'Date', niveaux: [
     { texte: 'le 12 mars 2026', garde: (p) => Boolean(p.nouvelle?.includes('12 mars')) },
@@ -135,7 +136,7 @@ export default function Reidentification({ cours }: { cours: string }) {
       </div>
 
       <div className="reid-annuaire">
-        <p className="maquette-etiquette">Annuaire public de la vallée (fictif) : {restants.length} sur {PROFILS.length} possibles</p>
+        <p className="maquette-etiquette">Annuaire public, canton de Neuchâtel (personnes fictives) : {restants.length} sur {PROFILS.length} possibles</p>
         <ul>
           {PROFILS.map((p) => {
             const garde = restants.includes(p);
