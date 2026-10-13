@@ -1,36 +1,22 @@
 import Link from 'next/link';
-import DemarrerCours from '@/composants/DemarrerCours';
-import { CATEGORIES, premierCours } from '@/contenu/catalogue';
+import { CATEGORIES } from '@/contenu/catalogue';
 
 const Fleche = () => (
   <span className="fleche" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
 );
 
 export default function Accueil() {
-  const depart = premierCours();
-  const base = depart ? `/${depart.categorie.slug}/${depart.cours.slug}` : '/';
-
   return (
     <div className="page">
       <section className="accueil" aria-labelledby="accueil-titre">
-        <h1 id="accueil-titre">Joli ne veut pas dire pratique.</h1>
-        <p className="chapeau">Des cours courts pour apprendre à voir ce qui gêne les utilisateurs d’un produit, puis à le corriger, avec et sans IA. Diapos et démonstrations en libre accès, sans compte.</p>
-        {depart && (
-          <DemarrerCours
-            cle={`${depart.categorie.slug}/${depart.cours.slug}`}
-            titre={depart.cours.titre}
-            base={`${base}/`}
-            etapes={[
-              { id: 'diapos', court: 'les diapos', href: `${base}/diapos/` },
-              ...depart.cours.demos.map((d) => ({ id: d.slug, court: d.titre, href: `${base}/demos/${d.slug}/` })),
-              { id: 'sources', court: 'les sources', href: `${base}/sources/` },
-            ]}
-            demos={`${base}/#demos`}
-          />
-        )}
+        <h1 id="accueil-titre">Comprendre le numérique en le manipulant.</h1>
+        <p className="chapeau">Des cours courts et concrets : l’expérience utilisateur, l’IA, les données et la responsabilité, et bientôt le développement. Des diapos, des démonstrations à manipuler, des exercices à refaire chez soi. Libre d’accès, sans compte.</p>
+        <div className="actions">
+          <a className="bouton" href="#cours">Voir les cours</a>
+        </div>
       </section>
 
-      <section aria-labelledby="titre-cours">
+      <section id="cours" aria-labelledby="titre-cours">
         <h2 id="titre-cours" className="titre-section">Les cours</h2>
         <ul className="liste-cours">
           {CATEGORIES.flatMap((c) => c.cours.length

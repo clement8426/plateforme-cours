@@ -23,6 +23,7 @@ const PAGES = ['/', '/ux/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
   for (const schema of ['light', 'dark']) {
     const ctx = await b.newContext({ viewport: vp, colorScheme: schema, isMobile: mobile, hasTouch: mobile });
+    if (schema === 'dark') await ctx.addInitScript(() => localStorage.setItem('theme', 'sombre'));
     const p = await ctx.newPage();
     let violations = [];
     for (const u of PAGES) {
@@ -91,20 +92,13 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await ctx.close();
 }
 
-// 4. Mémoire de progression
+// 4. Accueil de la plateforme et mémoire de progression
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
   const p = await ctx.newPage();
   await p.goto(base + '/');
   await p.waitForLoadState('networkidle');
-  verifier('accueil : « Commencer le cours UX × IA » au premier passage', await p.getByRole('link', { name: 'Commencer le cours UX × IA' }).isVisible());
-  await p.goto(base + '/ux/ux-ia/diapos/');
-  await p.waitForLoadState('networkidle');
-  await p.goto(base + '/');
-  await p.waitForLoadState('networkidle');
-  await p.waitForTimeout(300);
-  const reprendre = p.getByRole('link', { name: /Reprendre : Tilleul/ });
-  verifier('après les diapos : « Reprendre : Tilleul, la boutique piégée »', await reprendre.isVisible(), (await p.locator('.accueil .actions').innerText()).replace(/\n/g, ' | '));
+  verifier('accueil : le nom « Le Labo » et les deux cours', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-vide)').count()) === 2);
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.goto(base + '/ux/ux-ia/demos/tilleul/');
@@ -114,11 +108,6 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
   verifier('page du cours : les démos de l’affiche et de Tilleul sont marquées « Vue »', (await p.locator('.demo-carte .vu').count()) === 2);
-  for (const u of ['/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/']) { await p.goto(base + u); await p.waitForLoadState('networkidle'); }
-  await p.goto(base + '/');
-  await p.waitForLoadState('networkidle');
-  await p.waitForTimeout(300);
-  verifier('tout vu : « Revoir le cours UX × IA »', await p.getByRole('link', { name: 'Revoir le cours UX × IA' }).isVisible());
   await ctx.close();
 }
 {
@@ -262,12 +251,13 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
 // 7. Contraste élevé : le bouton bascule, le choix tient au rechargement, et axe passe dans les deux thèmes
 for (const schema of ['light', 'dark']) {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: schema });
+  if (schema === 'dark') await ctx.addInitScript(() => localStorage.setItem('theme', 'sombre'));
   const p = await ctx.newPage();
   await p.goto(base + '/ux/ux-ia/');
   await p.getByRole('button', { name: 'Contraste élevé' }).click();
   await p.reload();
   await p.waitForLoadState('networkidle');
-  const etat = await p.evaluate(() => [document.documentElement.dataset.contraste, document.querySelector('.bouton-contraste').getAttribute('aria-pressed')]);
+  const etat = await p.evaluate(() => [document.documentElement.dataset.contraste, [...document.querySelectorAll('.bouton-contraste')].find((x) => x.textContent.includes('Contraste')).getAttribute('aria-pressed')]);
   verifier(`contraste élevé (${schema === 'dark' ? 'sombre' : 'clair'}) : activé et mémorisé`, etat[0] === 'eleve' && etat[1] === 'true', etat.join(','));
   const violations = [];
   for (const u of ['/', '/ux/ux-ia/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/']) {

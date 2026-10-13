@@ -5,8 +5,8 @@ export const dynamic = 'force-static';
 // Rend le site installable comme une application (ordinateur, téléphone).
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Les cours de Clément Bastien',
-    short_name: 'Cours',
+    name: 'Le Labo, cours de numérique',
+    short_name: 'Le Labo',
     description: 'Diapos et démonstrations interactives.',
     lang: 'fr',
     start_url: '/',

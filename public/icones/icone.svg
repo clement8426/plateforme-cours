@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#B4491F"/>
-  <text x="256" y="318" text-anchor="middle" font-family="Bricolage Grotesque, Arial Rounded MT Bold, Arial, sans-serif" font-size="200" font-weight="700" fill="#FFFFFF" letter-spacing="4">CB</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#14161B"/><g transform="translate(13 16)"><rect width="10" height="14" rx="3" fill="#8E6AB0"/><rect x="14" width="10" height="14" rx="3" fill="#D0683A"/><rect x="28" width="10" height="14" rx="3" fill="#4A8BC9"/><rect y="18" width="10" height="14" rx="3" fill="#B39A2E"/><rect x="14" y="18" width="10" height="14" rx="3" fill="#4FA57C"/><rect x="28" y="18" width="10" height="14" rx="3" fill="#C9506F"/></g></svg>

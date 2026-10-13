@@ -1,6 +1,6 @@
 # Plateforme de cours
 
-Le site des cours de Clément Bastien : diapos et démonstrations interactives, rangées par thème. Les exercices à refaire chez soi sont dans un dépôt GitHub à part ([ux-ia-exercices](https://github.com/clement8426/ux-ia-exercices)).
+Le Labo, la plateforme de cours de Clément Bastien : diapos et démonstrations interactives, rangées par thème. Les exercices à refaire chez soi sont dans un dépôt GitHub à part ([ux-ia-exercices](https://github.com/clement8426/ux-ia-exercices)).
 Site **entièrement statique** : pas de compte, pas de base de données, aucune donnée personnelle collectée.
 Il s'installe comme une application (PWA) et les pages déjà consultées restent lisibles hors connexion.
 
