@@ -17,7 +17,7 @@ const b = await chromium.launch();
 const ok = [];
 const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'OK    ' : 'ÉCHEC ', nom, detail); };
 
-const PAGES = ['/', '/ux/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/tilleul/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-mme-fictive/', '/ia-legislation/ia-donnees/demos/reidentification/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
+const PAGES = ['/', '/ux/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/tilleul/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-mme-fictive/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
 // 1. Accessibilité automatique, deux thèmes, deux tailles
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
@@ -135,6 +135,17 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.waitForURL('**/diapos/?diapo=20');
   await p.waitForTimeout(800);
   verifier('« Diapo 20 » ouvre les diapos à la diapo 20', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#20'));
+
+  // « Puis-je l'envoyer à une IA ? » : le CV (Non, Oui, Oui) est orange ; répondre Oui d'emblée dit quelle question est ratée, et pourquoi
+  await p.goto(base + '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/');
+  const tri = p.locator('.tri');
+  await tri.getByRole('button', { name: /Le CV d’une candidate/ }).click();
+  await tri.getByRole('button', { name: 'Oui', exact: true }).click();
+  const faux = await p.locator('.tri-verdict').innerText();
+  verifier('tri des fichiers : un « Oui » de trop dit la question ratée, la couleur et le pourquoi', /question 1/.test(faux) && /orange/i.test(faux) && /Pourquoi « Non »/.test(faux) && !/vous avez dit/i.test(faux));
+  await tri.getByRole('button', { name: 'Refaire ce fichier' }).click();
+  for (const r of ['Non', 'Oui', 'Oui']) await tri.getByRole('button', { name: r, exact: true }).click();
+  verifier('tri des fichiers : le CV bien trié est orange, à anonymiser d’abord', /Juste/.test(await p.locator('.tri-verdict').innerText()) && /orange : anonymiser/i.test(await p.locator('.tri-feu').innerText()));
 
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   verifier('démo de l’affiche : aucune note du formateur en ligne', (await p.locator('.deroule-demo, .deroule-formateur').count()) === 0 && !(await p.content()).includes('Pour présenter en direct'));

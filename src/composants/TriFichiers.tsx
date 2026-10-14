@@ -7,7 +7,7 @@ import { marquerVu } from './memoire';
 // Démonstration « Puis-je l'envoyer à une IA ? » : on choisit un fichier, on répond aux trois questions,
 // la couleur tombe, puis on la compare à la réponse attendue. Les fichiers sont fictifs et téléchargeables.
 
-const PASTILLE: Record<Couleur, string> = { vert: 'vert', vertAnon: 'vert', orange: 'orange', rouge: 'rouge' };
+const PASTILLE: Record<Couleur, string> = { vert: 'vert', orangeAnon: 'orange', orange: 'orange', rouge: 'rouge' };
 
 export default function TriFichiers({ cours }: { cours: string }) {
   const [choisi, setChoisi] = useState(FICHIERS[0].id);
@@ -54,7 +54,7 @@ export default function TriFichiers({ cours }: { cours: string }) {
                   <span className="tri-format">{f.format}</span>
                   <span className="tri-titre">{f.titre}</span>
                   <span className={'tri-etat' + (c ? ` est-${PASTILLE[f.attendu]}` : '')}>
-                    {c ? <>{RESULTATS[f.attendu].nom}{c === f.attendu ? ' ✓' : ', à revoir'}<span className="visuellement-cache">{c === f.attendu ? ', juste' : ''}</span></> : 'À trier'}
+                    {c ? <>{RESULTATS[f.attendu].court}{c === f.attendu ? ' ✓' : ', à revoir'}<span className="visuellement-cache">{c === f.attendu ? ', juste' : ''}</span></> : 'À trier'}
                   </span>
                 </button>
               </li>
@@ -106,6 +106,7 @@ export default function TriFichiers({ cours }: { cours: string }) {
           <div className={`tri-verdict est-${PASTILLE[fichier.attendu]}`}>
             <p className="tri-feu"><span className="tri-feu-pastille" aria-hidden="true" />Ce fichier est {RESULTATS[fichier.attendu].nom.toLowerCase()}</p>
             <h3>{ecart < 0 ? 'Juste : vos réponses mènent à la bonne couleur.' : `Pas tout à fait : à la question ${ecart + 1}, il fallait répondre « ${ouiNon(attendu[ecart])} ».`}</h3>
+            {ecart >= 0 && <p className="tri-raison"><strong>Pourquoi « {ouiNon(attendu[ecart])} » :</strong> {fichier.raisons[ecart]}</p>}
             <p>{fichier.pourquoi}</p>
             <p><strong>Avec quel outil :</strong> {RESULTATS[fichier.attendu].outil}</p>
             <div className="actions">
