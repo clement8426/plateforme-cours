@@ -1171,11 +1171,11 @@ const CONFIG = {
 
   // Slide 27 : l'arbre de décision
   arbre: {
-    q1: { question: 'Est-ce médical, intime, ou couvert par un secret professionnel ?', aide: 'PDF, tableur, photo ou audio : c’est le contenu qui compte. Santé, religion, opinions, biométrie, condamnations, ou ce qu’un médecin, un avocat ou un banquier apprend dans son métier.', oui: 'rouge', non: 'q2' },
+    q1: { question: 'Est-ce de la santé, un secret professionnel, ou une autre donnée sensible ?', aide: 'PDF, tableur, photo ou audio : c’est le contenu qui compte. Santé, religion, opinions, biométrie, condamnations, ou ce qu’un médecin, un avocat ou un banquier apprend dans son métier. Un nom, une adresse ou une date de naissance sont des données personnelles, mais pas sensibles : cela relève de la question 2.', oui: 'rouge', non: 'q2' },
     q2: { question: 'Est-ce réservé à certaines personnes, ou cela parle-t-il de quelqu’un ?', aide: 'Réservé : vous, votre chef, l’équipe ou un client seulement. Quelqu’un : un nom, un visage, une voix, une adresse e-mail, ou des indices qui permettent de le retrouver.', oui: 'q3', non: 'vert' },
     q3: { question: 'Peut-on vraiment l’anonymiser, sans perdre ce qui sert ?', aide: 'Retirer le nom ne suffit pas : âge, lieu, date et métier suffisent souvent. Un secret d’affaires, lui, ne s’anonymise pas.', oui: 'vertAnon', non: 'orange' },
     vert: { feu: 'vert', titre: 'Tous les outils sont possibles', txt: 'Ce que tout le monde peut déjà lire : site web, brochure, texte de loi, modèle vierge, données fictives. ChatGPT, Claude ou Gemini, au choix.' },
-    vertAnon: { feu: 'vert', titre: 'Anonymiser d’abord, puis envoyer', txt: 'Généraliser l’âge, le lieu et la date, retirer les noms. Une deuxième personne relit.' },
+    vertAnon: { feu: 'orange', titre: 'Anonymiser d’abord, puis envoyer', txt: 'Généraliser l’âge, le lieu et la date, retirer les noms. Une deuxième personne relit.' },
     orange: { feu: 'orange', titre: 'Offre entreprise sous contrat, ou IA suisse', txt: 'Pas d’entraînement, pas d’historique, un contrat de traitement des données. Dans le doute : l’IA hébergée en Suisse.' },
     rouge: { feu: 'rouge', titre: 'Sur l’ordinateur, ou IA hébergée en Suisse', txt: 'Lecture et transcription sur l’ordinateur, rédaction par un modèle open source hébergé en Suisse, sous contrat (Infomaniak, par exemple). Jamais un chat grand public.' }
   },
