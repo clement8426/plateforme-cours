@@ -23,9 +23,25 @@
       "cle": "cible"
     },
     {
+      "terme": "SaaS",
+      "nom": "SaaS (Software as a Service)",
+      "def": "Un logiciel utilisé en ligne, sur abonnement, sans rien installer.",
+      "cle": "produits"
+    },
+    {
+      "terme": "Activation",
+      "def": "Le moment où un nouvel utilisateur obtient son premier résultat utile. Elle prédit l’abonnement.",
+      "cle": "produits"
+    },
+    {
+      "terme": "Rétention",
+      "def": "La part des utilisateurs qui reviennent après 1 jour, 7 jours, 30 jours.",
+      "cle": "hotjar"
+    },
+    {
       "terme": "Tunnel de conversion",
       "nom": "Tunnel de conversion (funnel)",
-      "def": "Le parcours de l’arrivée jusqu’à l’objectif, achat ou formulaire.",
+      "def": "Le parcours de l’arrivée jusqu’à l’objectif : un contact, un achat, un abonnement, une installation.",
       "cle": "tunnel"
     },
     {
@@ -101,36 +117,15 @@
       "cle": "attente"
     },
     {
-      "terme": "Effet élastique",
-      "nom": "Effet élastique (rubber banding)",
-      "def": "Réglage d’un jeu en temps réel pour garder les joueurs proches les uns des autres.",
-      "cle": "emotion"
-    },
-    {
       "terme": "MCP",
       "nom": "MCP (Model Context Protocol)",
       "def": "Une prise standard qui branche un outil (navigateur, Figma, Clarity…) sur une IA, pour qu’elle l’utilise directement.",
       "cle": "mcp"
     },
     {
-      "terme": "Penpot",
-      "def": "Outil de design libre et gratuit, équivalent de Figma, que l’IA peut piloter via MCP.",
-      "cle": "solution"
-    },
-    {
       "terme": "Autocomplétion",
       "def": "Des suggestions proposées pendant la saisie, à choisir d’un clic ou au clavier.",
       "cle": "form-photon"
-    },
-    {
-      "terme": "Moodboard",
-      "def": "Planche d’inspiration qui fixe un style et des couleurs avant de créer.",
-      "cle": "methode"
-    },
-    {
-      "terme": "Vectoriel",
-      "def": "Image décrite par des formes, nette à toute taille, à l’inverse d’une image en pixels.",
-      "cle": "methode"
     },
     {
       "terme": "Audit",
@@ -153,16 +148,6 @@
       "titre": "Motif « combobox » (liste de suggestions)",
       "source": "W3C, WAI-ARIA",
       "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
-    },
-    {
-      "titre": "Le serveur MCP de Penpot",
-      "source": "Penpot",
-      "url": "https://penpot.app/ai/mcp-server"
-    },
-    {
-      "titre": "Limites du serveur MCP de Figma",
-      "source": "Figma",
-      "url": "https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/"
     },
     {
       "titre": "Abandon de panier : taux et raisons",
@@ -243,16 +228,6 @@
       "titre": "Robinhood retire ses confettis",
       "source": "CNBC, 2021",
       "url": "https://www.cnbc.com/2021/03/31/robinhood-gets-rid-of-confetti-feature-amid-scrutiny-over-gamification.html"
-    },
-    {
-      "titre": "Mario Kart et le rubber banding",
-      "source": "Wikipédia",
-      "url": "https://en.wikipedia.org/wiki/Mario_Kart"
-    },
-    {
-      "titre": "« 2026 : l’été où les affiches IA ont inondé la France »",
-      "source": "Next, 2026",
-      "url": "https://next.ink/253290/2026-lete-ou-les-affiches-ia-ont-inonde-la-france/"
     },
     {
       "titre": "Model Context Protocol, la documentation",

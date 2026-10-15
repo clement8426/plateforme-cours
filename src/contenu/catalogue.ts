@@ -82,7 +82,7 @@ function grouper(references: Reference[], regles: RegleGroupe[] = REGLES_GROUPES
 const uxIa: Cours = {
   slug: 'ux-ia',
   titre: 'UX × IA',
-  accroche: 'Rendre un produit pratique, puis le corriger avec l’IA.',
+  accroche: 'Rendre un site web, une boutique en ligne, un SaaS ou une application mobile pratique, puis le corriger avec l’IA.',
   duree: 'Environ 1 h 30, selon les démonstrations choisies',
   public: 'Débutants, aucun prérequis technique',
   objectifs: [
@@ -93,9 +93,9 @@ const uxIa: Cours = {
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
-    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '30 min', diapos: [1, 18] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [19, 31] },
-    { titre: 'Pratique', resume: 'Une ou deux démonstrations, selon le temps qui reste. Tout se refait chez soi.', duree: '25 à 40 min', diapos: [32, 46], demos: true },
+    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 19] },
+    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [20, 32] },
+    { titre: 'Pratique', resume: 'Une ou deux démonstrations, selon le temps qui reste. Tout se refait chez soi.', duree: '20 à 35 min', diapos: [33, 41], demos: true },
   ],
   demos: [
     {
@@ -245,7 +245,7 @@ const iaDonnees: Cours = {
       scene: 'reidentification',
       modeEmploi: [
         'Retrouver : cliquez sur les mots surlignés du compte rendu. Les habitants qui ne correspondent plus s’effacent.',
-        'Protéger : rendez chaque indice moins précis, jusqu’à ce qu’au moins cinq personnes correspondent.',
+        'Protéger : rendez chaque indice moins précis, jusqu’à ce qu’au moins cinq personnes correspondent. Le genre aussi est un indice : « la patiente » écarte tous les hommes.',
         'Essayez aussi un seul indice : la date suffit, à cause d’un message du club de gym.',
       ],
       aRetenir: [

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA, données et responsabilité, atelier de Clément Bastien</title>
+<title>IA, données et responsabilité, cours de Clément Bastien</title>
 <!--
   Présentation autonome : un seul fichier, sans framework ni build. Même moteur que le cours UX × IA. 35 slides, environ 90 minutes, données fictives uniquement.
   Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
@@ -502,7 +502,6 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .cd { display: grid; gap: 22px; justify-items: center; align-content: center; padding: 32px; text-align: center; }
 .cd .cd-time { font: 700 120px/.95 var(--font-title); font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
 .cd-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-.cd.done .cd-time { color: var(--bad); }
 /* frise des cas réels */
 .tl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; list-style: none; padding: 0; }
 .tl li { display: grid; gap: 10px; align-content: start; padding: 28px 30px; }
@@ -578,7 +577,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <body>
 <div id="viewport">
   <main id="stage" tabindex="-1" aria-label="Présentation IA, données et responsabilité">
-    <h1 class="sr">IA, données et responsabilité : atelier de Clément Bastien</h1>
+    <h1 class="sr">IA, données et responsabilité : cours de Clément Bastien</h1>
     <div id="slides">
 <!-- ================= PARTIE 1 : COMPRENDRE L'OUTIL (slides 1 à 8) ================= -->
 
@@ -622,7 +621,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="scenario">
-  <h2 class="title">Notre fil rouge : une étude d’avocats à cheval sur trois pays</h2>
+  <h2 class="title">Le fil rouge : une étude d’avocats à cheval sur trois pays</h2>
   <div class="body stack-l">
     <p class="lead">Basée en Suisse romande, l’étude traite du droit du travail, des assurances et du droit médical.</p>
     <ul class="places">
@@ -672,7 +671,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="vrai-faux">
-  <h2 class="title">Vrai ou faux ? Votez, puis on révèle</h2>
+  <h2 class="title">Vrai ou faux ? Répondez, puis révélez</h2>
   <div class="body">
     <div class="vf" data-comp="vraifaux"></div>
   </div>
@@ -747,7 +746,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <!-- ================= PARTIE 3 : ET SI ÇA TOURNE MAL ? (slides 15 à 26) ================= -->
 
 <section class="slide" data-part="3" data-key="responsable">
-  <h2 class="title">Qui est responsable ? Quatre cas, votez</h2>
+  <h2 class="title">Qui est responsable ? Quatre cas à trancher</h2>
   <div class="body">
     <div class="resp" data-comp="responsable"></div>
   </div>
@@ -763,7 +762,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li><h3>Inacceptable</h3><p>Interdit, ex. notation sociale</p></li>
     </ol>
     <div class="card accent" data-step="1">
-      <p class="lead"><b>Pour notre étude :</b> un simple déployeur, sans usage à haut risque. Les grosses amendes visent surtout les fournisseurs et les pratiques interdites.</p>
+      <p class="lead"><b>Pour l’étude du fil rouge :</b> un simple déployeur, sans usage à haut risque. Les grosses amendes visent surtout les fournisseurs et les pratiques interdites.</p>
     </div>
     <p class="note" data-step="2">Ses obligations : prendre des mesures pour former ses équipes (art. 4, assoupli par l’Omnibus IA en 2026). Transparence de l’art. 50 : seulement si elle publie des contenus générés par IA. Haut risque reporté au 2 décembre 2027.</p>
   </div>
@@ -791,7 +790,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c7">
       <ul class="points">
         <li data-step="1">S’applique à une entreprise hors UE qui offre des services à des personnes dans l’UE (art. 3 al. 2).</li>
-        <li data-step="2">Pour notre étude : si elle cherche des clients en France ou en Allemagne, elle entre probablement dans ce cadre.</li>
+        <li data-step="2">Pour l’étude du fil rouge : si elle cherche des clients en France ou en Allemagne, elle entre probablement dans ce cadre.</li>
         <li data-step="3">Les transferts illicites relèvent du palier le plus haut.</li>
       </ul>
     </div>
@@ -957,7 +956,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <tr><td>Base nLPD</td><td>Aucun contrat possible</td><td>Contrat, clauses et analyse</td><td>Pas de transfert</td></tr>
       </tbody>
     </table>
-    <p class="note">Conditions à revérifier la veille de l’atelier.</p>
+    <p class="note">Conditions à revérifier avant de choisir.</p>
   </div>
 </section>
 
@@ -969,7 +968,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="4" data-key="demo">
-  <h2 class="title">Démo en direct : du scan au compte rendu</h2>
+  <h2 class="title">Démo : du scan au compte rendu</h2>
   <div class="body g12">
     <div class="c7">
       <ol class="flow">
@@ -1013,7 +1012,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <!-- ================= ANNEXES : lexique et sources (slides 34 et 35) ================= -->
 
 <section class="slide" data-part="5" data-key="lexique">
-  <h2 class="title">Lexique : les termes de l’atelier</h2>
+  <h2 class="title">Lexique : les termes du cours</h2>
   <div class="body">
     <div class="lexique" data-comp="lexique"></div>
   </div>
@@ -1187,7 +1186,7 @@ const CONFIG = {
     { nom: 'Citer', chip: 'Fedlex', ou: 'Public', cout: 'Gratuit', titre: 'Citer la bonne loi', txt: 'Fedlex, la base officielle du droit fédéral, donne l’article exact et sa version en vigueur. Accès libre, sans clé.', note: 'On n’envoie qu’une référence d’article, jamais le dossier.' }
   ],
 
-  // Slide 32 : l'exercice en binômes
+  // Slide 32 : l'exercice, seul ou à plusieurs
   exercice: [
     { piece: 'Le rapport médical scanné d’un client', sol: 'Rouge : OCR en local, puis IA suisse.' },
     { piece: 'La note vocale de l’associé sur le dossier', sol: 'Rouge : Whisper en local.' },
@@ -1207,7 +1206,7 @@ const CONFIG = {
     { terme: 'Pseudonymisation', def: 'Remplacer le nom par un code. Reste une donnée personnelle pour qui peut faire le lien avec la table de correspondance.', cle: 'anonymiser' },
     { terme: 'Injection de prompt', def: 'Une consigne cachée dans une page ou un document, que l’IA lit et suit à la place de la tienne.', cle: 'injection' },
     { terme: 'AI Act', nom: 'AI Act, règlement européen sur l’IA', def: 'Règlement (UE) 2024/1689 qui classe les usages de l’IA par niveau de risque, du minimal à l’interdit.', cle: 'ai-act' },
-    { terme: 'Déployeur', def: 'Celui qui utilise un système d’IA dans son activité, sans l’avoir développé. Notre étude d’avocats en est un.', cle: 'ai-act' },
+    { terme: 'Déployeur', def: 'Celui qui utilise un système d’IA dans son activité, sans l’avoir développé. L’étude d’avocats du fil rouge en est un.', cle: 'ai-act' },
     { terme: 'Littératie IA', def: 'Obligation de prendre des mesures pour former les équipes qui utilisent l’IA (art. 4 de l’AI Act), depuis février 2025, assouplie par l’Omnibus IA en 2026.', cle: 'ai-act' },
     { terme: 'GPAI', nom: 'GPAI, modèle d’IA à usage général', def: 'Grand modèle polyvalent, comme ceux derrière Claude ou ChatGPT. Ses fournisseurs ont des obligations propres depuis août 2025.', cle: 'ai-act-amendes' },
     { terme: 'RGPD', def: 'Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.', cle: 'rgpd' },
@@ -1781,14 +1780,14 @@ const CONFIG = {
     printers.push(() => doc.classList.add('reveal'));
   }
 
-  /* --- Qui est responsable : quatre cas, vote à main levée, puis révélation --- */
+  /* --- Qui est responsable : quatre cas, une réponse à choisir, puis révélation --- */
   function initResponsable() {
     const el = $('[data-comp="responsable"]');
     if (!el) return;
     const C = CONFIG.responsables, panel = h('div', { class: 'card resp-panel', 'aria-live': 'polite' });
     const show = (k, open) => {
       const c = C[k]; panel.textContent = '';
-      const votes = h('ul', { class: 'resp-votes', 'aria-label': 'Choix proposés au vote' },
+      const votes = h('ul', { class: 'resp-votes', 'aria-label': 'Réponses possibles' },
         CONFIG.votesResponsable.map(v => h('li', { class: 'chip' + (open && c.bons.includes(v) ? ' good' : open ? ' off' : '') }, open && c.bons.includes(v) ? icon('check') : null, h('span', { text: v }))));
       panel.append(h('h3', { text: 'Cas ' + (k + 1) + ' : ' + c.titre }), h('p', { class: 'resp-sit', text: c.situation }), votes);
       if (open) panel.append(h('p', { class: 'resp-ans', text: c.reponse }), h('ul', { class: 'resp-lois', 'aria-label': 'Ce que dit la loi' }, c.lois.map(l => h('li', { class: 'tag', text: l }))));
@@ -1822,7 +1821,7 @@ const CONFIG = {
     go('q1');
   }
 
-  /* --- Exercice : six pièces à router, corrigé à révéler, minuteur --- */
+  /* --- Exercice : six pièces à router, corrigé à révéler, durée estimée --- */
   function initExercice() {
     const el = $('[data-comp="exercice"]');
     if (!el) return;
@@ -1834,20 +1833,10 @@ const CONFIG = {
       list.append(h('li', { class: 'exo-row' }, h('p', { text: p.piece }), slot));
     });
     printers.push(() => all.forEach(f => f()));
-    // minuteur
-    let total = CONFIG.defauts.exerciceMinutes * 60000, left = total, t0 = 0, running = false, iv = 0;
-    const time = h('p', { class: 'cd-time', role: 'timer' }), box = h('div', { class: 'card cd' });
-    const go = btn('Démarrer', () => { if (running) { left -= Date.now() - t0; running = false; clearInterval(iv); } else { t0 = Date.now(); running = true; iv = setInterval(draw, 250); } draw(); }, 'primary', 'play');
-    const draw = () => {
-      const ms = Math.max(0, left - (running ? Date.now() - t0 : 0));
-      time.textContent = mmss(ms); box.classList.toggle('done', ms === 0);
-      if (ms === 0 && running) { running = false; clearInterval(iv); left = 0; }
-      go.lastChild.textContent = running ? 'Pause' : 'Démarrer'; go.firstChild.replaceWith(icon(running ? 'pause' : 'play'));
-    };
-    box.append(h('p', { class: 'field-label', text: 'En binômes' }), time,
-      h('div', { class: 'cd-row' }, go, btn('Remise à zéro', () => { running = false; clearInterval(iv); left = total; draw(); }, '', 'reset')),
+    const box = h('div', { class: 'card cd' },
+      h('p', { class: 'field-label', text: 'Durée estimée' }), h('p', { class: 'cd-time', text: CONFIG.defauts.exerciceMinutes + ' min' }),
       btn('Tout le corrigé', () => all.forEach(f => f())));
-    el.append(list, box); draw();
+    el.append(list, box);
   }
 
   /* --- AI Act : amendes maximales selon l'infraction, à révéler --- */

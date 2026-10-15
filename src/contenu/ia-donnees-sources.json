@@ -23,12 +23,12 @@
     },
     {
       "terme": "Anonymisation",
-      "def": "Rendre impossible, pour quiconque, de retrouver la personne. Retirer le nom ne suffit presque jamais.",
+      "def": "Rendre impossible de retrouver la personne sans effort démesuré. Retirer le nom ne suffit presque jamais.",
       "cle": "anonymiser"
     },
     {
       "terme": "Pseudonymisation",
-      "def": "Remplacer le nom par un code. Reste une donnée personnelle tant que la correspondance existe.",
+      "def": "Remplacer le nom par un code. Reste une donnée personnelle pour qui peut faire le lien avec la table de correspondance.",
       "cle": "anonymiser"
     },
     {
@@ -44,12 +44,12 @@
     },
     {
       "terme": "Déployeur",
-      "def": "Celui qui utilise un système d’IA dans son activité, sans l’avoir développé. Notre étude d’avocats en est un.",
+      "def": "Celui qui utilise un système d’IA dans son activité, sans l’avoir développé. L’étude d’avocats du fil rouge en est un.",
       "cle": "ai-act"
     },
     {
       "terme": "Littératie IA",
-      "def": "Obligation de former les équipes qui utilisent l’IA, en vigueur depuis février 2025.",
+      "def": "Obligation de prendre des mesures pour former les équipes qui utilisent l’IA (art. 4 de l’AI Act), depuis février 2025, assouplie par l’Omnibus IA en 2026.",
       "cle": "ai-act"
     },
     {
@@ -60,7 +60,7 @@
     },
     {
       "terme": "RGPD",
-      "def": "Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.",
+      "def": "Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.",
       "cle": "rgpd"
     },
     {
@@ -78,7 +78,7 @@
     {
       "terme": "Secret professionnel",
       "nom": "Secret professionnel, art. 321 CP",
-      "def": "Obligation de taire ce que l’on apprend dans certaines professions. Violation : jusqu’à 3 ans de peine privative de liberté.",
+      "def": "Obligation de taire ce que l’on apprend dans certaines professions. Violation : jusqu’à 3 ans de peine privative de liberté.",
       "cle": "qui-paie"
     },
     {
@@ -105,12 +105,12 @@
     },
     {
       "terme": "Transfert à l’étranger",
-      "def": "Toute communication de données personnelles hors de Suisse, y compris un prompt envoyé à un service américain (art. 16 ss nLPD).",
+      "def": "Toute communication de données personnelles hors de Suisse, y compris un prompt qui en contient, envoyé à un service américain (art. 16 ss nLPD).",
       "cle": "synthese"
     },
     {
       "terme": "privatim",
-      "def": "La conférence des préposés suisses à la protection des données.",
+      "def": "La conférence des préposés cantonaux et communaux à la protection des données.",
       "cle": "etat"
     },
     {
@@ -232,9 +232,29 @@
       "url": "https://www.nbcnews.com/tech/tech-news/samsung-bans-use-chatgpt-employees-misuse-chatbot-rcna82407"
     },
     {
-      "titre": "Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI",
+      "titre": "Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI",
       "source": "Punto Informatico, 2026",
       "url": "https://www.punto-informatico.it/openai-annullata-multa-violazione-privacy/"
+    },
+    {
+      "titre": "Pourquoi le tribunal de Rome a annulé la sanction : la compétence",
+      "source": "Cybersecurity360, 2026",
+      "url": "https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/"
+    },
+    {
+      "titre": "Règlement (UE) 2026/1744, Omnibus IA",
+      "source": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj"
+    },
+    {
+      "titre": "Mise à jour des conditions grand public de Claude",
+      "source": "Anthropic, 2025",
+      "url": "https://www.anthropic.com/news/updates-to-our-consumer-terms"
+    },
+    {
+      "titre": "Résolution sur l’externalisation de données sensibles dans le cloud",
+      "source": "privatim, via le canton de Fribourg, 2025",
+      "url": "https://www.fr.ch/de/oedsmb/news/privatim-verabschiedet-eine-resolution-zur-auslagerung-von-besonders-schuetzenswerten-personendaten-in-die-cloud"
     }
   ]
 }
