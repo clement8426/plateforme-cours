@@ -18,7 +18,18 @@ export const metadata: Metadata = {
   description: 'Des cours courts et concrets sur le numérique : UX, IA, données et responsabilité. Diapos et démonstrations à manipuler, libre d’accès, sans compte.',
   manifest: '/manifest.webmanifest',
   icons: { icon: '/icones/icone.svg', apple: '/icones/apple-touch-icon.png' },
-  appleWebApp: { capable: true, title: 'Cours', statusBarStyle: 'default' },
+  appleWebApp: { capable: true, title: 'Le Labo', statusBarStyle: 'default' },
+  // Aperçu quand on colle un lien dans un message ou un réseau social.
+  metadataBase: new URL('https://plateforme-cours-three.vercel.app'),
+  openGraph: {
+    siteName: 'Le Labo',
+    title: 'Le Labo, cours de numérique',
+    description: 'Des cours courts et concrets : diapos, démonstrations à manipuler, exercices à refaire chez soi. Libre d’accès, sans compte.',
+    locale: 'fr_CH',
+    type: 'website',
+    images: [{ url: '/icones/icone-512.png', width: 512, height: 512, alt: 'Le Labo : une petite fiole qui sourit' }],
+  },
+  twitter: { card: 'summary' },
 };
 
 export const viewport: Viewport = {
@@ -51,7 +62,12 @@ export default function Racine({ children }: { children: React.ReactNode }) {
         <main id="contenu">{children}</main>
         <footer className="pied">
           <p>Libre d’accès, sans compte et sans suivi.&nbsp;Votre progression reste sur cet appareil.</p>
-          <p>Le Labo, par Clément Bastien</p>
+          <p>
+            Le Labo, par Clément Bastien.{' '}
+            <a href="https://github.com/clement8426/le-labo" target="_blank" rel="noreferrer">Les exercices sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span></a>
+            {' · '}
+            <a href="https://github.com/clement8426/le-labo/blob/main/LICENSE.md" target="_blank" rel="noreferrer">Licence : code MIT, contenus CC BY-NC<span className="visuellement-cache"> (nouvel onglet)</span></a>
+          </p>
         </footer>
         <EnregistrementPwa />
       </body>

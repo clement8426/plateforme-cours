@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { BLOCS, type BlocId } from '@/contenu/blocs';
 import { marquerVu } from './memoire';
 
-// Démonstration « Le dossier de Mme Fictive » : c'est vous qui traitez le dossier.
+// Démonstration « Le dossier Exemple » : c'est vous qui traitez le dossier. Même cas que les scans de l'exercice 01.
 // À chaque étape, on choisit comment traiter la pièce ; les risques s'allument ou s'éteignent selon les choix.
 // À la fin : le compte rendu obtenu, et ce que coûterait chaque risque restant. Tout est fictif, les articles de loi sont réels.
 
@@ -26,22 +26,22 @@ type Etape = { id: string; titre: string; piece: string; options: Option[] };
 
 const CHAT: RisqueId[] = ['transfert', 'sante', 'secret', 'conservation', 'cloud', 'historique'];
 const ETAPES: Etape[] = [
-  { id: 'scan', titre: 'Lire le rapport médical', piece: 'L’hôpital a envoyé le rapport d’opération de Mme Fictive : un PDF scanné, un peu flou. Impossible de copier le texte. Il faut d’abord le transformer en texte que vous pouvez modifier.', options: [
+  { id: 'scan', titre: 'Lire le rapport médical', piece: 'La clinique a envoyé le rapport médical de M. Exemple : un PDF scanné, un peu flou. Impossible de copier le texte. Il faut d’abord le transformer en texte que vous pouvez modifier.', options: [
     { id: 'chat', texte: 'Le joindre dans un chat en ligne', detail: 'Vous glissez le PDF dans ChatGénéral, un chat gratuit comme ChatGPT, et vous demandez : « Recopie-moi ce rapport ». Le fichier part sur ses serveurs, aux États-Unis.', risques: CHAT, sur: false },
     { id: 'ocr', texte: 'Le faire lire par votre ordinateur', detail: 'Votre ordinateur sait reconnaître le texte d’une image, sans internet : avec Aperçu sur Mac, ou l’Outil Capture sur Windows. Le fichier ne quitte pas l’étude.', risques: [], sur: true },
   ] },
-  { id: 'voix', titre: 'Mettre le message vocal par écrit', piece: 'Votre collègue a reçu Mme Fictive hier. Il vous a laissé un message vocal de cinq minutes : ce qu’elle a raconté, ses douleurs, son arrêt de travail. Il faut le mettre par écrit.', options: [
-    { id: 'chat', texte: 'L’envoyer au chat en ligne', detail: 'Vous déposez le fichier audio dans ChatGénéral et vous lui demandez de l’écrire. La voix de votre collègue et le récit de la cliente partent avec.', risques: CHAT, sur: false },
+  { id: 'voix', titre: 'Mettre le message vocal par écrit', piece: 'Votre collègue a reçu M. Exemple hier. Il vous a laissé un message vocal : ce que le client a raconté, sa blessure, le refus de l’assurance. Il faut le mettre par écrit.', options: [
+    { id: 'chat', texte: 'L’envoyer au chat en ligne', detail: 'Vous déposez le fichier audio dans ChatGénéral et vous lui demandez de l’écrire. La voix de votre collègue et le récit du client partent avec.', risques: CHAT, sur: false },
     { id: 'whisper', texte: 'Le transcrire sur votre ordinateur', detail: 'Une application installée sur l’ordinateur transforme la voix en texte, sans internet (par exemple MacWhisper sur Mac, ou Buzz sur Windows). Rien ne sort de l’étude.', risques: [], sur: true },
   ] },
   { id: 'redaction', titre: 'Rédiger le compte rendu', piece: 'Vous avez maintenant le texte du rapport et celui du message. Il faut en faire un compte rendu clair, d’une page, pour l’assurance. Une IA peut vous aider à le rédiger : laquelle choisissez-vous ?', options: [
     { id: 'chat', texte: 'Le chat en ligne gratuit', detail: 'ChatGénéral, version grand public. Il garde la conversation et peut s’en servir pour s’améliorer.', risques: CHAT, sur: false },
-    { id: 'api', texte: 'Une offre payante pour entreprises, américaine', detail: 'Le même genre d’outil, mais sous contrat : rien n’est gardé ni réutilisé. Les serveurs restent aux États-Unis.', risques: ['transfert', 'cloud'], sur: false },
+    { id: 'api', texte: 'Une offre payante pour entreprises, américaine', detail: 'Le même genre d’outil, mais sous contrat : rien ne sert à entraîner l’IA, et la conservation est limitée. L’entreprise reste américaine.', risques: ['transfert', 'cloud'], sur: false },
     { id: 'suisse', texte: 'Une IA hébergée en Suisse', detail: 'Un service suisse sous contrat (Infomaniak, par exemple). Seul le texte part, et il reste en Suisse.', risques: [], sur: true },
   ] },
-  { id: 'envoi', titre: 'Avant d’envoyer à l’assurance', piece: 'Le compte rendu est prêt. L’avocat va le signer et l’envoyer à l’assurance de Mme Fictive.', options: [
+  { id: 'envoi', titre: 'Avant d’envoyer à l’assurance', piece: 'Le compte rendu est prêt. L’avocat va le signer et l’envoyer à l’assurance de M. Exemple.', options: [
     { id: 'direct', texte: 'L’envoyer tel quel', detail: 'Il a l’air juste, et vous gagnez dix minutes. Personne ne relit.', risques: ['relecture'], sur: false },
-    { id: 'relire', texte: 'Le relire avec le rapport d’origine', detail: 'Vous vérifiez les mots importants (le côté opéré, la date) dans le PDF.', risques: [], sur: true },
+    { id: 'relire', texte: 'Le relire avec le rapport d’origine', detail: 'Vous vérifiez les mots importants (le côté blessé, la date) dans le PDF.', risques: [], sur: true },
   ] },
 ];
 
@@ -50,7 +50,7 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
   const [ouvert, setOuvert] = useState<RisqueId | null>(null);
   const fini = ETAPES.every((e) => choix[e.id]);
   const actifs = new Set<RisqueId>(ETAPES.flatMap((e) => e.options.find((o) => o.id === choix[e.id])?.risques ?? []));
-  const choisir = (etape: string, option: string) => { setChoix((c) => ({ ...c, [etape]: option })); marquerVu(cours, 'dossier-mme-fictive'); };
+  const choisir = (etape: string, option: string) => { setChoix((c) => ({ ...c, [etape]: option })); marquerVu(cours, 'dossier-exemple'); };
   const remplir = (sur: boolean) => setChoix(Object.fromEntries(ETAPES.map((e) => [e.id, (e.options.find((o) => o.sur === sur) ?? e.options[0]).id])));
 
   return (
@@ -58,7 +58,7 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
       <div className="dossier-etapes">
         <div className="dossier-situation">
           <h2 className="titre-section">La situation</h2>
-          <p>Vous travaillez dans une étude d’avocats à Neuchâtel. Votre cliente, Mme Fictive, s’est fait opérer du genou et demande à son assurance de payer. L’avocat vous demande un compte rendu pour demain.</p>
+          <p>Vous travaillez dans une étude d’avocats à Neuchâtel. Votre client, M. Jean Exemple, frontalier de Morteau, s’est fracturé le poignet au travail. Son assurance refuse de payer les indemnités journalières. L’avocat vous demande un compte rendu pour former opposition.</p>
           <p>Vous avez deux pièces : un rapport médical scanné et un message vocal. À chaque étape, choisissez comment vous faites.</p>
         </div>
         {ETAPES.map((e, k) => (
@@ -106,7 +106,7 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
         {fini && (
           <article className="dossier-resultat">
             <h3>Le compte rendu envoyé à l’assurance</h3>
-            <p>Mme Fictive, 52 ans, infirmière, a été opérée du <mark className={choix.envoi === 'direct' ? 'erreur-ocr' : 'juste'}>{choix.envoi === 'direct' ? 'genou droit' : 'genou gauche'}</mark> le 13 août 2026. Elle demande la prise en charge par son assurance.</p>
+            <p>M. Jean Exemple, 45 ans, horloger, s’est fracturé le <mark className={choix.envoi === 'direct' ? 'erreur-ocr' : 'juste'}>{choix.envoi === 'direct' ? 'poignet droit' : 'poignet gauche'}</mark> le 12 août 2026, sur son lieu de travail. Il demande le versement des indemnités journalières.</p>
             <p className="note-fictif">{choix.envoi === 'direct' ? 'Le scan flou a été mal lu, et personne n’a relu : l’erreur part à l’assurance, signée par l’avocat.' : 'Le mot douteux a été relu : le compte rendu est juste.'} Dans les deux cas, il a fallu quatre clics.</p>
           </article>
         )}

@@ -904,7 +904,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="tunnel">
-  <h2 class="title">Joli ne veut pas dire pratique : le tunnel de conversion</h2>
+  <h2 class="title">Le tunnel de conversion : chaque étape peut faire perdre des visiteurs</h2>
   <div class="body g12">
     <div class="c5 stack-m">
       <p class="lead">Tunnel (funnel) : le parcours de l’arrivée jusqu’à l’objectif, achat ou formulaire.</p>
@@ -1267,7 +1267,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Audite ces pages avec Pa11y et Lighthouse. Parcours-les uniquement au clavier. Explique chaque erreur simplement et dis qui elle gêne. Vérifie que chaque texte alternatif décrit vraiment son image. Puis corrige.</blockquote></figure>
     <div class="ia-garde" data-step="4">
       <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, par exemple des seniors.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>Bon à savoir</strong> : un texte alternatif « image » passe l’audit. Là, l’IA fait mieux que l’outil.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>Bon à savoir</strong> : un champ étiqueté « Champ 1 » passe l’audit : l’étiquette existe, mais ne dit rien. Là, l’IA fait mieux que l’outil.</span></p>
     </div>
   </div>
 </section>
@@ -1318,19 +1318,19 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="2" data-key="plugin">
-  <h2 class="title">Je vous offre un outil</h2>
+  <h2 class="title">Je vous offre les prompts du cours</h2>
   <div class="body g12">
     <div class="c7 stack-m">
-      <p class="lead strong">Un plugin pour Claude, gratuit, sur GitHub.</p>
+      <p class="lead strong">Gratuits, sur GitHub, à copier dans votre agent.</p>
       <ol class="plugin-etapes">
-        <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p>Il vous pose les questions : cible, intention, ton.</p></li>
-        <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p>Il passe les six blocs avec de vrais outils.</p></li>
-        <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p>Il vous rend un rapport trié : mesuré, indice ou avis.</p></li>
+        <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p>D’abord les clés : cible, intention, ton, pages.</p></li>
+        <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p>Puis un prompt par bloc, avec ce qu’il faut vérifier.</p></li>
+        <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p>Chaque constat est marqué : mesuré, indice ou avis.</p></li>
       </ol>
-      <p class="note" data-step="4">Sans Claude ? Les mêmes prompts, à copier-coller, marchent dans ChatGPT.</p>
+      <p class="note" data-step="4">Ils marchent dans Claude comme dans ChatGPT.</p>
     </div>
     <div class="c5">
-      <div class="case" data-case="PLUGIN_URL" data-kind="qr" data-label="Adresse du plugin sur GitHub"></div>
+      <div class="case" data-case="PLUGIN_URL" data-kind="qr" data-fixe data-label="Les prompts du cours, sur GitHub"></div>
     </div>
   </div>
 </section>
@@ -1486,7 +1486,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c6 stack-m">
       <p class="lead"><strong>En direct :</strong> le test des 3 secondes. Deux affiches, 3 secondes chacune : quoi, quand, où ?</p>
       <div class="case" data-case="AFFICHE_URL" data-kind="link" data-fixe data-texte="Ouvrir la démonstration" data-label="La démonstration sur le site"></div>
-      <p class="lead"><strong>En atelier :</strong> chacun crée une affiche A4 pour la promo de Tilleul. Trois informations : quoi, quand, où.</p>
+      <p class="lead"><strong>En atelier :</strong> chacun crée une affiche A4 pour la Grande Soupe d’automne, à partir du message de l’organisatrice. Trois informations : quoi, quand, où.</p>
       <div class="case" data-case="DUREE_EXERCICE" data-kind="number" data-label="Durée de l’atelier, en minutes"></div>
     </div>
     <div class="c6">
@@ -1702,7 +1702,7 @@ const CONFIG = {
     SITE_URL: '/tilleul/?cours=non', // Tilleul en ligne, sans le mode cours
     FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
     QR_KAHOOT: '',
-    PLUGIN_URL: '', // adresse GitHub du plugin (slide 32) : le QR code se génère tout seul
+    PLUGIN_URL: 'https://github.com/clement8426/le-labo/blob/main/ux/ux-ia/prompts/six-blocs.md', // les prompts du cours (slide 32)
     EXERCICES_URL: 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia', // les exercices à refaire chez soi (slide 47)
     AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 41)
   },

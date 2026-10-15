@@ -161,7 +161,7 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
       </div>
 
       <aside className="comparateur-defauts" aria-labelledby="titre-defauts">
-        <h2 id="titre-defauts" className="titre-section">Les sept problèmes réparés</h2>
+        <h2 id="titre-defauts" className="titre-section">Les six défauts réparés, et l’autocomplétion</h2>
         <ol className="defauts">
           {comparateur.defauts.map((d) => {
             const estOuvert = ouvert === d.id;

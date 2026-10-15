@@ -57,7 +57,7 @@ const boite = await scene.boundingBox();
 await page.screenshot({ path: dossier + 'demo-formulaire.jpg', type: 'jpeg', quality: 82, fullPage: true, clip: { x: boite.x, y: boite.y, width: boite.width, height: Math.round(boite.width / 1.6) } });
 
 // Démonstrations du cours « IA, données et responsabilité »
-await page.goto(`${base}/ia-legislation/ia-donnees/demos/dossier-mme-fictive/?v=1`);
+await page.goto(`${base}/ia-legislation/ia-donnees/demos/dossier-exemple/?v=1`);
 for (const nom of [/^Le joindre/, /^L’envoyer au chat/, /^Le chat en ligne gratuit/, /^L’envoyer tel quel/]) await page.getByRole('radio', { name: nom }).check();
 await page.waitForTimeout(400);
 await page.evaluate(() => window.scrollTo(0, 0));

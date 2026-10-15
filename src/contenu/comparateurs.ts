@@ -30,7 +30,7 @@ export type Comparateur = {
 const formulaireAdresse: Comparateur = {
   slug: 'formulaire-adresse',
   titre: 'Le formulaire d’adresse, avant et après',
-  accroche: 'Le même formulaire, deux versions, sept défauts.',
+  accroche: 'Le même formulaire, deux versions : six défauts, un par bloc, et l’autocomplétion en plus.',
   versions: {
     depart: '/comparateur/formulaire-adresse/casse/',
     repare: '/comparateur/formulaire-adresse/corrige/',

@@ -17,16 +17,15 @@ function AfficheA({ revele }: { revele: boolean }) {
   const m = (info: string) => (revele ? { className: 'marque-info', 'data-info': info } : {});
   return (
     <div className="affiche affiche-a">
-      <p className="ruban">SOLDES !!!</p>
-      <p className="titre-a">Grande vente d’automne chez Tilleul</p>
-      <p className="etoiles" aria-hidden="true">★★★★★</p>
-      <p>Céramiques faites main : bols, vases, tasses, assiettes et bien plus encore pour toute la famille</p>
+      <p className="ruban">8e ÉDITION !!!</p>
+      <p className="titre-a">La Grande Soupe d’automne des Marmites de Serrières</p>
+      <p>Vingt cuisiniers amateurs et trois restaurants du quartier : une soupe chacun, dont une végétarienne !</p>
       <div className="collage" aria-hidden="true"><i /><i /><i /></div>
-      <p {...m('Quoi')}>Profitez de −20 % sur toute la collection</p>
-      <p {...m('Quand')}>Du lundi 14 octobre au dimanche 20 octobre inclus</p>
-      <p {...m('Où')}>À l’atelier, rue du Seyon 10, 2000 Neuchâtel</p>
-      <p>Ouvert de 10 h à 18 h – Café offert le samedi – Retrait des commandes en ligne</p>
-      <p className="bandeau">Suivez-nous sur Instagram @tilleul.ceramique</p>
+      <p {...m('Quoi')}>Dégustation de soupes et vote du public pour le Grand Chaudron d’or</p>
+      <p {...m('Quand')}>Le samedi 24 octobre 2026, de 11 h à 20 h</p>
+      <p {...m('Où')}>À la Halle du Moulin, chemin du Moulin 6, 2003 Neuchâtel (Serrières)</p>
+      <p>Entrée libre – 5 jetons = 10 CHF – Concert à 18 h – Bus 1</p>
+      <p className="bandeau">Instagram @marmites.serrieres – #GrandeSoupe2026</p>
     </div>
   );
 }
@@ -35,14 +34,14 @@ function AfficheB({ revele }: { revele: boolean }) {
   const m = (info: string, classe = '') => (revele ? { className: `${classe} marque-info`.trim(), 'data-info': info } : { className: classe || undefined });
   return (
     <div className="affiche affiche-b">
-      <p className="marque-b">Tilleul, céramiques</p>
+      <p className="marque-b">Les Marmites de Serrières</p>
       <div {...m('Quoi', 'centre')}>
-        <p className="chiffre">−20 %</p>
-        <p className="quoi">sur toute la collection</p>
+        <p className="chiffre">Soupe !</p>
+        <p className="quoi">La grande dégustation d’automne. Entrée libre.</p>
       </div>
       <div className="bas">
-        <p {...m('Quand', 'quand')}>14 – 20 octobre</p>
-        <p {...m('Où', 'ou')}>Atelier, rue du Seyon 10, Neuchâtel</p>
+        <p {...m('Quand', 'quand')}>Samedi 24 octobre, <span className="insecable">11 h – 20 h</span></p>
+        <p {...m('Où', 'ou')}>Halle du Moulin, Serrières, Neuchâtel</p>
       </div>
     </div>
   );

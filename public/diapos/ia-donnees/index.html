@@ -846,8 +846,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     </div>
     <div class="card preuve" data-step="1">
       <p class="puce">Cas réel</p>
-      <p>Microsoft a reconnu ne pas pouvoir garantir que des données de clients européens ne seraient pas transmises sur injonction américaine.</p>
-      <p class="preuve-src">Audition au Sénat français, juin 2025</p>
+      <p>Microsoft France, devant une commission d’enquête du Sénat : « Si nous sommes contraints par une décision de justice américaine, nous devons remettre les données. »</p>
+      <p class="preuve-src">Audition au Sénat français, 10 juin 2025</p>
     </div>
     <p class="note" data-step="2">La surveillance de renseignement relève d’un autre texte américain, la section 702 du FISA, qui s’ajoute au Cloud Act.</p>
   </div>
@@ -895,8 +895,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Ça arrive vraiment : quatre dates</h2>
   <div class="body stack-l">
     <ol class="tl">
-      <li class="card" data-step="1"><p class="tl-date">Juin 2022</p><p class="tl-qui">Suva, Suisse</p><p>Le PFPDT estime qu’un cloud Microsoft hébergé en Suisse reste un transfert vers les USA.</p></li>
-      <li class="card" data-step="2"><p class="tl-date">Avril 2023</p><p class="tl-qui">Samsung</p><p>Un ingénieur colle du code source interne dans ChatGPT. Un mois plus tard, Samsung interdit l’IA générative à ses employés.</p></li>
+      <li class="card" data-step="1"><p class="tl-date">Juin 2022</p><p class="tl-qui">Suva, Suisse</p><p>Le PFPDT juge insuffisamment motivé l’argument d’un risque négligeable : même hébergé en Suisse, un cloud Microsoft reste exposé à un accès américain.</p></li>
+      <li class="card" data-step="2"><p class="tl-date">Printemps 2023</p><p class="tl-qui">Samsung</p><p>Des employés collent du code source interne dans ChatGPT. Début mai, Samsung restreint l’IA générative pour ses employés.</p></li>
       <li class="card" data-step="3"><p class="tl-date">Déc. 2024</p><p class="tl-qui">Italie</p><p>L’autorité italienne inflige 15 M€ à OpenAI pour des manquements au RGPD liés à ChatGPT.</p></li>
       <li class="card" data-step="4"><p class="tl-date">Mars 2026</p><p class="tl-qui">Tribunal de Rome</p><p>Le tribunal annule l’amende : l’autorité italienne n’était pas compétente. Le fond n’a pas été jugé.</p></li>
     </ol>
@@ -958,11 +958,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <tr><td>Entité</td><td>Maison mère américaine</td><td>Maison mère américaine, contrat souvent avec une filiale irlandaise</td><td>Suisse</td></tr>
         <tr><td>Cloud Act</td><td class="ko">Exposé</td><td class="ko">Exposé</td><td class="ok">Non exposé</td></tr>
         <tr><td>Certification DPF</td><td>À vérifier sur la liste officielle</td><td>À vérifier sur la liste officielle</td><td>Inutile</td></tr>
-        <tr><td>Entraînement</td><td>Possible, selon réglages</td><td>Non par défaut</td><td>Non, selon Infomaniak</td></tr>
         <tr><td>Base nLPD</td><td>Aucun contrat possible</td><td>Contrat, clauses et analyse</td><td>Pas de transfert</td></tr>
       </tbody>
     </table>
-    <p class="note">Payer une offre entreprise améliore le contrat, pas la juridiction. Conditions à revérifier la veille de l’atelier.</p>
+    <p class="note">Conditions à revérifier la veille de l’atelier.</p>
   </div>
 </section>
 
@@ -980,7 +979,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <ol class="flow">
         <li data-step="1"><span class="flow-n">1</span><p><b>Lire.</b> Le rapport médical scanné passe dans l’OCR, sur l’ordinateur.</p></li>
         <li data-step="2"><span class="flow-n">2</span><p><b>Transcrire.</b> Whisper transforme la note vocale en texte, hors ligne.</p></li>
-        <li data-step="3"><span class="flow-n">3</span><p><b>Rédiger.</b> Le texte seul part chez Infomaniak, sous contrat de confidentialité, qui rédige le compte rendu.</p></li>
+        <li data-step="3"><span class="flow-n">3</span><p><b>Rédiger.</b> Le texte seul, relu, part chez une IA hébergée en Suisse, sous contrat. Dans l’application de l’exercice, on le copie à la main.</p></li>
         <li data-step="4"><span class="flow-n">4</span><p><b>Relire.</b> Un humain vérifie : l’OCR et le modèle se trompent.</p></li>
       </ol>
     </div>
@@ -1011,6 +1010,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li data-step="4"><span class="keep-n">4</span><p>nLPD et secret professionnel visent la personne.</p></li>
     </ol>
     <p class="lead strong" data-step="5">Si vous ne savez pas où va la donnée, ne l’envoyez pas.</p>
+    <p class="note" data-step="5">Pour refaire chez vous : les démonstrations sur <a href="https://plateforme-cours-three.vercel.app/ia-legislation/ia-donnees/">le site du cours</a>, les exercices sur <a href="https://github.com/clement8426/le-labo/tree/main/ia-legislation/ia-donnees">GitHub</a>.</p>
   </div>
 </section>
 
@@ -1118,7 +1118,7 @@ const CONFIG = {
     { nom: 'Un article de loi publié sur Fedlex', feu: 'vert', why: 'Texte public : tout le monde peut déjà le lire.' },
     { nom: 'Une lettre type vierge', feu: 'vert', why: 'Aucune personne dedans.' },
     { nom: 'Des statistiques sur de grands nombres', feu: 'vert', why: 'Agrégées sur assez de personnes : personne n’est visé. Sur trois cas, si.' },
-    { nom: 'Le planning de l’équipe', feu: 'orange', why: 'Des prénoms : données personnelles.' },
+    { nom: 'Le planning des vacances de l’équipe', feu: 'orange', why: 'Des prénoms : données personnelles.' },
     { nom: 'Un CV avec nom et adresse', feu: 'orange', why: 'Personnel. Anonymiser avant.' },
     { nom: 'Le budget interne de l’étude', feu: 'orange', why: 'Réservé à la direction : secret d’affaires, comme le code de Samsung en 2023.' },
     { nom: 'Un compte rendu « anonymisé »', feu: 'orange', why: 'Âge, lieu, date : souvent réidentifiable.' },
@@ -1129,9 +1129,9 @@ const CONFIG = {
 
   // Slide 11 : trois versions du même texte (fictif)
   anonymisation: [
-    { id: 'orig', nom: 'Original', niveau: 100, risque: 'certaine', html: 'Mme <mark>Sophie Fictive</mark>, <mark>infirmière</mark> de <mark>52 ans</mark> au <mark>Locle</mark>, opérée du genou le <mark>13 août 2026</mark> à <mark>La Chaux-de-Fonds</mark>, conteste le refus de son assurance.', why: 'Tout y est : n’importe qui la reconnaît.' },
-    { id: 'nom', nom: 'Nom retiré', niveau: 80, risque: 'élevée', html: 'Mme <mark>X</mark>, infirmière de 52 ans au Locle, opérée du genou le 13 août 2026 à La Chaux-de-Fonds, conteste le refus de son assurance.', why: 'Une infirmière de 52 ans au Locle, opérée ce jour-là : ses collègues la reconnaissent.' },
-    { id: 'gen', nom: 'Généralisé', niveau: 15, risque: 'faible', html: 'Une <mark>soignante</mark> de <mark>50 à 60 ans</mark>, dans l’<mark>Arc jurassien</mark>, opérée du genou en <mark>2026</mark>, conteste le refus de son assurance.', why: 'On garde ce qui sert au raisonnement juridique, on retire ce qui désigne la personne.' }
+    { id: 'orig', nom: 'Original', niveau: 100, risque: 'certaine', html: 'M. <mark>Jean Exemple</mark>, <mark>horloger</mark> de <mark>45 ans</mark> chez <mark>Horlogerie Fictive, au Locle</mark>, frontalier domicilié à <mark>Morteau</mark>, s’est fracturé le poignet le <mark>12 août 2026</mark> et conteste le refus de son assurance.', why: 'Tout y est : n’importe qui le reconnaît.' },
+    { id: 'nom', nom: 'Nom retiré', niveau: 80, risque: 'élevée', html: 'M. <mark>X</mark>, horloger de 45 ans chez Horlogerie Fictive, au Locle, frontalier domicilié à Morteau, s’est fracturé le poignet le 12 août 2026 et conteste le refus de son assurance.', why: 'Un horloger de 45 ans de cette entreprise, blessé ce jour-là : ses collègues le reconnaissent.' },
+    { id: 'gen', nom: 'Généralisé', niveau: 15, risque: 'faible', html: 'Un <mark>employé de l’horlogerie</mark> de <mark>40 à 50 ans</mark>, <mark>frontalier dans l’Arc jurassien</mark>, blessé au poignet à l’<mark>été 2026</mark>, conteste le refus de son assurance.', why: 'On garde ce qui sert au raisonnement juridique, on retire ce qui désigne la personne.' }
   ],
 
   // Slide 13 : le document piégé (fictif)

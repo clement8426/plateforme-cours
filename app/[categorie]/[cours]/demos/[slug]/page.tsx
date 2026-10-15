@@ -85,7 +85,7 @@ export default async function PageDemo(props: Props) {
             <h2 id="titre-exercice">Refaire l’exercice chez vous</h2>
             <p>Les consignes, le matériel et les prompts sont dans le dossier <code>{demo.exercice}/</code> du dépôt du cours.</p>
             <div className="actions">
-              <a className="bouton-secondaire" href={`${cours.depot}/tree/main/${demo.exercice}`} target="_blank" rel="noreferrer">
+              <a className="bouton-secondaire" href={`${cours.depot}/${demo.exercice}`} target="_blank" rel="noreferrer">
                 Ouvrir l’exercice sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span>
               </a>
             </div>

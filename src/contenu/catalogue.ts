@@ -103,7 +103,7 @@ const uxIa: Cours = {
       titre: 'Tilleul, la boutique piégée',
       resume: 'Une boutique de céramiques très soignée, qui cache douze problèmes d’UX. Trouvez-les en jouant, puis voyez-les corrigés.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
-      duree: '15 minutes',
+      duree: '8 minutes',
       apercu: '/apercus/tilleul.jpg',
       scene: 'tilleul',
       modeEmploi: [
@@ -123,7 +123,7 @@ const uxIa: Cours = {
       titre: 'Le formulaire d’adresse, avant et après',
       resume: 'Le même formulaire d’adresse, avant et après réparation. Remplissez les deux : sept problèmes ont disparu.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
-      duree: '12 minutes',
+      duree: '14 minutes',
       apercu: '/apercus/demo-formulaire.jpg',
       scene: 'comparateur',
       modeEmploi: [
@@ -142,7 +142,7 @@ const uxIa: Cours = {
     {
       slug: 'affiche',
       titre: 'L’affiche qui se lit en 3 secondes',
-      resume: 'Deux affiches pour la même promotion, montrées 3 secondes chacune. Laquelle retient-on ?',
+      resume: 'Deux affiches pour le même événement, la Grande Soupe d’automne, montrées 3 secondes chacune. Laquelle retient-on ?',
       blocs: ['design-system', 'microcopie'],
       duree: '8 minutes',
       apercu: '/apercus/demo-affiche.jpg',
@@ -157,7 +157,7 @@ const uxIa: Cours = {
         'Une seule chose en très grand : l’œil sait par où commencer.',
         'Une IA d’images régénère tout en pixels. Un agent relié à Penpot construit une affiche modifiable.',
       ],
-      exercice: 'bonus-affiche-promo',
+      exercice: 'bonus-affiche',
       bonus: true,
     },
   ],
@@ -196,16 +196,16 @@ const iaDonnees: Cours = {
   ],
   demos: [
     {
-      slug: 'dossier-mme-fictive',
-      titre: 'Le dossier de Mme Fictive : à vous de choisir',
+      slug: 'dossier-exemple',
+      titre: 'Le dossier Exemple : à vous de choisir',
       resume: 'C’est vous qui traitez le dossier : un scan abîmé et une note vocale à transformer en compte rendu. À chaque étape, vos choix allument ou éteignent sept risques.',
       blocs: ['sensible', 'transfert', 'responsabilite'],
       duree: '12 minutes',
       apercu: '/apercus/demo-dossier.jpg',
       scene: 'dossier',
       modeEmploi: [
-        'À gauche, choisissez pour chaque étape comment traiter la pièce du dossier.',
-        'À droite, les risques s’allument ou s’éteignent. Cliquez sur un risque : la loi, et qui en répond.',
+        'Pour chaque étape, choisissez comment traiter la pièce du dossier.',
+        'Dans « Ce que vous risquez », les risques s’allument ou s’éteignent. Cliquez sur un risque : la loi, et qui en répond.',
         'À la fin, lisez le compte rendu obtenu. Puis, avec « Comparer avec », voyez la version la plus rapide et la version sûre.',
       ],
       aRetenir: [
@@ -213,7 +213,7 @@ const iaDonnees: Cours = {
         'La version sûre n’est pas forcément plus lente, une fois les briques en place.',
         'L’IA générative n’intervient qu’à la fin, sur du texte.',
       ],
-      exercice: '02-dossier-mme-fictive',
+      exercice: '02-dossier-exemple',
     },
     {
       slug: 'puis-je-l-envoyer',
