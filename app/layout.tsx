@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
 import Link from 'next/link';
+import Avatar from '@/composants/Avatar';
 import BoutonContraste from '@/composants/BoutonContraste';
 import BoutonTheme from '@/composants/BoutonTheme';
 import EnregistrementPwa from '@/composants/EnregistrementPwa';
@@ -38,7 +39,7 @@ export default function Racine({ children }: { children: React.ReactNode }) {
         <div className="six" aria-hidden="true"><span /><span /><span /><span /><span /><span /></div>
         <header className="entete">
           <Link className="marque" href="/">
-            <span className="marque-signe" aria-hidden="true"><i /><i /><i /><i /><i /><i /></span>
+            <Avatar />
             <span>Le Labo</span>
           </Link>
           <div className="entete-outils">

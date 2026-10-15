@@ -19,7 +19,7 @@ const formats = [
   { fichier: 'icone-512.png', taille: 512, marge: 0 },
   { fichier: 'apple-touch-icon.png', taille: 180, marge: 0 },
   // Icône « masquable » : le système peut la rogner en cercle, on garde une marge de sécurité de 10 %.
-  { fichier: 'icone-masquable-512.png', taille: 512, marge: 0.1, fond: '#14161B' },
+  { fichier: 'icone-masquable-512.png', taille: 512, marge: 0.1, fond: '#2B44E8' },
 ];
 
 const navigateur = await chromium.launch();

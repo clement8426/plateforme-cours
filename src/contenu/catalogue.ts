@@ -262,7 +262,27 @@ const iaDonnees: Cours = {
   references: grouper(sourcesIa.references, REGLES_IA),
 };
 
-// Deux cours annoncés : seule leur page de présentation est en ligne.
+// Les cours annoncés : seule leur page de présentation est en ligne.
+const iaSouveraine: Cours = {
+  slug: 'ia-souveraine',
+  titre: 'Débuter avec une IA souveraine',
+  accroche: 'Utiliser l’IA sans que vos données partent aux États-Unis : un outil au choix, branché sur un modèle hébergé en Suisse ou sur votre ordinateur.',
+  duree: 'À venir',
+  public: 'Débutants, et professionnels qui traitent des données sensibles : santé, droit, finances',
+  objectifs: [
+    'Distinguer le harnais (l’application ou l’agent que vous utilisez) du modèle qui répond derrière.',
+    'Comparer abonnement, API et modèle local : qui reçoit vos données, et sous quelle loi. Une API américaine reste soumise au Cloud Act : ce qui compte, c’est le fournisseur.',
+    'Brancher un harnais ouvert sur une API hébergée en Suisse, ou sur un modèle qui tourne sur votre ordinateur.',
+    'Savoir ce qu’il faut en plus pour des données médicales : un contrat, le secret professionnel, une relecture humaine.',
+  ],
+  parties: [],
+  demos: [],
+  lexique: [],
+  references: [],
+  enPreparation: true,
+};
+
+
 const appSuisse: Cours = {
   slug: 'app-hebergee-suisse',
   titre: 'Une app web et mobile, hébergée en Suisse',
@@ -313,8 +333,8 @@ export const CATEGORIES: Categorie[] = typoProfonde([
     slug: 'ia-legislation',
     nom: 'IA : obligations et législation',
     court: 'IA et législation',
-    description: 'Ce que l’AI Act européen et le droit suisse demandent aux entreprises qui utilisent l’IA.',
-    cours: [iaDonnees],
+    description: 'Ce que l’on peut confier à une IA, ce que la loi demande, et comment l’utiliser sans que les données partent aux États-Unis.',
+    cours: [iaDonnees, iaSouveraine],
   },
   {
     slug: 'developpement',
