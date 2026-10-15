@@ -131,10 +131,10 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.waitForLoadState('networkidle');
   verifier('page du cours : 3 parties et 3 démonstrations', (await p.locator('.partie').count()) === 3 && (await p.locator('.demo-carte').count()) === 3);
   verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia');
-  await p.getByRole('link', { name: /Diapo 20/ }).click();
-  await p.waitForURL('**/diapos/?diapo=20');
+  await p.getByRole('link', { name: /Diapo 19/ }).click();
+  await p.waitForURL('**/diapos/?diapo=19');
   await p.waitForTimeout(800);
-  verifier('« Diapo 20 » ouvre les diapos à la diapo 20', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#20'));
+  verifier('« Diapo 19 » ouvre les diapos à la diapo 19', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#19'));
 
   // « Puis-je l'envoyer à une IA ? » : le CV (Non, Oui, Oui) est orange ; répondre Oui d'emblée dit quelle question est ratée, et pourquoi
   await p.goto(base + '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/');

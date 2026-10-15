@@ -93,9 +93,9 @@ const uxIa: Cours = {
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
-    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 19] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [20, 32] },
-    { titre: 'Pratique', resume: 'Une ou deux démonstrations, selon le temps qui reste. Tout se refait chez soi.', duree: '25 à 40 min', diapos: [33, 47], demos: true },
+    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '30 min', diapos: [1, 18] },
+    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [19, 31] },
+    { titre: 'Pratique', resume: 'Une ou deux démonstrations, selon le temps qui reste. Tout se refait chez soi.', duree: '25 à 40 min', diapos: [32, 46], demos: true },
   ],
   demos: [
     {

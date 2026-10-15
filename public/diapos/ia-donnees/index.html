@@ -402,24 +402,20 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .pipe-steps:has(> .pipe-step:nth-of-type(5)) .pipe-step h3 { font-size: 30px; }
 .pipe-steps:has(> .pipe-step:nth-of-type(5)) .chip { padding: 0 16px; }
 .pipe-detail .note { font-size: var(--fs-min); color: var(--muted); }
-/* sondage */
-.tally { display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 56px; align-items: center; }
-.tally-ctl { display: grid; gap: 14px; justify-items: center; }
-.tally-row { display: flex; align-items: center; gap: 18px; }
-.tally-n { min-width: 2.2ch; text-align: center; font: 700 96px/1 var(--font-title); font-variant-numeric: tabular-nums; }
-.tally-res { display: grid; gap: 16px; }
-.tally-pct { font: 700 150px/.95 var(--font-title); letter-spacing: -.03em; color: var(--accent-text); font-variant-numeric: tabular-nums; }
-.tally-res .meter { height: 44px; }
+/* question d'ouverture */
+.question { display: grid; justify-items: start; gap: 20px; }
+.question .lead { max-width: 38em; }
 /* offres */
 .offres { display: grid; gap: 32px; align-content: start; }
 .offre-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
-.offre-tile { display: grid; gap: 14px; align-content: start; min-height: 260px; padding: 30px 30px; border-top: 10px solid var(--line); }
+.offre-tile { display: grid; gap: 14px; align-content: start; min-height: 260px; padding: 30px 30px; }
 .offre-tile .lab { font-size: var(--fs-min); color: var(--muted); font-weight: 600; }
 .offre-tile .val { font: 700 var(--fs-lead)/1.18 var(--font-title); }
-.offre-tile .tone { align-self: end; justify-self: start; font-size: var(--fs-meta); font-weight: 700; padding: 4px 14px; border-radius: var(--r-pill); }
-.offre-tile.ok { border-top-color: var(--ok-fill); } .offre-tile.ok .tone { color: var(--ok); background: color-mix(in srgb, var(--ok-fill) 14%, var(--surface)); }
-.offre-tile.mid { border-top-color: var(--warn-fill); } .offre-tile.mid .tone { color: var(--warn); background: color-mix(in srgb, var(--warn-fill) 14%, var(--surface)); }
-.offre-tile.ko { border-top-color: var(--bad-fill); } .offre-tile.ko .tone { color: var(--bad); background: color-mix(in srgb, var(--bad-fill) 14%, var(--surface)); }
+.offre-tile .tone { align-self: end; justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-meta); font-weight: 700; padding: 4px 16px 4px 12px; border-radius: var(--r-pill); }
+.offre-tile .tone .ico { font-size: 1.1em; stroke-width: 2.5; }
+.offre-tile.ok .tone { color: var(--ok); background: color-mix(in srgb, var(--ok-fill) 14%, var(--surface)); }
+.offre-tile.mid .tone { color: var(--warn); background: color-mix(in srgb, var(--warn-fill) 14%, var(--surface)); }
+.offre-tile.ko .tone { color: var(--bad); background: color-mix(in srgb, var(--bad-fill) 14%, var(--surface)); }
 .offres > .note { font-size: var(--fs-lead); color: var(--text); font-family: var(--font-title); font-weight: 700; }
 /* vrai ou faux */
 .vf { display: grid; gap: 14px; align-content: start; }
@@ -509,8 +505,8 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .cd.done .cd-time { color: var(--bad); }
 /* frise des cas réels */
 .tl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; list-style: none; padding: 0; }
-.tl li { display: grid; gap: 10px; align-content: start; padding: 28px 30px; border-top: 8px solid var(--accent-fill); }
-.tl-date { font: 700 var(--fs-lead)/1 var(--font-title); color: var(--accent-text); }
+.tl li { display: grid; gap: 10px; align-content: start; padding: 28px 30px; }
+.tl-date { display: flex; align-items: center; gap: 12px; font: 700 var(--fs-lead)/1 var(--font-title); color: var(--accent-text); }
 .tl-qui { font-weight: 700; font-size: var(--fs-min); }
 .tl li p:last-child { font-size: var(--fs-meta); line-height: 1.3; color: var(--muted); }
 :root[data-deck="dark"] .tri-card[data-c] .tri-badge { color: var(--ink); }
@@ -618,10 +614,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="sondage">
-  <h2 class="title">Levez la main</h2>
+  <h2 class="title">Une question pour commencer</h2>
   <div class="body stack-l">
     <p class="statement">Qui a déjà collé un document de travail ou personnel dans une IA ?</p>
-    <div class="tally" data-comp="tally"></div>
+    <div class="question" data-comp="question"></div>
   </div>
 </section>
 
@@ -895,10 +891,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Ça arrive vraiment : quatre dates</h2>
   <div class="body stack-l">
     <ol class="tl">
-      <li class="card" data-step="1"><p class="tl-date">Juin 2022</p><p class="tl-qui">Suva, Suisse</p><p>Le PFPDT juge insuffisamment motivé l’argument d’un risque négligeable : même hébergé en Suisse, un cloud Microsoft reste exposé à un accès américain.</p></li>
-      <li class="card" data-step="2"><p class="tl-date">Printemps 2023</p><p class="tl-qui">Samsung</p><p>Des employés collent du code source interne dans ChatGPT. Début mai, Samsung restreint l’IA générative pour ses employés.</p></li>
-      <li class="card" data-step="3"><p class="tl-date">Déc. 2024</p><p class="tl-qui">Italie</p><p>L’autorité italienne inflige 15 M€ à OpenAI pour des manquements au RGPD liés à ChatGPT.</p></li>
-      <li class="card" data-step="4"><p class="tl-date">Mars 2026</p><p class="tl-qui">Tribunal de Rome</p><p>Le tribunal annule l’amende : l’autorité italienne n’était pas compétente. Le fond n’a pas été jugé.</p></li>
+      <li class="card" data-step="1"><p class="tl-date"><i data-icon="clock"></i>Juin 2022</p><p class="tl-qui">Suva, Suisse</p><p>Le PFPDT juge insuffisamment motivé l’argument d’un risque négligeable : même hébergé en Suisse, un cloud Microsoft reste exposé à un accès américain.</p></li>
+      <li class="card" data-step="2"><p class="tl-date"><i data-icon="clock"></i>Printemps 2023</p><p class="tl-qui">Samsung</p><p>Des employés collent du code source interne dans ChatGPT. Début mai, Samsung restreint l’IA générative pour ses employés.</p></li>
+      <li class="card" data-step="3"><p class="tl-date"><i data-icon="clock"></i>Déc. 2024</p><p class="tl-qui">Italie</p><p>L’autorité italienne inflige 15 M€ à OpenAI pour des manquements au RGPD liés à ChatGPT.</p></li>
+      <li class="card" data-step="4"><p class="tl-date"><i data-icon="clock"></i>Mars 2026</p><p class="tl-qui">Tribunal de Rome</p><p>Le tribunal annule l’amende : l’autorité italienne n’était pas compétente. Le fond n’a pas été jugé.</p></li>
     </ol>
     <p class="lead strong" data-step="5">Une sanction se conteste. Une fuite, elle, ne se rattrape pas.</p>
   </div>
@@ -1046,7 +1042,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
    CONFIG : tout ce qui se règle sans toucher au reste du fichier.
    - minutes : budget de chaque slide (index 0 = slide 1).
    - notes : ce qui se dit à l'oral, affiché dans la vue présentateur (touche N).
-   - les blocs suivants alimentent les slides interactives : sondage, trajet, offres,
+   - les blocs suivants alimentent les slides interactives : question d'ouverture, trajet, offres,
      vrai ou faux, feu tricolore, anonymisation, injection, responsabilité, arbre, exercice.
    Toutes les personnes et tous les dossiers sont fictifs.
    ===================================================================== */
@@ -1077,7 +1073,10 @@ const CONFIG = {
   images: {},
 
   // Valeurs de départ réglables en séance
-  defauts: { presents: 12, exerciceMinutes: 8 },
+  defauts: { exerciceMinutes: 8 },
+
+  // Slide 2 : question ouverte, puis la réponse
+  question: 'Ce document est parti chez le fournisseur. Il y est lu en clair et conservé. Selon l’offre, il peut servir à entraîner le modèle ou être exigé par la justice américaine. C’est ce trajet qu’on va suivre.',
 
   // Slide 6 : le trajet d'un prompt
   trajet: [
@@ -1660,27 +1659,13 @@ const CONFIG = {
   const printers = []; // ce qui doit tout révéler avant l'impression
   window.addEventListener('beforeprint', () => printers.forEach(f => f()));
 
-  /* --- Sondage à main levée : mains levées sur personnes présentes --- */
-  function initTally() {
-    const el = $('[data-comp="tally"]');
+  /* --- Question d'ouverture : la réponse se révèle --- */
+  function initQuestion() {
+    const el = $('[data-comp="question"]');
     if (!el) return;
-    const st = { mains: 0, presents: CONFIG.defauts.presents };
-    const pct = h('p', { class: 'tally-pct' }), bar = h('i', {}), lab = h('p', { class: 'lead' });
-    const draw = () => {
-      st.mains = clamp(st.mains, 0, st.presents);
-      const p = st.presents ? Math.round(st.mains / st.presents * 100) : 0;
-      pct.textContent = fr(p + ' %'); bar.style.width = p + '%';
-      lab.textContent = fr(st.mains + ' sur ' + st.presents + ' personnes présentes');
-      $$('.tally-n', el).forEach(n => { n.textContent = String(st[n.dataset.k]); });
-    };
-    const stepper = (k, label) => h('div', { class: 'tally-ctl' }, h('span', { class: 'field-label', text: label }),
-      h('div', { class: 'tally-row' },
-        h('button', { type: 'button', class: 'btn sq', 'aria-label': fr(label + ' : moins un'), onclick: () => { st[k] = Math.max(k === 'presents' ? 1 : 0, st[k] - 1); draw(); } }, icon('minus')),
-        h('span', { class: 'tally-n', 'data-k': k, 'aria-live': 'polite' }),
-        h('button', { type: 'button', class: 'btn sq', 'aria-label': fr(label + ' : plus un'), onclick: () => { st[k]++; draw(); } }, icon('plus'))));
-    el.append(stepper('mains', 'Mains levées'), stepper('presents', 'Présents'),
-      h('div', { class: 'tally-res' }, pct, h('div', { class: 'meter', role: 'img', 'aria-hidden': 'true' }, bar), lab));
-    draw();
+    const reveal = () => { el.textContent = ''; el.append(h('p', { class: 'lead', text: fr(CONFIG.question) })); };
+    el.append(btn('Révéler la réponse', reveal, 'primary'));
+    printers.push(reveal);
   }
 
   /* --- Étapes cliquables (trajet d'un prompt, briques de la démo) --- */
@@ -1710,12 +1695,12 @@ const CONFIG = {
     const el = $('[data-comp="offres"]');
     if (!el) return;
     const d = CONFIG.offres, grid = h('div', { class: 'offre-grid' }), cap = h('p', { class: 'note' });
-    const TONE = { ok: 'Rassurant', mid: 'À surveiller', ko: 'Risque' };
+    const TONE = { ok: 'Rassurant', mid: 'À surveiller', ko: 'Risque' }, TONE_ICON = { ok: 'check', mid: 'alert', ko: 'cross' };
     const seg = segmented('Type d’offre', d.choix.map(c => [c.id, c.nom]), d.choix[0].id, id => {
       const c = d.choix.find(x => x.id === id); grid.textContent = '';
       d.criteres.forEach((crit, k) => {
         const [val, tone] = c.valeurs[k];
-        grid.append(h('div', { class: 'card offre-tile ' + tone }, h('span', { class: 'lab', text: crit }), h('span', { class: 'val', text: val }), h('span', { class: 'tone', text: TONE[tone] })));
+        grid.append(h('div', { class: 'card offre-tile ' + tone }, h('span', { class: 'lab', text: crit }), h('span', { class: 'val', text: val }), h('span', { class: 'tone' }, icon(TONE_ICON[tone]), h('span', { text: TONE[tone] }))));
       });
       cap.textContent = fr(c.note);
     });
@@ -1969,7 +1954,7 @@ const CONFIG = {
       return;
     }
     initCases();
-    [initTally, initSteps, initOffres, initVraiFaux, initTri, initAnon, initInjection, initResponsable, initArbre, initExercice, initFines, initRoute, initLexique, initRefs].forEach(f => f());
+    [initQuestion, initSteps, initOffres, initVraiFaux, initTri, initAnon, initInjection, initResponsable, initArbre, initExercice, initFines, initRoute, initLexique, initRefs].forEach(f => f());
     // une image lâchée hors d'une case ne doit pas remplacer la présentation
     ['dragover', 'drop'].forEach(t => window.addEventListener(t, e => e.preventDefault()));
     buildGrid(); bindPointer(); fit();
