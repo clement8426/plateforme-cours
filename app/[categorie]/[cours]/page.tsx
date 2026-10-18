@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import BadgeVu from '@/composants/BadgeVu';
 import FilAriane from '@/composants/FilAriane';
+import AvisDate from '@/composants/AvisDate';
 import PucesBlocs from '@/composants/PucesBlocs';
 import { compterReferences } from '@/contenu/catalogue';
 import { type ParamsCours, lireCours, tousLesCours } from '@/contenu/parametres';
@@ -64,6 +65,7 @@ export default async function PageCours(props: ParamsCours) {
             <div><dt>Durée</dt><dd>{cours.duree}</dd></div>
             <div><dt>Pour qui</dt><dd>{cours.public}</dd></div>
           </dl>
+          <AvisDate date={cours.misAJour} />
           <div className="actions">
             {cours.diapos && <Link className="bouton" href={`${base}/diapos/`}>Ouvrir les diapos</Link>}
             {cours.demos.length > 0 && <Link className="bouton-secondaire" href="#demos">Voir les démonstrations</Link>}
@@ -121,7 +123,7 @@ export default async function PageCours(props: ParamsCours) {
         <section className="section depot" aria-labelledby="titre-depot">
           <div>
             <h2 id="titre-depot">Refaire les exercices chez vous</h2>
-            <p>En cours, ce sont des démonstrations. Le dépôt GitHub du cours contient les mêmes exercices à faire vous-même, avec les consignes, le matériel et les prompts des six blocs.</p>
+            <p>Le dépôt GitHub du cours contient les exercices à faire vous-même, seul ou à plusieurs, avec les consignes et le matériel.</p>
           </div>
           <a className="bouton" href={cours.depot} target="_blank" rel="noreferrer">
             Ouvrir le dépôt GitHub<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
@@ -131,6 +133,28 @@ export default async function PageCours(props: ParamsCours) {
               <li key={d.slug}><strong>{d.titre}</strong><code>{d.exercice}/</code></li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {cours.exercice && (
+        <section className="section exercice-hors" aria-labelledby="titre-exercice">
+          <h2 id="titre-exercice">L’exercice : {cours.exercice.titre}</h2>
+          <p className="intro-section">{cours.exercice.resume}</p>
+          <div className="avis-prototype" role="note">
+            <p className="avis-titre">Prototype</p>
+            <p>{cours.exercice.prototype}</p>
+            <ul>
+              {cours.exercice.conditions.map((c) => <li key={c}>{c}</li>)}
+            </ul>
+          </div>
+          <div className="actions">
+            {cours.exercice.tuto && <Link className="bouton" href={`${base}/tuto/`}>{cours.exercice.tuto.titre}</Link>}
+            {cours.exercice.lien && (
+              <a className="bouton-secondaire" href={cours.exercice.lien} target="_blank" rel="noreferrer">
+                Le dépôt GitHub, pour télécharger<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
+              </a>
+            )}
+          </div>
         </section>
       )}
 

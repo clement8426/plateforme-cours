@@ -34,7 +34,7 @@ function verifier(input) {
 // On vérifie quand la personne quitte le champ, pas pendant qu'elle tape
 Object.keys(regles).forEach(nom => {
   const input = form.elements[nom];
-  input.addEventListener('blur', () => { if (input.value.trim() || input.dataset.touche) { input.dataset.touche = '1'; verifier(input); } });
+  input.addEventListener('blur', () => { if (input.value.trim() || input.dataset.touche) { input.dataset.touche = '1'; verifier(input); } }); // un champ rempli est vérifié à la sortie ; un champ vide, à l'envoi
   input.addEventListener('input', () => { if (input.getAttribute('aria-invalid') === 'true') verifier(input); });
 });
 
@@ -121,8 +121,9 @@ async function chercher(q) {
   requete = new AbortController();
   charge.hidden = false; statut.textContent = 'Recherche…';
   try {
-    // limite à la Suisse, résultats proches de Neuchâtel en premier, 5 suggestions au plus
-    const url = PHOTON + '?' + new URLSearchParams({ q, lang: 'fr', limit: '10', countrycode: 'CH', lat: '46.99', lon: '6.93', location_bias_scale: '0.1' }) + '&layer=house&layer=street';
+    // limite à la Suisse, 5 suggestions au plus ; sans localité saisie, résultats proches de Neuchâtel en premier
+    const biais = form.elements.localite.value.trim() ? {} : { lat: '46.99', lon: '6.93', location_bias_scale: '0.1' };
+    const url = PHOTON + '?' + new URLSearchParams({ q, lang: 'fr', limit: '10', countrycode: 'CH', ...biais }) + '&layer=house&layer=street';
     const r = await fetch(url, { signal: requete.signal });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
@@ -143,8 +144,9 @@ async function chercher(q) {
 
 rue.addEventListener('input', () => {
   clearTimeout(minuteur);
-  const q = rue.value.trim();
-  if (q.length < 3) { fermer(); statut.textContent = ''; return; }
+  const voie = rue.value.trim();
+  if (voie.length < 3) { fermer(); statut.textContent = ''; return; }
+  const q = [voie, form.elements.localite.value.trim()].filter(Boolean).join(' '); // la ville saisie précise la recherche (et la clé du cache)
   minuteur = setTimeout(() => chercher(q), 300); // on attend une pause dans la frappe : moins de requêtes
 });
 

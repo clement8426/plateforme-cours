@@ -4,6 +4,7 @@ import type { BlocId } from './blocs';
 import { typoProfonde } from './typo';
 import sourcesIa from './ia-donnees-sources.json';
 import sourcesUx from './ux-ia-sources.json';
+import sourcesTypes from './types-ia-sources.json';
 
 export type Reference = { titre: string; source: string; url: string };
 export type Terme = { terme: string; nom?: string; def: string };
@@ -42,7 +43,10 @@ export type Cours = {
   depot?: string; // dépôt GitHub des exercices à refaire chez soi
   lexique: Terme[];
   references: GroupeReferences[];
+  misAJour?: string; // date de la dernière modification, AAAA-MM-JJ
   enPreparation?: boolean; // annoncé : une page de présentation seulement, sans diapos ni démonstrations
+  // Un exercice hors du site : une application à installer. Un prototype le dit, avec ses conditions.
+  exercice?: { titre: string; resume: string; prototype: string; conditions: string[]; lien?: string; tuto?: { href: string; titre: string; parties: { titre: string; diapo: number }[] } };
 };
 
 export type Categorie = {
@@ -58,13 +62,13 @@ export type Categorie = {
 type RegleGroupe = { nom: string; bloc?: BlocId; adresses: string[] };
 const REGLES_GROUPES: RegleGroupe[] = [
   { nom: 'Le modèle de référence', adresses: ['semanticstudios'] },
-  { nom: 'Friction : décider et atteindre', bloc: 'friction', adresses: ['lawsofux.com', 'baymard.com', 'centercentre'] },
+  { nom: 'Friction : décider et atteindre', bloc: 'friction', adresses: ['lawsofux.com', 'baymard.com', 'centercentre', 'nngroup.com/articles/why'] },
   // Avant « Accessibilité » : l'adresse du motif combobox (W3C) y serait sinon rangée par « w3.org ».
   { nom: 'Formulaires et autocomplétion', adresses: ['github.com/komoot', 'w3.org/WAI/ARIA'] },
-  { nom: 'Accessibilité et obligations légales', bloc: 'accessibilite', adresses: ['w3.org', 'eur-lex', 'economie.gouv', 'fieldfisher', 'ebgb.admin'] },
+  { nom: 'Accessibilité et obligations légales', bloc: 'accessibilite', adresses: ['w3.org', 'eur-lex', 'economie.gouv', 'gesetze-im-internet', 'ris.bka', 'agid.gov', 'dlapiper', 'ebgb.admin'] },
   { nom: 'Performance perçue et émotion', bloc: 'performance', adresses: ['uxmag', 'umich', 'cnbc', 'wikipedia'] },
-  { nom: 'Outils d’audit', adresses: ['pa11y', 'developer.chrome', 'unlighthouse'] },
-  { nom: 'Agents IA et MCP', adresses: ['modelcontextprotocol', 'playwright.dev', 'chrome-devtools-mcp', 'clarity.microsoft', 'arxiv.org'] },
+  { nom: 'Outils d’audit', adresses: ['pa11y', 'developer.chrome', 'unlighthouse', 'learn.microsoft.com/en-us/clarity'] },
+  { nom: 'Agents IA et MCP', adresses: ['support.claude.com', 'learn.chatgpt.com', 'modelcontextprotocol', 'playwright.dev', 'chrome-devtools-mcp', 'clarity.microsoft', 'arxiv.org'] },
   { nom: 'L’IA dans la création', adresses: ['next.ink', 'penpot.app', 'developers.figma.com'] },
 ];
 
@@ -81,6 +85,7 @@ function grouper(references: Reference[], regles: RegleGroupe[] = REGLES_GROUPES
 
 const uxIa: Cours = {
   slug: 'ux-ia',
+  misAJour: '2026-10-18',
   titre: 'UX × IA',
   accroche: 'Rendre un site web, une boutique en ligne, un SaaS ou une application mobile pratique, puis le corriger avec l’IA.',
   duree: 'Environ 1 h 30, selon les démonstrations choisies',
@@ -95,7 +100,7 @@ const uxIa: Cours = {
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 19] },
     { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [20, 32] },
-    { titre: 'Pratique', resume: 'Une ou deux démonstrations, selon le temps qui reste. Tout se refait chez soi.', duree: '20 à 35 min', diapos: [33, 41], demos: true },
+    { titre: 'Pratique', resume: 'Une ou deux démonstrations au choix. Tout se refait chez soi.', duree: '20 à 35 min', diapos: [33, 41], demos: true },
   ],
   demos: [
     {
@@ -155,7 +160,7 @@ const uxIa: Cours = {
       aRetenir: [
         'Trois informations, pas une de plus : quoi, quand, où.',
         'Une seule chose en très grand : l’œil sait par où commencer.',
-        'Une IA d’images régénère tout en pixels. Un agent relié à Penpot construit une affiche modifiable.',
+        'Une image générée peut être retouchée, mais elle ne sépare pas le texte et les objets comme une maquette. Un agent relié à Penpot construit une affiche modifiable.',
       ],
       exercice: 'bonus-affiche',
       bonus: true,
@@ -175,8 +180,66 @@ const REGLES_IA: RegleGroupe[] = [
   { nom: 'Cas réels', adresses: ['nbcnews', 'punto-informatico'] },
 ];
 
+// Le cours « Les types d'IA » : ses sources, de l'histoire aux outils libres.
+const REGLES_TYPES: RegleGroupe[] = [
+  { nom: 'Avant ChatGPT : les grandes étapes', adresses: ['academic.oup.com', 'Kurzweil', 'ibm.com', 'paulgraham', 'papers.nips', 'research.google', 'deepl.com'] },
+  { nom: 'Lire, voir, écouter, parler : des outils libres', adresses: ['wikipedia.org/wiki/Reconnaissance', 'tesseract', 'facebookresearch', 'openai/whisper', 'alphacephei', 'rhasspy'] },
+  { nom: 'Générer des images', adresses: ['2006.11239', 'stability.ai'] },
+  { nom: 'Les LLM', adresses: ['1706.03762', 'cdn.openai.com', '2005.14165', 'openai.com/index'] },
+  { nom: 'La loi suisse', adresses: ['fedlex.admin.ch'] },
+];
+
+const typesIa: Cours = {
+  slug: 'types-ia',
+  misAJour: '2026-10-18',
+  titre: 'Les types d’IA',
+  accroche: 'OCR, vision, voix, traduction, images, LLM : l’IA existait bien avant ChatGPT. Chaque famille a son entrée, sa sortie et ses limites.',
+  duree: 'Environ 1 h, plus l’exercice du Harnais',
+  public: 'Débutants, aucun prérequis technique',
+  objectifs: [
+    'Situer les grandes étapes de l’IA depuis 1950 : elle ne commence pas avec ChatGPT.',
+    'Reconnaître les familles d’IA par leur entrée et leur sortie : OCR, vision, description d’image, transcription, synthèse vocale, traduction, génération d’images, LLM.',
+    'Comprendre ce qu’est un LLM : un modèle qui prédit la suite d’un texte, avec ses forces et ses limites.',
+    'Choisir entre une IA spécialisée et un LLM, et les combiner : les sens sur l’ordinateur, le LLM pour rédiger.',
+  ],
+  diapos: { href: '/diapos/types-ia/', apercu: '/apercus/types-ia-diapos.jpg' },
+  parties: [
+    { titre: 'L’IA avant ChatGPT', resume: 'Ce qu’est une IA, plus de soixante-dix ans d’histoire, et l’idée clé : une entrée, une sortie.', duree: '15 min', diapos: [1, 6] },
+    { titre: 'Les familles d’IA', resume: 'OCR, vision, description d’image, transcription, synthèse vocale, traduction, génération d’images : ce que chacune fait, et où elle se trompe.', duree: '25 min', diapos: [7, 15] },
+    { titre: 'Les LLM', resume: 'Prédire le mot suivant, le Transformer, les forces et les limites, et comment combiner un LLM avec les autres IA.', duree: '15 min', diapos: [16, 21] },
+    { titre: 'Pratique', resume: 'Donner des sens à une IA avec Le Harnais : dicter, écouter, lire un scan, voir une image.', duree: '5 min, puis l’exercice', diapos: [22, 23] },
+  ],
+  demos: [],
+  exercice: {
+    titre: 'Le Harnais',
+    resume: 'Une surcouche d’OpenCode (licence MIT) pour comprendre comment fonctionne un harnais, en le manipulant. Une application de bureau où votre IA arrive sans aucun outil. Vous débloquez la dictée, la lecture à voix haute, la lecture d’un scan et la reconnaissance d’images en vous en servant, puis le terminal, le navigateur et les connecteurs. Les voix, les scans et les images sont traités sur votre ordinateur : seul le texte part vers l’IA.',
+    prototype: 'Le Harnais est un prototype, pas un produit fini : version 0.1.0 en bêta, des défauts sont possibles, sans garantie ni assistance. Utilisez des données fictives uniquement. C’est une surcouche d’OpenCode : l’application est celle d’OpenCode, avec des missions par-dessus. Ce n’est pas un produit officiel d’OpenCode.',
+    conditions: [
+      'Windows 10 ou 11 (64 bits) seulement. Pas de macOS, pas de Linux.',
+      'Application non signée : Windows 11 peut la bloquer.',
+      'Environ 0,9 Go à télécharger, puis les modèles de voix et d’image à la première utilisation (environ 3 Go sur le disque, 8 Go de mémoire conseillés).',
+      'Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Un abonnement Claude ne se branche pas, et les modèles gratuits d’OpenCode ne répondent pas ici.',
+      'Pas de mise à jour automatique : pour mettre à jour, on relance l’installateur.',
+    ],
+    lien: 'https://github.com/clement8426/le-harnais',
+    tuto: {
+      href: '/diapos/harnais/',
+      titre: 'Le tuto, pas à pas',
+      parties: [
+        { titre: 'Comprendre', diapo: 1 },
+        { titre: 'Installer et démarrer', diapo: 6 },
+        { titre: 'Les missions', diapo: 15 },
+        { titre: 'Quand ça ne marche pas', diapo: 28 },
+      ],
+    },
+  },
+  lexique: sourcesTypes.lexique,
+  references: grouper(sourcesTypes.references, REGLES_TYPES),
+};
+
 const iaDonnees: Cours = {
   slug: 'ia-donnees',
+  misAJour: '2026-10-18',
   titre: 'IA, données et responsabilité',
   accroche: 'Ce que l’on peut confier à une IA, ce que l’on ne doit pas lui confier, et ce que l’on risque.',
   duree: 'Environ 1 h 30',
@@ -328,6 +391,13 @@ export const CATEGORIES: Categorie[] = typoProfonde([
     court: 'UX et design',
     description: 'Rendre un produit pratique : parcours, accessibilité, petits textes, vitesse ressentie.',
     cours: [uxIa],
+  },
+  {
+    slug: 'comprendre-ia',
+    nom: 'Comprendre l’IA',
+    court: 'Comprendre l’IA',
+    description: 'Ce qu’est une IA, ses grandes familles et leurs limites, avant de s’en servir.',
+    cours: [typesIa],
   },
   {
     slug: 'ia-legislation',

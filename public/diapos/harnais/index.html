@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Harnais, tuto, par Clément Bastien</title>
+<!--
+  Présentation autonome : un seul fichier, sans framework ni build. Même moteur que les cours UX × IA, IA, données et responsabilité, et Les types d’IA. 30 slides : le tuto du prototype Le Harnais, de l’installation au défi final.
+  Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
+  F plein écran, T thème clair ou sombre, B écran noir, S chrono (Maj + S : remise à zéro), N vue présentateur (Maj + N : panneau superposé).
+  Tout ce qui se règle (minutes, notes, contenus des activités, lexique, sources) est dans l'objet CONFIG, au début du script.
+  Export PDF : imprimer, format A4 paysage, sans marges, avec les arrière-plans.
+-->
+<style>
+/* ========== 1. Variables ==========
+   Le thème par défaut (clair) est défini juste en dessous : couleurs, polices, rayons, ombres.
+   Le thème sombre (touche T) le redéfinit juste après. Aucun composant n'utilise de couleur en dur liée à un thème. */
+/* Palette du cours « Les types d'IA » : papier bleuté, encre nuit,
+   bleu (les familles d'IA), violet (les LLM), vert (la pratique) */
+:root {
+  color-scheme: light;
+  --ink: #F6F7FA; --surface: #FFFFFF; --surface-2: #ECEFF4; --line: #DCE1E9; --edge: #858C99;
+  --text: #1B1F2A; --muted: #535A67;
+  --p1: #1B1F2A; --p1-text: #1B1F2A; --p1-fill: #1B1F2A; --on-p1: #F6F7FA;
+  --p2: #2A5A88; --p2-text: #24507A; --p2-fill: #2A5A88; --on-p2: #F6F7FA;
+  --p3: #64479C; --p3-text: #583D8C; --p3-fill: #64479C; --on-p3: #F6F7FA;
+  --p4: #2D6A55; --p4-text: #255A48; --p4-fill: #2D6A55; --on-p4: #F6F7FA;
+  --ok: #255A48; --ok-fill: #2D6A55; --warn: #7A5310; --warn-fill: #8A5F14; --bad: #A8401F; --bad-fill: #C1512F; --on-bad: #F6F7FA;
+  --hot-val: #C9B8EA;
+  --band: #E4E8EF; --logo-bg: #1B1F2A;
+  --shadow: 0 1px 0 rgba(27, 31, 42, .04), 0 24px 44px -30px rgba(27, 31, 42, .28);
+  --fill-edge: transparent; --soft-mix: 14%; --wash-mix: 14%; --decor-mix: 9%;
+  --font-title: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --title-weight: 700; --title-tracking: -.01em;
+  --r-s: 12px; --r-m: 18px; --r-l: 24px; --r-btn: 14px; --r-pill: 999px;
+}
+/* thème sombre (touche T) : mêmes rôles, sur encre nuit */
+:root[data-deck="dark"] {
+  color-scheme: dark;
+  --ink: #1B1F2A; --surface: #252A36; --surface-2: #2F3542; --line: #3B4251; --edge: #8F96A3;
+  --text: #F3F4F7; --muted: #C3C8D2;
+  --p1: #E6E8EE; --p1-text: #E6E8EE; --p1-fill: #E6E8EE; --on-p1: #1B1F2A;
+  --p2: #8DB8E6; --p2-text: #8DB8E6; --p2-fill: #8DB8E6; --on-p2: #1B1F2A;
+  --p3: #BBA6E8; --p3-text: #BBA6E8; --p3-fill: #BBA6E8; --on-p3: #1B1F2A;
+  --p4: #8FC7AE; --p4-text: #8FC7AE; --p4-fill: #8FC7AE; --on-p4: #1B1F2A;
+  --ok: #8FC7AE; --ok-fill: #8FC7AE; --warn: #E2B865; --warn-fill: #E2B865; --bad: #E39E7E; --bad-fill: #D98C64; --on-bad: #1B1F2A;
+  --hot-val: #583D8C;
+  --band: #141720; --logo-bg: #141720;
+  --shadow: none; --decor-mix: 12%;
+}
+:root {
+  /* tailles fluides, bornées : 1cqw = 1 % de la largeur de la scène (19,2 px à 1920) */
+  --fs-title: clamp(46px, 2.8cqw, 56px);
+  --fs-big: clamp(40px, 2.4cqw, 48px);
+  --fs-lead: clamp(30px, 1.82cqw, 36px);
+  --fs-body: clamp(28px, 1.62cqw, 32px);
+  --fs-min: clamp(28px, 1.46cqw, 30px);
+  --fs-meta: 24px;
+  --hit: 72px; /* 72 px sur la scène = 48 px réels dans une fenêtre 1280 x 720 */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+/* une couleur par partie : 1 avant ChatGPT (encre), 2 les familles (bleu), 3 les LLM (violet), 4 la pratique (vert), 5 annexes */
+[data-part="1"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
+[data-part="2"] { --accent: var(--p2); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
+[data-part="3"] { --accent: var(--p3); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
+[data-part="4"] { --accent: var(--p4); --accent-text: var(--p4-text); --accent-fill: var(--p4-fill); --on-accent: var(--on-p4); }
+[data-part="5"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
+[data-part] { --accent-soft: color-mix(in srgb, var(--accent) var(--soft-mix), var(--surface)); --accent-wash: color-mix(in srgb, var(--accent) var(--wash-mix), var(--ink)); }
+/* signature : un quart de cercle teinté de la couleur de la partie, dans l'angle */
+[data-part] { --decor: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--accent) var(--decor-mix), var(--ink)) 0 330px, transparent 331px); }
+
+/* ========== 2. Base ========== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--band); color: var(--text); font-family: var(--font-body); overflow: hidden; -webkit-font-smoothing: antialiased; }
+h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+img, svg, canvas { display: block; }
+[hidden] { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:focus { outline: none; }
+:focus-visible { outline: 4px solid var(--text); outline-offset: 4px; }
+.ico { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ========== 3. Scène 16:9 mise à l'échelle ========== */
+#viewport { position: fixed; inset: 0; overflow: hidden; background: var(--band); }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform: translate(-50%, -50%) scale(var(--scale, 1)); transform-origin: center; container-type: size; background: var(--ink); overflow: hidden; }
+.slide { position: absolute; inset: 0; padding: 65px 115px; display: grid; grid-template-rows: 40px 126px minmax(0, 1fr); row-gap: 20px; background: var(--decor, none) var(--ink); color: var(--text); font-size: var(--fs-body); line-height: 1.34; }
+.slide.active { animation: slide-in .3s var(--ease) both; }
+@keyframes slide-in { from { opacity: 0; } to { opacity: 1; } }
+.s-head { display: flex; justify-content: space-between; align-items: center; font-size: var(--fs-meta); color: var(--muted); font-weight: 500; }
+.pastille { display: inline-flex; align-items: center; gap: 12px; height: 40px; padding: 0 18px 0 14px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--accent-soft); color: var(--text); }
+.pastille::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-text); }
+.puce { display: inline-flex; align-items: center; gap: 12px; justify-self: start; width: fit-content; padding: 6px 20px 6px 16px; border-radius: var(--r-pill); background: var(--accent-soft); color: var(--text); font: 600 var(--fs-min)/1.2 var(--font-body); }
+.puce::before { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-text); }
+.s-num { font-variant-numeric: tabular-nums; color: var(--text); }
+.title { grid-row: 2; font: var(--title-weight) var(--fs-title)/1.12 var(--font-title); letter-spacing: var(--title-tracking); text-wrap: balance; max-width: 1560px; }
+.body { grid-row: 3; min-height: 0; min-width: 0; }
+.body > * { max-height: 100%; }
+
+/* étapes d'affichage */
+[data-step]:not([data-keep]) { opacity: 0; transform: translateY(10px); visibility: hidden; transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
+[data-step].on:not([data-keep]) { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+
+/* grille 12 colonnes et piles */
+.g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; row-gap: 24px; min-height: 0; }
+.body.g12 { height: 100%; }
+.c4 { grid-column: span 4; } .c5 { grid-column: span 5; } .c6 { grid-column: span 6; } .c7 { grid-column: span 7; } .c8 { grid-column: span 8; }
+.g12 > * { min-width: 0; min-height: 0; }
+.stack-s, .stack-m, .stack-l { display: flex; flex-direction: column; min-height: 0; }
+.stack-s { gap: 20px; } .stack-m { gap: 28px; } .stack-l { gap: 48px; }
+.body.stack-s, .body.stack-m, .body.stack-l { height: 100%; }
+.fill { flex: 1; min-height: 0; }
+.grow { flex: 1; min-height: 0; }
+
+/* chrome global : progression, chrono, bords cliquables */
+#progress { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; z-index: 5; }
+#progress i { position: absolute; left: 0; height: 6px; top: 0; background: var(--accent-fill); transition: width .3s var(--ease); }
+#progress b { position: absolute; left: 0; height: 4px; top: 6px; background: var(--ok); transition: background-color .3s; }
+#chrono { position: absolute; right: 115px; bottom: 20px; z-index: 5; font: 500 var(--fs-meta)/1 var(--font-body); font-variant-numeric: tabular-nums; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+#chrono::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--ok); }
+#chrono[data-state="warn"]::before, #progress[data-state="warn"] b { background: var(--warn); }
+#chrono[data-state="over"]::before, #progress[data-state="over"] b { background: var(--bad); }
+#chrono[data-state="warn"]::before { border-radius: 3px; }
+#chrono[data-state="over"]::before { border-radius: 0; transform: rotate(45deg); }
+.edge { position: absolute; top: 0; bottom: 0; width: 115px; z-index: 4; border: 0; background: transparent; color: var(--muted); display: grid; place-items: center; font-size: 56px; opacity: 0; transition: opacity .2s; }
+.edge:hover, .edge:focus-visible { opacity: 1; }
+.edge:focus-visible { outline-offset: -8px; }
+#edge-prev { left: 0; } #edge-next { right: 0; }
+
+/* ========== 4. Kit commun ========== */
+.btn { min-height: var(--hit); min-width: var(--hit); padding: 0 30px; border-radius: var(--r-btn); border: 2px solid var(--edge); background: var(--surface); color: var(--text); font: 600 var(--fs-min)/1.1 var(--font-body); display: inline-flex; align-items: center; justify-content: center; gap: 14px; transition: background-color .2s, border-color .2s; }
+.btn:hover { border-color: var(--text); }
+.btn.primary { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+.btn.primary:hover { border-color: var(--text); }
+.btn.sq { padding: 0; width: var(--hit); font-size: 36px; }
+.btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent-text); }
+.btn:disabled { opacity: .45; cursor: default; }
+.switch { min-height: var(--hit); padding: 0 8px 0 0; border: 0; background: transparent; display: inline-flex; align-items: center; gap: 20px; font: 600 var(--fs-min)/1.1 var(--font-body); color: var(--text); border-radius: var(--r-btn); text-align: left; }
+.switch .track { flex: none; width: 104px; height: 56px; border-radius: 999px; border: 2px solid var(--edge); background: var(--surface); position: relative; transition: background-color .2s, border-color .2s; }
+.switch .track::after { content: ""; position: absolute; top: 6px; left: 6px; width: 40px; height: 40px; border-radius: 50%; background: var(--muted); transition: transform .2s var(--ease), background-color .2s; }
+.switch[aria-checked="true"] .track { background: var(--accent-soft); border-color: var(--accent-text); }
+.switch[aria-checked="true"] .track::after { transform: translateX(48px); background: var(--accent-fill); }
+.seg { display: inline-flex; border: 2px solid var(--edge); border-radius: var(--r-btn); overflow: hidden; background: var(--surface); }
+.seg button { min-height: var(--hit); min-width: var(--hit); padding: 0 28px; border: 0; background: transparent; font: 600 var(--fs-min)/1.1 var(--font-body); color: var(--text); }
+.seg button + button { border-left: 2px solid var(--edge); }
+.seg button[aria-pressed="true"] { background: var(--accent-fill); color: var(--on-accent); }
+.seg button:focus-visible { outline-offset: -6px; }
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: var(--hit); margin: 0; background: transparent; cursor: pointer; border-radius: var(--r-btn); }
+input[type="range"]::-webkit-slider-runnable-track { height: 12px; border-radius: 6px; background: var(--surface-2); border: 2px solid var(--edge); }
+input[type="range"]::-moz-range-track { height: 8px; border-radius: 6px; background: var(--surface-2); border: 2px solid var(--edge); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 48px; height: 48px; margin-top: -20px; border-radius: 50%; background: var(--accent-fill); border: 4px solid var(--ink); box-shadow: 0 0 0 2px var(--accent-text); }
+input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-fill); border: 4px solid var(--ink); box-shadow: 0 0 0 2px var(--accent-text); }
+.field-label { display: block; font-size: var(--fs-min); color: var(--muted); font-weight: 500; }
+.range-row { display: grid; gap: 4px; }
+.range-row output, .value { font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.chip { display: inline-flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 28px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); font-size: var(--fs-min); font-weight: 500; white-space: nowrap; }
+.chip .ico { font-size: 34px; color: var(--accent-text); }
+.chips { display: flex; flex-wrap: wrap; gap: 16px; }
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-l); padding: 36px 40px; box-shadow: var(--shadow); }
+.lead { font-size: var(--fs-lead); line-height: 1.3; max-width: 34em; }
+.lead.strong { font-family: var(--font-title); font-weight: 600; font-size: var(--fs-big); letter-spacing: -.01em; line-height: 1.15; }
+.with-icon { display: flex; align-items: center; gap: 22px; }
+.with-icon .ico { font-size: 56px; color: var(--accent-text); }
+.ratios { display: flex; flex-wrap: nowrap; gap: 8px 40px; margin: 0; padding: 0; list-style: none; font-size: var(--fs-min); color: var(--muted); }
+.ratios strong { color: var(--text, inherit); font-size: 1.25em; margin-right: 6px; }
+.note { font-size: var(--fs-min); color: var(--muted); }
+.tag { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px; border-radius: 10px; background: var(--surface-2); border: 2px solid var(--line); font-size: var(--fs-min); font-weight: 600; }
+.verdict { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; }
+.verdict.ok { color: var(--ok); } .verdict.ko { color: var(--bad); }
+.verdict .ico { font-size: 34px; stroke-width: 2.5; }
+.panel { background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-l); padding: 28px 32px; box-shadow: var(--shadow); }
+.formula { font-size: var(--fs-min); color: var(--muted); font-variant-numeric: tabular-nums; }
+.formula b { color: var(--text); font-weight: 600; }
+
+/* cases vides */
+.case { position: relative; border: 3px dashed var(--edge); border-radius: var(--r-m); min-height: 150px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; }
+.case[data-kind="img"] { align-content: stretch; }
+.case.filled { border-style: solid; border-color: var(--line); }
+.case-btn { border: 0; background: transparent; border-radius: calc(var(--r-m) - 3px); padding: 8px; display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; min-height: var(--hit); width: 100%; height: 100%; overflow: hidden; }
+.case-btn:focus-visible { outline-offset: -8px; }
+.case.drag { background: var(--accent-soft); border-color: var(--accent-text); }
+.case-id { font: 600 var(--fs-min)/1.15 var(--font-title); color: var(--accent-text); overflow-wrap: anywhere; }
+.case-hint { font-size: var(--fs-min); color: var(--muted); line-height: 1.2; }
+.case img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; border-radius: calc(var(--r-m) - 3px); background: var(--surface); }
+.case-form { padding: 16px 20px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: center; }
+.case-form label { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+.case-row { display: flex; gap: 14px; }
+.case input[type="text"], .case input[type="url"], .case input[type="number"] { flex: 1; min-width: 0; height: var(--hit); padding: 0 24px; border-radius: var(--r-btn); border: 2px solid var(--edge); background: var(--surface); color: var(--text); font-size: var(--fs-body); font-weight: 600; }
+.case input::placeholder { color: var(--muted); font-weight: 400; opacity: 1; }
+.case.narrow { max-width: 1100px; }
+.case-qr { display: grid; place-items: center; padding: 0 20px 20px; }
+.case-qr svg { width: 300px; height: 300px; border-radius: 12px; }
+.case-qr p { font-size: var(--fs-min); color: var(--muted); text-align: center; padding: 20px 0; }
+.spot { position: absolute; z-index: 2; width: var(--hit); height: var(--hit); margin: -36px 0 0 -36px; border-radius: 50%; border: 4px solid var(--ink); background: var(--bad-fill); color: var(--on-bad); font: 700 32px/1 var(--font-title); }
+.spot[aria-pressed="true"] { background: var(--text); color: var(--ink); }
+
+
+/* ========== 5. Composants repris de la template ========== */
+.s-cover .title { font-size: clamp(60px, 3.75cqw, 76px); line-height: 1.06; max-width: 1500px; }
+.s-cover { grid-template-rows: 40px 250px minmax(0, 1fr); }
+.cover-text { align-self: end; padding-bottom: 20px; display: grid; gap: 14px; }
+.cover-name { font: 600 var(--fs-big)/1.1 var(--font-title); }
+.cover-def { color: var(--muted); font-size: var(--fs-min); }
+.paire { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.paire .card h3 { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; font: 600 var(--fs-big)/1.1 var(--font-title); letter-spacing: -.01em; }
+.paire .card h3 .ico { font-size: 52px; color: var(--accent-text); }
+.paire .card p { font-size: var(--fs-lead); line-height: 1.3; }
+.card.accent { border-color: var(--accent-text); background: var(--accent-soft); }
+.preuve { display: grid; gap: 6px; padding: 16px 28px 18px; }
+.preuve p { font: 600 var(--fs-body)/1.25 var(--font-title); }
+.preuve .preuve-src { font: 600 var(--fs-min)/1.2 var(--font-body); color: var(--accent-text); }
+.statement { font: 600 60px/1.16 var(--font-title); letter-spacing: -.02em; margin-top: 30px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.stat { display: grid; gap: 10px; align-content: start; min-height: 230px; padding: 32px 34px 32px; }
+.stat p { font-size: var(--fs-body); line-height: 1.25; }
+.stat .stat-big { font: 700 52px/1.05 var(--font-title); letter-spacing: -.03em; color: var(--accent-text); white-space: nowrap; }
+.fines { display: grid; gap: 16px; }
+.fines-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.fines-head h3 { font: 600 var(--fs-lead)/1.15 var(--font-title); }
+.fines-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.fine { display: grid; gap: 4px; justify-items: start; text-align: left; min-height: 220px; align-content: space-between; padding: 22px 26px; border-radius: var(--r-m); border: 2px solid var(--edge); background: var(--surface); color: var(--text); box-shadow: var(--shadow); transition: background-color .2s, border-color .2s; }
+.fine:hover { border-color: var(--text); }
+.fine-pays { font: 600 var(--fs-lead)/1.1 var(--font-title); }
+.fine-val { font: 700 60px/1 var(--font-title); letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--muted); }
+.fine-det { font-size: var(--fs-min); line-height: 1.2; color: var(--muted); }
+.fine[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--bad); }
+.fine[aria-pressed="true"] .fine-val { color: var(--bad); }
+.fine[aria-pressed="true"] .fine-det { color: var(--text); }
+.plain { display: grid; gap: 12px; }
+.plain li { padding-left: 34px; position: relative; }
+.plain li::before, .points li::before { content: ""; position: absolute; left: 0; top: .52em; width: 14px; height: 14px; border-radius: 4px; background: var(--accent); }
+.points { display: grid; gap: 22px; }
+.points li { position: relative; padding-left: 36px; font-size: var(--fs-lead); line-height: 1.26; }
+.flow { display: grid; gap: 14px; }
+.flow li { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; padding: 14px 22px; border-radius: var(--r-m); background: var(--surface); border: 2px solid var(--line); box-shadow: var(--shadow); }
+.flow-n, .keep-n { flex: none; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-fill); color: var(--on-accent); box-shadow: inset 0 0 0 2px var(--fill-edge); font: 700 32px/1 var(--font-title); }
+.flow p { font-size: var(--fs-min); font-weight: 600; line-height: 1.25; }
+.flow-n { width: 56px; height: 56px; }
+.pipe { display: grid; gap: 26px; height: 100%; grid-template-rows: auto minmax(0, 1fr); }
+.pipe-steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: center; }
+.pipe-steps > .ico { font-size: 56px; color: var(--muted); }
+.pipe-step { min-height: 240px; border-radius: var(--r-l); border: 2px solid var(--edge); background: var(--surface); padding: 28px 32px; display: grid; gap: 12px; align-content: space-between; justify-items: start; text-align: left; transition: background-color .2s, border-color .2s; }
+.pipe-step h3 { font: 700 var(--fs-big)/1 var(--font-title); }
+.pipe-step[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent-text); border-width: 4px; }
+.pipe-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.pipe-cost { font: 700 var(--fs-lead)/1 var(--font-title); color: var(--accent-text); letter-spacing: .06em; }
+.pipe-detail { display: grid; align-content: center; gap: 12px; padding: 30px 40px; }
+.pipe-detail h3 { font: 700 var(--fs-big)/1.1 var(--font-title); color: var(--accent-text); }
+.pipe-detail p { font-size: var(--fs-lead); line-height: 1.3; max-width: 40em; }
+.keep { display: grid; gap: 30px; align-content: center; }
+.keep li { display: flex; align-items: center; gap: 30px; }
+.keep p { font: 700 64px/1.1 var(--font-title); letter-spacing: -.02em; }
+.keep-n { width: 76px; height: 76px; font-size: 38px; }
+/* annexes : lexique et références */
+.lexique { height: 100%; display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); grid-template-rows: minmax(0, 1fr); gap: 32px; }
+.lex-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 14px; align-content: start; }
+.lex-term { justify-content: flex-start; padding: 0 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lex-panel { display: grid; gap: 20px; align-content: start; justify-items: start; padding: 34px 36px; }
+.lex-panel h3 { font: 700 var(--fs-big)/1.08 var(--font-title); letter-spacing: -.01em; color: var(--accent-text); }
+.lex-panel p { font-size: var(--fs-lead); line-height: 1.32; }
+.refs { height: 100%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 20px; }
+.refs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 18px; }
+.refs-grid li { display: grid; min-height: 0; }
+.ref { display: grid; align-content: space-between; gap: 10px; min-height: 150px; padding: 22px 26px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); box-shadow: var(--shadow); color: var(--text); text-decoration: none; transition: border-color .2s; }
+.ref:hover { border-color: var(--accent-text); }
+.ref-titre { font: 600 var(--fs-body)/1.2 var(--font-title); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ref-source { display: flex; align-items: center; gap: 12px; font-size: var(--fs-min); color: var(--accent-text); font-weight: 600; }
+.ref-source .ico { font-size: 30px; }
+.refs-pager { display: flex; align-items: center; justify-content: center; gap: 28px; }
+.refs-info { font-size: var(--fs-min); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* ========== 5 bis. Slides de l'atelier ========== */
+.lead b, .plain b, .flow b { font-weight: 700; }
+.card.accent { border-color: var(--accent-text); background: var(--accent-soft); }
+.card.accent .lead { max-width: none; }
+.note { line-height: 1.3; }
+/* 1 : couverture */
+.cover-lead { font: 600 var(--fs-lead)/1.28 var(--font-title); margin-bottom: 18px; }
+.cover-col { display: grid; }
+.cover-vis { height: 100%; align-self: end; padding: 20px 28px; display: grid; place-items: center; }
+.cover-vis svg { width: 100%; max-height: 480px; }
+.cv-cap { font: 600 28px var(--font-body); fill: var(--muted); }
+.cv-big { font: 700 40px var(--font-title); }
+.cv-small { font: 600 24px var(--font-body); }
+/* 2 : trois pays */
+.places { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.place { display: grid; gap: 10px; align-content: start; padding: 32px 36px; }
+.place .ico { font-size: 56px; color: var(--accent-text); margin-bottom: 6px; }
+.place h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.place p { font-size: var(--fs-body); color: var(--muted); }
+/* 3 : paires de cartes */
+.paire .card h3 { font-size: var(--fs-lead); }
+.paire .card p { font-size: var(--fs-body); }
+.statement { margin-top: 0; }
+/* 5 : niveaux de risque */
+.ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; list-style: none; padding: 0; }
+.ladder li { display: grid; gap: 8px; align-content: start; padding: 26px 28px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); }
+.ladder h3 { font: 700 var(--fs-lead)/1.1 var(--font-title); }
+.ladder p { font-size: var(--fs-min); line-height: 1.25; }
+.ladder li:nth-child(2) { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.ladder li:nth-child(3) { background: color-mix(in srgb, var(--accent) 30%, var(--surface)); }
+.ladder li:nth-child(4) { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+/* 6 : amendes à révéler */
+.fines-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fine { min-height: 250px; }
+.fine-pays { font-size: var(--fs-body); }
+.fine-val { font-size: 64px; }
+/* 7 et 8 : grand chiffre */
+.hero-stat { min-height: 420px; align-self: start; align-content: center; gap: 18px; padding: 44px 44px; }
+.hero-stat .stat-big { font-size: 132px; line-height: .95; letter-spacing: -.03em; }
+.hero-stat .stat-unit { font: 600 var(--fs-lead)/1.25 var(--font-title); }
+.points li { font-size: var(--fs-lead); }
+.plain { gap: 18px; }
+.plain li { font-size: var(--fs-body); line-height: 1.3; }
+/* 9 : qui paie */
+.payers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; max-height: 480px; }
+.payer { display: grid; grid-template-rows: auto auto 1fr; gap: 16px; align-content: start; padding: 38px 40px; }
+.payer-qui { font: 700 var(--fs-lead)/1.15 var(--font-title); }
+.payer-val { font: 700 58px/1 var(--font-title); letter-spacing: -.02em; color: var(--accent-text); white-space: nowrap; }
+.payer p:last-child { font-size: var(--fs-body); line-height: 1.3; color: var(--muted); }
+.payer.hot { background: var(--text); color: var(--ink); border-color: var(--text); }
+.payer.hot .payer-val { color: var(--hot-val); }
+.payer.hot p:last-child { color: var(--ink); }
+/* 10 : la chaîne du Cloud Act */
+.chain { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.chain > .ico { font-size: 52px; color: var(--muted); align-self: center; }
+.node { display: grid; gap: 10px; align-content: start; padding: 28px 32px; }
+.node h3 { font: 700 var(--fs-lead)/1.15 var(--font-title); }
+.node p { font-size: var(--fs-min); line-height: 1.25; color: var(--muted); }
+.node.hot { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+.node.hot p { color: var(--on-accent); }
+.preuve p:not(.puce):not(.preuve-src) { font: 600 var(--fs-body)/1.28 var(--font-title); }
+/* 11 : deux exigences face à face */
+.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.vs .card { display: grid; gap: 18px; align-content: start; }
+.vs h3 { display: flex; align-items: center; gap: 18px; font: 700 var(--fs-lead)/1.15 var(--font-title); }
+.vs h3 .ico { font-size: 48px; color: var(--accent-text); }
+/* 12 : synthèse */
+.flow { gap: 16px; }
+.flow li { padding: 20px 28px; gap: 24px; }
+.flow p { font-size: var(--fs-body); font-weight: 400; line-height: 1.3; }
+/* 14 et 16 : tableaux */
+.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--fs-min); background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-l); overflow: hidden; box-shadow: var(--shadow); }
+.tbl th { text-align: left; padding: 18px 26px; background: var(--text); color: var(--ink); font: 600 var(--fs-min)/1.2 var(--font-body); vertical-align: bottom; }
+.tbl td { padding: 15px 26px; border-top: 2px solid var(--line); line-height: 1.25; vertical-align: top; }
+.tbl tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 60%, var(--surface)); }
+.tbl td:first-child { font: 700 var(--fs-min)/1.2 var(--font-title); }
+.tbl .num { font-weight: 700; color: var(--accent-text); white-space: nowrap; }
+.tbl .ko { color: var(--bad); font-weight: 700; }
+.tbl .ok { color: var(--ok); font-weight: 700; }
+.tbl-3 th:first-child, .tbl-3 td:first-child { width: 290px; }
+.tbl-3 th:last-child, .tbl-3 td:last-child { background: color-mix(in srgb, var(--p4) 10%, var(--surface)); }
+.tbl-3 th:last-child { background: var(--p4-fill); color: var(--on-p4); }
+/* 15 : briques (pipeline) */
+.pipe-step { min-height: 220px; }
+.pipe-step h3 { font-size: var(--fs-lead); }
+.pipe-step .chip { min-height: 56px; padding: 0 22px; }
+.pipe-where { font-size: var(--fs-min); font-weight: 600; color: var(--muted); }
+.pipe-detail h3 { font-size: var(--fs-lead); }
+.pipe-detail p { font-size: var(--fs-body); }
+/* 17 : routage interactif */
+.route { display: grid; gap: 24px; align-content: start; }
+.route-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; min-height: 0; }
+.route-card { display: grid; gap: 16px; align-content: start; padding: 32px 38px; transition: opacity .25s, border-color .25s, background-color .25s; }
+.route-card .tag { justify-self: start; }
+.route-card h3 { font: 700 var(--fs-big)/1.12 var(--font-title); }
+.route-card p { font-size: var(--fs-body); color: var(--muted); line-height: 1.3; }
+.route-card .verdict { font-size: var(--fs-body); line-height: 1.25; }
+.route-card.on { border-color: var(--accent-text); background: var(--accent-soft); }
+.route-card.off { border-style: dashed; background: transparent; box-shadow: none; }
+.route-card.off h3, .route-card.off > p { color: var(--muted); }
+/* 18 : à retenir */
+.keep.compact { gap: 24px; }
+.keep.compact li { gap: 26px; }
+.keep.compact p { font-size: var(--fs-big); line-height: 1.12; }
+.keep.compact .keep-n { width: 68px; height: 68px; font-size: 34px; }
+/* thème sombre : la cellule de tête du tableau suit l'encre */
+:root[data-deck="dark"] .tbl th { background: var(--surface-2); color: var(--text); }
+:root[data-deck="dark"] .tbl-3 th:last-child { background: var(--p4-fill); color: var(--on-p4); }
+:root[data-deck="dark"] .payer.hot { background: var(--surface-2); color: var(--text); border-color: var(--edge); }
+:root[data-deck="dark"] .payer.hot p:last-child { color: var(--text); }
+:root[data-deck="dark"] .payer.hot .payer-val { color: var(--p2-text); }
+
+/* ========== 5 ter. Composants interactifs de l'atelier ========== */
+.meter { height: 36px; border-radius: 12px; background: var(--surface-2); border: 2px solid var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent-fill); transition: width .3s var(--ease), background-color .3s; }
+.meter i.high { background: var(--bad-fill); } .meter i.low { background: var(--ok-fill); }
+.place.hot { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+.place.hot .ico, .place.hot p { color: var(--on-accent); }
+.paire .card h3 { display: flex; align-items: center; gap: 16px; }
+.paire .card h3 .ico { font-size: 44px; color: var(--accent-text); flex: none; }
+.rule-card { display: grid; gap: 20px; align-content: start; padding: 40px 44px; }
+.rule-card > p:not(.puce):not(.note) { font: 700 var(--fs-big)/1.2 var(--font-title); }
+/* pipe à cinq étapes : un peu plus serré */
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) { gap: 10px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) > .ico { font-size: 40px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) .pipe-step { padding: 24px 22px; min-height: 200px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) .pipe-step h3 { font-size: 30px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) .chip { padding: 0 16px; }
+.pipe-detail .note { font-size: var(--fs-min); color: var(--muted); }
+/* question d'ouverture */
+.question { display: grid; justify-items: start; gap: 20px; }
+.question .lead { max-width: 38em; }
+/* offres */
+.offres { display: grid; gap: 32px; align-content: start; }
+.offre-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.offre-tile { display: grid; gap: 14px; align-content: start; min-height: 260px; padding: 30px 30px; }
+.offre-tile .lab { font-size: var(--fs-min); color: var(--muted); font-weight: 600; }
+.offre-tile .val { font: 700 var(--fs-lead)/1.18 var(--font-title); }
+.offre-tile .tone { align-self: end; justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-meta); font-weight: 700; padding: 4px 16px 4px 12px; border-radius: var(--r-pill); }
+.offre-tile .tone .ico { font-size: 1.1em; stroke-width: 2.5; }
+.offre-tile.ok .tone { color: var(--ok); background: color-mix(in srgb, var(--ok-fill) 14%, var(--surface)); }
+.offre-tile.mid .tone { color: var(--warn); background: color-mix(in srgb, var(--warn-fill) 14%, var(--surface)); }
+.offre-tile.ko .tone { color: var(--bad); background: color-mix(in srgb, var(--bad-fill) 14%, var(--surface)); }
+.offres > .note { font-size: var(--fs-lead); color: var(--text); font-family: var(--font-title); font-weight: 700; }
+/* vrai ou faux */
+.vf { display: grid; gap: 14px; align-content: start; }
+.vf-row { display: grid; grid-template-columns: minmax(0, 1fr) 720px; gap: 28px; align-items: center; min-height: 118px; padding: 14px 28px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.vf-row > p { font: 700 var(--fs-body)/1.25 var(--font-title); }
+.vf-ans { display: flex; align-items: center; gap: 20px; }
+.vf-tag { flex: none; padding: 8px 20px; border-radius: var(--r-pill); font-weight: 700; font-size: var(--fs-min); }
+.vf-tag.vrai { background: var(--ok-fill); color: var(--on-p4); } .vf-tag.faux { background: var(--bad-fill); color: var(--on-bad); }
+.vf-why { font-size: var(--fs-meta); line-height: 1.25; }
+/* feu tricolore */
+.tri { display: grid; gap: 24px; align-content: start; }
+.tri-head { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.tri-legend { display: flex; gap: 32px; list-style: none; padding: 0; }
+.tri-legend li { display: flex; align-items: center; gap: 12px; font-size: var(--fs-min); }
+.tri-legend li::before { content: ""; width: 28px; height: 28px; border-radius: 50%; flex: none; }
+.tri-legend li span { color: var(--muted); }
+[data-c="vert"] { --c: var(--ok-fill); --c-text: var(--ok); }
+[data-c="orange"] { --c: var(--warn-fill); --c-text: var(--warn); }
+[data-c="rouge"] { --c: var(--bad-fill); --c-text: var(--bad); }
+.tri-legend li::before { background: var(--c); }
+.tri-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.tri-card { display: grid; grid-template-rows: 1fr auto auto; gap: 10px; min-height: 270px; padding: 22px 24px; text-align: left; border-radius: var(--r-m); border: 2px solid var(--edge); background: var(--surface); color: var(--text); box-shadow: var(--shadow); transition: background-color .2s, border-color .2s; }
+.tri-card:hover { border-color: var(--text); }
+.tri-nom { font: 700 var(--fs-min)/1.2 var(--font-title); }
+.tri-badge { justify-self: start; padding: 4px 16px; border-radius: var(--r-pill); background: var(--surface-2); font-weight: 700; font-size: var(--fs-meta); }
+.tri-res { font-size: var(--fs-meta); line-height: 1.25; color: var(--muted); }
+.tri-card[data-c] { border-color: var(--c); border-width: 4px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.tri-card[data-c] .tri-badge { background: var(--c); color: var(--ink); }
+.tri-card[data-c] .tri-res { color: var(--text); }
+/* anonymiser */
+.anon { display: grid; gap: 24px; align-content: start; }
+.anon-text { padding: 34px 40px; font: 400 var(--fs-lead)/1.5 var(--font-title); }
+.anon-text mark { background: color-mix(in srgb, var(--warn-fill) 28%, var(--surface)); color: var(--text); padding: 0 6px; border-radius: 6px; }
+.anon-risk { display: grid; grid-template-columns: 520px minmax(0, 1fr); gap: 28px; align-items: center; }
+.anon-lvl { font-weight: 700; font-size: var(--fs-body); }
+.anon > .note { color: var(--muted); font-size: var(--fs-min); }
+/* injection */
+.inj { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 32px; height: 100%; }
+.inj-doc { display: grid; gap: 16px; align-content: start; padding: 34px 40px; }
+.inj-doc h3 { font: 700 var(--fs-lead)/1.2 var(--font-title); }
+.inj-doc > p:not(.puce) { font-size: var(--fs-min); line-height: 1.35; }
+.inj-hidden { color: var(--surface); font-size: 12px; line-height: 1.2; transition: color .3s, font-size .3s; user-select: none; }
+.inj-doc.reveal .inj-hidden { color: var(--bad); font-size: var(--fs-min); font-weight: 700; background: color-mix(in srgb, var(--bad-fill) 12%, var(--surface)); padding: 4px 8px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.inj-side { display: grid; gap: 20px; align-content: start; }
+.inj-out { display: grid; gap: 10px; padding: 26px 32px; }
+.inj-out h3 { font-size: var(--fs-min); color: var(--muted); font-weight: 600; }
+.inj-out p { font: 700 var(--fs-body)/1.25 var(--font-title); }
+.inj-out.danger { border-color: var(--bad); }
+.inj-out .verdict { font-size: var(--fs-min); }
+/* responsabilité */
+.resp { display: grid; gap: 24px; align-content: start; }
+.resp-panel { display: grid; gap: 20px; align-content: start; padding: 34px 44px; min-height: 540px; }
+.resp-panel h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.resp-sit { font-size: var(--fs-lead); line-height: 1.3; }
+.resp-votes { display: flex; flex-wrap: wrap; gap: 14px; list-style: none; padding: 0; }
+.resp-votes .chip { min-height: 60px; }
+.resp-votes .chip.good { border-color: var(--accent-text); background: var(--accent-soft); font-weight: 700; }
+.resp-votes .chip.off { opacity: .5; }
+.resp-ans { font: 700 var(--fs-body)/1.3 var(--font-title); }
+.resp-lois { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; }
+.resp-panel .btn { justify-self: start; }
+/* arbre */
+.arbre { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; height: 100%; }
+.arbre-q { display: grid; gap: 22px; align-content: center; padding: 44px 52px; }
+.arbre-q h3 { font: 700 var(--fs-big)/1.15 var(--font-title); }
+.arbre-q .note { font-size: var(--fs-body); color: var(--muted); }
+.arbre-btns { display: flex; gap: 18px; }
+.arbre-btns .btn { min-width: 200px; }
+.arbre-q.res { border-width: 4px; }
+.arbre-q.res.vert { --c: var(--ok-fill); } .arbre-q.res.orange { --c: var(--warn-fill); } .arbre-q.res.rouge { --c: var(--bad-fill); }
+.arbre-q.res { border-color: var(--c); background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.arbre-q.res .puce::before { background: var(--c); }
+.arbre-side { display: grid; gap: 16px; align-content: start; }
+.arbre-path { display: grid; gap: 14px; list-style: none; padding: 0; }
+.arbre-path li { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 18px 22px; font-size: var(--fs-meta); line-height: 1.25; }
+.arbre-a { font-weight: 700; font-size: var(--fs-min); color: var(--accent-text); }
+/* exercice */
+.exo { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 32px; height: 100%; }
+.exo-list { display: grid; gap: 12px; list-style: none; padding: 0; align-content: start; }
+.exo-row { display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 20px; align-items: center; min-height: 104px; padding: 10px 24px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); }
+.exo-row > p { font: 700 var(--fs-min)/1.2 var(--font-title); }
+.exo-sol { font-size: var(--fs-meta); line-height: 1.25; font-weight: 600; }
+.exo-slot .btn { min-height: 60px; }
+.cd { display: grid; gap: 22px; justify-items: center; align-content: center; padding: 32px; text-align: center; }
+.cd .cd-time { font: 700 120px/.95 var(--font-title); font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+.cd-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+/* frise des cas réels */
+.tl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; list-style: none; padding: 0; }
+.tl li { display: grid; gap: 10px; align-content: start; padding: 28px 30px; }
+.tl-date { display: flex; align-items: center; gap: 12px; font: 700 var(--fs-lead)/1 var(--font-title); color: var(--accent-text); }
+.tl-qui { font-weight: 700; font-size: var(--fs-min); }
+.tl li p:last-child { font-size: var(--fs-meta); line-height: 1.3; color: var(--muted); }
+:root[data-deck="dark"] .tri-card[data-c] .tri-badge { color: var(--ink); }
+:root[data-deck="dark"] .vf-tag.vrai { color: var(--ink); }
+.inj-doc { align-self: start; }
+.tl li p:last-child { font-size: var(--fs-min); line-height: 1.28; }
+.exo-sol, .vf-why { font-size: 26px; }
+
+/* ========== 5 sexies. Sources cliquables et date de mise à jour ========== */
+.s-src { display: flex; gap: 12px; margin-left: auto; margin-right: 36px; }
+.s-src a, .src { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); color: var(--accent-text); font: 600 24px/1 var(--font-body); text-decoration: none; white-space: nowrap; }
+.s-src a:hover, .src:hover, .s-src a:focus-visible, .src:focus-visible { border-color: var(--accent-text); }
+.s-src .ico, .src .ico { font-size: 22px; stroke-width: 2.25; }
+.src { margin-left: 12px; vertical-align: middle; height: 36px; font-size: 22px; }
+.src-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.src-ligne .src { margin-left: 0; }
+.cover-maj { font-size: 24px; line-height: 1.3; color: var(--muted); }
+
+/* ========== 5 quater. Slides du cours « Les types d'IA » ========== */
+.question { display: grid; justify-items: start; gap: 20px; }
+.question .lead { max-width: 38em; }
+.tl-8 { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 18px; height: 100%; }
+.tl-8 li { padding: 22px 26px; gap: 6px; }
+.tl-8 .tl-date { font-size: var(--fs-big); }
+.tl .card.accent .tl-date, .tl li.accent .tl-date { color: var(--accent-text); }
+.io { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.io li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 22px; padding: 26px 32px; }
+.io .ico { font-size: 44px; color: var(--accent-text); }
+.io-in { font: 700 var(--fs-lead)/1.2 var(--font-title); }
+.io-out { font-size: var(--fs-body); color: var(--muted); }
+.places-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.places-4 .place h3 { font-size: var(--fs-lead); }
+.places-4 .place p { font-size: var(--fs-min); }
+.tbl-familles td:first-child { width: 480px; }
+.tbl-familles th, .tbl-familles td { padding-top: 13px; padding-bottom: 13px; }
+.tbl-familles td:nth-child(2) { font-weight: 600; }
+.tbl-note { margin-top: 22px; }
+.prediction { display: grid; gap: 22px; padding: 36px 40px; }
+.pred-phrase { font: 700 var(--fs-big)/1.15 var(--font-title); }
+.pred-liste { display: grid; gap: 14px; }
+.pred-liste li { display: grid; grid-template-columns: 170px minmax(0, 1fr) 100px; align-items: center; gap: 20px; font-size: var(--fs-body); }
+.pred-liste b { text-align: right; font-variant-numeric: tabular-nums; }
+.pred-liste .meter { height: 28px; }
+.chain-3 { list-style: none; padding: 0; }
+.chain-fleche { display: grid; place-items: center; font-size: 52px; color: var(--muted); }
+.estime { display: grid; gap: 8px; justify-items: center; padding: 32px; text-align: center; }
+.estime-val { font: 700 88px/1 var(--font-title); }
+.vf-tag.rep { background: var(--accent-fill); color: var(--on-accent); }
+.vf-quiz .vf-row { min-height: 100px; padding: 10px 28px; }
+.sens { width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 36px 28px; align-items: center; }
+.sens-carte, .sens-cerveau { display: grid; justify-items: center; gap: 4px; padding: 22px 16px; border-radius: 22px; text-align: center; }
+.sens-carte { border: 3px solid var(--p2-fill); background: var(--surface); }
+.sens-carte b { font: 700 var(--fs-lead)/1.1 var(--font-title); color: var(--p2-text); }
+.sens-carte span { font-size: var(--fs-meta); color: var(--muted); }
+.sens-carte:nth-child(1) { grid-area: 1 / 1; } .sens-carte:nth-child(2) { grid-area: 1 / 3; }
+.sens-carte:nth-child(4) { grid-area: 2 / 1; } .sens-carte:nth-child(5) { grid-area: 2 / 3; }
+.sens-cerveau { grid-area: 1 / 2 / 3 / 3; align-self: center; padding: 36px 16px; background: var(--p3-fill); color: var(--on-p3); }
+.sens-cerveau b { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.sens-cerveau span { font-size: var(--fs-min); }
+.tbl-cmp td:first-child { width: 290px; }
+
+/* ========== 5 quinquies. Slides du tuto du Harnais ========== */
+.shot { margin: 0; border-radius: var(--r-m); overflow: hidden; border: 2px solid var(--line); background: #0F1117; box-shadow: var(--shadow); }
+.shot img { width: 100%; height: auto; max-height: 100%; object-fit: contain; }
+.code-ligne { font: 600 28px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; padding: 22px 28px; border-radius: var(--r-s); background: var(--surface-2); border: 2px solid var(--line); overflow-wrap: anywhere; }
+.mini-h { font: 700 var(--fs-lead)/1.15 var(--font-title); margin-bottom: 10px; }
+.tbl-parcours td:first-child { width: 440px; }
+.tbl-aide td:first-child { width: 520px; }
+.vs .plain li { font-size: var(--fs-min); line-height: 1.3; }
+.vs .plain { gap: 14px; }
+
+/* ========== 6. Calques : grille, écran noir, saisie de numéro ========== */
+#grid { position: absolute; inset: 0; z-index: 20; background: var(--ink); padding: 50px 115px; overflow: auto; }
+#grid h2 { font: 600 44px/1 var(--font-title); margin-bottom: 26px; }
+#grid ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+#grid button { width: 100%; height: 132px; padding: 14px 18px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); text-align: left; display: grid; grid-template-rows: auto 1fr; gap: 6px; font-size: 22px; line-height: 1.2; color: var(--text); }
+#grid button b { font: 700 26px/1 var(--font-title); font-variant-numeric: tabular-nums; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+#grid button b::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-text); }
+#grid button span { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+#grid button[aria-current="true"] { border-color: var(--text); background: var(--accent-soft); }
+#black { position: absolute; inset: 0; z-index: 30; background: #000; border: 0; width: 100%; height: 100%; cursor: none; }
+#toast { position: absolute; left: 50%; bottom: 90px; transform: translateX(-50%); z-index: 25; padding: 18px 30px; border-radius: 16px; background: var(--text); color: var(--ink); font: 600 28px/1 var(--font-body); font-variant-numeric: tabular-nums; }
+
+/* ========== 7. Vue présentateur (fenêtre séparée, ou panneau de repli) ========== */
+#pv { display: none; }
+body.pv-window { overflow: auto; background: var(--ink); }
+body.pv-window #viewport { display: none; }
+body.pv-window #pv, #pv.overlay { display: grid; }
+#pv { gap: 16px; padding: 24px; font-size: 18px; line-height: 1.4; color: var(--text); background: var(--ink); align-content: start; }
+#pv.overlay { position: fixed; z-index: 100; top: 0; right: 0; bottom: 0; width: min(520px, 46vw); overflow: auto; border-left: 2px solid var(--edge); box-shadow: -20px 0 60px rgba(0, 0, 0, .45); }
+body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#pv > * { min-width: 0; }
+#pv .pv-wide { grid-column: 1 / -1; }
+#pv h2 { font: 600 clamp(24px, 3.2vw, 38px)/1.15 var(--font-title); letter-spacing: -.01em; }
+#pv h3 { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+#pv .pv-box { border: 2px solid var(--line); border-radius: 16px; background: var(--surface); padding: 16px 18px; }
+#pv .pv-meta { color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 6px; }
+#pv .pv-keys { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+#pv .pv-keys li { padding: 6px 14px; border-radius: 999px; border: 2px solid var(--edge); font-weight: 600; }
+#pv .pv-clock { font: 700 clamp(44px, 7vw, 72px)/1 var(--font-title); font-variant-numeric: tabular-nums; }
+#pv .pv-clock[data-state="ok"] { color: var(--ok); } #pv .pv-clock[data-state="warn"] { color: var(--warn); } #pv .pv-clock[data-state="over"] { color: var(--bad); }
+#pv .pv-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+#pv .pv-btns button { min-height: 48px; min-width: 48px; padding: 0 18px; border-radius: 12px; border: 2px solid var(--edge); background: var(--surface); font-weight: 600; font-size: 16px; }
+#pv .pv-btns button:hover { border-color: var(--text); }
+#pv .pv-notes { white-space: pre-line; }
+#pv .pv-cases { display: grid; gap: 4px; max-height: 260px; overflow: auto; font-variant-numeric: tabular-nums; }
+#pv .pv-cases li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 8px; border-radius: 8px; }
+#pv .pv-cases li.here { background: var(--surface-2); font-weight: 600; }
+#pv .pv-cases span { color: var(--muted); white-space: nowrap; }
+#pv :focus-visible { outline-width: 3px; outline-offset: 2px; }
+
+/* ========== 8. Mouvement réduit ========== */
+@media (prefers-reduced-motion: reduce) {
+  *:not(.spinner), *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
+  .spinner { animation-duration: 1.6s; }
+}
+
+/* ========== 9. Impression : une slide par page A4 paysage ========== */
+@page { size: A4 landscape; margin: 0; }
+@media print {
+  html, body { height: auto; overflow: visible; background: var(--ink); }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; animation: none !important; transition: none !important; }
+  #viewport { position: static; overflow: visible; background: var(--ink); }
+  #stage { position: static; transform: none; width: auto; height: auto; overflow: visible; container-type: normal; }
+  .slide, .slide[hidden] { display: grid !important; position: relative; inset: auto; width: 1920px; height: 1350px; padding-top: 200px; padding-bottom: 200px; zoom: .5846; margin: 0; break-after: page; break-inside: avoid; overflow: hidden; container-type: size; }
+  .slide:last-of-type { break-after: auto; }
+  [data-step] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+  #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
+}
+</style>
+</head>
+<body>
+<div id="viewport">
+  <main id="stage" tabindex="-1" aria-label="Tuto du Harnais">
+    <h1 class="sr">Le Harnais : tuto, par Clément Bastien</h1>
+    <div id="slides">
+<!-- ================= PARTIE 1 : COMPRENDRE (slides 1 à 5) ================= -->
+
+<section class="slide s-cover" data-part="1" data-key="titre">
+  <h2 class="title">Le Harnais</h2>
+  <div class="body g12">
+    <div class="c5 cover-text">
+      <p class="cover-lead">Apprendre l’IA en débloquant ses outils, un par un. Tuto : de l’installation au défi final.</p>
+      <p class="cover-name">Clément Bastien</p>
+      <p class="cover-def">Une surcouche d’OpenCode, pour comprendre comment fonctionne un harnais.</p>
+      <p class="cover-def">Prototype · Windows 10 et 11 seulement</p>
+      <p class="cover-maj">Mis à jour le 18 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
+    </div>
+    <div class="c7 cover-col">
+      <div class="card cover-vis" role="img" aria-label="Schéma : toi, le harnais, puis le cerveau, c'est-à-dire le modèle d'IA. Sous le harnais, les outils : terminal, fichiers, navigateur, voix.">
+        <div class="sens" aria-hidden="true">
+          <div class="sens-carte"><b>Terminal</b><span>commandes</span></div>
+          <div class="sens-carte"><b>Fichiers</b><span>ton dossier</span></div>
+          <div class="sens-cerveau"><b>Harnais</b><span>relie le cerveau aux outils</span></div>
+          <div class="sens-carte"><b>Navigateur</b><span>pages web</span></div>
+          <div class="sens-carte"><b>Voix</b><span>dicter, écouter</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="prototype">
+  <h2 class="title">Un prototype : à lire avant d’installer</h2>
+  <div class="body stack-l">
+    <div class="vs">
+      <article class="card" data-step="1">
+        <h3><i data-icon="alert"></i>Ce qui n’est pas fini</h3>
+        <ul class="plain">
+          <li>Version 0.1.0, en bêta : des défauts sont possibles, sans garantie ni assistance.</li>
+          <li><b>Windows 10 ou 11 uniquement</b> (64 bits). Pas de macOS, pas de Linux.</li>
+          <li>Application <b>non signée</b> : Windows 11 peut la bloquer.</li>
+          <li>Pas de mise à jour automatique : pour mettre à jour, on relance l’installateur.</li>
+        </ul>
+      </article>
+      <article class="card" data-step="2">
+        <h3><i data-icon="check"></i>Ce qu’il te faut</h3>
+        <ul class="plain">
+          <li>8 Go de mémoire conseillés, environ 3 Go d’espace disque.</li>
+          <li>Environ 0,9 Go à télécharger, puis les modèles de voix et d’image à la première utilisation.</li>
+          <li>Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Un abonnement Claude ne se branche pas.</li>
+          <li>Des données <b>fictives</b> seulement : tu es sur un prototype.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="lead strong" data-step="3">C’est une démonstration pour apprendre, pas un produit prêt à l’emploi.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="idee">
+  <h2 class="title">Derrière une IA qui « sait tout faire »</h2>
+  <div class="body stack-l">
+    <div class="places places-4">
+      <article class="card place" data-step="1"><i data-icon="target"></i><h3>Un cerveau</h3><p>Le modèle d’IA. Il lit, réfléchit et répond.</p></article>
+      <article class="card place" data-step="2"><i data-icon="code"></i><h3>Des outils</h3><p>Terminal, fichiers, navigateur, voix… Sans eux, il ne fait que parler.</p></article>
+      <article class="card place" data-step="3"><i data-icon="key"></i><h3>Des droits</h3><p>Ce que l’IA a le droit de faire, ou seulement de proposer.</p></article>
+      <article class="card place" data-step="4"><i data-icon="user"></i><h3>Toi</h3><p>C’est toi qui décides, et qui relis avant d’envoyer.</p></article>
+    </div>
+    <p class="lead strong" data-step="5">Le harnais, c’est ce qui relie le cerveau aux outils, avec les règles.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="principe">
+  <h2 class="title">Tout est installé. Tout est verrouillé.</h2>
+  <div class="body">
+    <ol class="flow">
+      <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p><b>Tu fais une mission.</b> Lancer une commande, lire un scan, ouvrir une page.</p></li>
+      <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p><b>Le harnais vérifie.</b> Il regarde ce que tu as vraiment fait : les preuves se cochent toutes seules.</p></li>
+      <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p><b>L’outil s’ouvre.</b> Pour toi, puis pour ton IA, qui gagne le droit qui va avec.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="parcours">
+  <h2 class="title">15 missions, 6 chapitres</h2>
+  <div class="body stack-m">
+    <table class="tbl tbl-parcours">
+      <thead><tr><th>Chapitre</th><th>Missions</th></tr></thead>
+      <tbody>
+        <tr><td>Démarrer</td><td>Brancher ton IA · Qu’est-ce qu’un harnais ?</td></tr>
+        <tr><td>Le poste de travail</td><td>Le terminal · Les fichiers · Ton IA agit, avec ton accord</td></tr>
+        <tr><td>Les sens</td><td>Dicter · Écouter · Lire un document · Voir une image</td></tr>
+        <tr><td>Le web</td><td>Le navigateur · L’audit Lighthouse</td></tr>
+        <tr><td>Étendre ton harnais</td><td>Les skills · Les connecteurs MCP · Les plugins</td></tr>
+        <tr><td>Le défi final</td><td>Un dossier complet, de bout en bout</td></tr>
+      </tbody>
+    </table>
+    <p class="note" data-step="1">Les voix, les scans et les images sont traités sur ton ordinateur.</p>
+  </div>
+</section>
+
+<!-- ================= PARTIE 2 : INSTALLER ET DÉMARRER (slides 6 à 14) ================= -->
+
+<section class="slide" data-part="2" data-key="prerequis">
+  <h2 class="title">Ce qu’il te faut</h2>
+  <div class="body">
+    <div class="places places-4">
+      <article class="card place" data-step="1"><i data-icon="gauge"></i><h3>Un PC Windows</h3><p>Windows 10 ou 11, 64 bits. 8 Go de mémoire conseillés.</p></article>
+      <article class="card place" data-step="2"><i data-icon="globe"></i><h3>Internet</h3><p>Pour parler à l’IA, et pour télécharger les modèles de voix et d’image la première fois.</p></article>
+      <article class="card place" data-step="3"><i data-icon="chat"></i><h3>Une IA à brancher</h3><p>Ton abonnement ChatGPT, ou une clé d’API. Un abonnement Claude ne se branche pas ici.</p></article>
+      <article class="card place" data-step="4"><i data-icon="mic"></i><h3>Un micro</h3><p>Pour la mission « Dicter » et pour dicter tes messages.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="installer">
+  <h2 class="title">Installer : un double-clic</h2>
+  <div class="body stack-m">
+    <ol class="flow">
+      <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p><b>Télécharge deux fichiers :</b> Installer-Le-Harnais.bat et installer.ps1, dans le même dossier. Ils sont sur la page des versions du dépôt GitHub clement8426/le-harnais.</p></li>
+      <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p><b>Double-clique sur Installer-Le-Harnais.bat.</b> Si Windows dit « a protégé votre ordinateur » : Informations complémentaires, puis Exécuter quand même.</p></li>
+      <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p><b>Attends : c’est fini.</b> Le Harnais se télécharge (environ 0,9 Go), s’installe, crée un raccourci sur le bureau et s’ouvre.</p></li>
+    </ol>
+    <p class="note" data-step="4">Aucun droit d’administrateur. Pour mettre à jour : relance l’installateur, ta progression est conservée.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="installer-autres">
+  <h2 class="title">Les autres façons d’installer</h2>
+  <div class="body stack-m">
+    <article class="card rule-card" data-step="1">
+      <p class="puce">En une ligne, dans PowerShell</p>
+      <p class="code-ligne">irm https://raw.githubusercontent.com/clement8426/le-harnais/main/installer/installer.ps1 | iex</p>
+      <p class="note">Cette commande télécharge et lance le script du dépôt : lis-le d’abord si tu veux savoir ce qu’il fait.</p>
+    </article>
+    <div class="paire">
+      <article class="card" data-step="2"><h3><i data-icon="file"></i>À la main</h3><p>Télécharge l’archive .zip, clic droit puis « Extraire tout », et double-clique sur Lancer-Le-Harnais.bat.</p></article>
+      <article class="card" data-step="3"><h3><i data-icon="reset"></i>Pour le retirer</h3><p>Double-clique sur Desinstaller-Le-Harnais.bat. Tes conversations et ta progression sont conservées.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="depart">
+  <h2 class="title">L’écran de départ</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <ul class="plain">
+        <li data-step="1">Tu arrives directement sur ta première session, avec l’accueil du Harnais.</li>
+        <li data-step="2">Deux gestes : brancher ton IA, puis écrire « Bonjour ».</li>
+        <li data-step="3">LeLabo est ton atelier, dans tes Documents. L’IA ne travaille que là.</li>
+      </ul>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/01-ecran-de-depart.png" alt="L'écran de départ du Harnais : un message de bienvenue avec deux étapes, brancher son IA puis écrire « Bonjour »." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="brancher">
+  <h2 class="title">Brancher ton IA : le nom du modèle</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Clique sur le nom du modèle, sous la zone de saisie.</p>
+      <ul class="plain">
+        <li data-step="1"><b>Ton abonnement ChatGPT</b> : connexion par ton navigateur.</li>
+        <li data-step="2"><b>Une clé d’API</b> : OpenAI, Anthropic, Google, OpenRouter…</li>
+        <li data-step="3"><b>Un modèle local</b> : gratuit, mais lent sans carte graphique.</li>
+      </ul>
+      <p class="note" data-step="4">Attention : les modèles « Gratuit » d’OpenCode ne répondent pas dans Le Harnais.</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/02b-menu-recadre.png" alt="Le menu des modèles, ouvert sous la zone de saisie." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="gerer">
+  <h2 class="title">Gérer les modèles</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <ul class="plain">
+        <li data-step="1">Tout en bas de la liste, clique sur « Gérer les modèles ».</li>
+        <li data-step="2">Une fenêtre s’ouvre. En haut à droite, un bouton : « Connecter un fournisseur ».</li>
+        <li data-step="3">C’est ici que tu branches ton IA.</li>
+      </ul>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/05-gerer-les-modeles.png" alt="La fenêtre « Gérer les modèles », avec le bouton « Connecter un fournisseur » en haut à droite." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="fournisseurs">
+  <h2 class="title">Connecter un fournisseur</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Choisis celui qui fait tourner ton IA :</p>
+      <ul class="plain">
+        <li data-step="1"><b>OpenAI</b> : ChatGPT</li>
+        <li data-step="2"><b>Anthropic</b> : Claude</li>
+        <li data-step="3"><b>Google</b> : Gemini</li>
+        <li data-step="4"><b>OpenRouter</b> : des dizaines de modèles, une seule clé</li>
+      </ul>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/06-connecter-un-fournisseur.png" alt="La liste des fournisseurs : OpenCode Go, OpenCode Console, Anthropic, OpenAI, Google, OpenRouter…" /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="chatgpt">
+  <h2 class="title">Avec OpenAI : deux façons</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <article class="card" data-step="1"><h3 class="mini-h">Sign in with ChatGPT</h3><p>Ton abonnement. Une page de ton navigateur s’ouvre : clique sur « Autoriser ».</p></article>
+      <article class="card" data-step="2"><h3 class="mini-h">Clé API</h3><p>Tu colles une clé. Tu paies à l’usage.</p></article>
+      <p class="note" data-step="3">Anthropic, Google, OpenRouter : colle ta clé d’API. Ignore les options « Codex (legacy) ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/07-methodes-openai.png" alt="Les deux méthodes de connexion à OpenAI : « Sign in with ChatGPT » ou une clé d'API." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="bonjour">
+  <h2 class="title">Écris « Bonjour »</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <ul class="plain">
+        <li data-step="1">Le panneau des missions s’ouvre tout seul, à droite.</li>
+        <li data-step="2">Dès que l’IA t’a répondu, la mission 1 se coche toute seule.</li>
+        <li data-step="3">La mission 2 s’ouvre sans que tu aies rien à démarrer.</li>
+      </ul>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/03-premier-message.png" alt="Le panneau des missions, ouvert à droite de la conversation, après le premier message." /></figure></div>
+  </div>
+</section>
+
+<!-- ================= PARTIE 3 : LES MISSIONS (slides 15 à 27) ================= -->
+
+<section class="slide" data-part="3" data-key="m03-terminal">
+  <h2 class="title">Le poste de travail : le terminal</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Lance trois vraies commandes dans le terminal de ton ordinateur, dans ton harnais.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que tu débloques</p><p>Le terminal s’ouvre pour toi. Ton IA n’y touche pas encore.</p></article>
+      <p class="note" data-step="2">Mission 3, chapitre « Le poste de travail ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m03-terminal.png" alt="La mission « Le terminal » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m04-fichiers">
+  <h2 class="title">Le poste de travail : les fichiers</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Crée un fichier, puis demande à ton IA de le lire.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Un premier accès à ton dossier : elle peut lire tes fichiers, rien d’autre.</p></article>
+      <p class="note" data-step="2">Mission 4, chapitre « Le poste de travail ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m04-fichiers.png" alt="La mission « Les fichiers » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m05-agir">
+  <h2 class="title">Le poste de travail : ton IA agit, avec ton accord</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Ton IA te demande la permission avant chaque commande et chaque modification. Tu acceptes ou tu refuses.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Le droit d’agir, avec ton accord à chaque fois.</p></article>
+      <p class="note" data-step="2">Mission 5, chapitre « Le poste de travail ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m05-ia-et-terminal.png" alt="La mission « Ton IA agit, avec ton accord » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m06-dicter">
+  <h2 class="title">Les sens : dicter</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Ta voix devient du texte avec Whisper, qui tourne sur ton ordinateur (STT, speech-to-text).</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil « transcrire ». Ta voix reste chez toi : l’IA ne reçoit que le texte.</p></article>
+      <p class="note" data-step="2">Mission 6, chapitre « Les sens ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m06-dicter.png" alt="La mission « Dicter » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m07-ecouter">
+  <h2 class="title">Les sens : écouter</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Fais résumer un compte rendu par ton IA, puis lire à voix haute (TTS, text-to-speech).</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de lecture à voix haute, avec la voix de ton ordinateur.</p></article>
+      <p class="note" data-step="2">Mission 7, chapitre « Les sens ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m07-ecouter.png" alt="La mission « Écouter » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m08-lire">
+  <h2 class="title">Les sens : lire un document</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Extrais le texte d’un scan, compare-le à l’original et corrige ce que la machine a mal lu.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de lecture de documents (OCR). Il se trompe parfois : tu relis avant d’envoyer.</p></article>
+      <p class="note" data-step="2">Mission 8, chapitre « Les sens ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m08-lire-scan.png" alt="La mission « Lire un document » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m09-voir">
+  <h2 class="title">Les sens : voir une image</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Fais détecter les objets d’une photo, puis baisse le seuil de confiance et regarde ce qui change.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de vision. Seule la liste des objets part vers ton IA, jamais l’image.</p></article>
+      <p class="note" data-step="2">Mission 9, chapitre « Les sens ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m09-voir-image.png" alt="La mission « Voir une image » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m10-navigateur">
+  <h2 class="title">Le web : le navigateur</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Un navigateur dans ton harnais, que ton IA peut lire et piloter. Repère un premier piège dans une page.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Elle lit et pilote les pages web.</p></article>
+      <p class="note" data-step="2">Mission 10, chapitre « Le web ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m10-navigateur.png" alt="La mission « Le navigateur » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m11-lighthouse">
+  <h2 class="title">Le web : l’audit Lighthouse</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Ton IA fait auditer une page par Lighthouse, l’outil de Google, et t’explique le résultat.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’audit de pages : elle mesure la qualité d’un site, avec des notes.</p></article>
+      <p class="note" data-step="2">Mission 11, chapitre « Le web ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m11-audit-lighthouse.png" alt="La mission « L'audit Lighthouse » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m12-skills">
+  <h2 class="title">Étendre ton harnais : les skills</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Une skill est une recette écrite en texte. Ton IA la charge d’elle-même quand le sujet se présente.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Les skills : tu lui apprends une façon de faire.</p></article>
+      <p class="note" data-step="2">Mission 12, chapitre « Étendre ton harnais ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m12-skills.png" alt="La mission « Les skills » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m13-mcp">
+  <h2 class="title">Étendre ton harnais : les connecteurs MCP</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">MCP est une prise standard pour brancher des outils extérieurs. Tu refais l’audit, cette fois par un connecteur.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Les connecteurs MCP : de nouveaux outils venus de l’extérieur.</p></article>
+      <p class="note" data-step="2">Mission 13, chapitre « Étendre ton harnais ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m13-mcp-lighthouse.png" alt="La mission « Les connecteurs MCP » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m14-plugins">
+  <h2 class="title">Étendre ton harnais : les plugins</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Un plugin ajoute d’un coup des outils, des recettes et des règles. Graphify donne à ton IA la carte des liens entre tes fichiers.</p>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Une mémoire du dossier : elle sait comment tes fichiers se relient.</p></article>
+      <p class="note" data-step="2">Mission 14, chapitre « Étendre ton harnais ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m14-plugins-graphify.png" alt="La mission « Les plugins » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<section class="slide" data-part="3" data-key="m15-defi">
+  <h2 class="title">Le défi final : le dossier Exemple</h2>
+  <div class="body g12">
+    <div class="c4 stack-m">
+      <p class="lead">Traite un dossier de bout en bout : scan, note vocale, compte rendu, résumé audio.</p>
+      <article class="card accent" data-step="1"><p class="puce">La règle</p><p>Les documents sont médicaux : ton IA doit être hébergée en Suisse ou tourner sur ton ordinateur.</p></article>
+      <p class="note" data-step="2">Mission 15, chapitre « Le défi final ».</p>
+    </div>
+    <div class="c8"><figure class="shot" data-step="1"><img src="img/m15-defi-dossier-exemple.png" alt="La mission « Le défi final » dans le panneau des missions du Harnais." /></figure></div>
+  </div>
+</section>
+
+<!-- ================= PARTIE 4 : QUAND ÇA NE MARCHE PAS (slides 28 à 30) ================= -->
+
+<section class="slide" data-part="4" data-key="bloque">
+  <h2 class="title">Quand ça ne marche pas</h2>
+  <div class="body">
+    <table class="tbl tbl-aide">
+      <thead><tr><th>Ce que tu vois</th><th>Ce qu’il faut faire</th></tr></thead>
+      <tbody>
+        <tr><td>Un message « free tier »</td><td>Tu n’as pas branché ton IA : reprends « Brancher ton IA ».</td></tr>
+        <tr><td>Une mission ne se coche pas</td><td>Relis la preuve : elle dit ce qui manque. Ouvre « Je bloque : un indice ».</td></tr>
+        <tr><td>Windows bloque l’application</td><td>L’application n’est pas signée (c’est un prototype). Lis la section « Si Windows bloque l’application » du guide du dépôt.</td></tr>
+        <tr><td>« Port already in use »</td><td>Ferme tout, attends 10 secondes, relance. Sinon, redémarre le PC.</td></tr>
+        <tr><td>La dictée ne démarre pas</td><td>Autorise le micro dans Windows. Il peut mettre quelques secondes à s’ouvrir.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide" data-part="4" data-key="donnees">
+  <h2 class="title">Où partent tes données ?</h2>
+  <div class="body stack-l">
+    <div class="vs">
+      <article class="card" data-step="1">
+        <h3><i data-icon="lock"></i>Reste sur ton ordinateur</h3>
+        <p>Ta voix, tes scans, tes images, tes fichiers. Les modèles qui les traitent tournent chez toi.</p>
+      </article>
+      <article class="card" data-step="2">
+        <h3><i data-icon="server"></i>Part chez ton fournisseur d’IA</h3>
+        <p>Ce que tu écris à l’IA, et le texte que tu lui envoies, y compris une transcription.</p>
+      </article>
+    </div>
+    <p class="lead strong" data-step="3">Regarde toujours où part ce que tu écris. Ce qui compte, c’est le pays de l’entreprise qui fait tourner le modèle. Pour des données sensibles : un fournisseur suisse ou un modèle local.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="4" data-key="fin">
+  <h2 class="title">À toi de jouer</h2>
+  <div class="body stack-l">
+    <p class="statement">Ouvre Lancer-Le-Harnais.bat, branche ton IA, écris « Bonjour ». Le reste, c’est le parcours.</p>
+    <p class="lead" data-step="1">Guide pas à pas, avec captures : docs/demarrer-eleve.md, dans le dépôt GitHub clement8426/le-harnais.</p>
+    <p class="note" data-step="2">Prototype : des défauts sont possibles. Signale-les sur le dépôt.</p>
+    <p class="note" data-step="2">Le Harnais est une surcouche d’OpenCode (opencode.ai, licence MIT) : l’application est celle d’OpenCode, avec des missions par-dessus. Ce n’est pas un produit officiel d’OpenCode.</p>
+  </div>
+</section>
+    </div>
+    <button type="button" class="edge" id="edge-prev" aria-label="Slide ou étape précédente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="edge" id="edge-next" aria-label="Slide ou étape suivante"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div id="progress" aria-hidden="true"><i></i><b></b></div>
+    <div id="chrono" role="timer" hidden>00:00</div>
+    <div id="grid" role="dialog" aria-modal="true" aria-labelledby="grid-title" hidden></div>
+    <button type="button" id="black" aria-label="Écran noir : appuyer sur une touche pour revenir" hidden></button>
+    <div id="toast" role="status" hidden></div>
+  </main>
+</div>
+<aside id="pv" aria-label="Vue présentateur"></aside>
+<div id="live" class="sr" aria-live="polite" aria-atomic="true"></div>
+<script>
+/* =====================================================================
+   CONFIG : tout ce qui se règle sans toucher au reste du fichier.
+   - minutes : budget de chaque slide (index 0 = slide 1).
+   - notes : ce qui se dit à l'oral, affiché dans la vue présentateur (touche N).
+   ===================================================================== */
+const CONFIG = {
+  auteur: 'Clément Bastien',
+  theme: 'light', // 'light' ou 'dark' (touche T pour basculer)
+  policesUrl: 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@400;500;600;700&display=swap',
+
+  minutes: [
+    0.5, 1.5, 1.5, 1, 1, // 1 à 5 : comprendre
+    1, 1, 1, 1, 1, 1, 1, 1, 1, // 6 à 14 : installer et démarrer
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 15 à 27 : les missions
+    1, 1, 0.5 // 28 à 30 : quand ça ne marche pas
+  ],
+  parties: [
+    { nom: 'Comprendre', de: 1, a: 5 },
+    { nom: 'Installer et démarrer', de: 6, a: 14 },
+    { nom: 'Les missions', de: 15, a: 27 },
+    { nom: 'Quand ça ne marche pas', de: 28, a: 30 }
+  ],
+  bonus: [],
+  alerteAmbre: 1.10,
+  alerteRouge: 1.25,
+  textes: {},
+  urls: {},
+  images: {},
+
+  // Vue présentateur : trois mots-clés par slide
+  sources: {
+    "titre": [
+      {
+        "t": "OpenCode",
+        "u": "https://opencode.ai"
+      }
+    ],
+    "m06-dicter": [
+      {
+        "t": "Whisper",
+        "u": "https://github.com/openai/whisper"
+      }
+    ],
+    "m08-lire": [
+      {
+        "t": "Tesseract",
+        "u": "https://github.com/tesseract-ocr/tesseract"
+      }
+    ],
+    "m09-voir": [
+      {
+        "t": "DETR, Meta",
+        "u": "https://github.com/facebookresearch/detr"
+      }
+    ],
+    "m11-lighthouse": [
+      {
+        "t": "Lighthouse",
+        "u": "https://developer.chrome.com/docs/lighthouse/overview"
+      }
+    ],
+    "m13-mcp": [
+      {
+        "t": "MCP",
+        "u": "https://modelcontextprotocol.io/"
+      },
+      {
+        "t": "Chrome DevTools MCP",
+        "u": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+      }
+    ],
+    "fin": [
+      {
+        "t": "OpenCode",
+        "u": "https://opencode.ai"
+      }
+    ]
+  },
+  motsCles: [],
+  // Vue présentateur : ce qui se dit à l'oral
+  notes: {}
+};
+
+(() => {
+  'use strict';
+
+  /* ---------- Outils ---------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const NB = ' ', NNB = ' ';
+  // typographie française : espaces insécables avant : ; ? ! et dans les guillemets
+  const fr = s => String(s).replace(/ ([;?!])/g, NNB + '$1').replace(/ :/g, NB + ':').replace(/« /g, '«' + NB).replace(/ »/g, NB + '»');
+  const num = (n, d = 0) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const mmss = ms => { const s = Math.max(0, Math.round(ms / 1000)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+  const RM = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function h(tag, props, ...kids) {
+    const e = document.createElement(tag);
+    for (const k in props || {}) {
+      const v = props[k];
+      if (v == null || v === false) continue;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = fr(v);
+      else if (k === 'html') e.innerHTML = v;
+      else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? '' : v);
+    }
+    kids.flat().forEach(c => { if (c != null && c !== false) e.append(c.nodeType ? c : fr(c)); });
+    return e;
+  }
+
+  const ICONS = {
+    compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+    code: '<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12"/>',
+    shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2.2 2.2L15 10.5"/>',
+    hand: '<path d="M8 13V6.5a1.5 1.5 0 013 0V11m0-5.5v-1a1.5 1.5 0 013 0V11m0-4.5a1.5 1.5 0 013 0V14c0 4-2.5 7-6 7s-5-2-6.5-5l-1.6-3.2a1.4 1.4 0 012.4-1.4L8 13"/>',
+    users: '<circle cx="9" cy="7.5" r="3.5"/><path d="M2.5 20c.5-3.5 3-5.5 6.5-5.5s6 2 6.5 5.5M16 4.2a3.5 3.5 0 010 6.6M18 14.8c2 .7 3.2 2.5 3.5 5.2"/>',
+    frame: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 8.5h18M8 21h8M12 17v4"/>',
+    user: '<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-4 3.5-6 7.5-6s6.9 2 7.5 6"/>',
+    list: '<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',
+    arrow: '<path d="M4 12h16M14 6l6 6-6 6"/>',
+    swatch: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="3.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><path d="M13 16.5h7M16.5 13v7"/>',
+    fork: '<path d="M12 21v-8l-6-6V3M12 13l6-6V3M3.5 5.5L6 3l2.5 2.5M15.5 5.5L18 3l2.5 2.5"/>',
+    eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    cursor: '<path d="M5 3l14 8-6 2-2 6z"/><path d="M14.5 14.5L20 20"/>',
+    text: '<path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/>',
+    gauge: '<path d="M4.5 18a8.5 8.5 0 1115 0M12 17l3.5-6.5M3 21h18"/>',
+    image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-8 9"/>',
+    contrast: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" fill="currentColor"/>',
+    keyboard: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>',
+    search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    cross: '<path d="M6 6l12 12M18 6L6 18"/>',
+    play: '<path d="M7 5l12 7-12 7z"/>',
+    pause: '<path d="M8 5v14M16 5v14"/>',
+    reset: '<path d="M4 5v5h5M5 13a7.5 7.5 0 102-6.5L4 10"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    minus: '<path d="M5 12h14"/>',
+    external: '<path d="M14 4h6v6M20 4l-9 9M18 13v6H5V6h6"/>',
+    chevL: '<path d="M15 5l-7 7 7 7"/>',
+    chevR: '<path d="M9 5l7 7-7 7"/>',
+    alert: '<path d="M12 4l9 16H3zM12 10v4M12 17h.01"/>',
+    speaker: '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 9a4 4 0 0 1 0 6M19.5 6a8 8 0 0 1 0 12"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+    file: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/>',
+    mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21M8.5 21h7"/>',
+    building: '<path d="M4 21V8l8-5 8 5v13M4 21h16M9 21v-5h6v5M8 11h.01M12 11h.01M16 11h.01"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
+    lock: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 018 0v3M12 14.5v2.5"/>',
+    chat: '<path d="M4 5h16v11H10l-5 4v-4H4z"/>',
+    bolt: '<path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/>',
+    heart: '<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0112 7.3 4.3 4.3 0 0119.5 10c0 5.4-7.5 10-7.5 10z"/>',
+    key: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16.5 6.5l2.5 2.5M14 9l2 2"/>',
+    server: '<rect x="4" y="4" width="16" height="7" rx="1.5"/><rect x="4" y="13" width="16" height="7" rx="1.5"/><path d="M8 7.5h.01M8 16.5h.01"/>',
+    dot: '<circle cx="12" cy="12" r="8"/>'
+  };
+  function icon(name) {
+    const t = document.createElement('template');
+    t.innerHTML = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICONS[name] + '</svg>';
+    return t.content.firstChild;
+  }
+  const btn = (label, onclick, cls, ic) => h('button', { type: 'button', class: 'btn ' + (cls || ''), onclick }, ic ? icon(ic) : null, h('span', { text: label }));
+  const verdict = (ok, label) => h('span', { class: 'verdict ' + (ok ? 'ok' : 'ko') }, icon(ok ? 'check' : 'cross'), h('span', { text: label }));
+
+  /* ---------- Données des slides ---------- */
+  const IS_PV = new URLSearchParams(location.search).has('presentateur');
+  const root = document.documentElement;
+  const stage = $('#stage');
+  const slides = $$('.slide');
+  const N = slides.length;
+  const titles = slides.map(s => $('.title', s).textContent.replace(/\s+/g, ' ').trim());
+  const minutes = slides.map((s, i) => Number(CONFIG.minutes[i]) || 0);
+  const cum = []; minutes.reduce((a, m, i) => (cum[i] = a + m), 0);
+  const TOTAL = cum[N - 1] || 1;
+  const partOf = i => CONFIG.parties.findIndex(p => i + 1 >= p.de && i + 1 <= p.a);
+  const maxStep = slides.map(s => Math.max(0, ...$$('[data-step]', s).map(e => Number(e.dataset.step))));
+  const hooks = {}; // hooks[n] = { enter(), leave() } pour la slide n
+  const at = el => slides.indexOf(el.closest('.slide')) + 1; // numéro de la slide qui contient un composant
+  const isBonus = i => (CONFIG.bonus || []).includes(i + 1);
+  root.lang = 'fr';
+  root.dataset.deck = CONFIG.theme === 'dark' ? 'dark' : 'light';
+
+  slides.forEach((s, i) => {
+    const p = partOf(i);
+    s.id = 's' + (i + 1);
+    s.dataset.minutes = minutes[i];
+    s.setAttribute('aria-roledescription', 'slide');
+    const t = $('.title', s); t.id = 'titre-' + (i + 1); s.setAttribute('aria-labelledby', t.id);
+    const srcs = (CONFIG.sources && CONFIG.sources[s.dataset.key]) || [];
+    s.prepend(h('div', { class: 's-head' },
+      h('span', { class: 'pastille', text: CONFIG.parties[p].hors ? CONFIG.parties[p].nom : 'Partie ' + (p + 1) + ' : ' + CONFIG.parties[p].nom }),
+      srcs.length ? h('span', { class: 's-src' }, srcs.map(x => h('a', { href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))) : null,
+      h('span', { class: 's-num', 'aria-label': 'Slide ' + (i + 1) + ' sur ' + N, text: (i + 1) + ' / ' + N })));
+    $$('i[data-icon]', s).forEach(el => { const svg = icon(el.dataset.icon); if (el.className) svg.classList.add(...el.className.split(' ')); el.replaceWith(svg); });
+  });
+
+  /* ---------- État, navigation, étapes ---------- */
+  const state = { i: -1, step: 0 };
+  const timer = { running: false, base: 0, t0: 0 };
+  const elapsed = (t = timer) => t.base + (t.running ? Date.now() - t.t0 : 0);
+  const timeState = (ms, i) => { const r = ms / (cum[i] * 60000); return r > CONFIG.alerteRouge ? 'over' : r > CONFIG.alerteAmbre ? 'warn' : 'ok'; };
+
+  function applySteps() {
+    $$('[data-step]', slides[state.i]).forEach(e => {
+      const n = Number(e.dataset.step);
+      e.classList.toggle('on', n <= state.step);
+      e.classList.toggle('step-current', n === state.step);
+    });
+  }
+  function show(i, step) {
+    i = clamp(i, 0, N - 1);
+    const prev = state.i, changed = i !== prev;
+    state.i = i; state.step = clamp(step == null ? 0 : step, 0, maxStep[i]);
+    if (changed) {
+      const hadFocus = prev >= 0 && slides[prev].contains(document.activeElement);
+      slides.forEach((s, k) => { s.hidden = k !== i; s.classList.toggle('active', k === i); });
+      stage.dataset.part = slides[i].dataset.part;
+      if (hadFocus) stage.focus({ preventScroll: true });
+      if (prev >= 0 && hooks[prev + 1] && hooks[prev + 1].leave) hooks[prev + 1].leave();
+      if (hooks[i + 1] && hooks[i + 1].enter) hooks[i + 1].enter();
+      try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) { location.hash = '#' + (i + 1); }
+      $('#live').textContent = fr('Slide ' + (i + 1) + ' sur ' + N + ' : ' + titles[i]);
+      document.title = (i + 1) + '. ' + titles[i];
+    }
+    applySteps();
+    $('#progress i').style.width = (cum[i] / TOTAL * 100) + '%';
+    tick(); sync();
+  }
+  function next() { if (state.step < maxStep[state.i]) show(state.i, state.step + 1); else if (state.i < N - 1) show(state.i + 1, 0); }
+  function prev() { if (state.step > 0) show(state.i, state.step - 1); else if (state.i > 0) show(state.i - 1, maxStep[state.i - 1]); }
+  const jump = n => show(n - 1, maxStep[clamp(n - 1, 0, N - 1)]);
+
+  function fit() { stage.style.setProperty('--scale', Math.min(window.innerWidth / 1920, window.innerHeight / 1080)); }
+
+  /* ---------- Chronomètre global ---------- */
+  function timerToggle() { if (timer.running) { timer.base = elapsed(); timer.running = false; } else { timer.t0 = Date.now(); timer.running = true; } tick(); sync(); }
+  function timerReset() { timer.base = 0; timer.t0 = Date.now(); tick(); sync(); }
+  function tick() {
+    if (IS_PV || state.i < 0) return;
+    const ms = elapsed(), st = timeState(ms, state.i), c = $('#chrono'), p = $('#progress');
+    c.hidden = ms === 0 && !timer.running;
+    c.textContent = mmss(ms); c.dataset.state = st; p.dataset.state = st;
+    c.setAttribute('aria-label', 'Temps écoulé ' + mmss(ms));
+    $('b', p).style.width = clamp(ms / (TOTAL * 60000) * 100, 0, 100) + '%';
+    if (pv.classList.contains('overlay')) renderPV(snapshot());
+  }
+
+  /* ---------- Calques : grille, écran noir, saisie de numéro ---------- */
+  const grid = $('#grid'), black = $('#black'), toast = $('#toast'), slidesBox = $('#slides');
+  function buildGrid() {
+    const ol = h('ol');
+    slides.forEach((s, i) => ol.append(h('li', {}, h('button', { type: 'button', 'data-part': s.dataset.part, 'aria-label': 'Slide ' + (i + 1) + ' : ' + titles[i], onclick: () => { toggleGrid(false); jump(i + 1); } }, h('b', { text: String(i + 1) + (isBonus(i) ? ' (bonus)' : '') }), h('span', { text: titles[i] })))));
+    grid.append(h('h2', { id: 'grid-title', text: 'Toutes les slides' }), ol);
+  }
+  function toggleGrid(force) {
+    const open = force == null ? grid.hidden : force;
+    grid.hidden = !open; slidesBox.inert = open; $$('.edge').forEach(e => e.hidden = open);
+    if (open) { $$('button', grid).forEach((b, k) => { if (k === state.i) { b.setAttribute('aria-current', 'true'); b.focus(); b.scrollIntoView({ block: 'center' }); } else b.removeAttribute('aria-current'); }); }
+    else stage.focus({ preventScroll: true });
+  }
+  function toggleBlack(force) { const on = force == null ? black.hidden : force; black.hidden = !on; if (on) black.focus(); else stage.focus({ preventScroll: true }); }
+  let numBuf = '', numT = 0;
+  function numKey(d) {
+    numBuf = (numBuf + d).slice(-2); toast.hidden = false;
+    toast.textContent = fr('Aller à la slide ' + numBuf + ' : Entrée');
+    clearTimeout(numT); numT = setTimeout(numClear, 4000);
+  }
+  function numClear() { numBuf = ''; toast.hidden = true; clearTimeout(numT); }
+  function toggleTheme() { root.dataset.deck = root.dataset.deck === 'dark' ? 'light' : 'dark'; sync(); }
+  function toggleFull() {
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (root.requestFullscreen) { const p = root.requestFullscreen(); if (p && p.catch) p.catch(() => {}); }
+    } catch (e) { /* plein écran indisponible */ }
+  }
+
+  /* ---------- Clavier, bords, tactile ---------- */
+  function onKey(e) {
+    if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target, tag = t.tagName || '', k = e.key;
+    const typing = (tag === 'INPUT' && !/^(range|color|checkbox|radio|file|button)$/.test(t.type)) || tag === 'TEXTAREA';
+    if (k === 'Escape') {
+      if (numBuf) numClear(); else if (!grid.hidden) toggleGrid(false); else if (!black.hidden) toggleBlack(false);
+      else if (pv.classList.contains('overlay')) pv.classList.remove('overlay'); else if (typing) t.blur();
+      return;
+    }
+    if (typing) return;
+    if (!black.hidden) { toggleBlack(false); e.preventDefault(); return; }
+    const low = k.length === 1 ? k.toLowerCase() : k;
+    if (!grid.hidden) { if (low === 'g') { toggleGrid(false); e.preventDefault(); } return; }
+    const inWidget = (t.closest && t.closest('[data-arrows]')) || (tag === 'INPUT' && (t.type === 'range' || t.type === 'color'));
+    const onControl = /^(BUTTON|A|INPUT|SELECT|SUMMARY)$/.test(tag) || (t.getAttribute && t.getAttribute('role') === 'button');
+    let done = true;
+    if (k === 'ArrowRight' || k === 'ArrowDown') { if (inWidget) return; next(); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp') { if (inWidget) return; prev(); }
+    else if (k === 'PageDown') next();
+    else if (k === 'PageUp') prev();
+    else if (k === ' ') { if (onControl) return; if (e.shiftKey) prev(); else next(); }
+    else if (k === 'Enter') { if (numBuf) { const n = Number(numBuf); numClear(); if (n >= 1 && n <= N) jump(n); } else return; }
+    else if (k === 'Home') { if (inWidget) return; show(0, 0); }
+    else if (k === 'End') { if (inWidget) return; jump(N); }
+    else if (/^[0-9]$/.test(k)) numKey(k);
+    else if (low === 'g') toggleGrid();
+    else if (low === 'f') toggleFull();
+    else if (low === 't') toggleTheme();
+    else if (low === 'b') toggleBlack();
+    else if (low === 's') { if (e.shiftKey) timerReset(); else timerToggle(); }
+    else if (low === 'n') togglePresenter(e.shiftKey);
+    else done = false;
+    if (done) e.preventDefault();
+  }
+  function bindPointer() {
+    $('#edge-prev').addEventListener('click', prev);
+    $('#edge-next').addEventListener('click', next);
+    black.addEventListener('click', () => toggleBlack(false));
+    let tx = null, ty = 0;
+    stage.addEventListener('touchstart', e => {
+      tx = (e.touches.length === 1 && !e.target.closest('input, button, a, [data-arrows], [tabindex="0"]')) ? e.touches[0].clientX : null;
+      if (tx != null) ty = e.touches[0].clientY;
+    }, { passive: true });
+    stage.addEventListener('touchend', e => {
+      if (tx == null) return;
+      const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) next(); else prev(); }
+    }, { passive: true });
+  }
+
+  /* ---------- Vue présentateur : synchronisation ---------- */
+  const pv = $('#pv');
+  let bc = null, pvWin = null, pvState = null, pvBuilt = false;
+  const seen = new Set();
+  try { bc = new BroadcastChannel('iad-deck'); } catch (e) { bc = null; }
+  function post(msg) {
+    msg.src = 'iad'; msg.id = Math.random().toString(36).slice(2) + Date.now();
+    try { if (bc) bc.postMessage(msg); } catch (e) { /* canal indisponible */ }
+    const w = IS_PV ? window.opener : pvWin;
+    try { if (w && !w.closed) w.postMessage(msg, '*'); } catch (e) { /* fenêtre fermée */ }
+  }
+  function onMsg(m) {
+    if (!m || m.src !== 'iad' || seen.has(m.id)) return;
+    seen.add(m.id); if (seen.size > 500) seen.clear();
+    if (IS_PV) { if (m.t === 'state') { pvState = m; root.dataset.deck = m.theme; renderPV(m); } return; }
+    if (m.t === 'hello') sync();
+    else if (m.t === 'cmd') command(m.c);
+  }
+  function command(c) { if (c === 'next') next(); else if (c === 'prev') prev(); else if (c === 'timer') timerToggle(); else if (c === 'reset') timerReset(); }
+  function snapshot() {
+    return { t: 'state', i: state.i, step: state.step, max: maxStep[state.i], timer: { running: timer.running, base: timer.base, t0: timer.t0 }, empties: cases.filter(c => c.empty()).map(c => ({ id: c.id, slide: c.slide, opt: c.opt })), theme: root.dataset.deck };
+  }
+  function sync() { if (IS_PV || state.i < 0) return; const s = snapshot(); post(s); if (pv.classList.contains('overlay')) renderPV(s); }
+  function togglePresenter(forceOverlay) {
+    if (pv.classList.contains('overlay')) { pv.classList.remove('overlay'); stage.focus({ preventScroll: true }); return; }
+    if (!forceOverlay) {
+      if (pvWin && !pvWin.closed) { pvWin.focus(); return; }
+      let w = null;
+      try { w = window.open(location.href.split('#')[0].split('?')[0] + '?presentateur=1', 'iad-presentateur', 'width=1000,height=780'); } catch (e) { w = null; }
+      if (w) { pvWin = w; setTimeout(sync, 800); return; }
+    }
+    pv.classList.add('overlay'); renderPV(snapshot()); // repli : panneau superposé, masquable avec N ou Échap
+  }
+  function buildPV() {
+    pvBuilt = true;
+    const send = c => () => { if (IS_PV) post({ t: 'cmd', c }); else command(c); };
+    pv.append(
+      h('div', { class: 'pv-wide' }, h('p', { class: 'pv-meta', id: 'pv-meta' }), h('h2', { id: 'pv-title' }), h('ul', { class: 'pv-keys', id: 'pv-keys', 'aria-label': 'Mots-clés' })),
+      h('div', { class: 'pv-box' }, h('h3', { text: 'Chrono (touche S)' }), h('p', { class: 'pv-clock', id: 'pv-clock', text: '00:00' }), h('p', { id: 'pv-budget' }),
+        h('div', { class: 'pv-btns', style: 'margin-top:12px' },
+          h('button', { type: 'button', id: 'pv-toggle', onclick: send('timer'), text: 'Démarrer' }),
+          h('button', { type: 'button', onclick: send('reset'), text: 'Remettre à zéro' }))),
+      h('div', { class: 'pv-box' }, h('h3', { text: 'Ensuite' }), h('p', { id: 'pv-next' }),
+        h('div', { class: 'pv-btns', style: 'margin-top:12px' },
+          h('button', { type: 'button', onclick: send('prev'), text: 'Précédent' }),
+          h('button', { type: 'button', onclick: send('next'), text: 'Suivant' }))),
+      h('div', { class: 'pv-box pv-wide', id: 'pv-notes-box' }, h('h3', { text: 'Ce qui se dit à l’oral' }), h('p', { class: 'pv-notes', id: 'pv-notes' })),
+      h('div', { class: 'pv-box pv-wide' }, h('h3', { id: 'pv-cases-title' }), h('ul', { class: 'pv-cases', id: 'pv-cases' })));
+  }
+  function renderPV(st) {
+    if (!pvBuilt) buildPV();
+    if (!st || st.i == null) return;
+    const i = st.i, p = partOf(i), ms = st.timer.base + (st.timer.running ? Date.now() - st.timer.t0 : 0), ts = timeState(ms, i);
+    $('#pv-meta').textContent = fr('Slide ' + (i + 1) + ' / ' + N + ', ' + CONFIG.parties[p].nom.toLowerCase() + ', ' + num(minutes[i], minutes[i] % 1 ? 1 : 0) + ' min allouées, étape ' + st.step + ' sur ' + st.max + (isBonus(i) ? '. Bonus : à passer si le temps manque' : ''));
+    $('#pv-title').textContent = titles[i];
+    const keys = $('#pv-keys'); keys.textContent = ''; (CONFIG.motsCles[i] || []).forEach(k => keys.append(h('li', { text: k })));
+    const clock = $('#pv-clock'); clock.textContent = mmss(ms); clock.dataset.state = ts;
+    $('#pv-budget').textContent = fr((ts === 'ok' ? 'Dans le budget' : ts === 'warn' ? 'Dépassement de plus de 10 %' : 'Dépassement de plus de 25 %') + '. Budget cumulé : ' + num(cum[i], 1) + ' min sur ' + num(TOTAL, 1) + '.');
+    $('#pv-toggle').textContent = st.timer.running ? 'Pause' : 'Démarrer';
+    $('#pv-next').textContent = i < N - 1 ? fr((i + 2) + '. ' + titles[i + 1]) : 'Fin de la présentation.';
+    const note = CONFIG.notes[i + 1]; $('#pv-notes-box').hidden = !note; $('#pv-notes').textContent = note ? fr(note) : '';
+    const list = $('#pv-cases'); list.textContent = '';
+    const em = st.empties.slice().sort((a, b) => (b.slide === i + 1) - (a.slide === i + 1) || a.slide - b.slide);
+    $('#pv-cases').parentNode.hidden = !em.length;
+    $('#pv-cases-title').textContent = fr('Cases vides restantes : ' + em.length);
+    em.forEach(c => list.append(h('li', { class: c.slide === i + 1 ? 'here' : '' }, h('b', { text: c.id }), h('span', { text: 'slide ' + c.slide + (c.opt ? ', optionnelle' : '') }))));
+    if (!em.length) list.append(h('li', { text: 'Toutes les cases sont remplies.' }));
+  }
+
+  /* ---------- Cases vides ---------- */
+  const cases = [];
+  const caseOf = id => cases.find(c => c.id === id);
+  function initCases() {
+    $$('.case[data-case]').forEach(box => {
+      const id = box.dataset.case, kind = box.dataset.kind, opt = box.hasAttribute('data-opt');
+      const slide = slides.indexOf(box.closest('.slide')) + 1;
+      const c = { id, kind, opt, slide, box, value: '', listeners: [], empty: () => !c.value };
+      const changed = () => { box.classList.toggle('filled', !!c.value); c.listeners.forEach(f => f(c.value)); sync(); };
+      if (kind === 'img') {
+        const idEl = h('span', { class: 'case-id', text: id });
+        const hint = h('span', { class: 'case-hint', text: 'Dépose une image ici' + (opt ? ' (optionnelle)' : '') });
+        const img = h('img', { alt: box.dataset.alt || id, hidden: true });
+        const file = h('input', { type: 'file', accept: 'image/*', hidden: true, tabindex: '-1', 'aria-hidden': 'true' });
+        const b = h('button', { type: 'button', class: 'case-btn', onclick: () => file.click() }, idEl, hint, img);
+        const set = src => {
+          c.value = src || ''; img.hidden = !src; idEl.hidden = hint.hidden = !!src;
+          if (src) img.src = src; else img.removeAttribute('src');
+          b.setAttribute('aria-label', fr(id + (src ? ' : changer l’image. ' + img.alt : ' : case vide, déposer ou choisir une image')));
+          changed();
+        };
+        const take = f => { if (f && /^image\//.test(f.type)) set(URL.createObjectURL(f)); };
+        img.addEventListener('error', () => set(''));
+        file.addEventListener('change', () => take(file.files[0]));
+        box.addEventListener('dragover', e => { e.preventDefault(); box.classList.add('drag'); });
+        box.addEventListener('dragleave', () => box.classList.remove('drag'));
+        box.addEventListener('drop', e => { e.preventDefault(); box.classList.remove('drag'); take(e.dataTransfer.files[0]); });
+        box.append(b, file); c.set = set; cases.push(c);
+        set(CONFIG.images[id] || (typeof IMAGES_INTEGREES !== 'undefined' && IMAGES_INTEGREES[id]) || '');
+      } else {
+        const isUrl = kind === 'link' || kind === 'qr';
+        const input = h('input', { id: 'case-' + id, type: kind === 'number' ? 'number' : isUrl ? 'url' : 'text', autocomplete: 'off', spellcheck: 'false', placeholder: isUrl ? 'https://' : kind === 'number' ? '' : 'À compléter', min: kind === 'number' ? 1 : null, max: kind === 'number' ? 90 : null, inputmode: kind === 'number' ? 'numeric' : null });
+        const open = isUrl ? h('a', { class: 'btn primary', target: '_blank', rel: 'noopener noreferrer', hidden: true, 'aria-label': 'Ouvrir le lien dans un nouvel onglet' }, icon('external'), h('span', { text: 'Ouvrir' })) : null;
+        const qr = kind === 'qr' ? h('div', { class: 'case-qr', 'aria-live': 'polite' }) : null;
+        const validUrl = v => { try { const u = new URL(v); return /^https?:$/.test(u.protocol) && (u.hostname.includes('.') || u.hostname === 'localhost'); } catch (e) { return false; } };
+        const update = () => {
+          c.value = input.value.trim();
+          if (open) { const ok = validUrl(c.value); open.hidden = !ok; if (ok) open.href = c.value; else open.removeAttribute('href'); }
+          if (qr) {
+            const svg = validUrl(c.value) ? QR.svg(c.value) : null;
+            if (svg) qr.innerHTML = svg;
+            else { qr.textContent = ''; qr.append(h('p', { text: validUrl(c.value) ? 'Adresse trop longue pour le QR code.' : 'Saisis une adresse : le QR code apparaît ici.' })); }
+          }
+          changed();
+        };
+        input.addEventListener('input', update);
+        box.append(h('div', { class: 'case-form' },
+          h('label', { for: 'case-' + id }, h('span', { class: 'case-id', text: id }), h('span', { class: 'case-hint', text: box.dataset.label || '' })),
+          h('div', { class: 'case-row' }, input, open)));
+        if (qr) box.append(qr);
+        c.set = v => { input.value = v; update(); }; c.input = input; cases.push(c);
+        c.set((kind === 'link' || kind === 'qr' ? CONFIG.urls[id] : CONFIG.textes[id]) || '');
+      }
+    });
+  }
+
+  /* =====================================================================
+     COMPOSANTS
+     ===================================================================== */
+  function toggleSwitch(labelOff, labelOn, on, cb, name) {
+    const lab = h('span', {});
+    const b = h('button', { type: 'button', class: 'switch', role: 'switch', 'aria-label': name ? fr(name) : null }, h('span', { class: 'track' }), lab);
+    const set = v => { on = v; b.setAttribute('aria-checked', String(on)); lab.textContent = fr(on ? labelOn : labelOff); cb(on); };
+    b.addEventListener('click', () => set(!on)); set(on);
+    return b;
+  }
+  function segmented(name, options, value, cb) {
+    const g = h('div', { class: 'seg', role: 'group', 'aria-label': fr(name) });
+    const set = v => { value = v; $$('button', g).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === v))); cb(v); };
+    options.forEach(o => g.append(h('button', { type: 'button', 'data-v': o[0], text: o[1], onclick: () => set(o[0]) })));
+    set(value);
+    return g;
+  }
+  function range(id, label, min, max, value, step, fmt, cb) {
+    const out = h('output', { for: id });
+    const input = h('input', { type: 'range', id, min, max, step, value });
+    const upd = () => { out.textContent = fr(fmt(Number(input.value))); input.setAttribute('aria-valuetext', out.textContent); cb(Number(input.value)); };
+    input.addEventListener('input', upd);
+    const row = h('div', { class: 'range-row' }, h('label', { class: 'field-label', for: id }, label + ' : ', out), input);
+    row.refresh = upd;
+    return row;
+  }
+
+  const printers = []; // ce qui doit tout révéler avant l'impression
+  window.addEventListener('beforeprint', () => printers.forEach(f => f()));
+
+  /* --- Question d'ouverture : la réponse se révèle --- */
+  function initQuestion() {
+    const el = $('[data-comp="question"]');
+    if (!el) return;
+    const reveal = () => { el.textContent = ''; el.append(h('p', { class: 'lead', text: fr(CONFIG.question) })); };
+    el.append(btn('Révéler la réponse', reveal, 'primary'));
+    printers.push(reveal);
+  }
+
+  /* --- Étapes cliquables (trajet d'un prompt, briques de la démo) --- */
+  function initSteps() {
+    $$('[data-comp="steps"]').forEach(el => {
+      const data = CONFIG[el.dataset.src];
+      const detail = h('div', { class: 'panel pipe-detail', 'aria-live': 'polite' }), steps = h('div', { class: 'pipe-steps' }), btns = [];
+      steps.style.gridTemplateColumns = data.map(() => 'minmax(0, 1fr)').join(' auto ');
+      const pick = k => {
+        btns.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k)));
+        const d = data[k]; detail.textContent = '';
+        detail.append(h('h3', { text: d.titre }), h('p', { text: d.txt }));
+        if (d.note) detail.append(h('p', { class: 'note', text: d.note }));
+      };
+      data.forEach((d, k) => {
+        const b = h('button', { type: 'button', class: 'pipe-step', onclick: () => pick(k) }, h('h3', { text: (k + 1) + '. ' + d.nom }),
+          h('span', { class: 'pipe-meta' }, h('span', { class: 'chip', text: d.chip })),
+          h('span', { class: 'pipe-meta' }, h('span', { class: 'pipe-where', text: d.ou }), d.cout ? h('span', { class: 'pipe-cost', text: d.cout }) : null));
+        btns.push(b); if (k) steps.append(icon('arrow')); steps.append(b);
+      });
+      el.append(steps, detail); pick(0);
+    });
+  }
+
+  /* --- Vrai ou faux : une affirmation, la réponse se révèle --- */
+  function initVraiFaux() {
+    const el = $('[data-comp="vraifaux"]');
+    if (!el) return;
+    CONFIG.vraiFaux.forEach(q => {
+      const ans = h('div', { class: 'vf-ans' });
+      const reveal = () => {
+        ans.textContent = '';
+        ans.append(h('span', { class: 'vf-tag ' + (q.vrai ? 'vrai' : 'faux'), text: q.vrai ? 'Vrai' : 'Faux' }), h('span', { class: 'vf-why', text: q.why }));
+      };
+      const b = btn('Révéler', reveal, 'primary');
+      b.setAttribute('aria-label', fr('Révéler la réponse : ' + q.txt));
+      ans.append(b); printers.push(reveal);
+      el.append(h('div', { class: 'vf-row' }, h('p', { text: q.txt }), ans));
+    });
+  }
+
+  /* --- Quelle IA pour cette tâche ? Une tâche, la famille se révèle --- */
+  function initQuiz() {
+    const el = $('[data-comp="quiz"]');
+    if (!el) return;
+    CONFIG.quiz.forEach(q => {
+      const ans = h('div', { class: 'vf-ans' });
+      const reveal = () => { ans.textContent = ''; ans.append(h('span', { class: 'vf-tag rep', text: q.rep }), h('span', { class: 'vf-why', text: q.why })); };
+      const b = btn('Révéler', reveal, 'primary');
+      b.setAttribute('aria-label', fr('Révéler la réponse : ' + q.txt));
+      ans.append(b); printers.push(reveal);
+      el.append(h('div', { class: 'vf-row' }, h('p', { text: q.txt }), ans));
+    });
+  }
+
+  /* --- Lexique : un terme, une phrase, et un raccourci vers la slide qui l'explique --- */
+  function initLexique() {
+    const el = $('[data-comp="lexique"]');
+    if (!el) return;
+    const termes = CONFIG.lexique.slice().sort((a, b) => a.terme.localeCompare(b.terme, 'fr'));
+    const panel = h('div', { class: 'panel lex-panel', 'aria-live': 'polite' }), btns = [];
+    const pick = k => {
+      btns.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k)));
+      const t = termes[k], n = slides.findIndex(s => s.dataset.key === t.cle) + 1;
+      panel.textContent = '';
+      panel.append(h('h3', { text: t.nom || t.terme }), h('p', { text: t.def }));
+      if (n) panel.append(btn('Voir la slide ' + n, () => jump(n), 'lex-go', 'arrow'));
+    };
+    const grid = h('div', { class: 'lex-grid', role: 'group', 'aria-label': 'Termes du lexique, par ordre alphabétique' });
+    termes.forEach((t, k) => { const b = h('button', { type: 'button', class: 'btn lex-term', text: t.terme, onclick: () => pick(k) }); btns.push(b); grid.append(b); });
+    el.append(grid, panel); pick(0);
+  }
+
+  /* --- Sources : liens cliquables, neuf par page --- */
+  function initRefs() {
+    const el = $('[data-comp="refs"]');
+    if (!el) return;
+    const PAR = 9, refs = CONFIG.references, pages = Math.max(1, Math.ceil(refs.length / PAR)); let page = 0;
+    const grid = h('ul', { class: 'refs-grid' }), info = h('span', { class: 'refs-info', 'aria-live': 'polite' });
+    const avant = btn('Précédentes', () => { page--; draw(); }, '', 'chevL'), apres = btn('Suivantes', () => { page++; draw(); }, '', 'chevR');
+    const draw = () => {
+      grid.textContent = '';
+      refs.slice(page * PAR, (page + 1) * PAR).forEach(r => grid.append(h('li', {}, h('a', { class: 'ref', href: r.url, target: '_blank', rel: 'noopener noreferrer' },
+        h('span', { class: 'ref-titre', text: r.titre }), h('span', { class: 'ref-source' }, icon('external'), h('span', { text: r.source }))))));
+      info.textContent = fr('Page ' + (page + 1) + ' sur ' + pages);
+      avant.style.visibility = page === 0 ? 'hidden' : 'visible'; apres.style.visibility = page === pages - 1 ? 'hidden' : 'visible';
+    };
+    el.append(grid); if (pages > 1) el.append(h('div', { class: 'refs-pager' }, avant, info, apres));
+    draw();
+  }
+
+  /* ---------- Démarrage ---------- */
+  function loadFonts() {
+    if (!navigator.onLine || !CONFIG.policesUrl) return; // hors ligne : polices système de repli
+    const l = h('link', { rel: 'stylesheet', href: CONFIG.policesUrl });
+    document.head.append(h('link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }), l);
+  }
+  function init() {
+    loadFonts();
+    if (bc) bc.onmessage = e => onMsg(e.data);
+    window.addEventListener('message', e => onMsg(e.data));
+    if (IS_PV) {
+      document.body.classList.add('pv-window'); document.title = 'Vue présentateur';
+      buildPV(); $('#pv-title').textContent = fr('En attente de la présentation : garde l’autre fenêtre ouverte.');
+      setInterval(() => { if (pvState) renderPV(pvState); }, 500);
+      document.addEventListener('keydown', e => {
+        if (e.ctrlKey || e.metaKey || e.altKey || e.target.tagName === 'BUTTON' && (e.key === ' ' || e.key === 'Enter')) return;
+        const c = { ArrowRight: 'next', ArrowDown: 'next', PageDown: 'next', ' ': 'next', ArrowLeft: 'prev', ArrowUp: 'prev', PageUp: 'prev', s: 'timer', S: 'timer' }[e.key];
+        if (c) { e.preventDefault(); post({ t: 'cmd', c }); }
+      });
+      post({ t: 'hello' }); setTimeout(() => { if (!pvState) post({ t: 'hello' }); }, 1000);
+      return;
+    }
+    initCases();
+    [].forEach(f => f());
+    // une image lâchée hors d'une case ne doit pas remplacer la présentation
+    ['dragover', 'drop'].forEach(t => window.addEventListener(t, e => e.preventDefault()));
+    buildGrid(); bindPointer(); fit();
+    window.addEventListener('resize', fit);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n >= 1 && n <= N && n - 1 !== state.i) jump(n); });
+    setInterval(tick, 500);
+    const n0 = parseInt(location.hash.slice(1), 10);
+    if (n0 >= 1 && n0 <= N) jump(n0); else show(0, 0);
+  }
+  init();
+})();
+</script>
+
+
+<script id="pont-plateforme">
+/* Ajouté par la plateforme (scripts/integrer-diapos.mjs). Aucune donnée n'est envoyée : messages internes à la page. */
+(() => {
+  const dansCadre = window.parent !== window;
+  const $ = (id) => document.getElementById(id);
+  const saisie = (e) => { const t = e.target, tag = t.tagName || ''; return tag === 'TEXTAREA' || (tag === 'INPUT' && !/^(range|color|checkbox|radio|file|button)$/.test(t.type)); };
+  // Rien n'est ouvert dans les diapos (grille, écran noir, saisie d'un numéro, vue présentateur) ?
+  const libre = () => $('grid')?.hidden !== false && $('black')?.hidden !== false && $('toast')?.hidden !== false && !$('pv')?.classList.contains('overlay');
+  if (dansCadre) {
+    // Dans la plateforme : F et Échap sont confiés au lecteur, qui garde un bouton « Quitter » visible.
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
+      if ((e.key === 'f' || e.key === 'F') && !saisie(e)) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        parent.postMessage({ type: 'diapos:plein-ecran' }, location.origin);
+      } else if (e.key === 'Escape' && libre()) {
+        parent.postMessage({ type: 'diapos:quitter' }, location.origin);
+      }
+    }, true);
+  } else {
+    // Ouvertes seules : un lien de retour toujours visible.
+    const a = document.createElement('a');
+    a.id = 'retour-cours';
+    a.href = "/comprendre-ia/types-ia/";
+    a.textContent = '← Retour au cours';
+    a.style.cssText = 'position:fixed;left:14px;bottom:18px;z-index:50;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:14px;background:#17153B;color:#FBF4E4;font:600 15px/1 system-ui,sans-serif;text-decoration:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.5)';
+    document.body.append(a);
+  }
+})();
+</script>
+</body>
+</html>

@@ -10,7 +10,7 @@
     ['Avenue de la Gare', '2000', 'Neuchâtel', '12'], ['Place Pury', '2000', 'Neuchâtel', '1'], ['Rue du Château', '2000', 'Neuchâtel', '8'],
     ['Faubourg de l’Hôpital', '2000', 'Neuchâtel', '19'], ['Avenue du 1er-Mars', '2000', 'Neuchâtel', '6'], ['Rue des Terreaux', '2000', 'Neuchâtel', '7'],
     ['Quai Philippe-Godet', '2000', 'Neuchâtel', '2'], ['Chemin du Seyon', '2063', 'Engollon', '10'],
-    ['Rue Jardinière', '2300', 'La Chaux-de-Fonds', '131'], ['Avenue Léopold-Robert', '2300', 'La Chaux-de-Fonds', '23'],
+    ['Avenue Léopold-Robert', '2300', 'La Chaux-de-Fonds', '23'],
     ['Rue du Parc', '2300', 'La Chaux-de-Fonds', '9'], ['Rue de la Serre', '2300', 'La Chaux-de-Fonds', '11'], ['Rue du Progrès', '2300', 'La Chaux-de-Fonds', '37'],
     ['Rue Numa-Droz', '2300', 'La Chaux-de-Fonds', '14'], ['Rue de la Paix', '2300', 'La Chaux-de-Fonds', '5'], ['Rue du Doubs', '2300', 'La Chaux-de-Fonds', '32'],
     ['Place du Marché', '2300', 'La Chaux-de-Fonds', '1'], ['Rue de France', '2400', 'Le Locle', '16'], ['Rue Bournot', '2400', 'Le Locle', '33'],

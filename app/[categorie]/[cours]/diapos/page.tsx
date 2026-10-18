@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import FilAriane from '@/composants/FilAriane';
 import LecteurDiapos from '@/composants/LecteurDiapos';
+import AvisDate from '@/composants/AvisDate';
 import MarqueVu from '@/composants/MarqueVu';
 import { trouverCours } from '@/contenu/catalogue';
 import { type ParamsCours, lireCours, tousLesCours } from '@/contenu/parametres';
@@ -28,6 +29,7 @@ export default async function PageDiapos(props: ParamsCours) {
       <header className="tete tete-compacte">
         <h1>Les diapos</h1>
       </header>
+      <AvisDate date={cours.misAJour} />
       <LecteurDiapos href={cours.diapos.href} titre={cours.titre} parties={cours.parties.map((p) => ({ titre: p.titre, diapo: p.diapos[0] }))} />
       <MarqueVu cours={`${categorie.slug}/${cours.slug}`} etape="diapos" />
     </div>

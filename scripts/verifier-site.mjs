@@ -17,7 +17,7 @@ const b = await chromium.launch();
 const ok = [];
 const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'OK    ' : 'ÉCHEC ', nom, detail); };
 
-const PAGES = ['/', '/ux/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/tilleul/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
+const PAGES = ['/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/types-ia/tuto/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/tilleul/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
 // 1. Accessibilité automatique, deux thèmes, deux tailles
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
@@ -98,7 +98,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const p = await ctx.newPage();
   await p.goto(base + '/');
   await p.waitForLoadState('networkidle');
-  verifier('accueil : le nom « Le Labo », deux cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 2 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
+  verifier('accueil : le nom « Le Labo », trois cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 3 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.goto(base + '/ux/ux-ia/demos/tilleul/');

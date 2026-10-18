@@ -1,7 +1,7 @@
 // Service worker de la plateforme : garde une copie des pages et fichiers déjà consultés,
 // pour pouvoir relire un cours sans connexion. Aucune donnée n'est envoyée nulle part.
 // Changer VERSION à chaque mise en ligne importante vide les anciennes copies.
-const VERSION = 'v4';
+const VERSION = 'v8';
 const CACHE = `cours-${VERSION}`;
 const ESSENTIEL = ['/', '/hors-ligne/', '/manifest.webmanifest', '/icones/icone-192.png'];
 

@@ -514,6 +514,16 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .tl li p:last-child { font-size: var(--fs-min); line-height: 1.28; }
 .exo-sol, .vf-why { font-size: 26px; }
 
+/* ========== 5 sexies. Sources cliquables et date de mise à jour ========== */
+.s-src { display: flex; gap: 12px; margin-left: auto; margin-right: 36px; }
+.s-src a, .src { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); color: var(--accent-text); font: 600 24px/1 var(--font-body); text-decoration: none; white-space: nowrap; }
+.s-src a:hover, .src:hover, .s-src a:focus-visible, .src:focus-visible { border-color: var(--accent-text); }
+.s-src .ico, .src .ico { font-size: 22px; stroke-width: 2.25; }
+.src { margin-left: 12px; vertical-align: middle; height: 36px; font-size: 22px; }
+.src-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.src-ligne .src { margin-left: 0; }
+.cover-maj { font-size: 24px; line-height: 1.3; color: var(--muted); }
+
 /* ========== 6. Calques : grille, écran noir, saisie de numéro ========== */
 #grid { position: absolute; inset: 0; z-index: 20; background: var(--ink); padding: 50px 115px; overflow: auto; }
 #grid h2 { font: 600 44px/1 var(--font-title); margin-bottom: 26px; }
@@ -588,6 +598,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="cover-lead">Ce que l’on peut confier à une IA, ce que l’on ne doit pas lui confier, et ce que l’on risque.</p>
       <p class="cover-name">Clément Bastien</p>
       <p class="cover-def">Agents IA · données · AI Act · RGPD · nLPD · Cloud Act</p>
+      <p class="cover-maj">Mis à jour le 18 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7 cover-col">
       <div class="card cover-vis" role="img" aria-label="Schéma : un dossier peut partir vers une IA hébergée en Suisse, chemin plein en vert, ou vers un fournisseur américain soumis au Cloud Act, chemin pointillé en orange.">
@@ -1245,6 +1256,9 @@ const CONFIG = {
     { titre: 'API compatible OpenAI des AI Tools', source: 'Infomaniak', url: 'https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions' },
     { titre: 'Point d’accès SPARQL de Fedlex', source: 'Chancellerie fédérale', url: 'https://fedlex.data.admin.ch/sparqlendpoint' },
     { titre: 'Microsoft devant le Sénat et le Cloud Act (analyse)', source: 'Village de la Justice', url: 'https://www.village-justice.com/articles/utilisation-microsoft-365-est-pas-conforme-rgpd,54051.html' },
+    { titre: 'Règlement (UE) 2016/679, le RGPD', source: 'EUR-Lex', url: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
+    { titre: 'OpenAI : sanction de 15 M€ du Garante italien, décembre 2024', source: 'LaPresse, 2024', url: 'https://www.lapresse.it/cronaca/2024/12/20/da-garante-privacy-multa-di-15-milioni-a-openai-per-gestione-chatgpt/' },
+    { titre: 'Le tribunal de Rome annule la sanction contre OpenAI : l’autorité italienne n’était pas compétente', source: 'Cybersecurity360, 2026', url: 'https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/' },
     { titre: 'Samsung interdit ChatGPT à ses employés après une fuite de code', source: 'NBC News, 2023', url: 'https://www.nbcnews.com/tech/tech-news/samsung-bans-use-chatgpt-employees-misuse-chatbot-rcna82407' },
     { titre: 'Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI', source: 'Punto Informatico, 2026', url: 'https://www.punto-informatico.it/openai-annullata-multa-violazione-privacy/' },
     { titre: 'Pourquoi le tribunal de Rome a annulé la sanction : la compétence', source: 'Cybersecurity360, 2026', url: 'https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/' },
@@ -1254,6 +1268,166 @@ const CONFIG = {
   ],
 
   // Vue présentateur : trois mots-clés par slide
+  sources: {
+    "trajet": [
+      {
+        "t": "Anthropic",
+        "u": "https://www.anthropic.com/legal/privacy"
+      },
+      {
+        "t": "Cloud Act, DOJ",
+        "u": "https://www.justice.gov/criminal/cloud-act-resources"
+      }
+    ],
+    "vrai-faux": [
+      {
+        "t": "Anthropic",
+        "u": "https://www.anthropic.com/legal/privacy"
+      },
+      {
+        "t": "EDPB et EDPS",
+        "u": "https://edps.europa.eu/sites/edp/files/publication/19-07-10_edpb_edps_cloudact_annex_en.pdf"
+      }
+    ],
+    "niveaux": [
+      {
+        "t": "nLPD",
+        "u": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+      },
+      {
+        "t": "CP art. 321",
+        "u": "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/fr"
+      }
+    ],
+    "ai-act": [
+      {
+        "t": "AI Act",
+        "u": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+      }
+    ],
+    "ai-act-amendes": [
+      {
+        "t": "AI Act",
+        "u": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+      }
+    ],
+    "rgpd": [
+      {
+        "t": "RGPD",
+        "u": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+      }
+    ],
+    "nlpd": [
+      {
+        "t": "nLPD",
+        "u": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+      }
+    ],
+    "qui-paie": [
+      {
+        "t": "nLPD",
+        "u": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+      },
+      {
+        "t": "CP art. 321",
+        "u": "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/fr"
+      },
+      {
+        "t": "RGPD",
+        "u": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+      }
+    ],
+    "cloud-act": [
+      {
+        "t": "DOJ",
+        "u": "https://www.justice.gov/criminal/cloud-act-resources"
+      },
+      {
+        "t": "EDPB et EDPS",
+        "u": "https://edps.europa.eu/sites/edp/files/publication/19-07-10_edpb_edps_cloudact_annex_en.pdf"
+      },
+      {
+        "t": "Village de la Justice",
+        "u": "https://www.village-justice.com/articles/utilisation-microsoft-365-est-pas-conforme-rgpd,54051.html"
+      }
+    ],
+    "tension": [
+      {
+        "t": "PFPDT, DPF",
+        "u": "https://www.edoeb.admin.ch/en/15082024-new-swiss-us-data-privacy-framework"
+      },
+      {
+        "t": "Liste DPF",
+        "u": "https://www.dataprivacyframework.gov/list"
+      }
+    ],
+    "synthese": [
+      {
+        "t": "PFPDT, Suva",
+        "u": "https://www.edoeb.admin.ch/fr/13062022-externalisation-de-donnees-personnelles-par-la-suva-vers-un-cloud-de-microsoft"
+      },
+      {
+        "t": "privatim",
+        "u": "https://www.privatim.ch/fr/actualite/"
+      }
+    ],
+    "cas-reels": [
+      {
+        "t": "PFPDT, Suva",
+        "u": "https://www.edoeb.admin.ch/fr/13062022-externalisation-de-donnees-personnelles-par-la-suva-vers-un-cloud-de-microsoft"
+      },
+      {
+        "t": "NBC News",
+        "u": "https://www.nbcnews.com/tech/tech-news/samsung-bans-use-chatgpt-employees-misuse-chatbot-rcna82407"
+      },
+      {
+        "t": "LaPresse",
+        "u": "https://www.lapresse.it/cronaca/2024/12/20/da-garante-privacy-multa-di-15-milioni-a-openai-per-gestione-chatgpt/"
+      },
+      {
+        "t": "Cybersecurity360",
+        "u": "https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/"
+      }
+    ],
+    "etat": [
+      {
+        "t": "DFF",
+        "u": "https://www.efd.admin.ch/fr/newnsb/frKHCNmrngH8I3vO8ip7o"
+      },
+      {
+        "t": "privatim",
+        "u": "https://www.privatim.ch/fr/actualite/"
+      }
+    ],
+    "recap": [
+      {
+        "t": "AI Act",
+        "u": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+      },
+      {
+        "t": "RGPD",
+        "u": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+      },
+      {
+        "t": "nLPD",
+        "u": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+      },
+      {
+        "t": "CP art. 321",
+        "u": "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/fr"
+      },
+      {
+        "t": "DOJ",
+        "u": "https://www.justice.gov/criminal/cloud-act-resources"
+      }
+    ],
+    "chemins": [
+      {
+        "t": "Infomaniak",
+        "u": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions"
+      }
+    ]
+  },
   motsCles: [],
 
   // Vue présentateur : ce qui se dit à l'oral
@@ -1366,8 +1540,10 @@ const CONFIG = {
     s.dataset.minutes = minutes[i];
     s.setAttribute('aria-roledescription', 'slide');
     const t = $('.title', s); t.id = 'titre-' + (i + 1); s.setAttribute('aria-labelledby', t.id);
+    const srcs = (CONFIG.sources && CONFIG.sources[s.dataset.key]) || [];
     s.prepend(h('div', { class: 's-head' },
       h('span', { class: 'pastille', text: CONFIG.parties[p].hors ? CONFIG.parties[p].nom : 'Partie ' + (p + 1) + ' : ' + CONFIG.parties[p].nom }),
+      srcs.length ? h('span', { class: 's-src' }, srcs.map(x => h('a', { href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))) : null,
       h('span', { class: 's-num', 'aria-label': 'Slide ' + (i + 1) + ' sur ' + N, text: (i + 1) + ' / ' + N })));
     $$('i[data-icon]', s).forEach(el => { const svg = icon(el.dataset.icon); if (el.className) svg.classList.add(...el.className.split(' ')); el.replaceWith(svg); });
   });

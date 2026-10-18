@@ -1,0 +1,225 @@
+{
+  "lexique": [
+    {
+      "terme": "IA",
+      "nom": "Intelligence artificielle",
+      "def": "Un programme qui accomplit une tâche qu’on croyait réservée à l’humain, le plus souvent en apprenant à partir d’exemples.",
+      "cle": "definition"
+    },
+    {
+      "terme": "Apprentissage automatique",
+      "def": "Une façon de créer un programme : on lui montre des exemples, il en tire lui-même les règles.",
+      "cle": "definition"
+    },
+    {
+      "terme": "Réseau de neurones",
+      "def": "Un programme fait de nombreuses petites opérations reliées entre elles, réglées pendant l’apprentissage.",
+      "cle": "frise"
+    },
+    {
+      "terme": "Modèle",
+      "def": "Le résultat de l’apprentissage : le programme entraîné, prêt à faire sa tâche.",
+      "cle": "specialisees"
+    },
+    {
+      "terme": "OCR",
+      "nom": "OCR, reconnaissance optique de caractères",
+      "def": "L’IA qui recopie le texte d’une image ou d’un scan.",
+      "cle": "ocr"
+    },
+    {
+      "terme": "Vision",
+      "nom": "Vision par ordinateur",
+      "def": "Les IA qui analysent une image : la classer, détecter ses objets, détourer leurs contours.",
+      "cle": "vision"
+    },
+    {
+      "terme": "Détection d’objets",
+      "def": "Trouver chaque objet d’une image, avec un cadre et une étiquette.",
+      "cle": "vision"
+    },
+    {
+      "terme": "Donnée biométrique",
+      "def": "Une caractéristique du corps qui identifie une personne : le visage, l’empreinte, la voix. Une donnée sensible en Suisse.",
+      "cle": "vision"
+    },
+    {
+      "terme": "Description d’image",
+      "nom": "Description d’image (image captioning)",
+      "def": "Une phrase qui dit ce que montre une image, produite par un modèle qui relie vision et langage.",
+      "cle": "description"
+    },
+    {
+      "terme": "Transcription",
+      "nom": "Transcription (STT, speech-to-text)",
+      "def": "Changer une voix en texte écrit.",
+      "cle": "transcription"
+    },
+    {
+      "terme": "Synthèse vocale",
+      "nom": "Synthèse vocale (TTS, text-to-speech)",
+      "def": "Changer un texte en voix.",
+      "cle": "synthese"
+    },
+    {
+      "terme": "Diffusion",
+      "def": "La technique des IA d’images : partir d’un bruit aléatoire et le retoucher jusqu’à obtenir l’image demandée.",
+      "cle": "generation"
+    },
+    {
+      "terme": "LLM",
+      "nom": "LLM, grand modèle de langage",
+      "def": "Une IA entraînée sur d’énormes quantités de textes, qui écrit la suite la plus probable d’un texte.",
+      "cle": "llm"
+    },
+    {
+      "terme": "Jeton",
+      "nom": "Jeton (token)",
+      "def": "Le morceau de texte que lit et écrit un LLM : un mot, ou un bout de mot.",
+      "cle": "llm"
+    },
+    {
+      "terme": "Paramètres",
+      "def": "Les réglages internes d’un modèle, fixés pendant l’apprentissage. Un LLM en compte des milliards.",
+      "cle": "llm"
+    },
+    {
+      "terme": "Transformer",
+      "def": "L’architecture publiée par Google en 2017, sur laquelle reposent les LLM. Le « T » de GPT.",
+      "cle": "transformer"
+    },
+    {
+      "terme": "Hallucination",
+      "def": "Une erreur qu’une IA présente avec assurance, comme un fait.",
+      "cle": "forces"
+    },
+    {
+      "terme": "Multimodal",
+      "def": "Se dit d’un assistant qui accepte plusieurs types de données : texte, image, son.",
+      "cle": "multimodal"
+    },
+    {
+      "terme": "Local",
+      "nom": "En local",
+      "def": "Une IA qui tourne sur votre propre appareil : les données ne partent pas sur internet.",
+      "cle": "comparer"
+    },
+    {
+      "terme": "Harnais",
+      "def": "Le logiciel qui relie un LLM à des outils, et décide de ce qu’il a le droit de faire.",
+      "cle": "exercice"
+    }
+  ],
+  "references": [
+    {
+      "titre": "« Computing Machinery and Intelligence »",
+      "source": "Alan Turing, Mind, 1950",
+      "url": "https://academic.oup.com/mind/article/LIX/236/433/986238"
+    },
+    {
+      "titre": "La machine à lire de Kurzweil, 1976",
+      "source": "Wikipédia",
+      "url": "https://en.wikipedia.org/wiki/Kurzweil_Computer_Products"
+    },
+    {
+      "titre": "Deep Blue bat Garry Kasparov",
+      "source": "IBM",
+      "url": "https://www.ibm.com/history/deep-blue"
+    },
+    {
+      "titre": "« A Plan for Spam »",
+      "source": "Paul Graham, 2002",
+      "url": "https://paulgraham.com/spam.html"
+    },
+    {
+      "titre": "AlexNet : la reconnaissance d’images par réseau de neurones",
+      "source": "NeurIPS, 2012",
+      "url": "https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
+    },
+    {
+      "titre": "La traduction neuronale en production",
+      "source": "Google Research, 2016",
+      "url": "https://research.google/blog/a-neural-network-for-machine-translation-at-production-scale/"
+    },
+    {
+      "titre": "DeepL Translator, lancé le 28 août 2017",
+      "source": "Wikipédia",
+      "url": "https://en.wikipedia.org/wiki/DeepL_Translator"
+    },
+    {
+      "titre": "Apple présente Siri avec l’iPhone 4S, 4 octobre 2011",
+      "source": "Apple",
+      "url": "https://www.apple.com/newsroom/2011/10/04Apple-Launches-iPhone-4S-iOS-5-iCloud/"
+    },
+    {
+      "titre": "DALL·E 2, présenté en avril 2022",
+      "source": "Wikipédia",
+      "url": "https://en.wikipedia.org/wiki/DALL-E"
+    },
+    {
+      "titre": "Reconnaissance optique de caractères",
+      "source": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caract%C3%A8res"
+    },
+    {
+      "titre": "Tesseract, l’OCR libre",
+      "source": "GitHub",
+      "url": "https://github.com/tesseract-ocr/tesseract"
+    },
+    {
+      "titre": "DETR, la détection d’objets",
+      "source": "Meta, GitHub",
+      "url": "https://github.com/facebookresearch/detr"
+    },
+    {
+      "titre": "Whisper, la transcription libre",
+      "source": "OpenAI, GitHub",
+      "url": "https://github.com/openai/whisper"
+    },
+    {
+      "titre": "Vosk, la transcription hors ligne",
+      "source": "Alpha Cephei",
+      "url": "https://alphacephei.com/vosk/"
+    },
+    {
+      "titre": "Piper, la synthèse vocale locale",
+      "source": "GitHub",
+      "url": "https://github.com/rhasspy/piper"
+    },
+    {
+      "titre": "Les modèles de diffusion",
+      "source": "arXiv, 2020",
+      "url": "https://arxiv.org/abs/2006.11239"
+    },
+    {
+      "titre": "Stable Diffusion, la sortie publique",
+      "source": "Stability AI, 2022",
+      "url": "https://stability.ai/news/stable-diffusion-public-release"
+    },
+    {
+      "titre": "« Attention Is All You Need », le Transformer",
+      "source": "arXiv, 2017",
+      "url": "https://arxiv.org/abs/1706.03762"
+    },
+    {
+      "titre": "GPT-1 : le premier GPT",
+      "source": "OpenAI, 2018",
+      "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+    },
+    {
+      "titre": "GPT-3 : « Language Models are Few-Shot Learners »",
+      "source": "arXiv, 2020",
+      "url": "https://arxiv.org/abs/2005.14165"
+    },
+    {
+      "titre": "Présentation de ChatGPT",
+      "source": "OpenAI, 2022",
+      "url": "https://openai.com/index/chatgpt/"
+    },
+    {
+      "titre": "nLPD, art. 5 : les données sensibles",
+      "source": "Fedlex",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+    }
+  ]
+}

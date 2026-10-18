@@ -689,6 +689,18 @@ input[type="color"] { width: 140px; height: var(--hit); padding: 4px; border: 2p
 .refs-pager { display: flex; align-items: center; justify-content: center; gap: 28px; }
 .refs-info { font-size: var(--fs-min); font-weight: 600; font-variant-numeric: tabular-nums; }
 
+/* ========== 5 sexies. Sources cliquables et date de mise à jour ========== */
+.s-src { display: flex; gap: 12px; margin-left: auto; margin-right: 36px; }
+.s-src a, .src { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); color: var(--accent-text); font: 600 24px/1 var(--font-body); text-decoration: none; white-space: nowrap; }
+.s-src a:hover, .src:hover, .s-src a:focus-visible, .src:focus-visible { border-color: var(--accent-text); }
+.s-src .ico, .src .ico { font-size: 22px; stroke-width: 2.25; }
+.src { margin-left: 12px; vertical-align: middle; height: 36px; font-size: 22px; }
+.src-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.src-ligne .src { margin-left: 0; height: 32px; font-size: 20px; }
+.preuve-src .src { margin-left: 14px; height: 32px; font-size: 20px; }
+.fines-grid .fine { min-height: 170px; }
+.cover-maj { font-size: 24px; line-height: 1.3; color: var(--muted); }
+
 /* ========== 6. Calques : grille, écran noir, saisie de numéro ========== */
 #grid { position: absolute; inset: 0; z-index: 20; background: var(--ink); padding: 50px 115px; overflow: auto; }
 #grid h2 { font: 600 44px/1 var(--font-title); margin-bottom: 26px; }
@@ -812,6 +824,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="cover-cible">Sites web, e-commerce, SaaS et applications mobiles</p>
       <p class="cover-name">Clément Bastien</p>
       <p class="cover-def">UX, expérience utilisateur. IA, intelligence artificielle.</p>
+      <p class="cover-maj">Mis à jour le 18 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7">
       <div class="hero" data-comp="hero" role="img" aria-label="Animation : les blocs d’une page jolie mais confuse se réorganisent en une page claire, avec un titre, un bouton et trois cartes alignées.">
@@ -870,7 +883,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </article>
     </div>
     <aside class="angle" data-step="3">
-      <p>Un site peut être joli sans être pratique.</p>
+      <p>Un site peut être joli sans être pratique. L’UI contribue à l’UX : les deux se recouvrent.</p>
     </aside>
   </div>
 </section>
@@ -879,10 +892,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Quatre types de produits, quatre objectifs</h2>
   <div class="body stack-m">
     <div class="produits">
-      <article class="card produit" data-step="1"><h3><i data-icon="globe"></i>Site web</h3><p class="produit-but">Un contact, un devis, une réservation.</p><p>Trouver l’information en quelques secondes, un formulaire court.</p></article>
+      <article class="card produit" data-step="1"><h3><i data-icon="globe"></i>Site web</h3><p class="produit-but">Un contact, un devis, une réservation.</p><p>L’information doit être facile à trouver.</p></article>
       <article class="card produit" data-step="2"><h3><i data-icon="cart"></i>E-commerce</h3><p class="produit-but">L’achat, puis le rachat.</p><p>Les frais visibles tôt, la commande sans compte obligatoire.</p></article>
-      <article class="card produit" data-step="3"><h3><i data-icon="layers"></i>SaaS</h3><p class="produit-but">L’essai, puis l’abonnement.</p><p>Un premier résultat utile très vite : c’est l’activation.</p></article>
-      <article class="card produit" data-step="4"><h3><i data-icon="phone"></i>Application mobile</h3><p class="produit-but">L’installation, puis l’usage régulier.</p><p>Tout au pouce, les autorisations demandées au bon moment.</p></article>
+      <article class="card produit" data-step="3"><h3><i data-icon="layers"></i>SaaS</h3><p class="produit-but">L’essai, puis l’abonnement.</p><p>Un premier résultat utile : c’est l’activation.</p></article>
+      <article class="card produit" data-step="4"><h3><i data-icon="phone"></i>Application mobile</h3><p class="produit-but">L’installation, puis l’usage régulier.</p><p>Souvent utilisée au pouce ; les autorisations s’expliquent au bon moment.</p></article>
     </div>
     <p class="lead strong" data-step="5">Les mêmes six blocs pour les quatre. Ce qui change : l’objectif, et ce qu’on mesure.</p>
   </div>
@@ -892,7 +905,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Le tunnel de conversion : chaque étape peut faire perdre des visiteurs</h2>
   <div class="body g12">
     <div class="c5 stack-m">
-      <p class="lead">Tunnel (funnel) : le parcours de l’arrivée jusqu’à l’objectif : un contact, un achat, un abonnement, une installation.</p>
+      <p class="lead">Tunnel (funnel) : le parcours jusqu’à l’objectif, comme un achat ou un abonnement.</p>
       <div class="funnel-ctl" data-comp="funnel-ctl"></div>
       <div class="card preuve" data-step="1">
         <p class="puce">Cas réel</p>
@@ -988,7 +1001,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Bloc 1, design system : la cohérence rendue réutilisable</h2>
   <div class="body g12">
     <div class="c5 stack-m">
-      <p class="lead">Variables : couleurs, polices, rayons des coins, espacements.</p>
+      <p class="lead">Un design system rassemble règles, composants et modèles réutilisables. Les variables (couleurs, polices, rayons, espacements) en sont les fondations.</p>
       <div class="tokens" data-comp="ds-tokens" aria-hidden="true"></div>
     </div>
     <div class="c7">
@@ -1007,7 +1020,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <section class="slide" data-part="1" data-key="fitts">
   <h2 class="title">Bloc 2, friction : petit et loin, difficile à atteindre</h2>
   <div class="body stack-s">
-    <p class="law-line"><span class="chip law">Atteindre : loi de Fitts</span><span>Boutons importants : grands et proches du pouce.</span></p>
+    <p class="law-line"><span class="chip law">Atteindre : loi de Fitts</span><span>Une cible grande et facile à atteindre réduit l’effort. Sur mobile, à vérifier avec les personnes concernées.</span></p>
     <div class="fitts" data-comp="fitts"></div>
   </div>
 </section>
@@ -1022,20 +1035,20 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     </ul>
     <ul class="ratios" aria-label="Rapports de contraste à retenir">
       <li><strong>4,5:1</strong> texte courant (AA, la cible)</li>
-      <li><strong>3:1</strong> grand texte, bordures, icônes</li>
-      <li><strong>7:1</strong> niveau AAA</li>
+      <li><strong>3:1</strong> grand texte, et éléments graphiques utiles à la compréhension</li>
+      <li><strong>7:1</strong> niveau AAA (4,5:1 pour le grand texte)</li>
     </ul>
     <div class="contrast" data-comp="contrast"></div>
   </div>
 </section>
 
 <section class="slide" data-part="1" data-key="loi">
-  <h2 class="title">Bloc 3, accessibilité : obligatoire dans l’UE, amendes à la clé</h2>
+  <h2 class="title">Bloc 3, accessibilité : une obligation légale, des sanctions variables</h2>
   <div class="body stack-m">
     <ul class="stats">
       <li class="card stat" data-step="1"><p class="stat-big">≈ 1 personne sur 5</p><p>en Suisse vit avec un handicap</p></li>
-      <li class="card stat" data-step="2"><p class="stat-big">28 juin 2025</p><p>l’European Accessibility Act s’applique</p></li>
-      <li class="card stat" data-step="3"><p class="stat-big">En révision</p><p>LHand : le privé serait concerné</p></li>
+      <li class="card stat" data-step="2"><p class="stat-big">28 juin 2025</p><p>l’European Accessibility Act s’applique à certains produits et services, dont le e-commerce</p></li>
+      <li class="card stat" data-step="3"><p class="stat-big">Projet de révision</p><p>LHand : des aménagements raisonnables pour les prestations au public</p></li>
     </ul>
     <div class="fines" data-comp="fines" data-step="4"></div>
   </div>
@@ -1045,14 +1058,13 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Bloc 4, analyse comportementale : observer ce que font vraiment les utilisateurs</h2>
   <div class="body g12">
     <div class="c5 stack-m">
-      <p class="lead">Hotjar ou Clarity (gratuit) : cartes de chaleur, enregistrements de sessions, clics.</p>
+      <p class="lead">Hotjar : cartes de chaleur, enregistrements de sessions, clics. Clarity, gratuit, existe aussi.</p>
       <ul class="plain">
         <li data-step="1">Disponible une fois le site en ligne.</li>
-        <li data-step="1">SaaS et application : PostHog ou Mixpanel suivent l’activation et la rétention. Sur mobile, Firebase.</li>
+        <li data-step="1">SaaS et application : des outils d’analyse de produit mesurent l’activation et la rétention.</li>
         <li data-step="2">Elle dit par quoi commencer.</li>
         <li data-step="3">Sessions enregistrées : attention au consentement.</li>
-      </ul>
-      <div class="case grow" data-case="IMG_HOTJAR_HEATMAP" data-kind="img" data-opt data-alt="Carte de chaleur réelle exportée de Hotjar"></div>
+      </ul>
     </div>
     <div class="c7">
       <div class="heat" data-comp="heat"></div>
@@ -1068,11 +1080,11 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="attente">
-  <h2 class="title">Bloc 6, performance perçue : ce qui compte, c’est la vitesse ressentie</h2>
+  <h2 class="title">Bloc 6, performance perçue : vitesse réelle et vitesse ressentie</h2>
   <div class="body g12">
     <div class="c5 stack-m">
       <ul class="points">
-        <li data-step="1">Vraie attente : le skeleton loader annonce la mise en page.</li>
+        <li data-step="1">Vraie attente : on la réduit d’abord ; le skeleton loader annonce la mise en page.</li>
         <li data-step="2">Attente fabriquée : à manier avec soin.</li>
         <li data-step="3">Le test : l’utilisateur serait-il d’accord s’il le savait ?</li>
       </ul>
@@ -1096,7 +1108,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </article>
       <article class="card accent" data-step="2">
         <h3><i data-icon="cursor"></i>Un agent</h3>
-        <p>Vous donnez une mission. Il ouvre le site, clique, lance des outils, modifie les fichiers, puis vous rend compte.</p>
+        <p>Vous donnez une mission. Avec les outils et les autorisations nécessaires, il ouvre le site, clique, lance des contrôles et modifie les fichiers auxquels il a accès, puis vous rend compte.</p>
       </article>
     </div>
     <div class="paire" data-step="3">
@@ -1115,16 +1127,16 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <ul class="chips">
         <li class="chip"><i data-icon="compass"></i>Navigateur</li>
         <li class="chip"><i data-icon="frame"></i>Figma, Penpot</li>
-        <li class="chip"><i data-icon="eye"></i>Clarity</li>
+        <li class="chip"><i data-icon="eye"></i>Vos données d’analyse</li>
         <li class="chip"><i data-icon="code"></i>Votre code</li>
       </ul>
     </div>
     <p class="lead" data-step="1">Comme l’USB-C : un seul format, beaucoup d’appareils.</p>
     <div class="paire">
-      <article class="card" data-step="2"><p><strong>Sans MCP</strong>, vous copiez les chiffres de Clarity dans le chat.</p></article>
-      <article class="card accent" data-step="3"><p><strong>Avec le MCP de Clarity</strong>, l’agent va chercher lui-même vos vraies données.</p></article>
+      <article class="card" data-step="2"><p><strong>Sans MCP</strong>, vous copiez les chiffres de votre outil d’analyse dans le chat.</p></article>
+      <article class="card accent" data-step="3"><p><strong>Avec un connecteur MCP</strong>, l’agent va chercher lui-même ces données.</p></article>
     </div>
-    <p class="note" data-step="4">Skill ou plugin : un paquet prêt à l’emploi, avec les consignes et les outils pour une tâche.</p>
+    <p class="note" data-step="4">Un skill décrit une méthode de travail. Un plugin rassemble des capacités à installer, comme des skills et des connexions à des outils.</p>
   </div>
 </section>
 
@@ -1134,12 +1146,12 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="paire">
       <article class="card accent offre" data-step="1">
         <h3>Claude Pro</h3>
-        <p class="prix">environ 20 francs par mois</p>
+        <p class="prix">20 dollars US par mois, avec quota d’utilisation</p>
         <p>Claude Code inclus.</p>
       </article>
       <article class="card accent offre" data-step="1">
         <h3>ChatGPT Plus</h3>
-        <p class="prix">environ 20 francs par mois</p>
+        <p class="prix">20 dollars US par mois, avec quota d’utilisation</p>
         <p>Codex inclus.</p>
       </article>
     </div>
@@ -1151,13 +1163,13 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="2" data-key="methode-ia">
-  <h2 class="title">L’outil mesure, l’IA juge, vous décidez</h2>
+  <h2 class="title">L’outil mesure, l’IA interprète, vous décidez</h2>
   <div class="body stack-l">
     <div class="options">
       <article class="card option" data-step="1">
         <p class="option-lettre" aria-hidden="true">1</p>
         <h3>Un outil classique</h3>
-        <p>Gratuit, fiable, sans IA : il mesure.</p>
+        <p>Il mesure des critères précis, avec ses limites.</p>
       </article>
       <article class="card option" data-step="2">
         <p class="option-lettre" aria-hidden="true">2</p>
@@ -1206,16 +1218,16 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="2" data-key="ia-friction">
-  <h2 class="title">Bloc 2, friction : un test utilisateur simulé</h2>
+  <h2 class="title">Bloc 2, friction : explorer le parcours avec un agent</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Cinq vraies personnes, un chrono, compter les clics.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il joue votre cible et fait le parcours dans un vrai navigateur.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>De vraies personnes du même public, cinq pour commencer. On corrige, puis on recommence.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il explore le parcours d’après le profil fourni, dans un vrai navigateur.</p></article>
     </div>
     <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Tu es [la cible], sur téléphone. Objectif : [acheter un vase, démarrer un essai, réserver]. Fais le parcours et arrête-toi avant de payer ou d’envoyer quoi que ce soit. Note chaque pop-up, hésitation, détour et étape inutile. Compte les clics.</blockquote></figure>
     <div class="ia-garde" data-step="4">
       <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, l’objectif, et où s’arrêter.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : ce sont des pistes. Confirmez avec de vraies personnes.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : ce sont des hypothèses. Confirmez avec de vraies personnes.</span></p>
     </div>
   </div>
 </section>
@@ -1237,7 +1249,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <article class="card option" data-step="3">
         <p class="option-lettre" aria-hidden="true">3</p>
         <h3>La solution</h3>
-        <p>Une copie de test du site, ou l’arrêt avant chaque envoi.</p>
+        <p>Une copie de test, avec des données fictives. S’arrêter avant l’envoi n’évite pas les statistiques.</p>
       </article>
     </div>
   </div>
@@ -1248,27 +1260,27 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body ia-bloc">
     <div class="ia-col">
       <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Lighthouse, WAVE, Pa11y, et la touche Tab.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il lance l’audit, navigue au clavier, lit la page comme un lecteur d’écran, puis corrige le code.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il lance l’audit, teste le clavier, inspecte la structure accessible, puis corrige le code.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Audite ces pages avec Pa11y et Lighthouse. Parcours-les uniquement au clavier. Explique chaque erreur simplement et dis qui elle gêne. Vérifie que chaque texte alternatif décrit vraiment son image. Puis corrige.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Audite ces pages avec Pa11y et Lighthouse. Parcours-les uniquement au clavier. Explique chaque erreur simplement et dis qui elle gêne. Vérifie que chaque image informative a un texte alternatif utile, et que les images décoratives sont ignorées. Puis corrige.</blockquote></figure>
     <div class="ia-garde" data-step="4">
       <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, par exemple des seniors.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>Bon à savoir</strong> : un champ étiqueté « Champ 1 » passe l’audit : l’étiquette existe, mais ne dit rien. Là, l’IA fait mieux que l’outil.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>Bon à savoir</strong> : un champ étiqueté « Champ 1 » passe l’audit : l’étiquette existe, mais ne dit rien. L’IA peut aider à le repérer, à vérifier. Un vrai lecteur d’écran reste nécessaire.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-comportement">
-  <h2 class="title">Bloc 4, comportement : interroger vos vraies données</h2>
+  <h2 class="title">Bloc 4, comportement : interroger les données d’usage</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Clarity ou Hotjar : cartes de chaleur, enregistrements, entonnoirs.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Branché par MCP à Clarity ou à Contentsquare (Hotjar), il interroge vos données en français.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Hotjar : cartes de chaleur, enregistrements, clics.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Branché à votre outil d’analyse, ou nourri d’un export, il aide à lire les chiffres et à formuler des hypothèses.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Sur les 30 derniers jours, où les visiteurs sur mobile abandonnent-ils la commande ? Où cliquent-ils sans résultat ? Donne des hypothèses à vérifier, pas des conclusions.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>À partir de ces données d’usage, quelles pages montrent des clics sans effet ou des abandons sur mobile ? Distingue les constats des hypothèses. Si les données ne permettent pas de le mesurer, dis ce qui manque.</blockquote></figure>
     <div class="ia-garde" data-step="4">
       <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une question précise, sur des pages précises.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : les chiffres disent où, pas pourquoi. Et le consentement des visiteurs.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : les chiffres disent où, pas pourquoi. Ce que l’outil fournit dépend de son offre. Et le consentement des visiteurs.</span></p>
     </div>
   </div>
 </section>
@@ -1289,7 +1301,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="2" data-key="ia-performance">
-  <h2 class="title">Bloc 6, performance perçue : tester en conditions réelles</h2>
+  <h2 class="title">Bloc 6, performance perçue : tester dans des conditions représentatives</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
       <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>PageSpeed Insights, Lighthouse, ou Unlighthouse pour tout le site.</p></article>
@@ -1298,7 +1310,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Simule un téléphone avec une connexion lente. Après chaque clic important, combien de temps reste-t-on sans retour visible ? Propose un retour immédiat ou un squelette de chargement, sans jamais ajouter d’attente.</blockquote></figure>
     <div class="ia-garde" data-step="4">
       <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’appareil et la connexion de la cible.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : aucune fausse attente, comme sur la slide 19.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : aucune fausse attente, comme sur la slide 19. Une simulation ne remplace pas un vrai téléphone, et ces outils web n’auditent pas une application native.</span></p>
     </div>
   </div>
 </section>
@@ -1316,7 +1328,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="note" data-step="4">Ils marchent dans Claude comme dans ChatGPT.</p>
     </div>
     <div class="c5">
-      <div class="case" data-case="PLUGIN_URL" data-kind="qr" data-fixe data-label="Les prompts du cours, sur GitHub"></div>
+      <div class="case" data-case="PLUGIN_URL" data-kind="link" data-fixe data-texte="Ouvrir les prompts" data-label="Les prompts du cours, sur GitHub"></div>
     </div>
   </div>
 </section>
@@ -1375,7 +1387,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <h3 class="col-titre" data-step="2">L’outil d’audit, lui, trouve :</h3>
       <ul class="trouvailles">
         <li data-step="2"><b>10</b><span>images sans texte alternatif : un lecteur d’écran ne peut pas les décrire.</span></li>
-        <li data-step="3"><b>11</b><span>textes trop pâles, dont les prix barrés : 1,69:1 au lieu de 4,5:1.</span></li>
+        <li data-step="3"><b>11</b><span>textes trop pâles, dont les prix barrés : environ 1,7:1 sur le fond crème, au lieu de 4,5:1.</span></li>
         <li data-step="4"><b>89</b><span>sur 100 au score d’accessibilité de Lighthouse. Un bon score, malgré tout ça.</span></li>
       </ul>
       <p class="lead strong" data-step="5">L’outil mesure. Il ne dit pas si un texte alternatif a du sens.</p>
@@ -1401,7 +1413,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="3" data-key="form-defauts">
-  <h2 class="title">Le formulaire : joli, mais un défaut par bloc</h2>
+  <h2 class="title">Le formulaire : joli, mais six défauts répartis sur les blocs</h2>
   <div class="body">
     <div class="fd" data-comp="form-defauts"></div>
   </div>
@@ -1416,7 +1428,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li class="card" data-step="3"><i data-icon="keyboard"></i><p>La saisie à la main reste possible.</p></li>
     </ul>
     <div class="c6 auto-demo">
-      <div class="auto-mock" role="img" aria-label="Exemple : on tape Rue du Seyon 10, quatre adresses sont proposées, dont Rue du Seyon 10, 2000 Neuchâtel.">
+      <div class="auto-mock" role="img" aria-label="Exemple : on tape Rue du Seyon 10, trois adresses sont proposées, dont Rue du Seyon 10, 2000 Neuchâtel.">
         <div class="auto-champ" aria-hidden="true"><span>Rue du Seyon 10</span><i class="auto-curseur"></i></div>
         <ul class="auto-liste" aria-hidden="true">
           <li class="actif"><b>Rue du Seyon 10</b><span>2000 Neuchâtel</span></li>
@@ -1432,9 +1444,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <!-- ----- Le quiz, la démo avec l’IA et la conclusion (slides 39 à 41) ----- -->
 
 <section class="slide" data-part="3" data-key="bon-modele">
-  <h2 class="title">Le bon modèle pour la bonne tâche</h2>
+  <h2 class="title">Exemple : le bon modèle pour la bonne tâche</h2>
   <div class="body">
     <div class="pipe" data-comp="pipe"></div>
+    <p class="note">Exemple d’organisation, pas une règle : vérifiez les résultats à chaque étape. Les coûts sont indicatifs.</p>
   </div>
 </section>
 
@@ -1454,7 +1467,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="lead" data-step="3">Tout ne se corrige pas automatiquement.</p>
     </div>
     <div class="c5 stack-s">
-      <div class="case grow" data-case="IMG_AUDIT_RESULT" data-kind="img" data-alt="Synthèse de l’audit Pa11y sur 4 pages : 21 erreurs, dont 10 images sans texte alternatif et 11 contrastes insuffisants"></div>
+      <div class="case grow" data-case="IMG_AUDIT_RESULT" data-kind="img" data-fixe data-alt="Synthèse de l’audit Pa11y sur 4 pages : 21 erreurs, dont 10 images sans texte alternatif et 11 contrastes insuffisants"></div>
     </div>
   </div>
 </section>
@@ -1468,7 +1481,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p>L’IA accélère, les bases décident.</p></li>
     </ol>
     <div class="c4 stack-m end-col">
-      <div class="case" data-case="EXERCICES_URL" data-kind="qr" data-fixe data-label="Les exercices à refaire chez vous"></div>
+      <div class="case" data-case="EXERCICES_URL" data-kind="qr" data-fixe data-texte="Ouvrir les exercices" data-label="Les exercices à refaire chez vous"></div>
     </div>
   </div>
 </section>
@@ -1546,7 +1559,6 @@ const CONFIG = {
   // Le résultat d'audit a une image intégrée
   // au fichier (IMAGES_INTEGREES) : un chemin donné ici la remplace.
   images: {
-    IMG_HOTJAR_HEATMAP: '',
     IMG_AUDIT_RESULT: ''
   },
 
@@ -1563,7 +1575,7 @@ const CONFIG = {
     etudes: 'Moyenne de 50 études',
     source: 'Baymard Institute, 2025',
     titre: 'Raisons citées par les acheteurs : devinez',
-    note: 'Acheteurs en ligne américains, plusieurs réponses possibles.',
+    note: 'Acheteurs en ligne américains, plusieurs réponses possibles. Quatre raisons sur onze, hors simple navigation (42 %).',
     raisons: [
       { raison: 'Frais ajoutés trop élevés', part: 40 },
       { raison: 'Création de compte obligatoire', part: 18 },
@@ -1589,11 +1601,12 @@ const CONFIG = {
   ],
 
   // Amendes maximales pour non-conformité à l'European Accessibility Act (slide 16), relevées en 2025
+  sourcesAmendes: [{"t": "Allemagne", "u": "https://www.gesetze-im-internet.de/bfsg/__37.html"}, {"t": "Autriche", "u": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316"}, {"t": "Italie", "u": "https://accessibilita.agid.gov.it/domande-frequenti/"}, {"t": "France", "u": "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite"}, {"t": "Irlande", "u": "https://www.dlapiper.com/en/insights/publications/2025/10/navigating-the-irish-accessibility-regulations"}],
   amendes: [
-    { pays: 'Allemagne', montant: '100 000 €', detail: 'manquements graves' },
-    { pays: 'Autriche', montant: '80 000 €', detail: 'manquements graves' },
-    { pays: 'Italie', montant: '40 000 €', detail: 'manquements graves' },
-    { pays: 'France', montant: '7 500 €', detail: 'par infraction, cumulables' }
+    { pays: 'Allemagne', montant: '100 000 €', detail: 'maximum, pour un produit ou service non conforme' },
+    { pays: 'Autriche', montant: '80 000 €', detail: 'maximum ; 50 000 € pour une PME' },
+    { pays: 'Italie', montant: '40 000 €', detail: 'maximum ; de 5 000 à 40 000 € selon la gravité' },
+    { pays: 'France', montant: '7 500 €', detail: 'par infraction, cumulable (contravention de 5e classe)' }
   ],
 
   // Lexique (avant-dernière slide). cle : identifiant de la slide où le terme est expliqué, pour le bouton « Voir la slide ».
@@ -1602,25 +1615,25 @@ const CONFIG = {
     { terme: 'UI', nom: 'UI, User Interface', def: 'Le visuel d’un produit : couleurs, boutons, typographie.', cle: 'ui-ux' },
     { terme: 'Cible', def: 'Les personnes pour qui l’on conçoit. Une UX se juge toujours par rapport à elles.', cle: 'cible' },
     { terme: 'Persona', def: 'Portrait fictif d’un utilisateur type, construit à partir d’observations réelles.', cle: 'cible' },
-    { terme: 'SaaS', nom: 'SaaS (Software as a Service)', def: 'Un logiciel utilisé en ligne, sur abonnement, sans rien installer.', cle: 'produits' },
-    { terme: 'Activation', def: 'Le moment où un nouvel utilisateur obtient son premier résultat utile. Elle prédit l’abonnement.', cle: 'produits' },
-    { terme: 'Rétention', def: 'La part des utilisateurs qui reviennent après 1 jour, 7 jours, 30 jours.', cle: 'hotjar' },
+    { terme: 'SaaS', nom: 'SaaS (Software as a Service)', def: 'Un logiciel fourni comme service et accessible par le réseau, généralement sur abonnement. Il s’utilise dans un navigateur ou avec une application installée.', cle: 'produits' },
+    { terme: 'Activation', def: 'L’étape où un nouvel utilisateur obtient une première valeur du produit. Son lien avec la rétention ou le paiement est à vérifier.', cle: 'produits' },
+    { terme: 'Rétention', def: 'La proportion d’un groupe d’utilisateurs qui réalise de nouveau une action définie, après une période donnée.', cle: 'hotjar' },
     { terme: 'Tunnel de conversion', nom: 'Tunnel de conversion (funnel)', def: 'Le parcours de l’arrivée jusqu’à l’objectif : un contact, un achat, un abonnement, une installation.', cle: 'tunnel' },
     { terme: 'Abandon de panier', def: 'Un visiteur remplit son panier, puis quitte le site sans payer.', cle: 'abandon' },
     { terme: 'Honeycomb', def: 'Modèle de Peter Morville qui décrit une bonne expérience en sept facettes.', cle: 'honeycomb' },
-    { terme: 'Design system', def: 'Les règles visuelles partagées d’un produit (couleurs, polices, rayons, espacements), rangées en variables réutilisables.', cle: 'design-system' },
+    { terme: 'Design system', def: 'Les règles, composants et modèles réutilisables qui rendent un produit cohérent. Les variables (couleurs, polices, rayons, espacements) en sont les fondations.', cle: 'design-system' },
     { terme: 'Friction', def: 'Tout ce qui demande un effort inutile pour décider ou pour atteindre un élément.', cle: 'hick' },
-    { terme: 'Loi de Hick', def: 'Plus il y a de choix, plus la décision prend du temps.', cle: 'hick' },
+    { terme: 'Loi de Hick', def: 'À conditions comparables, plus il y a d’options à examiner, plus la décision peut prendre du temps.', cle: 'hick' },
     { terme: 'Loi de Fitts', def: 'Une cible petite et éloignée est plus longue à atteindre.', cle: 'fitts' },
     { terme: 'Accessibilité', def: 'Un produit utilisable par toute la cible, y compris avec une limitation visuelle, auditive ou motrice.', cle: 'accessibilite' },
-    { terme: 'Texte alternatif', def: 'Description d’une image, lue par les lecteurs d’écran et affichée si l’image ne charge pas.', cle: 'accessibilite' },
+    { terme: 'Texte alternatif', def: 'Description d’une image informative, lue par les lecteurs d’écran. Une image décorative reçoit un texte alternatif vide, pour être ignorée.', cle: 'accessibilite' },
     { terme: 'Contraste', def: 'Écart de luminosité entre un texte et son fond. Le seuil courant est de 4,5 pour 1.', cle: 'accessibilite' },
     { terme: 'Accessibility Act', nom: 'European Accessibility Act', def: 'Directive européenne qui impose l’accessibilité à de nombreux produits et services numériques depuis le 28 juin 2025.', cle: 'loi' },
     { terme: 'Carte de chaleur', nom: 'Carte de chaleur (heatmap)', def: 'Image qui montre en couleurs chaudes les zones les plus cliquées d’une page.', cle: 'hotjar' },
     { terme: 'Microcopie', def: 'Les petits textes d’une interface : boutons, messages d’erreur, aides.', cle: 'microcopie' },
     { terme: 'Performance perçue', def: 'La vitesse ressentie par l’utilisateur, qui peut différer de la vitesse réelle.', cle: 'attente' },
     { terme: 'Skeleton loader', def: 'Silhouette grise de la page, affichée pendant le chargement.', cle: 'attente' },
-    { terme: 'MCP', nom: 'MCP (Model Context Protocol)', def: 'Une prise standard qui branche un outil (navigateur, Figma, Clarity…) sur une IA, pour qu’elle l’utilise directement.', cle: 'mcp' },
+    { terme: 'MCP', nom: 'MCP (Model Context Protocol)', def: 'Une prise standard qui branche un outil (navigateur, Figma, outil d’analyse…) sur une IA, pour qu’elle l’utilise directement.', cle: 'mcp' },
     { terme: 'Autocomplétion', def: 'Des suggestions proposées pendant la saisie, à choisir d’un clic ou au clavier.', cle: 'form-photon' },
     { terme: 'Audit', def: 'Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.', cle: 'revelation' },
     { terme: 'Agent IA', def: 'Une IA qui agit : elle ouvre des pages, clique, lance des outils et modifie des fichiers pour accomplir une mission.', cle: 'agent' }
@@ -1639,17 +1652,23 @@ const CONFIG = {
     { titre: 'Contraste minimum, critère 1.4.3', source: 'W3C, WCAG', url: 'https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html' },
     { titre: 'Directive (UE) 2019/882, l’European Accessibility Act', source: 'EUR-Lex', url: 'https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882' },
     { titre: 'Accessibilité : obligations et sanctions en France', source: 'DGCCRF', url: 'https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite' },
-    { titre: 'Amendes par pays', source: 'Fieldfisher, 2025', url: 'https://www.fieldfisher.com/en/insights/understanding-the-european-accessibility-act-risks-of-non-compliance-and-key-authorities' },
-    { titre: 'Révision partielle de la LHand', source: 'Confédération suisse, BFEH', url: 'https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand' },
+    { titre: 'Loi allemande BFSG, § 37 : les amendes', source: 'gesetze-im-internet.de', url: 'https://www.gesetze-im-internet.de/bfsg/__37.html' },
+    { titre: 'Loi autrichienne BaFG, § 36 : les sanctions', source: 'RIS, Autriche', url: 'https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316' },
+    { titre: 'Accessibilité : les sanctions en Italie', source: 'AgID, FAQ', url: 'https://accessibilita.agid.gov.it/domande-frequenti/' },
+    { titre: 'Les règles irlandaises d’accessibilité (S.I. 636/2023)', source: 'DLA Piper, 2025', url: 'https://www.dlapiper.com/en/insights/publications/2025/10/navigating-the-irish-accessibility-regulations' },
+    { titre: 'Révision partielle de la LHand', source: 'Confédération suisse, BFEH', url: 'https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand' },
+    { titre: 'Claude Pro : prix et limites', source: 'Anthropic', url: 'https://support.claude.com/en/articles/8325606-what-is-the-pro-plan' },
+    { titre: 'ChatGPT Plus et Codex : prix et limites', source: 'OpenAI', url: 'https://learn.chatgpt.com/docs/pricing' },
+    { titre: 'Pourquoi cinq utilisateurs suffisent pour un test d’utilisabilité', source: 'Nielsen Norman Group', url: 'https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/' },
+    { titre: 'Contraste des éléments graphiques, critère 1.4.11', source: 'W3C, WCAG', url: 'https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html' },
+    { titre: 'Contenu non textuel, critère 1.1.1', source: 'W3C, WCAG', url: 'https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html' },
     { titre: 'Pa11y, audit d’accessibilité', source: 'pa11y.org', url: 'https://pa11y.org/' },
     { titre: 'Lighthouse', source: 'Chrome for Developers', url: 'https://developer.chrome.com/docs/lighthouse/overview' },
     { titre: '« Let Your Users Wait »', source: 'UX Magazine', url: 'https://uxmag.com/articles/let-your-users-wait' },
-    { titre: 'Attente fabriquée : « Just wait… trust me »', source: 'Université du Michigan, 2017', url: 'https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/' },
-    { titre: 'Robinhood retire ses confettis', source: 'CNBC, 2021', url: 'https://www.cnbc.com/2021/03/31/robinhood-gets-rid-of-confetti-feature-amid-scrutiny-over-gamification.html' },
+    { titre: 'Attente fabriquée : « Just wait… trust me »', source: 'Université du Michigan, 2017', url: 'https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/' },
     { titre: 'Model Context Protocol, la documentation', source: 'modelcontextprotocol.io', url: 'https://modelcontextprotocol.io/' },
     { titre: 'Playwright MCP : la page lue comme un arbre d’accessibilité', source: 'Microsoft, Playwright', url: 'https://playwright.dev/mcp/snapshots' },
-    { titre: 'Chrome DevTools MCP', source: 'Google, ChromeDevTools', url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp' },
-    { titre: 'Le serveur MCP de Microsoft Clarity', source: 'Microsoft Clarity', url: 'https://clarity.microsoft.com/blog/introducing-the-microsoft-clarity-mcp-server-a-smarter-way-to-fetch-analytics-with-ai/' },
+    { titre: 'Chrome DevTools MCP', source: 'Google, ChromeDevTools', url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp' },
     { titre: 'Unlighthouse : Lighthouse sur tout un site', source: 'unlighthouse.dev', url: 'https://unlighthouse.dev/' },
     { titre: '« What Would GPT Click » : utilisateurs simulés contre vrais utilisateurs', source: 'arXiv, 2026', url: 'https://arxiv.org/abs/2605.18302' }
   ],
@@ -1666,6 +1685,128 @@ const CONFIG = {
   ],
 
   // Vue présentateur : trois mots-clés par slide
+  sources: {
+    "tunnel": [
+      {
+        "t": "Jared Spool, 2009",
+        "u": "https://articles.centercentre.com/three_hund_million_button/"
+      }
+    ],
+    "abandon": [
+      {
+        "t": "Baymard Institute",
+        "u": "https://baymard.com/lists/cart-abandonment-rate"
+      }
+    ],
+    "honeycomb": [
+      {
+        "t": "Peter Morville",
+        "u": "https://semanticstudios.com/user_experience_design/"
+      }
+    ],
+    "hick": [
+      {
+        "t": "Laws of UX",
+        "u": "https://lawsofux.com/hicks-law/"
+      }
+    ],
+    "fitts": [
+      {
+        "t": "Laws of UX",
+        "u": "https://lawsofux.com/fittss-law/"
+      }
+    ],
+    "accessibilite": [
+      {
+        "t": "WCAG 1.4.3",
+        "u": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+      },
+      {
+        "t": "WCAG 1.4.11",
+        "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+      },
+      {
+        "t": "WCAG 1.1.1",
+        "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+      }
+    ],
+    "loi": [
+      {
+        "t": "BFEH",
+        "u": "https://www.ebgb.admin.ch/fr/politique-du-handicap-2023-2026"
+      },
+      {
+        "t": "Directive 2019/882",
+        "u": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882"
+      },
+      {
+        "t": "LHand",
+        "u": "https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand"
+      }
+    ],
+    "attente": [
+      {
+        "t": "UX Magazine",
+        "u": "https://uxmag.com/articles/let-your-users-wait"
+      },
+      {
+        "t": "Univ. du Michigan",
+        "u": "https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/"
+      }
+    ],
+    "mcp": [
+      {
+        "t": "modelcontextprotocol.io",
+        "u": "https://modelcontextprotocol.io/"
+      }
+    ],
+    "quel-agent": [
+      {
+        "t": "Claude Pro",
+        "u": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan"
+      },
+      {
+        "t": "ChatGPT Plus",
+        "u": "https://learn.chatgpt.com/docs/pricing"
+      }
+    ],
+    "ia-friction": [
+      {
+        "t": "What Would GPT Click",
+        "u": "https://arxiv.org/abs/2605.18302"
+      },
+      {
+        "t": "NN/g, 5 utilisateurs",
+        "u": "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/"
+      }
+    ],
+    "ia-accessibilite": [
+      {
+        "t": "Pa11y",
+        "u": "https://pa11y.org/"
+      },
+      {
+        "t": "Lighthouse",
+        "u": "https://developer.chrome.com/docs/lighthouse/overview"
+      }
+    ],
+    "ia-performance": [
+      {
+        "t": "Unlighthouse",
+        "u": "https://unlighthouse.dev/"
+      }
+    ],
+    "form-photon": [
+      {
+        "t": "Photon",
+        "u": "https://github.com/komoot/photon"
+      },
+      {
+        "t": "Combobox, W3C",
+        "u": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+      }
+    ]
+  },
   motsCles: [],
 
   // Vue présentateur : ce qui se dit à l'oral, quand la slide en affiche une version courte
@@ -1911,8 +2052,10 @@ const IMAGES_INTEGREES = {
     s.dataset.minutes = minutes[i];
     s.setAttribute('aria-roledescription', 'slide');
     const t = $('.title', s); t.id = 'titre-' + (i + 1); s.setAttribute('aria-labelledby', t.id);
+    const srcs = (CONFIG.sources && CONFIG.sources[s.dataset.key]) || [];
     s.prepend(h('div', { class: 's-head' },
       h('span', { class: 'pastille', text: CONFIG.parties[p].hors ? CONFIG.parties[p].nom : 'Partie ' + (p + 1) + ' : ' + CONFIG.parties[p].nom }),
+      srcs.length ? h('span', { class: 's-src' }, srcs.map(x => h('a', { href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))) : null,
       h('span', { class: 's-num', 'aria-label': 'Slide ' + (i + 1) + ' sur ' + N, text: (i + 1) + ' / ' + N })));
     $$('i[data-icon]', s).forEach(el => { const svg = icon(el.dataset.icon); if (el.className) svg.classList.add(...el.className.split(' ')); el.replaceWith(svg); });
   });
@@ -2133,12 +2276,21 @@ const IMAGES_INTEGREES = {
           const qr = h('div', { class: 'case-qr' });
           const svg = url ? QR.svg(url) : null;
           if (svg) qr.innerHTML = svg;
-          box.append(h('p', { class: 'case-fixe-titre', text: box.dataset.label }), qr, h('p', { class: 'case-fixe-url', text: url.replace(/^https?:\/\//, '').replace(/\/$/, '') }));
+          box.append(h('p', { class: 'case-fixe-titre', text: box.dataset.label }), qr, h('a', { class: 'btn primary', href: url || '#', target: '_blank', rel: 'noopener noreferrer' }, icon('external'), h('span', { text: box.dataset.texte || 'Ouvrir' })), h('p', { class: 'case-fixe-url', text: url.replace(/^https?:\/\//, '').replace(/\/$/, '') }));
         } else {
           box.append(h('a', { class: 'btn primary', href: url || '#', target: '_blank', rel: 'noopener noreferrer' }, icon('external'), h('span', { text: box.dataset.texte || box.dataset.label })));
         }
         c.value = url; cases.push(c); changed();
         return;
+      }
+      if (kind === 'img' && box.hasAttribute('data-fixe')) {
+        const src = CONFIG.images[id] || (typeof IMAGES_INTEGREES !== 'undefined' && IMAGES_INTEGREES[id]) || '';
+        if (src) {
+          box.classList.add('filled');
+          box.append(h('img', { src, alt: box.dataset.alt || id }));
+          c.value = src; cases.push(c); changed();
+          return;
+        }
       }
       if (kind === 'img') {
         const idEl = h('span', { class: 'case-id', text: id });
@@ -2318,7 +2470,7 @@ const IMAGES_INTEGREES = {
     const pts = Array.from({ length: 6 }, (_, k) => { const a = Math.PI / 180 * (60 * k - 90); return (R * Math.cos(a)).toFixed(1) + ',' + (R * Math.sin(a)).toFixed(1); }).join(' ');
     const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '-320 -305 640 610'); svg.setAttribute('role', 'group'); svg.setAttribute('aria-label', 'Les sept facettes du Honeycomb');
     const panel = h('div', { class: 'panel honey-panel', id: 'honey-panel', 'aria-live': 'polite', tabindex: '0', role: 'region', 'aria-label': 'Définition de la facette', 'data-arrows': true });
-    const KEY = ['Utile', 'Accessible', 'Désirable']; // facettes ouvertes à l'oral
+    const KEY = ['Utile', 'Accessible', 'Désirable']; // facettes à explorer en premier
     const opened = new Set(); let current = -1, all = false; const hexes = [];
     const art = f => h('article', {}, h('h3', { text: f.nom }), h('p', { text: f.def }), h('p', { class: 'ex', text: 'Exemple : ' + f.ex[0].toLowerCase() + f.ex.slice(1) }));
     const draw = () => {
@@ -2342,7 +2494,7 @@ const IMAGES_INTEGREES = {
       svg.append(g); hexes.push(g);
     });
     const allBtn = h('button', { type: 'button', class: 'btn', onclick: () => { all = !all; if (all) data.forEach((_, k) => opened.add(k)); draw(); } }, h('span', {}));
-    el.append(svg, h('div', { class: 'honey-side' }, panel, h('div', { class: 'honey-foot' }, allBtn, h('p', { class: 'note', text: 'Contour épais : les trois facettes qu’on ouvre aujourd’hui.' }))));
+    el.append(svg, h('div', { class: 'honey-side' }, panel, h('div', { class: 'honey-foot' }, allBtn, h('p', { class: 'note', text: 'Contour épais : trois facettes à explorer en premier.' }))));
     draw();
   }
 
@@ -2471,15 +2623,16 @@ const IMAGES_INTEGREES = {
       const draw = () => {
         val.textContent = open ? fr(a.montant) : '?'; det.textContent = fr(open ? a.detail : 'Devinez, puis révélez');
         b.setAttribute('aria-pressed', String(open));
-        b.setAttribute('aria-label', fr(a.pays + ' : ' + (open ? 'jusqu’à ' + a.montant + ', ' + a.detail : 'révéler l’amende maximale')));
+        b.setAttribute('aria-label', fr(a.pays + ' : ' + (open ? 'jusqu’à ' + a.montant + ', ' + a.detail : 'révéler l’exemple de sanction')));
       };
       b.addEventListener('click', () => { open = !open; draw(); });
       cards.push(() => { open = true; draw(); }); draw(); grid.append(b);
     });
     el.append(
-      h('div', { class: 'fines-head' }, h('h3', { text: 'Amende maximale chez nos voisins, e-commerce compris' }), btn('Tout révéler', () => cards.forEach(f => f()))),
+      h('div', { class: 'fines-head' }, h('h3', { text: 'Exemples de sanctions nationales, e-commerce compris' }), btn('Tout révéler', () => cards.forEach(f => f()))),
       grid,
-      h('p', { class: 'note', text: 'Montants relevés en 2025. Irlande : jusqu’à 18 mois de prison. Exemption : microentreprises de services.' }));
+      h('p', { class: 'note', text: 'Montants maximaux, selon l’infraction et le régime applicable, relevés dans les textes nationaux en octobre 2026. Irlande : 60 000 € ou 18 mois de prison. Italie : jusqu’à 5 % du chiffre d’affaires pour certains acteurs. Exemption : microentreprises de services.' }),
+      h('p', { class: 'src-ligne' }, CONFIG.sourcesAmendes.map(x => h('a', { class: 'src', href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))));
   }
 
   /* --- calque de chaleur fictif --- */
@@ -2548,7 +2701,7 @@ const IMAGES_INTEGREES = {
     el.append(
       h('div', { class: 'panel' }, h('div', { class: 'perf-bar' }, h('h3', { text: 'Vraie attente' }), h('div', { class: 'perf-ctl' }, seg, btn('Relancer', load, '', 'reset'))), view),
       h('div', { class: 'panel' }, h('div', { class: 'perf-bar' }, h('h3', { text: 'Attente fabriquée' }), btn('Lancer la connexion', run, 'primary', 'play')),
-        h('p', { class: 'perf-tags' }, h('span', { class: 'tag', text: 'Temps réel : instantané' }), h('span', { class: 'tag', text: 'Exemple documenté : TurboTax' })),
+        h('p', { class: 'perf-tags' }, h('span', { class: 'tag', text: 'Démonstration fictive' }), h('span', { class: 'tag', text: 'Inspirée d’un exemple documenté : TurboTax' })),
         h('ol', { class: 'wait-steps', 'aria-live': 'polite' }, lis), h('div', { class: 'meter', style: 'height:20px', 'aria-hidden': 'true' }, bar)));
     hooks[at(el)] = { enter: load, leave() { clearTimeout(t1); t2.forEach(clearTimeout); } };
   }

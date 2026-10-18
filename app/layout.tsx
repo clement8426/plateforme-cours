@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
 import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/next';
 import Avatar from '@/composants/Avatar';
 import BoutonContraste from '@/composants/BoutonContraste';
 import BoutonTheme from '@/composants/BoutonTheme';
@@ -61,7 +62,7 @@ export default function Racine({ children }: { children: React.ReactNode }) {
         </header>
         <main id="contenu">{children}</main>
         <footer className="pied">
-          <p>Libre d’accès, sans compte et sans suivi.&nbsp;Votre progression reste sur cet appareil.</p>
+          <p>Libre d’accès, sans compte et sans cookie.&nbsp;Votre progression reste sur cet appareil. Seules des statistiques de visite anonymes sont comptées.</p>
           <p>
             Le Labo, par Clément Bastien.{' '}
             <a href="https://github.com/clement8426/le-labo" target="_blank" rel="noreferrer">Les exercices sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span></a>
@@ -70,6 +71,8 @@ export default function Racine({ children }: { children: React.ReactNode }) {
           </p>
         </footer>
         <EnregistrementPwa />
+        {/* Statistiques de visite de Vercel : anonymes, sans cookie. Elles ne comptent que sur Vercel, une fois Web Analytics activé dans le projet. */}
+        <Analytics />
       </body>
     </html>
   );

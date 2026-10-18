@@ -1,7 +1,7 @@
 # Plateforme de cours
 
 Le Labo, la plateforme de cours de Clément Bastien : diapos et démonstrations interactives, rangées par thème. Les exercices à refaire chez soi sont dans un dépôt GitHub à part ([ux-ia-exercices](https://github.com/clement8426/ux-ia-exercices)).
-Site **entièrement statique** : pas de compte, pas de base de données, aucune donnée personnelle collectée.
+Site **entièrement statique** : pas de compte, pas de base de données, pas de cookie. Seules des statistiques de visite anonymes sont comptées, par Vercel Web Analytics (sans cookie ni donnée personnelle ; à activer dans le projet Vercel, onglet Analytics).
 Il s'installe comme une application (PWA) et les pages déjà consultées restent lisibles hors connexion.
 
 Next.js 16, export statique. Polices Bricolage Grotesque et Instrument Sans, servies par le site (aucune requête vers Google).
@@ -110,6 +110,12 @@ Une page par démonstration, `/ux/ux-ia/demos/<slug>/` : le déroulé à suivre 
 Les anciennes adresses (`/exercices/`, `/comparer/formulaire-adresse/`) redirigent vers les nouvelles. Le contenu est dans `src/contenu/catalogue.ts` (déroulé, à retenir, dossier de l'exercice).
 
 Les diapos s'ouvrent à une diapo précise avec `?diapo=22`.
+
+### Sources et dates
+
+- **Chaque chiffre ou fait cité doit avoir une source.** Dans une présentation, `CONFIG.sources` associe l'identifiant d'une diapo (`data-key`) à une liste `{ t: nom court, u: adresse }` : les liens « source » s'affichent en haut de la diapo, avec une flèche. Les passages très précis (la frise des types d'IA) ont aussi une pastille « source » dans le texte.
+- **Une source se vérifie avant d'être citée** : on ouvre la page, on relit le chiffre. Les pages qui bloquent les robots (erreur 403) se vérifient dans un navigateur.
+- **La date de dernière modification** d'un cours est le champ `misAJour` (AAAA-MM-JJ) du catalogue. Elle s'affiche sur la page du cours et au-dessus des diapos, avec un rappel : certaines informations peuvent être datées, la curiosité est le meilleur allié. À mettre à jour à chaque modification d'un cours.
 
 ### La comparaison du formulaire
 

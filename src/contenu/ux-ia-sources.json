@@ -25,17 +25,17 @@
     {
       "terme": "SaaS",
       "nom": "SaaS (Software as a Service)",
-      "def": "Un logiciel utilisé en ligne, sur abonnement, sans rien installer.",
+      "def": "Un logiciel fourni comme service et accessible par le réseau, généralement sur abonnement. Il s’utilise dans un navigateur ou avec une application installée.",
       "cle": "produits"
     },
     {
       "terme": "Activation",
-      "def": "Le moment où un nouvel utilisateur obtient son premier résultat utile. Elle prédit l’abonnement.",
+      "def": "L’étape où un nouvel utilisateur obtient une première valeur du produit. Son lien avec la rétention ou le paiement est à vérifier.",
       "cle": "produits"
     },
     {
       "terme": "Rétention",
-      "def": "La part des utilisateurs qui reviennent après 1 jour, 7 jours, 30 jours.",
+      "def": "La proportion d’un groupe d’utilisateurs qui réalise de nouveau une action définie, après une période donnée.",
       "cle": "hotjar"
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       "terme": "Design system",
-      "def": "Les règles visuelles partagées d’un produit (couleurs, polices, rayons, espacements), rangées en variables réutilisables.",
+      "def": "Les règles, composants et modèles réutilisables qui rendent un produit cohérent. Les variables (couleurs, polices, rayons, espacements) en sont les fondations.",
       "cle": "design-system"
     },
     {
@@ -66,7 +66,7 @@
     },
     {
       "terme": "Loi de Hick",
-      "def": "Plus il y a de choix, plus la décision prend du temps.",
+      "def": "À conditions comparables, plus il y a d’options à examiner, plus la décision peut prendre du temps.",
       "cle": "hick"
     },
     {
@@ -81,7 +81,7 @@
     },
     {
       "terme": "Texte alternatif",
-      "def": "Description d’une image, lue par les lecteurs d’écran et affichée si l’image ne charge pas.",
+      "def": "Description d’une image informative, lue par les lecteurs d’écran. Une image décorative reçoit un texte alternatif vide, pour être ignorée.",
       "cle": "accessibilite"
     },
     {
@@ -119,7 +119,7 @@
     {
       "terme": "MCP",
       "nom": "MCP (Model Context Protocol)",
-      "def": "Une prise standard qui branche un outil (navigateur, Figma, Clarity…) sur une IA, pour qu’elle l’utilise directement.",
+      "def": "Une prise standard qui branche un outil (navigateur, Figma, outil d’analyse…) sur une IA, pour qu’elle l’utilise directement.",
       "cle": "mcp"
     },
     {
@@ -195,14 +195,54 @@
       "url": "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite"
     },
     {
-      "titre": "Amendes par pays",
-      "source": "Fieldfisher, 2025",
-      "url": "https://www.fieldfisher.com/en/insights/understanding-the-european-accessibility-act-risks-of-non-compliance-and-key-authorities"
+      "titre": "Loi allemande BFSG, § 37 : les amendes",
+      "source": "gesetze-im-internet.de",
+      "url": "https://www.gesetze-im-internet.de/bfsg/__37.html"
+    },
+    {
+      "titre": "Loi autrichienne BaFG, § 36 : les sanctions",
+      "source": "RIS, Autriche",
+      "url": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316"
+    },
+    {
+      "titre": "Accessibilité : les sanctions en Italie",
+      "source": "AgID, FAQ",
+      "url": "https://accessibilita.agid.gov.it/domande-frequenti/"
+    },
+    {
+      "titre": "Les règles irlandaises d’accessibilité (S.I. 636/2023)",
+      "source": "DLA Piper, 2025",
+      "url": "https://www.dlapiper.com/en/insights/publications/2025/10/navigating-the-irish-accessibility-regulations"
     },
     {
       "titre": "Révision partielle de la LHand",
       "source": "Confédération suisse, BFEH",
       "url": "https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand"
+    },
+    {
+      "titre": "Claude Pro : prix et limites",
+      "source": "Anthropic",
+      "url": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan"
+    },
+    {
+      "titre": "ChatGPT Plus et Codex : prix et limites",
+      "source": "OpenAI",
+      "url": "https://learn.chatgpt.com/docs/pricing"
+    },
+    {
+      "titre": "Pourquoi cinq utilisateurs suffisent pour un test d’utilisabilité",
+      "source": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/"
+    },
+    {
+      "titre": "Contraste des éléments graphiques, critère 1.4.11",
+      "source": "W3C, WCAG",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+    },
+    {
+      "titre": "Contenu non textuel, critère 1.1.1",
+      "source": "W3C, WCAG",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
     },
     {
       "titre": "Pa11y, audit d’accessibilité",
@@ -225,11 +265,6 @@
       "url": "https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/"
     },
     {
-      "titre": "Robinhood retire ses confettis",
-      "source": "CNBC, 2021",
-      "url": "https://www.cnbc.com/2021/03/31/robinhood-gets-rid-of-confetti-feature-amid-scrutiny-over-gamification.html"
-    },
-    {
       "titre": "Model Context Protocol, la documentation",
       "source": "modelcontextprotocol.io",
       "url": "https://modelcontextprotocol.io/"
@@ -243,11 +278,6 @@
       "titre": "Chrome DevTools MCP",
       "source": "Google, ChromeDevTools",
       "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
-    },
-    {
-      "titre": "Le serveur MCP de Microsoft Clarity",
-      "source": "Microsoft Clarity",
-      "url": "https://clarity.microsoft.com/blog/introducing-the-microsoft-clarity-mcp-server-a-smarter-way-to-fetch-analytics-with-ai/"
     },
     {
       "titre": "Unlighthouse : Lighthouse sur tout un site",
