@@ -114,7 +114,7 @@ const uxIa: Cours = {
       scene: 'traverse',
       modeEmploi: [
         'Donnez le fichier de l’exercice à votre agent : il prépare Labo UX et démarre Traverse sur votre ordinateur.',
-        'Choisissez une sortie, renseignez des coordonnées fictives et essayez d’envoyer une demande. Notez ce qui vous gêne.',
+        'Ouvrez l’adresse donnée par l’agent et suivez les quatre actions de l’étape 2 ci-dessous. Notez ce que vous attendiez et ce qui se passe.',
         'Confirmez le périmètre avec l’agent, lancez un audit sans correction et choisissez trois problèmes appuyés par des preuves.',
       ],
       aRetenir: [

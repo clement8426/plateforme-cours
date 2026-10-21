@@ -175,7 +175,11 @@ dans une session conservée et ouvre son adresse dans le navigateur.
 L’adresse prévue est http://127.0.0.1:4192. Si ce port est occupé, vérifie d’abord
 quel service l’utilise : ne ferme pas un processus inconnu. Réutilise la bonne
 instance ou choisis un autre port et adapte uniquement le plan d’exécution de
-l’audit, hors du code du site. Donne-moi l’adresse réellement démarrée.
+l’audit, hors du code du site. Vérifie que cette adresse répond et affiche bien
+Traverse avant de me la donner. Ouvre-la dans le navigateur et fournis un lien
+cliquable vers l’adresse réellement démarrée. Ne me renvoie pas vers un bouton
+du cours qui supposerait un port fixe. Si l’installation ou le démarrage échoue,
+explique le blocage ; ne me demande pas de commencer un parcours indisponible.
 
 Laisse-moi d’abord essayer le parcours : choisir une sortie, saisir Alex Exemple,
 alex@example.test et 0600000000, puis essayer d’envoyer la demande et d’atteindre

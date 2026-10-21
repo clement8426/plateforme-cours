@@ -299,6 +299,7 @@ img { display: block; max-width: 100%; height: auto; }
 .traverse-exercice details[open] summary { margin-bottom: 16px; }
 .traverse-statut:empty { display: none; }
 .traverse-exercice a { overflow-wrap: anywhere; }
+.traverse-exercice ol { display: grid; gap: 14px; padding-left: 24px; }
 @media (max-width: 760px) { .traverse-intro { grid-template-columns: 1fr; } }
 .demo-bas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: clamp(32px, 4vw, 56px); }
 .encart { display: grid; gap: 12px; align-content: start; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }

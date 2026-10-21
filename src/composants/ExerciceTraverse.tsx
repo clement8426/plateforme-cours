@@ -25,8 +25,9 @@ export default function ExerciceTraverse({ cours }: { cours: string }) {
       <section className="traverse-intro" aria-labelledby="traverse-mission">
         <div className="encart">
           <p className="avis-titre">Votre mission</p>
-          <h2 id="traverse-mission">Choisir une sortie et envoyer une demande</h2>
-          <p>Le site Traverse est joli, mais plusieurs obstacles gênent son utilisation. Essayez d’atteindre la confirmation. Notez ce qui vous bloque, vous surprend ou vous fait attendre.</p>
+          <h2 id="traverse-mission">Repérer trois obstacles en demandant une sortie</h2>
+          <p>Imaginez que vous souhaitez participer à une sortie nature. Choisissez une offre et essayez d’envoyer vos coordonnées, comme une personne qui découvre le site.</p>
+          <p><strong>Le résultat attendu de l’exercice :</strong> trois observations sur ce qui vous gêne, à comparer ensuite avec l’audit de l’IA. Le site contient des erreurs volontaires : si vous êtes bloqué, notez-le. Vous n’avez pas à réparer le site ni à réussir l’envoi.</p>
           <p><strong>Données fictives uniquement :</strong> Alex Exemple, alex@example.test et 0600000000. Aucune réservation, aucun paiement, aucun e-mail réel.</p>
         </div>
         <figure className="traverse-apercu">
@@ -47,12 +48,15 @@ export default function ExerciceTraverse({ cours }: { cours: string }) {
       </section>
 
       <section className="encart" aria-labelledby="traverse-essayer">
-        <h2 id="traverse-essayer">2. Essayez avant de lire l’audit</h2>
-        <p>Une fois le site démarré par l’agent, choisissez une sortie, remplissez le formulaire et essayez d’envoyer la demande. Refaites quelques actions avec Tabulation et Entrée. Relevez trois obstacles sans chercher les réponses dans le code.</p>
-        <div className="actions">
-          <a className="bouton-secondaire" href="http://127.0.0.1:4192/" target="_blank" rel="noreferrer">Ouvrir Traverse sur mon ordinateur<span className="visuellement-cache"> (nouvel onglet)</span></a>
-        </div>
-        <p>Ce lien fonctionne uniquement après le démarrage local. Si le port est déjà utilisé, ouvrez l’adresse donnée par votre agent.</p>
+        <h2 id="traverse-essayer">2. Jouez le visiteur pendant 5 minutes</h2>
+        <p><strong>Avant de commencer :</strong> attendez que votre agent confirme le démarrage de Traverse. Ouvrez le lien qu’il vous donne : l’adresse et le port peuvent varier selon l’ordinateur. Si vous n’avez pas ce lien, dites-lui : <strong>« Démarre Traverse et donne-moi son adresse vérifiée. »</strong></p>
+        <ol>
+          <li>Dans Traverse, cliquez sur <strong>« Trouver mon échappée »</strong>, puis sur <strong>« Cliquez ici »</strong> sous une sortie de votre choix.</li>
+          <li>Dans le panneau qui s’ouvre, saisissez <strong>Alex Exemple</strong>, <strong>alex@example.test</strong> et <strong>0600000000</strong>.</li>
+          <li>Cliquez sur <strong>« Continuer »</strong>, regardez ce qui s’affiche, puis essayez <strong>« OK »</strong>. Si une erreur apparaît ou si rien ne confirme l’envoi, notez ce qui se passe et arrêtez cet essai.</li>
+          <li>Écrivez trois observations : <strong>ce que vous avez fait, ce que vous attendiez et ce qui s’est réellement passé</strong>. Si vous en avez moins, gardez vos observations : l’audit aidera à compléter.</li>
+        </ol>
+        <p>Si vous avez le temps, refaites quelques actions avec Tabulation et Entrée. Pour l’instant, utilisez seulement le site : ne consultez ni le code ni les réponses du formateur.</p>
       </section>
 
       <section className="encart" aria-labelledby="traverse-auditer">
