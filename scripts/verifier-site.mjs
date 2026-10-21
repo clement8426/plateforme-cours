@@ -130,10 +130,10 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.waitForLoadState('networkidle');
   verifier('page du cours : 3 parties et 3 démonstrations', (await p.locator('.partie').count()) === 3 && (await p.locator('.demo-carte').count()) === 3);
   verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia');
-  await p.getByRole('link', { name: /Diapo 23/ }).click();
-  await p.waitForURL('**/diapos/?diapo=23');
+  await p.getByRole('link', { name: /Diapo 22/ }).click();
+  await p.waitForURL('**/diapos/?diapo=22');
   await p.waitForTimeout(800);
-  verifier('« Diapo 23 » ouvre les diapos à la diapo 23', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#23'));
+  verifier('« Diapo 22 » ouvre les diapos à la diapo 22', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#22'));
 
   // « Puis-je l'envoyer à une IA ? » : le CV (Non, Oui, Oui) est orange ; répondre Oui d'emblée dit quelle question est ratée, et pourquoi
   await p.goto(base + '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/');
@@ -229,9 +229,9 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const presentation = await ctx.newPage();
   const erreursDiapos = [];
   presentation.on('pageerror', (e) => erreursDiapos.push(e.message));
-  await presentation.goto(base + '/diapos/ux-ia/#35');
+  await presentation.goto(base + '/diapos/ux-ia/#34');
   await presentation.waitForTimeout(500);
-  verifier('diapos : 48 slides et initialisation sans erreur JavaScript', (await presentation.locator('.slide').count()) === 48 && erreursDiapos.length === 0, erreursDiapos.join(' | '));
+  verifier('diapos : 47 slides et initialisation sans erreur JavaScript', (await presentation.locator('.slide').count()) === 47 && erreursDiapos.length === 0, erreursDiapos.join(' | '));
   verifier('diapos : lien de pratique vers le nouvel exercice', new URL(await presentation.locator('[data-case="SITE_URL"] a').getAttribute('href'), base).pathname === '/ux/ux-ia/demos/labo-ux-demo/');
   await presentation.close();
 

@@ -171,6 +171,11 @@
   ],
   "references": [
     {
+      "titre": "Cookies et suivi en ligne : cadre suisse",
+      "source": "PFPDT, 2026",
+      "url": "https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques"
+    },
+    {
       "titre": "Cache HTTP : éviter les téléchargements inutiles",
       "source": "Google, web.dev",
       "url": "https://web.dev/articles/http-cache"

@@ -436,7 +436,7 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .fitts-res .row { display: grid; gap: 6px; }
 .fitts-res .row span { font-size: var(--fs-min); font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
 .fitts-res .meter i.small { background: var(--accent-fill); } .fitts-res .meter i.big { background: var(--p2-fill); }
-/* 15 à 17 : accessibilité (obstacles, contraste, audit d'une page) */
+/* 14 à 16 : accessibilité (obstacles, contraste, audit d'une page) */
 .acc-cards { height: 100%; align-content: stretch; grid-template-rows: minmax(0, 1fr); }
 .acc-card { display: flex; flex-direction: column; gap: 18px; padding: 30px 38px 32px; }
 .acc-card h3 { font: 600 var(--fs-lead)/1.12 var(--font-title); letter-spacing: -.01em; }
@@ -895,7 +895,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <main id="stage" tabindex="-1" aria-label="Présentation UX × IA">
     <h1 class="sr">UX × IA : mini-formation de Clément Bastien</h1>
     <div id="slides">
-<!-- ================= PARTIE 1 : THÉORIE (slides 1 à 22) ================= -->
+<!-- ================= PARTIE 1 : THÉORIE (slides 1 à 21) ================= -->
 
 <section class="slide s-cover" data-part="1" data-key="titre">
   <h2 class="title">UX × IA : rendre un produit pratique, puis le corriger avec l’IA</h2>
@@ -1032,18 +1032,6 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li class="chip"><i data-icon="user"></i>Personas</li>
       <li class="chip"><i data-icon="list"></i>Questionnaires</li>
     </ul>
-  </div>
-</section>
-
-<section class="slide" data-part="1" data-key="modeles">
-  <h2 class="title">Il n’existe pas de recette universelle en UX</h2>
-  <div class="body stack-l">
-    <p class="statement">Des modèles pour explorer l’expérience,<br>pas une recette à appliquer partout.</p>
-    <article class="card" data-step="1">
-      <h3>Le Honeycomb de Peter Morville</h3>
-      <p class="lead">Un modèle à sept facettes, présenté juste après.</p>
-    </article>
-    <p class="note" data-step="2">Ces repères s’adaptent au produit, à sa cible et au contexte d’utilisation.</p>
   </div>
 </section>
 
@@ -1234,7 +1222,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <li data-step="1">Disponible une fois le site en ligne.</li>
         <li data-step="1">SaaS et application : des outils d’analyse de produit mesurent l’activation et la rétention.</li>
         <li data-step="2">Elle aide à repérer où approfondir. Les comportements observés ne prouvent pas leur cause.</li>
-        <li data-step="3">Cookies de suivi : prévoir un choix clair « Accepter » ou « Refuser » avant l’activation.</li>
+        <li data-step="3">Suisse (LPD + LTC) : informer et permettre l’opposition au suivi ; consentement préalable selon les traitements.</li>
       </ul>
     </div>
     <div class="c7">
@@ -1292,7 +1280,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 23 à 34) ================= -->
+<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 22 à 33) ================= -->
 
 <section class="slide" data-part="2" data-key="agent">
   <h2 class="title">Conversation et agent : conseiller ou utiliser des outils</h2>
@@ -1469,7 +1457,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 3 : PRATIQUE (slides 35 à 46) ================= -->
+<!-- ================= PARTIE 3 : PRATIQUE (slides 34 à 45) ================= -->
 
 <section class="slide" data-part="3" data-key="choix">
   <h2 class="title">Labo UX Démo : un joli site qui gêne</h2>
@@ -1739,7 +1727,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= ANNEXES : lexique, références (slides 47 à 48) ================= -->
+<!-- ================= ANNEXES : lexique, références (slides 46 à 47) ================= -->
 
 
 <section class="slide" data-part="4" data-key="lexique">
@@ -1779,19 +1767,19 @@ const CONFIG = {
   policesUrl: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap', // feuille Google Fonts du thème ; les familles sont dans les variables CSS --font-title et --font-body
 
   minutes: [
-    0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 1.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (15 à 17 : accessibilité)
-    2, 1.5, 2.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, // slides 23 à 34 : l'IA, bloc par bloc
-    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 35 à 46 : Traverse, puis formulaire en bonus
-    0, 0 // slides 47 à 48 : annexes, hors budget
+    0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 21 : théorie (14 à 16 : accessibilité)
+    2, 1.5, 2.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, // slides 22 à 33 : l'IA, bloc par bloc
+    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 34 à 45 : Traverse, puis formulaire en bonus
+    0, 0 // slides 46 à 47 : annexes, hors budget
   ],
   parties: [
-    { nom: 'Théorie', de: 1, a: 22 },
-    { nom: 'L’IA, bloc par bloc', de: 23, a: 34 },
-    { nom: 'Pratique', de: 35, a: 46 },
-    { nom: 'Annexes', de: 47, a: 48, hors: true } // hors du cours : lexique et références
+    { nom: 'Théorie', de: 1, a: 21 },
+    { nom: 'L’IA, bloc par bloc', de: 22, a: 33 },
+    { nom: 'Pratique', de: 34, a: 45 },
+    { nom: 'Annexes', de: 46, a: 47, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [43, 44, 45], // formulaire en bonus, après l’audit de Traverse
+  bonus: [42, 43, 44], // formulaire en bonus, après l’audit de Traverse
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -2042,6 +2030,7 @@ const CONFIG = {
 
   // Références (dernière slide), neuf par page. Ajoute les tiennes ici : { titre, source, url }.
   references: [
+    {"titre":"Cookies et suivi en ligne : cadre suisse","source":"PFPDT, 2026","url":"https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques"},
     {
       "titre": "Cache HTTP : éviter les téléchargements inutiles",
       "source": "Google, web.dev",
@@ -2264,7 +2253,7 @@ const CONFIG = {
     }
   ],
 
-  // Honeycomb de Peter Morville (slide 10)
+  // Honeycomb de Peter Morville (slide 9)
   honeycomb: [
     { nom: 'Utile', def: 'Répond à un besoin ou un désir réel du client, qu’il soit pratique, fonctionnel ou lié au plaisir d’achat.', ex: 'Ballons de baudruche pour un anniversaire.' },
     { nom: 'Utilisable', def: 'L’utilisateur arrive à faire ce qu’il veut sans effort excessif, sans se battre avec l’interface.', ex: 'Un bouton « ajouter au panier » qui réagit tout de suite.' },
@@ -2277,6 +2266,7 @@ const CONFIG = {
 
   // Vue présentateur : trois mots-clés par slide
   sources: {
+    "hotjar": [{ "t": "PFPDT : cookies en Suisse", "u": "https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques" }],
     "abandon": [
       {
         "t": "Baymard Institute",
