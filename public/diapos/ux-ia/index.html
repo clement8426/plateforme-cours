@@ -1262,47 +1262,47 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <!-- ================= PARTIE 2 : L’IA, BLOC PAR BLOC (slides 23 à 31) ================= -->
 
 <section class="slide" data-part="2" data-key="agent">
-  <h2 class="title">L’IA peut vous aider sur chacun des six blocs</h2>
+  <h2 class="title">Six blocs, une boîte à outils</h2>
   <div class="body" data-lab="intro"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="cles">
-  <h2 class="title">Donner un contexte, un objectif et des outils</h2>
+  <h2 class="title">Connecter les outils à son agent</h2>
   <div class="body" data-lab="context"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-design-system">
-  <h2 class="title">Bloc 1 · L’IA compare la cohérence de l’interface</h2>
+  <h2 class="title">Bloc 1 · Comparer les styles avec DevTools</h2>
   <div class="body" data-lab="design"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-friction">
-  <h2 class="title">Bloc 2 · L’IA explore un parcours et ses obstacles</h2>
+  <h2 class="title">Bloc 2 · Tester un parcours avec Playwright</h2>
   <div class="body" data-lab="journey"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-accessibilite">
-  <h2 class="title">Bloc 3 · L’IA aide à contrôler l’accessibilité</h2>
+  <h2 class="title">Bloc 3 · Contrôler les états avec axe</h2>
   <div class="body" data-lab="a11y"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-comportement">
-  <h2 class="title">Bloc 4 · L’IA analyse les données d’usage</h2>
+  <h2 class="title">Bloc 4 · Analyser avec Hotjar / Contentsquare</h2>
   <div class="body" data-lab="behavior"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-microcopie">
-  <h2 class="title">Bloc 5 · L’IA propose des textes plus utiles</h2>
+  <h2 class="title">Bloc 5 · Relever et reformuler les textes</h2>
   <div class="body" data-lab="copy"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-performance">
-  <h2 class="title">Bloc 6 · L’IA s’appuie sur des mesures de performance</h2>
+  <h2 class="title">Bloc 6 · Mesurer avec Lighthouse et DevTools</h2>
   <div class="body" data-lab="lighthouse"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-attention">
-  <h2 class="title">Après les six blocs : auditer, corriger, revérifier</h2>
+  <h2 class="title">Choisir son bloc, conserver ses preuves</h2>
   <div class="body" data-lab="workflow"></div>
 </section>
 
@@ -1879,11 +1879,31 @@ const CONFIG = {
 
   // Références (dernière slide), neuf par page. Ajoute les tiennes ici : { titre, source, url }.
   references: [
-    {"titre":"Cécité, malvoyance et surdicécité : calculs 2019","source":"UCBA, publication 2020","url":"https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"},
-    {"titre":"Personnes sourdes et malentendantes en Suisse","source":"Fédération suisse des sourds, fiche sans date","url":"https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"},
-    {"titre":"Alternatives des contenus audio et vidéo","source":"W3C WAI","url":"https://www.w3.org/WAI/media/av/planning/"},
-    {"titre":"Accessibilité dans l’administration fédérale","source":"BFEG","url":"https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"},
-    {"titre":"Cookies et suivi en ligne : cadre suisse","source":"PFPDT, 2026","url":"https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques"},
+    {
+      "titre": "Cécité, malvoyance et surdicécité : calculs 2019",
+      "source": "UCBA, publication 2020",
+      "url": "https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"
+    },
+    {
+      "titre": "Personnes sourdes et malentendantes en Suisse",
+      "source": "Fédération suisse des sourds, fiche sans date",
+      "url": "https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"
+    },
+    {
+      "titre": "Alternatives des contenus audio et vidéo",
+      "source": "W3C WAI",
+      "url": "https://www.w3.org/WAI/media/av/planning/"
+    },
+    {
+      "titre": "Accessibilité dans l’administration fédérale",
+      "source": "BFEG",
+      "url": "https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"
+    },
+    {
+      "titre": "Cookies et suivi en ligne : cadre suisse",
+      "source": "PFPDT, 2026",
+      "url": "https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques"
+    },
     {
       "titre": "Cache HTTP : éviter les téléchargements inutiles",
       "source": "Google, web.dev",
@@ -2103,6 +2123,61 @@ const CONFIG = {
       "titre": "Lighthouse : chargements, états et interactions",
       "source": "GoogleChrome, documentation Lighthouse",
       "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md"
+    },
+    {
+      "titre": "MCP Contentsquare : configuration et capacités",
+      "source": "Contentsquare",
+      "url": "https://contentsquare.com/platform/capabilities/mcp-server/"
+    },
+    {
+      "titre": "Hotjar : catalogue des cours",
+      "source": "Hotjar Learning",
+      "url": "https://learning.hotjar.com/page/course-catalog"
+    },
+    {
+      "titre": "Learning Hub actuel",
+      "source": "Contentsquare",
+      "url": "https://learn.contentsquare.com/"
+    },
+    {
+      "titre": "Heatmaps : présentation et visuel",
+      "source": "Contentsquare",
+      "url": "https://contentsquare.com/platform/capabilities/heatmaps/"
+    },
+    {
+      "titre": "axe dans les tests Playwright",
+      "source": "Microsoft Playwright",
+      "url": "https://playwright.dev/docs/accessibility-testing"
+    },
+    {
+      "titre": "Axe MCP Server",
+      "source": "Deque",
+      "url": "https://www.deque.com/axe/mcp-server/"
+    },
+    {
+      "titre": "Chrome DevTools MCP : référence des outils",
+      "source": "Google Chrome DevTools",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/tool-reference.md"
+    },
+    {
+      "titre": "Trace Viewer",
+      "source": "Microsoft Playwright",
+      "url": "https://playwright.dev/docs/trace-viewer"
+    },
+    {
+      "titre": "Network : requêtes, réponses et cache",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/network/overview"
+    },
+    {
+      "titre": "Performance : profils du navigateur",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/performance/overview"
+    },
+    {
+      "titre": "Console : messages et débogage",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/console/"
     }
   ],
 
@@ -2119,10 +2194,38 @@ const CONFIG = {
 
   // Vue présentateur : trois mots-clés par slide
   sources: {
-    "publics-accessibilite": [{"t":"UCBA : calculs 2019","u":"https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"},{"t":"FSS : estimation","u":"https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"}],
-    "ia-accessibilite": [{"t":"W3C : évaluer","u":"https://www.w3.org/WAI/test-evaluate/"},{"t":"Audio / vidéo","u":"https://www.w3.org/WAI/media/av/planning/"}],
-    "ia-microcopie": [{"t":"Messages de formulaire","u":"https://www.w3.org/WAI/tutorials/forms/notifications/"}],
-    "hotjar": [{ "t": "PFPDT : cookies en Suisse", "u": "https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques" }],
+    "publics-accessibilite": [
+      {
+        "t": "UCBA : calculs 2019",
+        "u": "https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"
+      },
+      {
+        "t": "FSS : estimation",
+        "u": "https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"
+      }
+    ],
+    "ia-accessibilite": [
+      {
+        "t": "axe et Playwright",
+        "u": "https://playwright.dev/docs/accessibility-testing"
+      },
+      {
+        "t": "Axe MCP",
+        "u": "https://www.deque.com/axe/mcp-server/"
+      }
+    ],
+    "ia-microcopie": [
+      {
+        "t": "Playwright MCP",
+        "u": "https://github.com/microsoft/playwright-mcp"
+      }
+    ],
+    "hotjar": [
+      {
+        "t": "PFPDT : cookies en Suisse",
+        "u": "https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques"
+      }
+    ],
     "abandon": [
       {
         "t": "Baymard Institute",
@@ -2148,7 +2251,10 @@ const CONFIG = {
       }
     ],
     "accessibilite": [
-      {"t":"Audio / vidéo","u":"https://www.w3.org/WAI/media/av/planning/"},
+      {
+        "t": "Audio / vidéo",
+        "u": "https://www.w3.org/WAI/media/av/planning/"
+      },
       {
         "t": "WCAG 1.1.1",
         "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
@@ -2183,7 +2289,10 @@ const CONFIG = {
       }
     ],
     "loi": [
-      {"t":"Administration fédérale","u":"https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"},
+      {
+        "t": "Administration fédérale",
+        "u": "https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"
+      },
       {
         "t": "BFEH",
         "u": "https://www.ebgb.admin.ch/fr/politique-du-handicap-2023-2026"
@@ -2223,12 +2332,16 @@ const CONFIG = {
     ],
     "cles": [
       {
+        "t": "MCP : outils",
+        "u": "https://modelcontextprotocol.io/docs/learn/server-concepts"
+      },
+      {
         "t": "API",
         "u": "https://developer.mozilla.org/en-US/docs/Glossary/API"
       },
       {
-        "t": "MCP : les outils",
-        "u": "https://modelcontextprotocol.io/docs/learn/server-concepts"
+        "t": "MCP Contentsquare",
+        "u": "https://contentsquare.com/platform/capabilities/mcp-server/"
       }
     ],
     "ia-performance": [
@@ -2237,12 +2350,20 @@ const CONFIG = {
         "u": "https://developer.chrome.com/docs/lighthouse/overview"
       },
       {
-        "t": "Mesurer un parcours",
-        "u": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md"
+        "t": "MCP : outils et limites",
+        "u": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/tool-reference.md"
       },
       {
-        "t": "Retour pendant l’attente",
-        "u": "https://www.nngroup.com/articles/visibility-system-status/"
+        "t": "Network",
+        "u": "https://developer.chrome.com/docs/devtools/network/overview"
+      },
+      {
+        "t": "Performance",
+        "u": "https://developer.chrome.com/docs/devtools/performance/overview"
+      },
+      {
+        "t": "Console",
+        "u": "https://developer.chrome.com/docs/devtools/console/"
       }
     ],
     "form-photon": [
@@ -2257,16 +2378,48 @@ const CONFIG = {
     ],
     "agent": [
       {
-        "t": "Agents et outils",
-        "u": "https://developers.openai.com/api/docs/guides/agents"
+        "t": "Chrome DevTools MCP",
+        "u": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+      },
+      {
+        "t": "Playwright MCP",
+        "u": "https://github.com/microsoft/playwright-mcp"
       }
     ],
     "ia-design-system": [
+      {
+        "t": "MCP : référence des outils",
+        "u": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/tool-reference.md"
+      },
       {
         "t": "Styles calculés",
         "u": "https://developer.chrome.com/docs/devtools/css/reference"
       }
     ],
+    "ia-friction": [
+      {
+        "t": "Playwright MCP",
+        "u": "https://github.com/microsoft/playwright-mcp"
+      },
+      {
+        "t": "Trace Viewer",
+        "u": "https://playwright.dev/docs/trace-viewer"
+      }
+    ],
+    "ia-comportement": [
+      {
+        "t": "Hotjar / Contentsquare",
+        "u": "https://www.hotjar.com/homepage/"
+      },
+      {
+        "t": "MCP officiel",
+        "u": "https://contentsquare.com/platform/capabilities/mcp-server/"
+      },
+      {
+        "t": "Heatmaps",
+        "u": "https://contentsquare.com/platform/capabilities/heatmaps/"
+      }
+    ]
   },
   motsCles: [],
 
@@ -2276,16 +2429,16 @@ const CONFIG = {
     "accessibilite": "Rappel textuel uniquement : audio seul préenregistré = transcription ; vidéo avec paroles ou sons utiles = sous-titres synchronisés. Les informations visuelles essentielles absentes de la bande-son demandent une description adaptée. Les sous-titres automatiques sont à relire. alt vide pour une image décorative, alternative pertinente pour une image informative. Un lecteur d’écran peut annoncer un nom de fichier en l’absence d’alternative, mais ce comportement dépend du contexte.",
     "publics-accessibilite": "4,4 % : calculs UCBA pour 2019, publication 2020, p. 23 ; 377 000 personnes dont 57 000 avec surdicécité. Ce n’est pas le pourcentage de personnes bloquées sur le Web. Audition : fiche FSS non datée, environ un million de personnes malentendantes ; attribution et absence de millésime visibles. Pas de somme entre populations ni de projection à 2026. Les données OFS sur les limitations sévères utilisent une autre définition.",
     "loi": "Distinguer exigences du référentiel et obligations juridiques. En Suisse, eCH-0059 v3 : WCAG 2.1 AA pour l’administration fédérale. Le privé est visé par l’interdiction de discrimination et peut avoir des obligations spécifiques selon son secteur, ses contrats et ses marchés. La révision de la LHand n’est pas une règle déjà entrée en vigueur. EAA : certains produits/services destinés aux consommateurs de l’UE, avec exemptions et conditions ; les sanctions présentées concernent leurs régimes nationaux.",
-    "agent": "Introduction courte : conversation et agent sont des modes qui peuvent coexister. Les outils et autorisations déterminent ce que l’agent peut exécuter. Les six blocs constituent le fil conducteur ; la conversation fournit des pistes, les outils des observations à interpréter.",
-    "cles": "Trois contextes : site vitrine associatif, outil de congés, e-commerce. Faire préciser public, objectif observable, environnement et limites. Une consigne ne configure pas un outil. MCP présente les outils ; le serveur peut utiliser des API ou des outils locaux.",
-    "ia-design-system": "Mini-application de gestion, trois écrans et boutons Enregistrer de même rôle. Comparer lit réellement getComputedStyle ; Harmoniser agit seulement sur les éléments de la démo, puis les mesure à nouveau. Les différences doivent être confrontées à l’intention graphique. Aucun projet de l’apprenant n’est modifié.",
-    "ia-friction": "Parcours pédagogique d’inscription à une association. Saisir un prénom, continuer puis revenir : la saisie disparaît. Activer Conserver la saisie permet de comparer. Le journal énumère les étapes exécutées, pas des événements réels de production. Tester les blocages n’équivaut pas à représenter les utilisateurs.",
-    "ia-accessibilite": "Le contrôle button-name est réellement présent dans le rapport Lighthouse archivé. Les onglets Clavier et Audio/vidéo expliquent des vérifications à compléter, sans prétendre les avoir exécutées ni certifier la conformité. Les sources W3C sont conservées.",
-    "ia-comportement": "Cohorte pédagogique de newsletter, même période : 100 ouvertures, 60 validations, 30 confirmations. Dénominateurs explicites : 60/100, 30/100 et 30/60. Les données sont fictives ; aucune cause n’est démontrée. Aucune collecte ni connexion à Hotjar n’a lieu.",
-    "ia-microcopie": "Formulaire de contact associatif. Tester une adresse invalide, voir une reformulation, comparer deux tons. La validation utilise le champ email de cette démo ; le texte proposé décrit cette contrainte. Aucun e-mail ni aucune donnée ne sont envoyés.",
-    "ia-performance": "Rapport réel archivé de Traverse du 21 octobre 2026, Lighthouse 13.5.0, page d’entrée locale, mobile simulé 412×823, CPU ×4. Performance 73, accessibilité 76 ; FCP 1,1 s, LCP 86,0 s, TBT 170 ms, CLS 0. Le LCP élevé est la valeur du rapport, pas une durée garantie de visite. L’archive ne décrit pas le site corrigé actuel ni tout le tunnel. Mesurer à nouveau dans des conditions comparables. Les captures et JSON sont dans preuves/.",
-    "ia-attention": "Simulation locale : Audit en lecture seule ; débogage sur copie autorisée après audit, puis revérification. Deux constats sont simulés comme résolus, un point reste à évaluer manuellement. Aucune commande n’est exécutée et aucun fichier modifié depuis cette scène."
-}
+    "agent": "Six fiches autonomes accessibles en cliquant sur les cartes. Les outils sont nommés dès cette vue. Aucune installation ni connexion ne se produit dans le diaporama. Labo UX est un bonus présenté dans la pratique.",
+    "cles": "MCP présente des outils à un agent compatible ; il ne remplace pas toutes les API ni ne devine le parcours. Guides officiels de connexion par outil. Pour Contentsquare, activation administrateur et accès projet nécessaires. Ne pas installer un MCP sur chaque poste pendant les 19 minutes de présentation.",
+    "ia-design-system": "Fiche outil : comparer les styles calculés via Chrome DevTools MCP, notamment get_css_styles ou evaluate_script selon la version. Relever les mêmes rôles aux mêmes dimensions. Une variation n’est pas automatiquement une erreur.",
+    "ia-friction": "Playwright MCP pour les interactions et captures. Trace Viewer nécessite une trace effectivement enregistrée ; la session MCP seule ne garantit pas une trace ZIP. Définir un parcours sans achat ni envoi réel.",
+    "ia-accessibilite": "Trois voies nommées : axe-core intégré à un test Playwright ; axe DevTools dans le navigateur ; Axe MCP à configurer séparément. Les états doivent être ouverts avant le scan. Compléter par clavier, lecteur d’écran et évaluation humaine.",
+    "ia-comportement": "Hotjar a rejoint Contentsquare. Le MCP officiel Contentsquare documente tunnels, parcours, métriques et autres capacités selon les accès. Ne pas promettre un MCP Hotjar historique ni la lecture des heatmaps/replays via MCP. Visuel officiel de présentation Contentsquare, sans données du cours. Les données réelles exigent une collecte préexistante, licite et autorisée. Catalogue Hotjar vérifié HTTP 200 le 21 octobre 2026 ; certains cours exigent un compte.",
+    "ia-microcopie": "L’agent relève les vrais états via navigateur avant de reformuler. Exemple de champ obligatoire de contact ; pas de service magique dédié à la microcopie. Ne pas inventer une promesse fonctionnelle.",
+    "ia-performance": "Distinguer Lighthouse complet via DevTools ou CLI de lighthouse_audit du MCP : la référence officielle vérifiée le 21 octobre 2026 exclut la performance de cet appel. Utiliser les outils de trace pour celle-ci. Captures Google documentaires, pas des mesures du projet de l’apprenant. Archive Lighthouse réelle de Traverse du 21 octobre 2026, mobile simulé : performance 73, accessibilité 76, LCP 86,0 s ; une seule page dans son état historique. Cache HTTP observé côté navigateur distinct de Redis/SQL côté serveur.",
+    "ia-attention": "Choix de bloc avec navigation vers sa fiche. Cadrer puis mesurer ; toute correction se fait après validation et doit être revérifiée. Labo UX est un regroupement optionnel, présenté plus tard."
+  }
 };
 
 /* ---------- QR code : encodeur minimal (mode octet, correction M, versions 1 à 10) ---------- */

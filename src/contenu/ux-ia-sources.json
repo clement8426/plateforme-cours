@@ -414,6 +414,61 @@
       "titre": "Lighthouse : chargements, états et interactions",
       "source": "GoogleChrome, documentation Lighthouse",
       "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md"
+    },
+    {
+      "titre": "MCP Contentsquare : configuration et capacités",
+      "source": "Contentsquare",
+      "url": "https://contentsquare.com/platform/capabilities/mcp-server/"
+    },
+    {
+      "titre": "Hotjar : catalogue des cours",
+      "source": "Hotjar Learning",
+      "url": "https://learning.hotjar.com/page/course-catalog"
+    },
+    {
+      "titre": "Learning Hub actuel",
+      "source": "Contentsquare",
+      "url": "https://learn.contentsquare.com/"
+    },
+    {
+      "titre": "Heatmaps : présentation et visuel",
+      "source": "Contentsquare",
+      "url": "https://contentsquare.com/platform/capabilities/heatmaps/"
+    },
+    {
+      "titre": "axe dans les tests Playwright",
+      "source": "Microsoft Playwright",
+      "url": "https://playwright.dev/docs/accessibility-testing"
+    },
+    {
+      "titre": "Axe MCP Server",
+      "source": "Deque",
+      "url": "https://www.deque.com/axe/mcp-server/"
+    },
+    {
+      "titre": "Chrome DevTools MCP : référence des outils",
+      "source": "Google Chrome DevTools",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/tool-reference.md"
+    },
+    {
+      "titre": "Trace Viewer",
+      "source": "Microsoft Playwright",
+      "url": "https://playwright.dev/docs/trace-viewer"
+    },
+    {
+      "titre": "Network : requêtes, réponses et cache",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/network/overview"
+    },
+    {
+      "titre": "Performance : profils du navigateur",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/performance/overview"
+    },
+    {
+      "titre": "Console : messages et débogage",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/console/"
     }
   ]
 }

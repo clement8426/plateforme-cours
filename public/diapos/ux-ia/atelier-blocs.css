@@ -1,63 +1,58 @@
-/* Partie 2 : les mêmes six blocs, en vert, avec une explication et une manipulation. */
-.uxlab { display:flex; flex-direction:column; gap:22px; height:100%; min-height:0; }
-.uxlab[data-lab="intro"] { gap:16px; }
-[data-lab="intro"] .uxlab-panel { padding:24px; gap:14px; }
-[data-lab="intro"] .uxlab-panel p { font-size:28px; }
-[data-lab="intro"] .uxlab-intro { font-size:32px; }
-[data-lab="intro"] .uxlab-six p { padding:14px 20px; font-size:26px; }
-[data-lab="journey"] .uxlab-panel, [data-lab="behavior"] .uxlab-panel { gap:16px; padding:24px; }
-[data-lab="journey"] .uxlab-feedback, [data-lab="behavior"] .uxlab-feedback { font-size:27px; padding:16px 20px; }
-.uxlab-kicker { color:var(--accent-text); font-size:26px; font-weight:700; letter-spacing:.025em; }
-.uxlab-intro { font-size:36px; line-height:1.3; }
-.uxlab-split { display:grid; grid-template-columns:1.1fr .9fr; gap:30px; flex:1; min-height:0; }
-.uxlab-panel { padding:30px; border:2px solid var(--line); border-radius:var(--r-l); background:var(--surface); display:flex; flex-direction:column; gap:22px; min-width:0; min-height:0; }
-.uxlab-panel h3 { font:700 40px/1.12 var(--font-title); letter-spacing:-.02em; }
-.uxlab-panel p { font-size:31px; line-height:1.32; }
-.uxlab-panel .uxlab-small, .uxlab-small { font-size:26px; line-height:1.3; color:var(--muted); }
-.uxlab-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
-.uxlab button, .uxlab select { min-height:72px; border:2px solid var(--edge); border-radius:var(--r-btn); padding:14px 20px; background:var(--surface); font-size:28px; line-height:1.2; font-weight:600; }
-.uxlab button:hover { background:var(--accent-soft); }
-.uxlab button[aria-pressed="true"], .uxlab .uxlab-primary { background:var(--accent-fill); color:var(--on-accent); border-color:var(--accent-fill); }
-.uxlab button:disabled { cursor:default; opacity:.48; }
-.uxlab :is(button,input,select,a):focus-visible { outline:4px solid var(--text); outline-offset:5px; }
-.uxlab-feedback { padding:20px 24px; border-radius:var(--r-m); background:var(--accent-soft); font-size:29px; line-height:1.3; }
-.uxlab-feedback:empty, .uxlab-measure:empty { display:none; }
-.uxlab-foot { margin-top:auto; font-size:25px; color:var(--muted); line-height:1.3; }
-.uxlab-reset { margin-top:auto; flex-wrap:nowrap; gap:26px; }
-.uxlab-reset .uxlab-foot { margin:0; }
-.uxlab .uxlab-big { font:700 80px/1 var(--font-title); color:var(--accent-text); letter-spacing:-.04em; }
-.uxlab-measure { font:500 27px/1.35 ui-monospace,monospace; white-space:pre-line; }
-.uxlab-panel .uxlab-measure { font-size:26px; }
-.uxlab-six { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-.uxlab-six p { padding:18px 22px; background:var(--accent-soft); border-radius:16px; font-size:28px; font-weight:600; }
-.uxlab-samples { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-.uxlab-sample { display:flex; flex-direction:column; align-items:flex-start; gap:22px; padding:20px 0; }
-.uxlab .uxlab-demo-cta { min-height:0; padding:12px 18px; border-radius:0; background:var(--accent-fill); color:var(--on-accent); font-size:24px; }
-.uxlab .uxlab-demo-cta.second { padding:6px 25px; border-radius:30px; }
-.uxlab .uxlab-demo-cta.third { padding:18px 12px; border-radius:8px; }
-.uxlab label { font-size:30px; font-weight:600; }
-.uxlab input { width:100%; min-height:72px; padding:12px 18px; border:2px solid var(--edge); border-radius:14px; background:var(--surface); color:var(--text); font:32px var(--font-body); }
-.uxlab input[aria-invalid="true"] { border-color:var(--bad); }
-.uxlab-inset { border:0; padding:0; background:transparent; flex:1; }
-.uxlab-bars { display:flex; align-items:flex-end; gap:26px; height:150px; flex:none; }
-.uxlab-bar { width:140px; background:var(--accent-fill); border-radius:14px 14px 0 0; display:grid; place-items:center; color:var(--on-accent); font-weight:700; }
-.uxlab-capture { display:block; width:100%; height:100%; object-fit:contain; border-radius:16px; background:white; }
-.uxlab-report { display:grid; grid-template-columns:1.1fr 1fr; gap:30px; flex:1; min-height:0; }
-.uxlab-report .uxlab-panel { gap:18px; }
-.uxlab-figure { margin:0; min-height:0; display:grid; grid-template-rows:minmax(0,1fr) auto; gap:12px; }
-.uxlab-figure figcaption { font-size:24px; color:var(--muted); }
-.uxlab-figure .uxlab-zoom { min-height:0; height:100%; padding:0; border:0; background:white; border-radius:16px; overflow:hidden; }
-.uxlab-dialog { width:min(1450px,94vw); max-height:94vh; padding:20px; border:2px solid var(--edge); border-radius:20px; background:var(--surface); color:var(--text); }
-.uxlab-dialog::backdrop { background:rgb(10 10 28 / .8); }
-.uxlab-dialog img { width:100%; max-height:80vh; object-fit:contain; background:white; }
-.uxlab-dialog button { display:block; margin:0 0 12px auto; padding:12px 20px; border:2px solid var(--edge); border-radius:12px; background:var(--surface); color:var(--text); font:600 18px var(--font-body); min-height:48px; }
-.uxlab-links { display:flex; gap:22px; flex-wrap:wrap; font-size:26px; }
-.uxlab-links a { color:var(--accent-text); text-underline-offset:5px; }
-.uxlab-prompt { border-left:8px solid var(--accent-text); padding:24px 28px; background:var(--surface-2); font-size:34px; line-height:1.35; }
-.uxlab-pipeline { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-.uxlab-stage { padding:23px; border:2px solid var(--line); border-radius:22px; background:var(--surface); font-size:29px; }
-.uxlab-stage.done { border-color:var(--accent-text); background:var(--accent-soft); }
-.uxlab-stage strong { display:block; font-size:33px; margin-bottom:12px; }
+/* Partie 2 : fiches outils, dans la palette verte du cours. */
+.slide[data-part="2"] {grid-template-columns:minmax(0,1fr);}
+.slide[data-part="2"] .s-head {min-width:0;gap:18px;}
+.slide[data-part="2"] .pastille,.slide[data-part="2"] .s-num {flex-shrink:0;white-space:nowrap;}
+.uxlab {display:flex;flex-direction:column;gap:20px;height:100%;min-height:0;}
+.uxlab-kicker {color:var(--accent-text);font-size:26px;font-weight:700;letter-spacing:.02em;}
+.uxlab-foot {margin-top:auto;color:var(--muted);font-size:25px;line-height:1.3;}
+.uxlab-split {display:grid;grid-template-columns:1fr 1.05fr;gap:28px;flex:1;min-height:0;}
+.uxlab-panel {padding:28px;border:2px solid var(--line);border-radius:var(--r-l);background:var(--surface);display:flex;flex-direction:column;gap:20px;min-width:0;min-height:0;}
+.uxlab h3 {font:700 38px/1.13 var(--font-title);letter-spacing:-.02em;}
+.uxlab-actions {display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.uxlab button,.uxlab select {min-height:72px;padding:14px 20px;border:2px solid var(--edge);border-radius:var(--r-btn);background:var(--surface);color:var(--text);font:600 27px/1.2 var(--font-body);}
+.uxlab button:hover,.tool-tile:hover {background:var(--accent-soft);}
+.uxlab button[aria-pressed="true"],.uxlab .uxlab-primary {background:var(--accent-fill);color:var(--on-accent);border-color:var(--accent-fill);}
+.uxlab :is(a,button,select):focus-visible {outline:4px solid var(--text);outline-offset:5px;}
+.uxlab-links {display:flex;flex-wrap:wrap;gap:14px 24px;font-size:25px;line-height:1.25;}
+.uxlab-links a {color:var(--accent-text);text-underline-offset:5px;}
+.tool-how .uxlab-actions {margin-top:auto;}
+.tool-steps {list-style:none;counter-reset:tool;padding:0;display:flex;flex-direction:column;gap:24px;}
+.tool-steps li {counter-increment:tool;position:relative;padding-left:58px;}
+.tool-steps li::before {content:counter(tool);position:absolute;left:0;top:0;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--accent-fill);color:var(--on-accent);font:700 25px var(--font-body);}
+.tool-steps strong {font-size:30px;line-height:1.2;display:block;margin-bottom:8px;}
+.tool-steps p {font-size:28px;line-height:1.3;}
+.tool-content {display:flex;flex-direction:column;gap:18px;flex:1;min-height:0;}
+.tool-evidence {font:500 30px/1.65 ui-monospace,monospace;white-space:pre-line;padding:22px;border-left:6px solid var(--accent-text);background:var(--accent-soft);border-radius:0 18px 18px 0;}
+.uxlab-small {font-size:26px;line-height:1.3;color:var(--muted);}
+.tool-view .uxlab-actions {gap:10px;}
+.tool-view .uxlab-actions button {font-size:24px;min-height:64px;padding:12px 14px;}
+.tool-view .tool-content > .uxlab-small {margin-top:auto;}
+.tool-figure {margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:10px;flex:1;min-height:0;}
+.uxlab .uxlab-zoom {display:block;padding:0;border:1px solid var(--line);border-radius:18px;min-height:0;height:100%;width:100%;overflow:hidden;background:white;}
+.uxlab-capture {display:block;width:100%;height:100%;object-fit:contain;background:white;}
+.tool-figure figcaption {font-size:22px;line-height:1.2;color:var(--muted);}
+.tool-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;flex:1;min-height:0;}
+.tool-tile {position:relative;display:flex;flex-direction:column;gap:13px;padding:26px 28px 26px 82px;border:2px solid var(--line);border-radius:28px;background:var(--surface);color:var(--text);text-decoration:none;}
+.tool-number {position:absolute;top:28px;left:24px;width:40px;height:40px;display:grid;place-items:center;background:var(--accent-fill);color:var(--on-accent);border-radius:50%;font-size:27px;font-weight:700;}
+.tool-tile strong {font:700 36px/1.1 var(--font-title);}
+.tool-tile p {font-size:28px;color:var(--accent-text);font-weight:600;}
+.tool-tile > span:last-child {font-size:25px;line-height:1.3;color:var(--muted);margin-top:auto;}
+[data-lab="context"] > .tool-content {padding:30px 36px;border:2px solid var(--line);border-radius:28px;background:var(--surface);}
+[data-lab="context"] .tool-steps {gap:26px;}
+.uxlab label {font-size:28px;font-weight:600;}
+[data-lab="workflow"] .uxlab-panel {flex:1;}
+[data-lab="workflow"] .tool-steps {margin-top:10px;gap:18px;}
+.uxlab-dialog {width:min(1400px,94vw);max-height:94vh;padding:24px;border:2px solid var(--edge);border-radius:22px;background:var(--surface);color:var(--text);}
+.uxlab-dialog::backdrop {background:rgb(10 10 28 / .8);}
+.uxlab-dialog h3 {font:700 24px var(--font-title);margin-bottom:16px;}
+.uxlab-dialog img {display:block;width:100%;max-height:75vh;object-fit:contain;background:white;}
+.uxlab-dialog button {min-height:44px;padding:10px 18px;border:2px solid var(--edge);border-radius:12px;background:var(--surface);color:var(--text);font:600 18px var(--font-body);}
+.uxlab-dialog > button:first-child {display:block;margin:0 0 12px auto;}
+.uxlab-dialog textarea {width:100%;font:18px/1.5 var(--font-body);padding:18px;min-height:270px;max-height:58vh;resize:vertical;background:var(--surface);color:var(--text);border:2px solid var(--edge);border-radius:12px;}
+.uxlab-dialog .uxlab-actions {margin-top:14px;}
+.uxlab-dialog :is(button,textarea):focus-visible {outline:3px solid var(--text);outline-offset:3px;}
+.tool-dialog-help {font-size:18px;margin-top:14px;}
+@media print {.uxlab {height:auto;}.uxlab button {pointer-events:none;}}
 .acc-audio { padding:18px 26px; border-left:6px solid var(--accent-text); background:var(--accent-soft); font-size:28px; line-height:1.3; }
 .slide[data-key="accessibilite"] .acc-mini { height:170px; }
 .acc-publics .stat { padding:30px; gap:22px; }
@@ -76,4 +71,3 @@
 .slide[data-key="loi"] .fine-pays { font-size:34px; }
 .slide[data-key="loi"] .fine-val { font-size:56px; }
 .slide[data-key="loi"] .fine-det { font-size:27px; line-height:1.18; }
-@media print { .uxlab { height:auto; gap:20px; } .uxlab button { pointer-events:none; } }

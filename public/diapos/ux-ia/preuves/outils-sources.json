@@ -1,0 +1,29 @@
+{
+  "verified": "2026-10-21",
+  "assets": [
+    {
+      "file": "chrome-network.png",
+      "url": "https://developer.chrome.com/static/docs/devtools/network/image/the-network-log.png",
+      "source": "https://developer.chrome.com/docs/devtools/network/",
+      "credit": "Google Chrome for Developers — CC BY 4.0"
+    },
+    {
+      "file": "chrome-console.png",
+      "url": "https://developer.chrome.com/static/docs/devtools/console/image/the-console-panel-dc4828392d194.png",
+      "source": "https://developer.chrome.com/docs/devtools/console/",
+      "credit": "Google Chrome for Developers — CC BY 4.0"
+    },
+    {
+      "file": "chrome-performance.png",
+      "url": "https://developer.chrome.com/static/docs/devtools/performance/image/profiling-results.png",
+      "source": "https://developer.chrome.com/docs/devtools/performance",
+      "credit": "Google Chrome for Developers — CC BY 4.0"
+    },
+    {
+      "file": "contentsquare-heatmap.png",
+      "url": "https://images.ctfassets.net/gwbpo1m641r7/4ee8HAbDTFgiOJXEFzCakt/583bdc2986c016fdcff22b2d10ded862/CSQ_Heatmaps.png?w=1167&fm=png",
+      "source": "https://contentsquare.com/platform/capabilities/heatmaps/",
+      "credit": "Contentsquare — visuel officiel de présentation, propriété de Contentsquare"
+    }
+  ]
+}
