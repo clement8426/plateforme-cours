@@ -124,6 +124,7 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
     const fenetre = cadreRepare.current?.contentWindow as (Window & typeof globalThis) | null;
     const champ = cadreRepare.current?.contentDocument?.getElementById('rue') as HTMLInputElement | null;
     if (!fenetre || !champ) return;
+    racine.current?.querySelector<HTMLDetailsElement>('.photon-aide')?.removeAttribute('open');
     champ.value = 'Rue du Seyon 10';
     champ.dispatchEvent(new fenetre.Event('input', { bubbles: true }));
     champ.focus();
@@ -133,6 +134,7 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
   return (
     <div className="comparateur" ref={racine}>
       <div className="comparateur-scene">
+        <div className="comparateur-barre">
         <fieldset className="bascule">
           <legend className="visuellement-cache">Version affichée</legend>
           {MODES.map((m) => (
@@ -142,26 +144,27 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
             </label>
           ))}
         </fieldset>
+        {mode !== 'depart' && (
+          <div className="photon-option">
+            <label>
+              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} aria-describedby="photon-explication" />
+              <span><span className="visuellement-cache">Rechercher avec </span>Photon</span>
+            </label>
+            <details className="photon-aide">
+              <summary aria-label="À propos des suggestions Photon">?</summary>
+              <div className="photon-details">
+                <p id="photon-explication">{reel
+                  ? 'Photon recherche les adresses en Suisse. Votre recherche est envoyée à ce service : utilisez une adresse d’exemple. Décochez pour utiliser les exemples locaux.'
+                  : 'Mode exemple : les suggestions restent dans votre navigateur. Cochez Photon pour rechercher d’autres adresses en Suisse.'}</p>
+                <button type="button" className="bouton-secondaire" onClick={essayerAdresse}>Essayer « Rue du Seyon 10 »</button>
+              </div>
+            </details>
+          </div>
+        )}
+        </div>
         <p className="visuellement-cache" role="status">
           {mode === 'cote' ? 'Les deux versions sont affichées côte à côte.' : `Version affichée : ${titres[mode]}.`}
         </p>
-
-        {mode !== 'depart' && (
-          <section className="photon-option" aria-labelledby="titre-suggestions">
-            <div className="photon-entete">
-              <h2 id="titre-suggestions">Suggestions d’adresse</h2>
-              <span className="photon-mode">{reel ? 'Recherche en Suisse' : 'Adresses d’exemple'}</span>
-            </div>
-            <label>
-              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} aria-describedby="photon-explication" />
-              <span>Rechercher avec Photon</span>
-            </label>
-            <p id="photon-explication">{reel
-              ? 'Activé : votre recherche est envoyée au service Photon. Utilisez une adresse d’exemple. Si le service ne répond pas, décochez pour essayer sans connexion.'
-              : 'Mode exemple : les suggestions sont calculées dans votre navigateur, sans envoi à Photon. Essayez « Rue du Seyon 10 ».'}</p>
-            <button type="button" className="bouton-secondaire" onClick={essayerAdresse}>Essayer « Rue du Seyon 10 »</button>
-          </section>
-        )}
 
         <div className={`vitrines vitrines-${mode}`}>
           {(['depart', 'repare'] as Cle[]).map((cle) => (

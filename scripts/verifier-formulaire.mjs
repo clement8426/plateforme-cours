@@ -18,7 +18,8 @@ try{
  assert.equal(await page.locator('.comparateur-groupe').first().locator('.defauts > li').count(),6);
  assert.equal(await page.locator('.comparateur-groupe').last().locator('.defauts > li').count(),1);
  await page.getByRole('radio',{name:'Après',exact:true}).check();const toggle=page.getByLabel('Rechercher avec Photon',{exact:true});assert(await toggle.isChecked());
- const top=await page.locator('.photon-option').boundingBox(),form=await page.locator('.vitrine-repare').boundingBox();assert(top.y+top.height<form.y,'réglage avant le formulaire');
+ const top=await page.locator('.photon-option').boundingBox(),form=await page.locator('.vitrine-repare').boundingBox();const modes=await page.locator('.bascule').boundingBox();assert(top.x>=modes.x+modes.width,'Photon à droite des versions');assert(Math.abs(top.y-modes.y)<6,'Photon sur la même ligne');assert(top.y+top.height<form.y,'réglage avant le formulaire');
+ await page.locator('.photon-aide > summary').click();
  await page.getByRole('button',{name:'Essayer « Rue du Seyon 10 »',exact:true}).click();await after.getByRole('option').first().waitFor();assert.equal(requests,1);assert((await after.getByRole('option').first().innerText()).includes('Ville du service'));
  // Même saisie dans les deux modes : les résultats doivent changer, sans réutiliser le cache.
  await toggle.uncheck();await after.getByRole('option').first().waitFor();await page.waitForTimeout(600);assert.equal(requests,1);assert((await after.getByRole('option').first().innerText()).includes('Neuchâtel'));
@@ -41,12 +42,13 @@ try{
  for(const [id,value]of Object.entries({prenom:'Alex',nom:'Exemple',rue:'Rue du Seyon 10',npa:'2000',localite:'Neuchâtel',telephone:'079 123 45 67',email:'alex@example.ch'}))await after.locator('#'+id).fill(value);
  await after.locator('#envoyer').click();assert.equal(await after.locator('#envoyer').getAttribute('aria-busy'),'true');await after.locator('#merci').waitFor();
  // Le cadre intentionnellement défectueux ne fait pas partie du contrôle du conteneur.
- for(const width of [390,1440])for(const theme of ['clair','sombre']){
+ for(const width of [320,390,1440])for(const theme of ['clair','sombre']){
   await page.setViewportSize({width,height:1000});await page.evaluate(t=>{document.documentElement.dataset.theme=t;localStorage.setItem('theme',t);},theme);
+  const modeBox=await page.locator('.bascule').boundingBox(),photonBox=await page.locator('.photon-option').boundingBox();assert(photonBox.x>=modeBox.x+modeBox.width,'Photon à droite '+width);assert(Math.abs(photonBox.y-modeBox.y)<6,'même ligne '+width);
   const result=await new AxeBuilder({page}).exclude('iframe').withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();assert.deepEqual(result.violations.map(v=>v.id),[],'axe '+width+' '+theme);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'débordement '+width);
  }
  await page.goto(base+'/ux/ux-ia/demos/formulaire-adresse/?version=repare');await page.locator('.vitrine-repare').waitFor();assert(await page.getByLabel('Rechercher avec Photon',{exact:true}).isChecked());
  assert.deepEqual(errors,[]);
- console.log('OK : six corrections et un ajout, Photon actif, commande visible, cache séparé, repli local, réponse tardive, clavier, conservation, surlignage, validation et axe sur quatre configurations.');
+ console.log('OK : six corrections et un ajout, Photon actif, commande visible, cache séparé, repli local, réponse tardive, clavier, conservation, surlignage, validation et axe sur six configurations.');
 }finally{await browser.close();}
