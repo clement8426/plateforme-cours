@@ -15,8 +15,12 @@
       <h1 id="titre">Adresse de livraison</h1>
       <p class="intro">Votre vélo révisé est livré chez vous sous 48 heures.</p>
 
-      <div class="resume" id="resume" tabindex="-1" hidden>
-        <p class="resume-titre">Deux minutes de plus et c’est bon : vérifiez ces champs.</p>
+      <div class="resume" id="resume" role="region" aria-labelledby="resume-titre" aria-describedby="resume-aide" tabindex="-1" hidden>
+        <div class="resume-entete">
+          <span class="resume-icone" aria-hidden="true">!</span>
+          <h2 id="resume-titre">Vérifiez les champs indiqués</h2>
+        </div>
+        <p id="resume-aide">Choisissez un champ pour le corriger.</p>
         <ul id="resume-liste"></ul>
       </div>
 

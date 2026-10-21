@@ -27,14 +27,20 @@ label { font-size: 15px; font-weight: 600; }
 .aide { font-size: 14px; color: var(--gris); }
 input { width: 100%; height: var(--champ-hauteur); border-radius: var(--champ-rayon); font: inherit; font-size: 17px; padding: 0 16px; border: 1.5px solid var(--bord); background: var(--surface); color: inherit; }
 input:focus-visible { outline: 3px solid var(--vert); outline-offset: 2px; border-color: var(--vert); background: #fff; }
-input[aria-invalid="true"] { border-color: var(--rouge); border-width: 2px; background: var(--rouge-fond); }
+input[aria-invalid="true"] { border-color: var(--rouge); background: #fff; }
 input.valide { border-color: var(--vert); }
-.erreur { display: flex; gap: 8px; align-items: flex-start; color: var(--rouge); font-size: 15px; font-weight: 600; }
-.erreur::before { content: "!"; flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--rouge); color: #fff; font-size: 13px; font-weight: 800; margin-top: 1px; }
-.resume { border: 2px solid var(--rouge); background: var(--rouge-fond); border-radius: 14px; padding: 16px 18px; margin-bottom: 20px; }
-.resume:focus-visible { outline: 3px solid var(--rouge); outline-offset: 2px; }
-.resume-titre { font-weight: 700; margin-bottom: 6px; }
-.resume a { color: var(--rouge); font-weight: 600; }
+.erreur { display: flex; gap: 7px; align-items: flex-start; color: var(--rouge); font-size: 14px; line-height: 1.4; font-weight: 500; }
+.erreur::before { content: "!"; flex: none; display: grid; place-items: center; width: 16px; height: 16px; border: 1px solid currentColor; border-radius: 50%; font-size: 11px; font-weight: 700; margin-top: 1px; }
+.resume { border: 1px solid #D9D3C6; background: var(--surface); border-radius: 14px; padding: 18px; margin-bottom: 24px; }
+.resume:focus-visible { outline: 3px solid var(--vert); outline-offset: 3px; }
+.resume-entete { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+.resume-icone { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border: 1px solid var(--rouge); border-radius: 50%; color: var(--rouge); font-size: 15px; font-weight: 700; }
+.resume h2 { font: 650 18px/1.3 "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+.resume > p { color: var(--gris); font-size: 14px; line-height: 1.45; }
+.resume ul { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin-top: 12px; }
+.resume a { display: inline-flex; align-items: center; min-height: 32px; color: var(--vert-fonce); font-size: 14px; font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.resume a:hover { color: var(--encre); }
+.resume a:focus-visible { outline: 2px solid var(--vert); outline-offset: 3px; border-radius: 3px; }
 .combo { position: relative; }
 .charge { position: absolute; right: 16px; top: 50%; width: 20px; height: 20px; margin-top: -10px; border-radius: 50%; border: 3px solid #D9D3C6; border-top-color: var(--vert); animation: tourne .8s linear infinite; }
 .suggestions { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 6px); list-style: none; padding: 6px; margin: 0; background: #fff; border: 1.5px solid var(--bord); border-radius: var(--champ-rayon); box-shadow: 0 16px 30px -18px rgba(31, 42, 36, .45); }

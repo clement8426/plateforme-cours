@@ -5,6 +5,8 @@
 const form = document.getElementById('formulaire');
 const resume = document.getElementById('resume');
 const resumeListe = document.getElementById('resume-liste');
+const resumeTitre = document.getElementById('resume-titre');
+let resumeActif = false;
 const envoyer = document.getElementById('envoyer');
 const merci = document.getElementById('merci');
 
@@ -13,13 +15,13 @@ const regles = {
   prenom: v => v ? '' : 'Indiquez votre prénom.',
   nom: v => v ? '' : 'Indiquez votre nom.',
   rue: v => !v ? 'Indiquez votre rue et votre numéro.' : (/\d/.test(v) ? '' : 'Ajoutez le numéro de la maison, par exemple : Rue du Seyon 10.'),
-  npa: v => /^\d{4}$/.test(v) ? '' : 'Le NPA suisse compte 4 chiffres, par exemple 2000.',
+  npa: v => !v ? 'Indiquez votre NPA.' : (/^\d{4}$/.test(v) ? '' : 'Le NPA suisse compte 4 chiffres, par exemple 2000.'),
   localite: v => v ? '' : 'Indiquez votre localité.',
-  telephone: v => v.replace(/[\s.+-]/g, '').replace(/^0041|^41/, '0').match(/^0\d{9}$/) ? '' : 'Indiquez un numéro à 10 chiffres, par exemple 079 123 45 67.',
-  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Vérifiez votre e-mail : il manque peut-être le @ ou le point.'
+  telephone: v => !v ? 'Indiquez votre numéro de téléphone.' : (v.replace(/[\s.+-]/g, '').replace(/^0041|^41/, '0').match(/^0\d{9}$/) ? '' : 'Indiquez un numéro à 10 chiffres, par exemple 079 123 45 67.'),
+  email: v => !v ? 'Indiquez votre adresse e-mail.' : (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Vérifiez le format, par exemple nom@exemple.ch.')
 };
 
-function verifier(input) {
+function verifier(input, actualiser = true) {
   const regle = regles[input.name];
   if (!regle) return true;
   const message = regle(input.value.trim());
@@ -28,7 +30,23 @@ function verifier(input) {
   zone.hidden = !message;
   input.setAttribute('aria-invalid', message ? 'true' : 'false');
   input.classList.toggle('valide', !message);
+  if (actualiser && resumeActif) actualiserResume();
   return !message;
+}
+
+function actualiserResume() {
+  const fautifs = Object.keys(regles).map(n => form.elements[n]).filter(i => i.getAttribute('aria-invalid') === 'true');
+  resumeListe.replaceChildren();
+  resume.hidden = fautifs.length === 0;
+  resumeTitre.textContent = fautifs.length === 1 ? 'Vérifiez 1 champ' : `Vérifiez ${fautifs.length} champs`;
+  fautifs.forEach(input => {
+    const a = document.createElement('a');
+    a.href = '#' + input.id;
+    a.textContent = document.querySelector('label[for="' + input.id + '"]').textContent.trim();
+    a.addEventListener('click', e => { e.preventDefault(); input.focus(); });
+    const li = document.createElement('li'); li.append(a); resumeListe.append(li);
+  });
+  return fautifs;
 }
 
 // On vérifie quand la personne quitte le champ, pas pendant qu'elle tape
@@ -41,15 +59,10 @@ Object.keys(regles).forEach(nom => {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (envoyer.getAttribute('aria-busy') === 'true') return; // pas de double envoi
-  const fautifs = Object.keys(regles).map(n => form.elements[n]).filter(i => !verifier(i));
-  resumeListe.textContent = '';
+  Object.keys(regles).forEach(n => verifier(form.elements[n], false));
+  resumeActif = true;
+  const fautifs = actualiserResume();
   if (fautifs.length) {
-    fautifs.forEach(i => {
-      const a = Object.assign(document.createElement('a'), { href: '#' + i.id, textContent: document.querySelector('label[for="' + i.id + '"]').textContent.replace(/\s*\(facultatif\)/, '') + ' : ' + document.getElementById(i.name + '-erreur').textContent });
-      a.addEventListener('click', ev => { ev.preventDefault(); i.focus(); });
-      const li = document.createElement('li'); li.append(a); resumeListe.append(li);
-    });
-    resume.hidden = false;
     resume.focus();
     return;
   }

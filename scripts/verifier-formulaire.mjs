@@ -38,8 +38,21 @@ try{
  await page.getByRole('radio',{name:'Après',exact:true}).check();
  for(const id of ['prenom','nom','rue','npa','localite','telephone','email'])await after.locator('#'+id).fill('');
  await after.locator('#envoyer').click();await after.locator('#resume').waitFor();assert.equal(await after.locator('#resume-liste li').count(),7);
+ assert.equal(await after.locator('#resume-titre').innerText(),'Vérifiez 7 champs');
+ assert.equal(await after.locator('#email-erreur').innerText(),'Indiquez votre adresse e-mail.');
+ assert.equal(await after.locator('#resume-liste a').first().innerText(),'Prénom');
+ assert(await after.locator('#resume').evaluate(e=>e===document.activeElement),'focus sur le résumé');
+ await after.locator('#resume-liste a').first().focus();await page.keyboard.press('Enter');assert(await after.locator('#prenom').evaluate(e=>e===document.activeElement),'lien vers le champ au clavier');
+ await after.locator('#prenom').fill('Alex');assert.equal(await after.locator('#resume-liste li').count(),6);
+ assert.equal(await after.locator('#resume-titre').innerText(),'Vérifiez 6 champs');
+ const frame=page.frames().find(f=>f.url().includes('/formulaire-adresse/corrige/'));
+ await frame.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+ const a11y=await frame.evaluate(async()=>await window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));assert.deepEqual(a11y.violations.map(v=>v.id),[],'accessibilité du formulaire avec erreurs');
+
  await after.locator('#email').fill('x');await after.locator('#telephone').focus();assert.equal(await after.locator('#email').getAttribute('aria-invalid'),'true');
- for(const [id,value]of Object.entries({prenom:'Alex',nom:'Exemple',rue:'Rue du Seyon 10',npa:'2000',localite:'Neuchâtel',telephone:'079 123 45 67',email:'alex@example.ch'}))await after.locator('#'+id).fill(value);
+ for(const [id,value]of Object.entries({prenom:'Alex',nom:'Exemple',rue:'Rue du Seyon 10',npa:'2000',localite:'Neuchâtel',telephone:'079 123 45 67'}))await after.locator('#'+id).fill(value);
+ assert.equal(await after.locator('#resume-titre').innerText(),'Vérifiez 1 champ');
+ await after.locator('#email').fill('alex@example.ch');assert(await after.locator('#resume').isHidden());
  await after.locator('#envoyer').click();assert.equal(await after.locator('#envoyer').getAttribute('aria-busy'),'true');await after.locator('#merci').waitFor();
  // Le cadre intentionnellement défectueux ne fait pas partie du contrôle du conteneur.
  for(const width of [320,390,1440])for(const theme of ['clair','sombre']){
@@ -50,5 +63,5 @@ try{
  }
  await page.goto(base+'/ux/ux-ia/demos/formulaire-adresse/?version=repare');await page.locator('.vitrine-repare').waitFor();assert(await page.getByLabel('Rechercher avec Photon',{exact:true}).isChecked());
  assert.deepEqual(errors,[]);
- console.log('OK : six corrections et un ajout, Photon actif, commande visible, cache séparé, repli local, réponse tardive, clavier, conservation, surlignage, validation et axe sur six configurations.');
+ console.log('OK : six corrections et un ajout, Photon actif, commande visible, cache séparé, repli local, réponse tardive, clavier, conservation, surlignage, résumé dynamique, liens clavier, validation et axe sur six configurations.');
 }finally{await browser.close();}

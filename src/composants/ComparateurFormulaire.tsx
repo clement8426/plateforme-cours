@@ -68,7 +68,7 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
   const mesurer = useCallback((cle: Cle) => {
     const doc = cadres[cle].current?.contentDocument;
     if (!doc?.documentElement) return;
-    const h = Math.ceil(doc.documentElement.scrollHeight);
+    const h = Math.ceil(doc.body?.getBoundingClientRect().height ?? doc.documentElement.scrollHeight);
     if (h > 200) setHauteurs((x) => (x[cle] === h ? x : { ...x, [cle]: h }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -78,7 +78,7 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
     const doc = cadres[cle].current?.contentDocument;
     if (fenetre && doc?.documentElement) {
       const observateur = new fenetre.ResizeObserver(() => mesurer(cle));
-      observateur.observe(doc.documentElement);
+      observateur.observe(doc.body ?? doc.documentElement);
       observateurs.current.push(observateur);
     }
     mesurer(cle);
