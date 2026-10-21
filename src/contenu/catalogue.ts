@@ -108,7 +108,7 @@ const uxIa: Cours = {
     {
       slug: 'labo-ux-demo',
       titre: 'Labo UX Démo : auditer Traverse',
-      resume: 'Un joli site de sorties, volontairement défectueux. Essayez le parcours, puis confrontez vos observations au rapport du plugin Labo UX.',
+      resume: 'Une sortie à deux pour 60 € maximum : cinq écrans pour choisir une date, des options et envoyer une demande. Comparez vos observations à l’audit du plugin Labo UX.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
       duree: '20 minutes, après installation',
       apercu: '/apercus/traverse.jpg',

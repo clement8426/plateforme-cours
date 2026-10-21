@@ -25,8 +25,9 @@ export default function ExerciceTraverse({ cours }: { cours: string }) {
       <section className="traverse-intro" aria-labelledby="traverse-mission">
         <div className="encart">
           <p className="avis-titre">Votre mission</p>
-          <h2 id="traverse-mission">Repérer trois obstacles en demandant une sortie</h2>
-          <p>Imaginez que vous souhaitez participer à une sortie nature. Choisissez une offre et essayez d’envoyer vos coordonnées, comme une personne qui découvre le site.</p>
+          <h2 id="traverse-mission">Organiser une sortie à deux, pour 60 € maximum</h2>
+          <p>Vous voulez découvrir le lac d’Annecy le <strong>samedi 14 novembre</strong>, à <strong>deux personnes</strong>, <strong>sans panier repas</strong>. Votre budget total est de <strong>60 € maximum</strong>. Essayez de faire une demande qui respecte ces choix.</p>
+          <p>Le parcours traverse cinq écrans : le catalogue, la fiche de la sortie, les options, les coordonnées et le récapitulatif.</p>
           <p><strong>Le résultat attendu de l’exercice :</strong> trois observations sur ce qui vous gêne, à comparer ensuite avec l’audit de l’IA. Le site contient des erreurs volontaires : si vous êtes bloqué, notez-le. Vous n’avez pas à réparer le site ni à réussir l’envoi.</p>
           <p><strong>Données fictives uniquement :</strong> Alex Exemple, alex@example.test et 0600000000. Aucune réservation, aucun paiement, aucun e-mail réel.</p>
         </div>
@@ -48,15 +49,17 @@ export default function ExerciceTraverse({ cours }: { cours: string }) {
       </section>
 
       <section className="encart" aria-labelledby="traverse-essayer">
-        <h2 id="traverse-essayer">2. Jouez le visiteur pendant 5 minutes</h2>
+        <h2 id="traverse-essayer">2. Jouez le visiteur pendant 5 à 10 minutes</h2>
         <p><strong>Avant de commencer :</strong> attendez que votre agent confirme le démarrage de Traverse. Ouvrez le lien qu’il vous donne : l’adresse et le port peuvent varier selon l’ordinateur. Si vous n’avez pas ce lien, dites-lui : <strong>« Démarre Traverse et donne-moi son adresse vérifiée. »</strong></p>
         <ol>
-          <li>Dans Traverse, cliquez sur <strong>« Trouver mon échappée »</strong>, puis sur <strong>« Cliquez ici »</strong> sous une sortie de votre choix.</li>
-          <li>Dans le panneau qui s’ouvre, saisissez <strong>Alex Exemple</strong>, <strong>alex@example.test</strong> et <strong>0600000000</strong>.</li>
-          <li>Cliquez sur <strong>« Continuer »</strong>, regardez ce qui s’affiche, puis essayez <strong>« OK »</strong>. Si une erreur apparaît ou si rien ne confirme l’envoi, notez ce qui se passe et arrêtez cet essai.</li>
+          <li>Dans Traverse, cliquez sur <strong>« Trouver mon échappée »</strong>, puis ouvrez la sortie <strong>« Le lac, rien que le lac. »</strong>.</li>
+          <li>Choisissez <strong>samedi 14 novembre</strong> et <strong>deux participants</strong>, puis poursuivez. Sur la page des options, faites les choix adaptés à votre mission.</li>
+          <li>Saisissez <strong>Alex Exemple</strong>, <strong>alex@example.test</strong> et <strong>0600000000</strong>, puis continuez.</li>
+          <li>Au récapitulatif, vérifiez la date, les participants, les coordonnées et le prix total. Utilisez <strong>« Modifier »</strong> pour revenir sur votre choix de sortie, puis revenez au récapitulatif. Vos choix sont-ils toujours les bons ?</li>
+          <li>Essayez d’envoyer la demande. Si une erreur apparaît ou si rien ne confirme l’envoi, notez ce qui se passe et arrêtez cet essai.</li>
           <li>Écrivez trois observations : <strong>ce que vous avez fait, ce que vous attendiez et ce qui s’est réellement passé</strong>. Si vous en avez moins, gardez vos observations : l’audit aidera à compléter.</li>
         </ol>
-        <p>Si vous avez le temps, refaites quelques actions avec Tabulation et Entrée. Pour l’instant, utilisez seulement le site : ne consultez ni le code ni les réponses du formateur.</p>
+        <p>Si vous avez le temps, essayez de changer de filtre ou de date avec Tabulation et Entrée, sans souris. Notez aussi les actions qui fonctionnent et si vous voyez où se trouve le focus. Les liens et boutons ne sont pas tous bloqués au clavier. Pour l’instant, ne consultez ni le code ni les réponses du formateur.</p>
       </section>
 
       <section className="encart" aria-labelledby="traverse-auditer">
