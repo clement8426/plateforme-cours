@@ -289,6 +289,17 @@ img { display: block; max-width: 100%; height: auto; }
 .demo-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
 .demo-meta .duree { font-weight: 600; }
 .scene { margin-top: 24px; }
+.traverse-exercice { display: grid; gap: 24px; }
+.traverse-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.traverse-apercu { margin: 0; min-width: 0; }
+.traverse-apercu img { display: block; width: 100%; height: auto; border: 1px solid var(--ligne); border-radius: var(--rayon); }
+.traverse-apercu figcaption { margin-top: 10px; color: var(--discret); font-size: 14px; }
+.traverse-exercice details { border-top: 1px solid var(--ligne); padding-top: 16px; }
+.traverse-exercice summary { cursor: pointer; font-weight: 600; min-height: 44px; }
+.traverse-exercice details[open] summary { margin-bottom: 16px; }
+.traverse-statut:empty { display: none; }
+.traverse-exercice a { overflow-wrap: anywhere; }
+@media (max-width: 760px) { .traverse-intro { grid-template-columns: 1fr; } }
 .demo-bas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: clamp(32px, 4vw, 56px); }
 .encart { display: grid; gap: 12px; align-content: start; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
 .encart h2 { font-size: 22px; }

@@ -17,7 +17,7 @@ const b = await chromium.launch();
 const ok = [];
 const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'OK    ' : 'ÉCHEC ', nom, detail); };
 
-const PAGES = ['/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/types-ia/tuto/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/tilleul/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
+const PAGES = ['/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/types-ia/tuto/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/labo-ux-demo/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
 // 1. Accessibilité automatique, deux thèmes, deux tailles
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
@@ -101,13 +101,12 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   verifier('accueil : le nom « Le Labo », trois cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 3 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
-  await p.goto(base + '/ux/ux-ia/demos/tilleul/');
-  await p.getByRole('radio', { name: 'Mode cours' }).check();
+  await p.goto(base + '/ux/ux-ia/demos/labo-ux-demo/');
   await p.waitForTimeout(300);
   await p.goto(base + '/ux/ux-ia/');
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
-  verifier('page du cours : les démos de l’affiche et de Tilleul sont marquées « Vue »', (await p.locator('.demo-carte .vu').count()) === 2);
+  verifier('page du cours : les démos de l’affiche et de Traverse sont marquées « Vue »', (await p.locator('.demo-carte .vu').count()) === 2);
   await ctx.close();
 }
 {
@@ -179,13 +178,11 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   verifier('lien vers l’exercice sur GitHub', (await p.getByRole('link', { name: /Ouvrir l’exercice sur GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia/bonus-affiche');
 
   await p.goto(base + '/ux/ux-ia/demos/tilleul/');
-  const avant = await p.locator('iframe.cadre-site').getAttribute('src');
-  await p.getByRole('radio', { name: 'Mode cours' }).check();
-  const apres = await p.locator('iframe.cadre-site').getAttribute('src');
-  verifier('démo Tilleul : l’interrupteur passe de « sans aide » au mode cours', avant === '/tilleul/?cours=non' && apres === '/tilleul/');
-  await p.goto(base + '/tilleul/?cours=non&defaut=1');
-  await p.waitForTimeout(1500);
-  verifier('?cours=non : pas de panneau, même avec ?defaut', (await p.locator('.cours-panneau').count()) === 0);
+  await p.waitForURL('**/demos/labo-ux-demo/');
+  verifier('ancienne démo Tilleul : redirige vers Traverse', p.url().endsWith('/demos/labo-ux-demo/'));
+  verifier('Traverse : le lien GitHub utilise le dépôt distinct', (await p.getByRole('link', { name: /Ouvrir l’exercice sur GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/labo-ux-demos/tree/main/exercices/traverse');
+  const consigne = await (await ctx.request.get(base + '/diapos/ux-ia/exercice-traverse.md')).text();
+  verifier('Traverse : installation, cadrage et mode Audit dans le fichier apprenant', consigne.includes('node scripts/setup.mjs') && consigne.includes('permissions.codeModification = false') && consigne.includes('Contexte prioritaire') && consigne.includes('double'));
 
   await p.goto(base + '/ux/ux-ia/exercices/');
   await p.waitForURL('**/ux/ux-ia/', { timeout: 5000 }).catch(() => {});
@@ -217,9 +214,26 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
     verifier(`pas de fuite : ${interdit} n’existe pas`, r.status() === 404, `HTTP ${r.status()}`);
   }
 
-  // Le fichier de la présentation : numéro de diapo, liens vers Tilleul et le formulaire
+  // La présentation : nouvel exercice et formulaire conservé en bonus
   const diapos = await (await ctx.request.get(base + '/diapos/ux-ia/')).text();
-  verifier('diapos : liens vers /tilleul/ et /formulaires/adresse/ (plus de localhost)', diapos.includes("FORM_URL: '/formulaires/adresse/'") && diapos.includes("SITE_URL: '/tilleul/?cours=non'") && !/localhost:5173/.test(diapos.match(/urls:\s*\{[\s\S]*?\}/)?.[0] ?? ''));
+  verifier('diapos : Traverse remplace Tilleul et le formulaire reste en bonus', diapos.includes("FORM_URL: '/formulaires/adresse/'") && diapos.includes("SITE_URL: '/ux/ux-ia/demos/labo-ux-demo/'") && !/Tilleul|tilleul/.test(diapos));
+
+  const exercice = await ctx.newPage();
+  await exercice.goto(base + '/ux/ux-ia/demos/labo-ux-demo/');
+  await exercice.getByRole('button', { name: 'Copier la consigne complète' }).click();
+  await exercice.getByRole('status').filter({ hasText: 'Consigne copiée' }).waitFor();
+  const copie = await exercice.evaluate(() => navigator.clipboard.readText());
+  verifier('Traverse : la consigne complète se copie, installation et audit sans réécriture', copie.includes('Contexte prioritaire') && copie.includes('permissions.codeModification = false'));
+  await exercice.close();
+
+  const presentation = await ctx.newPage();
+  const erreursDiapos = [];
+  presentation.on('pageerror', (e) => erreursDiapos.push(e.message));
+  await presentation.goto(base + '/diapos/ux-ia/#36');
+  await presentation.waitForTimeout(500);
+  verifier('diapos : 49 slides et initialisation sans erreur JavaScript', (await presentation.locator('.slide').count()) === 49 && erreursDiapos.length === 0, erreursDiapos.join(' | '));
+  verifier('diapos : lien de pratique vers le nouvel exercice', (await presentation.locator('[data-case="SITE_URL"] a').getAttribute('href')) === '/ux/ux-ia/demos/labo-ux-demo/');
+  await presentation.close();
 
   // Page « avant / après »
   {

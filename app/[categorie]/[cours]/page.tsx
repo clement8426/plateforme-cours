@@ -130,7 +130,7 @@ export default async function PageCours(props: ParamsCours) {
           </a>
           <ul>
             {cours.demos.map((d) => (
-              <li key={d.slug}><strong>{d.titre}</strong><code>{d.exercice}/</code></li>
+              <li key={d.slug}><strong>{d.titre}</strong>{d.exerciceUrl ? <a href={d.exerciceUrl} target="_blank" rel="noreferrer">Dépôt Labo UX Démo<span className="visuellement-cache"> (nouvel onglet)</span></a> : <code>{d.exercice}/</code>}</li>
             ))}
           </ul>
         </section>

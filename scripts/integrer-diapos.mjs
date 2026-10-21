@@ -4,7 +4,7 @@
 // Le fichier d'origine n'est jamais modifié : on réécrit une copie.
 //
 // Deux ajustements sont appliqués :
-//  1. le lien vers Tilleul (SITE_URL) pointe vers /tilleul/, et celui du formulaire (FORM_URL) vers /formulaires/adresse/ ;
+//  1. le lien de pratique (SITE_URL) pointe vers Labo UX Démo, et le formulaire vers /formulaires/adresse/ ;
 //  2. un « pont » se branche sur la plateforme (voir PONT ci-dessous) pour que le plein écran
 //     garde toujours un bouton « Quitter » visible, et que Échap en sorte.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -31,8 +31,10 @@ if (!existsSync(chemin)) {
 let html = readFileSync(chemin, 'utf8');
 
 const SITE_URL = /SITE_URL: '[^']*'/;
-if (SITE_URL.test(html)) html = html.replace(SITE_URL, "SITE_URL: '/tilleul/?cours=non'");
-else console.warn('Avertissement : SITE_URL introuvable, le lien vers Tilleul n’est pas modifié.');
+if (SITE_URL.test(html)) html = html.replace(SITE_URL, "SITE_URL: '/ux/ux-ia/demos/labo-ux-demo/'");
+else console.warn('Avertissement : SITE_URL introuvable, le lien de pratique n’est pas modifié.');
+html = html.replace(/INSTALLATION_URL: '[^']*'/, "INSTALLATION_URL: '/diapos/ux-ia/exercice-traverse.md'");
+html = html.replace(/EXERCICES_URL: '[^']*'/, "EXERCICES_URL: '/ux/ux-ia/demos/labo-ux-demo/'");
 
 // Un chemin comme /ux/ux-ia/ peut être converti en « C:/Program Files/Git/ux/ux-ia/ » par Git Bash sous Windows : on refuse.
 // Le formulaire de l'exercice C (diapos 29 à 31) est publié par « npm run formulaire » : le lien des diapos y mène.

@@ -11,6 +11,15 @@ Next.js 16, export statique. Polices Bricolage Grotesque et Instrument Sans, ser
 
 Donner à son agent local le [fichier d’installation de Labo UX](public/diapos/ux-ia/installation-labo-ux.md). Il prépare les outils et réalise un audit de contrôle. L’apprenant n’a pas à taper de commandes. Le téléchargement du plugin reste soumis aux droits d’accès GitHub.
 
+La pratique principale d’UX × IA est désormais **Traverse (Labo UX Démo)** :
+`/ux/ux-ia/demos/labo-ux-demo/`. Le [fichier de l’exercice](public/diapos/ux-ia/exercice-traverse.md)
+réunit l’installation et la mission en mode Audit. Il est régénéré à chaque build
+par `scripts/preparer-exercice-traverse.mjs`. Le site Next.js de l’exercice tourne
+sur l’ordinateur de l’apprenant, pas dans l’hébergement statique de cette plateforme.
+Le formulaire d’adresse et l’affiche restent en bonus. Les diapos de pratique vont
+de 36 à 47 (annexes 48 et 49). L’ancienne page de démonstration Tilleul redirige
+vers Traverse ; les anciennes ressources statiques ne sont pas supprimées.
+
 ## Lancer en local
 
 ```bash
@@ -65,7 +74,7 @@ Un script prépare la présentation HTML pour la plateforme (le fichier d'origin
 npm run diapos -- ../Downloads/ux-ia-presentation.html ux-ia --retour /ux/ux-ia/diapos/
 ```
 
-Il pointe le lien vers Tilleul vers `/tilleul/` et branche le plein écran : F et Échap passent par le lecteur de la plateforme, qui garde toujours un bouton « Quitter le plein écran » visible. Ouvertes seules dans un onglet, les diapos affichent un lien « Retour au cours ». À relancer à chaque mise à jour de la présentation.
+Il pointe le lien de pratique vers `/ux/ux-ia/demos/labo-ux-demo/` et branche le plein écran : F et Échap passent par le lecteur de la plateforme, qui garde toujours un bouton « Quitter le plein écran » visible. Ouvertes seules dans un onglet, les diapos affichent un lien « Retour au cours ». À relancer à chaque mise à jour de la présentation.
 Sous Git Bash, faites précéder la commande de `MSYS_NO_PATHCONV=1` (le script refuse une adresse de retour mal convertie).
 
 ## Tilleul et les aperçus

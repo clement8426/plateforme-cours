@@ -9,7 +9,8 @@ import TriFichiers from '@/composants/TriFichiers';
 import FilAriane from '@/composants/FilAriane';
 import MarqueVu from '@/composants/MarqueVu';
 import PucesBlocs from '@/composants/PucesBlocs';
-import SceneTilleul from '@/composants/SceneTilleul';
+import ExerciceTraverse from '@/composants/ExerciceTraverse';
+import Redirection from '@/composants/Redirection';
 import { CATEGORIES, trouverCategorie, trouverCours, trouverDemo } from '@/contenu/catalogue';
 import { trouverComparateur } from '@/contenu/comparateurs';
 
@@ -17,14 +18,15 @@ type Props = { params: Promise<{ categorie: string; cours: string; slug: string 
 
 export const dynamicParams = false;
 export const generateStaticParams = () =>
-  CATEGORIES.flatMap((c) => c.cours.flatMap((cours) => cours.demos.map((d) => ({ categorie: c.slug, cours: cours.slug, slug: d.slug }))));
+  [...CATEGORIES.flatMap((c) => c.cours.flatMap((cours) => cours.demos.map((d) => ({ categorie: c.slug, cours: cours.slug, slug: d.slug })))),
+    { categorie: 'ux', cours: 'ux-ia', slug: 'tilleul' }];
 
 async function lire({ params }: Props) {
   const { categorie: cat, cours: cr, slug } = await params;
   const categorie = trouverCategorie(cat);
   const cours = trouverCours(cat, cr);
   const demo = cours && trouverDemo(cours, slug);
-  return { categorie, cours, demo };
+  return { categorie, cours, demo, slug };
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
@@ -33,14 +35,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function PageDemo(props: Props) {
-  const { categorie, cours, demo } = await lire(props);
+  const { categorie, cours, demo, slug } = await lire(props);
+  if (categorie?.slug === 'ux' && cours?.slug === 'ux-ia' && slug === 'tilleul') {
+    return <Redirection vers="/ux/ux-ia/demos/labo-ux-demo/" texte="Ouvrir le nouvel exercice Labo UX Démo" />;
+  }
   if (!categorie || !cours || !demo) notFound();
   const base = `/${categorie.slug}/${cours.slug}`;
   const cle = `${categorie.slug}/${cours.slug}`;
   const comparateur = demo.comparateur ? trouverComparateur(demo.comparateur) : undefined;
 
   return (
-    <div className={`page${['comparateur', 'dossier', 'reidentification', 'tri'].includes(demo.scene) ? ' page-large' : ''}`}>
+    <div className={`page${['traverse', 'comparateur', 'dossier', 'reidentification', 'tri'].includes(demo.scene) ? ' page-large' : ''}`}>
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `${base}/` },
@@ -65,7 +70,7 @@ export default async function PageDemo(props: Props) {
 
       <div className="scene">
         {demo.scene === 'affiche' && <AfficheTest cours={cle} />}
-        {demo.scene === 'tilleul' && <SceneTilleul cours={cle} />}
+        {demo.scene === 'traverse' && <ExerciceTraverse cours={cle} />}
         {demo.scene === 'comparateur' && comparateur && <ComparateurFormulaire comparateur={comparateur} />}
         {demo.scene === 'dossier' && <DossierAvantApres cours={cle} />}
         {demo.scene === 'reidentification' && <Reidentification cours={cle} />}
@@ -83,9 +88,9 @@ export default async function PageDemo(props: Props) {
         {cours.depot && (
           <section className="encart" aria-labelledby="titre-exercice">
             <h2 id="titre-exercice">Refaire l’exercice chez vous</h2>
-            <p>Les consignes, le matériel et les prompts sont dans le dossier <code>{demo.exercice}/</code> du dépôt du cours.</p>
+            <p>Les consignes, le matériel et les prompts sont dans le dossier <code>{demo.exercice}/</code>{demo.exerciceUrl ? ' du dépôt Labo UX Démo. Ce dépôt est privé : demandez l’accès au formateur si nécessaire.' : ' du dépôt du cours.'}</p>
             <div className="actions">
-              <a className="bouton-secondaire" href={`${cours.depot}/${demo.exercice}`} target="_blank" rel="noreferrer">
+              <a className="bouton-secondaire" href={demo.exerciceUrl ?? `${cours.depot}/${demo.exercice}`} target="_blank" rel="noreferrer">
                 Ouvrir l’exercice sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span>
               </a>
             </div>

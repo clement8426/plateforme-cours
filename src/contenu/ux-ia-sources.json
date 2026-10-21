@@ -155,7 +155,7 @@
     {
       "terme": "Audit",
       "def": "Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.",
-      "cle": "revelation"
+      "cle": "rapport"
     },
     {
       "terme": "Agent IA",

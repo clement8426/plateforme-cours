@@ -19,11 +19,12 @@ export type Demo = {
   blocs: BlocId[];
   duree: string;
   apercu: string;
-  scene: 'affiche' | 'tilleul' | 'comparateur' | 'dossier' | 'reidentification' | 'tri';
+  scene: 'affiche' | 'traverse' | 'comparateur' | 'dossier' | 'reidentification' | 'tri';
   comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
   modeEmploi: string[]; // trois gestes, pour quelqu'un qui découvre la démo seul
   aRetenir: string[];
   exercice: string;
+  exerciceUrl?: string; // un exercice peut vivre dans un dépôt distinct de celui du cours
   bonus?: boolean; // à montrer seulement s'il reste du temps
 };
 
@@ -100,28 +101,30 @@ const uxIa: Cours = {
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 22] },
     { titre: 'L’IA, bloc par bloc', resume: 'Conversation, agents, API et MCP, puis six consignes avec les preuves et les limites à vérifier.', duree: '25 min', diapos: [23, 35] },
-    { titre: 'Pratique', resume: 'Une ou deux démonstrations au choix. Tout se refait chez soi.', duree: '20 à 35 min', diapos: [36, 44], demos: true },
+    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [36, 47], demos: true },
   ],
   demos: [
     {
-      slug: 'tilleul',
-      titre: 'Tilleul, la boutique piégée',
-      resume: 'Une boutique de céramiques très soignée, qui cache douze problèmes d’UX. Trouvez-les en jouant, puis voyez-les corrigés.',
+      slug: 'labo-ux-demo',
+      titre: 'Labo UX Démo : auditer Traverse',
+      resume: 'Un joli site de sorties, volontairement défectueux. Essayez le parcours, puis confrontez vos observations au rapport du plugin Labo UX.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
-      duree: '8 minutes',
-      apercu: '/apercus/tilleul.jpg',
-      scene: 'tilleul',
+      duree: '20 minutes, après installation',
+      apercu: '/apercus/traverse.jpg',
+      scene: 'traverse',
       modeEmploi: [
-        'En « Sans aide », faites vos courses comme un client. Qu’est-ce qui vous agace ?',
-        'Passez en « Mode cours », puis « Chercher les problèmes » : cliquez là où quelque chose vous gêne.',
-        'Bloqué ? « Révéler » montre les problèmes de la page, et Avant / Après montre la correction.',
+        'Donnez le fichier de l’exercice à votre agent : il prépare Labo UX et démarre Traverse sur votre ordinateur.',
+        'Choisissez une sortie, renseignez des coordonnées fictives et essayez d’envoyer une demande. Notez ce qui vous gêne.',
+        'Confirmez le périmètre avec l’agent, lancez un audit sans correction et choisissez trois problèmes appuyés par des preuves.',
       ],
       aRetenir: [
         'Un site soigné peut être pénible à utiliser.',
-        'Chaque défaut se range dans un bloc, et gêne quelqu’un de précis.',
-        'L’audit automatique voit un contraste trop faible, pas un bouton « Soumettre ».',
+        'Le plugin explore les six blocs avec une couverture partielle : tout contrôler automatiquement reste impossible.',
+        'Un constat doit nommer l’obstacle, sa conséquence et sa preuve. Les données du tunnel sont fictives.',
+        'Le mode Audit teste sans réécrire le projet. Traverse reste cassé : aucune version corrigée n’est fournie.',
       ],
-      exercice: '01-audit-tilleul',
+      exercice: 'exercices/traverse',
+      exerciceUrl: 'https://github.com/clement8426/labo-ux-demos/tree/main/exercices/traverse',
     },
     {
       slug: 'formulaire-adresse',
@@ -143,6 +146,7 @@ const uxIa: Cours = {
         'Une erreur dit quoi corriger, en toutes lettres, pas seulement en rouge.',
       ],
       exercice: '02-formulaire-adresse',
+      bonus: true,
     },
     {
       slug: 'affiche',
