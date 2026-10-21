@@ -15,7 +15,8 @@
     "sources": "node scripts/extraire-sources.mjs",
     "liens": "node scripts/verifier-liens.mjs",
     "formulaire": "node scripts/integrer-formulaire.mjs",
-    "comparateur": "node scripts/integrer-comparateur.mjs"
+    "comparateur": "node scripts/integrer-comparateur.mjs",
+    "verifier:atelier": "node scripts/verifier-atelier-ia.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

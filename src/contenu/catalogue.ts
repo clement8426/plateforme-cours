@@ -101,8 +101,8 @@ const uxIa: Cours = {
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 21] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Conversation, agents, API et MCP, puis six consignes avec les preuves et les limites à vérifier.', duree: '25 min', diapos: [22, 33] },
-    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [34, 45], demos: true },
+    { titre: 'L’IA à l’épreuve', resume: 'Huit scènes à manipuler : cadrer une mission, connecter les outils, examiner des preuves et un vrai rapport Lighthouse, puis décider et revérifier.', duree: '18 à 20 min avec les échanges', diapos: [22, 29] },
+    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [30, 41], demos: true },
   ],
   demos: [
     {

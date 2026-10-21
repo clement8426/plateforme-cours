@@ -229,9 +229,9 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const presentation = await ctx.newPage();
   const erreursDiapos = [];
   presentation.on('pageerror', (e) => erreursDiapos.push(e.message));
-  await presentation.goto(base + '/diapos/ux-ia/#34');
+  await presentation.goto(base + '/diapos/ux-ia/#30');
   await presentation.waitForTimeout(500);
-  verifier('diapos : 47 slides et initialisation sans erreur JavaScript', (await presentation.locator('.slide').count()) === 47 && erreursDiapos.length === 0, erreursDiapos.join(' | '));
+  verifier('diapos : 43 slides et initialisation sans erreur JavaScript', (await presentation.locator('.slide').count()) === 43 && erreursDiapos.length === 0, erreursDiapos.join(' | '));
   verifier('diapos : lien de pratique vers le nouvel exercice', new URL(await presentation.locator('[data-case="SITE_URL"] a').getAttribute('href'), base).pathname === '/ux/ux-ia/demos/labo-ux-demo/');
   await presentation.close();
 

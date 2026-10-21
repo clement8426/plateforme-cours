@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UX × IA, mini-formation de Clément Bastien</title>
 <!--
-  Présentation autonome : un seul fichier, sans framework ni build.
+  Présentation statique sans framework ; interactions de la partie 2 dans atelier-ia.css et atelier-ia.js.
   Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
   F plein écran, T thème clair ou sombre, B écran noir, S chrono (Maj + S : remise à zéro), N vue présentateur (Maj + N : panneau superposé).
   Tout ce qui se règle (minutes, textes, liens, images) est dans l'objet CONFIG, au début du script.
@@ -846,40 +846,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .option.bonus { border-style: dashed; background: transparent; box-shadow: none; }
 .option.bonus .option-lettre { color: var(--muted); }
 .blocs-natures { margin-top: 28px; }
-/* ========== Partie 2 : l'IA, bloc par bloc ========== */
-.paire { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
-.paire .card h3 { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; font: 600 var(--fs-big)/1.1 var(--font-title); letter-spacing: -.01em; }
-.paire .card h3 .ico { font-size: 52px; color: var(--accent-text); }
-.paire .card p { font-size: var(--fs-lead); line-height: 1.3; }
-.card.accent { border-color: var(--accent-text); background: var(--accent-soft); }
-.agent-nom { display: grid; gap: 4px; font-size: var(--fs-min); color: var(--muted); }
-.agent-nom strong { font: 700 var(--fs-big)/1.1 var(--font-title); color: var(--text); }
-.hub { display: flex; align-items: center; gap: 28px; }
-.hub > .ico { font-size: 56px; color: var(--accent-text); flex: none; }
-.hub-agent { min-height: 88px; padding: 0 34px; border-color: var(--accent-text); background: var(--accent-fill); color: var(--on-accent); font-weight: 700; font-size: var(--fs-lead); }
-.hub-agent .ico { color: var(--on-accent); font-size: 44px; }
-.offre { display: grid; gap: 10px; }
-.offre .prix { font: 700 var(--fs-big)/1.1 var(--font-title); color: var(--accent-text); }
-.alternatives { padding: 28px 36px; }
-.alternatives p { font-size: var(--fs-lead); line-height: 1.3; color: var(--muted); }
-.alternatives strong { color: var(--text); }
-.cles-liste p { font-size: var(--fs-big); line-height: 1.15; font-weight: 500; }
-.cles-liste strong { font-weight: 700; }
-.slide[data-key="cles"] .cles-liste { gap: 20px; }
-.slide[data-key="cles"] .cles-liste p { font-size: var(--fs-lead); }
-.ia-bloc { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; align-content: start; gap: 28px 32px; height: 100%; }
-.ia-col { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; min-height: 0; }
-.ia-col .card { padding: 24px 32px; }
-.ia-col h3 { font: 600 var(--fs-min)/1.2 var(--font-body); color: var(--muted); margin-bottom: 6px; }
-.ia-agent h3 { color: var(--accent-text); }
-.ia-col p { font-size: var(--fs-body); line-height: 1.3; }
-.ia-agent { border-color: var(--accent-text); background: var(--accent-soft); }
-.prompt { display: grid; align-content: start; gap: 14px; margin: 0; padding: 30px 36px; border-radius: var(--r-l); border: 2px solid var(--line); background: var(--surface); box-shadow: var(--shadow); min-height: 0; }
-.prompt figcaption { font: 600 var(--fs-min)/1.2 var(--font-body); color: var(--accent-text); }
-.prompt blockquote { margin: 0; font-size: var(--fs-lead); line-height: 1.36; }
-.ia-garde { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.ia-garde p { display: flex; align-items: flex-start; gap: 18px; padding: 20px 26px; border-radius: var(--r-m); background: var(--surface-2); font-size: var(--fs-min); line-height: 1.3; }
-.ia-garde .ico { flex: none; font-size: 40px; margin-top: 2px; color: var(--accent-text); }
+/* Interactions de la partie 2 : atelier-ia.css et atelier-ia.js. */
 .plugin-etapes { display: grid; gap: 22px; }
 .plugin-etapes li { display: flex; align-items: center; gap: 24px; }
 .plugin-etapes p { font-size: var(--fs-lead); line-height: 1.3; }
@@ -889,6 +856,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .pratique-blocs h3 { font-size:30px; margin-bottom:10px; }
 .pratique-blocs p { font-size:30px; line-height:1.3; }
 </style>
+  <link rel="stylesheet" href="./atelier-ia.css">
 </head>
 <body>
 <div id="viewport">
@@ -1280,184 +1248,49 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 22 à 33) ================= -->
+<!-- ================= PARTIE 2 : L’IA À L’ÉPREUVE (slides 22 à 29) ================= -->
 
 <section class="slide" data-part="2" data-key="agent">
-  <h2 class="title">Conversation et agent : conseiller ou utiliser des outils</h2>
-  <div class="body stack-l">
-    <div class="paire">
-      <article class="card" data-step="1"><h3><i data-icon="text"></i>Une conversation</h3><p>Sans outil connecté, l’IA travaille sur ce que vous lui fournissez : elle explique, analyse et propose.</p></article>
-      <article class="card accent" data-step="2"><h3><i data-icon="cursor"></i>Un agent équipé</h3><p>Avec des outils et des autorisations, il peut ouvrir le projet, lancer des contrôles et proposer ou appliquer des modifications.</p></article>
-    </div>
-    <div class="paire" data-step="3">
-      <p class="lead">« Que faudrait-il vérifier dans ce formulaire ? »</p>
-      <p class="lead">« Ouvre ce formulaire de test et relève les erreurs observées. »</p>
-    </div>
-    <p class="note" data-step="3">Une même application peut proposer une conversation et des fonctions d’agent. Le nom du produit ne suffit pas à savoir ce qu’elle peut faire.</p>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="quel-agent">
-  <h2 class="title">Quelques agents possibles pour travailler sur un projet</h2>
-  <div class="body stack-m">
-    <div class="produits" data-step="1">
-      <article class="card produit"><h3>Codex</h3><p>Un agent pour lire, modifier et tester du code.</p></article>
-      <article class="card produit"><h3>Claude Code</h3><p>Un agent qui travaille sur le projet avec des outils.</p></article>
-      <article class="card produit"><h3>OpenCode</h3><p>Un agent de développement open source.</p></article>
-      <article class="card produit"><h3>Hermes Agent</h3><p>Un agent open source avec des outils et une mémoire.</p></article>
-    </div>
-    <p class="lead" data-step="2">Pour ce cours, vérifier trois choses : l’accès au projet, les outils d’audit disponibles et les actions autorisées.</p>
-    <p class="note" data-step="3">Les coûts dépendent de l’offre et du modèle utilisé : abonnement, crédits ou API. Un logiciel open source n’implique pas des calculs gratuits.</p>
-    <p class="note" data-step="3">Ces exemples ne garantissent pas le même équipement. On prépare et vérifie l’environnement avant la séance.</p>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="mcp">
-  <h2 class="title">API et MCP : connecter des fonctions et des outils</h2>
-  <div class="body stack-m">
-    <div class="paire">
-      <article class="card" data-step="1"><h3>API</h3><p>Une interface pour qu’un logiciel utilise les fonctions d’un autre : lire des données, demander un résultat, déclencher une action.</p></article>
-      <article class="card accent" data-step="2"><h3>MCP</h3><p>Un protocole commun pour présenter à l’agent les outils disponibles, leurs paramètres et la façon de les appeler.</p></article>
-    </div>
-    <p class="lead" data-step="3">Exemple : l’agent découvre un outil « lancer un audit », lui transmet les paramètres, puis lit le résultat.</p>
-    <p class="note" data-step="3">Un serveur MCP peut lui-même utiliser une API. Les deux peuvent servir à automatiser des actions.</p>
-    <p class="note" data-step="4">Les outils doivent être configurés et autorisés. MCP ne fournit pas tous les parcours à suivre : l’objectif reste à définir.</p>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="methode-ia">
-  <h2 class="title">L’outil mesure, l’IA interprète, vous décidez</h2>
-  <div class="body stack-l">
-    <div class="options">
-      <article class="card option" data-step="1"><p class="option-lettre" aria-hidden="true">1</p><h3>Mesurer</h3><p>Les outils produisent des constats, des mesures et des preuves, avec leurs limites.</p></article>
-      <article class="card option" data-step="2"><p class="option-lettre" aria-hidden="true">2</p><h3>Interpréter</h3><p>L’IA explique les résultats et propose des hypothèses ou des corrections.</p></article>
-      <article class="card option" data-step="3"><p class="option-lettre" aria-hidden="true">3</p><h3>Vérifier</h3><p>Vous validez les choix. Après correction, on refait les contrôles et le parcours.</p></article>
-    </div>
-    <p class="lead strong" data-step="4">Une correction proposée reste à vérifier.</p>
-    <p class="note" data-step="4">Si un outil simple suffit, l’IA n’est pas nécessaire.</p>
-  </div>
+  <h2 class="title">Beau site. Bon audit ?</h2>
+  <div class="body" data-lab="verdict"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="cles">
-  <h2 class="title">Avant l’audit : définir le résultat et le périmètre</h2>
-  <div class="body g12">
-    <ol class="c8 keep cles-liste">
-      <li data-step="1"><span class="keep-n" aria-hidden="true">1</span><p><strong>L’objectif</strong> : réserver un atelier et voir une confirmation.</p></li>
-      <li data-step="2"><span class="keep-n" aria-hidden="true">2</span><p><strong>La cible</strong> : qui, sur quel appareil, dans quel contexte.</p></li>
-      <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p><strong>Le périmètre</strong> : pages de test, compte fictif et actions autorisées.</p></li>
-      <li data-step="4"><span class="keep-n" aria-hidden="true">4</span><p><strong>L’intention</strong> : les différences et les règles à respecter.</p></li>
-      <li data-step="5"><span class="keep-n" aria-hidden="true">5</span><p><strong>Le ton</strong> : comment parle le produit, avec deux exemples.</p></li>
-    </ol>
-    <div class="c4 stack-m end-col">
-      <p class="lead strong" data-step="6">Quel résultat doit-on observer ?</p>
-      <p class="note" data-step="6">Si une information manque, l’agent doit vous la demander avant de tester.</p>
-    </div>
-  </div>
+  <h2 class="title">« Audite mon site. » Qu’est-ce qui manque ?</h2>
+  <div class="body" data-lab="mission"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="mcp">
+  <h2 class="title">Un agent, ça s’équipe</h2>
+  <div class="body" data-lab="tools"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-design-system">
-  <h2 class="title">Bloc 1, design system : comparer des composants de même rôle</h2>
-  <div class="body ia-bloc">
-    <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Ce qu’on cherche</h3><p>Des composants cohérents entre les pages et les tailles d’écran.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il relève les styles calculés dans le navigateur et propose des écarts à examiner.</p></article>
-    </div>
-    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Compare ces [pages de test] à 375, 768 et 1440 px. Relève les styles des titres, boutons et champs de même rôle. Donne les valeurs observées et les écarts. Demande-moi l’intention avant de proposer une correction.</blockquote></figure>
-    <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : les rôles des composants et l’intention graphique.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : une variation n’est pas automatiquement un défaut. Les valeurs doivent venir des outils.</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="ia-friction">
-  <h2 class="title">Bloc 2, friction : explorer un parcours et relever les obstacles</h2>
-  <div class="body ia-bloc">
-    <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Avec des utilisateurs</h3><p>Observer de vraies personnes réaliser une tâche permet d’étudier leurs difficultés.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il exécute un parcours dans le navigateur et relève les obstacles observables.</p></article>
-    </div>
-    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur cette copie de test, réalise [objectif] avec le compte fictif prévu. Respecte les limites convenues. Relève les étapes bloquées, erreurs, pertes de saisie et confirmations absentes. Sépare ce que tu observes de ce qu’il faudrait vérifier avec des utilisateurs.</blockquote></figure>
-    <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : un objectif et un résultat attendu précis.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : l’agent ne représente pas votre public. Les difficultés supposées restent à confirmer.</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="ia-attention">
-  <h2 class="title">Avant de tester : une copie et des limites claires</h2>
-  <div class="body stack-m">
-    <div class="options">
-      <article class="card option" data-step="1"><p class="option-lettre" aria-hidden="true">1</p><h3>Préparer</h3><p>Un projet local ou un environnement de test, des comptes et des données fictives.</p></article>
-      <article class="card option" data-step="2"><p class="option-lettre" aria-hidden="true">2</p><h3>Délimiter</h3><p>Les pages à ouvrir, les actions autorisées et le point où s’arrêter.</p></article>
-      <article class="card option" data-step="3"><p class="option-lettre" aria-hidden="true">3</p><h3>Isoler</h3><p>Pas de vrais paiements, e-mails ou commandes. Les sessions de test restent séparées des usages réels.</p></article>
-    </div>
-    <p class="note" data-step="4">Un accès bloqué ? On demande un environnement autorisé. S’arrêter avant l’envoi ne suffit pas à éviter de fausser les statistiques.</p>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="ia-accessibilite">
-  <h2 class="title">Bloc 3, accessibilité : mesurer et compléter l’évaluation</h2>
-  <div class="body ia-bloc">
-    <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Des contrôles complémentaires</h3><p>axe, Pa11y ou Lighthouse signalent certains défauts automatisables.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il lance les outils disponibles et explique leurs résultats. Clavier et lecteur d’écran complètent l’évaluation.</p></article>
-    </div>
-    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur ces [pages de test], lance un contrôle d’accessibilité disponible. Indique l’outil, la page et l’état analysés. Explique qui est gêné par chaque défaut. Signale ce qui reste à vérifier au clavier, avec un lecteur d’écran et sur le sens des textes. Propose les corrections avant de modifier.</blockquote></figure>
-    <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : les pages et les états réellement examinés.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : un audit automatique ne certifie pas l’accessibilité. Une étiquette présente peut rester peu compréhensible.</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="ia-comportement">
-  <h2 class="title">Bloc 4, comportement : lire les données sans inventer les causes</h2>
-  <div class="body ia-bloc">
-    <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Ce qu’il faut fournir</h3><p>Des événements ou des données d’usage, sur une période définie.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il calcule ou examine les résultats permis par les données, puis formule des hypothèses.</p></article>
-    </div>
-    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>À partir de ces [données] et du tunnel [étapes], décris les passages et abandons observables. Pour chaque taux, précise la période et ce qu’on compte. Sépare les chiffres des hypothèses. Si une analyse n’est pas possible, indique les données manquantes.</blockquote></figure>
-    <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une question précise et des données adaptées.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : des données fictives restent pédagogiques. Les statistiques ne prouvent pas la cause ; respecter les règles de collecte et de consentement.</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-part="2" data-key="ia-microcopie">
-  <h2 class="title">Bloc 5, microcopie : observer les messages, puis proposer</h2>
-  <div class="body ia-bloc">
-    <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Ce qu’on cherche</h3><p>Des textes qui nomment l’action, expliquent l’erreur et aident à poursuivre.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il relève les messages des états testés et propose des variantes adaptées au contexte.</p></article>
-    </div>
-    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur ce [formulaire de test], provoque les erreurs prévues : champ vide, e-mail invalide. Relève les messages réellement affichés. Pour [la cible], lesquels sont vagues ou techniques ? Propose deux variantes dans ce ton : [exemples]. Ne change pas le sens de l’action ni les termes métier.</blockquote></figure>
-    <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, le ton et le sens exact de l’action.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : les messages testés ne représentent pas tous les états du produit. Relire les variantes en contexte.</span></p>
-    </div>
-  </div>
+  <h2 class="title">Six blocs, six types de preuves</h2>
+  <div class="body" data-lab="evidence"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-performance">
-  <h2 class="title">Bloc 6, performance : mesurer les délais et expliquer l’attente</h2>
-  <div class="body ia-bloc">
-    <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Performance réelle</h3><p>Mesurer le chargement et examiner les ressources et les requêtes bloquantes.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Avec les outils adaptés, il examine aussi le retour visible après les actions importantes.</p></article>
-    </div>
-    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur ces [pages de test], lance Lighthouse et explique les ressources ou requêtes à examiner. Si tes outils le permettent, mesure le délai avant un retour visible après [actions]. Sinon, dis ce qui manque. Propose une amélioration, puis une mesure avant/après dans les mêmes conditions.</blockquote></figure>
-    <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’appareil, le réseau et l’état du cache.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : un chargement rapide ne garantit pas un bon retour après un clic. Le web ne remplace pas un test natif ; SQL et Redis demandent un diagnostic serveur.</span></p>
-    </div>
-  </div>
+  <h2 class="title">73 en performance : vous en concluez quoi ?</h2>
+  <div class="body" data-lab="lighthouse"></div>
 </section>
 
-<!-- ================= PARTIE 3 : PRATIQUE (slides 34 à 45) ================= -->
+<section class="slide" data-part="2" data-key="methode-ia">
+  <h2 class="title">L’IA l’affirme. Est-ce un fait ?</h2>
+  <div class="body" data-lab="sorting"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-friction">
+  <h2 class="title">Vous corrigez quoi en premier ?</h2>
+  <div class="body" data-lab="priority"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-attention">
+  <h2 class="title">Auditer, corriger… et revérifier</h2>
+  <div class="body" data-lab="workflow"></div>
+</section>
+
+<!-- ================= PARTIE 3 : PRATIQUE (slides 30 à 41) ================= -->
 
 <section class="slide" data-part="3" data-key="choix">
   <h2 class="title">Labo UX Démo : un joli site qui gêne</h2>
@@ -1727,7 +1560,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= ANNEXES : lexique, références (slides 46 à 47) ================= -->
+<!-- ================= ANNEXES : lexique, références (slides 42 à 43) ================= -->
 
 
 <section class="slide" data-part="4" data-key="lexique">
@@ -1768,18 +1601,18 @@ const CONFIG = {
 
   minutes: [
     0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 21 : théorie (14 à 16 : accessibilité)
-    2, 1.5, 2.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, // slides 22 à 33 : l'IA, bloc par bloc
-    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 34 à 45 : Traverse, puis formulaire en bonus
-    0, 0 // slides 46 à 47 : annexes, hors budget
+    2, 2.5, 2, 2.5, 3, 2, 2, 2, // slides 22 à 29 : l’IA à l’épreuve
+    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 30 à 41 : Traverse, puis formulaire en bonus
+    0, 0 // slides 42 à 43 : annexes, hors budget
   ],
   parties: [
     { nom: 'Théorie', de: 1, a: 21 },
-    { nom: 'L’IA, bloc par bloc', de: 22, a: 33 },
-    { nom: 'Pratique', de: 34, a: 45 },
-    { nom: 'Annexes', de: 46, a: 47, hors: true } // hors du cours : lexique et références
+    { nom: 'L’IA à l’épreuve', de: 22, a: 29 },
+    { nom: 'Pratique', de: 30, a: 41 },
+    { nom: 'Annexes', de: 42, a: 43, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [42, 43, 44], // formulaire en bonus, après l’audit de Traverse
+  bonus: [38, 39, 40], // formulaire en bonus, après l’audit de Traverse
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -1794,7 +1627,7 @@ const CONFIG = {
     INSTALLATION_URL: '/diapos/ux-ia/exercice-traverse.md', // installation et mission par l’agent
     FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
     EXERCICES_URL: '/ux/ux-ia/demos/labo-ux-demo/', // page de l’exercice avec les consignes
-    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 43)
+    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 39)
   },
   // Captures de la pratique dans public/apercus/.
   images: {},
@@ -2373,40 +2206,6 @@ const CONFIG = {
         "u": "https://modelcontextprotocol.io/docs/learn/server-concepts"
       }
     ],
-    "quel-agent": [
-      {
-        "t": "Codex",
-        "u": "https://learn.chatgpt.com/docs/codex/cli"
-      },
-      {
-        "t": "Claude Code",
-        "u": "https://code.claude.com/docs/en/overview"
-      },
-      {
-        "t": "OpenCode",
-        "u": "https://opencode.ai/docs/"
-      },
-      {
-        "t": "Hermes Agent",
-        "u": "https://github.com/NousResearch/hermes-agent"
-      }
-    ],
-    "ia-friction": [
-      {
-        "t": "Tests utilisateurs",
-        "u": "https://www.nngroup.com/articles/usability-testing-101/"
-      },
-      {
-        "t": "Limites des utilisateurs IA",
-        "u": "https://arxiv.org/abs/2605.18302"
-      }
-    ],
-    "ia-accessibilite": [
-      {
-        "t": "W3C : évaluer",
-        "u": "https://www.w3.org/WAI/test-evaluate/"
-      }
-    ],
     "ia-performance": [
       {
         "t": "Lighthouse",
@@ -2449,36 +2248,20 @@ const CONFIG = {
         "u": "https://developer.chrome.com/docs/devtools/css/reference"
       }
     ],
-    "ia-comportement": [
-      {
-        "t": "Données et heatmaps",
-        "u": "https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview"
-      }
-    ],
-    "ia-microcopie": [
-      {
-        "t": "Messages de formulaire",
-        "u": "https://www.w3.org/WAI/tutorials/forms/notifications/"
-      }
-    ]
   },
   motsCles: [],
 
   // Vue présentateur : ce qui se dit à l'oral, quand la slide en affiche une version courte
   notes: {
     "performance-reelle": "Un cache réutilise un fichier ou un résultat déjà obtenu. Le cache HTTP du navigateur et un cache serveur Redis sont deux mécanismes différents. Redis peut éviter de répéter certains accès à la base, mais sa présence ne garantit pas une amélioration : mesurer et prévoir expiration ou invalidation. Réduire les appels inutiles et les dépendances bloquantes, sans objectif arbitraire de nombre minimal de requêtes. Vérification du kit actuel : Labo UX conserve le rapport Lighthouse de la page d’entrée et en extrait cinq métriques de laboratoire. Il n’a pas de contrôle dédié des requêtes SQL, de Redis ni de la validité du cache serveur. La boîte à outils ux-outils extrait aussi cinq métriques ; elle ne remplace pas un diagnostic serveur. Ne pas présenter ces vérifications comme déjà livrées.",
-    "agent": "Distinguer le mode de travail et l’accès aux outils, sans associer une marque à une seule catégorie. Une conversation peut elle aussi disposer de fonctions d’agent. Les noms de produits arrivent uniquement sur la slide de choix.",
-    "mcp": "API et MCP ne sont pas opposés. Une API peut être appelée automatiquement, y compris par un agent. MCP normalise la découverte et l’appel des outils exposés ; le serveur peut appeler une API ou des outils locaux. Il ne fournit ni tous les itinéraires métier ni une compréhension garantie du produit. L’installation des skills et plugins sera traitée séparément.",
-    "quel-agent": "Les quatre produits sont des exemples d’environnements, pas un classement ni une promesse de capacités identiques. Vérifier dans les documentations officielles les outils, systèmes, modèles et modalités de paiement utilisés pour la séance. Aucun prix figé dans cette slide.",
-    "methode-ia": "Trois responsabilités plutôt que trois catégories de logiciels : preuves des outils, interprétation assistée, choix et vérification. Une absence de résultat peut signifier un contrôle non exécuté. L’agent peut également automatiser des vérifications après modification.",
-    "cles": "Le cadrage est une méthode pratique du cours. Faire préciser le résultat observable, les comptes fictifs et les actions autorisées. Compléter seulement les informations manquantes ; une consigne ne configure pas à elle seule les outils.",
-    "ia-design-system": "Exemple pour un agent équipé d’un navigateur et d’une lecture des styles calculés. Labo UX 0.2 collecte des styles sur la page d’entrée à une largeur fixe ; il ne livre pas automatiquement cette comparaison de plusieurs pages et largeurs.",
-    "ia-friction": "Un parcours automatisé peut constater une confirmation absente ou une perte de saisie. Il ne mesure pas l’hésitation ou la satisfaction des personnes et ne remplace pas les tests utilisateurs. Les parcours Labo UX doivent être décrits dans le plan avant exécution.",
-    "ia-attention": "Préparer une copie locale ou de test et vérifier les effets de bord possibles. Les limites et les permissions concernent aussi les statistiques, services d’e-mail, paiements et automatisations connectées.",
-    "ia-accessibilite": "Labo UX 0.2 lance axe sur la page d’entrée et, dans un contrôle distinct, aux checkpoints explicitement déclarés des parcours. Pa11y et un contrôle clavier complet ne sont pas intégrés. La pertinence des textes alternatifs et libellés reste à vérifier par une personne.",
-    "ia-comportement": "Le kit importe des événements JSON ou CSV et calcule un tunnel ordonné dans une fenêtre de temps. Il ne collecte pas les heatmaps et ne se connecte pas directement à Clarity ou Hotjar. Les jeux d’événements des démos sont fictifs : leurs taux ne démontrent aucun gain réel de conversion.",
-    "ia-microcopie": "Le kit collecte des chaînes dans les sources et le DOM de l’état d’entrée. Il n’explore pas automatiquement toutes les erreurs ni toutes les traductions. L’agent peut compléter avec d’autres outils ; ne pas attribuer ces observations à un contrôle qui ne les a pas produites.",
-    "ia-performance": "Labo UX 0.2 conserve le rapport Lighthouse et rend visibles ses diagnostics de performance. Un contrôle indépendant observe les ressources, les tailles connues, les dimensions et le cache des images. Ces contrôles ne vérifient pas systématiquement les délais après clic ; SQL, Redis et la validité du cache serveur exigent un diagnostic serveur. Aucun audit natif n’est déduit de Lighthouse.",
+    "agent": "Faire voter avant de demander les preuves. Les boutons du mini-site sont réellement mesurés par getComputedStyle ; les textes de verdict sont des exemples pédagogiques sans IA connectée. Une différence de style ne prouve pas son effet sur les ventes.",
+    "mcp": "Brancher puis débrancher les quatre outils dans le schéma. Aucun outil réel n’est lancé depuis cette scène. Une conversation peut disposer de fonctions d’agent. MCP normalise découverte et appel des outils ; les API peuvent être utilisées derrière. L’accès au projet et les autorisations restent nécessaires.",
+    "methode-ia": "Faire voter à main levée puis choisir une catégorie. Constat = différence CSS mesurable ; hypothèse = effet supposé sur les clients ; préférence = goût exprimé. Les réponses ne sont pas comptées comme un sondage collectif.",
+    "cles": "Faire proposer une cible, un appareil et un résultat. La mission ne configure pas les outils à elle seule. Préciser ensuite les pages, comptes fictifs, intentions graphiques et ton. Les choix ne sont ni enregistrés ni envoyés.",
+    "ia-design-system": "Explorer les six pièces avec le groupe. Les comportements et la microcopie sont des scénarios fictifs. Les valeurs des boutons viennent de la première scène ; les résultats Lighthouse de l’archive datée. Aucun taux fictif ne prouve un gain de conversion. Labo UX compare les familles de composants et signale les variations comme hypothèses à confirmer.",
+    "ia-friction": "Les trois défauts sont fictifs et confirmés par le scénario. Le blocage de réservation empêche ici le résultat attendu. Une performance qui empêche d’atteindre le formulaire peut également devenir critique : ce n’est pas un classement universel. Discuter des personnes touchées et de la fréquence.",
+    "ia-attention": "Machine à états pédagogique, sans installation ni modification de fichier. En lecture seule le bouton Corriger est désactivé. Le débogage passe par un audit puis des corrections, puis une revérification. Deux problèmes sont simulés comme résolus, un reste à vérifier. Ne pas confondre cette simulation avec un résultat réel du plugin. La vraie manipulation arrive en partie 3.",
+    "ia-performance": "Archive réelle du 21 octobre 2026, Lighthouse 13.5.0, page d’entrée Traverse locale sur le port 4192, mobile simulé 412×823, CPU ×4 et limitation réseau simulée. Performance 73, accessibilité 76, bonnes pratiques 96, SEO 91. FCP 1064.047 ms, LCP 86029.094 ms, TBT 170 ms, CLS 0. Le LCP inhabituellement élevé est le résultat archivé, pas une durée garantie pour chaque visite. Ce n’est ni le site corrigé actuel ni un audit de tout le tunnel. La capture, le JSON et le HTML sont conservés dans preuves/. Consulter le rapport ne lance aucun contrôle. Un score d’accessibilité n’est pas un pourcentage de conformité ; évaluation humaine nécessaire.",
   }
 };
 
@@ -3479,6 +3262,8 @@ const IMAGES_INTEGREES = {};
   init();
 })();
 </script>
+
+<script src="./atelier-ia.js"></script>
 
 <script id="pont-plateforme">
 /* Ajouté par la plateforme (scripts/integrer-diapos.mjs). Aucune donnée n'est envoyée : messages internes à la page. */
