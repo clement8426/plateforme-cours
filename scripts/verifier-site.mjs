@@ -261,16 +261,17 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
     const hauteur = await cadres.nth(1).evaluate((f) => [f.clientHeight, f.contentDocument.documentElement.scrollHeight]);
     verifier('comparer : la hauteur du cadre suit le contenu', Math.abs(hauteur[0] - hauteur[1]) < 8, hauteur.join(' / '));
     const frR = pc.frameLocator('iframe').nth(1);
+    await pc.getByLabel('Rechercher avec Photon', {exact:true}).uncheck();
     await frR.locator('#rue').fill('Rue du Seyon 10');
     await pc.waitForTimeout(1200);
     const sugg = await frR.locator('#suggestions').innerText().catch(() => '');
     verifier('comparer : suggestions simulées affichées', /Seyon/.test(sugg), sugg.slice(0, 50));
-    verifier('comparer : aucune requête externe par défaut', demandes.length === 0, demandes.join(', '));
-    await pc.getByLabel(/toutes les adresses de Suisse/).check();
+    verifier('comparer : aucune requête externe en mode exemple', demandes.length === 0, demandes.join(', '));
+    await pc.getByLabel('Rechercher avec Photon', {exact:true}).check();
     await frR.locator('#rue').fill('');
     await frR.locator('#rue').fill('Rue du Seyon 12');
     await pc.waitForTimeout(1500);
-    verifier('comparer : la case d’accord déclenche la requête réelle (bloquée ici)', demandes.some((u) => u.includes('photon.komoot.io')), String(demandes.length));
+    verifier('comparer : la recherche Photon déclenche une requête réelle (bloquée ici)', demandes.some((u) => u.includes('photon.komoot.io')), String(demandes.length));
     for (const r of ['/comparateur/formulaire-adresse/SOLUTIONS.md', '/comparateur/formulaire-adresse/README.md', '/comparateur/SOLUTIONS.md']) {
       const x = await ctx.request.get(base + r);
       verifier(`pas de fuite : ${r} n’existe pas`, x.status() === 404, `HTTP ${x.status()}`);

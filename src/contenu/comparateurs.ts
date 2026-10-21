@@ -15,6 +15,7 @@ export type DefautComparateur = {
   outil: string;
   lien?: { texte: string; url: string };
   cibles: { depart: string[]; repare: string[] };
+  ajout?: boolean;
 };
 
 export type Comparateur = {
@@ -30,16 +31,16 @@ export type Comparateur = {
 const formulaireAdresse: Comparateur = {
   slug: 'formulaire-adresse',
   titre: 'Le formulaire d’adresse, avant et après',
-  accroche: 'Le même formulaire, deux versions : plusieurs défauts expliqués avec la grille du cours, et l’autocomplétion en plus.',
+  accroche: 'Six corrections du formulaire, plus une aide à la saisie : les suggestions d’adresse.',
   versions: {
     depart: '/comparateur/formulaire-adresse/casse/',
     repare: '/comparateur/formulaire-adresse/corrige/',
   },
   titreFormulaire: 'Atelier Rayon, adresse de livraison',
   etapes: [
-    'Remplissez la version de départ avec une adresse fictive, puis envoyez-la : qu’est-ce qui vous gêne ?',
-    'Passez à la version réparée et refaites la même chose. Tapez « Rue du Seyon 10 » dans « Rue et numéro » pour voir l’autocomplétion.',
-    'Ouvrez chaque défaut de la liste : « Montrer dans le formulaire » surligne l’élément concerné dans la version affichée.',
+    'Envoyez le formulaire vide, puis saisissez un e-mail incomplet. Repérez ce qui vous empêche de comprendre et de corriger les erreurs.',
+    'Refaites ces essais dans « Après ». Puis cherchez « Rue du Seyon 10 » et choisissez une suggestion : le NPA et la localité se complètent.',
+    'Ouvrez une correction dans « Ce qui change », puis utilisez « Montrer dans le formulaire » pour voir les éléments concernés. « Les deux » permet de comparer sans perdre votre saisie.',
   ],
   defauts: [
     {
@@ -68,11 +69,12 @@ const formulaireAdresse: Comparateur = {
     },
     {
       id: 'autocompletion',
+      ajout: true,
       bloc: 'friction',
-      titre: 'Pas de suggestions d’adresse',
+      titre: 'Choisir une adresse plutôt que tout retaper',
       depart: 'Tout se tape à la main.',
       repare: 'Des suggestions dès 3 lettres, au clavier ou au clic.',
-      pourquoi: 'Le gain le plus visible, mais il demande du code.',
+      pourquoi: 'Choisir une suggestion renseigne la rue, le NPA et la localité. L’absence de suggestions n’est pas, à elle seule, un défaut d’accessibilité.',
       essayer: 'Tapez « Rue du Seyon 10 » dans la version réparée.',
       outil: 'Non couvert : ce contrôle automatique d’accessibilité ne détecte pas l’absence de suggestions. Un test fonctionnel le ferait.',
       lien: { texte: 'Motif « combobox », WAI-ARIA', url: 'https://www.w3.org/WAI/ARIA/apg/patterns/combobox/' },

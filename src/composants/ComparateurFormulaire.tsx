@@ -48,7 +48,7 @@ function effacer(cadre: HTMLIFrameElement | null) {
 export default function ComparateurFormulaire({ comparateur }: { comparateur: Comparateur }) {
   const [mode, setMode] = useState<Mode>('depart');
   const [ouvert, setOuvert] = useState<string | null>(null);
-  const [reel, setReel] = useState(false);
+  const [reel, setReel] = useState(true);
   const [chargements, setChargements] = useState(0);
   const [hauteurs, setHauteurs] = useState<Record<Cle, number>>({ depart: 800, repare: 1100 });
   const racine = useRef<HTMLDivElement>(null);
@@ -93,10 +93,14 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode]);
 
-  // Le vrai service d'adresses n'est activé qu'avec l'accord explicite de la personne (case à cocher).
+  // Recherche active par défaut ; le mode et les données envoyées sont expliqués avant le formulaire.
+  // Notifier le formulaire évite de réutiliser des résultats de l'autre mode.
   useEffect(() => {
     const fenetre = cadreRepare.current?.contentWindow as (Window & { __suggestionsReelles?: boolean }) | null | undefined;
-    if (fenetre) fenetre.__suggestionsReelles = reel;
+    if (fenetre && fenetre.__suggestionsReelles !== reel) {
+      fenetre.__suggestionsReelles = reel;
+      fenetre.dispatchEvent(new Event('ux:suggestions-mode'));
+    }
   }, [reel, chargements]);
 
   const couleurDe = (bloc: keyof typeof BLOCS) => {
@@ -116,6 +120,15 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
   useEffect(() => { appliquer(ouvert, false); }, [ouvert, mode, chargements, appliquer]);
 
   const titres: Record<Cle, string> = { depart: 'Avant : le formulaire d’origine', repare: 'Après : le formulaire réparé' };
+  const essayerAdresse = () => {
+    const fenetre = cadreRepare.current?.contentWindow as (Window & typeof globalThis) | null;
+    const champ = cadreRepare.current?.contentDocument?.getElementById('rue') as HTMLInputElement | null;
+    if (!fenetre || !champ) return;
+    champ.value = 'Rue du Seyon 10';
+    champ.dispatchEvent(new fenetre.Event('input', { bubbles: true }));
+    champ.focus();
+    champ.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 
   return (
     <div className="comparateur" ref={racine}>
@@ -133,6 +146,22 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
           {mode === 'cote' ? 'Les deux versions sont affichées côte à côte.' : `Version affichée : ${titres[mode]}.`}
         </p>
 
+        {mode !== 'depart' && (
+          <section className="photon-option" aria-labelledby="titre-suggestions">
+            <div className="photon-entete">
+              <h2 id="titre-suggestions">Suggestions d’adresse</h2>
+              <span className="photon-mode">{reel ? 'Recherche en Suisse' : 'Adresses d’exemple'}</span>
+            </div>
+            <label>
+              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} aria-describedby="photon-explication" />
+              <span>Rechercher avec Photon</span>
+            </label>
+            <p id="photon-explication">{reel
+              ? 'Activé : votre recherche est envoyée au service Photon. Utilisez une adresse d’exemple. Si le service ne répond pas, décochez pour essayer sans connexion.'
+              : 'Mode exemple : les suggestions sont calculées dans votre navigateur, sans envoi à Photon. Essayez « Rue du Seyon 10 ».'}</p>
+            <button type="button" className="bouton-secondaire" onClick={essayerAdresse}>Essayer « Rue du Seyon 10 »</button>
+          </section>
+        )}
 
         <div className={`vitrines vitrines-${mode}`}>
           {(['depart', 'repare'] as Cle[]).map((cle) => (
@@ -149,31 +178,28 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
           ))}
         </div>
 
-        {mode !== 'depart' && (
-          <p className="photon-option">
-            <label>
-              <input type="checkbox" checked={reel} onChange={(e) => setReel(e.target.checked)} />
-              <span>Chercher dans toutes les adresses de Suisse (service Photon)</span>
-            </label>
-            <span>Sans cette case, une liste d’exemple est utilisée et rien ne quitte votre navigateur. Avec, ce que vous tapez part vers un service extérieur : inventez l’adresse.</span>
-          </p>
-        )}
       </div>
 
       <aside className="comparateur-defauts" aria-labelledby="titre-defauts">
-        <h2 id="titre-defauts" className="titre-section">Les six défauts réparés, et l’autocomplétion</h2>
-        <ol className="defauts">
-          {comparateur.defauts.map((d) => {
+        <h2 id="titre-defauts" className="titre-section">Ce qui change</h2>
+        <p className="comparateur-repere">Ouvrez un point pour comparer le problème, la correction et ce que vous pouvez essayer.</p>
+        {[
+          { id: 'corrections', titre: `${comparateur.defauts.filter((d) => !d.ajout).length} corrections du formulaire`, points: comparateur.defauts.filter((d) => !d.ajout) },
+          { id: 'ajouts', titre: 'En plus : une aide à la saisie', points: comparateur.defauts.filter((d) => d.ajout) },
+        ].filter((groupe) => groupe.points.length).map((groupe) => <section key={groupe.id} className="comparateur-groupe" aria-labelledby={`titre-${groupe.id}`}>
+          <h3 id={`titre-${groupe.id}`}>{groupe.titre}</h3>
+          <ol className="defauts">
+          {groupe.points.map((d) => {
             const estOuvert = ouvert === d.id;
             const bloc = BLOCS[d.bloc];
             return (
               <li key={d.id} className={estOuvert ? 'est-ouvert' : undefined} style={{ '--bloc': bloc.couleur } as React.CSSProperties}>
-                <h3>
+                <h4>
                   <button type="button" aria-expanded={estOuvert} aria-controls={`defaut-${d.id}`} onClick={() => setOuvert(estOuvert ? null : d.id)}>
                     <span className="defaut-bloc">{bloc.nom}</span>
                     <span className="defaut-titre">{d.titre}</span>
                   </button>
-                </h3>
+                </h4>
                 <div id={`defaut-${d.id}`} className="defaut-corps" hidden={!estOuvert}>
                   <dl>
                     <div><dt>Avant</dt><dd>{d.depart}</dd></div>
@@ -190,7 +216,8 @@ export default function ComparateurFormulaire({ comparateur }: { comparateur: Co
               </li>
             );
           })}
-        </ol>
+          </ol>
+        </section>)}
       </aside>
     </div>
   );

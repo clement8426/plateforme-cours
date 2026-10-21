@@ -8,7 +8,7 @@
 //
 // Deux ajustements sont appliqués à la version réparée :
 //  - un petit fichier (demo-photon.js) simule les suggestions d'adresse dans le navigateur, pour que rien de ce que
-//    tape une personne ne parte vers un service extérieur sans son accord ;
+//    tape une personne reste local en mode exemple (la page de comparaison choisit le mode) ;
 //  - les deux pages reçoivent « noindex » : ce sont des pages de démonstration, pas des pages à référencer.
 import { execFileSync } from 'node:child_process';
 import { copyFileSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
@@ -98,12 +98,18 @@ try {
   } else {
     console.warn('Avertissement : réglages de la recherche Photon non reconnus, la version réparée est publiée telle quelle.');
   }
+  const scriptPublie = join(cible, 'corrige', 'script.js');
+  let code = readFileSync(scriptPublie, 'utf8');
+  if (!code.includes('ux:suggestions-mode')) {
+    code += '\nwindow.addEventListener(\'ux:suggestions-mode\', () => { cache.clear(); if (requete) requete.abort(); rue.dispatchEvent(new Event(\'input\', { bubbles: true })); });\n';
+    writeFileSync(scriptPublie, code);
+  }
   copyFileSync(join(racine, 'scripts', 'modeles', 'demo-photon.js'), join(cible, 'corrige', 'demo-photon.js'));
   const index = join(cible, 'corrige', 'index.html');
   let html = readFileSync(index, 'utf8');
   if (!html.includes('<script src="script.js"></script>')) throw new Error('corrige/index.html : balise script.js introuvable');
   html = html.replace('<script src="script.js"></script>', '<script src="demo-photon.js"></script>\n  <script src="script.js"></script>');
-  html = html.replace('Suggestions d’adresses : ', 'Suggestions d’adresses (simulées dans cette démonstration, sauf accord de votre part) : ');
+  html = html.replace('Le formulaire n’envoie aucune donnée.', 'La validation n’envoie aucune commande. La recherche d’adresse utilise Photon ou les exemples, selon le mode choisi au-dessus du formulaire.');
   writeFileSync(index, html);
 
   console.log('Comparateur publié : public/comparateur/formulaire-adresse/{casse,corrige}');

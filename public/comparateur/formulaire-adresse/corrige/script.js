@@ -118,15 +118,17 @@ function choisir(k) {
 async function chercher(q) {
   if (cache.has(q)) return afficher(cache.get(q));
   if (requete) requete.abort();
-  requete = new AbortController();
+  const courante = new AbortController();
+  requete = courante;
   charge.hidden = false; statut.textContent = 'Recherche…';
   try {
     // limite à la Suisse, 5 suggestions au plus ; sans localité saisie, résultats proches de Neuchâtel en premier
     const biais = form.elements.localite.value.trim() ? {} : { lat: '46.99', lon: '6.93', location_bias_scale: '0.1' };
     const url = PHOTON + '?' + new URLSearchParams({ q, lang: 'fr', limit: '10', countrycode: 'CH', ...biais }) + '&layer=house&layer=street';
-    const r = await fetch(url, { signal: requete.signal });
+    const r = await fetch(url, { signal: courante.signal });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
+    if (requete !== courante) return;
     const vus = new Set();
     const features = data.features.filter(f => f.properties.postcode && (f.properties.street || f.properties.name)).filter(f => {
       const a = texteAdresse(f.properties), cle = a.ligne + a.lieu; if (vus.has(cle)) return false; vus.add(cle); return true;
@@ -134,20 +136,33 @@ async function chercher(q) {
     cache.set(q, features.slice(0, 5));
     afficher(features.slice(0, 5));
   } catch (err) {
-    if (err.name === 'AbortError') return;
+    if (err.name === 'AbortError' || requete !== courante) return;
     fermer();
     statut.textContent = 'Suggestions indisponibles : saisissez l’adresse à la main.';
   } finally {
-    charge.hidden = true;
+    if (requete === courante) {
+      charge.hidden = true;
+      requete = null;
+    }
   }
 }
 
 rue.addEventListener('input', () => {
   clearTimeout(minuteur);
+  if (requete) requete.abort();
+  requete = null;
+  charge.hidden = true;
+  fermer();
   const voie = rue.value.trim();
   if (voie.length < 3) { fermer(); statut.textContent = ''; return; }
   const q = [voie, form.elements.localite.value.trim()].filter(Boolean).join(' '); // la ville saisie précise la recherche (et la clé du cache)
   minuteur = setTimeout(() => chercher(q), 300); // on attend une pause dans la frappe : moins de requêtes
+});
+
+// Changer de service ne doit pas réutiliser le cache ni les résultats de l'autre mode.
+window.addEventListener('ux:suggestions-mode', () => {
+  cache.clear();
+  rue.dispatchEvent(new Event('input', { bubbles: true }));
 });
 
 rue.addEventListener('keydown', e => {

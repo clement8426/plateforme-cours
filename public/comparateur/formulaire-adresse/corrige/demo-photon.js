@@ -1,8 +1,8 @@
 // Ajouté par la plateforme (scripts/integrer-comparateur.mjs) à la version réparée du formulaire, pour la démonstration.
 //
 // Par défaut, les suggestions d'adresse sont SIMULÉES ici, dans le navigateur : aucune requête ne part vers le service Photon,
-// donc ce que la personne tape ne quitte pas la page. La page qui présente la démonstration peut activer le vrai service
-// (case à cocher, accord explicite) en posant window.__suggestionsReelles = true.
+// donc ce que la personne tape ne quitte pas la page. La page de comparaison active Photon par défaut
+// en posant window.__suggestionsReelles = true et propose de revenir aux exemples avant le formulaire.
 (() => {
   // Quelques rues réelles de Suisse. Le numéro vient de ce que la personne tape ; sinon on propose un numéro d'exemple.
   const RUES = [

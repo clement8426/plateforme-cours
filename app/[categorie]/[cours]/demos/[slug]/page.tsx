@@ -61,10 +61,10 @@ export default async function PageDemo(props: Props) {
         </div>
       </header>
 
-      <section className="mode-emploi" aria-labelledby="titre-mode-emploi">
-        <h2 id="titre-mode-emploi">Comment ça marche</h2>
+      <section className={`mode-emploi${comparateur ? ' mode-emploi-comparateur' : ''}`} aria-labelledby="titre-mode-emploi">
+        <h2 id="titre-mode-emploi">{comparateur ? 'Comparez en trois essais' : 'Comment ça marche'}</h2>
         <ol>
-          {demo.modeEmploi.map((e) => <li key={e}>{e}</li>)}
+          {(comparateur?.etapes ?? demo.modeEmploi).map((e, i) => <li key={e}>{comparateur ? <div><h3>{['Avant : repérez les obstacles', 'Après : essayez les améliorations', 'Comprenez ce qui a changé'][i]}</h3><p>{e}</p></div> : e}</li>)}
         </ol>
       </section>
 

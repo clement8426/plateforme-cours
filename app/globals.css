@@ -410,9 +410,9 @@ html.theatre { overflow: hidden; }
 .comparateur-defauts .titre-section { font-size: 22px; margin-bottom: 12px; }
 .defauts { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--ligne); }
 .defauts > li { border-bottom: 1px solid var(--ligne); }
-.defauts h3 { font-size: inherit; font-weight: inherit; }
-.defauts h3 button { display: grid; gap: 2px; width: 100%; min-height: 44px; padding: 14px 0; border: 0; background: none; color: var(--encre); font: inherit; text-align: left; cursor: pointer; }
-.defauts h3 button:hover .defaut-titre { text-decoration: underline; text-underline-offset: 4px; }
+.defauts :is(h3, h4) { font-size: inherit; font-weight: inherit; }
+.defauts :is(h3, h4) button { display: grid; gap: 2px; width: 100%; min-height: 44px; padding: 14px 0; border: 0; background: none; color: var(--encre); font: inherit; text-align: left; cursor: pointer; }
+.defauts :is(h3, h4) button:hover .defaut-titre { text-decoration: underline; text-underline-offset: 4px; }
 .defaut-bloc { display: inline-flex; align-items: center; gap: 8px; color: var(--discret); font-size: 14px; font-weight: 600; }
 .defaut-bloc::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--bloc, var(--discret)); }
 .defaut-titre { font: 600 19px/1.25 var(--police-titre), sans-serif; letter-spacing: -.01em; }
@@ -423,6 +423,9 @@ html.theatre { overflow: hidden; }
 .defaut-corps dd { margin: 2px 0 0; color: var(--discret); }
 .defaut-outil { padding: 12px 14px; border-radius: 10px; background: var(--surface-2); }
 .defaut-corps .actions { align-items: center; gap: 12px 20px; }
+.comparateur-repere { color: var(--discret); font-size: 15px; line-height: 1.5; margin-bottom: 22px; }
+.comparateur-groupe + .comparateur-groupe { margin-top: 26px; padding: 18px; background: var(--surface-2); border: 1px solid var(--ligne); border-radius: var(--rayon); }
+.comparateur-groupe > h3 { font-size: 17px; margin-bottom: 12px; }
 @media (min-width: 1000px) { .comparateur-defauts { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; padding-right: 6px; } }
 @media (max-width: 1000px) { .comparateur { grid-template-columns: 1fr; } }
 @media (max-width: 1100px) { .vitrines-cote { grid-template-columns: 1fr; } }
@@ -434,9 +437,18 @@ html.theatre { overflow: hidden; }
 .mode-emploi li { counter-increment: geste; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 16px; line-height: 1.45; }
 .mode-emploi li::before { content: counter(geste); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--bleu); color: var(--sur-bleu); font: 700 14px/1 var(--police-titre), sans-serif; }
 @media (max-width: 860px) { .mode-emploi ol { grid-template-columns: 1fr; } }
-.photon-option { display: grid; gap: 4px; margin-top: 12px; color: var(--discret); font-size: 14px; }
-.photon-option label { display: flex; align-items: center; gap: 10px; min-height: 32px; color: var(--encre); font-size: 15px; font-weight: 600; cursor: pointer; }
-.photon-option input { flex: none; width: 20px; height: 20px; accent-color: var(--bleu); }
+.mode-emploi-comparateur { padding: 22px; background: var(--surface-2); border: 1px solid var(--ligne); gap: 16px; }
+.mode-emploi-comparateur ol { gap: 14px; }
+.mode-emploi-comparateur li { padding: 18px; border: 1px solid var(--ligne); border-radius: 12px; background: var(--surface); }
+.mode-emploi-comparateur h3 { font-size: 17px; line-height: 1.3; margin-bottom: 8px; }
+.mode-emploi-comparateur li p { font-size: 15px; color: var(--discret); }
+.photon-option { display: grid; gap: 10px; margin-top: 16px; padding: 18px 20px; border: 1px solid var(--ligne); border-left: 4px solid var(--bleu); border-radius: 12px; background: var(--surface-2); color: var(--discret); font-size: 14px; line-height: 1.5; }
+.photon-entete { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.photon-entete h2 { font-size: 18px; color: var(--encre); }
+.photon-mode { font-size: 13px; font-weight: 600; color: var(--encre); padding: 3px 10px; border: 1px solid var(--ligne); border-radius: 999px; background: var(--surface); }
+.photon-option label { display: flex; align-items: center; gap: 10px; min-height: 44px; color: var(--encre); font-size: 15px; font-weight: 600; cursor: pointer; }
+.photon-option input { flex: none; width: 22px; height: 22px; accent-color: var(--bleu); }
+.photon-option > button { justify-self: start; min-height: 44px; }
 
 /* ---------- démos du cours « IA, données et responsabilité » ---------- */
 .maquette { margin: 0; padding: 18px; background: #FBF8F2; color: #1F2421; font: 400 15px/1.5 var(--police-texte), sans-serif; }
