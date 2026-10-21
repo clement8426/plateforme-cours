@@ -1301,7 +1301,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 23 à 35) ================= -->
+<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 23 à 34) ================= -->
 
 <section class="slide" data-part="2" data-key="agent">
   <h2 class="title">Conversation et agent : conseiller ou utiliser des outils</h2>
@@ -1478,23 +1478,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="plugin">
-  <h2 class="title">Les consignes du cours, à réutiliser</h2>
-  <div class="body g12">
-    <div class="c7 stack-m">
-      <p class="lead strong">Une consigne par bloc, à adapter à votre projet.</p>
-      <ol class="plugin-etapes">
-        <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p>Donner le contexte et annoncer les contrôles disponibles.</p></li>
-        <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p>Exiger des preuves et distinguer constats, hypothèses et avis.</p></li>
-        <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p>Valider les corrections, puis refaire les vérifications.</p></li>
-      </ol>
-      <p class="note" data-step="4">Une consigne ne fournit pas les outils. Labo UX couvre une partie de ces contrôles ; l’agent doit annoncer ce qui manque.</p>
-    </div>
-    <div class="c5"><div class="case" data-case="PLUGIN_URL" data-kind="link" data-fixe data-download="ux-ia-six-consignes.md" data-texte="Télécharger les consignes" data-label="Les six consignes et le contexte à fournir"></div></div>
-  </div>
-</section>
-
-<!-- ================= PARTIE 3 : PRATIQUE (slides 36 à 44) ================= -->
+<!-- ================= PARTIE 3 : PRATIQUE (slides 35 à 46) ================= -->
 
 <section class="slide" data-part="3" data-key="choix">
   <h2 class="title">Labo UX Démo : un joli site qui gêne</h2>
@@ -1763,7 +1747,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= ANNEXES : lexique, références (slides 45 à 46) ================= -->
+<!-- ================= ANNEXES : lexique, références (slides 47 à 48) ================= -->
 
 
 <section class="slide" data-part="4" data-key="lexique">
@@ -1804,18 +1788,18 @@ const CONFIG = {
 
   minutes: [
     0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 1.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (15 à 17 : accessibilité)
-    2, 2.5, 1.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, 1, // slides 23 à 35 : l'IA, bloc par bloc
-    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 36 à 47 : Traverse, puis formulaire en bonus
-    0, 0 // slides 48 à 49 : annexes, hors budget
+    2, 2.5, 1.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, // slides 23 à 34 : l'IA, bloc par bloc
+    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 35 à 46 : Traverse, puis formulaire en bonus
+    0, 0 // slides 47 à 48 : annexes, hors budget
   ],
   parties: [
     { nom: 'Théorie', de: 1, a: 22 },
-    { nom: 'L’IA, bloc par bloc', de: 23, a: 35 },
-    { nom: 'Pratique', de: 36, a: 47 },
-    { nom: 'Annexes', de: 48, a: 49, hors: true } // hors du cours : lexique et références
+    { nom: 'L’IA, bloc par bloc', de: 23, a: 34 },
+    { nom: 'Pratique', de: 35, a: 46 },
+    { nom: 'Annexes', de: 47, a: 48, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [44, 45, 46], // formulaire en bonus, après l’audit de Traverse
+  bonus: [43, 44, 45], // formulaire en bonus, après l’audit de Traverse
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -1829,7 +1813,6 @@ const CONFIG = {
     SITE_URL: '/ux/ux-ia/demos/labo-ux-demo/', // exercice principal Traverse
     INSTALLATION_URL: '/diapos/ux-ia/exercice-traverse.md', // installation et mission par l’agent
     FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
-    PLUGIN_URL: '/diapos/ux-ia/consignes.md', // les prompts du cours (slide 35)
     EXERCICES_URL: '/ux/ux-ia/demos/labo-ux-demo/', // page de l’exercice avec les consignes
     AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 43)
   },
@@ -2525,7 +2508,6 @@ const CONFIG = {
     "ia-comportement": "Le kit importe des événements JSON ou CSV et calcule un tunnel ordonné dans une fenêtre de temps. Il ne collecte pas les heatmaps et ne se connecte pas directement à Clarity ou Hotjar. Les jeux d’événements des démos sont fictifs : leurs taux ne démontrent aucun gain réel de conversion.",
     "ia-microcopie": "Le kit collecte des chaînes dans les sources et le DOM de l’état d’entrée. Il n’explore pas automatiquement toutes les erreurs ni toutes les traductions. L’agent peut compléter avec d’autres outils ; ne pas attribuer ces observations à un contrôle qui ne les a pas produites.",
     "ia-performance": "Labo UX 0.2 conserve le rapport Lighthouse et rend visibles ses diagnostics de performance. Un contrôle indépendant observe les ressources, les tailles connues, les dimensions et le cache des images. Ces contrôles ne vérifient pas systématiquement les délais après clic ; SQL, Redis et la validité du cache serveur exigent un diagnostic serveur. Aucun audit natif n’est déduit de Lighthouse.",
-    "plugin": "Les consignes téléchargées sont extraites des six slides de ce support. Elles restent dépendantes des outils et accès réels. Labo UX ne livre pas toutes les capacités illustrées. Une correction est réalisée avec les outils d’édition de l’agent et doit être vérifiée. Pour installer le moteur, donner à l’agent le fichier installation-labo-ux.md. Le CLI fonctionne sans MCP enregistré. Le mode Audit ne réécrit pas le code ; le mode Débogage demande un audit initial, les corrections par l’agent puis un nouvel audit."
   }
 };
 

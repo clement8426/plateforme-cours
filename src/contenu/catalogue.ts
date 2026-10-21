@@ -26,6 +26,7 @@ export type Demo = {
   exercice: string;
   exerciceUrl?: string; // un exercice peut vivre dans un dépôt distinct de celui du cours
   bonus?: boolean; // à montrer seulement s'il reste du temps
+  indisponible?: boolean; // carte visible, sans lien vers l'exercice
 };
 
 // Le déroulé du cours, calé sur les trois parties des diapos.
@@ -100,8 +101,8 @@ const uxIa: Cours = {
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 22] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Conversation, agents, API et MCP, puis six consignes avec les preuves et les limites à vérifier.', duree: '25 min', diapos: [23, 35] },
-    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [36, 47], demos: true },
+    { titre: 'L’IA, bloc par bloc', resume: 'Conversation, agents, API et MCP, puis six consignes avec les preuves et les limites à vérifier.', duree: '25 min', diapos: [23, 34] },
+    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [35, 46], demos: true },
   ],
   demos: [
     {
@@ -151,6 +152,7 @@ const uxIa: Cours = {
     {
       slug: 'affiche',
       titre: 'L’affiche qui se lit en 3 secondes',
+      indisponible: true,
       resume: 'Deux affiches pour le même événement, la Grande Soupe d’automne, montrées 3 secondes chacune. Laquelle retient-on ?',
       blocs: ['design-system', 'microcopie'],
       duree: '8 minutes',

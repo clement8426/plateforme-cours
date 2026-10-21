@@ -101,13 +101,14 @@ export default async function PageCours(props: ParamsCours) {
                 <div className="partie-demos">
                   <ul className="demos-grille">
                     {cours.demos.map((d) => (
-                      <li key={d.slug} className="demo-carte">
+                      <li key={d.slug} className={`demo-carte${d.indisponible ? ' est-indisponible' : ''}`} aria-disabled={d.indisponible || undefined}>
                         <img src={d.apercu} alt="" width={1440} height={900} loading="lazy" />
                         <div className="demo-carte-texte">
-                          <h4><Link href={`${base}/demos/${d.slug}/`}>{d.titre}</Link></h4>
+                          <h4>{d.indisponible ? d.titre : <Link href={`${base}/demos/${d.slug}/`}>{d.titre}</Link>}</h4>
+                          {d.indisponible && <p className="demo-indisponible">Indisponible pour le moment</p>}
                           <p>{d.bonus ? <strong>Bonus, si le temps le permet. </strong> : null}{d.resume}</p>
                           <PucesBlocs blocs={d.blocs} />
-                          <BadgeVu cours={cle} etape={d.slug} nom={d.titre} />
+                          {!d.indisponible && <BadgeVu cours={cle} etape={d.slug} nom={d.titre} />}
                         </div>
                       </li>
                     ))}

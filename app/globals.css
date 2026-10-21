@@ -253,6 +253,9 @@ img { display: block; max-width: 100%; height: auto; }
 .demo-carte h3 a:focus-visible, .demo-carte h4 a:focus-visible { outline: none; }
 .demo-carte p { color: var(--discret); font-size: 15px; }
 .demo-carte .vu { justify-self: start; }
+.demo-carte.est-indisponible { filter: grayscale(1); background: var(--surface-2); box-shadow: none; cursor: not-allowed; }
+.demo-carte.est-indisponible:hover { border-color: var(--ligne); }
+.demo-carte .demo-indisponible { color: var(--encre); font-weight: 600; }
 @media (max-width: 900px) { .demos-grille { grid-template-columns: 1fr; } .demo-carte { grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: auto; } .demo-carte img { height: 100%; aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--ligne); } }
 @media (max-width: 560px) { .demo-carte { grid-template-columns: 1fr; } .demo-carte img { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--ligne); } }
 

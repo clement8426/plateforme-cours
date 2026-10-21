@@ -17,7 +17,7 @@ réunit l’installation et la mission en mode Audit. Il est régénéré à cha
 par `scripts/preparer-exercice-traverse.mjs`. Le site Next.js de l’exercice tourne
 sur l’ordinateur de l’apprenant, pas dans l’hébergement statique de cette plateforme.
 Le formulaire d’adresse et l’affiche restent en bonus. Les diapos de pratique vont
-de 36 à 47 (annexes 48 et 49). L’ancienne page de démonstration Tilleul redirige
+de 35 à 46 (annexes 47 et 48). L’ancienne page de démonstration Tilleul redirige
 vers Traverse ; les anciennes ressources statiques ne sont pas supprimées.
 
 ## Lancer en local
