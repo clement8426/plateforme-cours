@@ -131,10 +131,10 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.waitForLoadState('networkidle');
   verifier('page du cours : 3 parties et 3 démonstrations', (await p.locator('.partie').count()) === 3 && (await p.locator('.demo-carte').count()) === 3);
   verifier('page du cours : lien vers le dépôt GitHub des exercices', (await p.getByRole('link', { name: /Ouvrir le dépôt GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia');
-  await p.getByRole('link', { name: /Diapo 20/ }).click();
-  await p.waitForURL('**/diapos/?diapo=20');
+  await p.getByRole('link', { name: /Diapo 23/ }).click();
+  await p.waitForURL('**/diapos/?diapo=23');
   await p.waitForTimeout(800);
-  verifier('« Diapo 20 » ouvre les diapos à la diapo 20', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#20'));
+  verifier('« Diapo 23 » ouvre les diapos à la diapo 23', (await p.locator('iframe.cadre-diapos').getAttribute('src')).endsWith('#23'));
 
   // « Puis-je l'envoyer à une IA ? » : le CV (Non, Oui, Oui) est orange ; répondre Oui d'emblée dit quelle question est ratée, et pourquoi
   await p.goto(base + '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/');
@@ -146,6 +146,28 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await tri.getByRole('button', { name: 'Refaire ce fichier' }).click();
   for (const r of ['Non', 'Oui', 'Oui']) await tri.getByRole('button', { name: r, exact: true }).click();
   verifier('tri des fichiers : le CV bien trié est orange, à anonymiser d’abord', /Juste/.test(await p.locator('.tri-verdict').innerText()) && /orange : anonymiser/i.test(await p.locator('.tri-feu').innerText()));
+
+  // Une simulation ne doit pas promettre un risque nul, même après tous les choix attendus.
+  await p.goto(base + '/ia-legislation/ia-donnees/demos/dossier-exemple/');
+  const dossier = p.locator('.dossier');
+  await dossier.locator('fieldset').nth(0).getByRole('radio').nth(1).check();
+  verifier('dossier : un choix prudent ne termine pas les quatre étapes', /1 étapes sur 4/.test(await dossier.locator('.dossier-compteur').innerText()));
+  await dossier.locator('fieldset').nth(1).getByRole('radio').nth(1).check();
+  await dossier.locator('fieldset').nth(2).getByRole('radio').nth(2).check();
+  await dossier.locator('fieldset').nth(3).getByRole('radio').nth(1).check();
+  verifier('dossier : les précautions réduisent les risques sans garantie de risque nul', /Risques réduits/.test(await dossier.locator('.dossier-compteur').innerText()) && !/Aucun risque|Tous les choix sûrs/.test(await dossier.innerText()));
+  await dossier.getByRole('button', { name: 'Comparer le parcours sans précautions' }).click();
+  verifier('dossier : les sept points de vigilance restent présents', /7 points de vigilance sur 7/.test(await dossier.locator('.dossier-compteur').innerText()));
+
+  await p.goto(base + '/ia-legislation/ia-donnees/demos/reidentification/');
+  const reid = p.locator('.reid');
+  await reid.getByRole('radio', { name: /Protéger/ }).check();
+  for (const groupe of await reid.locator('.reid-reglage').all()) await groupe.getByRole('button').last().click();
+  verifier('réidentification : atteindre le seuil du jeu ne garantit pas l’anonymat', /Objectif du jeu atteint/.test(await reid.locator('.reid-verdict').innerText()) && /ne garantit pas l’anonymat/.test(await reid.locator('.reid-verdict').innerText()));
+
+  await p.goto(base + '/diapos/ia-donnees/#30');
+  const routageSuisse = p.locator('.route-cards .route-card').nth(1);
+  verifier('routage sensible : la Suisse ne donne pas une validation automatique', /À valider\s*:/.test(await routageSuisse.innerText()) && await routageSuisse.locator('.verdict.ko').count() === 1);
 
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   verifier('démo de l’affiche : aucune note du formateur en ligne', (await p.locator('.deroule-demo, .deroule-formateur').count()) === 0 && !(await p.content()).includes('Pour présenter en direct'));

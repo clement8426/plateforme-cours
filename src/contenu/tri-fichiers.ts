@@ -26,12 +26,12 @@ export const QUESTIONS = [
   { id: 'q3', question: 'Peut-on vraiment l’anonymiser, sans perdre ce qui sert ?', aide: 'Retirer le nom ne suffit pas toujours. Un secret d’affaires, lui, ne s’anonymise pas.' },
 ] as const;
 
-// Trois couleurs. Vert : aucune précaution. Orange : une précaution avant d’envoyer. Rouge : jamais un chat grand public.
+// Trois couleurs. Vert : contenu public ou fictif sans information protégée. Orange : une précaution avant d’envoyer. Rouge : jamais un chat grand public.
 export const RESULTATS: Record<Couleur, { nom: string; court: string; outil: string }> = {
-  vert: { nom: 'Vert', court: 'Vert', outil: 'N’importe quel outil, même un chat grand public.' },
-  orangeAnon: { nom: 'Orange : anonymiser d’abord', court: 'Orange', outil: 'Retirez ou généralisez ce qui identifie, faites relire par une deuxième personne, puis n’importe quel outil.' },
-  orange: { nom: 'Orange : contrat ou IA suisse', court: 'Orange', outil: 'Une offre entreprise sous contrat, ou une IA hébergée en Suisse.' },
-  rouge: { nom: 'Rouge', court: 'Rouge', outil: 'Sur l’ordinateur, ou une IA hébergée en Suisse sous contrat. Jamais un chat grand public.' },
+  vert: { nom: 'Vert', court: 'Vert', outil: 'Un outil autorisé pour ce contenu public ou fictif, sans donnée protégée.' },
+  orangeAnon: { nom: 'Orange : anonymiser d’abord', court: 'Orange', outil: 'Retirez ou généralisez les identifiants et les indices distinctifs. Vérifiez les recoupements possibles avant de décider d’un envoi.' },
+  orange: { nom: 'Orange : prestataire et contrat à valider', court: 'Orange', outil: 'Un prestataire validé : contrat, conservation, accès et transferts. L’hébergement suisse seul ne suffit pas.' },
+  rouge: { nom: 'Rouge', court: 'Rouge', outil: 'Traitement local maîtrisé, ou prestataire validé pour cet usage sensible et le secret professionnel. Aucun envoi à un outil non validé.' },
 };
 
 // Les réponses attendues, question par question, pour chaque couleur.
@@ -78,7 +78,7 @@ export const FICHIERS: FichierTri[] = [
     id: 'cv', fichier: 'cv-candidate.pdf', format: 'PDF', titre: 'Le CV d’une candidate',
     but: 'Vous voulez préparer les questions de l’entretien d’embauche.',
     apercu: { type: 'texte', contenu: 'Léa Modèle · Rue des Essais 3, 2034 Peseux · née le 14.05.1997\nCandidature : assistante juridique\n2021 à 2026 : assistante juridique, Étude Exemple.\nCFC d’employée de commerce. Français, allemand (B2), anglais (B1).' },
-    attendu: 'orangeAnon', pourquoi: 'Il parle d’une personne précise : nom, adresse, date de naissance. Rien n’est médical ni sous secret, donc pas de rouge. Mais on ne l’envoie pas tel quel : pour préparer l’entretien, l’expérience suffit. Retirez le nom, l’adresse, la date de naissance et l’ancien employeur, puis envoyez.',
+    attendu: 'orangeAnon', pourquoi: 'Il parle d’une personne précise : nom, adresse, date de naissance. Rien n’est médical ni sous secret, donc pas de rouge. Mais on ne l’envoie pas tel quel : pour préparer l’entretien, l’expérience suffit. Retirez ces identifiants et vérifiez si le parcours permet encore de reconnaître la candidate. Sinon, utilisez un traitement validé.',
     raisons: ['Un CV n’est ni médical ni sous secret. L’adresse et la date de naissance sont des données personnelles, pas des données sensibles.', 'Un CV parle d’une personne précise : nom, adresse, date de naissance.', 'Pour préparer un entretien, on garde l’expérience et on retire tout ce qui identifie.'],
   },
   {
@@ -134,7 +134,7 @@ export const FICHIERS: FichierTri[] = [
     id: 'capture', fichier: 'capture-erreur-logiciel.png', format: 'Capture d’écran', titre: 'La capture d’un message d’erreur',
     but: 'Vous voulez savoir comment réparer l’erreur.',
     apercu: { type: 'image', alt: 'Capture du logiciel de facturation : un message d’erreur au centre, et derrière, la liste des factures avec les noms des clients et l’objet de leur dossier.' },
-    attendu: 'rouge', pourquoi: 'Regardez derrière le message : des noms de clients et l’objet de leur dossier. Recadrez sur le seul message d’erreur, et la capture devient verte.',
+    attendu: 'rouge', pourquoi: 'Regardez derrière le message : des noms de clients et l’objet de leur dossier. Recadrez sur le message, puis vérifiez qu’aucune information protégée ne reste visible ou jointe au fichier.',
     raisons: ['Derrière le message d’erreur, on lit des noms de clients et l’objet de leur dossier.'],
   },
 ];

@@ -30,7 +30,7 @@ export type Comparateur = {
 const formulaireAdresse: Comparateur = {
   slug: 'formulaire-adresse',
   titre: 'Le formulaire d’adresse, avant et après',
-  accroche: 'Le même formulaire, deux versions : six défauts, un par bloc, et l’autocomplétion en plus.',
+  accroche: 'Le même formulaire, deux versions : plusieurs défauts expliqués avec la grille du cours, et l’autocomplétion en plus.',
   versions: {
     depart: '/comparateur/formulaire-adresse/casse/',
     repare: '/comparateur/formulaire-adresse/corrige/',
@@ -116,7 +116,7 @@ const formulaireAdresse: Comparateur = {
     },
     {
       id: 'verification',
-      bloc: 'comportement',
+      bloc: 'friction',
       titre: 'Toutes les erreurs d’un coup, à la fin',
       depart: 'Rien n’est vérifié avant l’envoi.',
       repare: 'Un champ rempli est vérifié quand on le quitte ; un champ obligatoire vide, à l’envoi. Les erreurs sont signalées au moment utile.',

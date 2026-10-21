@@ -1,10 +1,15 @@
 # Plateforme de cours
 
-Le Labo, la plateforme de cours de Clément Bastien : diapos et démonstrations interactives, rangées par thème. Les exercices à refaire chez soi sont dans un dépôt GitHub à part ([ux-ia-exercices](https://github.com/clement8426/ux-ia-exercices)).
-Site **entièrement statique** : pas de compte, pas de base de données, pas de cookie. Seules des statistiques de visite anonymes sont comptées, par Vercel Web Analytics (sans cookie ni donnée personnelle ; à activer dans le projet Vercel, onglet Analytics).
+Le Labo, la plateforme de cours de Clément Bastien : diapos et démonstrations interactives, rangées par thème. Les exercices à refaire chez soi sont dans le dépôt GitHub [le-labo](https://github.com/clement8426/le-labo).
+Site **entièrement statique** : pas de compte, pas de base de données, pas de cookie. Seules des statistiques de visite anonymes sont comptées, par Vercel Web Analytics (sans cookie ni profil individuel dans les statistiques ; à activer dans le projet Vercel, onglet Analytics).
 Il s'installe comme une application (PWA) et les pages déjà consultées restent lisibles hors connexion.
 
 Next.js 16, export statique. Polices Bricolage Grotesque et Instrument Sans, servies par le site (aucune requête vers Google).
+
+
+## Labo UX : installation faite par l’agent
+
+Donner à son agent local le [fichier d’installation de Labo UX](public/diapos/ux-ia/installation-labo-ux.md). Il prépare les outils et réalise un audit de contrôle. L’apprenant n’a pas à taper de commandes. Le téléchargement du plugin reste soumis aux droits d’accès GitHub.
 
 ## Lancer en local
 
@@ -38,6 +43,8 @@ UX_OUTILS=../ux-outils npm run verifier
 
 Le script contrôle, sur toutes les pages : l'accessibilité automatique (axe, WCAG 2.2 AA) en thème clair et sombre, sur ordinateur et sur mobile, l'absence de débordement, la structure des titres, l'ordre du clavier, la mémoire de progression, et les liens profonds vers Tilleul. Il se termine en échec si un contrôle échoue. Il utilise Playwright et axe de la boîte à outils `ux-outils`. `SITE_URL` permet de viser une autre adresse.
 
+Pour contrôler les liens externes des quatre présentations, du catalogue et des sources : `npm run liens`. Le script effectue des requêtes GET, suit les redirections et distingue les erreurs des refus d’accès (403/429). Aucun lien bloqué n’est déclaré valide. `node scripts/verifier-liens.mjs --json` donne les adresses et les fichiers concernés. Un succès HTTP ne remplace pas la lecture de la source : il faut aussi vérifier qu’elle étaye le texte.
+
 ## Ajouter ou modifier un cours
 
 Tout le contenu est décrit dans `src/contenu/catalogue.ts` : thèmes, cours, déroulé en trois parties, démonstrations, objectifs, adresse du dépôt d'exercices. Les pages se génèrent toutes seules.
@@ -46,7 +53,7 @@ Tout le contenu est décrit dans `src/contenu/catalogue.ts` : thèmes, cours, d�
 - **Un nouveau cours** : ajouter un objet `Cours` dans la liste `cours` de son thème. Le premier cours disponible est celui que l'accueil met en avant.
 - **Les références** sont rangées en groupes (`REGLES_GROUPES`) d'après leur adresse. Un groupe peut porter la couleur d'un bloc du cours. Une référence non reconnue va dans « Autres lectures ».
 - **Les diapos** : voir ci-dessous.
-- **Le lexique et les sources du cours UX** viennent des diapos (`src/contenu/ux-ia-sources.json`).
+- **Les lexiques et bibliographies** viennent des diapos. Après modification : `npm run sources -- public/diapos/<cours>/index.html <cours>` pour synchroniser le fichier `src/contenu/<cours>-sources.json`.
 
 La typographie française (espaces insécables avant `: ; ! ?`) est appliquée automatiquement aux textes du catalogue.
 
@@ -115,6 +122,7 @@ Les diapos s'ouvrent à une diapo précise avec `?diapo=22`.
 
 - **Chaque chiffre ou fait cité doit avoir une source.** Dans une présentation, `CONFIG.sources` associe l'identifiant d'une diapo (`data-key`) à une liste `{ t: nom court, u: adresse }` : les liens « source » s'affichent en haut de la diapo, avec une flèche. Les passages très précis (la frise des types d'IA) ont aussi une pastille « source » dans le texte.
 - **Une source se vérifie avant d'être citée** : on ouvre la page, on relit le chiffre. Les pages qui bloquent les robots (erreur 403) se vérifient dans un navigateur.
+- **Les chiffres illustratifs et simulations le disent explicitement.** Un score d’audit réel doit être accompagné d’un rapport daté et de la version testée. Le seuil de cinq profils du jeu de réidentification n’est pas une garantie d’anonymat. Le choix d’un hébergement suisse ne suffit pas à valider un traitement sensible.
 - **La date de dernière modification** d'un cours est le champ `misAJour` (AAAA-MM-JJ) du catalogue. Elle s'affiche sur la page du cours et au-dessus des diapos, avec un rappel : certaines informations peuvent être datées, la curiosité est le meilleur allié. À mettre à jour à chaque modification d'un cours.
 
 ### La comparaison du formulaire

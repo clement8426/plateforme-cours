@@ -159,8 +159,6 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .lead.strong { font-family: var(--font-title); font-weight: 600; font-size: var(--fs-big); letter-spacing: -.01em; line-height: 1.15; }
 .with-icon { display: flex; align-items: center; gap: 22px; }
 .with-icon .ico { font-size: 56px; color: var(--accent-text); }
-.ratios { display: flex; flex-wrap: nowrap; gap: 8px 40px; margin: 0; padding: 0; list-style: none; font-size: var(--fs-min); color: var(--muted); }
-.ratios strong { color: var(--text, inherit); font-size: 1.25em; margin-right: 6px; }
 .note { font-size: var(--fs-min); color: var(--muted); }
 .tag { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px; border-radius: 10px; background: var(--surface-2); border: 2px solid var(--line); font-size: var(--fs-min); font-weight: 600; }
 .verdict { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; }
@@ -355,6 +353,9 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 /* 8 */
 .target { display: grid; grid-template-columns: 250px 1fr; gap: 32px; align-items: center; min-height: 230px; }
 .target p { font: 600 var(--fs-lead)/1.22 var(--font-title); }
+.target .target-detail { font: 400 var(--fs-body)/1.3 var(--font-body); margin-top: 14px; }
+.target .tg-vis .ico { font-size: 88px; color: var(--text); }
+.tg-context { place-items: center; background: var(--surface-2); }
 .tg-vis { height: 170px; border-radius: var(--r-m); border: 2px solid var(--line); display: grid; }
 .tg-senior { background: #FFFFFF; place-items: center; gap: 0; align-content: center; }
 .tg-aa { font: 700 76px/1 var(--font-title); color: #0B1020; }
@@ -435,30 +436,102 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .fitts-res .row { display: grid; gap: 6px; }
 .fitts-res .row span { font-size: var(--fs-min); font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
 .fitts-res .meter i.small { background: var(--accent-fill); } .fitts-res .meter i.big { background: var(--p2-fill); }
-/* 14 */
-.contrast { flex: 1; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr); grid-template-columns: 560px minmax(0, 1fr); gap: 32px; }
-.ct-ctl { display: grid; gap: 18px; align-content: start; }
-.ct-pick { display: grid; grid-template-columns: 1fr auto; gap: 8px 20px; align-items: center; }
-.ct-pick label { font-size: var(--fs-min); font-weight: 600; }
-.ct-pick code { font: 600 var(--fs-min)/1 var(--font-body); color: var(--muted); font-variant-numeric: tabular-nums; }
-input[type="color"] { width: 140px; height: var(--hit); padding: 4px; border: 2px solid var(--edge); border-radius: var(--r-s); background: var(--surface); cursor: pointer; grid-row: span 2; grid-column: 2; }
-.ct-presets { display: flex; flex-wrap: wrap; gap: 14px; }
-.ct-out { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 20px; }
-.ct-sample { border-radius: var(--r-l); border: 2px solid var(--line); padding: 28px 36px; display: grid; align-content: center; gap: 10px; }
-.ct-sample .big { font: 700 56px/1.1 var(--font-title); }
-.ct-sample .small { font-size: var(--fs-body); }
-.ct-res { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 48px; align-items: center; }
-.ct-ratio { font: 700 104px/1 var(--font-title); font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
-.ct-grid { display: grid; gap: 0; font-size: var(--fs-min); }
-.ct-grid div > span:first-child { flex: 1; }
-.ct-min { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.ct-ratio-box { display: grid; gap: 4px; }
-.ct-cap { font-size: var(--fs-min); font-weight: 600; color: var(--muted); }
-.ct-aide { display: grid; gap: 10px; padding: 20px 28px 18px; }
-.ct-aide h3 { margin: 0; }
-.ct-aide ul { display: grid; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.ct-aide li { font-size: var(--fs-min); line-height: 1.25; }
-.ct-grid div { display: flex; justify-content: space-between; gap: 16px; align-items: center; border-bottom: 2px solid var(--line); padding: 6px 0; }
+/* 15 à 17 : accessibilité (obstacles, contraste, audit d'une page) */
+.acc-cards { height: 100%; align-content: stretch; grid-template-rows: minmax(0, 1fr); }
+.acc-card { display: flex; flex-direction: column; gap: 18px; padding: 30px 38px 32px; }
+.acc-card h3 { font: 600 var(--fs-lead)/1.12 var(--font-title); letter-spacing: -.01em; }
+.acc-card p { font-size: var(--fs-body); line-height: 1.28; }
+.acc-fix { margin-top: auto; display: flex; gap: 14px; align-items: flex-start; font-weight: 600; color: var(--ok); }
+.acc-fix .ico { font-size: 38px; stroke-width: 3; flex: none; margin-top: 2px; }
+.acc-mini { flex: none; height: 206px; border-radius: var(--r-m); background: var(--surface-2); border: 2px solid var(--line); display: grid; place-items: center; position: relative; overflow: hidden; }
+.acc-photo { flex: none; width: 126px; height: 100px; border-radius: 14px; background: linear-gradient(160deg, #F6C65B, #E4553E); display: grid; place-items: center; color: rgba(255,255,255,.9); }
+.acc-photo .ico, .acc-photo svg { width: 52px; height: 52px; }
+.acc-mini-img { grid-auto-flow: column; gap: 18px; padding: 0 22px; place-content: center; }
+.acc-bubble { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: 22px 22px 22px 6px; background: var(--text); color: var(--ink); font: 700 26px/1.1 var(--font-body); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.acc-bubble svg { width: 34px; height: 34px; flex: none; }
+.acc-mini-price { background: #FFFFFF; color: #9A9A9A; gap: 8px; align-content: center; }
+.acc-mini-price b { font: 700 84px/1 var(--font-title); letter-spacing: -.03em; }
+.acc-ratio { white-space: nowrap; font: 700 28px/1 var(--font-body); padding: 8px 18px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.acc-ratio.ko { background: #F7D8E0; color: #BF1048; }
+.acc-ratio.ok { background: #D3EBDD; color: #05653F; }
+.acc-mini-key { grid-auto-flow: column; gap: 22px; place-content: center; }
+.acc-keycap { font: 700 34px/1 var(--font-body); padding: 16px 26px; border-radius: 12px; background: var(--surface); border: 2px solid var(--edge); border-bottom-width: 6px; }
+.acc-arrow { font: 700 44px/1 var(--font-title); color: var(--muted); }
+.acc-pay { position: relative; display: inline-grid; place-items: center; padding: 20px 38px; border-radius: 18px; background: var(--p1-fill); color: var(--on-p1); opacity: .55; font: 700 34px/1 var(--font-title); }
+.acc-pay em { font-style: normal; }
+.acc-x { position: absolute; top: -18px; right: -18px; width: 44px; height: 44px; border-radius: 50%; background: var(--bad-fill); color: var(--on-bad); font: 700 34px/44px var(--font-title); text-align: center; font-style: normal; box-shadow: 0 0 0 4px var(--surface-2); }
+
+/* B : une démonstration */
+.acc-demo { flex: 1; min-height: 0; align-items: stretch; }
+.acc-left { display: grid; gap: 24px; align-content: start; }
+.acc-sample { background: #FFFFFF; --fg: #9A9A9A; color: var(--fg); border-radius: var(--r-l); border: 2px solid var(--line); padding: 48px 56px; display: grid; gap: 14px; align-content: center; min-height: 430px; box-shadow: var(--shadow); }
+.acc-sample .s-brand { font: 600 var(--fs-min)/1 var(--font-body); color: #3a3a3a; letter-spacing: .02em; }
+.acc-sample .s-price { font: 700 124px/1 var(--font-title); letter-spacing: -.03em; }
+.acc-sample .s-desc { font-size: var(--fs-lead); }
+.acc-sample .s-btn { justify-self: start; margin-top: 10px; padding: 20px 40px; border-radius: 16px; background: #17153B; color: #FFFFFF; font: 700 34px/1 var(--font-title); }
+.acc-slider { display: grid; gap: 6px; }
+.acc-slider label { font: 600 var(--fs-min)/1.2 var(--font-body); }
+.acc-track { position: relative; }
+.acc-track input { position: relative; z-index: 2; }
+.acc-target { position: absolute; top: 4px; bottom: 4px; width: 0; border-left: 4px dashed var(--ok); z-index: 1; pointer-events: none; }
+.acc-target i { position: absolute; top: -34px; left: 0; transform: translateX(-50%); font: 700 24px/1 var(--font-body); color: var(--ok); background: var(--ink); padding: 2px 8px; border-radius: 8px; white-space: nowrap; font-style: normal; }
+.acc-ends { display: flex; justify-content: space-between; font-size: var(--fs-meta); color: var(--muted); }
+.acc-result { display: grid; gap: 30px; align-content: center; padding: 44px 48px; }
+.acc-top { display: grid; gap: 18px; justify-items: start; }
+.acc-big { font: 700 150px/.95 var(--font-title); letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+.acc-badge { display: inline-flex; align-items: center; gap: 12px; padding: 10px 26px; border-radius: 999px; font: 700 var(--fs-lead)/1 var(--font-title); }
+.acc-badge.ok { background: color-mix(in srgb, var(--ok) 16%, var(--surface)); color: var(--ok); } .acc-badge.ko { background: color-mix(in srgb, var(--bad) 14%, var(--surface)); color: var(--bad); }
+.acc-badge svg { width: 36px; height: 36px; }
+.acc-gauge { position: relative; height: 22px; border-radius: 11px; display: grid; grid-template-columns: var(--z1, 36%) var(--z2, 13%) 1fr; margin-bottom: 34px; }
+.acc-gauge i { display: block; }
+.acc-gauge .z1 { background: color-mix(in srgb, var(--bad) 55%, var(--surface)); border-radius: 11px 0 0 11px; } .acc-gauge .z2 { background: color-mix(in srgb, var(--warn) 50%, var(--surface)); } .acc-gauge .z3 { background: color-mix(in srgb, var(--ok-fill) 70%, var(--surface)); border-radius: 0 11px 11px 0; }
+.acc-gauge b { position: absolute; top: -9px; width: 8px; height: 40px; margin-left: -4px; border-radius: 4px; background: var(--text); box-shadow: 0 0 0 4px var(--ink); transition: left .15s linear; }
+.acc-gauge .t { position: absolute; top: 30px; transform: translateX(-50%); font: 600 24px/1 var(--font-body); color: var(--muted); }
+.acc-rule { font-size: var(--fs-body); line-height: 1.3; }
+.acc-rule span { color: var(--muted); }
+.acc-others { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.acc-others-t { font: 600 var(--fs-body)/1.2 var(--font-title); color: var(--muted); }
+
+/* C : audit d'une page */
+.acc-audit { height: 100%; align-items: start; }
+.acc-audit .acc-left { align-content: start; gap: 22px; }
+.acc-browser { border-radius: var(--r-l); border: 2px solid var(--line); background: #FFFFFF; overflow: hidden; box-shadow: var(--shadow); }
+.acc-browser .bar { display: flex; align-items: center; gap: 12px; padding: 0 24px; height: 62px; background: var(--surface-2); border-bottom: 2px solid var(--line); }
+.acc-browser .bar span { width: 16px; height: 16px; border-radius: 50%; background: var(--edge); opacity: .45; }
+.acc-browser .bar i { margin-left: 18px; font: 500 var(--fs-meta)/1 var(--font-body); font-style: normal; color: var(--muted); }
+.acc-browser .page { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; padding: 34px 44px 40px; color: #17153B; }
+.acc-browser .photo { position: relative; border-radius: 20px; background: linear-gradient(160deg, #FBE5B0, #F3A98F); display: grid; place-items: center; min-height: 340px; padding: 20px; }
+.acc-browser .photo svg { width: 88%; }
+.acc-browser .alt { position: absolute; left: 18px; bottom: 18px; right: 18px; padding: 10px 16px; border-radius: 12px; background: #17153B; color: #FBF4E4; font: 700 26px/1.2 var(--font-body); }
+.acc-browser .info { display: grid; gap: 14px; align-content: center; }
+.acc-browser h3 { margin: 0; font: 700 44px/1.1 var(--font-title); letter-spacing: -.02em; }
+.acc-browser .price { margin: 0; display: flex; align-items: center; gap: 18px; position: relative; }
+.acc-browser .price span { white-space: nowrap; font: 700 76px/1 var(--font-title); letter-spacing: -.03em; color: #9A9A9A; transition: color .3s; }
+.acc-browser .price em { flex: none; white-space: nowrap; font: 700 24px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; background: #F7D8E0; color: #BF1048; font-style: normal; font-variant-numeric: tabular-nums; }
+.acc-browser .desc { margin: 0; font-size: 30px; line-height: 1.3; color: #3a3a3a; }
+.acc-browser .pay { position: relative; justify-self: start; margin-top: 10px; padding: 22px 46px; border-radius: 16px; background: #2B44E8; color: #FFFFFF; font: 700 38px/1 var(--font-title); outline: 0 solid transparent; outline-offset: 5px; transition: outline-color .2s; }
+.acc-browser .tabhint { margin: 14px 0 0; font: 600 26px/1 var(--font-body); color: #05653F; opacity: 0; transition: opacity .3s; }
+.acc-browser .tabhint kbd { font: 700 24px/1 var(--font-body); padding: 5px 12px; border-radius: 8px; border: 2px solid #8A7C62; border-bottom-width: 4px; background: #FFFCF5; color: #17153B; margin-right: 6px; }
+.acc-browser[data-state="apres"] .alt { background: #05653F; }
+.acc-browser[data-state="apres"] .price span { color: #3F3F3F; }
+.acc-browser[data-state="apres"] .price em { background: #D3EBDD; color: #05653F; }
+.acc-browser[data-state="apres"] .pay { outline: 6px solid #17153B; }
+.acc-browser[data-state="apres"] .tabhint { opacity: 1; }
+.acc-browser .mk { position: absolute; z-index: 3; width: 56px; height: 56px; border-radius: 50%; background: var(--p3-fill); color: var(--on-p3); font: 700 34px/56px var(--font-title); text-align: center; box-shadow: 0 0 0 5px #FFFFFF; font-style: normal; }
+.acc-browser .photo .mk { top: -14px; left: -14px; }
+.acc-browser .price .mk { left: -34px; top: -22px; right: auto; }
+.acc-browser .pay .mk { right: -22px; top: -26px; }
+.acc-browser[data-state="apres"] .mk { background: var(--ok-fill); color: #FFFFFF; }
+.acc-seg { justify-self: start; }
+.acc-defects { display: grid; gap: 18px; align-content: start; }
+.acc-defect { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; padding: 22px 30px 24px; align-items: start; }
+.acc-defect .n { width: 60px; height: 60px; border-radius: 50%; background: var(--accent-fill); color: var(--on-accent); font: 700 36px/60px var(--font-title); text-align: center; }
+.acc-defect h3 { font: 600 var(--fs-body)/1.15 var(--font-title); margin-bottom: 6px; }
+.acc-defect p { font-size: var(--fs-min); line-height: 1.26; }
+.acc-defect .acc-fix { margin-top: 8px; font-size: var(--fs-min); }
+.acc-defect .acc-fix .ico { font-size: 32px; }
+.acc-done { display: flex; align-items: center; gap: 20px; font: 600 var(--fs-lead)/1.2 var(--font-title); color: var(--ok); padding: 6px 4px; }
+.acc-done .ico { font-size: 52px; stroke-width: 3; flex: none; }
 /* 15 : pourquoi l'accessibilité compte */
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .stat { display: grid; gap: 10px; align-content: start; min-height: 230px; padding: 32px 34px 32px; }
@@ -673,8 +746,8 @@ input[type="color"] { width: 140px; height: var(--hit); padding: 4px; border: 2p
 
 /* annexes : lexique et références */
 .lexique { height: 100%; display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); grid-template-rows: minmax(0, 1fr); gap: 32px; }
-.lex-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 14px; align-content: start; }
-.lex-term { justify-content: flex-start; padding: 0 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lex-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 14px; align-content: start; }
+.lex-term { justify-content: flex-start; min-height: 66px; padding: 0 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lex-panel { display: grid; gap: 20px; align-content: start; justify-items: start; padding: 34px 36px; }
 .lex-panel h3 { font: 700 var(--fs-big)/1.08 var(--font-title); letter-spacing: -.01em; color: var(--accent-text); }
 .lex-panel p { font-size: var(--fs-lead); line-height: 1.32; }
@@ -792,6 +865,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .alternatives strong { color: var(--text); }
 .cles-liste p { font-size: var(--fs-big); line-height: 1.15; font-weight: 500; }
 .cles-liste strong { font-weight: 700; }
+.slide[data-key="cles"] .cles-liste { gap: 20px; }
+.slide[data-key="cles"] .cles-liste p { font-size: var(--fs-lead); }
 .ia-bloc { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; align-content: start; gap: 28px 32px; height: 100%; }
 .ia-col { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; min-height: 0; }
 .ia-col .card { padding: 24px 32px; }
@@ -815,7 +890,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <main id="stage" tabindex="-1" aria-label="Présentation UX × IA">
     <h1 class="sr">UX × IA : mini-formation de Clément Bastien</h1>
     <div id="slides">
-<!-- ================= PARTIE 1 : THÉORIE (slides 1 à 19) ================= -->
+<!-- ================= PARTIE 1 : THÉORIE (slides 1 à 22) ================= -->
 
 <section class="slide s-cover" data-part="1" data-key="titre">
   <h2 class="title">UX × IA : rendre un produit pratique, puis le corriger avec l’IA</h2>
@@ -824,7 +899,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="cover-cible">Sites web, e-commerce, SaaS et applications mobiles</p>
       <p class="cover-name">Clément Bastien</p>
       <p class="cover-def">UX, expérience utilisateur. IA, intelligence artificielle.</p>
-      <p class="cover-maj">Mis à jour le 18 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
+      <p class="cover-maj">Mis à jour le 21 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7">
       <div class="hero" data-comp="hero" role="img" aria-label="Animation : les blocs d’une page jolie mais confuse se réorganisent en une page claire, avec un titre, un bouton et trois cartes alignées.">
@@ -864,7 +939,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="g12">
       <article class="card duo c6" data-step="1">
         <p class="duo-big">UI</p>
-        <p class="duo-def">User Interface : le visuel</p>
+        <p class="duo-def">User Interface : l’interface</p>
         <div class="duo-vis" aria-hidden="true">
           <span class="sw sw1"></span><span class="sw sw2"></span><span class="sw sw3"></span>
           <span class="mock-btn"></span><span class="mock-aa">Aa</span>
@@ -883,7 +958,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </article>
     </div>
     <aside class="angle" data-step="3">
-      <p>Un site peut être joli sans être pratique. L’UI contribue à l’UX : les deux se recouvrent.</p>
+      <p>Un site peut être joli sans être pratique. L’UI est une composante de l’UX : apparence, commandes et réactions contribuent à l’expérience.</p>
     </aside>
   </div>
 </section>
@@ -905,7 +980,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Le tunnel de conversion : chaque étape peut faire perdre des visiteurs</h2>
   <div class="body g12">
     <div class="c5 stack-m">
-      <p class="lead">Tunnel (funnel) : le parcours jusqu’à l’objectif, comme un achat ou un abonnement.</p>
+      <p class="lead">Un tunnel mène à un objectif. Ici, un achat ; ailleurs, une inscription : liste d’attente, salle de sport ou association.</p>
       <div class="funnel-ctl" data-comp="funnel-ctl"></div>
       <div class="card preuve" data-step="1">
         <p class="puce">Cas réel</p>
@@ -941,15 +1016,16 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body stack-m">
     <div class="g12">
       <article class="card target c6" data-step="1">
-        <div class="tg-vis tg-senior" aria-hidden="true"><span class="tg-aa">Aa</span><span class="tg-cta"></span></div>
-        <p>Appareils auditifs : seniors, contraste fort, texte explicite</p>
+        <div class="tg-vis tg-context" aria-hidden="true"><i data-icon="phone"></i></div>
+        <div><p>Première visite, sur téléphone</p><p class="target-detail">Trouver l’offre, comprendre les mots et être guidé jusqu’au résultat.</p></div>
       </article>
       <article class="card target c6" data-step="2">
-        <div class="tg-vis tg-ado" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-        <p>Baskets pour ados : rapide, visuel</p>
+        <div class="tg-vis tg-context" aria-hidden="true"><i data-icon="frame"></i></div>
+        <div><p>Usage quotidien, sur ordinateur</p><p class="target-detail">Retrouver ses repères et accomplir les tâches répétées efficacement.</p></div>
       </article>
     </div>
-    <p class="lead strong" data-step="3">À la place de l’utilisateur final.</p>
+    <p class="lead strong" data-step="3">Qui utilise le produit, dans quel contexte, pour faire quoi ?</p>
+    <p class="note" data-step="3">Ces besoins sont des hypothèses à vérifier auprès des personnes concernées.</p>
     <ul class="chips" data-step="4">
       <li class="chip"><i data-icon="users"></i>Interviews</li>
       <li class="chip"><i data-icon="frame"></i>Tests sur maquette</li>
@@ -962,7 +1038,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <section class="slide" data-part="1" data-key="modeles">
   <h2 class="title">Il n’existe pas de recette universelle en UX</h2>
   <div class="body stack-l">
-    <p class="statement">Des modèles de référence reconnus.<br>Ce cours les résume en 6 blocs pratiques.</p>
+    <p class="statement">Des modèles de référence reconnus.<br>Ma grille pour ce cours : 6 blocs issus de mon expérience.</p>
     <div class="synth" data-step="1">
       <ul class="chips">
         <li class="chip">Honeycomb de Morville</li>
@@ -991,7 +1067,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <li class="card" data-step="3"><i data-icon="eye"></i><h3>Accessibilité</h3><p>toute la cible</p></li>
       <li class="card" data-step="4"><i data-icon="cursor"></i><h3>Analyse comportementale</h3><p>usages observés</p></li>
       <li class="card" data-step="5"><i data-icon="text"></i><h3>Microcopie</h3><p>petits textes</p></li>
-      <li class="card" data-step="6"><i data-icon="gauge"></i><h3>Performance perçue</h3><p>vitesse ressentie</p></li>
+      <li class="card" data-step="6"><i data-icon="gauge"></i><h3>Performance</h3><p>réelle et perçue</p></li>
     </ol>
     <p class="lead blocs-natures" data-step="7">Quatre qualités à viser. Deux moyens pour y arriver : le design system et l’analyse comportementale.</p>
   </div>
@@ -1002,6 +1078,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c5 stack-m">
       <p class="lead">Un design system rassemble règles, composants et modèles réutilisables. Les variables (couleurs, polices, rayons, espacements) en sont les fondations.</p>
+      <p class="note">Même rôle, présentation et comportement cohérents. Une différence doit avoir une raison compréhensible.</p>
       <div class="tokens" data-comp="ds-tokens" aria-hidden="true"></div>
     </div>
     <div class="c7">
@@ -1011,7 +1088,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="hick">
-  <h2 class="title">Bloc 2, friction : plus de choix, plus d’hésitation</h2>
+  <h2 class="title">Bloc 2, friction : organiser les choix pour décider</h2>
   <div class="body">
     <div class="hick" data-comp="hick"></div>
   </div>
@@ -1022,23 +1099,121 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body stack-s">
     <p class="law-line"><span class="chip law">Atteindre : loi de Fitts</span><span>Une cible grande et facile à atteindre réduit l’effort. Sur mobile, à vérifier avec les personnes concernées.</span></p>
     <div class="fitts" data-comp="fitts"></div>
+    <p class="note">Un principe pour guider les choix, pas une règle pour tout agrandir : le rôle, la position et le contexte comptent.</p>
   </div>
 </section>
 
 <section class="slide" data-part="1" data-key="accessibilite">
-  <h2 class="title">Bloc 3, accessibilité : utilisable par toute la cible</h2>
+  <h2 class="title">Bloc 3, accessibilité : qui est bloqué, et par quoi ?</h2>
   <div class="body stack-m">
-    <ul class="chips">
-      <li class="chip"><i data-icon="image"></i>Texte alternatif des images</li>
-      <li class="chip"><i data-icon="contrast"></i>Contraste suffisant</li>
-      <li class="chip"><i data-icon="keyboard"></i>Navigation au clavier</li>
-    </ul>
-    <ul class="ratios" aria-label="Rapports de contraste à retenir">
-      <li><strong>4,5:1</strong> texte courant (AA, la cible)</li>
-      <li><strong>3:1</strong> grand texte, et éléments graphiques utiles à la compréhension</li>
-      <li><strong>7:1</strong> niveau AAA (4,5:1 pour le grand texte)</li>
-    </ul>
-    <div class="contrast" data-comp="contrast"></div>
+    <div class="g12 acc-cards">
+      <article class="card c4 acc-card" data-step="1">
+        <span class="puce">Personne aveugle</span>
+        <div class="acc-mini acc-mini-img" aria-hidden="true">
+          <div class="acc-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+          <div class="acc-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg><span>«&nbsp;IMG_2041.jpg&nbsp;»</span></div>
+        </div>
+        <h3>Image sans texte alternatif</h3>
+        <p>Le lecteur d’écran lit un nom de fichier.</p>
+        <p class="acc-fix"><i data-icon="check"></i>Décrire l’image en une phrase.</p>
+      </article>
+      <article class="card c4 acc-card" data-step="2">
+        <span class="puce">Personne âgée, ou au soleil</span>
+        <div class="acc-mini acc-mini-price" aria-hidden="true" data-contrast-skip="true">
+          <b>29,90&nbsp;€</b><span class="acc-ratio ko">2,8 : 1</span>
+        </div>
+        <h3>Contraste trop faible</h3>
+        <p>Le prix devient illisible.</p>
+        <p class="acc-fix"><i data-icon="check"></i>Au moins 4,5 : 1 pour le texte courant.</p>
+      </article>
+      <article class="card c4 acc-card" data-step="3">
+        <span class="puce">Personne sans souris</span>
+        <div class="acc-mini acc-mini-key" aria-hidden="true">
+          <span class="acc-keycap">Tab</span><span class="acc-arrow">→</span>
+          <span class="acc-pay" data-contrast-skip="true"><em>Payer</em><i class="acc-x">×</i></span>
+        </div>
+        <h3>Aucun accès au clavier</h3>
+        <p>Impossible d’atteindre «&nbsp;Payer&nbsp;».</p>
+        <p class="acc-fix"><i data-icon="check"></i>Tout se fait au clavier, avec un focus visible.</p>
+      </article>
+    </div>
+    <p class="note" data-step="4">Trois exemples parmi d’autres : une évaluation complète de l’accessibilité va plus loin.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="contraste">
+  <h2 class="title">Bloc 3, accessibilité : le contraste se mesure</h2>
+  <div class="body stack-m">
+    <div class="g12 acc-demo">
+      <div class="c7 acc-left">
+        <div class="acc-sample" id="b-sample" data-contrast-skip="true">
+          <p class="s-brand">Mug Aube</p>
+          <p class="s-price" id="b-price">29,90&nbsp;€</p>
+          <p class="s-desc" id="b-desc">Livraison offerte dès demain, retour gratuit.</p>
+          <span class="s-btn">Ajouter au panier</span>
+        </div>
+        <div class="acc-slider">
+          <label for="b-range">Gris du texte : déplacez le curseur</label>
+          <div class="acc-track">
+            <input type="range" id="b-range" min="0" max="100" value="22" aria-describedby="b-live">
+            <span class="acc-target" id="b-target"><i>4,5 : 1</i></span>
+          </div>
+          <div class="acc-ends"><span>Gris clair</span><span>Encre</span></div>
+        </div>
+      </div>
+      <div class="c5 card acc-result">
+        <div class="acc-top"><span class="acc-big" id="b-ratio">2,6 : 1</span><span class="acc-badge ko" id="b-badge"></span></div>
+        <div class="acc-gauge" aria-hidden="true"><i class="z1"></i><i class="z2"></i><i class="z3"></i><b id="b-pin"></b>
+          <span class="t t3">3</span><span class="t t45">4,5</span><span class="t t7">7</span></div>
+        <p class="acc-rule"><strong>Texte courant&nbsp;:</strong> au moins 4,5&nbsp;:&nbsp;1.<br><span>Gros texte (24&nbsp;px)&nbsp;: au moins 3&nbsp;:&nbsp;1.</span></p>
+        <p id="b-live" class="sr" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="acc-others" data-step="1">
+      <span class="acc-others-t">Autres obstacles courants</span>
+      <ul class="chips">
+        <li class="chip"><i data-icon="image"></i>Texte alternatif des images</li>
+        <li class="chip"><i data-icon="keyboard"></i>Navigation au clavier</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="audit-page">
+  <h2 class="title">Bloc 3, accessibilité : auditer une page produit</h2>
+  <div class="body g12 acc-audit">
+    <div class="c7 acc-left">
+      <div class="acc-browser" id="c-page" data-state="avant">
+        <div class="bar"><span></span><span></span><span></span><i>boutique.exemple/mug-aube</i></div>
+        <div class="page">
+          <div class="photo"><svg viewBox="0 0 220 150" aria-hidden="true"><path d="M88 34c-8-10 8-16 0-28M110 34c-8-10 8-16 0-28M132 34c-8-10 8-16 0-28" fill="none" stroke="#17153B" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/><path d="M148 62h18a20 20 0 0 1 0 40h-18" fill="none" stroke="#E4553E" stroke-width="13" stroke-linecap="round"/><rect x="54" y="44" width="100" height="84" rx="16" fill="#E4553E"/><ellipse cx="104" cy="46" rx="50" ry="9" fill="#17153B" fill-opacity=".85"/><rect x="68" y="64" width="9" height="50" rx="4.5" fill="#FFFFFF" fill-opacity=".45"/><path d="M30 138h160" stroke="#17153B" stroke-width="7" stroke-linecap="round"/></svg>
+            <span class="alt" id="c-alt">IMG_2041.jpg</span>
+            <b class="mk" data-step="1">1</b>
+          </div>
+          <div class="info">
+            <h3>Mug Aube, orange</h3>
+            <p class="price" id="c-price" data-contrast-skip="true"><span>29,90&nbsp;€</span><em id="c-ratio">2,8 : 1</em><b class="mk" data-step="2">2</b></p>
+            <p class="desc">Livraison offerte dès demain, retour gratuit.</p>
+            <span class="pay" id="c-pay">Payer<b class="mk" data-step="3">3</b></span>
+            <p class="tabhint" id="c-tab"><kbd>Tab</kbd> atteint «&nbsp;Payer&nbsp;»</p>
+          </div>
+        </div>
+      </div>
+      <div class="seg acc-seg" role="group" aria-label="État de la page">
+        <button type="button" id="c-avant" aria-pressed="true">Avant</button>
+        <button type="button" id="c-apres" aria-pressed="false">Après</button>
+      </div>
+      <p class="acc-done" data-step="4"><i data-icon="check"></i>Trois obstacles corrigés : poursuivre l’évaluation sur les autres usages.</p>
+    </div>
+    <ol class="c5 acc-defects">
+      <li class="card acc-defect" data-step="1"><b class="n">1</b>
+        <div><h3>Image sans texte alternatif</h3><p>Le lecteur d’écran lit «&nbsp;IMG_2041.jpg&nbsp;».</p><p class="acc-fix"><i data-icon="check"></i>Décrire l’image.</p></div></li>
+      <li class="card acc-defect" data-step="2"><b class="n">2</b>
+        <div><h3>Contraste trop faible</h3><p>Prix gris clair sur blanc : 2,8 : 1.</p><p class="acc-fix"><i data-icon="check"></i>Au moins 4,5 : 1.</p></div></li>
+      <li class="card acc-defect" data-step="3"><b class="n">3</b>
+        <div><h3>Bouton hors clavier</h3><p>La touche Tab n’atteint jamais «&nbsp;Payer&nbsp;».</p><p class="acc-fix"><i data-icon="check"></i>Tout au clavier, focus visible.</p></div></li>
+    </ol>
+    <span id="c-flag" data-step="4" class="sr">Page corrigée</span>
   </div>
 </section>
 
@@ -1062,9 +1237,9 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <ul class="plain">
         <li data-step="1">Disponible une fois le site en ligne.</li>
         <li data-step="1">SaaS et application : des outils d’analyse de produit mesurent l’activation et la rétention.</li>
-        <li data-step="2">Elle dit par quoi commencer.</li>
+        <li data-step="2">Elle aide à repérer où approfondir. Les comportements observés ne prouvent pas leur cause.</li>
         <li data-step="3">Sessions enregistrées : attention au consentement.</li>
-      </ul>
+      </ul>
     </div>
     <div class="c7">
       <div class="heat" data-comp="heat"></div>
@@ -1080,11 +1255,11 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="1" data-key="attente">
-  <h2 class="title">Bloc 6, performance perçue : vitesse réelle et vitesse ressentie</h2>
+  <h2 class="title">Bloc 6, performance perçue : comprendre l’attente</h2>
   <div class="body g12">
     <div class="c5 stack-m">
       <ul class="points">
-        <li data-step="1">Vraie attente : on la réduit d’abord ; le skeleton loader annonce la mise en page.</li>
+        <li data-step="1">Vraie attente : on la réduit d’abord. Spinner ou skeleton : un retour adapté aide à comprendre ce qui se passe.</li>
         <li data-step="2">Attente fabriquée : à manier avec soin.</li>
         <li data-step="3">Le test : l’utilisateur serait-il d’accord s’il le savait ?</li>
       </ul>
@@ -1096,69 +1271,73 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 20 à 32) ================= -->
+<section class="slide" data-part="1" data-key="performance-reelle">
+  <h2 class="title">Bloc 6, performance réelle : charger moins, réutiliser mieux</h2>
+  <div class="body stack-m">
+    <div class="g12">
+      <article class="card c4 stack-s" data-step="1">
+        <h3 class="col-titre">Ressources</h3>
+        <p>Alléger les images, le JavaScript et les polices.</p>
+        <p class="note">Charger d’abord ce qui est nécessaire pour voir le contenu et agir.</p>
+      </article>
+      <article class="card c4 stack-s" data-step="2">
+        <h3 class="col-titre">Requêtes</h3>
+        <p>Éviter les appels inutiles, répétés ou qui se bloquent les uns les autres.</p>
+        <p class="note">Côté serveur, rechercher aussi les calculs et requêtes de base de données trop lents.</p>
+      </article>
+      <article class="card c4 stack-s" data-step="3">
+        <h3 class="col-titre">Cache</h3>
+        <p>Garder temporairement un fichier ou un résultat pour le réutiliser.</p>
+        <p class="note">Dans le navigateur ou côté serveur ; Redis est une option de cache serveur.</p>
+      </article>
+    </div>
+    <p class="lead" data-step="4">Mesurer avant et après, dans des conditions comparables : poids transféré, délais et requêtes bloquantes.</p>
+    <p class="note" data-step="4">Le cache doit être renouvelé quand les données changent. Une réservation ou un prix doit rester à jour.</p>
+  </div>
+</section>
+
+<!-- ================= PARTIE 2 : L'IA, BLOC PAR BLOC (slides 23 à 35) ================= -->
 
 <section class="slide" data-part="2" data-key="agent">
-  <h2 class="title">Un agent IA ne répond pas : il agit</h2>
+  <h2 class="title">Conversation et agent : conseiller ou utiliser des outils</h2>
   <div class="body stack-l">
     <div class="paire">
-      <article class="card" data-step="1">
-        <h3><i data-icon="text"></i>Une conversation</h3>
-        <p>Vous posez une question, l’IA répond. Vous copiez, collez, recommencez.</p>
-      </article>
-      <article class="card accent" data-step="2">
-        <h3><i data-icon="cursor"></i>Un agent</h3>
-        <p>Vous donnez une mission. Avec les outils et les autorisations nécessaires, il ouvre le site, clique, lance des contrôles et modifie les fichiers auxquels il a accès, puis vous rend compte.</p>
-      </article>
+      <article class="card" data-step="1"><h3><i data-icon="text"></i>Une conversation</h3><p>Sans outil connecté, l’IA travaille sur ce que vous lui fournissez : elle explique, analyse et propose.</p></article>
+      <article class="card accent" data-step="2"><h3><i data-icon="cursor"></i>Un agent équipé</h3><p>Avec des outils et des autorisations, il peut ouvrir le projet, lancer des contrôles et proposer ou appliquer des modifications.</p></article>
     </div>
     <div class="paire" data-step="3">
-      <p class="agent-nom"><strong>Claude</strong> Claude Code, Claude dans Chrome</p>
-      <p class="agent-nom"><strong>ChatGPT</strong> Codex, l’agent de l’application ChatGPT</p>
+      <p class="lead">« Que faudrait-il vérifier dans ce formulaire ? »</p>
+      <p class="lead">« Ouvre ce formulaire de test et relève les erreurs observées. »</p>
     </div>
+    <p class="note" data-step="3">Une même application peut proposer une conversation et des fonctions d’agent. Le nom du produit ne suffit pas à savoir ce qu’elle peut faire.</p>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="mcp">
-  <h2 class="title">MCP : une prise universelle pour brancher des outils</h2>
+  <h2 class="title">API et MCP : connecter des fonctions et des outils</h2>
   <div class="body stack-m">
-    <div class="hub" data-step="1">
-      <span class="chip hub-agent"><i data-icon="cursor"></i>Votre agent</span>
-      <i data-icon="arrow"></i>
-      <ul class="chips">
-        <li class="chip"><i data-icon="compass"></i>Navigateur</li>
-        <li class="chip"><i data-icon="frame"></i>Figma, Penpot</li>
-        <li class="chip"><i data-icon="eye"></i>Vos données d’analyse</li>
-        <li class="chip"><i data-icon="code"></i>Votre code</li>
-      </ul>
-    </div>
-    <p class="lead" data-step="1">Comme l’USB-C : un seul format, beaucoup d’appareils.</p>
     <div class="paire">
-      <article class="card" data-step="2"><p><strong>Sans MCP</strong>, vous copiez les chiffres de votre outil d’analyse dans le chat.</p></article>
-      <article class="card accent" data-step="3"><p><strong>Avec un connecteur MCP</strong>, l’agent va chercher lui-même ces données.</p></article>
+      <article class="card" data-step="1"><h3>API</h3><p>Une interface pour qu’un logiciel utilise les fonctions d’un autre : lire des données, demander un résultat, déclencher une action.</p></article>
+      <article class="card accent" data-step="2"><h3>MCP</h3><p>Un protocole commun pour présenter à l’agent les outils disponibles, leurs paramètres et la façon de les appeler.</p></article>
     </div>
-    <p class="note" data-step="4">Un skill décrit une méthode de travail. Un plugin rassemble des capacités à installer, comme des skills et des connexions à des outils.</p>
+    <p class="lead" data-step="3">Exemple : l’agent découvre un outil « lancer un audit », lui transmet les paramètres, puis lit le résultat.</p>
+    <p class="note" data-step="3">Un serveur MCP peut lui-même utiliser une API. Les deux peuvent servir à automatiser des actions.</p>
+    <p class="note" data-step="4">Les outils doivent être configurés et autorisés. MCP ne fournit pas tous les parcours à suivre : l’objectif reste à définir.</p>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="quel-agent">
-  <h2 class="title">Quel agent choisir ? Restons simples</h2>
-  <div class="body stack-l">
-    <div class="paire">
-      <article class="card accent offre" data-step="1">
-        <h3>Claude Pro</h3>
-        <p class="prix">20 dollars US par mois, avec quota d’utilisation</p>
-        <p>Claude Code inclus.</p>
-      </article>
-      <article class="card accent offre" data-step="1">
-        <h3>ChatGPT Plus</h3>
-        <p class="prix">20 dollars US par mois, avec quota d’utilisation</p>
-        <p>Codex inclus.</p>
-      </article>
+  <h2 class="title">Quelques agents possibles pour travailler sur un projet</h2>
+  <div class="body stack-m">
+    <div class="produits" data-step="1">
+      <article class="card produit"><h3>Codex</h3><p>Un agent pour lire, modifier et tester du code.</p></article>
+      <article class="card produit"><h3>Claude Code</h3><p>Un agent qui travaille sur le projet avec des outils.</p></article>
+      <article class="card produit"><h3>OpenCode</h3><p>Un agent de développement open source.</p></article>
+      <article class="card produit"><h3>Hermes Agent</h3><p>Un agent open source avec des outils et une mémoire.</p></article>
     </div>
-    <article class="card alternatives" data-step="2">
-      <p><strong>Il existe aussi OpenCode, Hermes Agent…</strong> Gratuits et open source, mais on les relie souvent à une clé API payée à l’usage : la facture peut vite grimper.</p>
-    </article>
-    <p class="lead strong" data-step="3">Dans ce cours : du simple, prêt à l’emploi, à prix fixe.</p>
+    <p class="lead" data-step="2">Pour ce cours, vérifier trois choses : l’accès au projet, les outils d’audit disponibles et les actions autorisées.</p>
+    <p class="note" data-step="3">Les coûts dépendent de l’offre et du modèle utilisé : abonnement, crédits ou API. Un logiciel open source n’implique pas des calculs gratuits.</p>
+    <p class="note" data-step="3">Ces exemples ne garantissent pas le même équipement. On prépare et vérifie l’environnement avant la séance.</p>
   </div>
 </section>
 
@@ -1166,174 +1345,151 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">L’outil mesure, l’IA interprète, vous décidez</h2>
   <div class="body stack-l">
     <div class="options">
-      <article class="card option" data-step="1">
-        <p class="option-lettre" aria-hidden="true">1</p>
-        <h3>Un outil classique</h3>
-        <p>Il mesure des critères précis, avec ses limites.</p>
-      </article>
-      <article class="card option" data-step="2">
-        <p class="option-lettre" aria-hidden="true">2</p>
-        <h3>Une conversation</h3>
-        <p>Vous décrivez, l’IA conseille.</p>
-      </article>
-      <article class="card option" data-step="3">
-        <p class="option-lettre" aria-hidden="true">3</p>
-        <h3>Un agent</h3>
-        <p>Il ouvre, teste, corrige.</p>
-      </article>
+      <article class="card option" data-step="1"><p class="option-lettre" aria-hidden="true">1</p><h3>Mesurer</h3><p>Les outils produisent des constats, des mesures et des preuves, avec leurs limites.</p></article>
+      <article class="card option" data-step="2"><p class="option-lettre" aria-hidden="true">2</p><h3>Interpréter</h3><p>L’IA explique les résultats et propose des hypothèses ou des corrections.</p></article>
+      <article class="card option" data-step="3"><p class="option-lettre" aria-hidden="true">3</p><h3>Vérifier</h3><p>Vous validez les choix. Après correction, on refait les contrôles et le parcours.</p></article>
     </div>
-    <p class="lead strong" data-step="4">Si un outil simple suffit, pas besoin d’IA.</p>
+    <p class="lead strong" data-step="4">Une correction proposée reste à vérifier.</p>
+    <p class="note" data-step="4">Si un outil simple suffit, l’IA n’est pas nécessaire.</p>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="cles">
-  <h2 class="title">Avant de lancer l’agent, donnez-lui les clés</h2>
+  <h2 class="title">Avant l’audit : définir le résultat et le périmètre</h2>
   <div class="body g12">
     <ol class="c8 keep cles-liste">
-      <li data-step="1"><span class="keep-n" aria-hidden="true">1</span><p><strong>L’intention</strong> : un seul style de titre, par exemple.</p></li>
-      <li data-step="2"><span class="keep-n" aria-hidden="true">2</span><p><strong>La cible</strong> : qui, sur quel appareil, pour faire quoi.</p></li>
-      <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p><strong>Le ton</strong> : comment parle la marque, avec des exemples.</p></li>
-      <li data-step="4"><span class="keep-n" aria-hidden="true">4</span><p><strong>Les pages</strong> : lesquelles regarder, où s’arrêter.</p></li>
+      <li data-step="1"><span class="keep-n" aria-hidden="true">1</span><p><strong>L’objectif</strong> : réserver un atelier et voir une confirmation.</p></li>
+      <li data-step="2"><span class="keep-n" aria-hidden="true">2</span><p><strong>La cible</strong> : qui, sur quel appareil, dans quel contexte.</p></li>
+      <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p><strong>Le périmètre</strong> : pages de test, compte fictif et actions autorisées.</p></li>
+      <li data-step="4"><span class="keep-n" aria-hidden="true">4</span><p><strong>L’intention</strong> : les différences et les règles à respecter.</p></li>
+      <li data-step="5"><span class="keep-n" aria-hidden="true">5</span><p><strong>Le ton</strong> : comment parle le produit, avec deux exemples.</p></li>
     </ol>
     <div class="c4 stack-m end-col">
-      <p class="lead strong" data-step="5">L’IA trouve et corrige vite. Le reste, c’est vous.</p>
-      <p class="note" data-step="5">Un bon agent commence par vous poser ces questions.</p>
+      <p class="lead strong" data-step="6">Quel résultat doit-on observer ?</p>
+      <p class="note" data-step="6">Si une information manque, l’agent doit vous la demander avant de tester.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-design-system">
-  <h2 class="title">Bloc 1, design system : comparer les pages entre elles</h2>
+  <h2 class="title">Bloc 1, design system : comparer des composants de même rôle</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>L’aperçu CSS de Chrome : toutes les couleurs et polices d’une page.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il visite 3 ou 4 pages différentes, en ligne ou dans le code, à trois largeurs d’écran, et lit les vrais styles.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Ce qu’on cherche</h3><p>Des composants cohérents entre les pages et les tailles d’écran.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il relève les styles calculés dans le navigateur et propose des écarts à examiner.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Visite l’accueil, une liste, une fiche et un formulaire, à 375, 768 et 1440 px. Compare titres, boutons, champs, couleurs et espacements d’une page à l’autre. Liste les incohérences avec les valeurs mesurées. Demande-moi l’intention avant de corriger.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Compare ces [pages de test] à 375, 768 et 1440 px. Relève les styles des titres, boutons et champs de même rôle. Donne les valeurs observées et les écarts. Demande-moi l’intention avant de proposer une correction.</blockquote></figure>
     <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’intention. Deux styles de titre, c’est voulu ou non ?</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : que ses corrections respectent vos choix.</span></p>
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : les rôles des composants et l’intention graphique.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : une variation n’est pas automatiquement un défaut. Les valeurs doivent venir des outils.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-friction">
-  <h2 class="title">Bloc 2, friction : explorer le parcours avec un agent</h2>
+  <h2 class="title">Bloc 2, friction : explorer un parcours et relever les obstacles</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>De vraies personnes du même public, cinq pour commencer. On corrige, puis on recommence.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il explore le parcours d’après le profil fourni, dans un vrai navigateur.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Avec des utilisateurs</h3><p>Observer de vraies personnes réaliser une tâche permet d’étudier leurs difficultés.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il exécute un parcours dans le navigateur et relève les obstacles observables.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Tu es [la cible], sur téléphone. Objectif : [acheter un vase, démarrer un essai, réserver]. Fais le parcours et arrête-toi avant de payer ou d’envoyer quoi que ce soit. Note chaque pop-up, hésitation, détour et étape inutile. Compte les clics.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur cette copie de test, réalise [objectif] avec le compte fictif prévu. Respecte les limites convenues. Relève les étapes bloquées, erreurs, pertes de saisie et confirmations absentes. Sépare ce que tu observes de ce qu’il faudrait vérifier avec des utilisateurs.</blockquote></figure>
     <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, l’objectif, et où s’arrêter.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : ce sont des hypothèses. Confirmez avec de vraies personnes.</span></p>
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : un objectif et un résultat attendu précis.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : l’agent ne représente pas votre public. Les difficultés supposées restent à confirmer.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-attention">
-  <h2 class="title">Attention : un agent sur un site en ligne</h2>
-  <div class="body">
+  <h2 class="title">Avant de tester : une copie et des limites claires</h2>
+  <div class="body stack-m">
     <div class="options">
-      <article class="card option" data-step="1">
-        <p class="option-lettre" aria-hidden="true">1</p>
-        <h3>Il peut être bloqué</h3>
-        <p>Protections anti-robots, comme Cloudflare, et CAPTCHA. Il ne doit pas les contourner.</p>
-      </article>
-      <article class="card option" data-step="2">
-        <p class="option-lettre" aria-hidden="true">2</p>
-        <h3>Il peut fausser vos données</h3>
-        <p>Faux comptes, fausses commandes, e-mails envoyés, statistiques polluées.</p>
-      </article>
-      <article class="card option" data-step="3">
-        <p class="option-lettre" aria-hidden="true">3</p>
-        <h3>La solution</h3>
-        <p>Une copie de test, avec des données fictives. S’arrêter avant l’envoi n’évite pas les statistiques.</p>
-      </article>
+      <article class="card option" data-step="1"><p class="option-lettre" aria-hidden="true">1</p><h3>Préparer</h3><p>Un projet local ou un environnement de test, des comptes et des données fictives.</p></article>
+      <article class="card option" data-step="2"><p class="option-lettre" aria-hidden="true">2</p><h3>Délimiter</h3><p>Les pages à ouvrir, les actions autorisées et le point où s’arrêter.</p></article>
+      <article class="card option" data-step="3"><p class="option-lettre" aria-hidden="true">3</p><h3>Isoler</h3><p>Pas de vrais paiements, e-mails ou commandes. Les sessions de test restent séparées des usages réels.</p></article>
     </div>
+    <p class="note" data-step="4">Un accès bloqué ? On demande un environnement autorisé. S’arrêter avant l’envoi ne suffit pas à éviter de fausser les statistiques.</p>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-accessibilite">
-  <h2 class="title">Bloc 3, accessibilité : l’audit, puis le jugement</h2>
+  <h2 class="title">Bloc 3, accessibilité : mesurer et compléter l’évaluation</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Lighthouse, WAVE, Pa11y, et la touche Tab.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il lance l’audit, teste le clavier, inspecte la structure accessible, puis corrige le code.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Des contrôles complémentaires</h3><p>axe, Pa11y ou Lighthouse signalent certains défauts automatisables.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il lance les outils disponibles et explique leurs résultats. Clavier et lecteur d’écran complètent l’évaluation.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Audite ces pages avec Pa11y et Lighthouse. Parcours-les uniquement au clavier. Explique chaque erreur simplement et dis qui elle gêne. Vérifie que chaque image informative a un texte alternatif utile, et que les images décoratives sont ignorées. Puis corrige.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur ces [pages de test], lance un contrôle d’accessibilité disponible. Indique l’outil, la page et l’état analysés. Explique qui est gêné par chaque défaut. Signale ce qui reste à vérifier au clavier, avec un lecteur d’écran et sur le sens des textes. Propose les corrections avant de modifier.</blockquote></figure>
     <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, par exemple des seniors.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>Bon à savoir</strong> : un champ étiqueté « Champ 1 » passe l’audit : l’étiquette existe, mais ne dit rien. L’IA peut aider à le repérer, à vérifier. Un vrai lecteur d’écran reste nécessaire.</span></p>
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : les pages et les états réellement examinés.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : un audit automatique ne certifie pas l’accessibilité. Une étiquette présente peut rester peu compréhensible.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-comportement">
-  <h2 class="title">Bloc 4, comportement : interroger les données d’usage</h2>
+  <h2 class="title">Bloc 4, comportement : lire les données sans inventer les causes</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Hotjar : cartes de chaleur, enregistrements, clics.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Branché à votre outil d’analyse, ou nourri d’un export, il aide à lire les chiffres et à formuler des hypothèses.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Ce qu’il faut fournir</h3><p>Des événements ou des données d’usage, sur une période définie.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il calcule ou examine les résultats permis par les données, puis formule des hypothèses.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>À partir de ces données d’usage, quelles pages montrent des clics sans effet ou des abandons sur mobile ? Distingue les constats des hypothèses. Si les données ne permettent pas de le mesurer, dis ce qui manque.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>À partir de ces [données] et du tunnel [étapes], décris les passages et abandons observables. Pour chaque taux, précise la période et ce qu’on compte. Sépare les chiffres des hypothèses. Si une analyse n’est pas possible, indique les données manquantes.</blockquote></figure>
     <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une question précise, sur des pages précises.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : les chiffres disent où, pas pourquoi. Ce que l’outil fournit dépend de son offre. Et le consentement des visiteurs.</span></p>
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une question précise et des données adaptées.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : des données fictives restent pédagogiques. Les statistiques ne prouvent pas la cause ; respecter les règles de collecte et de consentement.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-microcopie">
-  <h2 class="title">Bloc 5, microcopie : relever les textes, puis réécrire</h2>
+  <h2 class="title">Bloc 5, microcopie : observer les messages, puis proposer</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>Relire à voix haute, avec un guide de ton.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il demande les pages clés, provoque les erreurs pour voir les vrais messages, et relève tous les textes.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Ce qu’on cherche</h3><p>Des textes qui nomment l’action, expliquent l’erreur et aident à poursuivre.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Il relève les messages des états testés et propose des variantes adaptées au contexte.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Sur le formulaire et le panier, envoie le formulaire vide, puis avec un e-mail mal écrit. Relève boutons, erreurs et aides. Pour [la cible], lesquels sont vagues, techniques ou inquiétants ? Deux variantes chacun, dans ce ton : [exemples].</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur ce [formulaire de test], provoque les erreurs prévues : champ vide, e-mail invalide. Relève les messages réellement affichés. Pour [la cible], lesquels sont vagues ou techniques ? Propose deux variantes dans ce ton : [exemples]. Ne change pas le sens de l’action ni les termes métier.</blockquote></figure>
     <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : une fiche de ton, avec trois ou quatre exemples.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : que les textes ne sont pas devenus passe‑partout.</span></p>
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : la cible, le ton et le sens exact de l’action.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : les messages testés ne représentent pas tous les états du produit. Relire les variantes en contexte.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-performance">
-  <h2 class="title">Bloc 6, performance perçue : tester dans des conditions représentatives</h2>
+  <h2 class="title">Bloc 6, performance : mesurer les délais et expliquer l’attente</h2>
   <div class="body ia-bloc">
     <div class="ia-col">
-      <article class="card ia-sans" data-step="1"><h3>Sans IA</h3><p>PageSpeed Insights, Lighthouse, ou Unlighthouse pour tout le site.</p></article>
-      <article class="card ia-agent" data-step="2"><h3>Avec un agent</h3><p>Il enregistre le chargement sur une connexion lente, puis ajoute des retours immédiats.</p></article>
+      <article class="card ia-sans" data-step="1"><h3>Performance réelle</h3><p>Mesurer le chargement et examiner les ressources et les requêtes bloquantes.</p></article>
+      <article class="card ia-agent" data-step="2"><h3>Avec un agent équipé</h3><p>Avec les outils adaptés, il examine aussi le retour visible après les actions importantes.</p></article>
     </div>
-    <figure class="prompt" data-step="3"><figcaption>Le prompt</figcaption><blockquote>Simule un téléphone avec une connexion lente. Après chaque clic important, combien de temps reste-t-on sans retour visible ? Propose un retour immédiat ou un squelette de chargement, sans jamais ajouter d’attente.</blockquote></figure>
+    <figure class="prompt" data-step="3"><figcaption>Une consigne à adapter</figcaption><blockquote>Sur ces [pages de test], lance Lighthouse et explique les ressources ou requêtes à examiner. Si tes outils le permettent, mesure le délai avant un retour visible après [actions]. Sinon, dis ce qui manque. Propose une amélioration, puis une mesure avant/après dans les mêmes conditions.</blockquote></figure>
     <div class="ia-garde" data-step="4">
-      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’appareil et la connexion de la cible.</span></p>
-      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : aucune fausse attente, comme sur la slide 19. Une simulation ne remplace pas un vrai téléphone, et ces outils web n’auditent pas une application native.</span></p>
+      <p class="ia-cle"><i data-icon="target"></i><span><strong>La clé</strong> : l’appareil, le réseau et l’état du cache.</span></p>
+      <p class="ia-verif"><i data-icon="eye"></i><span><strong>À vérifier</strong> : un chargement rapide ne garantit pas un bon retour après un clic. Le web ne remplace pas un test natif ; SQL et Redis demandent un diagnostic serveur.</span></p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-part="2" data-key="plugin">
-  <h2 class="title">Les prompts du cours, offerts</h2>
+  <h2 class="title">Les consignes du cours, à réutiliser</h2>
   <div class="body g12">
     <div class="c7 stack-m">
-      <p class="lead strong">Gratuits, sur GitHub, à copier dans votre agent.</p>
+      <p class="lead strong">Une consigne par bloc, à adapter à votre projet.</p>
       <ol class="plugin-etapes">
-        <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p>D’abord les clés : cible, intention, ton, pages.</p></li>
-        <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p>Puis un prompt par bloc, avec ce qu’il faut vérifier.</p></li>
-        <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p>Chaque constat est marqué : mesuré, indice ou avis.</p></li>
+        <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p>Donner le contexte et annoncer les contrôles disponibles.</p></li>
+        <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p>Exiger des preuves et distinguer constats, hypothèses et avis.</p></li>
+        <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p>Valider les corrections, puis refaire les vérifications.</p></li>
       </ol>
-      <p class="note" data-step="4">Ils marchent dans Claude comme dans ChatGPT.</p>
+      <p class="note" data-step="4">Une consigne ne fournit pas les outils. Labo UX couvre une partie de ces contrôles ; l’agent doit annoncer ce qui manque.</p>
     </div>
-    <div class="c5">
-      <div class="case" data-case="PLUGIN_URL" data-kind="link" data-fixe data-texte="Ouvrir les prompts" data-label="Les prompts du cours, sur GitHub"></div>
-    </div>
+    <div class="c5"><div class="case" data-case="PLUGIN_URL" data-kind="link" data-fixe data-download="ux-ia-six-consignes.md" data-texte="Télécharger les consignes" data-label="Les six consignes et le contexte à fournir"></div></div>
   </div>
 </section>
 
-<!-- ================= PARTIE 3 : PRATIQUE (slides 33 à 41) ================= -->
+<!-- ================= PARTIE 3 : PRATIQUE (slides 36 à 44) ================= -->
 
 <section class="slide" data-part="3" data-key="choix">
   <h2 class="title">Place à la pratique</h2>
@@ -1384,13 +1540,13 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </article>
     </div>
     <div class="c7 stack-m">
-      <h3 class="col-titre" data-step="2">L’outil d’audit, lui, trouve :</h3>
+      <h3 class="col-titre" data-step="2">Exemple de résultats à expliquer :</h3>
       <ul class="trouvailles">
         <li data-step="2"><b>10</b><span>images sans texte alternatif : un lecteur d’écran ne peut pas les décrire.</span></li>
         <li data-step="3"><b>11</b><span>textes trop pâles, dont les prix barrés : environ 1,7:1 sur le fond crème, au lieu de 4,5:1.</span></li>
-        <li data-step="4"><b>89</b><span>sur 100 au score d’accessibilité de Lighthouse. Un bon score, malgré tout ça.</span></li>
+        <li data-step="4"><b>89</b><span>sur 100 : score Lighthouse illustratif, à remesurer sur la version utilisée.</span></li>
       </ul>
-      <p class="lead strong" data-step="5">L’outil mesure. Il ne dit pas si un texte alternatif a du sens.</p>
+      <p class="lead strong" data-step="5">Chiffres illustratifs du support : pas de rapport daté joint. Relancez l’audit pour mesurer votre version.</p>
     </div>
   </div>
 </section>
@@ -1413,7 +1569,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="3" data-key="form-defauts">
-  <h2 class="title">Le formulaire : joli, mais six défauts répartis sur les blocs</h2>
+  <h2 class="title">Le formulaire : plusieurs défauts expliqués avec les six blocs</h2>
   <div class="body">
     <div class="fd" data-comp="form-defauts"></div>
   </div>
@@ -1441,7 +1597,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ----- Le quiz, la démo avec l’IA et la conclusion (slides 39 à 41) ----- -->
+<!-- ----- Le quiz, la démo avec l’IA et la conclusion (slides 42 à 44) ----- -->
 
 <section class="slide" data-part="3" data-key="bon-modele">
   <h2 class="title">Exemple : le bon modèle pour la bonne tâche</h2>
@@ -1456,18 +1612,19 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c7 stack-m">
       <ol class="plugin-etapes">
-        <li><span class="flow-n" aria-hidden="true">1</span><p><strong>Audit.</strong> Pa11y et Lighthouse relèvent ce qui se mesure.</p></li>
+        <li><span class="flow-n" aria-hidden="true">1</span><p><strong>Audit.</strong> axe et Lighthouse relèvent ce qui se mesure.</p></li>
         <li><span class="flow-n" aria-hidden="true">2</span><p><strong>Plan.</strong> L’IA classe les corrections, de la plus gênante pour la cible à la plus simple.</p></li>
         <li><span class="flow-n" aria-hidden="true">3</span><p><strong>Corrections.</strong> L’agent corrige bloc par bloc, vous relisez.</p></li>
+        <li><span class="flow-n" aria-hidden="true">4</span><p><strong>Vérification.</strong> Refaire les contrôles et le parcours après les corrections.</p></li>
       </ol>
       <div class="sees">
         <article class="card see" data-step="1"><i data-icon="check"></i><p>L’outil voit : un texte alternatif manquant.</p></article>
-        <article class="card see no" data-step="2"><i data-icon="cross"></i><p>L’outil ne voit pas : un texte alternatif inutile, un bouton « Soumettre ».</p></article>
+        <article class="card see no" data-step="2"><i data-icon="cross"></i><p>À vérifier en contexte : l’utilité du texte alternatif et la clarté du bouton.</p></article>
       </div>
       <p class="lead" data-step="3">Tout ne se corrige pas automatiquement.</p>
     </div>
     <div class="c5 stack-s">
-      <div class="case grow" data-case="IMG_AUDIT_RESULT" data-kind="img" data-fixe data-alt="Synthèse de l’audit Pa11y sur 4 pages : 21 erreurs, dont 10 images sans texte alternatif et 11 contrastes insuffisants"></div>
+      <div class="case grow" data-case="IMG_AUDIT_RESULT" data-kind="img" data-fixe data-alt="Capture illustrative du support : 21 erreurs affichées, sans rapport daté joint ; résultats à remesurer"></div>
     </div>
   </div>
 </section>
@@ -1486,7 +1643,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= ANNEXES : lexique, références (slides 42 à 43) ================= -->
+<!-- ================= ANNEXES : lexique, références (slides 45 à 46) ================= -->
 
 
 <section class="slide" data-part="4" data-key="lexique">
@@ -1526,19 +1683,19 @@ const CONFIG = {
   policesUrl: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap', // feuille Google Fonts du thème ; les familles sont dans les variables CSS --font-title et --font-body
 
   minutes: [
-    0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 1.5, 2.5, 1, 2, 2, 1.5, 2, 2.5, 2, 1.5, 3, // slides 1 à 19 : théorie
-    2, 2.5, 1.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, 1, // slides 20 à 32 : l'IA, bloc par bloc
-    2, 5, 3, 6, 4, 4, 3, 6, 2, // slides 33 à 41 : pratique (34-35 Tilleul, 36-38 formulaire)
-    0, 0 // slides 42 à 43 : annexes, hors budget
+    0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 1.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (15 à 17 : accessibilité)
+    2, 2.5, 1.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, 1, // slides 23 à 35 : l'IA, bloc par bloc
+    2, 5, 3, 6, 4, 4, 3, 6, 2, // slides 36 à 44 : pratique (37-38 Tilleul, 39-41 formulaire)
+    0, 0 // slides 45 à 46 : annexes, hors budget
   ],
   parties: [
-    { nom: 'Théorie', de: 1, a: 19 },
-    { nom: 'L’IA, bloc par bloc', de: 20, a: 32 },
-    { nom: 'Pratique', de: 33, a: 41 },
-    { nom: 'Annexes', de: 42, a: 43, hors: true } // hors du cours : lexique et références
+    { nom: 'Théorie', de: 1, a: 22 },
+    { nom: 'L’IA, bloc par bloc', de: 23, a: 35 },
+    { nom: 'Pratique', de: 36, a: 44 },
+    { nom: 'Annexes', de: 45, a: 46, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [36, 37, 38], // formulaire, au choix avec Tilleul
+  bonus: [39, 40, 41], // formulaire, au choix avec Tilleul
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -1551,9 +1708,9 @@ const CONFIG = {
     LINK_UXMAG_ARTICLE: 'https://uxmag.com/articles/let-your-users-wait',
     SITE_URL: '/tilleul/?cours=non', // Tilleul en ligne, sans le mode cours
     FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
-    PLUGIN_URL: 'https://github.com/clement8426/le-labo/blob/main/ux/ux-ia/prompts/six-blocs.md', // les prompts du cours (slide 32)
-    EXERCICES_URL: 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia', // les exercices à refaire chez soi (slide 41)
-    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 40)
+    PLUGIN_URL: '/diapos/ux-ia/consignes.md', // les prompts du cours (slide 35)
+    EXERCICES_URL: 'https://github.com/clement8426/le-labo/tree/main/ux/ux-ia', // les exercices à refaire chez soi (slide 44)
+    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 43)
   },
   // Cases image : chemin relatif ou URL (exemple : 'images/figma.png').
   // Le résultat d'audit a une image intégrée
@@ -1584,93 +1741,440 @@ const CONFIG = {
     ]
   },
 
-  // Aide de lecture du vérificateur de contraste (slide 15)
-  aideContraste: [
-    'De 1 (illisible) à 21 (noir sur blanc).',
-    'Gros texte : 24 px et plus, ou 19 px en gras.'
-  ],
-
-  // Exercice B, formulaire d'adresse (slide 37) : un défaut planté par bloc
+  // Exercice B, formulaire d'adresse (slide 39) : plusieurs défauts expliqués avec la grille du cours
   formulaire: [
     { bloc: 'Design system', defaut: 'Quatre hauteurs et quatre arrondis de champs différents.' },
     { bloc: 'Friction', defaut: 'Le NPA avant la rue, et le remplissage automatique du navigateur bloqué.' },
     { bloc: 'Accessibilité', defaut: 'Étiquettes non reliées aux champs, erreur signalée en rouge seulement.' },
-    { bloc: 'Analyse comportementale', defaut: 'Les erreurs n’apparaissent qu’à l’envoi, toutes d’un coup.' },
+    { bloc: 'Observation des parcours', defaut: 'Hypothèse : les erreurs tardives provoquent des retours en arrière. À observer auprès des utilisateurs.' },
     { bloc: 'Microcopie', defaut: '« Erreur champ 1 », « Soumettre », des placeholders à la place des étiquettes.' },
     { bloc: 'Performance perçue', defaut: 'Près de 2 secondes d’envoi sans aucun retour.' }
   ],
 
-  // Amendes maximales pour non-conformité à l'European Accessibility Act (slide 16), relevées en 2025
-  sourcesAmendes: [{"t": "Allemagne", "u": "https://www.gesetze-im-internet.de/bfsg/__37.html"}, {"t": "Autriche", "u": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316"}, {"t": "Italie", "u": "https://accessibilita.agid.gov.it/domande-frequenti/"}, {"t": "France", "u": "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite"}, {"t": "Irlande", "u": "https://www.dlapiper.com/en/insights/publications/2025/10/navigating-the-irish-accessibility-regulations"}],
+  // Amendes maximales pour non-conformité à l'European Accessibility Act (slide 18), relevées en 2025
+  sourcesAmendes: [{"t": "Allemagne", "u": "https://www.gesetze-im-internet.de/bfsg/__37.html"}, {"t": "Autriche", "u": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316"}, {"t": "Italie", "u": "https://accessibilita.agid.gov.it/domande-frequenti/"}, {"t": "France", "u": "https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-e-commerce/accessibilite-des-sites-de-e-commerce"}, {"t": "Irlande", "u": "https://universaldesign.ie/uploads/publications/S.I.-No.-636_2023-European-Union-Accessibility-Requirements-of-Products-and-Services-Regulations-2023_2024-12-05-154652_myhr.pdf"}],
   amendes: [
-    { pays: 'Allemagne', montant: '100 000 €', detail: 'maximum, pour un produit ou service non conforme' },
-    { pays: 'Autriche', montant: '80 000 €', detail: 'maximum ; 50 000 € pour une PME' },
-    { pays: 'Italie', montant: '40 000 €', detail: 'maximum ; de 5 000 à 40 000 € selon la gravité' },
-    { pays: 'France', montant: '7 500 €', detail: 'par infraction, cumulable (contravention de 5e classe)' }
+    {
+      "pays": "Allemagne",
+      "montant": "100 000 €",
+      "detail": "maximum, pour un produit ou service non conforme"
+    },
+    {
+      "pays": "Autriche",
+      "montant": "80 000 €",
+      "detail": "maximum ; 50 000 € pour une PME"
+    },
+    {
+      "pays": "Italie",
+      "montant": "40 000 €",
+      "detail": "maximum ; de 5 000 à 40 000 € selon la gravité"
+    },
+    {
+      "pays": "France",
+      "montant": "7 500 €",
+      "detail": "personne morale, par infraction, cumulable ; 1 500 € pour une personne physique"
+    }
   ],
 
   // Lexique (avant-dernière slide). cle : identifiant de la slide où le terme est expliqué, pour le bouton « Voir la slide ».
   lexique: [
-    { terme: 'UX', nom: 'UX, User Experience', def: 'Ce que l’on vit en utilisant un produit : le parcours et le ressenti.', cle: 'ui-ux' },
-    { terme: 'UI', nom: 'UI, User Interface', def: 'Le visuel d’un produit : couleurs, boutons, typographie.', cle: 'ui-ux' },
-    { terme: 'Cible', def: 'Les personnes pour qui l’on conçoit. Une UX se juge toujours par rapport à elles.', cle: 'cible' },
-    { terme: 'Persona', def: 'Portrait fictif d’un utilisateur type, construit à partir d’observations réelles.', cle: 'cible' },
-    { terme: 'SaaS', nom: 'SaaS (Software as a Service)', def: 'Un logiciel fourni comme service et accessible par le réseau, généralement sur abonnement. Il s’utilise dans un navigateur ou avec une application installée.', cle: 'produits' },
-    { terme: 'Activation', def: 'L’étape où un nouvel utilisateur obtient une première valeur du produit. Son lien avec la rétention ou le paiement est à vérifier.', cle: 'produits' },
-    { terme: 'Rétention', def: 'La proportion d’un groupe d’utilisateurs qui réalise de nouveau une action définie, après une période donnée.', cle: 'hotjar' },
-    { terme: 'Tunnel de conversion', nom: 'Tunnel de conversion (funnel)', def: 'Le parcours de l’arrivée jusqu’à l’objectif : un contact, un achat, un abonnement, une installation.', cle: 'tunnel' },
-    { terme: 'Abandon de panier', def: 'Un visiteur remplit son panier, puis quitte le site sans payer.', cle: 'abandon' },
-    { terme: 'Honeycomb', def: 'Modèle de Peter Morville qui décrit une bonne expérience en sept facettes.', cle: 'honeycomb' },
-    { terme: 'Design system', def: 'Les règles, composants et modèles réutilisables qui rendent un produit cohérent. Les variables (couleurs, polices, rayons, espacements) en sont les fondations.', cle: 'design-system' },
-    { terme: 'Friction', def: 'Tout ce qui demande un effort inutile pour décider ou pour atteindre un élément.', cle: 'hick' },
-    { terme: 'Loi de Hick', def: 'À conditions comparables, plus il y a d’options à examiner, plus la décision peut prendre du temps.', cle: 'hick' },
-    { terme: 'Loi de Fitts', def: 'Une cible petite et éloignée est plus longue à atteindre.', cle: 'fitts' },
-    { terme: 'Accessibilité', def: 'Un produit utilisable par toute la cible, y compris avec une limitation visuelle, auditive ou motrice.', cle: 'accessibilite' },
-    { terme: 'Texte alternatif', def: 'Description d’une image informative, lue par les lecteurs d’écran. Une image décorative reçoit un texte alternatif vide, pour être ignorée.', cle: 'accessibilite' },
-    { terme: 'Contraste', def: 'Écart de luminosité entre un texte et son fond. Le seuil courant est de 4,5 pour 1.', cle: 'accessibilite' },
-    { terme: 'Accessibility Act', nom: 'European Accessibility Act', def: 'Directive européenne qui impose l’accessibilité à de nombreux produits et services numériques depuis le 28 juin 2025.', cle: 'loi' },
-    { terme: 'Carte de chaleur', nom: 'Carte de chaleur (heatmap)', def: 'Image qui montre en couleurs chaudes les zones les plus cliquées d’une page.', cle: 'hotjar' },
-    { terme: 'Microcopie', def: 'Les petits textes d’une interface : boutons, messages d’erreur, aides.', cle: 'microcopie' },
-    { terme: 'Performance perçue', def: 'La vitesse ressentie par l’utilisateur, qui peut différer de la vitesse réelle.', cle: 'attente' },
-    { terme: 'Skeleton loader', def: 'Silhouette grise de la page, affichée pendant le chargement.', cle: 'attente' },
-    { terme: 'MCP', nom: 'MCP (Model Context Protocol)', def: 'Une prise standard qui branche un outil (navigateur, Figma, outil d’analyse…) sur une IA, pour qu’elle l’utilise directement.', cle: 'mcp' },
-    { terme: 'Autocomplétion', def: 'Des suggestions proposées pendant la saisie, à choisir d’un clic ou au clavier.', cle: 'form-photon' },
-    { terme: 'Audit', def: 'Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.', cle: 'revelation' },
-    { terme: 'Agent IA', def: 'Une IA qui agit : elle ouvre des pages, clique, lance des outils et modifie des fichiers pour accomplir une mission.', cle: 'agent' }
+    {
+      "terme": "UX",
+      "nom": "UX, User Experience",
+      "def": "Ce que l’on vit en utilisant un produit : le parcours et le ressenti.",
+      "cle": "ui-ux"
+    },
+    {
+      "terme": "UI",
+      "nom": "UI, User Interface",
+      "def": "L’interface avec laquelle une personne interagit : présentation, commandes, états et réactions du produit.",
+      "cle": "ui-ux"
+    },
+    {
+      "terme": "Cible",
+      "def": "Les personnes pour qui l’on conçoit. Une UX se juge toujours par rapport à elles.",
+      "cle": "cible"
+    },
+    {
+      "terme": "Persona",
+      "def": "Portrait fictif d’un utilisateur type, construit à partir d’observations réelles.",
+      "cle": "cible"
+    },
+    {
+      "terme": "SaaS",
+      "nom": "SaaS (Software as a Service)",
+      "def": "Un logiciel fourni comme service et accessible par le réseau, généralement sur abonnement. Il s’utilise dans un navigateur ou avec une application installée.",
+      "cle": "produits"
+    },
+    {
+      "terme": "Activation",
+      "def": "L’étape où un nouvel utilisateur obtient une première valeur du produit. Son lien avec la rétention ou le paiement est à vérifier.",
+      "cle": "produits"
+    },
+    {
+      "terme": "Rétention",
+      "def": "La proportion d’un groupe d’utilisateurs qui réalise de nouveau une action définie, après une période donnée.",
+      "cle": "hotjar"
+    },
+    {
+      "terme": "Tunnel de conversion",
+      "nom": "Tunnel de conversion (funnel)",
+      "def": "Le parcours de l’arrivée jusqu’à l’objectif : un contact, un achat, un abonnement, une installation.",
+      "cle": "tunnel"
+    },
+    {
+      "terme": "Abandon de panier",
+      "def": "Un visiteur remplit son panier, puis quitte le site sans payer.",
+      "cle": "abandon"
+    },
+    {
+      "terme": "Honeycomb",
+      "def": "Modèle de Peter Morville qui décrit une bonne expérience en sept facettes.",
+      "cle": "honeycomb"
+    },
+    {
+      "terme": "Design system",
+      "def": "Les règles, composants et modèles réutilisables qui rendent un produit cohérent. Les variables (couleurs, polices, rayons, espacements) en sont les fondations.",
+      "cle": "design-system"
+    },
+    {
+      "terme": "Friction",
+      "def": "Tout ce qui demande un effort inutile pour décider ou pour atteindre un élément.",
+      "cle": "hick"
+    },
+    {
+      "terme": "Loi de Hick",
+      "def": "À conditions comparables, plus il y a d’options à examiner, plus la décision peut prendre du temps.",
+      "cle": "hick"
+    },
+    {
+      "terme": "Loi de Fitts",
+      "def": "Une cible petite et éloignée est plus longue à atteindre.",
+      "cle": "fitts"
+    },
+    {
+      "terme": "Accessibilité",
+      "def": "Un produit utilisable par toute la cible, y compris avec une limitation visuelle, auditive ou motrice.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Texte alternatif",
+      "def": "Description d’une image informative, lue par les lecteurs d’écran. Une image décorative reçoit un texte alternatif vide, pour être ignorée.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Contraste",
+      "def": "Écart de luminosité entre un texte et son fond. Le seuil courant est de 4,5 pour 1.",
+      "cle": "contraste"
+    },
+    {
+      "terme": "Lecteur d’écran",
+      "def": "Logiciel qui lit à voix haute ce qui s’affiche, utilisé notamment par les personnes aveugles ou malvoyantes.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Focus visible",
+      "def": "Contour qui montre quel élément est atteint au clavier, par exemple le bouton « Payer ».",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Accessibility Act",
+      "nom": "European Accessibility Act",
+      "def": "Directive européenne qui impose l’accessibilité à de nombreux produits et services numériques depuis le 28 juin 2025.",
+      "cle": "loi"
+    },
+    {
+      "terme": "Carte de chaleur",
+      "nom": "Carte de chaleur (heatmap)",
+      "def": "Visualisation des clics, du défilement ou d’autres interactions agrégées, selon la carte choisie.",
+      "cle": "hotjar"
+    },
+    {
+      "terme": "Microcopie",
+      "def": "Les petits textes d’une interface : boutons, messages d’erreur, aides.",
+      "cle": "microcopie"
+    },
+    {
+      "terme": "Performance perçue",
+      "def": "La vitesse ressentie par l’utilisateur, qui peut différer de la vitesse réelle.",
+      "cle": "attente"
+    },
+    {
+      "terme": "Performance réelle",
+      "def": "Les délais et ressources mesurés pour charger le produit et exécuter les actions, dans des conditions précisées.",
+      "cle": "performance-reelle"
+    },
+    {
+      "terme": "Cache",
+      "def": "Stockage temporaire d’un fichier ou d’un résultat pour le réutiliser. Il faut définir quand le renouveler pour garder les données à jour.",
+      "cle": "performance-reelle"
+    },
+    {
+      "terme": "Redis",
+      "def": "Un stockage de données en mémoire, utilisable notamment comme cache côté serveur. Ce n’est pas une solution obligatoire pour accélérer un produit.",
+      "cle": "performance-reelle"
+    },
+    {
+      "terme": "Skeleton loader",
+      "def": "Silhouette grise de la page, affichée pendant le chargement.",
+      "cle": "attente"
+    },
+    {
+      "terme": "MCP",
+      "nom": "MCP (Model Context Protocol)",
+      "def": "Un protocole commun pour relier une application d’IA à des outils et à des données, selon les connexions et les autorisations disponibles.",
+      "cle": "mcp"
+    },
+    {
+      "terme": "Autocomplétion",
+      "def": "Des suggestions proposées pendant la saisie, à choisir d’un clic ou au clavier.",
+      "cle": "form-photon"
+    },
+    {
+      "terme": "Audit",
+      "def": "Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.",
+      "cle": "revelation"
+    },
+    {
+      "terme": "Agent IA",
+      "def": "Une IA qui peut enchaîner des actions pour une mission avec des outils et des autorisations. Ses actions et leurs résultats restent à vérifier.",
+      "cle": "agent"
+    },
+    {
+      "terme": "API",
+      "nom": "API (Application Programming Interface)",
+      "def": "Une interface qui permet à un logiciel d’utiliser des fonctions ou des données fournies par un autre logiciel.",
+      "cle": "mcp"
+    }
   ],
 
   // Références (dernière slide), neuf par page. Ajoute les tiennes ici : { titre, source, url }.
   references: [
-    { titre: 'Photon, recherche d’adresses OpenStreetMap', source: 'komoot', url: 'https://github.com/komoot/photon' },
-    { titre: 'Motif « combobox » (liste de suggestions)', source: 'W3C, WAI-ARIA', url: 'https://www.w3.org/WAI/ARIA/apg/patterns/combobox/' },
-    { titre: 'Abandon de panier : taux et raisons', source: 'Baymard Institute, 2025', url: 'https://baymard.com/lists/cart-abandonment-rate' },
-    { titre: 'Réduire les champs du tunnel de commande', source: 'Baymard Institute, 2024', url: 'https://baymard.com/blog/checkout-flow-average-form-fields' },
-    { titre: '« The $300 Million Button »', source: 'Jared Spool, 2009', url: 'https://articles.centercentre.com/three_hund_million_button/' },
-    { titre: '« User Experience Design », le Honeycomb', source: 'Peter Morville, 2004', url: 'https://semanticstudios.com/user_experience_design/' },
-    { titre: 'Loi de Hick', source: 'Laws of UX', url: 'https://lawsofux.com/hicks-law/' },
-    { titre: 'Loi de Fitts', source: 'Laws of UX', url: 'https://lawsofux.com/fittss-law/' },
-    { titre: 'Contraste minimum, critère 1.4.3', source: 'W3C, WCAG', url: 'https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html' },
-    { titre: 'Directive (UE) 2019/882, l’European Accessibility Act', source: 'EUR-Lex', url: 'https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882' },
-    { titre: 'Accessibilité : obligations et sanctions en France', source: 'DGCCRF', url: 'https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite' },
-    { titre: 'Loi allemande BFSG, § 37 : les amendes', source: 'gesetze-im-internet.de', url: 'https://www.gesetze-im-internet.de/bfsg/__37.html' },
-    { titre: 'Loi autrichienne BaFG, § 36 : les sanctions', source: 'RIS, Autriche', url: 'https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316' },
-    { titre: 'Accessibilité : les sanctions en Italie', source: 'AgID, FAQ', url: 'https://accessibilita.agid.gov.it/domande-frequenti/' },
-    { titre: 'Les règles irlandaises d’accessibilité (S.I. 636/2023)', source: 'DLA Piper, 2025', url: 'https://www.dlapiper.com/en/insights/publications/2025/10/navigating-the-irish-accessibility-regulations' },
-    { titre: 'Révision partielle de la LHand', source: 'Confédération suisse, BFEH', url: 'https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand' },
-    { titre: 'Claude Pro : prix et limites', source: 'Anthropic', url: 'https://support.claude.com/en/articles/8325606-what-is-the-pro-plan' },
-    { titre: 'ChatGPT Plus et Codex : prix et limites', source: 'OpenAI', url: 'https://learn.chatgpt.com/docs/pricing' },
-    { titre: 'Pourquoi cinq utilisateurs suffisent pour un test d’utilisabilité', source: 'Nielsen Norman Group', url: 'https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/' },
-    { titre: 'Contraste des éléments graphiques, critère 1.4.11', source: 'W3C, WCAG', url: 'https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html' },
-    { titre: 'Contenu non textuel, critère 1.1.1', source: 'W3C, WCAG', url: 'https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html' },
-    { titre: 'Pa11y, audit d’accessibilité', source: 'pa11y.org', url: 'https://pa11y.org/' },
-    { titre: 'Lighthouse', source: 'Chrome for Developers', url: 'https://developer.chrome.com/docs/lighthouse/overview' },
-    { titre: '« Let Your Users Wait »', source: 'UX Magazine', url: 'https://uxmag.com/articles/let-your-users-wait' },
-    { titre: 'Attente fabriquée : « Just wait… trust me »', source: 'Université du Michigan, 2017', url: 'https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/' },
-    { titre: 'Model Context Protocol, la documentation', source: 'modelcontextprotocol.io', url: 'https://modelcontextprotocol.io/' },
-    { titre: 'Playwright MCP : la page lue comme un arbre d’accessibilité', source: 'Microsoft, Playwright', url: 'https://playwright.dev/mcp/snapshots' },
-    { titre: 'Chrome DevTools MCP', source: 'Google, ChromeDevTools', url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp' },
-    { titre: 'Unlighthouse : Lighthouse sur tout un site', source: 'unlighthouse.dev', url: 'https://unlighthouse.dev/' },
-    { titre: '« What Would GPT Click » : utilisateurs simulés contre vrais utilisateurs', source: 'arXiv, 2026', url: 'https://arxiv.org/abs/2605.18302' }
+    {
+      "titre": "Cache HTTP : éviter les téléchargements inutiles",
+      "source": "Google, web.dev",
+      "url": "https://web.dev/articles/http-cache"
+    },
+    {
+      "titre": "Requêtes critiques : réduire les dépendances et les ressources bloquantes",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/performance/insights/network-dependency-tree"
+    },
+    {
+      "titre": "Durées de cache des ressources web",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/performance/insights/cache"
+    },
+    {
+      "titre": "Cache serveur avec Redis : réutilisation, expiration et invalidation",
+      "source": "Redis, documentation",
+      "url": "https://redis.io/docs/latest/develop/use-cases/cache-aside/"
+    },
+    {
+      "titre": "Photon, recherche d’adresses OpenStreetMap",
+      "source": "komoot",
+      "url": "https://github.com/komoot/photon"
+    },
+    {
+      "titre": "Motif « combobox » (liste de suggestions)",
+      "source": "W3C, WAI-ARIA",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+    },
+    {
+      "titre": "Abandon de panier : taux et raisons",
+      "source": "Baymard Institute, 2025",
+      "url": "https://baymard.com/lists/cart-abandonment-rate"
+    },
+    {
+      "titre": "Réduire les champs du tunnel de commande",
+      "source": "Baymard Institute, 2024",
+      "url": "https://baymard.com/blog/checkout-flow-average-form-fields"
+    },
+    {
+      "titre": "« The $300 Million Button »",
+      "source": "Jared Spool, 2009",
+      "url": "https://articles.centercentre.com/three_hund_million_button/"
+    },
+    {
+      "titre": "« User Experience Design », le Honeycomb",
+      "source": "Peter Morville, 2004",
+      "url": "https://semanticstudios.com/user_experience_design/"
+    },
+    {
+      "titre": "Loi de Hick",
+      "source": "Laws of UX",
+      "url": "https://lawsofux.com/hicks-law/"
+    },
+    {
+      "titre": "Loi de Fitts",
+      "source": "Laws of UX",
+      "url": "https://lawsofux.com/fittss-law/"
+    },
+    {
+      "titre": "Contraste minimum, critère 1.4.3",
+      "source": "W3C, WCAG",
+      "url": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+    },
+    {
+      "titre": "Directive (UE) 2019/882, l’European Accessibility Act",
+      "source": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882"
+    },
+    {
+      "titre": "Accessibilité : obligations et sanctions en France",
+      "source": "France Num, ministère de l’Économie",
+      "url": "https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-e-commerce/accessibilite-des-sites-de-e-commerce"
+    },
+    {
+      "titre": "Loi allemande BFSG, § 37 : les amendes",
+      "source": "gesetze-im-internet.de",
+      "url": "https://www.gesetze-im-internet.de/bfsg/__37.html"
+    },
+    {
+      "titre": "Loi autrichienne BaFG, § 36 : les sanctions",
+      "source": "RIS, Autriche",
+      "url": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20012316"
+    },
+    {
+      "titre": "Accessibilité : les sanctions en Italie",
+      "source": "AgID, FAQ",
+      "url": "https://accessibilita.agid.gov.it/domande-frequenti/"
+    },
+    {
+      "titre": "Irlande : règlement S.I. 636/2023, sanctions",
+      "source": "Texte officiel, National Disability Authority",
+      "url": "https://universaldesign.ie/uploads/publications/S.I.-No.-636_2023-European-Union-Accessibility-Requirements-of-Products-and-Services-Regulations-2023_2024-12-05-154652_myhr.pdf"
+    },
+    {
+      "titre": "Révision partielle de la LHand",
+      "source": "Confédération suisse, BFEH",
+      "url": "https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand"
+    },
+    {
+      "titre": "Pourquoi cinq utilisateurs suffisent pour un test d’utilisabilité",
+      "source": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/"
+    },
+    {
+      "titre": "Clavier, critère 2.1.1",
+      "source": "W3C, WCAG",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+    },
+    {
+      "titre": "Contenu non textuel, critère 1.1.1",
+      "source": "W3C, WCAG",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+    },
+    {
+      "titre": "Pa11y, audit d’accessibilité",
+      "source": "pa11y.org",
+      "url": "https://pa11y.org/"
+    },
+    {
+      "titre": "Lighthouse",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/lighthouse/overview"
+    },
+    {
+      "titre": "« Let Your Users Wait »",
+      "source": "UX Magazine",
+      "url": "https://uxmag.com/articles/let-your-users-wait"
+    },
+    {
+      "titre": "Informer pendant l’attente : visibilité de l’état du système",
+      "source": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/visibility-system-status/"
+    },
+    {
+      "titre": "Model Context Protocol, la documentation",
+      "source": "modelcontextprotocol.io",
+      "url": "https://modelcontextprotocol.io/"
+    },
+    {
+      "titre": "Playwright MCP : la page lue comme un arbre d’accessibilité",
+      "source": "Microsoft, Playwright",
+      "url": "https://playwright.dev/mcp/snapshots"
+    },
+    {
+      "titre": "Chrome DevTools MCP",
+      "source": "Google, ChromeDevTools",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+    },
+    {
+      "titre": "Unlighthouse : Lighthouse sur tout un site",
+      "source": "unlighthouse.dev",
+      "url": "https://unlighthouse.dev/"
+    },
+    {
+      "titre": "« What Would GPT Click » : utilisateurs simulés contre vrais utilisateurs",
+      "source": "arXiv, 2026",
+      "url": "https://arxiv.org/abs/2605.18302"
+    },
+    {
+      "titre": "Agents : missions, outils et contexte",
+      "source": "OpenAI",
+      "url": "https://developers.openai.com/api/docs/guides/agents"
+    },
+    {
+      "titre": "Codex : travailler sur un projet",
+      "source": "OpenAI, documentation officielle",
+      "url": "https://learn.chatgpt.com/docs/codex/cli"
+    },
+    {
+      "titre": "Claude Code : présentation",
+      "source": "Anthropic",
+      "url": "https://code.claude.com/docs/en/overview"
+    },
+    {
+      "titre": "OpenCode : présentation",
+      "source": "OpenCode",
+      "url": "https://opencode.ai/docs/"
+    },
+    {
+      "titre": "Hermes Agent : projet et documentation",
+      "source": "Nous Research",
+      "url": "https://github.com/NousResearch/hermes-agent"
+    },
+    {
+      "titre": "API : définition",
+      "source": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/API"
+    },
+    {
+      "titre": "MCP : découverte et appel des outils",
+      "source": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/docs/learn/server-concepts"
+    },
+    {
+      "titre": "Lire les styles calculés",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/css/reference"
+    },
+    {
+      "titre": "Évaluer l’accessibilité : outils et intervention humaine",
+      "source": "W3C, WAI",
+      "url": "https://www.w3.org/WAI/test-evaluate/"
+    },
+    {
+      "titre": "Messages d’erreur et de réussite dans les formulaires",
+      "source": "W3C, WAI",
+      "url": "https://www.w3.org/WAI/tutorials/forms/notifications/"
+    },
+    {
+      "titre": "Tests d’utilisabilité avec des participants",
+      "source": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/usability-testing-101/"
+    },
+    {
+      "titre": "Données de clics et cartes de chaleur",
+      "source": "Microsoft Learn, Clarity",
+      "url": "https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview"
+    },
+    {
+      "titre": "Lighthouse : chargements, états et interactions",
+      "source": "GoogleChrome, documentation Lighthouse",
+      "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md"
+    }
   ],
 
   // Honeycomb de Peter Morville (slide 10)
@@ -1718,16 +2222,36 @@ const CONFIG = {
     ],
     "accessibilite": [
       {
+        "t": "WCAG 1.1.1",
+        "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+      },
+      {
         "t": "WCAG 1.4.3",
         "u": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
       },
       {
-        "t": "WCAG 1.4.11",
-        "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
-      },
+        "t": "WCAG 2.1.1",
+        "u": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+      }
+    ],
+    "contraste": [
+      {
+        "t": "WCAG 1.4.3",
+        "u": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+      }
+    ],
+    "audit-page": [
       {
         "t": "WCAG 1.1.1",
         "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+      },
+      {
+        "t": "WCAG 1.4.3",
+        "u": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+      },
+      {
+        "t": "WCAG 2.1.1",
+        "u": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
       }
     ],
     "loi": [
@@ -1750,50 +2274,80 @@ const CONFIG = {
         "u": "https://uxmag.com/articles/let-your-users-wait"
       },
       {
-        "t": "Univ. du Michigan",
-        "u": "https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/"
+        "t": "Nielsen Norman Group",
+        "u": "https://www.nngroup.com/articles/visibility-system-status/"
+      }
+    ],
+    "performance-reelle": [
+      {
+        "t": "Cache HTTP",
+        "u": "https://web.dev/articles/http-cache"
+      },
+      {
+        "t": "Requêtes critiques",
+        "u": "https://developer.chrome.com/docs/performance/insights/network-dependency-tree"
+      },
+      {
+        "t": "Redis",
+        "u": "https://redis.io/docs/latest/develop/use-cases/cache-aside/"
       }
     ],
     "mcp": [
       {
-        "t": "modelcontextprotocol.io",
-        "u": "https://modelcontextprotocol.io/"
+        "t": "API",
+        "u": "https://developer.mozilla.org/en-US/docs/Glossary/API"
+      },
+      {
+        "t": "MCP : les outils",
+        "u": "https://modelcontextprotocol.io/docs/learn/server-concepts"
       }
     ],
     "quel-agent": [
       {
-        "t": "Claude Pro",
-        "u": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan"
+        "t": "Codex",
+        "u": "https://learn.chatgpt.com/docs/codex/cli"
       },
       {
-        "t": "ChatGPT Plus",
-        "u": "https://learn.chatgpt.com/docs/pricing"
+        "t": "Claude Code",
+        "u": "https://code.claude.com/docs/en/overview"
+      },
+      {
+        "t": "OpenCode",
+        "u": "https://opencode.ai/docs/"
+      },
+      {
+        "t": "Hermes Agent",
+        "u": "https://github.com/NousResearch/hermes-agent"
       }
     ],
     "ia-friction": [
       {
-        "t": "What Would GPT Click",
-        "u": "https://arxiv.org/abs/2605.18302"
+        "t": "Tests utilisateurs",
+        "u": "https://www.nngroup.com/articles/usability-testing-101/"
       },
       {
-        "t": "NN/g, 5 utilisateurs",
-        "u": "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/"
+        "t": "Limites des utilisateurs IA",
+        "u": "https://arxiv.org/abs/2605.18302"
       }
     ],
     "ia-accessibilite": [
       {
-        "t": "Pa11y",
-        "u": "https://pa11y.org/"
-      },
-      {
-        "t": "Lighthouse",
-        "u": "https://developer.chrome.com/docs/lighthouse/overview"
+        "t": "W3C : évaluer",
+        "u": "https://www.w3.org/WAI/test-evaluate/"
       }
     ],
     "ia-performance": [
       {
-        "t": "Unlighthouse",
-        "u": "https://unlighthouse.dev/"
+        "t": "Lighthouse",
+        "u": "https://developer.chrome.com/docs/lighthouse/overview"
+      },
+      {
+        "t": "Mesurer un parcours",
+        "u": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md"
+      },
+      {
+        "t": "Retour pendant l’attente",
+        "u": "https://www.nngroup.com/articles/visibility-system-status/"
       }
     ],
     "form-photon": [
@@ -1805,12 +2359,57 @@ const CONFIG = {
         "t": "Combobox, W3C",
         "u": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
       }
+    ],
+    "agent": [
+      {
+        "t": "Agents et outils",
+        "u": "https://developers.openai.com/api/docs/guides/agents"
+      }
+    ],
+    "methode-ia": [
+      {
+        "t": "Évaluer et vérifier",
+        "u": "https://www.w3.org/WAI/test-evaluate/"
+      }
+    ],
+    "ia-design-system": [
+      {
+        "t": "Styles calculés",
+        "u": "https://developer.chrome.com/docs/devtools/css/reference"
+      }
+    ],
+    "ia-comportement": [
+      {
+        "t": "Données et heatmaps",
+        "u": "https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview"
+      }
+    ],
+    "ia-microcopie": [
+      {
+        "t": "Messages de formulaire",
+        "u": "https://www.w3.org/WAI/tutorials/forms/notifications/"
+      }
     ]
   },
   motsCles: [],
 
   // Vue présentateur : ce qui se dit à l'oral, quand la slide en affiche une version courte
-  notes: {}
+  notes: {
+    "performance-reelle": "Un cache réutilise un fichier ou un résultat déjà obtenu. Le cache HTTP du navigateur et un cache serveur Redis sont deux mécanismes différents. Redis peut éviter de répéter certains accès à la base, mais sa présence ne garantit pas une amélioration : mesurer et prévoir expiration ou invalidation. Réduire les appels inutiles et les dépendances bloquantes, sans objectif arbitraire de nombre minimal de requêtes. Vérification du kit actuel : Labo UX conserve le rapport Lighthouse de la page d’entrée et en extrait cinq métriques de laboratoire. Il n’a pas de contrôle dédié des requêtes SQL, de Redis ni de la validité du cache serveur. La boîte à outils ux-outils extrait aussi cinq métriques ; elle ne remplace pas un diagnostic serveur. Ne pas présenter ces vérifications comme déjà livrées.",
+    "agent": "Distinguer le mode de travail et l’accès aux outils, sans associer une marque à une seule catégorie. Une conversation peut elle aussi disposer de fonctions d’agent. Les noms de produits arrivent uniquement sur la slide de choix.",
+    "mcp": "API et MCP ne sont pas opposés. Une API peut être appelée automatiquement, y compris par un agent. MCP normalise la découverte et l’appel des outils exposés ; le serveur peut appeler une API ou des outils locaux. Il ne fournit ni tous les itinéraires métier ni une compréhension garantie du produit. L’installation des skills et plugins sera traitée séparément.",
+    "quel-agent": "Les quatre produits sont des exemples d’environnements, pas un classement ni une promesse de capacités identiques. Vérifier dans les documentations officielles les outils, systèmes, modèles et modalités de paiement utilisés pour la séance. Aucun prix figé dans cette slide.",
+    "methode-ia": "Trois responsabilités plutôt que trois catégories de logiciels : preuves des outils, interprétation assistée, choix et vérification. Une absence de résultat peut signifier un contrôle non exécuté. L’agent peut également automatiser des vérifications après modification.",
+    "cles": "Le cadrage est une méthode pratique du cours. Faire préciser le résultat observable, les comptes fictifs et les actions autorisées. Compléter seulement les informations manquantes ; une consigne ne configure pas à elle seule les outils.",
+    "ia-design-system": "Exemple pour un agent équipé d’un navigateur et d’une lecture des styles calculés. Labo UX 0.2 collecte des styles sur la page d’entrée à une largeur fixe ; il ne livre pas automatiquement cette comparaison de plusieurs pages et largeurs.",
+    "ia-friction": "Un parcours automatisé peut constater une confirmation absente ou une perte de saisie. Il ne mesure pas l’hésitation ou la satisfaction des personnes et ne remplace pas les tests utilisateurs. Les parcours Labo UX doivent être décrits dans le plan avant exécution.",
+    "ia-attention": "Préparer une copie locale ou de test et vérifier les effets de bord possibles. Les limites et les permissions concernent aussi les statistiques, services d’e-mail, paiements et automatisations connectées.",
+    "ia-accessibilite": "Labo UX 0.2 lance axe sur la page d’entrée et, dans un contrôle distinct, aux checkpoints explicitement déclarés des parcours. Pa11y et un contrôle clavier complet ne sont pas intégrés. La pertinence des textes alternatifs et libellés reste à vérifier par une personne.",
+    "ia-comportement": "Le kit importe des événements JSON ou CSV et calcule un tunnel ordonné dans une fenêtre de temps. Il ne collecte pas les heatmaps et ne se connecte pas directement à Clarity ou Hotjar. Les jeux d’événements des démos sont fictifs : leurs taux ne démontrent aucun gain réel de conversion.",
+    "ia-microcopie": "Le kit collecte des chaînes dans les sources et le DOM de l’état d’entrée. Il n’explore pas automatiquement toutes les erreurs ni toutes les traductions. L’agent peut compléter avec d’autres outils ; ne pas attribuer ces observations à un contrôle qui ne les a pas produites.",
+    "ia-performance": "Labo UX 0.2 conserve le rapport Lighthouse et rend visibles ses diagnostics de performance. Un contrôle indépendant observe les ressources, les tailles connues, les dimensions et le cache des images. Ces contrôles ne vérifient pas systématiquement les délais après clic ; SQL, Redis et la validité du cache serveur exigent un diagnostic serveur. Aucun audit natif n’est déduit de Lighthouse.",
+    "plugin": "Les consignes téléchargées sont extraites des six slides de ce support. Elles restent dépendantes des outils et accès réels. Labo UX ne livre pas toutes les capacités illustrées. Une correction est réalisée avec les outils d’édition de l’agent et doit être vérifiée. Pour installer le moteur, donner à l’agent le fichier installation-labo-ux.md. Le CLI fonctionne sans MCP enregistré. Le mode Audit ne réécrit pas le code ; le mode Débogage demande un audit initial, les corrections par l’agent puis un nouvel audit."
+  }
 };
 
 /* ---------- QR code : encodeur minimal (mode octet, correction M, versions 1 à 10) ---------- */
@@ -2251,7 +2850,7 @@ const IMAGES_INTEGREES = {
     $('#pv-budget').textContent = fr((ts === 'ok' ? 'Dans le budget' : ts === 'warn' ? 'Dépassement de plus de 10 %' : 'Dépassement de plus de 25 %') + '. Budget cumulé : ' + num(cum[i], 1) + ' min sur ' + num(TOTAL, 1) + '.');
     $('#pv-toggle').textContent = st.timer.running ? 'Pause' : 'Démarrer';
     $('#pv-next').textContent = i < N - 1 ? fr((i + 2) + '. ' + titles[i + 1]) : 'Fin de la présentation.';
-    const note = CONFIG.notes[i + 1]; $('#pv-notes-box').hidden = !note; $('#pv-notes').textContent = note ? fr(note) : '';
+    const note = CONFIG.notes[slides[i].dataset.key] ?? CONFIG.notes[i + 1]; $('#pv-notes-box').hidden = !note; $('#pv-notes').textContent = note ? fr(note) : '';
     const list = $('#pv-cases'); list.textContent = '';
     const em = st.empties.slice().sort((a, b) => (b.slide === i + 1) - (a.slide === i + 1) || a.slide - b.slide);
     $('#pv-cases-title').textContent = fr('Cases vides restantes : ' + em.length);
@@ -2278,7 +2877,7 @@ const IMAGES_INTEGREES = {
           if (svg) qr.innerHTML = svg;
           box.append(h('p', { class: 'case-fixe-titre', text: box.dataset.label }), qr, h('a', { class: 'btn primary', href: url || '#', target: '_blank', rel: 'noopener noreferrer' }, icon('external'), h('span', { text: box.dataset.texte || 'Ouvrir' })), h('p', { class: 'case-fixe-url', text: url.replace(/^https?:\/\//, '').replace(/\/$/, '') }));
         } else {
-          box.append(h('a', { class: 'btn primary', href: url || '#', target: '_blank', rel: 'noopener noreferrer' }, icon('external'), h('span', { text: box.dataset.texte || box.dataset.label })));
+          box.append(h('a', { class: 'btn primary', href: url || '#', target: '_blank', rel: 'noopener noreferrer', ...(box.dataset.download ? { download: box.dataset.download } : {}) }, icon('external'), h('span', { text: box.dataset.texte || box.dataset.label })));
         }
         c.value = url; cases.push(c); changed();
         return;
@@ -2432,7 +3031,6 @@ const IMAGES_INTEGREES = {
     };
     const r = range('fu-n', 'Étapes avant le paiement', 1, 5, n, 1, v => String(v), draw);
     ctl.append(r, h('div', { class: 'fu-actions' }, btn('Rejouer le parcours', run, '', 'play')),
-      h('p', { class: 'fu-result', text: 'Chaque étape est une occasion de partir.' }),
       h('p', {}, h('span', { class: 'tag', text: 'Schéma de principe, sans statistique' })));
     r.refresh(); stop(); arrive(0);
     hooks[at(box)] = { enter: run, leave() { stop(); arrive(0); } };
@@ -2525,7 +3123,8 @@ const IMAGES_INTEGREES = {
       h('p', {}, h('span', { class: 'chip law', text: 'Décider : loi de Hick' })), r,
       h('div', {}, h('p', { class: 'field-label', text: 'Temps de décision relatif (base : 2 options)' }), big),
       h('div', { class: 'meter', 'aria-hidden': 'true' }, bar),
-      h('p', { class: 'formula', html: 'Modèle, pas une mesure' + NB + ': <b>T = b × log₂(n + 1)</b>, n = nombre de choix.' })), menu);
+      h('p', { class: 'formula', html: 'Modèle, pas une mesure' + NB + ': <b>T = b × log₂(n + 1)</b>, n = nombre de choix.' }),
+      h('p', { class: 'note', text: 'À conditions comparables. On peut organiser les choix plutôt qu’en supprimer : contexte et familiarité comptent.' })), menu);
     r.refresh();
   }
 
@@ -2584,32 +3183,47 @@ const IMAGES_INTEGREES = {
       h('p', { class: 'formula', html: 'Modèle' + NB + ': <b>T = a + b × log₂(D / W + 1)</b><br>D = distance, W = largeur de la cible.' })));
   }
 
-  /* --- C6 : vérificateur de contraste --- */
+  /* --- contraste : calcul WCAG, partagé par les deux composants d'accessibilité --- */
   const lum = hex => { const c = [1, 3, 5].map(k => parseInt(hex.slice(k, k + 2), 16) / 255).map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
   const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
-  function initContrast() {
-    const el = $('[data-comp="contrast"]');
-    const fg = h('input', { type: 'color', id: 'ct-fg', value: '#0b1020' }), bg = h('input', { type: 'color', id: 'ct-bg', value: '#ffffff' });
-    const fgc = h('code'), bgc = h('code');
-    const sample = h('div', { class: 'ct-sample', 'data-contrast-skip': true }, h('p', { class: 'big', text: 'Ajouter au panier' }), h('p', { class: 'small', text: 'Livraison offerte dès demain, retour gratuit.' }));
-    const out = h('p', { class: 'ct-ratio' }), gridEl = h('div', { class: 'ct-grid' });
+  /* --- Accessibilité : curseur de contraste (diapo « contraste ») et audit d'une page (diapo « audit-page ») --- */
+  const OK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>';
+  const KO_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+  // arrondi vers le bas : un rapport de 4,49 ne s'affiche jamais « 4,5 » ni ne passe pour réussi
+  const fmtRatio = r => num(Math.floor(r * 10) / 10, 1) + NB + ':' + NB + '1';
+  function initContraste() {
+    const r = $('#b-range'), sample = $('#b-sample'), badge = $('#b-badge'), gauge = $('.acc-gauge');
+    // le curseur va du gris clair à l'encre du cours (#17153B), sur fond blanc
+    const from = [210, 210, 210], to = [23, 21, 59], THUMB = 48; // 48 px : largeur du curseur (voir input[type="range"])
+    const hex = v => '#' + v.map(x => Math.round(x).toString(16).padStart(2, '0')).join('');
+    const colorAt = p => hex(from.map((a, i) => a + (to[i] - a) * p / 100));
+    const pos = x => Math.log(clamp(x, 1, 21)) / Math.log(21) * 100; // jauge logarithmique, de 1 à 21
+    let p45 = 100; for (let p = 0; p <= 100; p++) if (ratio(colorAt(p), '#ffffff') >= 4.5) { p45 = p; break; }
+    $('#b-target').style.left = 'calc(' + p45 + '% + ' + ((0.5 - p45 / 100) * THUMB) + 'px)';
+    gauge.style.setProperty('--z1', pos(3) + '%'); gauge.style.setProperty('--z2', (pos(4.5) - pos(3)) + '%');
+    [['t3', 3], ['t45', 4.5], ['t7', 7]].forEach(([c, v]) => { $('.' + c, gauge).style.left = pos(v) + '%'; });
     const draw = () => {
-      const r = ratio(fg.value, bg.value); fgc.textContent = fg.value.toUpperCase(); bgc.textContent = bg.value.toUpperCase();
-      sample.style.color = fg.value; sample.style.background = bg.value;
-      out.textContent = num(Math.floor(r * 100) / 100, 2) + NB + ':' + NB + '1'; gridEl.textContent = '';
-      [['Texte normal, AA', 4.5], ['Texte normal, AAA', 7], ['Gros texte, AA', 3], ['Gros texte, AAA', 4.5]].forEach(([l, min]) => gridEl.append(h('div', {}, h('span', { text: l }), h('span', { class: 'ct-min', text: 'seuil ' + num(min, min % 1 ? 1 : 0) }), verdict(r >= min, r >= min ? 'Réussi' : 'Échec'))));
+      const fg = colorAt(+r.value), rt = ratio(fg, '#ffffff'), ok = rt >= 4.5;
+      sample.style.setProperty('--fg', fg);
+      $('#b-ratio').textContent = fmtRatio(rt);
+      badge.className = 'acc-badge ' + (ok ? 'ok' : 'ko'); badge.innerHTML = (ok ? OK_SVG : KO_SVG) + (ok ? 'Réussi' : 'Échoue');
+      $('#b-pin').style.left = pos(rt) + '%';
+      $('#b-live').textContent = fr('Contraste ' + fmtRatio(rt) + ' : ' + (ok ? 'réussi' : 'échoue'));
     };
-    const preset = (label, f, b) => btn(label, () => { fg.value = f; bg.value = b; draw(); });
-    fg.addEventListener('input', draw); bg.addEventListener('input', draw);
-    el.append(h('div', { class: 'ct-ctl' },
-      h('div', { class: 'ct-pick' }, h('label', { for: 'ct-fg', text: 'Couleur du texte' }), fg, fgc),
-      h('div', { class: 'ct-pick' }, h('label', { for: 'ct-bg', text: 'Couleur du fond' }), bg, bgc),
-      h('div', { class: 'ct-presets' }, preset('Gris clair sur blanc', '#c2c7d6', '#ffffff'), preset('Encre sur blanc', '#0b1020', '#ffffff')),
-      h('div', { class: 'card ct-aide' }, h('h3', { class: 'puce', text: 'Lire le résultat' }),
-        h('ul', {}, CONFIG.aideContraste.map(t => h('li', { text: t }))))),
-      h('div', { class: 'ct-out' }, sample, h('div', { class: 'ct-res', 'aria-live': 'polite' },
-        h('div', { class: 'ct-ratio-box' }, h('span', { class: 'ct-cap', text: 'Rapport de contraste' }), out), gridEl)));
-    draw();
+    r.addEventListener('input', draw); draw();
+  }
+  function initAudit() {
+    const page = $('#c-page'), flag = $('#c-flag');
+    const set = after => {
+      page.dataset.state = after ? 'apres' : 'avant';
+      $('#c-avant').setAttribute('aria-pressed', String(!after)); $('#c-apres').setAttribute('aria-pressed', String(after));
+      $('#c-alt').textContent = after ? 'Mug orange, 35 cl' : 'IMG_2041.jpg';
+      $('#c-ratio').textContent = fmtRatio(ratio(after ? '#3f3f3f' : '#9a9a9a', '#ffffff'));
+    };
+    $('#c-avant').addEventListener('click', () => set(false)); $('#c-apres').addEventListener('click', () => set(true));
+    // la dernière étape corrige la page ; revenir en arrière la remet en l'état
+    new MutationObserver(() => set(flag.classList.contains('on'))).observe(flag, { attributes: true, attributeFilter: ['class'] });
+    set(false);
   }
 
   /* --- amendes maximales par pays, à révéler --- */
@@ -2659,6 +3273,7 @@ const IMAGES_INTEGREES = {
     const el = $('[data-comp="micro"]');
     const submit = h('span', { class: 'fm-submit' }), err = h('span', {});
     const form = h('div', { class: 'panel form-mock', role: 'img' },
+      h('p', { class: 'field-label', text: 'Exemple : formulaire de commande d’un site e-commerce' }),
       h('div', { class: 'fm-field' }, h('span', { text: 'Nom' }), h('i', { text: 'Camille Martin' })),
       h('div', { class: 'fm-field' }, h('span', { text: 'E-mail' }), h('i', { text: 'camille@exemple.fr' })),
       h('div', { class: 'fm-field err' }, h('span', { text: 'Téléphone' }), h('i', {})),
@@ -2667,7 +3282,7 @@ const IMAGES_INTEGREES = {
     const draw = () => {
       submit.textContent = st.b === 'avant' ? 'Soumettre' : 'Valider ma commande';
       err.textContent = fr(st.e === 'avant' ? 'Erreur champ 3' : 'Il manque votre numéro de téléphone');
-      form.setAttribute('aria-label', fr('Faux formulaire. Message d’erreur : ' + err.textContent + '. Bouton : ' + submit.textContent + '.'));
+      form.setAttribute('aria-label', fr('Exemple fictif de formulaire de commande e-commerce. Message d’erreur : ' + err.textContent + '. Bouton : ' + submit.textContent + '.'));
     };
     const opts = [['avant', 'Avant'], ['apres', 'Après']];
     el.append(form, h('div', { class: 'micro-ctl' },
@@ -2701,7 +3316,7 @@ const IMAGES_INTEGREES = {
     el.append(
       h('div', { class: 'panel' }, h('div', { class: 'perf-bar' }, h('h3', { text: 'Vraie attente' }), h('div', { class: 'perf-ctl' }, seg, btn('Relancer', load, '', 'reset'))), view),
       h('div', { class: 'panel' }, h('div', { class: 'perf-bar' }, h('h3', { text: 'Attente fabriquée' }), btn('Lancer la connexion', run, 'primary', 'play')),
-        h('p', { class: 'perf-tags' }, h('span', { class: 'tag', text: 'Démonstration fictive' }), h('span', { class: 'tag', text: 'Inspirée d’un exemple documenté : TurboTax' })),
+        h('p', { class: 'perf-tags' }, h('span', { class: 'tag', text: 'Démonstration fictive' }), h('span', { class: 'tag', text: 'Exemple fictif de retour pendant l’attente' })),
         h('ol', { class: 'wait-steps', 'aria-live': 'polite' }, lis), h('div', { class: 'meter', style: 'height:20px', 'aria-hidden': 'true' }, bar)));
     hooks[at(el)] = { enter: load, leave() { clearTimeout(t1); t2.forEach(clearTimeout); } };
   }
@@ -2752,7 +3367,7 @@ const IMAGES_INTEGREES = {
       b.addEventListener('click', () => { open = !open; draw(); });
       all.push(() => { open = true; draw(); }); draw(); grid.append(b);
     });
-    el.append(h('div', { class: 'fd-head' }, h('h3', { text: 'Six blocs, six défauts' }), btn('Tout révéler', () => all.forEach(f => f()))), grid);
+    el.append(h('div', { class: 'fd-head' }, h('h3', { text: 'Les défauts et leurs effets' }), btn('Tout révéler', () => all.forEach(f => f()))), grid);
   }
 
   /* --- Images fixes intégrées au fichier (captures) --- */
@@ -2799,7 +3414,7 @@ const IMAGES_INTEGREES = {
       return;
     }
     initCases();
-    [initImgs, initHero, initFrise, initPoll, initFunnel, initReasons, initHoney, initDS, initHick, initFitts, initContrast, initFines, initFormDefauts, initHeat, initMicro, initPerf, initPipe, initLexique, initRefs].forEach(f => f());
+    [initImgs, initHero, initFrise, initPoll, initFunnel, initReasons, initHoney, initDS, initHick, initFitts, initContraste, initAudit, initFines, initFormDefauts, initHeat, initMicro, initPerf, initPipe, initLexique, initRefs].forEach(f => f());
     // une image lâchée hors d'une case ne doit pas remplacer la présentation
     ['dragover', 'drop'].forEach(t => window.addEventListener(t, e => e.preventDefault()));
     buildGrid(); bindPointer(); fit();

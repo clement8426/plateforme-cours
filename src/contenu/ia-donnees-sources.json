@@ -7,33 +7,33 @@
     },
     {
       "terme": "Prompt",
-      "def": "Le texte, et les fichiers, que l’on envoie à une IA. Il quitte ton ordinateur dès que tu l’envoies.",
+      "def": "La consigne et les données fournies à une IA. Leur destination dépend de son hébergement et des outils utilisés.",
       "cle": "trajet"
     },
     {
       "terme": "API",
       "nom": "API, interface de programmation",
-      "def": "L’accès direct à un modèle depuis un logiciel, payé à l’usage. Par défaut, les données n’entraînent pas le modèle.",
+      "def": "Une interface permettant à des logiciels de communiquer. Prix, hébergement, conservation et entraînement dépendent du service.",
       "cle": "offres"
     },
     {
       "terme": "Donnée sensible",
-      "def": "Santé, religion, opinions, données biométriques, entre autres (art. 5 let. c nLPD). Protection renforcée.",
+      "def": "Santé, religion, opinions ; biométrie identifiant une personne de manière unique, entre autres (art. 5 let. c nLPD).",
       "cle": "niveaux"
     },
     {
       "terme": "Anonymisation",
-      "def": "Rendre impossible de retrouver la personne sans effort démesuré. Retirer le nom ne suffit presque jamais.",
+      "def": "Transformer les données pour que la personne ne soit plus identifiable par des moyens raisonnablement utilisables. Évaluer les recoupements possibles.",
       "cle": "anonymiser"
     },
     {
       "terme": "Pseudonymisation",
-      "def": "Remplacer le nom par un code. Reste une donnée personnelle pour qui peut faire le lien avec la table de correspondance.",
+      "def": "Remplacer le nom par un code. Les données restent personnelles lorsqu’une réidentification est possible, y compris par recoupement sans cette table.",
       "cle": "anonymiser"
     },
     {
       "terme": "Injection de prompt",
-      "def": "Une consigne cachée dans une page ou un document, que l’IA lit et suit à la place de la tienne.",
+      "def": "Une tentative de détourner l’IA par des consignes dans une page ou un document. Son succès dépend des protections et des droits.",
       "cle": "injection"
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "terme": "Littératie IA",
-      "def": "Obligation de prendre des mesures pour former les équipes qui utilisent l’IA (art. 4 de l’AI Act), depuis février 2025, assouplie par l’Omnibus IA en 2026.",
+      "def": "Mesures pour soutenir la compréhension et l’usage de l’IA par les équipes (art. 4, modifié en 2026).",
       "cle": "ai-act"
     },
     {
@@ -60,7 +60,7 @@
     },
     {
       "terme": "RGPD",
-      "def": "Règlement européen sur la protection des données. Il vise l’entreprise : jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial.",
+      "def": "Règlement européen applicable selon l’établissement, le ciblage ou le suivi dans l’UE. Certains manquements : jusqu’à 20 M€ ou 4 % du CA mondial.",
       "cle": "rgpd"
     },
     {
@@ -84,11 +84,6 @@
     {
       "terme": "Cloud Act",
       "def": "Loi américaine de 2018 : les autorités américaines peuvent exiger d’une entreprise américaine des données stockées hors des États-Unis.",
-      "cle": "cloud-act"
-    },
-    {
-      "terme": "FISA 702",
-      "def": "Texte américain sur la surveillance de renseignement, distinct du Cloud Act, qui s’y ajoute.",
       "cle": "cloud-act"
     },
     {
@@ -141,7 +136,7 @@
     },
     {
       "terme": "Routage",
-      "def": "Choisir où envoyer une donnée selon sa sensibilité : un modèle américain pour le public, une IA suisse pour le sensible.",
+      "def": "Choisir où envoyer une donnée selon sa sensibilité : un outil autorisé pour le public, un traitement local maîtrisé ou un prestataire validé pour le sensible.",
       "cle": "routage"
     }
   ],
@@ -164,7 +159,7 @@
     {
       "titre": "Résolution sur l’externalisation dans le cloud",
       "source": "privatim, 2025",
-      "url": "https://www.privatim.ch/fr/actualite/"
+      "url": "https://www.privatim.ch/fr/resolution-sur-lexternalisation-du-traitement-des-donnees-dans-le-cloud/"
     },
     {
       "titre": "Loi fédérale sur la protection des données (RS 235.1)",
@@ -237,11 +232,6 @@
       "url": "https://www.lapresse.it/cronaca/2024/12/20/da-garante-privacy-multa-di-15-milioni-a-openai-per-gestione-chatgpt/"
     },
     {
-      "titre": "Le tribunal de Rome annule la sanction contre OpenAI : l’autorité italienne n’était pas compétente",
-      "source": "Cybersecurity360, 2026",
-      "url": "https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/"
-    },
-    {
       "titre": "Samsung interdit ChatGPT à ses employés après une fuite de code",
       "source": "NBC News, 2023",
       "url": "https://www.nbcnews.com/tech/tech-news/samsung-bans-use-chatgpt-employees-misuse-chatbot-rcna82407"
@@ -250,11 +240,6 @@
       "titre": "Le tribunal de Rome annule l’amende de 15 M€ infligée à OpenAI",
       "source": "Punto Informatico, 2026",
       "url": "https://www.punto-informatico.it/openai-annullata-multa-violazione-privacy/"
-    },
-    {
-      "titre": "Pourquoi le tribunal de Rome a annulé la sanction : la compétence",
-      "source": "Cybersecurity360, 2026",
-      "url": "https://www.cybersecurity360.it/legal/privacy-dati-personali/chi-governa-lai-il-tribunale-annulla-la-sanzione-a-openai-e-ridefinisce-i-confini-del-garante-privacy/"
     },
     {
       "titre": "Règlement (UE) 2026/1744, Omnibus IA",
@@ -270,6 +255,46 @@
       "titre": "Résolution sur l’externalisation de données sensibles dans le cloud",
       "source": "privatim, via le canton de Fribourg, 2025",
       "url": "https://www.fr.ch/de/oedsmb/news/privatim-verabschiedet-eine-resolution-zur-auslagerung-von-besonders-schuetzenswerten-personendaten-in-die-cloud"
+    },
+    {
+      "titre": "Jugement du tribunal de Rome, 18 mars 2026, RG 4785/2025",
+      "source": "Jugement, copie hébergée par Sapienza",
+      "url": "https://dei.web.uniroma1.it/sites/default/files/allegati/2026-05/Trib_Roma_OpenAI_Garante_2026.pdf"
+    },
+    {
+      "titre": "Audition de Microsoft France, 10 juin 2025",
+      "source": "Sénat français",
+      "url": "https://www.senat.fr/compte-rendu-commissions/20250609/ce_commande_publique.html"
+    },
+    {
+      "titre": "Conditions d’une externalisation de données",
+      "source": "PFPDT",
+      "url": "https://www.edoeb.admin.ch/fr/externalisation-sous-traitance"
+    },
+    {
+      "titre": "Évaluer les risques d’anonymisation",
+      "source": "CNIL",
+      "url": "https://www.cnil.fr/fr/le-g29-publie-un-avis-sur-les-techniques-danonymisation"
+    },
+    {
+      "titre": "Annonce des violations de la sécurité des données",
+      "source": "PFPDT",
+      "url": "https://www.edoeb.admin.ch/fr/guide-data-breach"
+    },
+    {
+      "titre": "Amendes pénales : intention et personnes responsables",
+      "source": "PFPDT",
+      "url": "https://www.edoeb.admin.ch/fr/dispositions-penales"
+    },
+    {
+      "titre": "Données API : entraînement et conservation",
+      "source": "Documentation OpenAI",
+      "url": "https://developers.openai.com/api/docs/guides/your-data"
+    },
+    {
+      "titre": "AI Services : traitement et confidentialité",
+      "source": "Infomaniak",
+      "url": "https://www.infomaniak.com/fr/hebergement/ai-services"
     }
   ]
 }

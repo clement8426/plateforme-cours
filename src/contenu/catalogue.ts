@@ -65,8 +65,8 @@ const REGLES_GROUPES: RegleGroupe[] = [
   { nom: 'Friction : décider et atteindre', bloc: 'friction', adresses: ['lawsofux.com', 'baymard.com', 'centercentre', 'nngroup.com/articles/why'] },
   // Avant « Accessibilité » : l'adresse du motif combobox (W3C) y serait sinon rangée par « w3.org ».
   { nom: 'Formulaires et autocomplétion', adresses: ['github.com/komoot', 'w3.org/WAI/ARIA'] },
-  { nom: 'Accessibilité et obligations légales', bloc: 'accessibilite', adresses: ['w3.org', 'eur-lex', 'economie.gouv', 'gesetze-im-internet', 'ris.bka', 'agid.gov', 'dlapiper', 'ebgb.admin'] },
-  { nom: 'Performance perçue et émotion', bloc: 'performance', adresses: ['uxmag', 'umich', 'cnbc', 'wikipedia'] },
+  { nom: 'Accessibilité et obligations légales', bloc: 'accessibilite', adresses: ['w3.org', 'eur-lex', 'economie.gouv', 'francenum.gouv', 'gesetze-im-internet', 'ris.bka', 'agid.gov', 'dlapiper', 'universaldesign.ie', 'irishstatutebook.ie', 'ebgb.admin'] },
+  { nom: 'Performance perçue et émotion', bloc: 'performance', adresses: ['uxmag', 'umich', 'nngroup.com/articles/visibility-system-status', 'cnbc', 'wikipedia'] },
   { nom: 'Outils d’audit', adresses: ['pa11y', 'developer.chrome', 'unlighthouse', 'learn.microsoft.com/en-us/clarity'] },
   { nom: 'Agents IA et MCP', adresses: ['support.claude.com', 'learn.chatgpt.com', 'modelcontextprotocol', 'playwright.dev', 'chrome-devtools-mcp', 'clarity.microsoft', 'arxiv.org'] },
   { nom: 'L’IA dans la création', adresses: ['next.ink', 'penpot.app', 'developers.figma.com'] },
@@ -85,22 +85,22 @@ function grouper(references: Reference[], regles: RegleGroupe[] = REGLES_GROUPES
 
 const uxIa: Cours = {
   slug: 'ux-ia',
-  misAJour: '2026-10-18',
+  misAJour: '2026-10-21',
   titre: 'UX × IA',
   accroche: 'Rendre un site web, une boutique en ligne, un SaaS ou une application mobile pratique, puis le corriger avec l’IA.',
   duree: 'Environ 1 h 30, selon les démonstrations choisies',
   public: 'Débutants, aucun prérequis technique',
   objectifs: [
-    'Distinguer l’UX (le vécu) de l’UI (le visuel).',
-    'Repérer les défauts d’un site avec six blocs : design system, friction, accessibilité, analyse comportementale, microcopie, performance perçue.',
+    'Comprendre comment l’interface (UI) contribue à l’expérience vécue (UX).',
+    'Repérer les défauts d’un site avec six blocs : design system, friction, accessibilité, analyse comportementale, microcopie, performances réelle et perçue.',
     'Comprendre ce qu’un outil d’audit mesure, et ce qu’il ne voit pas.',
-    'Choisir entre un outil simple, une conversation et un agent IA, et lui donner les bonnes clés : l’intention, la cible, le ton.',
+    'Préparer un agent avec un objectif, un périmètre et des outils, puis vérifier ses résultats.',
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
-    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 min', diapos: [1, 19] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Agents et MCP, puis pour chaque bloc : l’outil simple, le prompt, et ce qu’il faut vérifier.', duree: '25 min', diapos: [20, 32] },
-    { titre: 'Pratique', resume: 'Une ou deux démonstrations au choix. Tout se refait chez soi.', duree: '20 à 35 min', diapos: [33, 41], demos: true },
+    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 22] },
+    { titre: 'L’IA, bloc par bloc', resume: 'Conversation, agents, API et MCP, puis six consignes avec les preuves et les limites à vérifier.', duree: '25 min', diapos: [23, 35] },
+    { titre: 'Pratique', resume: 'Une ou deux démonstrations au choix. Tout se refait chez soi.', duree: '20 à 35 min', diapos: [36, 44], demos: true },
   ],
   demos: [
     {
@@ -138,7 +138,7 @@ const uxIa: Cours = {
       ],
       comparateur: 'formulaire-adresse',
       aRetenir: [
-        'Un formulaire joli peut cacher un défaut par bloc.',
+        'Un formulaire joli peut cacher plusieurs défauts.',
         'Le navigateur sait remplir une adresse, si on le laisse faire.',
         'Une erreur dit quoi corriger, en toutes lettres, pas seulement en rouge.',
       ],
@@ -182,8 +182,8 @@ const REGLES_IA: RegleGroupe[] = [
 
 // Le cours « Les types d'IA » : ses sources, de l'histoire aux outils libres.
 const REGLES_TYPES: RegleGroupe[] = [
-  { nom: 'Avant ChatGPT : les grandes étapes', adresses: ['academic.oup.com', 'Kurzweil', 'ibm.com', 'paulgraham', 'papers.nips', 'research.google', 'deepl.com'] },
-  { nom: 'Lire, voir, écouter, parler : des outils libres', adresses: ['wikipedia.org/wiki/Reconnaissance', 'tesseract', 'facebookresearch', 'openai/whisper', 'alphacephei', 'rhasspy'] },
+  { nom: 'Avant ChatGPT : les grandes étapes', adresses: ['cse.msu.edu', 'Kurzweil', 'ibm.com', 'paulgraham', 'papers.nips', 'research.google', 'deepl.com'] },
+  { nom: 'Lire, voir, écouter, parler : des outils libres', adresses: ['wikipedia.org/wiki/Reconnaissance', 'tesseract', 'facebookresearch', 'openai/whisper', 'alphacephei', 'OHF-Voice'] },
   { nom: 'Générer des images', adresses: ['2006.11239', 'stability.ai'] },
   { nom: 'Les LLM', adresses: ['1706.03762', 'cdn.openai.com', '2005.14165', 'openai.com/index'] },
   { nom: 'La loi suisse', adresses: ['fedlex.admin.ch'] },
@@ -212,13 +212,13 @@ const typesIa: Cours = {
   demos: [],
   exercice: {
     titre: 'Le Harnais',
-    resume: 'Une surcouche d’OpenCode (licence MIT) pour comprendre comment fonctionne un harnais, en le manipulant. Une application de bureau où votre IA arrive sans aucun outil. Vous débloquez la dictée, la lecture à voix haute, la lecture d’un scan et la reconnaissance d’images en vous en servant, puis le terminal, le navigateur et les connecteurs. Les voix, les scans et les images sont traités sur votre ordinateur : seul le texte part vers l’IA.',
+    resume: 'Une surcouche d’OpenCode (licence MIT) pour comprendre comment fonctionne un harnais, en le manipulant. Une application de bureau où votre IA arrive sans aucun outil. Vous débloquez la dictée, la lecture à voix haute, la lecture d’un scan et la reconnaissance d’images en vous en servant, puis le terminal, le navigateur et les connecteurs. OCR, dictée et détection sont locales dans ce parcours ; leurs textes peuvent partir vers le modèle. La lecture vocale peut utiliser un service distant.',
     prototype: 'Le Harnais est un prototype, pas un produit fini : version 0.1.0 en bêta, des défauts sont possibles, sans garantie ni assistance. Utilisez des données fictives uniquement. C’est une surcouche d’OpenCode : l’application est celle d’OpenCode, avec des missions par-dessus. Ce n’est pas un produit officiel d’OpenCode.',
     conditions: [
       'Windows 10 ou 11 (64 bits) seulement. Pas de macOS, pas de Linux.',
       'Application non signée : Windows 11 peut la bloquer.',
       'Environ 0,9 Go à télécharger, puis les modèles de voix et d’image à la première utilisation (environ 3 Go sur le disque, 8 Go de mémoire conseillés).',
-      'Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Un abonnement Claude ne se branche pas, et les modèles gratuits d’OpenCode ne répondent pas ici.',
+      'Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Dans cette version, Claude se configure par API ; les options gratuites d’OpenCode peuvent échouer. Consultez le guide du prototype.',
       'Pas de mise à jour automatique : pour mettre à jour, on relance l’installateur.',
     ],
     lien: 'https://github.com/clement8426/le-harnais',
@@ -248,7 +248,7 @@ const iaDonnees: Cours = {
     'Distinguer un chat d’un agent, et savoir où part ce que l’on envoie à une IA.',
     'Reconnaître une donnée personnelle, une donnée sensible et une donnée sous secret.',
     'Savoir qui répond de quoi : AI Act, RGPD, nLPD, secret professionnel, Cloud Act.',
-    'Choisir le bon chemin pour chaque donnée : en local, une IA suisse, ou un fournisseur américain.',
+    'Choisir un traitement adapté à la donnée : local maîtrisé ou prestataire validé, selon les accès, le contrat et le secret.',
   ],
   diapos: { href: '/diapos/ia-donnees/', apercu: '/apercus/ia-donnees-diapos.jpg' },
   parties: [
@@ -269,11 +269,11 @@ const iaDonnees: Cours = {
       modeEmploi: [
         'Pour chaque étape, choisissez comment traiter la pièce du dossier.',
         'Dans « Ce que vous risquez », les risques s’allument ou s’éteignent. Cliquez sur un risque : la loi, et qui en répond.',
-        'À la fin, lisez le compte rendu obtenu. Puis, avec « Comparer avec », voyez la version la plus rapide et la version sûre.',
+        'À la fin, lisez le compte rendu obtenu. Puis, avec « Comparer avec », comparez le parcours sans précautions et celui avec précautions.',
       ],
       aRetenir: [
         'Le résultat est le même, les risques sont très différents.',
-        'La version sûre n’est pas forcément plus lente, une fois les briques en place.',
+        'Le parcours avec précautions réduit les risques dans les conditions de cette simulation, sans garantie de risque nul.',
         'L’IA générative n’intervient qu’à la fin, sur du texte.',
       ],
       exercice: '02-dossier-exemple',
@@ -314,7 +314,7 @@ const iaDonnees: Cours = {
       aRetenir: [
         'Retirer le nom ne rend pas une donnée anonyme.',
         'Ce sont les indices combinés qui identifient quelqu’un.',
-        'Généraliser garde ce qui sert au dossier, et rend la personne introuvable : visez au moins cinq personnes possibles.',
+        'Généraliser réduit les indices distinctifs. Cinq profils est l’objectif de ce jeu, sans garantie d’anonymat dans le monde réel.',
       ],
       exercice: 'bonus-reidentification',
       bonus: true,
@@ -349,7 +349,7 @@ const iaSouveraine: Cours = {
 const appSuisse: Cours = {
   slug: 'app-hebergee-suisse',
   titre: 'Une app web et mobile, hébergée en Suisse',
-  accroche: 'Construire une application web et mobile sur votre propre serveur en Suisse : les données restent chez vous, hors de portée du Cloud Act.',
+  accroche: 'Construire une application web et mobile sur votre propre serveur en Suisse : vous choisissez où les données sont traitées, en vérifiant aussi les prestataires, leurs juridictions et les sous-traitants.',
   duree: 'À venir',
   public: 'Personnes qui développent, ou qui veulent comprendre où vont les données de leur application',
   objectifs: [

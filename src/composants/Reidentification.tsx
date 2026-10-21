@@ -60,7 +60,7 @@ const INDICES: Indice[] = [
     { texte: 'au printemps 2026', garde: () => true },
   ] },
 ];
-const SEUIL = 5; // au moins cinq personnes possibles : on ne peut plus savoir qui c'est
+const SEUIL = 5; // Objectif du jeu dans cet annuaire fictif, sans garantie d’anonymat réel.
 
 export default function Reidentification({ cours }: { cours: string }) {
   const [temps, setTemps] = useState<'retrouver' | 'proteger'>('retrouver');
@@ -93,7 +93,7 @@ export default function Reidentification({ cours }: { cours: string }) {
   if (temps === 'retrouver') {
     verdict = utilises.length === 0 ? 'Cliquez sur un indice du texte.' : trouvee ? `Retrouvée : ${restants[0].nom}, avec ${utilises.length} indice${utilises.length > 1 ? 's' : ''}.` : `${restants.length} personnes possibles.`;
   } else {
-    verdict = protegee ? `Protégée : ${restants.length} personnes correspondent, impossible de savoir qui c’est.` : restants.length === 1 ? `Encore reconnaissable : une seule personne, ${restants[0].nom}.` : `${restants.length} personnes possibles. Visez au moins ${SEUIL}.`;
+    verdict = protegee ? `Objectif du jeu atteint : ${restants.length} profils correspondent avec ces indices. Cela ne garantit pas l’anonymat hors de cet annuaire.` : restants.length === 1 ? `Encore reconnaissable : une seule personne, ${restants[0].nom}.` : `${restants.length} personnes possibles dans ce jeu. Visez au moins ${SEUIL}.`;
   }
 
   return (
@@ -135,6 +135,7 @@ export default function Reidentification({ cours }: { cours: string }) {
         )}
 
         <p className={'reid-verdict' + (trouvee ? ' est-alerte' : '') + (protegee ? ' est-ok' : '')} role="status">{verdict}</p>
+        <p className="note-fictif">Le seuil de cinq profils illustre une réduction de l’individualisation. D’autres données peuvent permettre des recoupements ou des déductions.</p>
         {trouvee && <button type="button" className="bouton" onClick={() => passer('proteger')}>Maintenant, protégez-la</button>}
         {temps === 'retrouver' && utilises.length > 0 && !trouvee && <button type="button" className="bouton-secondaire" onClick={() => setUtilises([])}>Recommencer</button>}
       </div>

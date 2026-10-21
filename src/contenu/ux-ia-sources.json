@@ -9,7 +9,7 @@
     {
       "terme": "UI",
       "nom": "UI, User Interface",
-      "def": "Le visuel d’un produit : couleurs, boutons, typographie.",
+      "def": "L’interface avec laquelle une personne interagit : présentation, commandes, états et réactions du produit.",
       "cle": "ui-ux"
     },
     {
@@ -87,6 +87,16 @@
     {
       "terme": "Contraste",
       "def": "Écart de luminosité entre un texte et son fond. Le seuil courant est de 4,5 pour 1.",
+      "cle": "contraste"
+    },
+    {
+      "terme": "Lecteur d’écran",
+      "def": "Logiciel qui lit à voix haute ce qui s’affiche, utilisé notamment par les personnes aveugles ou malvoyantes.",
+      "cle": "accessibilite"
+    },
+    {
+      "terme": "Focus visible",
+      "def": "Contour qui montre quel élément est atteint au clavier, par exemple le bouton « Payer ».",
       "cle": "accessibilite"
     },
     {
@@ -98,7 +108,7 @@
     {
       "terme": "Carte de chaleur",
       "nom": "Carte de chaleur (heatmap)",
-      "def": "Image qui montre en couleurs chaudes les zones les plus cliquées d’une page.",
+      "def": "Visualisation des clics, du défilement ou d’autres interactions agrégées, selon la carte choisie.",
       "cle": "hotjar"
     },
     {
@@ -112,6 +122,21 @@
       "cle": "attente"
     },
     {
+      "terme": "Performance réelle",
+      "def": "Les délais et ressources mesurés pour charger le produit et exécuter les actions, dans des conditions précisées.",
+      "cle": "performance-reelle"
+    },
+    {
+      "terme": "Cache",
+      "def": "Stockage temporaire d’un fichier ou d’un résultat pour le réutiliser. Il faut définir quand le renouveler pour garder les données à jour.",
+      "cle": "performance-reelle"
+    },
+    {
+      "terme": "Redis",
+      "def": "Un stockage de données en mémoire, utilisable notamment comme cache côté serveur. Ce n’est pas une solution obligatoire pour accélérer un produit.",
+      "cle": "performance-reelle"
+    },
+    {
       "terme": "Skeleton loader",
       "def": "Silhouette grise de la page, affichée pendant le chargement.",
       "cle": "attente"
@@ -119,7 +144,7 @@
     {
       "terme": "MCP",
       "nom": "MCP (Model Context Protocol)",
-      "def": "Une prise standard qui branche un outil (navigateur, Figma, outil d’analyse…) sur une IA, pour qu’elle l’utilise directement.",
+      "def": "Un protocole commun pour relier une application d’IA à des outils et à des données, selon les connexions et les autorisations disponibles.",
       "cle": "mcp"
     },
     {
@@ -134,11 +159,37 @@
     },
     {
       "terme": "Agent IA",
-      "def": "Une IA qui agit : elle ouvre des pages, clique, lance des outils et modifie des fichiers pour accomplir une mission.",
+      "def": "Une IA qui peut enchaîner des actions pour une mission avec des outils et des autorisations. Ses actions et leurs résultats restent à vérifier.",
       "cle": "agent"
+    },
+    {
+      "terme": "API",
+      "nom": "API (Application Programming Interface)",
+      "def": "Une interface qui permet à un logiciel d’utiliser des fonctions ou des données fournies par un autre logiciel.",
+      "cle": "mcp"
     }
   ],
   "references": [
+    {
+      "titre": "Cache HTTP : éviter les téléchargements inutiles",
+      "source": "Google, web.dev",
+      "url": "https://web.dev/articles/http-cache"
+    },
+    {
+      "titre": "Requêtes critiques : réduire les dépendances et les ressources bloquantes",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/performance/insights/network-dependency-tree"
+    },
+    {
+      "titre": "Durées de cache des ressources web",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/performance/insights/cache"
+    },
+    {
+      "titre": "Cache serveur avec Redis : réutilisation, expiration et invalidation",
+      "source": "Redis, documentation",
+      "url": "https://redis.io/docs/latest/develop/use-cases/cache-aside/"
+    },
     {
       "titre": "Photon, recherche d’adresses OpenStreetMap",
       "source": "komoot",
@@ -191,8 +242,8 @@
     },
     {
       "titre": "Accessibilité : obligations et sanctions en France",
-      "source": "DGCCRF",
-      "url": "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-vos-produits-et-services-doivent-etre-conformes-la-directive-accessibilite"
+      "source": "France Num, ministère de l’Économie",
+      "url": "https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-e-commerce/accessibilite-des-sites-de-e-commerce"
     },
     {
       "titre": "Loi allemande BFSG, § 37 : les amendes",
@@ -210,9 +261,9 @@
       "url": "https://accessibilita.agid.gov.it/domande-frequenti/"
     },
     {
-      "titre": "Les règles irlandaises d’accessibilité (S.I. 636/2023)",
-      "source": "DLA Piper, 2025",
-      "url": "https://www.dlapiper.com/en/insights/publications/2025/10/navigating-the-irish-accessibility-regulations"
+      "titre": "Irlande : règlement S.I. 636/2023, sanctions",
+      "source": "Texte officiel, National Disability Authority",
+      "url": "https://universaldesign.ie/uploads/publications/S.I.-No.-636_2023-European-Union-Accessibility-Requirements-of-Products-and-Services-Regulations-2023_2024-12-05-154652_myhr.pdf"
     },
     {
       "titre": "Révision partielle de la LHand",
@@ -220,24 +271,14 @@
       "url": "https://www.ebgb.admin.ch/fr/revision-partielle-de-la-lhand"
     },
     {
-      "titre": "Claude Pro : prix et limites",
-      "source": "Anthropic",
-      "url": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan"
-    },
-    {
-      "titre": "ChatGPT Plus et Codex : prix et limites",
-      "source": "OpenAI",
-      "url": "https://learn.chatgpt.com/docs/pricing"
-    },
-    {
       "titre": "Pourquoi cinq utilisateurs suffisent pour un test d’utilisabilité",
       "source": "Nielsen Norman Group",
       "url": "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/"
     },
     {
-      "titre": "Contraste des éléments graphiques, critère 1.4.11",
+      "titre": "Clavier, critère 2.1.1",
       "source": "W3C, WCAG",
-      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
     },
     {
       "titre": "Contenu non textuel, critère 1.1.1",
@@ -260,9 +301,9 @@
       "url": "https://uxmag.com/articles/let-your-users-wait"
     },
     {
-      "titre": "Attente fabriquée : « Just wait… trust me »",
-      "source": "Université du Michigan, 2017",
-      "url": "https://michigan.it.umich.edu/news/2017/02/23/just-wait-trust-me/"
+      "titre": "Informer pendant l’attente : visibilité de l’état du système",
+      "source": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/visibility-system-status/"
     },
     {
       "titre": "Model Context Protocol, la documentation",
@@ -288,6 +329,71 @@
       "titre": "« What Would GPT Click » : utilisateurs simulés contre vrais utilisateurs",
       "source": "arXiv, 2026",
       "url": "https://arxiv.org/abs/2605.18302"
+    },
+    {
+      "titre": "Agents : missions, outils et contexte",
+      "source": "OpenAI",
+      "url": "https://developers.openai.com/api/docs/guides/agents"
+    },
+    {
+      "titre": "Codex : travailler sur un projet",
+      "source": "OpenAI, documentation officielle",
+      "url": "https://learn.chatgpt.com/docs/codex/cli"
+    },
+    {
+      "titre": "Claude Code : présentation",
+      "source": "Anthropic",
+      "url": "https://code.claude.com/docs/en/overview"
+    },
+    {
+      "titre": "OpenCode : présentation",
+      "source": "OpenCode",
+      "url": "https://opencode.ai/docs/"
+    },
+    {
+      "titre": "Hermes Agent : projet et documentation",
+      "source": "Nous Research",
+      "url": "https://github.com/NousResearch/hermes-agent"
+    },
+    {
+      "titre": "API : définition",
+      "source": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/API"
+    },
+    {
+      "titre": "MCP : découverte et appel des outils",
+      "source": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/docs/learn/server-concepts"
+    },
+    {
+      "titre": "Lire les styles calculés",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/css/reference"
+    },
+    {
+      "titre": "Évaluer l’accessibilité : outils et intervention humaine",
+      "source": "W3C, WAI",
+      "url": "https://www.w3.org/WAI/test-evaluate/"
+    },
+    {
+      "titre": "Messages d’erreur et de réussite dans les formulaires",
+      "source": "W3C, WAI",
+      "url": "https://www.w3.org/WAI/tutorials/forms/notifications/"
+    },
+    {
+      "titre": "Tests d’utilisabilité avec des participants",
+      "source": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/usability-testing-101/"
+    },
+    {
+      "titre": "Données de clics et cartes de chaleur",
+      "source": "Microsoft Learn, Clarity",
+      "url": "https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview"
+    },
+    {
+      "titre": "Lighthouse : chargements, états et interactions",
+      "source": "GoogleChrome, documentation Lighthouse",
+      "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md"
     }
   ]
 }

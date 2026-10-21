@@ -686,7 +686,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <ul class="plain">
           <li>8 Go de mémoire conseillés, environ 3 Go d’espace disque.</li>
           <li>Environ 0,9 Go à télécharger, puis les modèles de voix et d’image à la première utilisation.</li>
-          <li>Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Un abonnement Claude ne se branche pas.</li>
+          <li>Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Dans cette version, Claude se configure par clé API ; le guide du prototype fait foi.</li>
           <li>Des données <b>fictives</b> seulement : tu es sur un prototype.</li>
         </ul>
       </article>
@@ -733,7 +733,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <tr><td>Le défi final</td><td>Un dossier complet, de bout en bout</td></tr>
       </tbody>
     </table>
-    <p class="note" data-step="1">Les voix, les scans et les images sont traités sur ton ordinateur.</p>
+    <p class="note" data-step="1">OCR, dictée et détection sont locales dans ce parcours. La synthèse vocale peut utiliser un service distant : vérifie la voix choisie.</p>
   </div>
 </section>
 
@@ -745,7 +745,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="places places-4">
       <article class="card place" data-step="1"><i data-icon="gauge"></i><h3>Un PC Windows</h3><p>Windows 10 ou 11, 64 bits. 8 Go de mémoire conseillés.</p></article>
       <article class="card place" data-step="2"><i data-icon="globe"></i><h3>Internet</h3><p>Pour parler à l’IA, et pour télécharger les modèles de voix et d’image la première fois.</p></article>
-      <article class="card place" data-step="3"><i data-icon="chat"></i><h3>Une IA à brancher</h3><p>Ton abonnement ChatGPT, ou une clé d’API. Un abonnement Claude ne se branche pas ici.</p></article>
+      <article class="card place" data-step="3"><i data-icon="chat"></i><h3>Une IA à brancher</h3><p>Ton abonnement ChatGPT, ou une clé d’API. Dans cette version, utilise une clé API pour Claude.</p></article>
       <article class="card place" data-step="4"><i data-icon="mic"></i><h3>Un micro</h3><p>Pour la mission « Dicter » et pour dicter tes messages.</p></article>
     </div>
   </div>
@@ -785,7 +785,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <ul class="plain">
         <li data-step="1">Tu arrives directement sur ta première session, avec l’accueil du Harnais.</li>
         <li data-step="2">Deux gestes : brancher ton IA, puis écrire « Bonjour ».</li>
-        <li data-step="3">LeLabo est ton atelier, dans tes Documents. L’IA ne travaille que là.</li>
+        <li data-step="3">LeLabo est l’atelier prévu dans tes Documents. Vérifie les droits des outils : ce dossier n’est pas une garantie de confinement du système.</li>
       </ul>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/01-ecran-de-depart.png" alt="L'écran de départ du Harnais : un message de bienvenue avec deux étapes, brancher son IA puis écrire « Bonjour »." /></figure></div>
@@ -800,7 +800,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <ul class="plain">
         <li data-step="1"><b>Ton abonnement ChatGPT</b> : connexion par ton navigateur.</li>
         <li data-step="2"><b>Une clé d’API</b> : OpenAI, Anthropic, Google, OpenRouter…</li>
-        <li data-step="3"><b>Un modèle local</b> : gratuit, mais lent sans carte graphique.</li>
+        <li data-step="3"><b>Un modèle local</b> : coût et vitesse dépendent de la licence et de la machine.</li>
       </ul>
       <p class="note" data-step="4">Attention : les modèles « Gratuit » d’OpenCode ne répondent pas dans Le Harnais.</p>
     </div>
@@ -844,7 +844,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c4 stack-m">
       <article class="card" data-step="1"><h3 class="mini-h">Sign in with ChatGPT</h3><p>Ton abonnement. Une page de ton navigateur s’ouvre : clique sur « Autoriser ».</p></article>
       <article class="card" data-step="2"><h3 class="mini-h">Clé API</h3><p>Tu colles une clé. Tu paies à l’usage.</p></article>
-      <p class="note" data-step="3">Anthropic, Google, OpenRouter : colle ta clé d’API. Ignore les options « Codex (legacy) ».</p>
+      <p class="note" data-step="3">Anthropic, Google, OpenRouter : colle ta clé d’API. Les libellés peuvent changer : suis le guide de la version installée pour choisir le mode de connexion.</p>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/07-methodes-openai.png" alt="Les deux méthodes de connexion à OpenAI : « Sign in with ChatGPT » ou une clé d'API." /></figure></div>
   </div>
@@ -907,7 +907,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c4 stack-m">
       <p class="lead">Ta voix devient du texte avec Whisper, qui tourne sur ton ordinateur (STT, speech-to-text).</p>
-      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil « transcrire ». Ta voix reste chez toi : l’IA ne reçoit que le texte.</p></article>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil « transcrire ». Avec cet outil local, l’audio est transcrit sur l’ordinateur ; le texte peut ensuite être transmis au modèle.</p></article>
       <p class="note" data-step="2">Mission 6, chapitre « Les sens ».</p>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/m06-dicter.png" alt="La mission « Dicter » dans le panneau des missions du Harnais." /></figure></div>
@@ -919,7 +919,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c4 stack-m">
       <p class="lead">Fais résumer un compte rendu par ton IA, puis lire à voix haute (TTS, text-to-speech).</p>
-      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de lecture à voix haute, avec la voix de ton ordinateur.</p></article>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de lecture à voix haute. Certaines voix passent par un service distant : utilise du texte fictif.</p></article>
       <p class="note" data-step="2">Mission 7, chapitre « Les sens ».</p>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/m07-ecouter.png" alt="La mission « Écouter » dans le panneau des missions du Harnais." /></figure></div>
@@ -943,7 +943,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c4 stack-m">
       <p class="lead">Fais détecter les objets d’une photo, puis baisse le seuil de confiance et regarde ce qui change.</p>
-      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de vision. Seule la liste des objets part vers ton IA, jamais l’image.</p></article>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’outil de vision. Avec cet outil de détection local, seule la liste des objets est renvoyée au modèle. Vérifie séparément les autres outils et pièces jointes.</p></article>
       <p class="note" data-step="2">Mission 9, chapitre « Les sens ».</p>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/m09-voir-image.png" alt="La mission « Voir une image » dans le panneau des missions du Harnais." /></figure></div>
@@ -967,7 +967,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c4 stack-m">
       <p class="lead">Ton IA fait auditer une page par Lighthouse, l’outil de Google, et t’explique le résultat.</p>
-      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’audit de pages : elle mesure la qualité d’un site, avec des notes.</p></article>
+      <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>L’audit de pages : elle mesure des indicateurs de performance, d’accessibilité, de bonnes pratiques et de référencement. Ce n’est pas un audit UX complet.</p></article>
       <p class="note" data-step="2">Mission 11, chapitre « Le web ».</p>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/m11-audit-lighthouse.png" alt="La mission « L'audit Lighthouse » dans le panneau des missions du Harnais." /></figure></div>
@@ -978,7 +978,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Étendre ton harnais : les skills</h2>
   <div class="body g12">
     <div class="c4 stack-m">
-      <p class="lead">Une skill est une recette écrite en texte. Ton IA la charge d’elle-même quand le sujet se présente.</p>
+      <p class="lead">Une skill est une recette écrite en texte. Ton IA peut la charger selon le sujet et les règles du harnais.</p>
       <article class="card accent" data-step="1"><p class="puce">Ce que ton IA gagne</p><p>Les skills : tu lui apprends une façon de faire.</p></article>
       <p class="note" data-step="2">Mission 12, chapitre « Étendre ton harnais ».</p>
     </div>
@@ -1015,7 +1015,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body g12">
     <div class="c4 stack-m">
       <p class="lead">Traite un dossier de bout en bout : scan, note vocale, compte rendu, résumé audio.</p>
-      <article class="card accent" data-step="1"><p class="puce">La règle</p><p>Les documents sont médicaux : ton IA doit être hébergée en Suisse ou tourner sur ton ordinateur.</p></article>
+      <article class="card accent" data-step="1"><p class="puce">La règle</p><p>Le dossier médical est fictif. Pour un vrai dossier : traitement local maîtrisé ou prestataire validé pour les données, le contrat et le secret ; l’hébergement suisse seul ne suffit pas.</p></article>
       <p class="note" data-step="2">Mission 15, chapitre « Le défi final ».</p>
     </div>
     <div class="c8"><figure class="shot" data-step="1"><img src="img/m15-defi-dossier-exemple.png" alt="La mission « Le défi final » dans le panneau des missions du Harnais." /></figure></div>
@@ -1046,14 +1046,14 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="vs">
       <article class="card" data-step="1">
         <h3><i data-icon="lock"></i>Reste sur ton ordinateur</h3>
-        <p>Ta voix, tes scans, tes images, tes fichiers. Les modèles qui les traitent tournent chez toi.</p>
+        <p>Les fichiers traités par les outils locaux de dictée, d’OCR et de détection. Cela ne garantit pas que toute l’application reste hors ligne.</p>
       </article>
       <article class="card" data-step="2">
         <h3><i data-icon="server"></i>Part chez ton fournisseur d’IA</h3>
-        <p>Ce que tu écris à l’IA, et le texte que tu lui envoies, y compris une transcription.</p>
+        <p>Tes messages et les extraits de fichiers transmis par les outils. Une transcription reste sensible si son contenu l’est. La lecture vocale peut aussi envoyer du texte.</p>
       </article>
     </div>
-    <p class="lead strong" data-step="3">Regarde toujours où part ce que tu écris. Ce qui compte, c’est le pays de l’entreprise qui fait tourner le modèle. Pour des données sensibles : un fournisseur suisse ou un modèle local.</p>
+    <p class="lead strong" data-step="3">Vérifie toute la chaîne : modèle, outils, accès et sous-traitants. Utilise uniquement des données fictives dans ce prototype.</p>
   </div>
 </section>
 
@@ -1154,6 +1154,42 @@ const CONFIG = {
       {
         "t": "OpenCode",
         "u": "https://opencode.ai"
+      }
+    ],
+    "parcours": [
+      {
+        "t": "Voix locale ou distante",
+        "u": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
+      }
+    ],
+    "m07-ecouter": [
+      {
+        "t": "Voix locale ou distante",
+        "u": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
+      }
+    ],
+    "donnees": [
+      {
+        "t": "Voix locale ou distante",
+        "u": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
+      }
+    ],
+    "m15-defi": [
+      {
+        "t": "Externalisation : conditions",
+        "u": "https://www.edoeb.admin.ch/fr/externalisation-sous-traitance"
+      }
+    ],
+    "chatgpt": [
+      {
+        "t": "Authentification OpenAI",
+        "u": "https://learn.chatgpt.com/docs/auth"
+      }
+    ],
+    "prototype": [
+      {
+        "t": "Guide du prototype",
+        "u": "https://github.com/clement8426/le-harnais/blob/main/docs/demarrer-eleve.md"
       }
     ]
   },

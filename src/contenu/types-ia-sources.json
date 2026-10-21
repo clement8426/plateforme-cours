@@ -40,7 +40,7 @@
     },
     {
       "terme": "Donnée biométrique",
-      "def": "Une caractéristique du corps qui identifie une personne : le visage, l’empreinte, la voix. Une donnée sensible en Suisse.",
+      "def": "Donnée issue de caractéristiques physiques ou comportementales. Sensible en Suisse lorsqu’elle identifie une personne de manière unique.",
       "cle": "vision"
     },
     {
@@ -63,19 +63,19 @@
     },
     {
       "terme": "Diffusion",
-      "def": "La technique des IA d’images : partir d’un bruit aléatoire et le retoucher jusqu’à obtenir l’image demandée.",
+      "def": "Une technique de génération : transformer progressivement du bruit en image. Tous les générateurs ne l’utilisent pas.",
       "cle": "generation"
     },
     {
       "terme": "LLM",
       "nom": "LLM, grand modèle de langage",
-      "def": "Une IA entraînée sur d’énormes quantités de textes, qui écrit la suite la plus probable d’un texte.",
+      "def": "Un grand modèle de langage entraîné notamment à prédire des jetons. Il génère des réponses et peut se tromper.",
       "cle": "llm"
     },
     {
       "terme": "Jeton",
       "nom": "Jeton (token)",
-      "def": "Le morceau de texte que lit et écrit un LLM : un mot, ou un bout de mot.",
+      "def": "Une unité de texte : mot, fragment de mot, ponctuation ou espace, selon le découpage du modèle.",
       "cle": "llm"
     },
     {
@@ -85,12 +85,12 @@
     },
     {
       "terme": "Transformer",
-      "def": "L’architecture publiée par Google en 2017, sur laquelle reposent les LLM. Le « T » de GPT.",
+      "def": "L’architecture publiée par Google en 2017, utilisée par de nombreux LLM. Le « T » de GPT.",
       "cle": "transformer"
     },
     {
       "terme": "Hallucination",
-      "def": "Une erreur qu’une IA présente avec assurance, comme un fait.",
+      "def": "Un contenu inventé ou sans fondement produit par une IA, quel que soit le ton employé.",
       "cle": "forces"
     },
     {
@@ -101,7 +101,7 @@
     {
       "terme": "Local",
       "nom": "En local",
-      "def": "Une IA qui tourne sur votre propre appareil : les données ne partent pas sur internet.",
+      "def": "Un modèle exécuté sur votre appareil. Vérifiez séparément les envois de l’application, ses outils et ses sauvegardes.",
       "cle": "comparer"
     },
     {
@@ -114,7 +114,7 @@
     {
       "titre": "« Computing Machinery and Intelligence »",
       "source": "Alan Turing, Mind, 1950",
-      "url": "https://academic.oup.com/mind/article/LIX/236/433/986238"
+      "url": "https://www.cse.msu.edu/~cse841/papers/Turing.html"
     },
     {
       "titre": "La machine à lire de Kurzweil, 1976",
@@ -182,9 +182,9 @@
       "url": "https://alphacephei.com/vosk/"
     },
     {
-      "titre": "Piper, la synthèse vocale locale",
+      "titre": "Piper, dépôt maintenu (licence GPL-3.0)",
       "source": "GitHub",
-      "url": "https://github.com/rhasspy/piper"
+      "url": "https://github.com/OHF-Voice/piper1-gpl"
     },
     {
       "titre": "Les modèles de diffusion",
@@ -212,14 +212,29 @@
       "url": "https://arxiv.org/abs/2005.14165"
     },
     {
-      "titre": "Présentation de ChatGPT",
-      "source": "OpenAI, 2022",
-      "url": "https://openai.com/index/chatgpt/"
+      "titre": "GPT-4 : historique de ChatGPT et modèles multimodaux",
+      "source": "OpenAI, rapport technique, 2023",
+      "url": "https://cdn.openai.com/papers/gpt-4.pdf"
     },
     {
       "titre": "nLPD, art. 5 : les données sensibles",
       "source": "Fedlex",
       "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr"
+    },
+    {
+      "titre": "IA à règles et apprentissage automatique",
+      "source": "IBM",
+      "url": "https://www.ibm.com/design/ai/basics/ai/"
+    },
+    {
+      "titre": "Édition d’images et limites du rendu du texte",
+      "source": "Documentation OpenAI",
+      "url": "https://developers.openai.com/api/docs/guides/image-generation"
+    },
+    {
+      "titre": "Voix locales et distantes : localService",
+      "source": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
     }
   ]
 }

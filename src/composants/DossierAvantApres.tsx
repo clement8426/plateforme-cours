@@ -12,10 +12,10 @@ type RisqueId = 'transfert' | 'sante' | 'secret' | 'conservation' | 'cloud' | 'r
 type Risque = { id: RisqueId; bloc: BlocId; titre: string; court: string; loi: string; qui: string };
 
 const RISQUES: Risque[] = [
-  { id: 'transfert', bloc: 'transfert', titre: 'Transfert à l’étranger', court: 'Le dossier part sur des serveurs aux États-Unis.', loi: 'nLPD, art. 16 et 17 : communication de données à l’étranger.', qui: 'La personne responsable : jusqu’à 250 000 CHF d’amende (art. 61 let. a nLPD), sur plainte.' },
-  { id: 'sante', bloc: 'sensible', titre: 'Donnée de santé', court: 'Un rapport médical quitte l’étude.', loi: 'nLPD, art. 5 let. c : donnée sensible. RGPD, art. 9, pour les clients dans l’UE.', qui: 'L’étude : pour ses clients dans l’UE, jusqu’à 20 M€ ou 4 % du chiffre d’affaires (RGPD).' },
-  { id: 'secret', bloc: 'sensible', titre: 'Secret professionnel', court: 'Ce que l’avocat sait de sa cliente part chez un tiers.', loi: 'Code pénal, art. 321 : violation du secret professionnel.', qui: 'L’avocat lui-même : jusqu’à 3 ans de peine privative de liberté.' },
-  { id: 'conservation', bloc: 'personnelles', titre: 'Conservation sans fin', court: 'Historique gardé, et le dossier peut entraîner le modèle.', loi: 'nLPD, art. 6 al. 4 : détruire les données dès qu’elles ne sont plus nécessaires.', qui: 'L’étude, qui doit pouvoir dire où sont les données de sa cliente.' },
+  { id: 'transfert', bloc: 'transfert', titre: 'Transfert à l’étranger', court: 'Dans ce scénario, le dossier est communiqué à un fournisseur américain.', loi: 'nLPD, art. 16 et 17 : conditions des communications à l’étranger.', qui: 'Certaines violations intentionnelles sont punissables sur plainte : jusqu’à 250 000 CHF pour la personne responsable (art. 61 let. a). Un transfert n’est pas automatiquement illicite.' },
+  { id: 'sante', bloc: 'sensible', titre: 'Donnée de santé', court: 'Le texte reste médical, même après transcription.', loi: 'nLPD, art. 5 let. c ; RGPD, art. 9 si son champ d’application est rempli.', qui: 'L’étude doit justifier le traitement et ses protections. Les plafonds RGPD de 20 M€ ou 4 % concernent certaines infractions, si le règlement s’applique.' },
+  { id: 'secret', bloc: 'sensible', titre: 'Secret professionnel', court: 'Un tiers reçoit des informations couvertes par le secret ; son intervention doit être juridiquement validée.', loi: 'Code pénal, art. 321 : conditions de la révélation à un tiers.', qui: 'Une révélation punissable peut exposer le détenteur du secret ou son auxiliaire à trois ans de privation de liberté ou une peine pécuniaire. L’externalisation n’est pas automatiquement une infraction.' },
+  { id: 'conservation', bloc: 'personnelles', titre: 'Conservation et réutilisation', court: 'Dans ce scénario fictif, le chat conserve les échanges et autorise leur réutilisation.', loi: 'nLPD, art. 6 al. 4 : détruire ou anonymiser les données devenues inutiles.', qui: 'L’étude doit vérifier les durées, les réglages et les conditions du service choisi.' },
   { id: 'cloud', bloc: 'transfert', titre: 'Cloud Act', court: 'Les autorités américaines peuvent exiger le dossier.', loi: 'Cloud Act, loi américaine de 2018.', qui: 'Personne n’est condamné, mais l’étude ne maîtrise plus qui peut lire le dossier.' },
   { id: 'historique', bloc: 'securite', titre: 'Historique partagé', court: 'Toute l’équipe voit la conversation.', loi: 'nLPD, art. 8 : sécurité des données, accès réservé à ceux qui en ont besoin.', qui: 'L’étude, et la personne qui a ouvert l’accès.' },
   { id: 'relecture', bloc: 'responsabilite', titre: 'Erreur non relue', court: 'Le scan flou a été mal lu : « droit » au lieu de « gauche ».', loi: 'nLPD, art. 6 al. 5 : s’assurer que les données sont exactes.', qui: 'L’étude, envers sa cliente : c’est elle qui signe le compte rendu.' },
@@ -37,7 +37,7 @@ const ETAPES: Etape[] = [
   { id: 'redaction', titre: 'Rédiger le compte rendu', piece: 'Vous avez maintenant le texte du rapport et celui du message. Il faut en faire un compte rendu clair, d’une page, pour l’assurance. Une IA peut vous aider à le rédiger : laquelle choisissez-vous ?', options: [
     { id: 'chat', texte: 'Le chat en ligne gratuit', detail: 'ChatGénéral, version grand public. Il garde la conversation et peut s’en servir pour s’améliorer.', risques: CHAT, sur: false },
     { id: 'api', texte: 'Une offre payante pour entreprises, américaine', detail: 'Le même genre d’outil, mais sous contrat : rien ne sert à entraîner l’IA, et la conservation est limitée. L’entreprise reste américaine.', risques: ['transfert', 'cloud'], sur: false },
-    { id: 'suisse', texte: 'Une IA hébergée en Suisse', detail: 'Un service suisse sous contrat (Infomaniak, par exemple). Seul le texte part, et il reste en Suisse.', risques: [], sur: true },
+    { id: 'suisse', texte: 'Un prestataire suisse validé pour ce dossier', detail: 'Dans cette simulation, l’étude a validé le contrat, les accès, les sous-traitants, la conservation et le respect du secret. Le texte médical reste sensible. L’hébergement suisse seul ne suffit pas.', risques: [], sur: true },
   ] },
   { id: 'envoi', titre: 'Avant d’envoyer à l’assurance', piece: 'Le compte rendu est prêt. L’avocat va le signer et l’envoyer à l’assurance de M. Exemple.', options: [
     { id: 'direct', texte: 'L’envoyer tel quel', detail: 'Il a l’air juste, et vous gagnez dix minutes. Personne ne relit.', risques: ['relecture'], sur: false },
@@ -81,7 +81,7 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
       <aside className="dossier-risques" aria-labelledby="titre-risques">
         <h2 id="titre-risques" className="titre-section">Ce que vous risquez</h2>
         <p className="dossier-compteur" role="status">
-          {Object.keys(choix).length === 0 ? 'Faites vos choix à gauche.' : actifs.size === 0 ? 'Aucun risque : bravo.' : `${actifs.size} risque${actifs.size > 1 ? 's' : ''} sur ${RISQUES.length}`}
+          {!fini ? `Parcours en cours : ${Object.keys(choix).length} étapes sur ${ETAPES.length}.` : actifs.size === 0 ? 'Risques réduits dans les conditions de cette simulation.' : `${actifs.size} point${actifs.size > 1 ? 's' : ''} de vigilance sur ${RISQUES.length}`}
         </p>
         <ul className="dossier-tuiles">
           {RISQUES.map((r) => {
@@ -115,13 +115,13 @@ export default function DossierAvantApres({ cours }: { cours: string }) {
             <h3 id="titre-comparer">Comparer avec</h3>
             <p>Remplace vos quatre choix d’un coup, pour voir la différence.</p>
             <div className="actions">
-              <button type="button" className="bouton-secondaire" onClick={() => remplir(false)}>Tous les choix les plus rapides</button>
-              <button type="button" className="bouton-secondaire" onClick={() => remplir(true)}>Tous les choix sûrs</button>
+              <button type="button" className="bouton-secondaire" onClick={() => remplir(false)}>Comparer le parcours sans précautions</button>
+              <button type="button" className="bouton-secondaire" onClick={() => remplir(true)}>Comparer le parcours avec précautions</button>
               <button type="button" className="bouton-secondaire" onClick={() => setChoix({})}>Recommencer</button>
             </div>
           </section>
         )}
-        <p className="note-fictif">Personnes, étude et « ChatGénéral » fictifs. Les articles cités sont réels : à vérifier dans les sources du cours.</p>
+        <p className="note-fictif">Personnes, étude et « ChatGénéral » fictifs. Le partage d’historique et la conservation sont des hypothèses de ce scénario. Un traitement local ou suisse ne garantit pas l’absence de risque : validez le prestataire, les accès et les obligations de secret. Les articles cités figurent dans les sources du cours.</p>
       </aside>
     </div>
   );

@@ -13,6 +13,7 @@
     "diapos": "node scripts/integrer-diapos.mjs",
     "verifier": "node scripts/verifier-site.mjs",
     "sources": "node scripts/extraire-sources.mjs",
+    "liens": "node scripts/verifier-liens.mjs",
     "formulaire": "node scripts/integrer-formulaire.mjs",
     "comparateur": "node scripts/integrer-comparateur.mjs"
   },
