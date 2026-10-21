@@ -963,7 +963,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </article>
     </div>
     <aside class="angle" data-step="3">
-      <p>Un site peut être joli sans être pratique. L’UI est une composante de l’UX : apparence, commandes et réactions contribuent à l’expérience.</p>
+      <p>Un site peut être joli sans être pratique.<br>L’UI est une composante de l’UX : apparence, commandes et réactions contribuent à l’expérience.</p>
     </aside>
   </div>
 </section>
@@ -987,11 +987,6 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c5 stack-m">
       <p class="lead">Un tunnel mène à un objectif. Ici, un achat ; ailleurs, une inscription : liste d’attente, salle de sport ou association.</p>
       <div class="funnel-ctl" data-comp="funnel-ctl"></div>
-      <div class="card preuve" data-step="1">
-        <p class="puce">Cas réel</p>
-        <p>Sans inscription obligatoire, 45&nbsp;% d’acheteurs en plus.</p>
-        <p class="preuve-src">Jared Spool, 2009</p>
-      </div>
     </div>
     <div class="c7">
       <div class="funnel" data-comp="funnel"></div>
@@ -1043,16 +1038,12 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <section class="slide" data-part="1" data-key="modeles">
   <h2 class="title">Il n’existe pas de recette universelle en UX</h2>
   <div class="body stack-l">
-    <p class="statement">Des modèles de référence reconnus.<br>Ma grille pour ce cours : 6 blocs issus de mon expérience.</p>
-    <div class="synth" data-step="1">
-      <ul class="chips">
-        <li class="chip">Honeycomb de Morville</li>
-        <li class="chip">Loi de Hick</li>
-        <li class="chip">Loi de Fitts</li>
-      </ul>
-      <i data-icon="arrow" class="synth-arrow"></i>
-      <div class="synth-grid" role="img" aria-label="Une grille de six blocs"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
+    <p class="statement">Des modèles pour explorer l’expérience,<br>pas une recette à appliquer partout.</p>
+    <article class="card" data-step="1">
+      <h3>Le Honeycomb de Peter Morville</h3>
+      <p class="lead">Un modèle à sept facettes, présenté juste après.</p>
+    </article>
+    <p class="note" data-step="2">Ces repères s’adaptent au produit, à sa cible et au contexte d’utilisation.</p>
   </div>
 </section>
 
@@ -1243,7 +1234,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <li data-step="1">Disponible une fois le site en ligne.</li>
         <li data-step="1">SaaS et application : des outils d’analyse de produit mesurent l’activation et la rétention.</li>
         <li data-step="2">Elle aide à repérer où approfondir. Les comportements observés ne prouvent pas leur cause.</li>
-        <li data-step="3">Sessions enregistrées : attention au consentement.</li>
+        <li data-step="3">Cookies de suivi : prévoir un choix clair « Accepter » ou « Refuser » avant l’activation.</li>
       </ul>
     </div>
     <div class="c7">
@@ -1318,19 +1309,6 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="2" data-key="mcp">
-  <h2 class="title">API et MCP : connecter des fonctions et des outils</h2>
-  <div class="body stack-m">
-    <div class="paire">
-      <article class="card" data-step="1"><h3>API</h3><p>Une interface pour qu’un logiciel utilise les fonctions d’un autre : lire des données, demander un résultat, déclencher une action.</p></article>
-      <article class="card accent" data-step="2"><h3>MCP</h3><p>Un protocole commun pour présenter à l’agent les outils disponibles, leurs paramètres et la façon de les appeler.</p></article>
-    </div>
-    <p class="lead" data-step="3">Exemple : l’agent découvre un outil « lancer un audit », lui transmet les paramètres, puis lit le résultat.</p>
-    <p class="note" data-step="3">Un serveur MCP peut lui-même utiliser une API. Les deux peuvent servir à automatiser des actions.</p>
-    <p class="note" data-step="4">Les outils doivent être configurés et autorisés. MCP ne fournit pas tous les parcours à suivre : l’objectif reste à définir.</p>
-  </div>
-</section>
-
 <section class="slide" data-part="2" data-key="quel-agent">
   <h2 class="title">Quelques agents possibles pour travailler sur un projet</h2>
   <div class="body stack-m">
@@ -1343,6 +1321,19 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <p class="lead" data-step="2">Pour ce cours, vérifier trois choses : l’accès au projet, les outils d’audit disponibles et les actions autorisées.</p>
     <p class="note" data-step="3">Les coûts dépendent de l’offre et du modèle utilisé : abonnement, crédits ou API. Un logiciel open source n’implique pas des calculs gratuits.</p>
     <p class="note" data-step="3">Ces exemples ne garantissent pas le même équipement. On prépare et vérifie l’environnement avant la séance.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="mcp">
+  <h2 class="title">API et MCP : connecter des fonctions et des outils</h2>
+  <div class="body stack-m">
+    <div class="paire">
+      <article class="card" data-step="1"><h3>API</h3><p>Une interface pour qu’un logiciel utilise les fonctions d’un autre : lire des données, demander un résultat, déclencher une action.</p></article>
+      <article class="card accent" data-step="2"><h3>MCP</h3><p>Un protocole commun pour présenter à l’agent les outils disponibles, leurs paramètres et la façon de les appeler.</p></article>
+    </div>
+    <p class="lead" data-step="3">Exemple : l’agent découvre un outil « lancer un audit », lui transmet les paramètres, puis lit le résultat.</p>
+    <p class="note" data-step="3">Un serveur MCP peut lui-même utiliser une API. Les deux peuvent servir à automatiser des actions.</p>
+    <p class="note" data-step="4">Les outils doivent être configurés et autorisés. MCP ne fournit pas tous les parcours à suivre : l’objectif reste à définir.</p>
   </div>
 </section>
 
@@ -1789,7 +1780,7 @@ const CONFIG = {
 
   minutes: [
     0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 1.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (15 à 17 : accessibilité)
-    2, 2.5, 1.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, // slides 23 à 34 : l'IA, bloc par bloc
+    2, 1.5, 2.5, 1.5, 2, 2, 2, 1.5, 2, 2, 1.5, 1.5, // slides 23 à 34 : l'IA, bloc par bloc
     1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 35 à 46 : Traverse, puis formulaire en bonus
     0, 0 // slides 47 à 48 : annexes, hors budget
   ],
@@ -2092,11 +2083,6 @@ const CONFIG = {
       "url": "https://baymard.com/blog/checkout-flow-average-form-fields"
     },
     {
-      "titre": "« The $300 Million Button »",
-      "source": "Jared Spool, 2009",
-      "url": "https://articles.centercentre.com/three_hund_million_button/"
-    },
-    {
       "titre": "« User Experience Design », le Honeycomb",
       "source": "Peter Morville, 2004",
       "url": "https://semanticstudios.com/user_experience_design/"
@@ -2291,12 +2277,6 @@ const CONFIG = {
 
   // Vue présentateur : trois mots-clés par slide
   sources: {
-    "tunnel": [
-      {
-        "t": "Jared Spool, 2009",
-        "u": "https://articles.centercentre.com/three_hund_million_button/"
-      }
-    ],
     "abandon": [
       {
         "t": "Baymard Institute",
