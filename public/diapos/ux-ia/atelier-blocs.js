@@ -2,6 +2,113 @@
 (() => {
     'use strict';
     const docs = { chrome: 'https://github.com/ChromeDevTools/chrome-devtools-mcp', reference: 'https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/tool-reference.md', playwright: 'https://github.com/microsoft/playwright-mcp', trace: 'https://playwright.dev/docs/trace-viewer', axe: 'https://playwright.dev/docs/accessibility-testing', axeMcp: 'https://www.deque.com/axe/mcp-server/', lighthouse: 'https://developer.chrome.com/docs/lighthouse/overview', network: 'https://developer.chrome.com/docs/devtools/network/overview', console: 'https://developer.chrome.com/docs/devtools/console/', performance: 'https://developer.chrome.com/docs/devtools/performance/overview', contentsquare: 'https://contentsquare.com/platform/capabilities/mcp-server/', learning: 'https://learning.hotjar.com/page/course-catalog', university: 'https://learn.contentsquare.com/' };
+    const definitions = {
+        "chrome": {
+            "name": "Chrome DevTools",
+            "kind": "Outils intégrés à Chrome",
+            "definition": "La boîte à outils du navigateur pour inspecter une page : styles, chargement, requêtes réseau et erreurs.",
+            "example": "Vous ouvrez DevTools pour voir pourquoi une image ne se charge pas.",
+            "url": "https://developer.chrome.com/docs/devtools/overview",
+            "slide": "cles"
+        },
+        "chromeMcp": {
+            "name": "Chrome DevTools MCP",
+            "kind": "Serveur MCP · connecteur pour l’IA",
+            "definition": "Il donne à un agent compatible des outils pour piloter Chrome, inspecter une page et recueillir des mesures.",
+            "example": "L’agent ouvre votre page, examine ses requêtes et vous montre une capture.",
+            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+            "slide": "ia-design-system"
+        },
+        "playwright": {
+            "name": "Playwright",
+            "kind": "Outil d’automatisation du navigateur",
+            "definition": "Il permet de programmer des clics, des saisies et des vérifications, puis de rejouer le même parcours.",
+            "example": "Tester qu’une inscription arrive à une confirmation, sans tout refaire à la main.",
+            "url": "https://playwright.dev/docs/intro",
+            "slide": "ia-friction"
+        },
+        "playwrightMcp": {
+            "name": "Playwright MCP",
+            "kind": "Serveur MCP · connecteur pour l’IA",
+            "definition": "Il met des actions de navigation à disposition de l’agent : ouvrir, cliquer, remplir et observer la page.",
+            "example": "Vous décrivez une tâche ; l’agent utilise ces actions pour essayer le parcours.",
+            "url": "https://github.com/microsoft/playwright-mcp",
+            "slide": "ia-friction"
+        },
+        "contentsquare": {
+            "name": "Contentsquare",
+            "kind": "Plateforme d’analyse des usages",
+            "definition": "Elle aide à analyser les visites enregistrées : parcours, clics, défilement et passages entre les étapes.",
+            "example": "Repérer à quelle étape les visiteurs quittent une inscription.",
+            "url": "https://contentsquare.com/platform/capabilities/heatmaps/",
+            "slide": "ia-comportement"
+        },
+        "contentsquareMcp": {
+            "name": "MCP Contentsquare",
+            "kind": "Connecteur vers les données du compte",
+            "definition": "Il permet à un agent autorisé d’interroger les données accessibles de votre projet Contentsquare.",
+            "example": "Demander le taux de passage d’un tunnel sur une période précise.",
+            "url": "https://contentsquare.com/platform/capabilities/mcp-server/",
+            "slide": "ia-comportement"
+        },
+        "hotjar": {
+            "name": "Hotjar",
+            "kind": "Outil d’observation des visites",
+            "definition": "Connu pour ses cartes de chaleur et ses sessions enregistrées, Hotjar fait désormais partie de Contentsquare.",
+            "example": "Examiner une carte de clics, puis des sessions pour enquêter sur un obstacle.",
+            "url": "https://www.hotjar.com/homepage/",
+            "slide": "ia-comportement"
+        },
+        "axeCore": {
+            "name": "axe-core",
+            "kind": "Bibliothèque de code · moteur de contrôle",
+            "definition": "Du code que l’on ajoute à un test pour repérer des défauts d’accessibilité détectables automatiquement.",
+            "example": "Un test Playwright lance axe-core et reçoit une liste d’éléments à examiner.",
+            "url": "https://github.com/dequelabs/axe-core",
+            "slide": "ia-accessibilite"
+        },
+        "axeDevTools": {
+            "name": "axe DevTools",
+            "kind": "Ici : l’extension pour le navigateur",
+            "definition": "Une interface pour lancer des contrôles d’accessibilité sur la page ouverte et consulter les éléments signalés.",
+            "example": "Vous ouvrez l’extension, lancez une analyse et examinez les résultats.",
+            "url": "https://www.deque.com/axe/devtools/extension/",
+            "slide": "ia-accessibilite"
+        },
+        "axeMcp": {
+            "name": "Axe MCP",
+            "kind": "Serveur MCP de Deque · connecteur pour l’IA",
+            "definition": "Il apporte à un agent de développement des fonctions et recommandations d’accessibilité de Deque.",
+            "example": "L’agent propose une correction que vous pouvez examiner avant de l’appliquer.",
+            "url": "https://www.deque.com/axe/mcp-server/",
+            "slide": "ia-accessibilite"
+        },
+        "lighthouse": {
+            "name": "Lighthouse",
+            "kind": "Outil d’audit automatisé d’une page",
+            "definition": "Il produit un rapport de contrôles et de mesures : performance, accessibilité, référencement et bonnes pratiques.",
+            "example": "Vous lancez l’audit dans Chrome ou en ligne de commande, puis l’IA vous aide à lire le rapport.",
+            "url": "https://developer.chrome.com/docs/lighthouse/overview",
+            "slide": "ia-performance"
+        },
+        "mcp": {
+            "name": "MCP",
+            "kind": "Protocole · règles de connexion communes",
+            "definition": "Une manière standard de présenter des outils et des données à une application d’IA. Un serveur MCP fournit les fonctions accessibles.",
+            "example": "L’agent utilise un outil de capture proposé par un serveur MCP connecté.",
+            "url": "https://modelcontextprotocol.io/docs/learn/server-concepts",
+            "slide": "cles"
+        },
+        "agent": {
+            "name": "Agent IA",
+            "kind": "Logiciel d’IA équipé d’outils",
+            "definition": "Il peut enchaîner des actions pour réaliser une tâche, avec les accès et les autorisations qui lui sont donnés.",
+            "example": "Il ouvre des pages, relève des textes et prépare une proposition de reformulation.",
+            "url": "https://modelcontextprotocol.io/docs/learn/server-concepts",
+            "slide": "agent"
+        }
+    };
+    definitions.api={name:'API',kind:'Interface entre logiciels',definition:'Des fonctions qu’un logiciel propose à d’autres logiciels pour demander des données ou déclencher une action.',example:'Le formulaire appelle une API pour rechercher une adresse.',url:'https://developer.mozilla.org/en-US/docs/Glossary/API',slide:'cles'};
     function el(tag, attrs = {}, ...kids) { const n = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) {
         if (k === 'text')
             n.textContent = v;
@@ -16,6 +123,19 @@
     function tabs(items, render) { const content = el('div', { class: 'tool-content' }), row = actions(); row.setAttribute('aria-label', 'Choisir une fiche'); const bs = items.map((v, i) => btn(v.label, () => draw(i))); function draw(i) { bs.forEach((b, j) => b.setAttribute('aria-pressed', String(i === j))); content.replaceChildren(...render(items[i])); } row.append(...bs); draw(0); return [row, content]; }
     function modal(title, ...nodes) { const d = el('dialog', { class: 'uxlab-dialog', 'aria-label': title }); d.append(btn('Fermer', () => d.close()), h(title), ...nodes); d.addEventListener('keydown', e => e.stopPropagation()); d.addEventListener('click', e => { if (e.target === d)
         d.close(); }); document.body.append(d); return d; }
+
+    function definitionCards(keys) {
+        return el('div', {class:'tool-definitions'}, keys.map(key => {
+            const d=definitions[key];
+            return el('section', {class:'tool-definition'}, p(d.kind,'tool-kind'), el('h4',{text:d.name}), p(d.definition), p(d.example,'tool-example'), link('Source officielle',d.url));
+        }));
+    }
+    function definitionsButton(keys) {
+        const d=modal('Les outils, en clair',definitionCards(keys));
+        d.classList.add('tool-definition-dialog');
+        return btn('Comprendre les outils',()=>d.showModal());
+    }
+    const blockDefinitions={design:['chrome','chromeMcp'],journey:['playwright','playwrightMcp'],a11y:['axeCore','axeDevTools','axeMcp'],behavior:['contentsquare','contentsquareMcp','hotjar'],copy:['agent','playwrightMcp'],lighthouse:['lighthouse','chrome','chromeMcp']};
     function requestButton(title, body) { const value = 'Audit en lecture seule. Aucun fichier à modifier.\n\n' + body + '\n\nCommence par vérifier les outils réellement disponibles. Si un contrôle est impossible, indique-le. Distingue observations prouvées, hypothèses et recommandations. N’utilise que des données fictives ou autorisées ; aucune transaction réelle. Termine par les preuves, les limites et les contrôles non exécutés.'; const field = el('textarea', { readonly: '', 'aria-label': 'Demande à adapter avant envoi', rows: '10' }); field.value = value; const feedback = p('Remplacez les champs entre crochets avant envoi à votre agent.', 'tool-dialog-help'); feedback.setAttribute('role', 'status'); const copy = btn('Copier la demande', async () => { try {
         await navigator.clipboard.writeText(field.value);
         feedback.textContent = 'Demande copiée. Adaptez les champs entre crochets dans votre conversation.';
@@ -31,16 +151,23 @@
         imageDialogs.set(file, d);
     } const zoom = btn('', () => d.showModal(), 'uxlab-zoom'); zoom.setAttribute('aria-label', 'Agrandir : ' + caption); zoom.append(image); return el('figure', { class: 'tool-figure' }, zoom, el('figcaption', { text: caption + ' · cliquer pour agrandir' })); }
     function steps(items) { return el('ol', { class: 'tool-steps' }, items.map(([t, d]) => el('li', {}, el('strong', { text: t }), p(d)))); }
-    function card(d) { const r = setup(d.name, d.tool), left = panel(steps(d.steps)); left.classList.add('tool-how'); left.append(actions(requestButton('Bloc ' + d.number + ' · ' + d.subject, d.request)), el('div', { class: 'uxlab-links' }, d.links.map(([s, u]) => link(s, u)))); const right = panel(...tabs(d.views, v => [h(v.title), v.image ? picture(...v.image) : p(v.text, 'tool-evidence'), p(v.detail, 'uxlab-small')])); right.classList.add('tool-view'); r.append(el('div', { class: 'uxlab-split' }, left, right), p(d.limit, 'uxlab-foot')); }
+    function card(d) { const r = setup(d.name, d.tool), left = panel(steps(d.steps)); left.classList.add('tool-how'); left.append(actions(requestButton('Bloc ' + d.number + ' · ' + d.subject, d.request), definitionsButton(blockDefinitions[d.name])), el('div', { class: 'uxlab-links' }, d.links.map(([s, u]) => link(s, u)))); const right = panel(...tabs(d.views, v => [h(v.title), v.image ? picture(...v.image) : p(v.text, 'tool-evidence'), p(v.detail, 'uxlab-small')])); right.classList.add('tool-view'); r.append(el('div', { class: 'uxlab-split' }, left, right), p(d.limit, 'uxlab-foot')); }
     {
         const r = setup('intro', 'Six besoins · des outils à retrouver et à utiliser'), grid = el('div', { class: 'tool-grid' });
         [['1', 'Design system', 'Chrome DevTools MCP', 'Styles, boutons, espacements', 25], ['2', 'Friction', 'Playwright MCP', 'Parcours, retours, formulaires', 26], ['3', 'Accessibilité', 'axe + Playwright', 'Contrôles et tests manuels', 27], ['4', 'Comportement', 'Hotjar / Contentsquare', 'Cartes de chaleur, sessions, données', 28], ['5', 'Microcopie', 'Agent + navigateur', 'Inventaire, reformulation, contexte', 29], ['6', 'Performances', 'Lighthouse + DevTools MCP', 'Vitesse, réseau, erreurs, cache', 30]].forEach(([n, t, tool, what, s]) => grid.append(el('a', { class: 'tool-tile', href: '#' + s }, el('span', { class: 'tool-number', text: n }), el('strong', { text: t }), p(tool), el('span', { text: what }))));
         r.append(grid, p('Choisissez un bloc : l’outil, la marche à suivre et la demande à adapter sont sur sa slide.', 'uxlab-foot'));
     }
     {
-        const r = setup('context', 'MCP = une connexion qui permet à l’agent d’appeler des outils');
-        const items = [{ label: 'Chrome DevTools', title: 'Donner des yeux techniques à l’agent', steps: [['Connecter', 'Suivre le guide du MCP Chrome DevTools dans votre logiciel d’IA.'], ['Vérifier', 'Demander d’ouvrir [URL locale] et de faire une capture.'], ['Utiliser', 'Demander un relevé de styles, de requêtes ou une trace de performance.']], key: 'chrome' }, { label: 'Playwright', title: 'Faire parcourir l’interface par l’agent', steps: [['Connecter', 'Ajouter le serveur Playwright MCP à votre agent compatible.'], ['Vérifier', 'Ouvrir [URL locale], puis lire les éléments de la page.'], ['Utiliser', 'Décrire la tâche et son résultat attendu ; faire suivre les étapes.']], key: 'playwright' }, { label: 'Contentsquare', title: 'Relier des données d’usage déjà collectées', steps: [['Préparer', 'Un administrateur active MCP dans Analysis setup → Model Context Protocol.'], ['Autoriser', 'Connecter l’agent depuis ce menu et lui donner accès au projet.'], ['Vérifier', 'Demander les projets accessibles, puis une métrique sur une période précise.']], key: 'contentsquare' }];
-        r.append(...tabs(items, v => [h(v.title), steps(v.steps), el('div', { class: 'uxlab-links' }, link('Guide officiel de connexion', v.key))]), p('L’API définit des opérations. MCP les présente à l’agent sous une interface commune. Une demande seule n’installe ni ne connecte un outil.', 'uxlab-foot'));
+        const r=setup('context','Un nom, une fonction, une façon de l’utiliser');
+        const items=[
+            {label:'Chrome',keys:['chrome','chromeMcp'],use:'Inspecter une page soi-même dans Chrome, ou laisser l’agent utiliser les outils du MCP.',links:[['Guide du MCP Chrome DevTools','chrome']]},
+            {label:'Playwright',keys:['playwright','playwrightMcp'],use:'Écrire des tests qui se rejouent, ou faire explorer un parcours par un agent équipé.',links:[['Guide du MCP Playwright','playwright']]},
+            {label:'Contentsquare',keys:['contentsquare','contentsquareMcp','hotjar'],use:'Analyser des données de visites déjà collectées. Le connecteur exige un compte, un projet et les accès nécessaires.',links:[['Connexion MCP Contentsquare','contentsquare']]},
+            {label:'La famille axe',keys:['axeCore','axeDevTools','axeMcp'],use:'Trois façons de travailler : dans le code, dans le navigateur ou avec l’agent. Les tests humains restent nécessaires.',links:[]},
+            {label:'Lighthouse',keys:['lighthouse'],use:'Lancer l’audit dans Chrome DevTools ou en ligne de commande ; l’IA peut ensuite expliquer les résultats.',links:[['Utiliser Lighthouse','lighthouse']]},
+            {label:'MCP et API',keys:['mcp','api'],use:'Connecter le serveur à une application d’IA compatible, puis vérifier les outils accessibles. Une demande seule ne fait pas cette installation.',links:[]}
+        ];
+        r.append(...tabs(items,v=>[definitionCards(v.keys),p(v.use,'tool-usage'),el('div',{class:'uxlab-links'},v.links.map(([title,url])=>link(title,url)))]),p('Un outil recueille des observations. L’IA aide à les interpréter ; vous gardez les décisions.','uxlab-foot'));
     }
     card({ name: 'design', number: 1, subject: 'Design system', tool: 'OUTIL · Chrome DevTools MCP → styles calculés + captures', steps: [['Vous donnez', 'Deux ou trois pages, les tailles d’écran et le rôle des composants.'], ['L’agent fait', 'Il compare les styles réellement appliqués aux boutons et aux mises en page.'], ['Vous récupérez', 'Page, élément, valeurs CSS, différence et capture pour chaque écart.']], links: [['MCP Chrome DevTools', 'chrome'], ['Outils disponibles', 'reference']], request: 'Projet : [chemin]. URL : [URL locale]. Pages : [pages]. Public : [cible]. Compare les boutons de même rôle et les espacements à [tailles d’écran]. Avec Chrome DevTools MCP, relève les styles calculés : padding, gap, tailles, polices, couleurs et arrondis. Donne les sélecteurs, les valeurs comparées et des captures. Demande mon intention avant de déclarer une variation incohérente.', views: [{ label: 'Boutons', title: 'Comparer à rôle égal', text: 'Enregistrer ↔ Enregistrer\nPrincipal ↔ Principal\nMobile ↔ Mobile', detail: 'Ouvrir chaque page → cibler le composant → lire ses styles calculés. Une capture seule ne donne pas toutes les valeurs.' }, { label: 'Espacements', title: 'Inspecter ce qui crée l’écart', text: 'padding = espace intérieur\ngap = espace entre éléments\nmargin = marge extérieure', detail: 'Relever aussi la grille et la largeur du conteneur. Des composants de même style peuvent être placés dans des mises en page différentes.' }], limit: 'La mesure établit une différence ; l’intention graphique permet de décider si elle pose problème.' });
     card({ name: 'journey', number: 2, subject: 'Friction', tool: 'OUTIL · Playwright MCP → clics, saisies, clavier, captures', steps: [['Vous donnez', 'Un objectif, un départ, des données fictives et le résultat attendu.'], ['L’agent fait', 'Il parcourt les étapes, teste une erreur puis un retour en arrière.'], ['Vous récupérez', 'Les étapes rejouables, les blocages et une capture de chaque état utile.']], links: [['Playwright MCP', 'playwright'], ['Trace Viewer', 'trace']], request: 'URL : [URL locale]. Public : [cible]. Tâche : [réserver une activité / demander un devis / créer un compte de test]. Résultat attendu : [résultat visible]. Utilise Playwright MCP et [données fictives]. Teste le chemin normal, une saisie invalide, un retour arrière et la conservation de saisie. Consigne chaque étape et capture les blocages. Ne valide aucun achat ni envoi réel. Si tu crées un test Playwright, active sa trace et joins-la au rapport.', views: [{ label: 'Tester', title: 'Décrire une tâche observable', text: 'Choisir un créneau\n→ renseigner ses informations\n→ voir la confirmation', detail: 'Même méthode pour une demande de devis, un outil de congés ou une inscription à une association.' }, { label: 'Rejouer', title: 'Garder une trace exploitable', text: 'Action → résultat attendu\n→ résultat observé\n→ capture / étape en échec', detail: 'Pour un test Playwright enregistré avec tracing, Trace Viewer permet de revoir les actions et leurs captures. Une session MCP seule ne garantit pas ce fichier.' }], limit: 'Le parcours automatisé révèle des obstacles reproductibles ; il ne remplace pas les tests avec des utilisateurs.' });

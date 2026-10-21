@@ -1267,7 +1267,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="2" data-key="cles">
-  <h2 class="title">Connecter les outils à son agent</h2>
+  <h2 class="title">Les outils, en clair</h2>
   <div class="body" data-lab="context"></div>
 </section>
 
@@ -1850,8 +1850,8 @@ const CONFIG = {
     },
     {
       "terme": "MCP",
-      "nom": "MCP (Model Context Protocol)",
-      "def": "Un protocole commun pour relier une application d’IA à des outils et à des données, selon les connexions et les autorisations disponibles.",
+      "nom": "MCP",
+      "def": "Protocole · règles de connexion communes : Une manière standard de présenter des outils et des données à une application d’IA. Un serveur MCP fournit les fonctions accessibles.",
       "cle": "cles"
     },
     {
@@ -1866,14 +1866,81 @@ const CONFIG = {
     },
     {
       "terme": "Agent IA",
-      "def": "Une IA qui peut enchaîner des actions pour une mission avec des outils et des autorisations. Ses actions et leurs résultats restent à vérifier.",
+      "nom": "Agent IA",
+      "def": "Logiciel d’IA équipé d’outils : Il peut enchaîner des actions pour réaliser une tâche, avec les accès et les autorisations qui lui sont donnés.",
       "cle": "agent"
     },
     {
       "terme": "API",
       "nom": "API (Application Programming Interface)",
-      "def": "Une interface qui permet à un logiciel d’utiliser des fonctions ou des données fournies par un autre logiciel.",
+      "def": "Une interface entre logiciels : des fonctions pour demander des données ou déclencher une action. Un serveur MCP peut utiliser une API pour fournir des outils à l’agent.",
       "cle": "cles"
+    },
+    {
+      "terme": "Chrome DevTools",
+      "nom": "Chrome DevTools",
+      "def": "Outils intégrés à Chrome : La boîte à outils du navigateur pour inspecter une page : styles, chargement, requêtes réseau et erreurs.",
+      "cle": "cles"
+    },
+    {
+      "terme": "Chrome DevTools MCP",
+      "nom": "Chrome DevTools MCP",
+      "def": "Serveur MCP · connecteur pour l’IA : Il donne à un agent compatible des outils pour piloter Chrome, inspecter une page et recueillir des mesures.",
+      "cle": "ia-design-system"
+    },
+    {
+      "terme": "Playwright",
+      "nom": "Playwright",
+      "def": "Outil d’automatisation du navigateur : Il permet de programmer des clics, des saisies et des vérifications, puis de rejouer le même parcours.",
+      "cle": "ia-friction"
+    },
+    {
+      "terme": "Playwright MCP",
+      "nom": "Playwright MCP",
+      "def": "Serveur MCP · connecteur pour l’IA : Il met des actions de navigation à disposition de l’agent : ouvrir, cliquer, remplir et observer la page.",
+      "cle": "ia-friction"
+    },
+    {
+      "terme": "Contentsquare",
+      "nom": "Contentsquare",
+      "def": "Plateforme d’analyse des usages : Elle aide à analyser les visites enregistrées : parcours, clics, défilement et passages entre les étapes.",
+      "cle": "ia-comportement"
+    },
+    {
+      "terme": "MCP Contentsquare",
+      "nom": "MCP Contentsquare",
+      "def": "Connecteur vers les données du compte : Il permet à un agent autorisé d’interroger les données accessibles de votre projet Contentsquare.",
+      "cle": "ia-comportement"
+    },
+    {
+      "terme": "Hotjar",
+      "nom": "Hotjar",
+      "def": "Outil d’observation des visites : Connu pour ses cartes de chaleur et ses sessions enregistrées, Hotjar fait désormais partie de Contentsquare.",
+      "cle": "ia-comportement"
+    },
+    {
+      "terme": "axe-core",
+      "nom": "axe-core",
+      "def": "Bibliothèque de code · moteur de contrôle : Du code que l’on ajoute à un test pour repérer des défauts d’accessibilité détectables automatiquement.",
+      "cle": "ia-accessibilite"
+    },
+    {
+      "terme": "axe DevTools",
+      "nom": "axe DevTools",
+      "def": "Ici : l’extension pour le navigateur : Une interface pour lancer des contrôles d’accessibilité sur la page ouverte et consulter les éléments signalés.",
+      "cle": "ia-accessibilite"
+    },
+    {
+      "terme": "Axe MCP",
+      "nom": "Axe MCP",
+      "def": "Serveur MCP de Deque · connecteur pour l’IA : Il apporte à un agent de développement des fonctions et recommandations d’accessibilité de Deque.",
+      "cle": "ia-accessibilite"
+    },
+    {
+      "terme": "Lighthouse",
+      "nom": "Lighthouse",
+      "def": "Outil d’audit automatisé d’une page : Il produit un rapport de contrôles et de mesures : performance, accessibilité, référencement et bonnes pratiques.",
+      "cle": "ia-performance"
     }
   ],
 
@@ -2178,6 +2245,26 @@ const CONFIG = {
       "titre": "Console : messages et débogage",
       "source": "Google Chrome for Developers",
       "url": "https://developer.chrome.com/docs/devtools/console/"
+    },
+    {
+      "titre": "Chrome DevTools : les outils intégrés au navigateur",
+      "source": "Google Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/devtools/overview"
+    },
+    {
+      "titre": "Playwright : automatisation des tests de navigateur",
+      "source": "Microsoft Playwright",
+      "url": "https://playwright.dev/docs/intro"
+    },
+    {
+      "titre": "axe-core : moteur de contrôles automatisés",
+      "source": "Deque",
+      "url": "https://github.com/dequelabs/axe-core"
+    },
+    {
+      "titre": "axe DevTools : extension navigateur",
+      "source": "Deque",
+      "url": "https://www.deque.com/axe/devtools/extension/"
     }
   ],
 
@@ -2430,7 +2517,7 @@ const CONFIG = {
     "publics-accessibilite": "4,4 % : calculs UCBA pour 2019, publication 2020, p. 23 ; 377 000 personnes dont 57 000 avec surdicécité. Ce n’est pas le pourcentage de personnes bloquées sur le Web. Audition : fiche FSS non datée, environ un million de personnes malentendantes ; attribution et absence de millésime visibles. Pas de somme entre populations ni de projection à 2026. Les données OFS sur les limitations sévères utilisent une autre définition.",
     "loi": "Distinguer exigences du référentiel et obligations juridiques. En Suisse, eCH-0059 v3 : WCAG 2.1 AA pour l’administration fédérale. Le privé est visé par l’interdiction de discrimination et peut avoir des obligations spécifiques selon son secteur, ses contrats et ses marchés. La révision de la LHand n’est pas une règle déjà entrée en vigueur. EAA : certains produits/services destinés aux consommateurs de l’UE, avec exemptions et conditions ; les sanctions présentées concernent leurs régimes nationaux.",
     "agent": "Six fiches autonomes accessibles en cliquant sur les cartes. Les outils sont nommés dès cette vue. Aucune installation ni connexion ne se produit dans le diaporama. Labo UX est un bonus présenté dans la pratique.",
-    "cles": "MCP présente des outils à un agent compatible ; il ne remplace pas toutes les API ni ne devine le parcours. Guides officiels de connexion par outil. Pour Contentsquare, activation administrateur et accès projet nécessaires. Ne pas installer un MCP sur chaque poste pendant les 19 minutes de présentation.",
+    "cles": "Vocabulaire avant les manipulations. Chrome DevTools est intégré à Chrome ; son MCP est un connecteur distinct. Playwright automatise le navigateur ; Playwright MCP expose des actions à un agent. Contentsquare analyse des données collectées ; son MCP exige accès au compte/projet. axe-core est un moteur de contrôle dans le code ; axe DevTools désigne ici son extension navigateur (la marque recouvre aussi une gamme plus large) ; Axe MCP est le serveur de Deque pour les agents. Lighthouse produit un rapport automatique ; MCP est un protocole commun. Montrer les onglets utiles, sans présenter tous les détails comme des outils à installer obligatoirement. Chaque bloc permet de retrouver ses définitions via Comprendre les outils.",
     "ia-design-system": "Fiche outil : comparer les styles calculés via Chrome DevTools MCP, notamment get_css_styles ou evaluate_script selon la version. Relever les mêmes rôles aux mêmes dimensions. Une variation n’est pas automatiquement une erreur.",
     "ia-friction": "Playwright MCP pour les interactions et captures. Trace Viewer nécessite une trace effectivement enregistrée ; la session MCP seule ne garantit pas une trace ZIP. Définir un parcours sans achat ni envoi réel.",
     "ia-accessibilite": "Trois voies nommées : axe-core intégré à un test Playwright ; axe DevTools dans le navigateur ; Axe MCP à configurer séparément. Les états doivent être ouverts avant le scan. Compléter par clavier, lecteur d’écran et évaluation humaine.",

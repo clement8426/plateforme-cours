@@ -24,6 +24,20 @@ try{
  const parts=await page.locator('section.slide').evaluateAll(ss=>ss.map(s=>Number(s.dataset.part)));
  config.parties.forEach((p,i)=>{for(let n=p.de;n<=p.a;n++)assert.equal(parts[n-1],i+1);});
  await root.getByRole('link',{name:/2 Friction/}).click();await page.waitForURL('**/#26');assert((await page.locator('.slide.active').innerText()).includes('Playwright'));
+ // Définitions autonomes : catégorie, fonction, source ; distinction des trois voies axe.
+ root=await scene(24);await root.getByRole('button',{name:'La famille axe',exact:true}).click();
+ assert.equal(await root.locator('.tool-definition').count(),3);
+ for(const term of ['axe-core','axe DevTools','Axe MCP'])assert(config.lexique.some(x=>x.terme===term));
+ assert((await root.innerText()).includes('Bibliothèque de code'));
+ assert((await root.innerText()).includes('extension pour le navigateur'));
+ for(let n=25;n<=30;n++){
+  root=await scene(n);await root.getByRole('button',{name:'Comprendre les outils',exact:true}).click();
+  const definition=page.getByRole('dialog',{name:'Les outils, en clair',exact:true});await definition.waitFor();
+  assert((await definition.locator('.tool-definition').count())>=2);
+  assert.equal(await definition.locator('.tool-definition > a').count(),await definition.locator('.tool-definition').count());
+  const result=await new AxeBuilder({page}).include('dialog[open]').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(result.violations.map(x=>x.id),[],'définitions '+n);
+  await page.keyboard.press('Escape');assert.equal(await root.getByRole('button',{name:'Comprendre les outils',exact:true}).evaluate(e=>e===document.activeElement),true);
+ }
  // Demandes compréhensibles, copiables et sans exécution cachée.
  for(let n=25;n<=30;n++){
   root=await scene(n);await root.getByRole('button',{name:'Voir / copier la demande',exact:true}).click();const dialog=page.getByRole('dialog');await dialog.waitFor();const field=dialog.getByRole('textbox');const value=await field.inputValue();assert(value.startsWith('Audit en lecture seule.'));assert(value.includes('[URL locale]')||value.includes('[projet]'));
@@ -37,7 +51,7 @@ try{
   for(const theme of ['light','dark'])for(let n=23;n<=31;n++){
    root=await scene(n);await page.evaluate(t=>document.documentElement.setAttribute('data-deck',t),theme);await layout(root);await layout(page.locator('.slide.active'));
    const choices=root.locator('button[aria-pressed]');
-   for(let i=0;i<await choices.count();i++){await choices.nth(i).click();assert.equal(await choices.nth(i).getAttribute('aria-pressed'),'true');await root.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));await layout(root);}
+   for(let i=0;i<await choices.count();i++){await choices.nth(i).click();assert.equal(await choices.nth(i).getAttribute('aria-pressed'),'true');await root.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));await layout(root);if(n===24){const grid=await root.locator('.tool-definitions').boundingBox(),usage=await root.locator('.tool-usage').boundingBox();assert(grid.y+grid.height<=usage.y+1,'définitions sans chevauchement');}}
    const r=await new AxeBuilder({page}).include('.slide.active [data-lab]').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(r.violations.map(v=>v.id),[],'axe '+n+' '+theme+' '+width);
   }
  }
@@ -46,9 +60,17 @@ try{
  root=await scene(30);for(const label of ['Lighthouse','Performance','Network','Console']){await root.getByRole('button',{name:label,exact:true}).click();await root.getByRole('button',{name:/Agrandir/}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');}
  const lhr=await(await page.request.get(base+'/diapos/ux-ia/preuves/traverse-lighthouse.json')).json();assert.equal(lhr.categories.performance.score,.73);
  root=await scene(31);await root.getByLabel('Le bloc à examiner').selectOption('27');await root.getByRole('button',{name:'Ouvrir la fiche',exact:true}).click();await page.waitForURL('**/#27');
+ // Les nouveaux noms restent consultables dans le lexique, sans sortir de la slide.
+ await page.goto(base+'/diapos/ux-ia/#44');await page.waitForTimeout(350);
+ const lexique=page.locator('[data-comp="lexique"]');
+ assert.equal(await lexique.locator('.lex-term').count(),config.lexique.length);
+ for(const term of await lexique.locator('.lex-term').all()){
+  await term.click();await layout(lexique.locator('.lex-panel'));
+ }
+ assert(await lexique.locator('.lex-grid').evaluate(e=>e.clientHeight<=e.parentElement.clientHeight+1));
  // Conservation des rappels d'accessibilité de la partie 1, y compris les amendes révélées.
  for(const n of [14,15,17,18]){await page.goto(base+'/diapos/ux-ia/#'+n);await page.waitForTimeout(350);await page.evaluate(()=>document.querySelectorAll('.slide.active [data-step]').forEach(e=>e.classList.add('on')));await page.waitForTimeout(350);const body=page.locator('.slide.active .body');await layout(body);if(n===18){await body.getByRole('button',{name:'Tout révéler',exact:true}).click();await layout(body);}if(n===17){assert((await body.innerText()).includes('4,4 %'));assert((await body.innerText()).includes('ne s’additionnent pas'));}}
  await page.goto(base+'/ux/ux-ia/');await page.getByRole('link',{name:/Diapo 23/}).click();await page.waitForURL('**/diapos/?diapo=23');await page.locator('iframe.cadre-diapos[src$="#23"]').waitFor();
  assert.deepEqual(errors,[]);assert.deepEqual(httpErrors,[]);
- console.log('OK : 45 slides, six fiches outils, toutes les vues dans deux thèmes et deux tailles, copie réelle, dialogues, navigation, images, axe et rappels de la partie 1.');
+ console.log('OK : 45 slides, six fiches outils et leurs définitions, toutes les vues dans deux thèmes et deux tailles, copie réelle, dialogues, navigation, images, axe et rappels de la partie 1.');
 }finally{await browser.close();}
