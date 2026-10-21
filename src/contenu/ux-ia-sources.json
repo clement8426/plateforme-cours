@@ -145,7 +145,7 @@
       "terme": "MCP",
       "nom": "MCP (Model Context Protocol)",
       "def": "Un protocole commun pour relier une application d’IA à des outils et à des données, selon les connexions et les autorisations disponibles.",
-      "cle": "mcp"
+      "cle": "cles"
     },
     {
       "terme": "Autocomplétion",
@@ -166,10 +166,30 @@
       "terme": "API",
       "nom": "API (Application Programming Interface)",
       "def": "Une interface qui permet à un logiciel d’utiliser des fonctions ou des données fournies par un autre logiciel.",
-      "cle": "mcp"
+      "cle": "cles"
     }
   ],
   "references": [
+    {
+      "titre": "Cécité, malvoyance et surdicécité : calculs 2019",
+      "source": "UCBA, publication 2020",
+      "url": "https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"
+    },
+    {
+      "titre": "Personnes sourdes et malentendantes en Suisse",
+      "source": "Fédération suisse des sourds, fiche sans date",
+      "url": "https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"
+    },
+    {
+      "titre": "Alternatives des contenus audio et vidéo",
+      "source": "W3C WAI",
+      "url": "https://www.w3.org/WAI/media/av/planning/"
+    },
+    {
+      "titre": "Accessibilité dans l’administration fédérale",
+      "source": "BFEG",
+      "url": "https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"
+    },
     {
       "titre": "Cookies et suivi en ligne : cadre suisse",
       "source": "PFPDT, 2026",

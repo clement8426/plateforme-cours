@@ -16,7 +16,7 @@
     "liens": "node scripts/verifier-liens.mjs",
     "formulaire": "node scripts/integrer-formulaire.mjs",
     "comparateur": "node scripts/integrer-comparateur.mjs",
-    "verifier:atelier": "node scripts/verifier-atelier-ia.mjs"
+    "verifier:atelier": "node scripts/verifier-blocs-ia.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

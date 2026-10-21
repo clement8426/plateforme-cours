@@ -11,8 +11,8 @@ Les fichiers `traverse-lighthouse.png`, `.html` et `.json` sont les sorties rée
 
 Le LCP particulièrement élevé est bien la valeur du rapport archivé. Il ne prédit pas la durée de toutes les visites. Ces fichiers ne décrivent ni l’état actuel du site corrigé ni l’ensemble du tunnel. Consulter l’archive ne relance pas un audit.
 
-La capture et le rapport permettent d’examiner les mesures et leurs limites. Les autres cas interactifs de cette partie du cours sont explicitement pédagogiques. Les valeurs CSS de la première scène sont lues directement dans son DOM ; aucun modèle d’IA n’est connecté aux scènes.
+La capture et le rapport permettent d’examiner les mesures et leurs limites. Les autres cas interactifs de cette partie du cours sont explicitement pédagogiques. Les valeurs CSS du bloc Design system sont lues directement dans son DOM ; aucun modèle d’IA n’est connecté aux scènes.
 
-Pour remplacer cette archive : conserver ensemble une nouvelle capture, son HTML et son JSON, puis mettre à jour les chiffres, la date et les conditions dans `atelier-ia.js` et les notes du diaporama. Ne pas modifier seulement le score affiché.
+Pour remplacer cette archive : conserver ensemble une nouvelle capture, son HTML et son JSON, puis mettre à jour les chiffres, la date et les conditions dans `atelier-blocs.js` et les notes du diaporama. Ne pas modifier seulement le score affiché.
 
 Documentation : https://developer.chrome.com/docs/lighthouse/overview

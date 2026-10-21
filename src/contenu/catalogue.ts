@@ -100,9 +100,9 @@ const uxIa: Cours = {
   ],
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
-    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 21] },
-    { titre: 'L’IA à l’épreuve', resume: 'Huit scènes à manipuler : cadrer une mission, connecter les outils, examiner des preuves et un vrai rapport Lighthouse, puis décider et revérifier.', duree: '18 à 20 min avec les échanges', diapos: [22, 29] },
-    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [30, 41], demos: true },
+    { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 22] },
+    { titre: 'L’IA, bloc par bloc', resume: 'Reprendre les six blocs avec l’IA : une explication courte, une manipulation et des preuves à vérifier. Exemples de site vitrine, d’application métier et de formulaires.', duree: '18 à 20 min avec les échanges', diapos: [23, 31] },
+    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [32, 43], demos: true },
   ],
   demos: [
     {

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UX × IA, mini-formation de Clément Bastien</title>
 <!--
-  Présentation statique sans framework ; interactions de la partie 2 dans atelier-ia.css et atelier-ia.js.
+  Présentation statique sans framework ; interactions de la partie 2 dans atelier-blocs.css et atelier-blocs.js.
   Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
   F plein écran, T thème clair ou sombre, B écran noir, S chrono (Maj + S : remise à zéro), N vue présentateur (Maj + N : panneau superposé).
   Tout ce qui se règle (minutes, textes, liens, images) est dans l'objet CONFIG, au début du script.
@@ -846,7 +846,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .option.bonus { border-style: dashed; background: transparent; box-shadow: none; }
 .option.bonus .option-lettre { color: var(--muted); }
 .blocs-natures { margin-top: 28px; }
-/* Interactions de la partie 2 : atelier-ia.css et atelier-ia.js. */
+/* Interactions de la partie 2 : atelier-blocs.css et atelier-blocs.js. */
 .plugin-etapes { display: grid; gap: 22px; }
 .plugin-etapes li { display: flex; align-items: center; gap: 24px; }
 .plugin-etapes p { font-size: var(--fs-lead); line-height: 1.3; }
@@ -856,14 +856,14 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .pratique-blocs h3 { font-size:30px; margin-bottom:10px; }
 .pratique-blocs p { font-size:30px; line-height:1.3; }
 </style>
-  <link rel="stylesheet" href="./atelier-ia.css">
+  <link rel="stylesheet" href="./atelier-blocs.css">
 </head>
 <body>
 <div id="viewport">
   <main id="stage" tabindex="-1" aria-label="Présentation UX × IA">
     <h1 class="sr">UX × IA : mini-formation de Clément Bastien</h1>
     <div id="slides">
-<!-- ================= PARTIE 1 : THÉORIE (slides 1 à 21) ================= -->
+<!-- ================= PARTIE 1 : THÉORIE (slides 1 à 22) ================= -->
 
 <section class="slide s-cover" data-part="1" data-key="titre">
   <h2 class="title">UX × IA : rendre un produit pratique, puis le corriger avec l’IA</h2>
@@ -1066,7 +1066,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
           <div class="acc-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg><span>«&nbsp;IMG_2041.jpg&nbsp;»</span></div>
         </div>
         <h3>Image sans texte alternatif</h3>
-        <p>Le lecteur d’écran lit un nom de fichier.</p>
+        <p>Le lecteur d’écran peut lire un nom de fichier.</p>
         <p class="acc-fix"><i data-icon="check"></i>Décrire l’image en une phrase.</p>
       </article>
       <article class="card c4 acc-card" data-step="2">
@@ -1089,7 +1089,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <p class="acc-fix"><i data-icon="check"></i>Tout se fait au clavier, avec un focus visible.</p>
       </article>
     </div>
-    <p class="note" data-step="4">Trois exemples parmi d’autres : une évaluation complète de l’accessibilité va plus loin.</p>
+    <p class="acc-audio" data-step="4"><strong>Audio préenregistré :</strong> transcription. <strong>Vidéo avec paroles :</strong> sous-titres synchronisés. Décrire les informations visuelles essentielles non expliquées à l’oral.</p>
   </div>
 </section>
 
@@ -1117,7 +1117,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         <div class="acc-top"><span class="acc-big" id="b-ratio">2,6 : 1</span><span class="acc-badge ko" id="b-badge"></span></div>
         <div class="acc-gauge" aria-hidden="true"><i class="z1"></i><i class="z2"></i><i class="z3"></i><b id="b-pin"></b>
           <span class="t t3">3</span><span class="t t45">4,5</span><span class="t t7">7</span></div>
-        <p class="acc-rule"><strong>Texte courant&nbsp;:</strong> au moins 4,5&nbsp;:&nbsp;1.<br><span>Gros texte (24&nbsp;px)&nbsp;: au moins 3&nbsp;:&nbsp;1.</span></p>
+        <p class="acc-rule"><strong>WCAG AA — texte courant&nbsp;:</strong> au moins 4,5&nbsp;:&nbsp;1.<br><span>Grand texte : au moins 3&nbsp;:&nbsp;1 (dès 24&nbsp;px, ou environ 18,7&nbsp;px en gras).</span></p>
         <p id="b-live" class="sr" aria-live="polite"></p>
       </div>
     </div>
@@ -1159,7 +1159,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     </div>
     <ol class="c5 acc-defects">
       <li class="card acc-defect" data-step="1"><b class="n">1</b>
-        <div><h3>Image sans texte alternatif</h3><p>Le lecteur d’écran lit «&nbsp;IMG_2041.jpg&nbsp;».</p><p class="acc-fix"><i data-icon="check"></i>Décrire l’image.</p></div></li>
+        <div><h3>Image sans texte alternatif</h3><p>Le lecteur d’écran peut lire «&nbsp;IMG_2041.jpg&nbsp;».</p><p class="acc-fix"><i data-icon="check"></i>Décrire l’image.</p></div></li>
       <li class="card acc-defect" data-step="2"><b class="n">2</b>
         <div><h3>Contraste trop faible</h3><p>Prix gris clair sur blanc : 2,8 : 1.</p><p class="acc-fix"><i data-icon="check"></i>Au moins 4,5 : 1.</p></div></li>
       <li class="card acc-defect" data-step="3"><b class="n">3</b>
@@ -1169,15 +1169,26 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<section class="slide" data-part="1" data-key="loi">
-  <h2 class="title">Bloc 3, accessibilité : une obligation légale, des sanctions variables</h2>
-  <div class="body stack-m">
+<section class="slide" data-part="1" data-key="publics-accessibilite">
+  <h2 class="title">Accessibilité : des besoins bien présents en Suisse</h2>
+  <div class="body stack-m acc-publics">
     <ul class="stats">
-      <li class="card stat" data-step="1"><p class="stat-big">≈ 1 personne sur 5</p><p>en Suisse vit avec un handicap</p></li>
-      <li class="card stat" data-step="2"><p class="stat-big">28 juin 2025</p><p>l’European Accessibility Act s’applique à certains produits et services, dont le e-commerce</p></li>
-      <li class="card stat" data-step="3"><p class="stat-big">Projet de révision</p><p>LHand : des aménagements raisonnables pour les prestations au public</p></li>
+      <li class="card stat" data-step="1"><p class="stat-big">≈ 4,4 %</p><h3>Déficience visuelle</h3><p>Malvoyance, cécité ou surdicécité.</p><p class="note">Estimation UCBA pour 2019 : environ 377 000 personnes. Publication 2020.</p></li>
+      <li class="card stat" data-step="2"><p class="stat-big">≈ 1 million</p><h3>Personnes malentendantes</h3><p>En Suisse, selon la Fédération suisse des sourds.</p><p class="note">Estimation de sa fiche d’information, sans année de référence précisée.</p></li>
+      <li class="card stat" data-step="3"><p class="stat-big">D’autres besoins</p><h3>Motricité et compréhension</h3><p>Tremblements, paralysie, main immobilisée, difficultés d’attention ou de lecture.</p><p class="note">Prévoir plusieurs façons de percevoir, comprendre et utiliser le produit.</p></li>
     </ul>
-    <div class="fines" data-comp="fines" data-step="4"></div>
+    <p class="note" data-step="4">Sources et définitions différentes : ces chiffres ne s’additionnent pas et ne mesurent pas le taux d’échec de navigation.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="loi">
+  <h2 class="title">Accessibilité : distinguer les règles suisses et européennes</h2>
+  <div class="body stack-m">
+    <ul class="acc-legal-cards">
+      <li class="card stat" data-step="1"><p class="stat-big">En Suisse</p><p>Des obligations selon le statut et le secteur. Administration fédérale : eCH-0059 v3, WCAG 2.1 AA.</p><p class="note">Prestations privées : interdiction de discrimination ; révision LHand en cours.</p></li>
+      <li class="card stat" data-step="2"><p class="stat-big">Si vous travaillez avec l’UE</p><p>Depuis le 28 juin 2025, l’EAA concerne certains produits et services, dont le e-commerce.</p><p class="note">Vérifier le périmètre, les exemptions et les règles du pays concerné.</p></li>
+    </ul>
+    <div class="fines" data-comp="fines" data-step="3"></div>
   </div>
 </section>
 
@@ -1248,49 +1259,54 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : L’IA À L’ÉPREUVE (slides 22 à 29) ================= -->
+<!-- ================= PARTIE 2 : L’IA, BLOC PAR BLOC (slides 23 à 31) ================= -->
 
 <section class="slide" data-part="2" data-key="agent">
-  <h2 class="title">Beau site. Bon audit ?</h2>
-  <div class="body" data-lab="verdict"></div>
+  <h2 class="title">L’IA peut vous aider sur chacun des six blocs</h2>
+  <div class="body" data-lab="intro"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="cles">
-  <h2 class="title">« Audite mon site. » Qu’est-ce qui manque ?</h2>
-  <div class="body" data-lab="mission"></div>
-</section>
-
-<section class="slide" data-part="2" data-key="mcp">
-  <h2 class="title">Un agent, ça s’équipe</h2>
-  <div class="body" data-lab="tools"></div>
+  <h2 class="title">Donner un contexte, un objectif et des outils</h2>
+  <div class="body" data-lab="context"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-design-system">
-  <h2 class="title">Six blocs, six types de preuves</h2>
-  <div class="body" data-lab="evidence"></div>
-</section>
-
-<section class="slide" data-part="2" data-key="ia-performance">
-  <h2 class="title">73 en performance : vous en concluez quoi ?</h2>
-  <div class="body" data-lab="lighthouse"></div>
-</section>
-
-<section class="slide" data-part="2" data-key="methode-ia">
-  <h2 class="title">L’IA l’affirme. Est-ce un fait ?</h2>
-  <div class="body" data-lab="sorting"></div>
+  <h2 class="title">Bloc 1 · L’IA compare la cohérence de l’interface</h2>
+  <div class="body" data-lab="design"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-friction">
-  <h2 class="title">Vous corrigez quoi en premier ?</h2>
-  <div class="body" data-lab="priority"></div>
+  <h2 class="title">Bloc 2 · L’IA explore un parcours et ses obstacles</h2>
+  <div class="body" data-lab="journey"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-accessibilite">
+  <h2 class="title">Bloc 3 · L’IA aide à contrôler l’accessibilité</h2>
+  <div class="body" data-lab="a11y"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-comportement">
+  <h2 class="title">Bloc 4 · L’IA analyse les données d’usage</h2>
+  <div class="body" data-lab="behavior"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-microcopie">
+  <h2 class="title">Bloc 5 · L’IA propose des textes plus utiles</h2>
+  <div class="body" data-lab="copy"></div>
+</section>
+
+<section class="slide" data-part="2" data-key="ia-performance">
+  <h2 class="title">Bloc 6 · L’IA s’appuie sur des mesures de performance</h2>
+  <div class="body" data-lab="lighthouse"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-attention">
-  <h2 class="title">Auditer, corriger… et revérifier</h2>
+  <h2 class="title">Après les six blocs : auditer, corriger, revérifier</h2>
   <div class="body" data-lab="workflow"></div>
 </section>
 
-<!-- ================= PARTIE 3 : PRATIQUE (slides 30 à 41) ================= -->
+<!-- ================= PARTIE 3 : PRATIQUE (slides 32 à 43) ================= -->
 
 <section class="slide" data-part="3" data-key="choix">
   <h2 class="title">Labo UX Démo : un joli site qui gêne</h2>
@@ -1560,7 +1576,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= ANNEXES : lexique, références (slides 42 à 43) ================= -->
+<!-- ================= ANNEXES : lexique, références (slides 44 à 45) ================= -->
 
 
 <section class="slide" data-part="4" data-key="lexique">
@@ -1600,19 +1616,19 @@ const CONFIG = {
   policesUrl: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap', // feuille Google Fonts du thème ; les familles sont dans les variables CSS --font-title et --font-body
 
   minutes: [
-    0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 2.5, 2, 1.5, 3, 2, // slides 1 à 21 : théorie (14 à 16 : accessibilité)
-    2, 2.5, 2, 2.5, 3, 2, 2, 2, // slides 22 à 29 : l’IA à l’épreuve
-    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 30 à 41 : Traverse, puis formulaire en bonus
-    0, 0 // slides 42 à 43 : annexes, hors budget
+    0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 1.5, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (14 à 16 : accessibilité)
+    1.5, 2, 2, 2.5, 2, 2, 2, 3, 2, // slides 23 à 31 : l’IA, bloc par bloc
+    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 32 à 43 : Traverse, puis formulaire en bonus
+    0, 0 // slides 44 à 45 : annexes, hors budget
   ],
   parties: [
-    { nom: 'Théorie', de: 1, a: 21 },
-    { nom: 'L’IA à l’épreuve', de: 22, a: 29 },
-    { nom: 'Pratique', de: 30, a: 41 },
-    { nom: 'Annexes', de: 42, a: 43, hors: true } // hors du cours : lexique et références
+    { nom: 'Théorie', de: 1, a: 22 },
+    { nom: 'L’IA, bloc par bloc', de: 23, a: 31 },
+    { nom: 'Pratique', de: 32, a: 43 },
+    { nom: 'Annexes', de: 44, a: 45, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [38, 39, 40], // formulaire en bonus, après l’audit de Traverse
+  bonus: [40, 41, 42], // formulaire en bonus, après l’audit de Traverse
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -1627,7 +1643,7 @@ const CONFIG = {
     INSTALLATION_URL: '/diapos/ux-ia/exercice-traverse.md', // installation et mission par l’agent
     FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
     EXERCICES_URL: '/ux/ux-ia/demos/labo-ux-demo/', // page de l’exercice avec les consignes
-    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 39)
+    AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 41)
   },
   // Captures de la pratique dans public/apercus/.
   images: {},
@@ -1654,7 +1670,7 @@ const CONFIG = {
     ]
   },
 
-  // Exercice B, formulaire d'adresse (slide 39) : plusieurs défauts expliqués avec la grille du cours
+  // Exercice B, formulaire d'adresse (slide 41) : plusieurs défauts expliqués avec la grille du cours
   formulaire: [
     { bloc: 'Design system', defaut: 'Quatre hauteurs et quatre arrondis de champs différents.' },
     { bloc: 'Friction', defaut: 'Le NPA avant la rue, et le remplissage automatique du navigateur bloqué.' },
@@ -1836,7 +1852,7 @@ const CONFIG = {
       "terme": "MCP",
       "nom": "MCP (Model Context Protocol)",
       "def": "Un protocole commun pour relier une application d’IA à des outils et à des données, selon les connexions et les autorisations disponibles.",
-      "cle": "mcp"
+      "cle": "cles"
     },
     {
       "terme": "Autocomplétion",
@@ -1857,12 +1873,16 @@ const CONFIG = {
       "terme": "API",
       "nom": "API (Application Programming Interface)",
       "def": "Une interface qui permet à un logiciel d’utiliser des fonctions ou des données fournies par un autre logiciel.",
-      "cle": "mcp"
+      "cle": "cles"
     }
   ],
 
   // Références (dernière slide), neuf par page. Ajoute les tiennes ici : { titre, source, url }.
   references: [
+    {"titre":"Cécité, malvoyance et surdicécité : calculs 2019","source":"UCBA, publication 2020","url":"https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"},
+    {"titre":"Personnes sourdes et malentendantes en Suisse","source":"Fédération suisse des sourds, fiche sans date","url":"https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"},
+    {"titre":"Alternatives des contenus audio et vidéo","source":"W3C WAI","url":"https://www.w3.org/WAI/media/av/planning/"},
+    {"titre":"Accessibilité dans l’administration fédérale","source":"BFEG","url":"https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"},
     {"titre":"Cookies et suivi en ligne : cadre suisse","source":"PFPDT, 2026","url":"https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques"},
     {
       "titre": "Cache HTTP : éviter les téléchargements inutiles",
@@ -2099,6 +2119,9 @@ const CONFIG = {
 
   // Vue présentateur : trois mots-clés par slide
   sources: {
+    "publics-accessibilite": [{"t":"UCBA : calculs 2019","u":"https://www.ucba.ch/fileadmin/pdfs/Forschung/Forschung_FR/Forschungsberichte/UCBA_-_Cecite_etc_-_Evolutions_en_Suisse_-_Calculs_2019._docx.pdf"},{"t":"FSS : estimation","u":"https://www.sgb-fss.ch/content/uploads/2024/01/sgb_factsheet_fr.pdf"}],
+    "ia-accessibilite": [{"t":"W3C : évaluer","u":"https://www.w3.org/WAI/test-evaluate/"},{"t":"Audio / vidéo","u":"https://www.w3.org/WAI/media/av/planning/"}],
+    "ia-microcopie": [{"t":"Messages de formulaire","u":"https://www.w3.org/WAI/tutorials/forms/notifications/"}],
     "hotjar": [{ "t": "PFPDT : cookies en Suisse", "u": "https://www.edoeb.admin.ch/fr/cookies-conseils-pratiques" }],
     "abandon": [
       {
@@ -2125,6 +2148,7 @@ const CONFIG = {
       }
     ],
     "accessibilite": [
+      {"t":"Audio / vidéo","u":"https://www.w3.org/WAI/media/av/planning/"},
       {
         "t": "WCAG 1.1.1",
         "u": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
@@ -2159,6 +2183,7 @@ const CONFIG = {
       }
     ],
     "loi": [
+      {"t":"Administration fédérale","u":"https://www.ebg.admin.ch/fr/accessibilite-dans-ladministration-federale"},
       {
         "t": "BFEH",
         "u": "https://www.ebgb.admin.ch/fr/politique-du-handicap-2023-2026"
@@ -2196,7 +2221,7 @@ const CONFIG = {
         "u": "https://redis.io/docs/latest/develop/use-cases/cache-aside/"
       }
     ],
-    "mcp": [
+    "cles": [
       {
         "t": "API",
         "u": "https://developer.mozilla.org/en-US/docs/Glossary/API"
@@ -2236,12 +2261,6 @@ const CONFIG = {
         "u": "https://developers.openai.com/api/docs/guides/agents"
       }
     ],
-    "methode-ia": [
-      {
-        "t": "Évaluer et vérifier",
-        "u": "https://www.w3.org/WAI/test-evaluate/"
-      }
-    ],
     "ia-design-system": [
       {
         "t": "Styles calculés",
@@ -2253,16 +2272,20 @@ const CONFIG = {
 
   // Vue présentateur : ce qui se dit à l'oral, quand la slide en affiche une version courte
   notes: {
-    "performance-reelle": "Un cache réutilise un fichier ou un résultat déjà obtenu. Le cache HTTP du navigateur et un cache serveur Redis sont deux mécanismes différents. Redis peut éviter de répéter certains accès à la base, mais sa présence ne garantit pas une amélioration : mesurer et prévoir expiration ou invalidation. Réduire les appels inutiles et les dépendances bloquantes, sans objectif arbitraire de nombre minimal de requêtes. Vérification du kit actuel : Labo UX conserve le rapport Lighthouse de la page d’entrée et en extrait cinq métriques de laboratoire. Il n’a pas de contrôle dédié des requêtes SQL, de Redis ni de la validité du cache serveur. La boîte à outils ux-outils extrait aussi cinq métriques ; elle ne remplace pas un diagnostic serveur. Ne pas présenter ces vérifications comme déjà livrées.",
-    "agent": "Faire voter avant de demander les preuves. Les boutons du mini-site sont réellement mesurés par getComputedStyle ; les textes de verdict sont des exemples pédagogiques sans IA connectée. Une différence de style ne prouve pas son effet sur les ventes.",
-    "mcp": "Brancher puis débrancher les quatre outils dans le schéma. Aucun outil réel n’est lancé depuis cette scène. Une conversation peut disposer de fonctions d’agent. MCP normalise découverte et appel des outils ; les API peuvent être utilisées derrière. L’accès au projet et les autorisations restent nécessaires.",
-    "methode-ia": "Faire voter à main levée puis choisir une catégorie. Constat = différence CSS mesurable ; hypothèse = effet supposé sur les clients ; préférence = goût exprimé. Les réponses ne sont pas comptées comme un sondage collectif.",
-    "cles": "Faire proposer une cible, un appareil et un résultat. La mission ne configure pas les outils à elle seule. Préciser ensuite les pages, comptes fictifs, intentions graphiques et ton. Les choix ne sont ni enregistrés ni envoyés.",
-    "ia-design-system": "Explorer les six pièces avec le groupe. Les comportements et la microcopie sont des scénarios fictifs. Les valeurs des boutons viennent de la première scène ; les résultats Lighthouse de l’archive datée. Aucun taux fictif ne prouve un gain de conversion. Labo UX compare les familles de composants et signale les variations comme hypothèses à confirmer.",
-    "ia-friction": "Les trois défauts sont fictifs et confirmés par le scénario. Le blocage de réservation empêche ici le résultat attendu. Une performance qui empêche d’atteindre le formulaire peut également devenir critique : ce n’est pas un classement universel. Discuter des personnes touchées et de la fréquence.",
-    "ia-attention": "Machine à états pédagogique, sans installation ni modification de fichier. En lecture seule le bouton Corriger est désactivé. Le débogage passe par un audit puis des corrections, puis une revérification. Deux problèmes sont simulés comme résolus, un reste à vérifier. Ne pas confondre cette simulation avec un résultat réel du plugin. La vraie manipulation arrive en partie 3.",
-    "ia-performance": "Archive réelle du 21 octobre 2026, Lighthouse 13.5.0, page d’entrée Traverse locale sur le port 4192, mobile simulé 412×823, CPU ×4 et limitation réseau simulée. Performance 73, accessibilité 76, bonnes pratiques 96, SEO 91. FCP 1064.047 ms, LCP 86029.094 ms, TBT 170 ms, CLS 0. Le LCP inhabituellement élevé est le résultat archivé, pas une durée garantie pour chaque visite. Ce n’est ni le site corrigé actuel ni un audit de tout le tunnel. La capture, le JSON et le HTML sont conservés dans preuves/. Consulter le rapport ne lance aucun contrôle. Un score d’accessibilité n’est pas un pourcentage de conformité ; évaluation humaine nécessaire.",
-  }
+    "performance-reelle": "Le cache HTTP et un cache serveur comme Redis sont différents. Mesurer avant et après ; prévoir l’invalidation. Labo UX et Lighthouse ne constituent pas un diagnostic SQL ni une vérification de validité du cache serveur.",
+    "accessibilite": "Rappel textuel uniquement : audio seul préenregistré = transcription ; vidéo avec paroles ou sons utiles = sous-titres synchronisés. Les informations visuelles essentielles absentes de la bande-son demandent une description adaptée. Les sous-titres automatiques sont à relire. alt vide pour une image décorative, alternative pertinente pour une image informative. Un lecteur d’écran peut annoncer un nom de fichier en l’absence d’alternative, mais ce comportement dépend du contexte.",
+    "publics-accessibilite": "4,4 % : calculs UCBA pour 2019, publication 2020, p. 23 ; 377 000 personnes dont 57 000 avec surdicécité. Ce n’est pas le pourcentage de personnes bloquées sur le Web. Audition : fiche FSS non datée, environ un million de personnes malentendantes ; attribution et absence de millésime visibles. Pas de somme entre populations ni de projection à 2026. Les données OFS sur les limitations sévères utilisent une autre définition.",
+    "loi": "Distinguer exigences du référentiel et obligations juridiques. En Suisse, eCH-0059 v3 : WCAG 2.1 AA pour l’administration fédérale. Le privé est visé par l’interdiction de discrimination et peut avoir des obligations spécifiques selon son secteur, ses contrats et ses marchés. La révision de la LHand n’est pas une règle déjà entrée en vigueur. EAA : certains produits/services destinés aux consommateurs de l’UE, avec exemptions et conditions ; les sanctions présentées concernent leurs régimes nationaux.",
+    "agent": "Introduction courte : conversation et agent sont des modes qui peuvent coexister. Les outils et autorisations déterminent ce que l’agent peut exécuter. Les six blocs constituent le fil conducteur ; la conversation fournit des pistes, les outils des observations à interpréter.",
+    "cles": "Trois contextes : site vitrine associatif, outil de congés, e-commerce. Faire préciser public, objectif observable, environnement et limites. Une consigne ne configure pas un outil. MCP présente les outils ; le serveur peut utiliser des API ou des outils locaux.",
+    "ia-design-system": "Mini-application de gestion, trois écrans et boutons Enregistrer de même rôle. Comparer lit réellement getComputedStyle ; Harmoniser agit seulement sur les éléments de la démo, puis les mesure à nouveau. Les différences doivent être confrontées à l’intention graphique. Aucun projet de l’apprenant n’est modifié.",
+    "ia-friction": "Parcours pédagogique d’inscription à une association. Saisir un prénom, continuer puis revenir : la saisie disparaît. Activer Conserver la saisie permet de comparer. Le journal énumère les étapes exécutées, pas des événements réels de production. Tester les blocages n’équivaut pas à représenter les utilisateurs.",
+    "ia-accessibilite": "Le contrôle button-name est réellement présent dans le rapport Lighthouse archivé. Les onglets Clavier et Audio/vidéo expliquent des vérifications à compléter, sans prétendre les avoir exécutées ni certifier la conformité. Les sources W3C sont conservées.",
+    "ia-comportement": "Cohorte pédagogique de newsletter, même période : 100 ouvertures, 60 validations, 30 confirmations. Dénominateurs explicites : 60/100, 30/100 et 30/60. Les données sont fictives ; aucune cause n’est démontrée. Aucune collecte ni connexion à Hotjar n’a lieu.",
+    "ia-microcopie": "Formulaire de contact associatif. Tester une adresse invalide, voir une reformulation, comparer deux tons. La validation utilise le champ email de cette démo ; le texte proposé décrit cette contrainte. Aucun e-mail ni aucune donnée ne sont envoyés.",
+    "ia-performance": "Rapport réel archivé de Traverse du 21 octobre 2026, Lighthouse 13.5.0, page d’entrée locale, mobile simulé 412×823, CPU ×4. Performance 73, accessibilité 76 ; FCP 1,1 s, LCP 86,0 s, TBT 170 ms, CLS 0. Le LCP élevé est la valeur du rapport, pas une durée garantie de visite. L’archive ne décrit pas le site corrigé actuel ni tout le tunnel. Mesurer à nouveau dans des conditions comparables. Les captures et JSON sont dans preuves/.",
+    "ia-attention": "Simulation locale : Audit en lecture seule ; débogage sur copie autorisée après audit, puis revérification. Deux constats sont simulés comme résolus, un point reste à évaluer manuellement. Aucune commande n’est exécutée et aucun fichier modifié depuis cette scène."
+}
 };
 
 /* ---------- QR code : encodeur minimal (mode octet, correction M, versions 1 à 10) ---------- */
@@ -3263,7 +3286,7 @@ const IMAGES_INTEGREES = {};
 })();
 </script>
 
-<script src="./atelier-ia.js"></script>
+<script src="./atelier-blocs.js"></script>
 
 <script id="pont-plateforme">
 /* Ajouté par la plateforme (scripts/integrer-diapos.mjs). Aucune donnée n'est envoyée : messages internes à la page. */
