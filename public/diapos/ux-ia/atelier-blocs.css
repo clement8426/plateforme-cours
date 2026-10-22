@@ -40,8 +40,6 @@
 [data-lab="context"] > .tool-content {padding:30px 36px;border:2px solid var(--line);border-radius:28px;background:var(--surface);}
 [data-lab="context"] .tool-steps {gap:26px;}
 .uxlab label {font-size:28px;font-weight:600;}
-[data-lab="workflow"] .uxlab-panel {flex:1;}
-[data-lab="workflow"] .tool-steps {margin-top:10px;gap:18px;}
 .uxlab-dialog {width:min(1400px,94vw);max-height:94vh;padding:24px;border:2px solid var(--edge);border-radius:22px;background:var(--surface);color:var(--text);}
 .uxlab-dialog::backdrop {background:rgb(10 10 28 / .8);}
 .uxlab-dialog h3 {font:700 24px var(--font-title);margin-bottom:16px;}

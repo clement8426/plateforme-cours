@@ -101,8 +101,8 @@ const uxIa: Cours = {
   diapos: { href: '/diapos/ux-ia/', apercu: '/apercus/ux-ia-diapos.jpg' },
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 22] },
-    { titre: 'L’IA, bloc par bloc', resume: 'Reprendre les six blocs avec l’IA : des outils concrets, des demandes à adapter et des preuves à vérifier. Exemples de site vitrine, d’application métier et de formulaires.', duree: '18 à 20 min avec les échanges', diapos: [23, 31] },
-    { titre: 'Pratique', resume: 'Escale : observer cinq blocs sur une boutique fictive, découvrir les preuves avec les outils, puis retrouver les prompts pour les agents. Le comportement reste théorique ; le formulaire d’adresse reste en bonus.', duree: 'Environ 25 minutes, hors bonus', diapos: [32, 45], demos: true },
+    { titre: 'L’IA, bloc par bloc', resume: 'Reprendre les six blocs avec l’IA : des outils concrets, des demandes à adapter et des preuves à vérifier. Exemples de site vitrine, d’application métier et de formulaires.', duree: '16 à 18 min avec les échanges', diapos: [23, 30] },
+    { titre: 'Pratique', resume: 'Escale : observer cinq blocs sur une boutique fictive, découvrir les preuves avec les outils, puis retrouver les prompts pour les agents. Le comportement reste théorique ; le formulaire d’adresse reste en bonus.', duree: 'Environ 25 minutes, hors bonus', diapos: [31, 44], demos: true },
   ],
   demos: [
     {

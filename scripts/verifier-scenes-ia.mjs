@@ -22,7 +22,7 @@ try{
    const scan=await new AxeBuilder({page}).include('.slide.active [data-lab]').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(scan.violations.map(v=>v.id),[]);
   }
  }
- const r=await open(32);assert.match(await r.innerText(),/public/);assert.equal(await r.getByRole('link',{name:'Escale sur GitHub',exact:true}).getAttribute('href'),'https://github.com/clement8426/escale-eleves');
- await open(34);await page.locator('.slide.active').getByRole('button',{name:'Avec un agent',exact:true}).click();const value=await page.getByRole('dialog').locator('textarea').inputValue();assert.match(value,/travail\/bloc-1/);assert.match(value,/Attends ma demande avant de corriger/);
+ const r=await open(31);assert.match(await r.innerText(),/public/);assert.equal(await r.getByRole('link',{name:'Escale sur GitHub',exact:true}).getAttribute('href'),'https://github.com/clement8426/escale-eleves');
+ await open(33);await page.locator('.slide.active').getByRole('button',{name:'Avec un agent',exact:true}).click();const value=await page.getByRole('dialog').locator('textarea').inputValue();assert.match(value,/travail\/bloc-1/);assert.match(value,/Attends ma demande avant de corriger/);
  console.log('OK : six titres explicites, demandes IA, actions des outils, preuves réelles, contraste au survol et atelier public.');
 }finally{await browser.close();}

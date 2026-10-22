@@ -8,13 +8,13 @@ const {chromium}=require('playwright'),{AxeBuilder}=require('@axe-core/playwrigh
 const base=process.env.SITE_URL||'http://localhost:4187';
 const html=readFileSync('public/diapos/ux-ia/index.html','utf8');
 const config=vm.runInNewContext('('+html.match(/const CONFIG = ([\s\S]*?)\r?\n};/)[1]+'\n})');
-assert.equal(config.minutes.length,47);assert.deepEqual(Array.from(config.bonus),[42,43,44]);
+assert.equal(config.minutes.length,46);assert.deepEqual(Array.from(config.bonus),[41,42,43]);
 const dataContext={window:{}};vm.runInNewContext(readFileSync('public/diapos/ux-ia/pratique-escale-data.js','utf8'),dataContext);const data=dataContext.window.ESCALE_PRATIQUE;
 const b=await chromium.launch(),errors=[],badResponses=[];
 try{
  for(const [width,height] of [[1280,720],[1920,1080]])for(const theme of ['light','dark']){
   const ctx=await b.newContext({viewport:{width,height},permissions:['clipboard-read','clipboard-write']});const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)badResponses.push(r.status()+' '+r.url())});
-  for(let n=32;n<=45;n++){
+  for(let n=31;n<=44;n++){
    await p.goto(`${base}/diapos/ux-ia/#${n}`);await p.evaluate(t=>{document.documentElement.dataset.deck=t;return document.fonts.ready},theme);await p.waitForTimeout(350);const slide=p.locator('.slide.active');
    const key=await slide.getAttribute('data-key');assert.equal(await slide.getAttribute('data-part'),'3');assert.equal(await slide.locator('[data-kind="qr"]').count(),0);
    const practice=slide.locator('[data-practice]');
@@ -38,5 +38,5 @@ try{
  await p.goto(base+'/ux/ux-ia/');assert.equal(await p.locator('a[href="/ux/ux-ia/demos/escale/"]').count(),1);
  const paths=new Set(data.cases.flatMap(c=>c.theory?[]:[c.before,c.after,c.proofBefore,c.proofAfter,...(c.reports||[]).map(r=>r[1])]));
  for(const path of paths){const r=await p.request.get(`${base}/diapos/ux-ia/preuves/escale/${path}`);assert.equal(r.status(),200,path)}
- assert.deepEqual(errors,[]);assert.deepEqual(badResponses,[]);console.log('OK : 47 slides, tous les états de la pratique dans deux thèmes et deux tailles, zoom, gestes, prompts, copie réelle, axe des dialogues, bonus et conclusion sans QR, redirections et preuves HTTP 200.');await ctx.close();
+ assert.deepEqual(errors,[]);assert.deepEqual(badResponses,[]);console.log('OK : 46 slides, tous les états de la pratique dans deux thèmes et deux tailles, zoom, gestes, prompts, copie réelle, axe des dialogues, bonus et conclusion sans QR, redirections et preuves HTTP 200.');await ctx.close();
 }finally{await b.close()}
