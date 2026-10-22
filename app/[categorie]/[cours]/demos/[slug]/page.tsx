@@ -61,12 +61,12 @@ export default async function PageDemo(props: Props) {
         </div>
       </header>
 
-      <section className={`mode-emploi${comparateur ? ' mode-emploi-comparateur' : ''}`} aria-labelledby="titre-mode-emploi">
+      {demo.scene !== 'escale' && <section className={`mode-emploi${comparateur ? ' mode-emploi-comparateur' : ''}`} aria-labelledby="titre-mode-emploi">
         <h2 id="titre-mode-emploi">{comparateur ? 'Comparez en trois essais' : 'Comment ça marche'}</h2>
         <ol>
           {(comparateur?.etapes ?? demo.modeEmploi).map((e, i) => <li key={e}>{comparateur ? <div><h3>{['Avant : repérez les obstacles', 'Après : essayez les améliorations', 'Comprenez ce qui a changé'][i]}</h3><p>{e}</p></div> : e}</li>)}
         </ol>
-      </section>
+      </section>}
 
       <div className="scene">
         {demo.scene === 'affiche' && <AfficheTest cours={cle} />}
@@ -85,7 +85,7 @@ export default async function PageDemo(props: Props) {
             {demo.aRetenir.map((r) => <li key={r}>{r}</li>)}
           </ul>
         </section>
-        {cours.depot && (
+        {cours.depot && demo.scene !== 'escale' && (
           <section className="encart" aria-labelledby="titre-exercice">
             <h2 id="titre-exercice">Refaire l’exercice chez vous</h2>
             <p>Les consignes, le matériel et les prompts sont dans le dossier <code>{demo.exercice}/</code>{demo.exerciceUrl ? ' du dépôt des démonstrations UX. Ce dépôt est privé : demandez l’accès au formateur si nécessaire.' : ' du dépôt du cours.'}</p>

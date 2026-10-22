@@ -607,3 +607,27 @@ button.reid-fragment:hover { background: #FFE38A; }
 .escale-exercice p { margin:14px 0; line-height:1.65; }
 .escale-exercice ol { padding-left:24px; display:grid; gap:16px; }
 @media(max-width:800px) { .escale-presentation { grid-template-columns:1fr; gap:24px; } }
+
+/* Démarrage élève Escale : explications courtes, aplats, aucune bordure décorative. */
+.escale-exercice .bouton,.escale-exercice .bouton-secondaire{border:0}
+.escale-repere{display:block;font-size:13px;color:var(--discret);margin-bottom:16px}
+.escale-petit{font-size:13px;color:var(--discret)}
+.escale-presentation img{max-height:550px;object-fit:cover;object-position:top;background:var(--surface)}
+.escale-demarrage>li{padding:24px;border-radius:var(--rayon);background:var(--surface);list-style-position:inside}
+.escale-demarrage{padding-left:0!important}
+.escale-demarrage strong{font-size:20px}
+.escale-consigne{padding:22px;border-radius:var(--rayon);background:var(--bleu-doux);margin-top:16px}
+.escale-consigne>p:first-child{margin-top:0}
+.escale-parcours{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.escale-parcours>span{display:flex;align-items:center;gap:10px;background:var(--surface);padding:12px 16px;border-radius:999px}
+.escale-parcours b{color:var(--bleu)}
+.escale-missions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.escale-missions details{background:var(--surface);border:0;border-radius:var(--rayon);padding:22px}
+.escale-missions summary{display:flex;align-items:center;gap:15px;cursor:pointer;min-height:64px}
+.escale-missions summary>span:last-child{display:grid;gap:5px}
+.escale-missions small{font-size:14px;color:var(--discret)}
+.escale-numero{display:grid;place-items:center;background:var(--surface-2);width:40px;height:40px;border-radius:50%;flex:none;font-weight:700}
+.escale-missions details p{padding-left:55px}
+.escale-reassurance{padding:30px;background:var(--vert-doux);border-radius:var(--rayon)}
+.escale-reassurance summary{cursor:pointer;font-weight:600;margin-top:20px}
+@media(max-width:700px){.escale-missions{grid-template-columns:1fr}.escale-demarrage>li{padding:20px}.escale-reassurance{padding:22px}}
