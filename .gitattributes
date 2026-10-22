@@ -1,0 +1,2 @@
+lancer.sh text eol=lf
+*.mjs text eol=lf

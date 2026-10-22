@@ -1,0 +1,50 @@
+name: Lancement local Mac Windows Linux
+on:
+  push:
+    paths:
+      - lancer.sh
+      - scripts/lancer.mjs
+      - scripts/servir.mjs
+      - scripts/verifier-lancement.mjs
+      - package.json
+      - package-lock.json
+      - .github/workflows/lancement-local.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lancement:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-14, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      PORT: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Vérifier le script Bash
+        shell: bash
+        run: bash -n lancer.sh && bash lancer.sh --aide
+      - name: Préparer le cours avec le lanceur et vérifier HTTP
+        shell: bash
+        run: |
+          node scripts/lancer.mjs --preparer --sans-ouvrir > lancement-ci.log 2>&1 &
+          cours_pid=$!
+          trap 'kill "$cours_pid" 2>/dev/null || true' EXIT
+          for i in {1..240}; do
+            if grep -q 'Plateforme servie sur' lancement-ci.log; then
+              node scripts/verifier-lancement.mjs
+              exit $?
+            fi
+            if ! kill -0 "$cours_pid" 2>/dev/null; then cat lancement-ci.log; exit 1; fi
+            sleep 2
+          done
+          cat lancement-ci.log
+          exit 1

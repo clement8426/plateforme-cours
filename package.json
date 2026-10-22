@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build && node scripts/apres-construction.mjs",
     "start": "node scripts/servir.mjs",
+    "lancer": "node scripts/lancer.mjs",
     "tilleul": "node scripts/integrer-tilleul.mjs",
     "icones": "node scripts/generer-icones.mjs",
     "apercus": "node scripts/generer-apercus.mjs",

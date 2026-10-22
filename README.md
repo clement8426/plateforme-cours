@@ -20,6 +20,34 @@ Les données pédagogiques sont dans `pratique-escale-data.js`, les interactions
 
 ## Lancer en local
 
+### Présenter sur Mac, même sans Internet
+
+Installez **Node.js 22 ou plus récent** avant la formation, puis clonez et préparez le cours pendant que vous avez Internet :
+
+```bash
+git clone https://github.com/clement8426/plateforme-cours.git
+cd plateforme-cours
+chmod +x lancer.sh
+./lancer.sh --preparer
+```
+
+Le script installe les dépendances, construit toutes les pages puis ouvre le navigateur. Gardez ce terminal ouvert. L’adresse affichée commence par `http://localhost:4187` ; si le port est occupé, le suivant est choisi automatiquement. **Ctrl+C** arrête le serveur.
+
+Le jour du cours, même sans connexion :
+
+```bash
+cd /chemin/vers/plateforme-cours
+./lancer.sh --hors-ligne
+```
+
+Ou simplement `bash lancer.sh` : si le dossier `out/` est prêt, le démarrage ne fait aucune installation ni reconstruction. Conservez le dossier du projet avec `out/` sur le Mac : un clone seul ne contient pas encore la copie construite. Après une mise à jour : `git pull`, puis `./lancer.sh --preparer` avec Internet.
+
+Les pages du cours, diapos, captures, PDF et démonstrations embarquées sont locales. Les liens GitHub, les sites externes (dont Escale en ligne), les outils IA et la recherche réelle Photon demandent Internet. Pour le formulaire d’adresse, désactivez « Rechercher avec Photon » pour utiliser les exemples locaux. Pour présenter la boutique Escale sans Internet, préparez et lancez aussi le dépôt professeur avant la formation.
+
+Linux : mêmes commandes. Windows : `node scripts/lancer.mjs --preparer`, puis `node scripts/lancer.mjs --hors-ligne`. `--sans-ouvrir` désactive l’ouverture du navigateur ; `--aide` affiche les options.
+
+### Développer
+
 ```bash
 npm install
 npm run dev
