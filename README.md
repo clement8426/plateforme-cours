@@ -31,7 +31,7 @@ chmod +x lancer.sh
 ./lancer.sh --preparer
 ```
 
-Le script installe les dépendances, construit toutes les pages puis ouvre le navigateur. Gardez ce terminal ouvert. L’adresse affichée commence par `http://localhost:4187` ; si le port est occupé, le suivant est choisi automatiquement. **Ctrl+C** arrête le serveur.
+Le script installe les dépendances, construit toutes les pages puis ouvre le navigateur. Gardez ce terminal ouvert. L’adresse affichée commence par `http://127.0.0.1:4187` ; si le port est occupé, le suivant est choisi automatiquement. **Ctrl+C** arrête le serveur.
 
 Le jour du cours, même sans connexion :
 

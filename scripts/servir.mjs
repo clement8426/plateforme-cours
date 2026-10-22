@@ -40,7 +40,8 @@ export async function demarrerServeur({port=3000,autoPort=false,ouvrir=false}={}
    });
    serveur.once('listening',ok);ecouter();
  });
- const url=`http://localhost:${serveur.address().port}`;
+ // Même adresse que listen() : ne dépend pas de la résolution IPv6 de localhost sur Mac.
+ const url=`http://127.0.0.1:${serveur.address().port}`;
  console.log(`\nPlateforme servie sur ${url}`);
  console.log(`Diapos UX × IA : ${url}/ux/ux-ia/diapos/`);
  console.log('Laissez ce terminal ouvert. Pour arrêter : Ctrl+C.');

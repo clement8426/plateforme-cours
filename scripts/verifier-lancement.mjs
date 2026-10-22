@@ -17,7 +17,7 @@ try {
  const url=await new Promise((ok,ko)=>{
   const timeout=setTimeout(()=>ko(Error('Démarrage trop long : '+sortie+erreurs)),15000);
   enfant.on('exit',code=>{clearTimeout(timeout);ko(Error(`Arrêt ${code} : ${sortie}${erreurs}`));});
-  enfant.stdout.on('data',x=>{sortie+=x;const match=sortie.match(/Plateforme servie sur (http:\/\/localhost:\d+)/);if(match){clearTimeout(timeout);ok(match[1]);}});
+  enfant.stdout.on('data',x=>{sortie+=x;const match=sortie.match(/Plateforme servie sur (http:\/\/127\.0\.0\.1:\d+)/);if(match){clearTimeout(timeout);ok(match[1]);}});
  });
  assert.notEqual(new URL(url).port,String(port));assert.match(sortie,/occupé/);
  for(const path of ['/','/ux/ux-ia/diapos/','/diapos/ux-ia/index.html','/diapos/ux-ia/escale-memo-mobile.pdf','/comparateur/formulaire-adresse/casse/script.js']){
