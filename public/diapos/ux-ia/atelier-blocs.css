@@ -64,6 +64,8 @@
 [data-lab="context"] .tool-example {display:none;}
 .tool-how > .uxlab-actions {gap:12px;}
 .tool-how > .uxlab-actions button {font-size:24px;padding:14px 16px;}
+.tool-how > .uxlab-actions button:hover,.tool-how > .uxlab-actions button:focus-visible {background:var(--text);color:var(--surface);}
+.uxlab-dialog button:hover {background:var(--text);color:var(--surface);}
 .tool-definition-dialog .tool-definitions {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
 .tool-definition-dialog .tool-definition {gap:14px;padding:20px;}
 .tool-definition-dialog .tool-definition h4 {font-size:26px;}
@@ -121,6 +123,9 @@
 .tool-stage{flex-shrink:0;gap:12px;padding:18px}
 .a11y-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .a11y-choices button{font-size:24px}
+.journey-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:18px}
+.journey-fields label{display:block;font-size:23px;margin-bottom:8px}
+.journey-fields input{min-width:0;padding:12px 16px;font-size:26px}
 .slide[data-key="accessibilite"] .acc-cards {grid-template-rows:repeat(2,minmax(0,1fr));gap:22px;}
 .slide[data-key="accessibilite"] .acc-card {display:grid;grid-template-columns:minmax(0,1fr)160px;grid-template-rows:auto auto auto 1fr;gap:12px 20px;padding:24px;min-height:0;}
 .slide[data-key="accessibilite"] .acc-card > :not(.acc-mini) {grid-column:1;}
