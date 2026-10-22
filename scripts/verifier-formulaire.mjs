@@ -14,8 +14,14 @@ try{
  await page.goto(base+'/ux/ux-ia/demos/formulaire-adresse/');
  const before=page.frameLocator('.vitrine-depart iframe'),after=page.frameLocator('.vitrine-repare iframe');
  await before.locator('input').first().fill('Alex');assert.equal(requests,0);
- assert.equal(await page.getByRole('heading',{name:'6 corrections du formulaire',exact:true}).count(),1);
- assert.equal(await page.locator('.comparateur-groupe').first().locator('.defauts > li').count(),6);
+ await before.locator('input[name="rue"]').fill('Rue Exemple 12');
+ await before.getByRole('button',{name:'Soumettre'}).click();
+ assert.equal(await before.locator('input[name="prenom"]').inputValue(),'');
+ assert.equal(await before.locator('input[name="rue"]').inputValue(),'');
+ assert(await before.locator('#erreur').isVisible());
+ await before.locator('input[name="prenom"]').fill('Alex');
+ assert.equal(await page.getByRole('heading',{name:'7 corrections du formulaire',exact:true}).count(),1);
+ assert.equal(await page.locator('.comparateur-groupe').first().locator('.defauts > li').count(),7);
  assert.equal(await page.locator('.comparateur-groupe').last().locator('.defauts > li').count(),1);
  await page.getByRole('radio',{name:'Après',exact:true}).check();const toggle=page.getByLabel('Rechercher avec Photon',{exact:true});assert(await toggle.isChecked());
  const top=await page.locator('.photon-option').boundingBox(),form=await page.locator('.vitrine-repare').boundingBox();const modes=await page.locator('.bascule').boundingBox();assert(top.x>=modes.x+modes.width,'Photon à droite des versions');assert(Math.abs(top.y-modes.y)<6,'Photon sur la même ligne');assert(top.y+top.height<form.y,'réglage avant le formulaire');
@@ -51,6 +57,9 @@ try{
 
  await after.locator('#email').fill('x');await after.locator('#telephone').focus();assert.equal(await after.locator('#email').getAttribute('aria-invalid'),'true');
  for(const [id,value]of Object.entries({prenom:'Alex',nom:'Exemple',rue:'Rue du Seyon 10',npa:'2000',localite:'Neuchâtel',telephone:'079 123 45 67'}))await after.locator('#'+id).fill(value);
+ await after.locator('#envoyer').click();
+ assert.equal(await after.locator('#prenom').inputValue(),'Alex');
+ assert.equal(await after.locator('#rue').inputValue(),'Rue du Seyon 10');
  assert.equal(await after.locator('#resume-titre').innerText(),'Vérifiez 1 champ');
  await after.locator('#email').fill('alex@example.ch');assert(await after.locator('#resume').isHidden());
  await after.locator('#envoyer').click();assert.equal(await after.locator('#envoyer').getAttribute('aria-busy'),'true');await after.locator('#merci').waitFor();
@@ -63,5 +72,5 @@ try{
  }
  await page.goto(base+'/ux/ux-ia/demos/formulaire-adresse/?version=repare');await page.locator('.vitrine-repare').waitFor();assert(await page.getByLabel('Rechercher avec Photon',{exact:true}).isChecked());
  assert.deepEqual(errors,[]);
- console.log('OK : six corrections et un ajout, Photon actif, commande visible, cache séparé, repli local, réponse tardive, clavier, conservation, surlignage, résumé dynamique, liens clavier, validation et axe sur six configurations.');
+ console.log('OK : sept corrections et un ajout, perte des saisies avant, Photon actif, commande visible, cache séparé, repli local, réponse tardive, clavier, conservation après, surlignage, résumé dynamique, liens clavier, validation et axe sur six configurations.');
 }finally{await browser.close();}

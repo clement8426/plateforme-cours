@@ -31,14 +31,14 @@ export type Comparateur = {
 const formulaireAdresse: Comparateur = {
   slug: 'formulaire-adresse',
   titre: 'Le formulaire d’adresse, avant et après',
-  accroche: 'Six corrections du formulaire, plus une aide à la saisie : les suggestions d’adresse.',
+  accroche: 'Sept corrections du formulaire, plus une aide à la saisie : les suggestions d’adresse.',
   versions: {
     depart: '/comparateur/formulaire-adresse/casse/',
     repare: '/comparateur/formulaire-adresse/corrige/',
   },
   titreFormulaire: 'Atelier Rayon, adresse de livraison',
   etapes: [
-    'Envoyez le formulaire vide, puis saisissez un e-mail incomplet. Repérez ce qui vous empêche de comprendre et de corriger les erreurs.',
+    'Remplissez le prénom et la rue, laissez le nom vide puis envoyez : les valeurs disparaissent-elles ? Comparez ensuite les messages d’erreur.',
     'Refaites ces essais dans « Après ». Puis cherchez « Rue du Seyon 10 » et choisissez une suggestion : le NPA et la localité se complètent.',
     'Ouvrez une correction dans « Ce qui change », puis utilisez « Montrer dans le formulaire » pour voir les éléments concernés. « Les deux » permet de comparer sans perdre votre saisie.',
   ],
@@ -66,6 +66,17 @@ const formulaireAdresse: Comparateur = {
       outil: 'Dans le code : remplissage automatique désactivé sur 8 champs. Le comportement dépend du navigateur.',
       lien: { texte: 'WCAG 2.2, identifier la finalité d’un champ', url: 'https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html' },
       cibles: { depart: ['input[name="npa"]', 'input[name="localite"]', 'input[name="rue"]'], repare: ['#rue', '#npa', '#localite'] },
+    },
+    {
+      id: 'conservation',
+      bloc: 'friction',
+      titre: 'Une erreur efface toute la saisie',
+      depart: 'Un champ obligatoire vide suffit à effacer tous les champs, même ceux déjà remplis.',
+      repare: 'Les valeurs restent présentes pour ne corriger que les champs en erreur.',
+      pourquoi: 'Une erreur ne devrait pas obliger à recommencer toute la saisie.',
+      essayer: 'Saisissez un prénom et une rue, laissez le nom vide puis envoyez. Comparez les valeurs avant et après.',
+      outil: 'Test fonctionnel : après un envoi invalide, vérifier que le prénom et la rue sont conservés.',
+      cibles: { depart: ['input[name="prenom"]', 'input[name="rue"]', 'button[type="submit"]'], repare: ['#prenom', '#rue', '#envoyer'] },
     },
     {
       id: 'autocompletion',

@@ -130,13 +130,13 @@ const uxIa: Cours = {
     {
       slug: 'formulaire-adresse',
       titre: 'Le formulaire d’adresse, avant et après',
-      resume: 'Comparez deux versions du même formulaire : six corrections pour mieux saisir et corriger ses informations, plus des suggestions pour compléter l’adresse.',
+      resume: 'Comparez deux versions du même formulaire : sept corrections pour mieux saisir et corriger ses informations, plus des suggestions pour compléter l’adresse.',
       blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
       duree: '14 minutes',
       apercu: '/apercus/demo-formulaire.jpg',
       scene: 'comparateur',
       modeEmploi: [
-        'Envoyez le formulaire vide, puis saisissez un e-mail incomplet. Repérez ce qui vous empêche de comprendre et de corriger les erreurs.',
+        'Remplissez le prénom et la rue, laissez le nom vide puis envoyez : les valeurs disparaissent-elles ? Comparez ensuite les messages d’erreur.',
         'Refaites ces essais dans « Après ». Puis cherchez « Rue du Seyon 10 » et choisissez une suggestion : le NPA et la localité se complètent.',
         'Ouvrez une correction dans « Ce qui change », puis utilisez « Montrer dans le formulaire » pour voir les éléments concernés. « Les deux » permet de comparer sans perdre votre saisie.',
       ],

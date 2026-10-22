@@ -12,6 +12,8 @@ form.addEventListener('submit', async (e) => {
     manquants.forEach(c => c.classList.add('rouge'));
     erreur.textContent = 'Erreur champ ' + (champs.indexOf(manquants[0]) + 1);
     erreur.hidden = false;
+    // Défaut volontaire : une erreur fait perdre toute la saisie, même les champs valides.
+    form.reset();
     return;
   }
   erreur.hidden = true;

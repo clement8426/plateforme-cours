@@ -17,6 +17,11 @@ try{
   for(let n=31;n<=44;n++){
    await p.goto(`${base}/diapos/ux-ia/#${n}`);await p.evaluate(t=>{document.documentElement.dataset.deck=t;return document.fonts.ready},theme);await p.waitForTimeout(350);const slide=p.locator('.slide.active');
    const key=await slide.getAttribute('data-key');assert.equal(await slide.getAttribute('data-part'),'3');assert.equal(await slide.locator('[data-kind="qr"]').count(),0);
+   if(key==='escale-mission'){
+    assert.equal(n,32);
+    assert.equal(await slide.getByRole('link',{name:'Visiter le site à auditer'}).getAttribute('href'),'https://clement8426.github.io/escale-demo/');
+    assert.equal(await slide.getByRole('link',{name:'Retrouver le projet'}).getAttribute('href'),'/ux/ux-ia/demos/escale/');
+   }
    const practice=slide.locator('[data-practice]');
    if(await practice.count()){
     const overflow=await practice.evaluate(r=>{const box=r.getBoundingClientRect();return [...r.querySelectorAll('*')].filter(e=>{const rect=e.getBoundingClientRect(),s=getComputedStyle(e);return s.visibility!=='hidden'&&s.display!=='none'&&rect.width&&rect.height&&(rect.bottom>box.bottom+3||rect.right>box.right+3||rect.left<box.left-3)}).map(e=>e.className||e.tagName)});assert.deepEqual(overflow,[],`${key} ${width} ${theme} débordement`);
