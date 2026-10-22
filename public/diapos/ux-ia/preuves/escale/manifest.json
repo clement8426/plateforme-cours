@@ -1,22 +1,16 @@
 {
   "proofs": [
     {
-      "id": "styles-avant",
-      "title": "DevTools · styles calculés du bouton avant",
-      "file": "/preuves/styles-avant.png",
-      "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
-      "tool": "Chromium 156.0.8078.4",
-      "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=avant",
-      "date": "2026-10-22"
-    },
-    {
       "id": "boutique",
       "title": "Escale · collection de démonstration",
       "file": "/preuves/boutique.png",
       "kind": "Capture du site",
       "tool": "Chromium",
       "browser": "156.0.8078.4",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "formulaire-avant",
@@ -25,7 +19,10 @@
       "kind": "Capture du site",
       "tool": "Playwright",
       "browser": "156.0.8078.4",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "skeleton-avant",
@@ -34,16 +31,240 @@
       "kind": "Capture du site",
       "tool": "Playwright",
       "browser": "156.0.8078.4",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
+      "id": "clavier-avant",
+      "title": "Modale avant · position du focus après Tab",
+      "file": "/preuves/clavier-avant.png",
+      "kind": "Capture du site · à compléter par le parcours clavier",
+      "tool": "Playwright",
+      "browser": "156.0.8078.4",
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "id": "microcopie-avant",
+      "title": "Confirmation avant · libellés en contexte",
+      "file": "/preuves/microcopie-avant.png",
+      "kind": "Capture du site",
+      "tool": "Chromium",
+      "browser": "156.0.8078.4",
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "id": "formulaire-apres",
+      "title": "Formulaire apres · saisies conservées",
+      "file": "/preuves/formulaire-apres.png",
+      "kind": "Capture du site",
+      "tool": "Playwright",
+      "browser": "156.0.8078.4",
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "id": "skeleton-apres",
+      "title": "Chargement apres · skeleton visible",
+      "file": "/preuves/skeleton-apres.png",
+      "kind": "Capture du site",
+      "tool": "Playwright",
+      "browser": "156.0.8078.4",
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "id": "clavier-apres",
+      "title": "Modale apres · position du focus après Tab",
+      "file": "/preuves/clavier-apres.png",
+      "kind": "Capture du site · à compléter par le parcours clavier",
+      "tool": "Playwright",
+      "browser": "156.0.8078.4",
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "id": "microcopie-apres",
+      "title": "Confirmation apres · libellés en contexte",
+      "file": "/preuves/microcopie-apres.png",
+      "kind": "Capture du site",
+      "tool": "Chromium",
+      "browser": "156.0.8078.4",
+      "date": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "styles-avant",
+      "title": "DevTools · styles calculés du bouton avant",
+      "file": "/preuves/styles-avant.png",
+      "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
+      "tool": "Chromium 156.0.8078.4",
+      "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=avant",
+      "date": "2026-10-22",
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "deviceScaleFactor": 2,
       "id": "styles-apres",
       "title": "DevTools · styles calculés du bouton apres",
       "file": "/preuves/styles-apres.png",
       "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
       "tool": "Chromium 156.0.8078.4",
       "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=apres",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "network-avant",
+      "title": "DevTools Network · image PNG lourde sans cache",
+      "file": "/preuves/network-avant.png",
+      "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
+      "tool": "Chromium 156.0.8078.4",
+      "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=avant",
+      "date": "2026-10-22",
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "network-apres",
+      "title": "DevTools Network · image WebP optimisée avec cache",
+      "file": "/preuves/network-apres.png",
+      "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
+      "tool": "Chromium 156.0.8078.4",
+      "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=apres",
+      "date": "2026-10-22",
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-carte-avant",
+      "file": "/preuves/scene-carte-avant.png",
+      "title": "Carte produit avant",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 828,
+      "pixelHeight": 1074
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-formulaire-avant",
+      "file": "/preuves/scene-formulaire-avant.png",
+      "title": "Formulaire après erreur · avant",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1190,
+      "pixelHeight": 1830
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-accessibilite-avant",
+      "file": "/preuves/scene-accessibilite-avant.png",
+      "title": "Prix et bouton favori · avant",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1122,
+      "pixelHeight": 1290
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-attente-avant",
+      "file": "/preuves/scene-attente-avant.png",
+      "title": "Retour pendant le chargement · avant",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1122,
+      "pixelHeight": 1290
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-microcopie-avant",
+      "file": "/preuves/scene-microcopie-avant.png",
+      "title": "Texte de confirmation · avant",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1120,
+      "pixelHeight": 640
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-carte-apres",
+      "file": "/preuves/scene-carte-apres.png",
+      "title": "Carte produit apres",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 828,
+      "pixelHeight": 1034
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-formulaire-apres",
+      "file": "/preuves/scene-formulaire-apres.png",
+      "title": "Formulaire après erreur · apres",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1190,
+      "pixelHeight": 1830
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-accessibilite-apres",
+      "file": "/preuves/scene-accessibilite-apres.png",
+      "title": "Prix et bouton favori · apres",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1122,
+      "pixelHeight": 1290
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-attente-apres",
+      "file": "/preuves/scene-attente-apres.png",
+      "title": "Retour pendant le chargement · apres",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1122,
+      "pixelHeight": 1290
+    },
+    {
+      "deviceScaleFactor": 2,
+      "id": "scene-microcopie-apres",
+      "file": "/preuves/scene-microcopie-apres.png",
+      "title": "Texte de confirmation · apres",
+      "kind": "Capture rapprochée du site, sans retouche",
+      "tool": "Playwright / Chromium 156.0.8078.4",
+      "date": "2026-10-22",
+      "pixelWidth": 1120,
+      "pixelHeight": 552
     },
     {
       "id": "axe-avant",
@@ -56,52 +277,11 @@
         "button-name",
         "color-contrast"
       ],
-      "date": "2026-10-22"
-    },
-    {
-      "id": "clavier-avant",
-      "title": "Modale avant · position du focus après Tab",
-      "file": "/preuves/clavier-avant.png",
-      "kind": "Capture du site · à compléter par le parcours clavier",
-      "tool": "Playwright",
-      "browser": "156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "microcopie-avant",
-      "title": "Confirmation avant · libellés en contexte",
-      "file": "/preuves/microcopie-avant.png",
-      "kind": "Capture du site",
-      "tool": "Chromium",
-      "browser": "156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "formulaire-apres",
-      "title": "Formulaire apres · saisies conservées",
-      "file": "/preuves/formulaire-apres.png",
-      "kind": "Capture du site",
-      "tool": "Playwright",
-      "browser": "156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "skeleton-apres",
-      "title": "Chargement apres · skeleton visible",
-      "file": "/preuves/skeleton-apres.png",
-      "kind": "Capture du site",
-      "tool": "Playwright",
-      "browser": "156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "network-avant",
-      "title": "DevTools Network · image PNG lourde sans cache",
-      "file": "/preuves/network-avant.png",
-      "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
-      "tool": "Chromium 156.0.8078.4",
-      "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=avant",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "screenshotDate": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "axe-apres",
@@ -111,34 +291,11 @@
       "tool": "axe-core 4.14.0",
       "browser": "156.0.8078.4",
       "violations": [],
-      "date": "2026-10-22"
-    },
-    {
-      "id": "clavier-apres",
-      "title": "Modale apres · position du focus après Tab",
-      "file": "/preuves/clavier-apres.png",
-      "kind": "Capture du site · à compléter par le parcours clavier",
-      "tool": "Playwright",
-      "browser": "156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "microcopie-apres",
-      "title": "Confirmation apres · libellés en contexte",
-      "file": "/preuves/microcopie-apres.png",
-      "kind": "Capture du site",
-      "tool": "Chromium",
-      "browser": "156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "network-apres",
-      "title": "DevTools Network · image WebP optimisée avec cache",
-      "file": "/preuves/network-apres.png",
-      "kind": "Capture du véritable front-end Chrome DevTools (Chromium)",
-      "tool": "Chromium 156.0.8078.4",
-      "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=apres",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "screenshotDate": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "playwright-avant",
@@ -146,7 +303,11 @@
       "file": "/preuves/playwright-avant.png",
       "kind": "Capture de l’interface du rapport Playwright",
       "tool": "Playwright HTML Reporter",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "screenshotDate": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "playwright-apres",
@@ -154,7 +315,11 @@
       "file": "/preuves/playwright-apres.png",
       "kind": "Capture de l’interface du rapport Playwright",
       "tool": "Playwright HTML Reporter",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "screenshotDate": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "lighthouse-avant",
@@ -226,7 +391,11 @@
         ],
         "skipAudits": null
       },
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "screenshotDate": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     },
     {
       "id": "lighthouse-apres",
@@ -298,87 +467,11 @@
         ],
         "skipAudits": null
       },
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-carte-avant",
-      "file": "/preuves/scene-carte-avant.png",
-      "title": "Carte produit avant",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-formulaire-avant",
-      "file": "/preuves/scene-formulaire-avant.png",
-      "title": "Formulaire après erreur · avant",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-accessibilite-avant",
-      "file": "/preuves/scene-accessibilite-avant.png",
-      "title": "Prix et bouton favori · avant",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-attente-avant",
-      "file": "/preuves/scene-attente-avant.png",
-      "title": "Retour pendant le chargement · avant",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-microcopie-avant",
-      "file": "/preuves/scene-microcopie-avant.png",
-      "title": "Texte de confirmation · avant",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-carte-apres",
-      "file": "/preuves/scene-carte-apres.png",
-      "title": "Carte produit apres",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-formulaire-apres",
-      "file": "/preuves/scene-formulaire-apres.png",
-      "title": "Formulaire après erreur · apres",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-accessibilite-apres",
-      "file": "/preuves/scene-accessibilite-apres.png",
-      "title": "Prix et bouton favori · apres",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-attente-apres",
-      "file": "/preuves/scene-attente-apres.png",
-      "title": "Retour pendant le chargement · apres",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
-    },
-    {
-      "id": "scene-microcopie-apres",
-      "file": "/preuves/scene-microcopie-apres.png",
-      "title": "Texte de confirmation · apres",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22"
+      "date": "2026-10-22",
+      "screenshotDate": "2026-10-22",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2880,
+      "pixelHeight": 2000
     }
   ]
 }

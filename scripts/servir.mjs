@@ -10,6 +10,7 @@ const port = Number(process.env.PORT ?? 3000);
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.txt': 'text/plain',
+  '.pdf': 'application/pdf',
 };
 
 if (!existsSync(racine)) {
