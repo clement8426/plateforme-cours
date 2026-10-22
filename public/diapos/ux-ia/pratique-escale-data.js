@@ -1,6 +1,6 @@
 window.ESCALE_PRATIQUE = {
-  "repo": "https://github.com/clement8426/labo-ux-demos/tree/main/exercices/escale",
-  "globalPrompt": "Tu vas auditer puis corriger ma copie locale de la boutique Escale, accessible à {URL}.\nReprends les six blocs du cours UX × IA : 1 cohérence, 2 friction, 3 accessibilité, 4 comportement, 5 microcopie, 6 performances.\nLe bloc 4 est théorique : aucune donnée de visiteurs n’existe. Ne crée aucun taux d’abandon ni capture d’analytics.\nTravaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nPour chaque bloc pratique : indique l’outil disponible (Chrome DevTools MCP, Playwright MCP ou scripts Playwright, axe-core, Lighthouse CLI), rejoue le parcours concerné, enregistre les constats avant, corrige puis rejoue exactement les mêmes contrôles. Si un outil manque, annonce la limite et utilise un équivalent disponible sans inventer de rapport.\nTous les comptes et paiements sont fictifs. Identifiants de test : camille@example.test / Escale2026! ou alex@example.test / Escale2026!.\nTermine par les cinq blocs pratiques, chacun avec problème, conséquence, preuve, correction et nouvelle vérification. Sépare les faits mesurés, les observations manuelles et les avis. Fais un parcours complet de commande fictive après correction et signale ce qui reste non vérifié.",
+  "repo": "https://github.com/clement8426/escale-eleves",
+  "globalPrompt": "Lis DEMARRER.md. Prépare l’atelier Escale sur mon ordinateur, démarre le parcours et donne-moi son lien. Accompagne-moi comme une personne débutante. Ne corrige rien pour le moment et ne fais pas toutes les missions à ma place.",
   "cases": [
     {
       "key": "escale-coherence",
@@ -24,23 +24,21 @@ window.ESCALE_PRATIQUE = {
       "human": [
         {
           "tool": "Chrome DevTools · Éléments",
-          "source": "https://developer.chrome.com/docs/devtools/css/reference",
+          "source": "https://developer.chrome.com/docs/devtools/css/reference/",
           "steps": [
-            "Ouvrez la collection. Gardez les corrections 1 et 2 désactivées. Descendez jusqu’aux trois premières cartes.",
-            "Appuyez sur F12. Cliquez sur la flèche de sélection en haut à gauche de DevTools, puis sur « Ajouter au panier » dans la première carte.",
-            "Dans le volet de droite, ouvrez Calculé / Computed. Cherchez padding, border-radius et background-color. Notez les valeurs.",
-            "Ouvrez Le Week-end, attendez son chargement, puis inspectez le même bouton. Comparez les valeurs ; faites de même dans le panier avec l’ajout d’étiquette.",
-            "Sur le catalogue, sélectionnez la zone de texte de chaque carte : le modèle de boîte montre 12, 24 puis 36 px de padding sur ordinateur.",
-            "Activez 1 puis 2 dans DÉMO UX. Réinspectez les mêmes éléments : les rôles comparables partagent maintenant les mêmes valeurs."
+            "Ouvrez la boutique en grand. Faites un clic droit sur « Ajouter au panier », puis Inspecter.",
+            "Dans DevTools, ouvrez Calculé / Computed. Cherchez padding (espace intérieur), border-radius (arrondi) et background-color (couleur).",
+            "Comparez le catalogue, Le Week-end et le panier. Inspectez aussi les zones de texte des trois premières cartes : leurs espaces intérieurs diffèrent.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Le navigateur montre une différence de styles, pas un verdict UX automatique. Le problème vient ici de fonctions et de contextes volontairement équivalents."
+          "expected": "Vous devriez relever des valeurs différentes pour des boutons de même rôle et des cartes comparables. Une variation graphique n’est pas toujours une erreur : expliquez ce qui gêne ici."
         }
       ],
       "agents": [
         {
-          "tool": "Chrome DevTools MCP",
-          "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 1 uniquement. Compare les trois boutons [data-role=\"ajout-panier\"] du catalogue, de la fiche Le Week-end et de la recommandation du panier. Relève leurs styles calculés et les paddings des trois premières zones .card-copy. Harmonise les composants de même rôle sans changer les autres défauts. Vérifie les valeurs calculées après correction et prends des captures aux mêmes dimensions."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 1 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-1/. Comparer les styles calculés des boutons de même rôle sur le catalogue, Le Week-end et le panier, ainsi que les espaces intérieurs des trois premières cartes. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 1 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 1, modifie réellement cette copie puis exécute node atelier.mjs verifier 1. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [
@@ -81,24 +79,22 @@ window.ESCALE_PRATIQUE = {
       ],
       "human": [
         {
-          "tool": "Navigateur · puis Playwright",
-          "source": "https://playwright.dev/docs/test-ui-mode",
+          "tool": "Le navigateur, puis Playwright",
+          "source": "https://playwright.dev/docs/trace-viewer",
           "steps": [
-            "Ajoutez Le Week-end au panier et passez à la commande. Si vous ouvrez la page directement, cliquez sur « Charger le panier de démonstration ». Désactivez la correction 3.",
-            "Saisissez Camille Démo, camille@example.test, Rue de la Démo 12, Neuchâtel et 079 123 45 67. Dans le code postal, écrivez 20 au lieu de 2000.",
-            "Cliquez sur « Confirmer la commande fictive ». Constatez que les champs se vident : une erreur a fait perdre les autres saisies.",
-            "Activez la correction 3. Remplissez les mêmes valeurs et recommencez avec le même code postal invalide : l’erreur apparaît, mais vos données restent.",
-            "Pour montrer Playwright : ouvrez LANCER-PLAYWRIGHT.cmd dans le dossier de la démo. Dans l’interface, lancez le test « conservation des saisies ». Le contrôle avant est volontairement rouge ; le contrôle après est vert.",
-            "Vous pouvez aussi ouvrir les rapports HTML déjà préparés ci-dessous et cliquer sur l’étape de soumission pour voir la trace."
+            "Dans la boutique en grand, remplissez les six champs avec les coordonnées fictives. Mettez 20 comme NPA.",
+            "Confirmez la commande fictive. Regardez si le nom, l’e-mail et l’adresse sont toujours présents.",
+            "Votre attente : seul le NPA est à corriger ; les autres informations ne devraient pas disparaître.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Le test vérifie une attente précise : le nom saisi existe encore après une soumission invalide. Il ne mesure pas à lui seul toute la facilité du parcours."
+          "expected": "Dans la version de départ, les six champs se vident. Le contrôle va rejouer exactement cette erreur et vérifier les six valeurs."
         }
       ],
       "agents": [
         {
-          "tool": "Playwright MCP / test Playwright",
-          "url": "https://github.com/microsoft/playwright-mcp",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 2 uniquement. Ajoute Le Week-end au panier, passe à la commande, remplis tous les champs avec des données fictives puis saisis le code postal invalide « 20 ». Soumets et vérifie quelles valeurs ont disparu. Corrige la perte de saisies dans le gestionnaire de formulaire. Ajoute ou adapte un test Playwright qui exige leur conservation. Exécute le même scénario avant/après, puis termine une commande fictive avec 2000."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 2 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-2/. Vérifier la conservation des six coordonnées après une erreur de NPA : 20 au lieu de 2000. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 2 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 2, modifie réellement cette copie puis exécute node atelier.mjs verifier 2. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [
@@ -141,22 +137,22 @@ window.ESCALE_PRATIQUE = {
       ],
       "human": [
         {
-          "tool": "axe-core · rapport réel généré avec Playwright",
+          "tool": "axe-core et un essai au clavier",
           "source": "https://playwright.dev/docs/accessibility-testing",
           "steps": [
-            "Ouvrez Le Week-end et attendez que son titre apparaisse. Désactivez la correction 4. Le bouton cœur est visible, mais ne possède pas de nom accessible ; le prix est trop clair.",
-            "Ouvrez le rapport axe-core « avant » ci-dessous. Dépliez le problème button-name et retrouvez l’élément concerné. Il s’agit du moteur axe exécuté avec Playwright, pas d’une capture de l’extension axe DevTools.",
-            "Pour refaire ce contrôle dans l’extension : installez axe DevTools depuis le site officiel Deque, ouvrez F12 → axe DevTools, puis lancez une analyse de page. Les libellés exacts peuvent varier selon la version.",
-            "Activez les corrections 4 et 9, puis relancez le scan. Vérifiez que le problème du bouton a disparu ; ne concluez pas que tout le site est accessible."
+            "Ouvrez Le Week-end en grand. Examinez le cœur et le prix. Un scan axe-core peut signaler le nom absent du bouton et un contraste insuffisant.",
+            "Ouvrez la confirmation depuis le lien de l’étape J’essaie. Atteignez « Annuler cette commande » au clavier et activez-le avec Entrée.",
+            "Dans la fenêtre, essayez Tab, Maj+Tab et Échap : le focus devrait rester dedans, puis revenir au bouton après fermeture.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Le nom accessible de ce bouton est un défaut automatisable. Le rapport indique sa version, son URL et ses violations."
+          "expected": "Le scan et le clavier sont complémentaires. Aucun résultat automatique ne prouve la conformité complète du site."
         }
       ],
       "agents": [
         {
-          "tool": "axe-core + Playwright",
-          "url": "https://playwright.dev/docs/accessibility-testing",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 3 : nom accessible. Ouvre /produits/sac-weekend, attends le chargement, exécute axe-core avec Playwright et sauvegarde son JSON. Inspecte le bouton cœur. Corrige son nom accessible selon l’action et son état favori. Vérifie aussi le contraste du prix de taille courante, relève les couleurs et corrige-le en visant au moins 4,5:1. Relance le même scan. Distingue violations corrigées, résultats restants et limites automatiques."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 3 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-3/. Examiner le nom accessible du cœur et le contraste, puis le focus, Tab, Maj+Tab et Échap dans la fenêtre d’annulation. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 3 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 3, modifie réellement cette copie puis exécute node atelier.mjs verifier 3. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [
@@ -193,22 +189,22 @@ window.ESCALE_PRATIQUE = {
       "agentOnly": 1,
       "human": [
         {
-          "tool": "Clavier · Tab, Maj+Tab et Échap",
-          "source": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+          "tool": "axe-core et un essai au clavier",
+          "source": "https://playwright.dev/docs/accessibility-testing",
           "steps": [
-            "Ouvrez la confirmation et désactivez la correction 5. Activez la correction 6 pour que le texte soit clair et que seul le clavier soit testé.",
-            "Avec Tab, atteignez « Annuler cette commande », puis appuyez sur Entrée. Continuez avec Tab : les actions de la modale ne sont pas atteignables ; Échap ne ferme pas.",
-            "Pour sortir de cet état pendant la démo, cliquez à la souris sur « Garder ma commande ». Le blocage est volontaire.",
-            "Activez la correction 5 et recommencez au clavier. Le focus entre dans la modale, Tab et Maj+Tab restent dans ses actions, Échap ferme puis le focus revient au déclencheur."
+            "Ouvrez Le Week-end en grand. Examinez le cœur et le prix. Un scan axe-core peut signaler le nom absent du bouton et un contraste insuffisant.",
+            "Ouvrez la confirmation depuis le lien de l’étape J’essaie. Atteignez « Annuler cette commande » au clavier et activez-le avec Entrée.",
+            "Dans la fenêtre, essayez Tab, Maj+Tab et Échap : le focus devrait rester dedans, puis revenir au bouton après fermeture.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Ce contrôle porte sur l’interaction, pas seulement sur le résultat du scan. Une capture seule ne prouve pas la navigation : rejouez-la ou utilisez la trace."
+          "expected": "Le scan et le clavier sont complémentaires. Aucun résultat automatique ne prouve la conformité complète du site."
         }
       ],
       "agents": [
         {
-          "tool": "Playwright MCP · clavier",
-          "url": "https://github.com/microsoft/playwright-mcp",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 3 : modale. Sur /confirmation, atteins « Annuler cette commande » uniquement au clavier et ouvre la modale. Vérifie le focus initial, Tab, Maj+Tab, Échap et le retour au déclencheur. Corrige la gestion du focus et l’inertie de l’arrière-plan. Crée un test de ces cinq comportements. Ne considère pas le scan axe comme une preuve de fonctionnement du clavier."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 3 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-3/. Examiner le nom accessible du cœur et le contraste, puis le focus, Tab, Maj+Tab et Échap dans la fenêtre d’annulation. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 3 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 3, modifie réellement cette copie puis exécute node atelier.mjs verifier 3. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [
@@ -274,22 +270,22 @@ window.ESCALE_PRATIQUE = {
       "caption": "Même modale, clavier corrigé dans les deux captures pour isoler le texte.",
       "human": [
         {
-          "tool": "Lecture en contexte · vote de la salle",
-          "source": "https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html",
+          "tool": "Lecture en contexte et Playwright",
+          "source": "https://playwright.dev/docs/intro",
           "steps": [
-            "Ouvrez la confirmation. Activez la correction 5 pour que le fonctionnement de la modale ne gêne pas l’exemple de texte. Désactivez la correction 6.",
-            "Cliquez sur « Annuler cette commande » et lisez la question à voix haute. Demandez quel bouton garderait la commande ; laissez chacun interpréter Oui / Non.",
-            "Activez la correction 6 sans fermer la modale. Comparez la nouvelle question et les boutons « Garder ma commande » / « Annuler la commande ».",
-            "Demandez si l’action est maintenant compréhensible avant de cliquer. Le vote est une interaction pédagogique, pas une étude représentative."
+            "Dans la confirmation, ouvrez « Annuler cette commande ». Lisez la question et les réponses Oui / Non.",
+            "Décidez quel bouton devrait garder la commande. Cliquez, puis regardez ce qui s’est réellement passé.",
+            "Proposez deux libellés qui annoncent les actions : garder ou annuler. Le sens doit être vérifié avec des personnes.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Il n’existe pas ici de score automatique de bonne microcopie. La compréhension doit se vérifier dans le contexte et auprès des personnes concernées."
+          "expected": "Le problème est l’effort pour interpréter une double négation. Un script peut contrôler les textes et les actions, pas prouver que tout le monde les comprend."
         }
       ],
       "agents": [
         {
-          "tool": "Playwright MCP + analyse du texte par l’IA",
-          "url": "https://github.com/microsoft/playwright-mcp",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 5 uniquement. Sur /confirmation, ouvre l’annulation et relève la question et les deux libellés réels. Explique les interprétations possibles, propose des libellés explicites puis corrige le texte dans ma copie. Vérifie que « Garder » ferme sans annuler et que « Annuler » affiche l’état annulé. Prends deux captures à dimensions identiques. Présente ton jugement rédactionnel comme une proposition, pas comme un résultat mesuré auprès d’utilisateurs."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 5 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-5/. Examiner le titre et les actions de la fenêtre d’annulation, sans confondre présence de textes explicites et compréhension mesurée. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 5 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 5, modifie réellement cette copie puis exécute node atelier.mjs verifier 5. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [
@@ -330,39 +326,22 @@ window.ESCALE_PRATIQUE = {
       ],
       "human": [
         {
-          "tool": "Chrome DevTools · Network",
-          "source": "https://developer.chrome.com/docs/devtools/network/",
-          "steps": [
-            "Ouvrez Le Week-end. Appuyez sur F12 puis ouvrez Network / Réseau. Cochez Disable cache et gardez DevTools ouvert.",
-            "Désactivez la correction 7. Effacez le journal Réseau et rechargez la page. Filtrez « api/image ». Cliquez sur la requête : comparez Content-Type, Content-Length et Cache-Control dans Headers.",
-            "Activez 7. Effacez puis rechargez. Le PNG lourd est remplacé par un WebP plus léger ; l’en-tête autorise un cache d’une heure. Avec Disable cache coché, le cache n’est pas utilisé : décochez-le et rechargez pour observer sa réutilisation éventuelle.",
-            "Pour l’attente, filtrez « api/produit ». Désactivez 8 et cliquez sur « Rejouer le chargement » : la zone produit reste vide pendant environ trois secondes.",
-            "Activez 8 et rejouez. Un skeleton apparaît ; la requête conserve son délai serveur. Comparez les durées plutôt que de promettre une durée strictement identique à la milliseconde."
-          ],
-          "expected": "Le poids transféré et les en-têtes sont mesurés. Le skeleton apporte un retour visuel ; il ne supprime pas le délai serveur."
-        },
-        {
-          "tool": "Lighthouse · rapport de chargement",
+          "tool": "Chrome DevTools · Network, puis Lighthouse",
           "source": "https://developer.chrome.com/docs/lighthouse/overview",
           "steps": [
-            "Sur Le Week-end, ouvrez F12 → Lighthouse. Sélectionnez Navigation, Mobile et Performance. Gardez les mêmes options pour les deux essais.",
-            "Lancez l’analyse avant correction. Lisez les ressources et métriques avec leurs unités, pas uniquement le score global.",
-            "Activez la correction 7 et relancez dans les mêmes conditions. Le panneau conserve un état dans votre navigateur ; pour une comparaison reproductible, utilisez les URL ?mode=avant et ?mode=apres des rapports préparés.",
-            "Si le temps manque, ouvrez les deux vrais rapports ci-dessous. Leurs scores peuvent varier entre machines et entre exécutions. Le skeleton ne garantit pas une hausse du score Lighthouse."
+            "Ouvrez Le Week-end en grand. Clic droit → Inspecter → Network / Réseau. Rechargez et repérez la requête d’image ; ouvrez ses en-têtes pour lire Cache-Control.",
+            "Utilisez « Rejouer le chargement ». Regardez ce qui indique que le produit arrive ; un skeleton explique l’attente sans la raccourcir.",
+            "Pour les mesures Lighthouse, utilisez le contrôle ci-dessous : il prépare une version de production locale et conserve le rapport HTML.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Un rapport Lighthouse porte sur une URL et des conditions de laboratoire, pas sur l’ensemble de l’UX du site."
+          "expected": "Dans la version de départ, l’image est lourde, le cache est désactivé et aucun statut n’explique l’attente. Le score Lighthouse varie avec les conditions."
         }
       ],
       "agents": [
         {
-          "tool": "Chrome DevTools MCP · réseau et traces",
-          "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 6 : inspecte /produits/sac-weekend. Relève le poids transféré, les dimensions, le type et les en-têtes de cache de /api/image. Enregistre une trace de chargement et identifie les ressources coûteuses. Corrige le format/dimensionnement/cache de l’image dans ma copie. Vérifie les nouveaux en-têtes et le poids dans les mêmes conditions. Inspecte aussi /api/produit : ajoute un retour de chargement accessible sans masquer ni modifier artificiellement sa durée. Fournis les mesures et les limites."
-        },
-        {
-          "tool": "Lighthouse CLI",
-          "url": "https://developer.chrome.com/docs/lighthouse/overview",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 6 : exécute Lighthouse en CLI sur la fiche Le Week-end avant modification, puis après les optimisations réellement effectuées. Sauvegarde les rapports HTML et JSON. Garde identiques URL, mode mobile, paramètres réseau, fenêtre et version Lighthouse ; consigne les différences de configuration. Compare les métriques et ressources, pas seulement le score. N’invente pas de résultat et n’attribue pas au skeleton un gain de vitesse non mesuré."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 6 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-6/. Examiner le poids et le cache de l’image, le retour de chargement et le rapport Lighthouse en production. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 6 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 6, modifie réellement cette copie puis exécute node atelier.mjs verifier 6. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [
@@ -399,23 +378,22 @@ window.ESCALE_PRATIQUE = {
       "agentOnly": 0,
       "human": [
         {
-          "tool": "Chrome DevTools · Network",
-          "source": "https://developer.chrome.com/docs/devtools/network/",
+          "tool": "Chrome DevTools · Network, puis Lighthouse",
+          "source": "https://developer.chrome.com/docs/lighthouse/overview",
           "steps": [
-            "Ouvrez Le Week-end. Appuyez sur F12 puis ouvrez Network / Réseau. Cochez Disable cache et gardez DevTools ouvert.",
-            "Désactivez la correction 7. Effacez le journal Réseau et rechargez la page. Filtrez « api/image ». Cliquez sur la requête : comparez Content-Type, Content-Length et Cache-Control dans Headers.",
-            "Activez 7. Effacez puis rechargez. Le PNG lourd est remplacé par un WebP plus léger ; l’en-tête autorise un cache d’une heure. Avec Disable cache coché, le cache n’est pas utilisé : décochez-le et rechargez pour observer sa réutilisation éventuelle.",
-            "Pour l’attente, filtrez « api/produit ». Désactivez 8 et cliquez sur « Rejouer le chargement » : la zone produit reste vide pendant environ trois secondes.",
-            "Activez 8 et rejouez. Un skeleton apparaît ; la requête conserve son délai serveur. Comparez les durées plutôt que de promettre une durée strictement identique à la milliseconde."
+            "Ouvrez Le Week-end en grand. Clic droit → Inspecter → Network / Réseau. Rechargez et repérez la requête d’image ; ouvrez ses en-têtes pour lire Cache-Control.",
+            "Utilisez « Rejouer le chargement ». Regardez ce qui indique que le produit arrive ; un skeleton explique l’attente sans la raccourcir.",
+            "Pour les mesures Lighthouse, utilisez le contrôle ci-dessous : il prépare une version de production locale et conserve le rapport HTML.",
+            "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
+            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
           ],
-          "expected": "Le poids transféré et les en-têtes sont mesurés. Le skeleton apporte un retour visuel ; il ne supprime pas le délai serveur."
+          "expected": "Dans la version de départ, l’image est lourde, le cache est désactivé et aucun statut n’explique l’attente. Le score Lighthouse varie avec les conditions."
         }
       ],
       "agents": [
         {
-          "tool": "Chrome DevTools MCP · réseau et traces",
-          "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-          "prompt": "Travaille sur une copie locale de mon projet. Commence par constater le problème dans le navigateur, puis retrouve sa cause dans le code. Corrige réellement le code de cette copie : n’utilise pas les interrupteurs pédagogiques ni le mode après comme preuve de correction. Conserve les autres défauts volontaires. Fournis les preuves avant/après, les actions effectuées et les limites du contrôle. Ne promets pas une conformité ou une efficacité commerciale globale.\nURL : {URL}\nBloc 6 : inspecte /produits/sac-weekend. Relève le poids transféré, les dimensions, le type et les en-têtes de cache de /api/image. Enregistre une trace de chargement et identifie les ressources coûteuses. Corrige le format/dimensionnement/cache de l’image dans ma copie. Vérifie les nouveaux en-têtes et le poids dans les mêmes conditions. Inspecte aussi /api/produit : ajoute un retour de chargement accessible sans masquer ni modifier artificiellement sa durée. Fournis les mesures et les limites."
+          "tool": "Une mission à la fois",
+          "prompt": "Je fais le bloc 6 dans l’atelier Escale élève. Lis AGENTS.md. URL locale : {URL}. Dossier de cette mission uniquement : travail/bloc-6/. Examiner le poids et le cache de l’image, le retour de chargement et le rapport Lighthouse en production. Commence en lecture seule avec les MCP réellement connectés, ou annonce leur absence. Exécute node atelier.mjs auditer 6 pour conserver le constat dans l’atelier. Explique les actions et les preuves. Attends ma demande avant de corriger. Pour une correction autorisée : crée d’abord une sauvegarde avec node atelier.mjs sauvegarder 6, modifie réellement cette copie puis exécute node atelier.mjs verifier 6. Ne modifie ni le modèle, ni les vérificateurs, ni les autres missions. Aucun interrupteur ne remplace une correction du code."
         }
       ],
       "sources": [

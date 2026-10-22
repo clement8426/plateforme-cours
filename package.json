@@ -17,6 +17,7 @@
     "formulaire": "node scripts/integrer-formulaire.mjs",
     "comparateur": "node scripts/integrer-comparateur.mjs",
     "verifier:atelier": "node scripts/verifier-blocs-ia.mjs",
+    "verifier:scenes": "node scripts/verifier-scenes-ia.mjs",
     "verifier:formulaire": "node scripts/verifier-formulaire.mjs"
   },
   "dependencies": {
