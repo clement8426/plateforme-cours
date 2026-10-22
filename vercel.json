@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/diapos/ux-ia/preuves/escale/:rapport/trace/index.html",
+      "destination": "/diapos/ux-ia/preuves/escale/:rapport/trace/"
+    },
+    {
+      "source": "/diapos/ux-ia/preuves/escale/:rapport/trace/:page.html",
+      "destination": "/diapos/ux-ia/preuves/escale/:rapport/trace/:page/"
+    },
+    {
+      "source": "/diapos/ux-ia/preuves/escale/:rapport/index.html",
+      "destination": "/diapos/ux-ia/preuves/escale/:rapport/"
+    },
+    {
+      "source": "/diapos/ux-ia/preuves/escale/:rapport.html",
+      "destination": "/diapos/ux-ia/preuves/escale/:rapport/"
+    }
+  ]
+}
