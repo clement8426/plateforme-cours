@@ -55,10 +55,10 @@ try{
    const r=await new AxeBuilder({page}).include('.slide.active [data-lab]').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(r.violations.map(v=>v.id),[],'axe '+n+' '+theme+' '+width);
   }
  }
- root=await scene(28);await root.getByRole('button',{name:'Carte de chaleur',exact:true}).click();assert.equal(await root.getByRole('link',{name:/MCP Contentsquare/}).getAttribute('href'),config.sources['ia-comportement'].find(x=>x.t==='MCP officiel').u);
+ root=await scene(28);await root.getByRole('button',{name:'Preuves',exact:true}).click();assert.equal(await root.getByRole('link',{name:/MCP Contentsquare/}).getAttribute('href'),config.sources['ia-comportement'].find(x=>x.t==='MCP officiel').u);
  await root.getByRole('button',{name:/Agrandir/}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');
- root=await scene(30);for(const label of ['Lighthouse','Performance','Network','Console']){await root.getByRole('button',{name:label,exact:true}).click();await root.getByRole('button',{name:/Agrandir/}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');}
- const lhr=await(await page.request.get(base+'/diapos/ux-ia/preuves/traverse-lighthouse.json')).json();assert.equal(lhr.categories.performance.score,.73);
+ root=await scene(30);await root.getByRole('button',{name:'Preuves',exact:true}).click();for(const label of ['Lighthouse','Performance','Network','Console']){await root.getByLabel('Choisir la preuve',{exact:true}).selectOption({label});await root.getByRole('button',{name:/Agrandir/}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');}
+ const lhr=await(await page.request.get(base+'/diapos/ux-ia/preuves/escale/lighthouse-avant.json')).json();assert.equal(lhr.categories.performance.score,.75);
  root=await scene(31);await root.getByLabel('Le bloc à examiner').selectOption('27');await root.getByRole('button',{name:'Ouvrir la fiche',exact:true}).click();await page.waitForURL('**/#27');
  // Les nouveaux noms restent consultables dans le lexique, sans sortir de la slide.
  await page.goto(base+'/diapos/ux-ia/#46');await page.waitForTimeout(350);

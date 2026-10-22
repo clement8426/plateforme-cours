@@ -1283,32 +1283,32 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="2" data-key="ia-design-system">
-  <h2 class="title">Bloc 1 · Comparer les styles avec DevTools</h2>
+  <h2 class="title">Bloc 1 · Design System — Comparer les styles avec DevTools</h2>
   <div class="body" data-lab="design"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-friction">
-  <h2 class="title">Bloc 2 · Tester un parcours avec Playwright</h2>
+  <h2 class="title">Bloc 2 · Friction — Tester un parcours avec Playwright</h2>
   <div class="body" data-lab="journey"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-accessibilite">
-  <h2 class="title">Bloc 3 · Contrôler les états avec axe</h2>
+  <h2 class="title">Bloc 3 · Accessibilité — Contrôler les états avec axe</h2>
   <div class="body" data-lab="a11y"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-comportement">
-  <h2 class="title">Bloc 4 · Analyser avec Hotjar / Contentsquare</h2>
+  <h2 class="title">Bloc 4 · Comportement — Analyser avec Hotjar / Contentsquare</h2>
   <div class="body" data-lab="behavior"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-microcopie">
-  <h2 class="title">Bloc 5 · Relever et reformuler les textes</h2>
+  <h2 class="title">Bloc 5 · Microcopie — Relever et reformuler les textes</h2>
   <div class="body" data-lab="copy"></div>
 </section>
 
 <section class="slide" data-part="2" data-key="ia-performance">
-  <h2 class="title">Bloc 6 · Mesurer avec Lighthouse et DevTools</h2>
+  <h2 class="title">Bloc 6 · Performances — Mesurer avec Lighthouse et DevTools</h2>
   <div class="body" data-lab="lighthouse"></div>
 </section>
 
@@ -2385,7 +2385,7 @@ const CONFIG = {
     "agent": "Six fiches autonomes accessibles en cliquant sur les cartes. Les outils sont nommés dès cette vue. Aucune installation ni connexion ne se produit dans le diaporama. Labo UX est un bonus présenté dans la pratique.",
     "cles": "Vocabulaire avant les manipulations. Chrome DevTools est intégré à Chrome ; son MCP est un connecteur distinct. Playwright automatise le navigateur ; Playwright MCP expose des actions à un agent. Contentsquare analyse des données collectées ; son MCP exige accès au compte/projet. axe-core est un moteur de contrôle dans le code ; axe DevTools désigne ici son extension navigateur (la marque recouvre aussi une gamme plus large) ; Axe MCP est le serveur de Deque pour les agents. Lighthouse produit un rapport automatique ; MCP est un protocole commun. Montrer les onglets utiles, sans présenter tous les détails comme des outils à installer obligatoirement. Chaque bloc permet de retrouver ses définitions via Comprendre les outils.",
     "ia-design-system": "Fiche outil : comparer les styles calculés via Chrome DevTools MCP, notamment get_css_styles ou evaluate_script selon la version. Relever les mêmes rôles aux mêmes dimensions. Une variation n’est pas automatiquement une erreur.",
-    "ia-friction": "Dire : le code postal est faux, mais Camille est correct. Pourquoi faudrait-il retaper son prénom ? Envoyer avec 20 pour montrer le défaut ; recommencer avec 2000 pour montrer le chemin sans erreur. Un test Playwright rejoue les actions et vérifie que Camille reste après une erreur. La miniature est une simulation pédagogique, aucun MCP ni Playwright n’y est lancé. Trace Viewer nécessite une trace effectivement enregistrée.",
+    "ia-friction": "Commencer par la vue Demande : décrire le formulaire et ce qui doit rester après une erreur. Dans Actions, distinguer navigation via MCP et création d’un test enregistré. Dans Preuves, montrer la trace réelle archivée. Les onglets n’exécutent ni l’agent ni Playwright. Trace Viewer nécessite une trace effectivement enregistrée.",
     "ia-accessibilite": "Trois voies nommées : axe-core intégré à un test Playwright ; axe DevTools dans le navigateur ; Axe MCP à configurer séparément. Les états doivent être ouverts avant le scan. Compléter par clavier, lecteur d’écran et évaluation humaine.",
     "ia-comportement": "Hotjar a rejoint Contentsquare. Le MCP officiel Contentsquare documente tunnels, parcours, métriques et autres capacités selon les accès. Ne pas promettre un MCP Hotjar historique ni la lecture des heatmaps/replays via MCP. Visuel officiel de présentation Contentsquare, sans données du cours. Les données réelles exigent une collecte préexistante, licite et autorisée. Catalogue Hotjar vérifié HTTP 200 le 21 octobre 2026 ; certains cours exigent un compte.",
     "ia-microcopie": "L’agent relève les vrais états via navigateur avant de reformuler. Exemple de champ obligatoire de contact ; pas de service magique dédié à la microcopie. Ne pas inventer une promesse fonctionnelle.",
@@ -3392,7 +3392,7 @@ const IMAGES_INTEGREES = {};
 })();
 </script>
 
-<script src="./outils-scenes.js"></script>
+<script src="./parcours-agent.js"></script>
 <script src="./atelier-blocs.js"></script>
 <script src="./pratique-escale-data.js"></script>
 <script src="./pratique-escale.js"></script>
