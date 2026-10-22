@@ -7,18 +7,16 @@ Il s'installe comme une application (PWA) et les pages déjà consultées resten
 Next.js 16, export statique. Polices Bricolage Grotesque et Instrument Sans, servies par le site (aucune requête vers Google).
 
 
-## Labo UX : installation faite par l’agent
+## Pratique UX × IA : Escale
 
-Donner à son agent local le [fichier d’installation de Labo UX](public/diapos/ux-ia/installation-labo-ux.md). Il prépare les outils et réalise un audit de contrôle. L’apprenant n’a pas à taper de commandes. Le téléchargement du plugin reste soumis aux droits d’accès GitHub.
+La pratique principale est **Escale**, une boutique Next.js de 18 produits et neuf défauts activables séparément : `/ux/ux-ia/demos/escale/`.
+Les diapos 32 à 41 présentent la mission et les cinq blocs pratiques. Le bloc 4 comportement reste théorique, sans données inventées. Le formulaire d’adresse reste en bonus (42 à 44), la conclusion est en 45 et les annexes en 46 et 47.
 
-La pratique principale d’UX × IA est désormais **Traverse (Labo UX Démo)** :
-`/ux/ux-ia/demos/labo-ux-demo/`. Le [fichier de l’exercice](public/diapos/ux-ia/exercice-traverse.md)
-réunit l’installation et la mission en mode Audit. Il est régénéré à chaque build
-par `scripts/preparer-exercice-traverse.mjs`. Le site Next.js de l’exercice tourne
-sur l’ordinateur de l’apprenant, pas dans l’hébergement statique de cette plateforme.
-Le formulaire d’adresse et l’affiche restent en bonus. Les diapos de pratique vont
-de 35 à 46 (annexes 47 et 48). L’ancienne page de démonstration Tilleul redirige
-vers Traverse ; les anciennes ressources statiques ne sont pas supprimées.
+Les gestes manuels, les captures avant/après et les prompts agents sont intégrés aux slides. Les anciens liens Traverse et Tilleul redirigent vers Escale. La partie 3 ne dépend pas du plugin Labo UX.
+
+Le [fichier de préparation](public/diapos/ux-ia/demarrer-escale.md) permet à un agent de démarrer le projet sans corriger ses défauts. Le projet et ses vrais rapports sont dans [labo-ux-demos/exercices/escale](https://github.com/clement8426/labo-ux-demos/tree/main/exercices/escale), dépôt privé : donner les accès aux apprenants.
+
+Les données pédagogiques sont dans `pratique-escale-data.js`, les interactions dans `pratique-escale.js` et les styles dans `pratique-escale.css`. `scripts/preparer-pratique-escale.mjs` réimporte explicitement les tutoriels et prompts depuis le dépôt des démos ; le build Vercel utilise les fichiers déjà versionnés et ne dépend pas de ce dépôt local.
 
 ## Lancer en local
 
@@ -74,7 +72,7 @@ Un script prépare la présentation HTML pour la plateforme (le fichier d'origin
 npm run diapos -- ../Downloads/ux-ia-presentation.html ux-ia --retour /ux/ux-ia/diapos/
 ```
 
-Il pointe le lien de pratique vers `/ux/ux-ia/demos/labo-ux-demo/` et branche le plein écran : F et Échap passent par le lecteur de la plateforme, qui garde toujours un bouton « Quitter le plein écran » visible. Ouvertes seules dans un onglet, les diapos affichent un lien « Retour au cours ». À relancer à chaque mise à jour de la présentation.
+Il pointe le lien de pratique vers `/ux/ux-ia/demos/escale/` et branche le plein écran : F et Échap passent par le lecteur de la plateforme, qui garde toujours un bouton « Quitter le plein écran » visible. Ouvertes seules dans un onglet, les diapos affichent un lien « Retour au cours ». À relancer à chaque mise à jour de la présentation.
 Sous Git Bash, faites précéder la commande de `MSYS_NO_PATHCONV=1` (le script refuse une adresse de retour mal convertie).
 
 ## Tilleul et les aperçus

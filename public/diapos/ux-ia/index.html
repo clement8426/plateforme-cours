@@ -857,6 +857,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .pratique-blocs p { font-size:30px; line-height:1.3; }
 </style>
   <link rel="stylesheet" href="./atelier-blocs.css">
+  <link rel="stylesheet" href="./pratique-escale.css">
 </head>
 <body>
 <div id="viewport">
@@ -1316,214 +1317,56 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body" data-lab="workflow"></div>
 </section>
 
-<!-- ================= PARTIE 3 : PRATIQUE (slides 32 à 43) ================= -->
+<!-- ================= PARTIE 3 : ESCALE (slides 32 à 45) ================= -->
 
-<section class="slide" data-part="3" data-key="choix">
-  <h2 class="title">Labo UX Démo : un joli site qui gêne</h2>
-  <div class="body g12">
-    <div class="c6 stack-m">
-      <p class="lead strong">Traverse, un site de sorties volontairement défectueux.</p>
-      <ol class="plugin-etapes">
-        <li>
-          <span class="flow-n" aria-hidden="true">1</span>
-          <p>Essayer le parcours et noter ce qui gêne.</p>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">2</span>
-          <p>Lancer le plugin Labo UX en mode Audit.</p>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">3</span>
-          <p>Expliquer trois problèmes, preuves à l’appui.</p>
-        </li>
-      </ol>
-      <p class="note">20 min après préparation. Le formulaire d’adresse reste en bonus.</p>
-    </div>
-    <div class="c6 stack-m">
-      <img class="pratique-capture" src="/apercus/traverse.jpg" alt="Accueil de Traverse avec une grande photographie de paysage." width="1440" height="900">
-      <div class="case narrow" data-case="SITE_URL" data-kind="link" data-fixe data-texte="Ouvrir l’exercice Labo UX Démo">
-      </div>
-    </div>
-  </div>
+<section class="slide" data-part="3" data-key="escale-intro">
+  <h2 class="title">Escale · Une boutique, cinq blocs à tester</h2>
+  <div class="body practice" data-practice="escale-intro" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="parcours">
-  <h2 class="title">Votre mission : une sortie à deux pour 60 € maximum</h2>
-  <div class="body stack-l">
-    <ol class="stepper" aria-label="Parcours à essayer sur Traverse">
-      <li data-step="1" data-keep>
-        <span>Ouvrir la sortie du lac</span>
-      </li>
-      <li data-step="2" data-keep>
-        <span>Choisir date et participants</span>
-      </li>
-      <li data-step="3" data-keep>
-        <span>Vérifier les options</span>
-      </li>
-      <li data-step="4" data-keep>
-        <span>Saisir les coordonnées</span>
-      </li>
-      <li data-step="5" data-keep><span>Vérifier et envoyer</span></li>
-    </ol>
-    <p class="question">Vos choix et votre budget sont-ils respectés jusqu’au bout ?</p>
-    <p class="lead">Samedi 14 novembre · deux personnes · sans panier repas. Utilisez Alex Exemple et alex@example.test.</p>
-    <p class="note">Tout est fictif. Testez aussi un retour avec « Modifier » et le choix de date au clavier. Notez ce qui fonctionne et ce qui gêne.</p>
-  </div>
+<section class="slide" data-part="3" data-key="escale-mission">
+  <h2 class="title">La mission · Acheter, confirmer, puis annuler</h2>
+  <div class="body practice" data-practice="escale-mission" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="installer-labo">
-  <h2 class="title">Un fichier à donner à votre agent</h2>
-  <div class="body g12">
-    <div class="c7 stack-l">
-      <ol class="plugin-etapes">
-        <li>
-          <span class="flow-n" aria-hidden="true">1</span>
-          <p>Télécharger le fichier depuis la page de l’exercice.</p>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">2</span>
-          <p>Le joindre à votre agent et dire : « Prépare cet exercice et ouvre Traverse pour moi. »</p>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">3</span>
-          <p>L’agent installe Labo UX, vérifie ses outils et démarre le site local.</p>
-        </li>
-      </ol>
-      <div class="case narrow" data-case="INSTALLATION_URL" data-kind="link" data-fixe data-texte="Ouvrir le fichier pour l’agent">
-      </div>
-    </div>
-    <div class="c5 stack-m">
-      <article class="card">
-        <h3>Aucune commande à taper</h3>
-        <p>L’agent fait l’installation avec votre accès autorisé aux fichiers, au terminal et au navigateur.</p>
-      </article>
-      <article class="card">
-        <h3>À préparer avant le cours</h3>
-        <p>Un simple chat ne suffit pas. L’accès aux dépôts privés est donné par le formateur.</p>
-      </article>
-    </div>
-  </div>
+<section class="slide" data-part="3" data-key="escale-coherence">
+  <h2 class="title">Bloc 1 · Les mêmes boutons, les mêmes repères</h2>
+  <div class="body practice" data-practice="escale-coherence" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="cadrer-traverse">
-  <h2 class="title">Avant l’audit, trois points à confirmer</h2>
-  <div class="body stack-l">
-    <div class="options">
-      <article class="card">
-        <h3>L’objectif</h3>
-        <p>Sortie du lac, samedi 14 novembre, deux personnes, sans panier repas, budget total de 60 € : vérifier les choix, le prix et la confirmation.</p>
-      </article>
-      <article class="card">
-        <h3>La cible</h3>
-        <p>Une personne peu à l’aise avec l’informatique, sur téléphone ou ordinateur.</p>
-      </article>
-      <article class="card">
-        <h3>Les autorisations</h3>
-        <p>Tester les formulaires fictifs, les retours en arrière et les doubles clics.</p>
-      </article>
-    </div>
-    <p class="lead strong">Mode Audit : lecture et tests autorisés, sans réécriture du site.</p>
-  </div>
+<section class="slide" data-part="3" data-key="escale-friction">
+  <h2 class="title">Bloc 2 · Une erreur, toutes les saisies perdues</h2>
+  <div class="body practice" data-practice="escale-friction" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="traverse-blocs">
-  <h2 class="title">Les six blocs, appliqués à Traverse</h2>
-  <div class="body stack-l">
-    <div class="pratique-blocs">
-      <article class="card">
-        <h3>1. Design system</h3>
-        <p>Comparer des boutons de même rôle entre les écrans.</p>
-      </article>
-      <article class="card">
-        <h3>2. Friction</h3>
-        <p>Tester le parcours et repérer où l’objectif devient difficile.</p>
-      </article>
-      <article class="card">
-        <h3>3. Accessibilité</h3>
-        <p>Vérifier noms, contrastes, images et usage du clavier.</p>
-      </article>
-      <article class="card">
-        <h3>4. Comportement</h3>
-        <p>Lire le tunnel fictif, sans inventer les causes d’abandon.</p>
-      </article>
-      <article class="card">
-        <h3>5. Microcopie</h3>
-        <p>Comprendre l’action, les erreurs et la confirmation.</p>
-      </article>
-      <article class="card">
-        <h3>6. Performance</h3>
-        <p>Mesurer le chargement et observer le retour pendant l’attente.</p>
-      </article>
-    </div>
-    <p class="note">Le plugin explore ces blocs avec une couverture partielle. Les contrôles restants doivent être annoncés.</p>
-  </div>
+<section class="slide" data-part="3" data-key="escale-accessibilite">
+  <h2 class="title">Bloc 3 · Un cœur sans nom, un prix trop clair</h2>
+  <div class="body practice" data-practice="escale-accessibilite" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="rapport">
-  <h2 class="title">Lire un rapport, pas seulement un score</h2>
-  <div class="body g12">
-    <div class="c5 stack-m">
-      <ol class="plugin-etapes">
-        <li>
-          <span class="flow-n" aria-hidden="true">1</span>
-          <p>Ouvrir le rapport HTML réellement produit par votre agent.</p>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">2</span>
-          <p>Lire les constats avec leurs captures, mesures et étapes du parcours.</p>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">3</span>
-          <p>Distinguer les limites, les hypothèses et les contrôles non exécutés.</p>
-        </li>
-      </ol>
-      <p class="note">Les mesures dépendent de la version et des conditions de test. Un échec du parcours peut révéler le défaut recherché.</p>
-    </div>
-    <div class="c7 stack-m">
-      <img class="pratique-capture" src="/apercus/labo-ux-rapport.jpg" alt="Rapport de Traverse : six blocs explorés, preuves et priorités, avec couverture partielle." width="1440" height="900">
-      <p class="note">Capture du 20 octobre 2026, moteur 0.1.0. Exemple du format, pas les résultats de votre audit.</p>
-    </div>
-  </div>
+<section class="slide" data-part="3" data-key="escale-clavier">
+  <h2 class="title">Bloc 3 · La modale à l’épreuve du clavier</h2>
+  <div class="body practice" data-practice="escale-clavier" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="priorites">
-  <h2 class="title">À vous : expliquer trois problèmes</h2>
-  <div class="body stack-l">
-    <div class="options">
-      <article class="card">
-        <h3>L’obstacle</h3>
-        <p>Sur quel écran, après quelle action ? Quelle conséquence pour la personne ?</p>
-      </article>
-      <article class="card">
-        <h3>La preuve</h3>
-        <p>Une capture, une mesure ou une observation que l’on peut vérifier.</p>
-      </article>
-      <article class="card">
-        <h3>La priorité</h3>
-        <p>Pourquoi le traiter ? Quelle amélioration proposez-vous ?</p>
-      </article>
-    </div>
-    <p class="question">Le rapport retrouve-t-il ce que vous aviez observé ?</p>
-    <p class="note">Les événements fournis sont synthétiques : aucun gain de conversion réel ne peut être déduit.</p>
-  </div>
+<section class="slide" data-part="3" data-key="escale-comportement">
+  <h2 class="title">Bloc 4 · Les comportements demandent de vraies visites</h2>
+  <div class="body practice" data-practice="escale-comportement" data-arrows="true"></div>
 </section>
 
-<section class="slide" data-part="3" data-key="demo">
-  <h2 class="title">Audit et débogage : deux modes distincts</h2>
-  <div class="body stack-l">
-    <div class="options">
-      <article class="card">
-        <h3>Pour cet exercice : Audit</h3>
-        <p>Lire le code, tester le site, produire un rapport et proposer des améliorations. Traverse reste cassé.</p>
-      </article>
-      <article class="card">
-        <h3>Sur un projet autorisé : Débogage</h3>
-        <p>Audit d’abord, corrections par l’agent hôte, puis tests et nouvel audit dans les mêmes conditions.</p>
-      </article>
-    </div>
-    <p class="lead strong">Une nouvelle mesure sur le même site ne constitue pas un avant/après de correction.</p>
-    <p class="note">Aucune version corrigée de Traverse dans cet exercice. Le moteur Labo UX ne réécrit pas lui-même l’application.</p>
-  </div>
+<section class="slide" data-part="3" data-key="escale-microcopie">
+  <h2 class="title">Bloc 5 · « Oui » veut dire garder ou annuler ?</h2>
+  <div class="body practice" data-practice="escale-microcopie" data-arrows="true"></div>
+</section>
+
+<section class="slide" data-part="3" data-key="escale-performance">
+  <h2 class="title">Bloc 6 · Une image de 11,54 Mo pour un seul produit</h2>
+  <div class="body practice" data-practice="escale-performance" data-arrows="true"></div>
+</section>
+
+<section class="slide" data-part="3" data-key="escale-attente">
+  <h2 class="title">Bloc 6 · Trois secondes : vide ou retour visuel ?</h2>
+  <div class="body practice" data-practice="escale-attente" data-arrows="true"></div>
 </section>
 
 <section class="slide" data-part="3" data-key="form-exercice">
@@ -1575,18 +1418,15 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <section class="slide" data-part="3" data-key="retenir">
   <h2 class="title">À retenir</h2>
   <div class="body g12">
-    <ol class="c8 keep">
+    <ol class="c12 keep">
       <li data-step="1"><span class="keep-n" aria-hidden="true">1</span><p>Joli ne veut pas dire pratique.</p></li>
       <li data-step="2"><span class="keep-n" aria-hidden="true">2</span><p>L’UX dépend de la cible.</p></li>
       <li data-step="3"><span class="keep-n" aria-hidden="true">3</span><p>L’IA accélère, les bases décident.</p></li>
     </ol>
-    <div class="c4 stack-m end-col">
-      <div class="case" data-case="EXERCICES_URL" data-kind="qr" data-fixe data-texte="Ouvrir les exercices" data-label="Les exercices à refaire chez vous"></div>
-    </div>
   </div>
 </section>
 
-<!-- ================= ANNEXES : lexique, références (slides 44 à 45) ================= -->
+<!-- ================= ANNEXES : lexique, références (slides 46 à 47) ================= -->
 
 
 <section class="slide" data-part="4" data-key="lexique">
@@ -1628,17 +1468,17 @@ const CONFIG = {
   minutes: [
     0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 1.5, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (14 à 16 : accessibilité)
     1.5, 2, 2, 2.5, 2, 2, 2, 3, 2, // slides 23 à 31 : l’IA, bloc par bloc
-    1, 3, 2, 2, 2, 4, 3, 2, 5, 3, 2, 1, // slides 32 à 43 : Traverse, puis formulaire en bonus
-    0, 0 // slides 44 à 45 : annexes, hors budget
+    1, 2, 3, 3, 3, 3, 1, 3, 3, 2, 5, 3, 2, 1, // slides 32 à 45 : Escale, puis formulaire en bonus
+    0, 0 // slides 46 à 47 : annexes, hors budget
   ],
   parties: [
     { nom: 'Théorie', de: 1, a: 22 },
     { nom: 'L’IA, bloc par bloc', de: 23, a: 31 },
-    { nom: 'Pratique', de: 32, a: 43 },
-    { nom: 'Annexes', de: 44, a: 45, hors: true } // hors du cours : lexique et références
+    { nom: 'Pratique', de: 32, a: 45 },
+    { nom: 'Annexes', de: 46, a: 47, hors: true } // hors du cours : lexique et références
   ],
   // slides bonus : signalées dans la grille et la vue présentateur, à passer si le temps manque
-  bonus: [40, 41, 42], // formulaire en bonus, après l’audit de Traverse
+  bonus: [42, 43, 44], // formulaire en bonus, après Escale
   // seuils du chrono : dépassement du budget cumulé
   alerteAmbre: 1.10,
   alerteRouge: 1.25,
@@ -1649,10 +1489,10 @@ const CONFIG = {
   },
   urls: {
     LINK_UXMAG_ARTICLE: 'https://uxmag.com/articles/let-your-users-wait',
-    SITE_URL: '/ux/ux-ia/demos/labo-ux-demo/', // exercice principal Traverse
-    INSTALLATION_URL: '/diapos/ux-ia/exercice-traverse.md', // installation et mission par l’agent
+    SITE_URL: '/ux/ux-ia/demos/escale/', // projet principal
+    INSTALLATION_URL: '/diapos/ux-ia/demarrer-escale.md', // préparation sans plugin
     FORM_URL: '/formulaires/adresse/', // le formulaire de départ, en ligne
-    EXERCICES_URL: '/ux/ux-ia/demos/labo-ux-demo/', // page de l’exercice avec les consignes
+    EXERCICES_URL: '/ux/ux-ia/demos/escale/', // projet et dépôt
     AFFICHE_URL: '/ux/ux-ia/demos/affiche/' // la démonstration de l’affiche (slide 41)
   },
   // Captures de la pratique dans public/apercus/.
@@ -1872,7 +1712,7 @@ const CONFIG = {
     {
       "terme": "Audit",
       "def": "Contrôle d’un site, par un outil ou par une personne, pour lister ce qui ne va pas.",
-      "cle": "rapport"
+      "cle": "escale-performance"
     },
     {
       "terme": "Agent IA",
@@ -2291,6 +2131,14 @@ const CONFIG = {
 
   // Vue présentateur : trois mots-clés par slide
   sources: {
+    "escale-coherence": [{"t":"Chrome DevTools","u":"https://developer.chrome.com/docs/devtools/css/reference"}],
+    "escale-friction": [{"t":"Navigateur","u":"https://playwright.dev/docs/test-ui-mode"}],
+    "escale-accessibilite": [{"t":"axe-core","u":"https://playwright.dev/docs/accessibility-testing"},{"t":"Clavier","u":"https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"}],
+    "escale-clavier": [{"t":"axe-core","u":"https://playwright.dev/docs/accessibility-testing"},{"t":"Clavier","u":"https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"}],
+    "escale-comportement": [{"t":"Discussion","u":"https://contentsquare.com/platform/capabilities/mcp-server/"}],
+    "escale-microcopie": [{"t":"Lecture en contexte","u":"https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html"}],
+    "escale-performance": [{"t":"Chrome DevTools","u":"https://developer.chrome.com/docs/devtools/network/"},{"t":"Lighthouse","u":"https://developer.chrome.com/docs/lighthouse/overview"}],
+    "escale-attente": [{"t":"Chrome DevTools","u":"https://developer.chrome.com/docs/devtools/network/"},{"t":"Lighthouse","u":"https://developer.chrome.com/docs/lighthouse/overview"}],
     "publics-accessibilite": [
       {
         "t": "UCBA : calculs 2019",
@@ -2522,6 +2370,14 @@ const CONFIG = {
 
   // Vue présentateur : ce qui se dit à l'oral, quand la slide en affiche une version courte
   notes: {
+    "escale-coherence": "Carte réelle du catalogue ; la preuve DevTools montre les valeurs du bouton de la fiche. Une différence de style n’est pas toujours une erreur : ici, les rôles sont comparables. Bascules de présentation : 1 et 2. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
+    "escale-friction": "Même formulaire, même erreur de NPA. Le test exige que « Camille Démo » reste présent. Le rouge avant correction est l’échec attendu du contrôle de conservation. Bascules de présentation : 3. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
+    "escale-accessibilite": "Rapport réel du moteur axe-core 4.14.0 avec Playwright ; ce n’est pas l’extension axe DevTools. Zéro violation automatique sur cette page ne signifie pas conformité complète du site. Bascules de présentation : 4 et 9. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
+    "escale-clavier": "Capture après une tabulation. Pour isoler le clavier, corriger le texte séparément. Une capture situe le focus ; le fonctionnement demande de rejouer le parcours. Bascules de présentation : 5. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
+    "escale-comportement": "Théorie uniquement : aucune donnée de visite n’est collectée pour Escale. Ne pas inventer de taux. Le MCP Contentsquare exige un vrai projet et des accès.",
+    "escale-microcopie": "Même modale, clavier corrigé dans les deux captures pour isoler le texte. Le vote illustre une ambiguïté ; il ne constitue pas une étude représentative. Bascules de présentation : 6. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
+    "escale-performance": "Mesures réelles : 11 540 161 octets contre 103 292. Cache désactivé pour comparer les transferts. Captures du 22 octobre 2026. Scores et durées varient selon les conditions. Bascules de présentation : 7. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
+    "escale-attente": "Deux captures pendant le même délai serveur. La durée totale peut légèrement varier. Un retour visuel ne prouve ni un gain de vitesse ni une préférence universelle. Bascules de présentation : 8. Les corrections sont préparées, sans intervention d’agent. Le prompt concerne une copie du code. Sources vérifiées le 22 octobre 2026. Dépôt privé : fournir les accès.",
     "performance-reelle": "Le cache HTTP et un cache serveur comme Redis sont différents. Mesurer avant et après ; prévoir l’invalidation. Labo UX et Lighthouse ne constituent pas un diagnostic SQL ni une vérification de validité du cache serveur.",
     "accessibilite": "Quatre cas de même niveau, révélés successivement : vision, contraste, clavier, audition. La carte audition inclut les personnes sourdes, malentendantes ou qui consultent sans son. Audio seul préenregistré = transcription ; vidéo avec paroles ou sons utiles = sous-titres synchronisés. Les informations visuelles essentielles absentes de la bande-son demandent une description adaptée. Les sous-titres automatiques sont à relire. alt vide pour une image décorative, alternative pertinente pour une image informative. Un lecteur d’écran peut annoncer un nom de fichier en l’absence d’alternative, mais ce comportement dépend du contexte.",
     "publics-accessibilite": "4,4 % : calculs UCBA pour 2019, publication 2020, p. 23 ; 377 000 personnes dont 57 000 avec surdicécité. Ce n’est pas le pourcentage de personnes bloquées sur le Web. Audition : fiche FSS non datée, environ un million de personnes malentendantes ; attribution et absence de millésime visibles. Pas de somme entre populations ni de projection à 2026. Les données OFS sur les limitations sévères utilisent une autre définition.",
@@ -3537,6 +3393,8 @@ const IMAGES_INTEGREES = {};
 </script>
 
 <script src="./atelier-blocs.js"></script>
+<script src="./pratique-escale-data.js"></script>
+<script src="./pratique-escale.js"></script>
 
 <script id="pont-plateforme">
 /* Ajouté par la plateforme (scripts/integrer-diapos.mjs). Aucune donnée n'est envoyée : messages internes à la page. */

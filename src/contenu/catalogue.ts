@@ -19,7 +19,7 @@ export type Demo = {
   blocs: BlocId[];
   duree: string;
   apercu: string;
-  scene: 'affiche' | 'traverse' | 'comparateur' | 'dossier' | 'reidentification' | 'tri';
+  scene: 'affiche' | 'escale' | 'traverse' | 'comparateur' | 'dossier' | 'reidentification' | 'tri';
   comparateur?: string; // pour scene « comparateur » : voir comparateurs.ts
   modeEmploi: string[]; // trois gestes, pour quelqu'un qui découvre la démo seul
   aRetenir: string[];
@@ -87,7 +87,7 @@ function grouper(references: Reference[], regles: RegleGroupe[] = REGLES_GROUPES
 
 const uxIa: Cours = {
   slug: 'ux-ia',
-  misAJour: '2026-10-21',
+  misAJour: '2026-10-22',
   titre: 'UX × IA',
   accroche: 'Rendre un site web, une boutique en ligne, un SaaS ou une application mobile pratique, puis le corriger avec l’IA.',
   duree: 'Environ 1 h 30, selon les démonstrations choisies',
@@ -102,30 +102,30 @@ const uxIa: Cours = {
   parties: [
     { titre: 'Théorie', resume: 'Joli ne veut pas dire pratique : quatre types de produits, la cible, le tunnel de conversion, et six blocs pour repérer ce qui gêne.', duree: '35 à 40 min', diapos: [1, 22] },
     { titre: 'L’IA, bloc par bloc', resume: 'Reprendre les six blocs avec l’IA : des outils concrets, des demandes à adapter et des preuves à vérifier. Exemples de site vitrine, d’application métier et de formulaires.', duree: '18 à 20 min avec les échanges', diapos: [23, 31] },
-    { titre: 'Pratique', resume: 'Traverse, l’exercice Labo UX Démo : essayer le site, lancer le plugin en mode Audit et choisir trois priorités avec leurs preuves. Le formulaire et l’affiche restent en bonus.', duree: '20 à 30 min, installation à préparer avant le cours', diapos: [32, 43], demos: true },
+    { titre: 'Pratique', resume: 'Escale : observer cinq blocs sur une boutique fictive, découvrir les preuves avec les outils, puis retrouver les prompts pour les agents. Le comportement reste théorique ; le formulaire d’adresse reste en bonus.', duree: 'Environ 25 minutes, hors bonus', diapos: [32, 45], demos: true },
   ],
   demos: [
     {
-      slug: 'labo-ux-demo',
-      titre: 'Labo UX Démo : auditer Traverse',
-      resume: 'Une sortie à deux pour 60 € maximum : cinq écrans pour choisir une date, des options et envoyer une demande. Comparez vos observations à l’audit du plugin Labo UX.',
-      blocs: ['design-system', 'friction', 'accessibilite', 'comportement', 'microcopie', 'performance'],
-      duree: '20 minutes, après installation',
-      apercu: '/apercus/traverse.jpg',
-      scene: 'traverse',
+      slug: 'escale',
+      titre: 'Escale : les outils UX en pratique',
+      resume: 'Une boutique fictive de 18 produits : repérer les défauts, comparer les corrections et découvrir les outils à la main, puis avec un agent.',
+      blocs: ['design-system', 'friction', 'accessibilite', 'microcopie', 'performance'],
+      duree: 'Environ 25 minutes',
+      apercu: '/diapos/ux-ia/preuves/escale/boutique.png',
+      scene: 'escale',
       modeEmploi: [
-        'Donnez le fichier de l’exercice à votre agent : il prépare Labo UX et démarre Traverse sur votre ordinateur.',
-        'Ouvrez l’adresse donnée par l’agent et suivez les quatre actions de l’étape 2 ci-dessous. Notez ce que vous attendiez et ce qui se passe.',
-        'Confirmez le périmètre avec l’agent, lancez un audit sans correction et choisissez trois problèmes appuyés par des preuves.',
+        'Suivez la mission sur Escale : choisir Le Week-end, renseigner les coordonnées, confirmer puis annuler la commande fictive.',
+        'Dans les slides, comparez avant/après, consultez la preuve de l’outil et ouvrez les gestes manuels détaillés.',
+        'Pour prolonger la démonstration, donnez le prompt du bloc à un agent équipé et travaillez sur une copie du projet.',
       ],
       aRetenir: [
-        'Un site soigné peut être pénible à utiliser.',
-        'Le plugin explore les six blocs avec une couverture partielle : tout contrôler automatiquement reste impossible.',
-        'Un constat doit nommer l’obstacle, sa conséquence et sa preuve. Les données du tunnel sont fictives.',
-        'Le mode Audit teste sans réécrire le projet. Traverse reste cassé : aucune version corrigée n’est fournie.',
+        'Le panneau applique des corrections préparées ; il ne fait pas intervenir un agent.',
+        'Un contrôle doit montrer le problème et sa preuve, puis vérifier le même scénario après correction.',
+        'Le comportement reste théorique : aucun taux d’abandon ni faux résultat de visiteurs.',
+        'Un scan automatique ne suffit pas à vérifier toute l’accessibilité.',
       ],
-      exercice: 'exercices/traverse',
-      exerciceUrl: 'https://github.com/clement8426/labo-ux-demos/tree/main/exercices/traverse',
+      exercice: 'exercices/escale',
+      exerciceUrl: 'https://github.com/clement8426/labo-ux-demos/tree/main/exercices/escale',
     },
     {
       slug: 'formulaire-adresse',

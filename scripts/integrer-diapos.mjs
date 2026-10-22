@@ -31,10 +31,10 @@ if (!existsSync(chemin)) {
 let html = readFileSync(chemin, 'utf8');
 
 const SITE_URL = /SITE_URL: '[^']*'/;
-if (SITE_URL.test(html)) html = html.replace(SITE_URL, "SITE_URL: '/ux/ux-ia/demos/labo-ux-demo/'");
+if (SITE_URL.test(html)) html = html.replace(SITE_URL, "SITE_URL: '/ux/ux-ia/demos/escale/'");
 else console.warn('Avertissement : SITE_URL introuvable, le lien de pratique n’est pas modifié.');
-html = html.replace(/INSTALLATION_URL: '[^']*'/, "INSTALLATION_URL: '/diapos/ux-ia/exercice-traverse.md'");
-html = html.replace(/EXERCICES_URL: '[^']*'/, "EXERCICES_URL: '/ux/ux-ia/demos/labo-ux-demo/'");
+html = html.replace(/INSTALLATION_URL: '[^']*'/, "INSTALLATION_URL: '/diapos/ux-ia/demarrer-escale.md'");
+html = html.replace(/EXERCICES_URL: '[^']*'/, "EXERCICES_URL: '/ux/ux-ia/demos/escale/'");
 
 // Un chemin comme /ux/ux-ia/ peut être converti en « C:/Program Files/Git/ux/ux-ia/ » par Git Bash sous Windows : on refuse.
 // Le formulaire de l'exercice C (diapos 29 à 31) est publié par « npm run formulaire » : le lien des diapos y mène.

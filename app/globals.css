@@ -596,3 +596,14 @@ button.reid-fragment:hover { background: #FFE38A; }
 @media (max-width: 900px) { .reid { grid-template-columns: 1fr; } .reid-indices { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 @media (prefers-reduced-motion: reduce) { *, *::before { transition: none !important; animation: none !important; } }
+
+/* Escale : contenu ouvert, sans encadrés décoratifs. */
+.escale-exercice { display:grid; gap:48px; padding:32px 0; }
+.escale-presentation { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:40px; }
+.escale-presentation figure { margin:0; }
+.escale-presentation img { width:100%; height:auto; border-radius:var(--rayon); }
+.escale-presentation figcaption { color:var(--discret); font-size:13px; padding:10px 0; }
+.escale-exercice h2 { font-size:clamp(23px,2.5vw,32px); margin-bottom:18px; }
+.escale-exercice p { margin:14px 0; line-height:1.65; }
+.escale-exercice ol { padding-left:24px; display:grid; gap:16px; }
+@media(max-width:800px) { .escale-presentation { grid-template-columns:1fr; gap:24px; } }
