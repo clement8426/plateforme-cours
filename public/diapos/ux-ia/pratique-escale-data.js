@@ -107,7 +107,7 @@ window.ESCALE_PRATIQUE = {
     {
       "key": "escale-accessibilite",
       "block": 3,
-      "title": "Bloc 3 · Un cœur sans nom, un prix trop clair",
+      "title": "Bloc 3 · Cœur sans nom, prix trop clair, images sans description",
       "question": "Un bouton visible est-il forcément compréhensible ?",
       "before": "scene-accessibilite-avant.png",
       "after": "scene-accessibilite-apres.png",
@@ -116,13 +116,13 @@ window.ESCALE_PRATIQUE = {
       "tool": "axe-core · Playwright",
       "steps": [
         "Ouvrir Le Week-end et attendre son chargement.",
-        "Scanner le nom du bouton et le contraste du prix.",
-        "Corriger, puis relancer le même scan sur la même page."
+        "Scanner le nom du cœur, le contraste et les textes alternatifs des images.",
+        "Corriger les trois défauts, puis relancer le même scan."
       ],
-      "result": "Le cœur reçoit un nom accessible. Le prix retrouve un contraste vérifié.",
+      "result": "Le cœur a un nom accessible, les images une description, et le prix un contraste vérifié.",
       "limit": "Zéro violation automatique sur cette page ne signifie pas conformité complète du site.",
       "switches": "4 et 9",
-      "caption": "Rapport réel du moteur axe-core 4.14.0 avec Playwright ; ce n’est pas l’extension axe DevTools.",
+      "caption": "Rapport réel axe-core avec Playwright : button-name, color-contrast et image-alt avant correction. Ce n’est pas l’extension axe DevTools.",
       "humanOnly": 0,
       "agentOnly": 0,
       "reports": [
@@ -140,11 +140,11 @@ window.ESCALE_PRATIQUE = {
           "tool": "axe-core et un essai au clavier",
           "source": "https://playwright.dev/docs/accessibility-testing",
           "steps": [
-            "Ouvrez Le Week-end en grand. Examinez le cœur et le prix. Un scan axe-core peut signaler le nom absent du bouton et un contraste insuffisant.",
+            "Ouvrez Le Week-end. Lancez le scan axe-core avec Playwright : repérez button-name (cœur), color-contrast (prix) et image-alt (image sans texte alternatif).",
             "Ouvrez la confirmation depuis le lien de l’étape J’essaie. Atteignez « Annuler cette commande » au clavier et activez-le avec Entrée.",
             "Dans la fenêtre, essayez Tab, Maj+Tab et Échap : le focus devrait rester dedans, puis revenir au bouton après fermeture.",
             "Dans l’atelier élève, « Vérifier automatiquement mes observations » lance un script, pas un agent IA. Lisez son fonctionnement avant de le lancer.",
-            "Pour corriger : ouvrez la consigne de cette mission dans l’atelier, créez un point de retour et faites modifier son code par votre agent. Relancez le même contrôle."
+            "Corrigez le nom du cœur, ajoutez un texte alternatif descriptif à l’image informative et augmentez le contraste du prix. Chez le professeur : corrections 4 et 9. Relancez le scan sur la même page."
           ],
           "expected": "Le scan et le clavier sont complémentaires. Aucun résultat automatique ne prouve la conformité complète du site."
         }

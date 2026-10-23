@@ -180,17 +180,6 @@
     },
     {
       "deviceScaleFactor": 2,
-      "id": "scene-accessibilite-avant",
-      "file": "/preuves/scene-accessibilite-avant.png",
-      "title": "Prix et bouton favori · avant",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22",
-      "pixelWidth": 1122,
-      "pixelHeight": 1290
-    },
-    {
-      "deviceScaleFactor": 2,
       "id": "scene-attente-avant",
       "file": "/preuves/scene-attente-avant.png",
       "title": "Retour pendant le chargement · avant",
@@ -235,17 +224,6 @@
     },
     {
       "deviceScaleFactor": 2,
-      "id": "scene-accessibilite-apres",
-      "file": "/preuves/scene-accessibilite-apres.png",
-      "title": "Prix et bouton favori · apres",
-      "kind": "Capture rapprochée du site, sans retouche",
-      "tool": "Playwright / Chromium 156.0.8078.4",
-      "date": "2026-10-22",
-      "pixelWidth": 1122,
-      "pixelHeight": 1290
-    },
-    {
-      "deviceScaleFactor": 2,
       "id": "scene-attente-apres",
       "file": "/preuves/scene-attente-apres.png",
       "title": "Retour pendant le chargement · apres",
@@ -265,37 +243,6 @@
       "date": "2026-10-22",
       "pixelWidth": 1120,
       "pixelHeight": 552
-    },
-    {
-      "id": "axe-avant",
-      "title": "axe-core avant · 2 violation(s)",
-      "file": "/preuves/axe-avant.png",
-      "kind": "Capture d’un rapport réellement exécuté",
-      "tool": "axe-core 4.14.0",
-      "browser": "156.0.8078.4",
-      "violations": [
-        "button-name",
-        "color-contrast"
-      ],
-      "date": "2026-10-22",
-      "screenshotDate": "2026-10-22",
-      "deviceScaleFactor": 2,
-      "pixelWidth": 2880,
-      "pixelHeight": 2000
-    },
-    {
-      "id": "axe-apres",
-      "title": "axe-core apres · 0 violation(s)",
-      "file": "/preuves/axe-apres.png",
-      "kind": "Capture d’un rapport réellement exécuté",
-      "tool": "axe-core 4.14.0",
-      "browser": "156.0.8078.4",
-      "violations": [],
-      "date": "2026-10-22",
-      "screenshotDate": "2026-10-22",
-      "deviceScaleFactor": 2,
-      "pixelWidth": 2880,
-      "pixelHeight": 2000
     },
     {
       "id": "playwright-avant",
@@ -472,6 +419,56 @@
       "deviceScaleFactor": 2,
       "pixelWidth": 2880,
       "pixelHeight": 2000
+    },
+    {
+      "id": "scene-accessibilite-avant",
+      "file": "/preuves/scene-accessibilite-avant.png",
+      "title": "Cœur, contraste et image · avant",
+      "kind": "Capture réelle du site",
+      "tool": "Playwright / Chromium",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2592,
+      "pixelHeight": 1290,
+      "date": "2026-10-23"
+    },
+    {
+      "id": "axe-avant",
+      "file": "/preuves/axe-avant.png",
+      "title": "axe-core avant · 3 règles en violation",
+      "kind": "Capture d’un rapport réellement exécuté",
+      "tool": "axe-core 4.14.0 via Playwright",
+      "deviceScaleFactor": 2,
+      "violations": [
+        "button-name",
+        "color-contrast",
+        "image-alt"
+      ],
+      "pixelWidth": 2880,
+      "pixelHeight": 2200,
+      "date": "2026-10-23"
+    },
+    {
+      "id": "scene-accessibilite-apres",
+      "file": "/preuves/scene-accessibilite-apres.png",
+      "title": "Cœur, contraste et image · apres",
+      "kind": "Capture réelle du site",
+      "tool": "Playwright / Chromium",
+      "deviceScaleFactor": 2,
+      "pixelWidth": 2592,
+      "pixelHeight": 1290,
+      "date": "2026-10-23"
+    },
+    {
+      "id": "axe-apres",
+      "file": "/preuves/axe-apres.png",
+      "title": "axe-core apres · 0 règles en violation",
+      "kind": "Capture d’un rapport réellement exécuté",
+      "tool": "axe-core 4.14.0 via Playwright",
+      "deviceScaleFactor": 2,
+      "violations": [],
+      "pixelWidth": 2880,
+      "pixelHeight": 2200,
+      "date": "2026-10-23"
     }
   ]
 }

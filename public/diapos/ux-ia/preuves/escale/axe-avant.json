@@ -9,12 +9,12 @@
   "testEnvironment": {
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
     "windowWidth": 1440,
-    "windowHeight": 1000,
+    "windowHeight": 1100,
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-10-22T08:56:41.613Z",
-  "url": "http://127.0.0.1:4201/produits/sac-weekend?mode=avant",
+  "timestamp": "2026-10-23T06:34:40.966Z",
+  "url": "http://127.0.0.1:4224/produits/sac-weekend?mode=avant",
   "toolOptions": {
     "reporter": "v1"
   },
@@ -1105,46 +1105,6 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            },
-            {
-              "id": "aria-allowed-attr-elm",
-              "data": null,
-              "relatedNodes": [],
-              "message": "ARIA attributes are allowed for this element",
-              "impact": "critical"
-            },
-            {
-              "id": "aria-no-deprecated-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "No deprecated ARIA attributes are used"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
           "html": "<a class=\"cart-link\" aria-label=\"Panier, 1 articles\" href=\"/panier\">",
           "target": [
             ".cart-link"
@@ -1530,24 +1490,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<a class=\"cart-link\" aria-label=\"Panier, 1 articles\" href=\"/panier\">",
           "target": [
             ".cart-link"
@@ -1806,41 +1748,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg>",
-          "target": [
-            "a[aria-label=\"Mon compte\"] > svg[width=\"20\"][height=\"20\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 7h14l1 14H4L5 7Z\"></path><path d=\"M8 8V6a4 4 0 0 1 8 0v2\"></path></svg>",
           "target": [
-            ".cart-link > svg[width=\"20\"][height=\"20\"]"
+            "svg[width=\"20\"]"
           ]
         },
         {
@@ -2009,24 +1919,6 @@
           "html": "<nav aria-label=\"Navigation principale\"><a href=\"/\">La collection</a><a href=\"/?categorie=Sacs#collection\">Les sacs</a><a href=\"/?categorie=Organisation#collection\">Bien s’organiser</a></nav>",
           "target": [
             "nav"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
           ]
         },
         {
@@ -2441,38 +2333,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<a class=\"cart-link\" aria-label=\"Panier, 1 articles\" href=\"/panier\">",
           "target": [
             ".cart-link"
@@ -2743,24 +2603,6 @@
           "html": "<nav aria-label=\"Navigation principale\"><a href=\"/\">La collection</a><a href=\"/?categorie=Sacs#collection\">Les sacs</a><a href=\"/?categorie=Organisation#collection\">Bien s’organiser</a></nav>",
           "target": [
             "nav"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
           ]
         },
         {
@@ -3513,15 +3355,15 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#ffffff",
-                "bgColor": "#49604c",
-                "contrastRatio": 6.86,
+                "bgColor": "#95502f",
+                "contrastRatio": 6.05,
                 "fontSize": "8.3pt (11px)",
                 "fontWeight": "normal",
                 "expectedContrastRatio": "4.5:1"
               },
               "relatedNodes": [],
               "impact": "serious",
-              "message": "Element has sufficient color contrast of 6.86"
+              "message": "Element has sufficient color contrast of 6.05"
             }
           ],
           "all": [],
@@ -3791,31 +3633,6 @@
                 "bgColor": "#25382f",
                 "contrastRatio": 11.45,
                 "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 11.45"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/compte\">Mon compte de test</a>",
-          "target": [
-            "div:nth-child(2) > a[href$=\"compte\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#f6f6ec",
-                "bgColor": "#25382f",
-                "contrastRatio": 11.45,
-                "fontSize": "8.3pt (11px)",
                 "fontWeight": "bold",
                 "expectedContrastRatio": "4.5:1"
               },
@@ -3855,31 +3672,6 @@
           "html": "<a href=\"/guide\">Parcours humain &amp; agent</a>",
           "target": [
             "footer > div:nth-child(3) > a[href$=\"guide\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#f6f6ec",
-                "bgColor": "#25382f",
-                "contrastRatio": 11.45,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 11.45"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/guide#comptes\">Comptes de démonstration</a>",
-          "target": [
-            "a[href$=\"guide#comptes\"]"
           ]
         },
         {
@@ -4223,56 +4015,6 @@
       ]
     },
     {
-      "id": "image-alt",
-      "impact": null,
-      "tags": [
-        "cat.text-alternatives",
-        "wcag2a",
-        "wcag111",
-        "section508",
-        "section508.22.a",
-        "TTv5",
-        "TT7.a",
-        "TT7.b",
-        "EN-301-549",
-        "EN-9.1.1.1",
-        "ACT",
-        "RGAAv4",
-        "RGAA-1.1.1"
-      ],
-      "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-      "help": "Images must have alternative text",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/image-alt?application=playwright",
-      "nodes": [
-        {
-          "any": [
-            {
-              "id": "has-alt",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has an alt attribute"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "alt-space-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a valid alt attribute value"
-            }
-          ],
-          "impact": null,
-          "html": "<img data-d=\"7\" src=\"/api/image?version=lourde\" alt=\"Le Week-end, sac en toile verte avec ses accessoires de voyage\" width=\"1200\" height=\"800\" fetchpriority=\"high\">",
-          "target": [
-            "img"
-          ]
-        }
-      ]
-    },
-    {
       "id": "image-redundant-alt",
       "impact": null,
       "tags": [
@@ -4296,7 +4038,7 @@
             }
           ],
           "impact": null,
-          "html": "<img data-d=\"7\" src=\"/api/image?version=lourde\" alt=\"Le Week-end, sac en toile verte avec ses accessoires de voyage\" width=\"1200\" height=\"800\" fetchpriority=\"high\">",
+          "html": "<img data-d=\"7\" width=\"1200\" height=\"800\" fetchpriority=\"high\" src=\"/api/image?version=lourde\">",
           "target": [
             "img"
           ]
@@ -4915,32 +4657,6 @@
         {
           "any": [
             {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
-          ]
-        },
-        {
-          "any": [
-            {
               "id": "has-visible-text",
               "data": null,
               "relatedNodes": [],
@@ -5096,61 +4812,9 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/compte\">Mon compte de test</a>",
-          "target": [
-            "div:nth-child(2) > a[href$=\"compte\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
           "html": "<a href=\"/guide\">Parcours humain &amp; agent</a>",
           "target": [
             "footer > div:nth-child(3) > a[href$=\"guide\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"/guide#comptes\">Comptes de démonstration</a>",
-          "target": [
-            "a[href$=\"guide#comptes\"]"
           ]
         }
       ]
@@ -5254,7 +4918,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img data-d=\"7\" src=\"/api/image?version=lourde\" alt=\"Le Week-end, sac en toile verte avec ses accessoires de voyage\" width=\"1200\" height=\"800\" fetchpriority=\"high\">",
+          "html": "<img data-d=\"7\" width=\"1200\" height=\"800\" fetchpriority=\"high\" src=\"/api/image?version=lourde\">",
           "target": [
             "img"
           ]
@@ -5713,26 +5377,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a aria-label=\"Mon compte\" href=\"/compte\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 22v-2a8 8 0 0 1 16 0v2\"></path></svg></a>",
-          "target": [
-            "a[aria-label=\"Mon compte\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<a class=\"cart-link\" aria-label=\"Panier, 1 articles\" href=\"/panier\">",
           "target": [
             ".cart-link"
@@ -5853,7 +5497,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"detail-photo\"><img data-d=\"7\" src=\"/api/image?version=lourde\" alt=\"Le Week-end, sac en toile verte avec ses accessoires de voyage\" width=\"1200\" height=\"800\" fetchpriority=\"high\"><span class=\"detail-label\">PENSÉ POUR VOS DÉTOURS.</span></div>",
+          "html": "<div class=\"detail-photo\"><img data-d=\"7\" width=\"1200\" height=\"800\" fetchpriority=\"high\" src=\"/api/image?version=lourde\"><span class=\"detail-label\">PENSÉ POUR VOS DÉTOURS.</span></div>",
           "target": [
             ".detail-photo"
           ]
@@ -5873,7 +5517,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img data-d=\"7\" src=\"/api/image?version=lourde\" alt=\"Le Week-end, sac en toile verte avec ses accessoires de voyage\" width=\"1200\" height=\"800\" fetchpriority=\"high\">",
+          "html": "<img data-d=\"7\" width=\"1200\" height=\"800\" fetchpriority=\"high\" src=\"/api/image?version=lourde\">",
           "target": [
             "img"
           ]
@@ -6433,7 +6077,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div><strong>Pour vos départs</strong><a href=\"/\">La collection</a><a href=\"/panier\">Mon panier</a><a href=\"/compte\">Mon compte de test</a></div>",
+          "html": "<div><strong>Pour vos départs</strong><a href=\"/\">La collection</a><a href=\"/panier\">Mon panier</a></div>",
           "target": [
             "footer > div:nth-child(2)"
           ]
@@ -6513,27 +6157,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/compte\">Mon compte de test</a>",
-          "target": [
-            "div:nth-child(2) > a[href$=\"compte\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div><strong>Pour la formation</strong><a href=\"/guide\">Parcours humain &amp; agent</a><a href=\"/guide#comptes\">Comptes de démonstration</a><span>Aucune vente ni aucun paiement réel.</span></div>",
+          "html": "<div><strong>Pour la formation</strong><a href=\"/guide\">Parcours humain &amp; agent</a><span>Aucune vente ni aucun paiement réel.</span></div>",
           "target": [
             "footer > div:nth-child(3)"
           ]
@@ -6576,26 +6200,6 @@
           "html": "<a href=\"/guide\">Parcours humain &amp; agent</a>",
           "target": [
             "footer > div:nth-child(3) > a[href$=\"guide\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/guide#comptes\">Comptes de démonstration</a>",
-          "target": [
-            "a[href$=\"guide#comptes\"]"
           ]
         },
         {
@@ -6972,7 +6576,7 @@
                   ]
                 },
                 {
-                  "html": "<img data-d=\"7\" src=\"/api/image?version=lourde\" alt=\"Le Week-end, sac en toile verte avec ses accessoires de voyage\" width=\"1200\" height=\"800\" fetchpriority=\"high\">",
+                  "html": "<img data-d=\"7\" width=\"1200\" height=\"800\" fetchpriority=\"high\" src=\"/api/image?version=lourde\">",
                   "target": [
                     "img"
                   ]
@@ -7170,6 +6774,79 @@
             ".detail-price"
           ],
           "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.92 (foreground color: #b5b6ad, background color: #faf8f3, font size: 15.8pt (21px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "image-alt",
+      "impact": "critical",
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "TT7.b",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+      "help": "Images must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/image-alt?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "has-alt",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an alt attribute"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<img data-d=\"7\" width=\"1200\" height=\"800\" fetchpriority=\"high\" src=\"/api/image?version=lourde\">",
+          "target": [
+            "img"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
         }
       ]
     }
