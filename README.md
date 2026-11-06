@@ -157,6 +157,8 @@ Les diapos s'ouvrent à une diapo précise avec `?diapo=22`.
 
 Le cours comprend 29 diapos : histoire (1–6), familles d’IA (7–17, dont génération d’images, de sons, de musique et de vidéos), LLM (18–23), pratique (24–27), puis lexique et sources (28–29). La palette crème, cobalt, sarcelle et corail reprend la direction visuelle d’UX × IA. Les deux polices de cette présentation sont servies localement, avec leurs licences dans `public/diapos/types-ia/polices/`.
 
+Préférence visuelle de Clément : aucune bordure colorée décorative sur un seul côté d’une carte, ni bande équivalente ajoutée avec un pseudo-élément. Utiliser l’espace, la typographie et des surfaces simples. La diapo 24 garde une seule phrase et un lien par exercice ; le cercle central de la couverture laisse une marge confortable autour de son texte.
+
 Deux exercices complémentaires sont liés depuis les diapos et la page du cours : **Atelier des IA** pour découvrir trois capacités locales séparées, **Le Harnais** pour les combiner avec un assistant. L’Atelier est un prototype dont le code est public, sans installateur publié ; les textes ne doivent pas laisser croire que Windows, macOS, Linux ou les portables des apprenants sont déjà qualifiés. La capture de son accueil vient du dépôt de l’application. La musique et la vidéo sont expliquées, sans génération intégrée à ce prototype.
 
 Après une modification, synchroniser le lexique et les références avec `npm run sources -- public/diapos/types-ia/index.html types-ia`, puis construire le site. Vérifier la navigation, les liens de pratique et les deux thèmes ; les plages du catalogue doivent correspondre à `CONFIG.parties`. Le cours et le tuto du Harnais restent accessibles à leurs adresses existantes.

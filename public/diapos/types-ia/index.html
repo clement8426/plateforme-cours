@@ -557,9 +557,9 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .estime-val { font: 700 88px/1 var(--font-title); }
 .vf-tag.rep { background: var(--accent-fill); color: var(--on-accent); }
 .vf-quiz .vf-row { min-height: 100px; padding: 10px 28px; }
-.sens { width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 36px 28px; align-items: center; }
+.sens { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 360px minmax(0, 1fr); grid-template-rows: 1fr 1fr; gap: 36px 28px; align-items: center; }
 .sens-carte, .sens-cerveau { display: grid; justify-items: center; gap: 4px; padding: 22px 16px; border-radius: 22px; text-align: center; }
-.sens-carte { border: 3px solid var(--p2-fill); background: var(--surface); }
+.sens-carte { border: 2px solid var(--line); background: var(--surface); }
 .sens-carte b { font: 700 var(--fs-lead)/1.1 var(--font-title); color: var(--p2-text); }
 .sens-carte span { font-size: var(--fs-meta); color: var(--muted); }
 .sens-carte:nth-child(1) { grid-area: 1 / 1; } .sens-carte:nth-child(2) { grid-area: 1 / 3; }
@@ -635,10 +635,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .atelier-figure { display: grid; align-content: center; gap: 18px; }
 .atelier-figure figcaption { font-size: var(--fs-meta); color: var(--muted); }
 .pratique-choix { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.pratique-carte { display: grid; align-content: start; gap: 22px; padding: 40px; border-top: 9px solid var(--accent-fill); }
+.pratique-carte { display: grid; grid-template-rows: auto auto 1fr auto; gap: 24px; padding: 48px; }
 .pratique-carte h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
 .pratique-carte .btn { justify-self: start; margin-top: 10px; }
-.pratique-carte .numero { color: var(--accent-text); font: 700 72px/1 var(--font-title); }
+.pratique-carte .numero { color: var(--muted); font: 600 var(--fs-min)/1 var(--font-body); }
 .audio-visual { display: grid; align-content: center; gap: 34px; padding: 44px; background: var(--accent-wash); }
 .audio-bars { height: 190px; display: flex; align-items: center; justify-content: center; gap: 13px; }
 .audio-bars i { width: 20px; height: var(--h); border-radius: 12px; background: var(--accent-fill); }
@@ -650,8 +650,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .video-frames div:nth-child(3) b { transform: translateX(25px); }
 .video-frames span { font-size: var(--fs-meta); color: var(--muted); }
 .cover-vis { background: var(--accent-wash); }
-.sens-carte { border-top: 7px solid var(--p2-fill); }
-.sens-cerveau { border-radius: 50%; aspect-ratio: 1; justify-content: center; }
+.sens-cerveau { border-radius: 50%; aspect-ratio: 1; padding: 48px 30px; align-content: center; gap: 18px; }
 .quiz-pager { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
 @media print {
   .vf-quiz { grid-template-columns: 1fr 1fr; }
@@ -1061,8 +1060,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <div class="body stack-m">
     <p class="lead">D’abord essayer une capacité. Ensuite comprendre comment un assistant utilise ses outils.</p>
     <div class="pratique-choix">
-      <article class="card pratique-carte"><span class="numero">01</span><h3>Atelier des IA</h3><p>Une image à classer, un scan à lire, un texte à écouter. Une tâche, un petit modèle, un résultat à vérifier.</p><p class="note">Trois ateliers locaux dans le prototype actuel. Sans compte ni clé d’API.</p><a class="btn primary" href="https://github.com/clement8426/atelier-des-ia" target="_blank" rel="noopener noreferrer">Découvrir l’Atelier <span class="sr">(nouvel onglet)</span>↗</a></article>
-      <article class="card pratique-carte"><span class="numero">02</span><h3>Le Harnais</h3><p>Donner des outils à un assistant : lire, écouter, voir, puis agir. Comprendre ce qui se passe autour du LLM.</p><p class="note">Un parcours de missions avec un modèle à connecter.</p><a class="btn" href="/comprendre-ia/types-ia/tuto/" target="_blank" rel="noopener noreferrer">Ouvrir le tuto <span class="sr">(nouvel onglet)</span>↗</a></article>
+      <article class="card pratique-carte"><span class="numero">01</span><h3>Atelier des IA</h3><p>Classer une image, lire un scan, écouter un texte. Une capacité à la fois.</p><a class="btn primary" href="https://github.com/clement8426/atelier-des-ia" target="_blank" rel="noopener noreferrer">Découvrir l’Atelier <span class="sr">(nouvel onglet)</span>↗</a></article>
+      <article class="card pratique-carte"><span class="numero">02</span><h3>Le Harnais</h3><p>Donner des outils à un assistant et comprendre comment ils se combinent avec le LLM.</p><a class="btn" href="/comprendre-ia/types-ia/tuto/" target="_blank" rel="noopener noreferrer">Ouvrir le tuto <span class="sr">(nouvel onglet)</span>↗</a></article>
     </div>
   </div>
 </section>
