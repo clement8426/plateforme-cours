@@ -163,7 +163,7 @@ Après une modification, synchroniser le lexique et les références avec `npm r
 
 Vérification ciblée : après avoir servi le site construit, `node scripts/verifier-types-ia.mjs` contrôle le cadrage des 29 diapos en deux thèmes et cinq tailles d’écran, l’accessibilité des ajouts et de la page du cours, le quiz et la navigation. Variables : `UX_OUTILS` pour Playwright/axe, `SITE_URL` pour le serveur et `PREUVES_TYPES` pour les captures et le rapport JSON (par défaut `preuves-types-ia/`, ignoré par Git).
 
-Validation du 6 novembre 2026 : construction avec Next.js 16.4.5 et vérification ciblée réussies ; aucune vulnérabilité signalée par `npm audit --omit=dev`. Le contrôle général passe l’accessibilité et le débordement des 26 pages en deux thèmes sur bureau et mobile. Sa suite historique s’arrête sur Escale : elle attend encore un ancien lien GitHub, remplacé avant cette modification. Elle ne constitue donc pas une validation complète des parcours UX actuels.
+Validation du 6 novembre 2026 : construction avec Next.js 16.4.5 et vérification ciblée réussies ; aucune vulnérabilité signalée par `npm audit --omit=dev`. Le contrôle général passe l’accessibilité et le débordement des 26 pages en deux thèmes sur bureau et mobile. Sa suite historique attend un badge pour l’affiche désormais déclarée indisponible et s’arrête sur un ancien lien GitHub d’Escale, remplacé avant cette modification. Le stockage de progression conserve bien les visites des deux démos ; le badge de l’affiche indisponible est masqué volontairement. Cette suite ne constitue donc pas une validation complète des parcours UX actuels.
 
 ### Sources et dates
 
