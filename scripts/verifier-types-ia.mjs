@@ -98,9 +98,18 @@ try {
       assert.equal(await page.locator('h1').count(),1);
       assert.equal(await page.locator('.exercice-hors').count(),2);
       assert.equal(await page.locator('.exercice-hors a[href="https://github.com/clement8426/atelier-des-ia"]').count(),1);
+      const apercu=page.locator('a.apercu-diapos');
+      assert.equal(await apercu.getAttribute('aria-hidden'),null,'aperçu annoncé aux aides techniques');
+      assert.equal(await apercu.getByRole('img',{name:/Ouvrir les diapos/}).count(),1,'texte alternatif de l’image-lien');
+      await page.getByRole('link',{name:'Passer à la pratique',exact:true}).focus();
+      await page.keyboard.press('Tab');
+      assert.equal(await apercu.evaluate(e=>document.activeElement===e),true,'aperçu dans le parcours Tab');
+      assert.notEqual(await apercu.evaluate(e=>getComputedStyle(e).outlineStyle),'none','focus visible sur l’aperçu');
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'pas de débordement de la page');
       const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
       for(const v of axe.violations) erreurs.push(`page cours ${width} ${theme} axe ${v.id}`);
+      await page.keyboard.press('Enter');
+      await page.waitForURL('**/comprendre-ia/types-ia/diapos/');
     }
   }
 } finally { await browser.close(); }

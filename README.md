@@ -159,6 +159,8 @@ Le cours comprend 29 diapos : histoire (1–6), familles d’IA (7–17, dont g�
 
 Préférence visuelle de Clément : aucune bordure colorée décorative sur un seul côté d’une carte, ni bande équivalente ajoutée avec un pseudo-élément. Utiliser l’espace, la typographie et des surfaces simples. La diapo 24 garde une seule phrase et un lien par exercice ; le cercle central de la couverture laisse une marge confortable autour de son texte.
 
+L’aperçu d’un cours est un vrai lien : accessible au clavier, avec un texte alternatif qui annonce l’ouverture des diapos. Ne pas le masquer avec `aria-hidden` ou `tabIndex=-1`. Après une nouvelle capture, actualiser aussi sa version `?v=…` dans le catalogue pour renouveler les copies en cache. La version de l’aperçu Types d’IA correspond aux dix premiers caractères de son SHA-256.
+
 Deux exercices complémentaires sont liés depuis les diapos et la page du cours : **Atelier des IA** pour découvrir trois capacités locales séparées, **Le Harnais** pour les combiner avec un assistant. L’Atelier est un prototype dont le code est public, sans installateur publié ; les textes ne doivent pas laisser croire que Windows, macOS, Linux ou les portables des apprenants sont déjà qualifiés. La capture de son accueil vient du dépôt de l’application. La musique et la vidéo sont expliquées, sans génération intégrée à ce prototype.
 
 Après une modification, synchroniser le lexique et les références avec `npm run sources -- public/diapos/types-ia/index.html types-ia`, puis construire le site. Vérifier la navigation, les liens de pratique et les deux thèmes ; les plages du catalogue doivent correspondre à `CONFIG.parties`. Le cours et le tuto du Harnais restent accessibles à leurs adresses existantes.

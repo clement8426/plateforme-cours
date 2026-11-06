@@ -74,8 +74,8 @@ export default async function PageCours(props: ParamsCours) {
           </div>
         </header>
         {cours.diapos && (
-          <Link className="apercu-diapos" href={`${base}/diapos/`} tabIndex={-1} aria-hidden="true">
-            <img src={cours.diapos.apercu} alt="" width={1440} height={810} />
+          <Link className="apercu-diapos" href={`${base}/diapos/`}>
+            <img src={cours.diapos.apercu} alt={`Ouvrir les diapos « ${cours.titre} » : aperçu de la première diapo`} width={1440} height={810} />
           </Link>
         )}
       </div>
