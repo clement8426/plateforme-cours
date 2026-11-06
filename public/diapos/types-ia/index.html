@@ -5,50 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Les types d’IA, cours de Clément Bastien</title>
 <!--
-  Présentation autonome : un seul fichier, sans framework ni build. Même moteur que les cours UX × IA et IA, données et responsabilité. 25 slides, environ 1 heure, plus l’exercice du Harnais.
+  Présentation autonome : un seul fichier, sans framework ni build. Même moteur que les cours UX × IA et IA, données et responsabilité. 29 slides, environ 1 h 15, puis les ateliers pratiques.
   Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
   F plein écran, T thème clair ou sombre, B écran noir, S chrono (Maj + S : remise à zéro), N vue présentateur (Maj + N : panneau superposé).
   Tout ce qui se règle (minutes, notes, contenus des activités, lexique, sources) est dans l'objet CONFIG, au début du script.
   Export PDF : imprimer, format A4 paysage, sans marges, avec les arrière-plans.
 -->
 <style>
+@font-face{font-family:Bricolage Grotesque;font-style:normal;font-weight:200 800;font-stretch:100%;font-display:swap;src:url(./polices/bricolage-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Instrument Sans;font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(./polices/instrument-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* ========== 1. Variables ==========
    Le thème par défaut (clair) est défini juste en dessous : couleurs, polices, rayons, ombres.
    Le thème sombre (touche T) le redéfinit juste après. Aucun composant n'utilise de couleur en dur liée à un thème. */
-/* Palette du cours « Les types d'IA » : papier bleuté, encre nuit,
-   bleu (les familles d'IA), violet (les LLM), vert (la pratique) */
+/* Direction A, « Agrume » : crème chaude, encre indigo, cobalt, sarcelle, corail */
 :root {
   color-scheme: light;
-  --ink: #F6F7FA; --surface: #FFFFFF; --surface-2: #ECEFF4; --line: #DCE1E9; --edge: #858C99;
-  --text: #1B1F2A; --muted: #535A67;
-  --p1: #1B1F2A; --p1-text: #1B1F2A; --p1-fill: #1B1F2A; --on-p1: #F6F7FA;
-  --p2: #2A5A88; --p2-text: #24507A; --p2-fill: #2A5A88; --on-p2: #F6F7FA;
-  --p3: #64479C; --p3-text: #583D8C; --p3-fill: #64479C; --on-p3: #F6F7FA;
-  --p4: #2D6A55; --p4-text: #255A48; --p4-fill: #2D6A55; --on-p4: #F6F7FA;
-  --ok: #255A48; --ok-fill: #2D6A55; --warn: #7A5310; --warn-fill: #8A5F14; --bad: #A8401F; --bad-fill: #C1512F; --on-bad: #F6F7FA;
-  --hot-val: #C9B8EA;
-  --band: #E4E8EF; --logo-bg: #1B1F2A;
-  --shadow: 0 1px 0 rgba(27, 31, 42, .04), 0 24px 44px -30px rgba(27, 31, 42, .28);
-  --fill-edge: transparent; --soft-mix: 14%; --wash-mix: 14%; --decor-mix: 9%;
-  --font-title: "Libre Baskerville", Georgia, "Times New Roman", serif;
-  --font-body: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --title-weight: 700; --title-tracking: -.01em;
-  --r-s: 12px; --r-m: 18px; --r-l: 24px; --r-btn: 14px; --r-pill: 999px;
+  --ink: #FBF4E4; --surface: #FFFCF5; --surface-2: #F4E9D3; --line: #E7D9BD; --edge: #8A7C62;
+  --text: #17153B; --muted: #595470;
+  --p1: #2B44E8; --p1-text: #2B44E8; --p1-fill: #2B44E8; --on-p1: #FFFFFF;
+  --p2: #00897B; --p2-text: #00655F; --p2-fill: #00786F; --on-p2: #FFFFFF;
+  --p3: #F4573F; --p3-text: #B5301A; --p3-fill: #F4573F; --on-p3: #17153B;
+  --p4: #427D32; --p4-text: #326325; --p4-fill: #326325; --on-p4: #FFFFFF;
+  --hot-val: #FFCB47;
+  --ok: #05653F; --ok-fill: #0A7A4E; --warn: #8A5700; --warn-fill: #8A5700; --bad: #BF1048; --bad-fill: #BF1048; --on-bad: #FFFFFF;
+  --band: #E9DEC6; --logo-bg: #17153B; --sun: #FFCB47;
+  --shadow: 0 1px 0 rgba(23, 21, 59, .04), 0 24px 44px -28px rgba(23, 21, 59, .3);
+  --fill-edge: transparent; --soft-mix: 16%; --wash-mix: 16%;
+  --font-title: "Bricolage Grotesque", "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Instrument Sans", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --title-weight: 700; --title-tracking: -.025em;
+  --r-s: 14px; --r-m: 22px; --r-l: 32px; --r-btn: 18px; --r-pill: 999px;
 }
-/* thème sombre (touche T) : mêmes rôles, sur encre nuit */
+/* thème sombre (touche T) : mêmes rôles, sur encre indigo */
 :root[data-deck="dark"] {
   color-scheme: dark;
-  --ink: #1B1F2A; --surface: #252A36; --surface-2: #2F3542; --line: #3B4251; --edge: #8F96A3;
-  --text: #F3F4F7; --muted: #C3C8D2;
-  --p1: #E6E8EE; --p1-text: #E6E8EE; --p1-fill: #E6E8EE; --on-p1: #1B1F2A;
-  --p2: #8DB8E6; --p2-text: #8DB8E6; --p2-fill: #8DB8E6; --on-p2: #1B1F2A;
-  --p3: #BBA6E8; --p3-text: #BBA6E8; --p3-fill: #BBA6E8; --on-p3: #1B1F2A;
-  --p4: #8FC7AE; --p4-text: #8FC7AE; --p4-fill: #8FC7AE; --on-p4: #1B1F2A;
-  --ok: #8FC7AE; --ok-fill: #8FC7AE; --warn: #E2B865; --warn-fill: #E2B865; --bad: #E39E7E; --bad-fill: #D98C64; --on-bad: #1B1F2A;
-  --hot-val: #583D8C;
-  --band: #141720; --logo-bg: #141720;
-  --shadow: none; --decor-mix: 12%;
+  --ink: #12112B; --surface: #1B1A3D; --surface-2: #252450; --line: #33325F; --edge: #807EAD;
+  --text: #FBF4E4; --muted: #B7B3CE;
+  --p1: #7F92FF; --p1-text: #9DABFF; --p1-fill: #8FA0FF; --on-p1: #12112B;
+  --p2: #2FC4B2; --p2-text: #2FC4B2; --p2-fill: #2FC4B2; --on-p2: #12112B;
+  --p3: #FF7A62; --p3-text: #FF8E79; --p3-fill: #FF7A62; --on-p3: #12112B;
+  --p4: #A1D780; --p4-text: #A1D780; --p4-fill: #A1D780; --on-p4: #12112B;
+  --hot-val: #595470;
+  --ok: #3DD68C; --ok-fill: #3DD68C; --warn: #FFCB47; --warn-fill: #FFCB47; --bad: #FF8FAE; --bad-fill: #FF6B93; --on-bad: #12112B;
+  --band: #0A0A1C; --logo-bg: #0A0A1C; --sun: #2B295C;
+  --shadow: none;
 }
+/* signature : un quartier d'agrume safran dans l'angle */
+[data-part] { --decor: radial-gradient(circle at 100% 0, var(--sun) 0 330px, transparent 331px); }
 :root {
   /* tailles fluides, bornées : 1cqw = 1 % de la largeur de la scène (19,2 px à 1920) */
   --fs-title: clamp(46px, 2.8cqw, 56px);
@@ -60,15 +64,13 @@
   --hit: 72px; /* 72 px sur la scène = 48 px réels dans une fenêtre 1280 x 720 */
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
-/* une couleur par partie : 1 avant ChatGPT (encre), 2 les familles (bleu), 3 les LLM (violet), 4 la pratique (vert), 5 annexes */
+/* Une couleur par partie : cobalt, sarcelle, corail, feuille. */
 [data-part="1"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
 [data-part="2"] { --accent: var(--p2); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
 [data-part="3"] { --accent: var(--p3); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
 [data-part="4"] { --accent: var(--p4); --accent-text: var(--p4-text); --accent-fill: var(--p4-fill); --on-accent: var(--on-p4); }
 [data-part="5"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
 [data-part] { --accent-soft: color-mix(in srgb, var(--accent) var(--soft-mix), var(--surface)); --accent-wash: color-mix(in srgb, var(--accent) var(--wash-mix), var(--ink)); }
-/* signature : un quart de cercle teinté de la couleur de la partie, dans l'angle */
-[data-part] { --decor: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--accent) var(--decor-mix), var(--ink)) 0 330px, transparent 331px); }
 
 /* ========== 2. Base ========== */
 *, *::before, *::after { box-sizing: border-box; }
@@ -625,6 +627,38 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   [data-step] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
   #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
 }
+
+/* Les nouvelles activités gardent la même scène 16:9 et les mêmes contrôles. */
+.course-link { color: var(--accent-text); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.btn { text-decoration: none; }
+.atelier-shot { width: 100%; height: auto; max-height: 500px; object-fit: contain; border-radius: 18px; border: 2px solid var(--line); box-shadow: var(--shadow); }
+.atelier-figure { display: grid; align-content: center; gap: 18px; }
+.atelier-figure figcaption { font-size: var(--fs-meta); color: var(--muted); }
+.pratique-choix { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pratique-carte { display: grid; align-content: start; gap: 22px; padding: 40px; border-top: 9px solid var(--accent-fill); }
+.pratique-carte h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.pratique-carte .btn { justify-self: start; margin-top: 10px; }
+.pratique-carte .numero { color: var(--accent-text); font: 700 72px/1 var(--font-title); }
+.audio-visual { display: grid; align-content: center; gap: 34px; padding: 44px; background: var(--accent-wash); }
+.audio-bars { height: 190px; display: flex; align-items: center; justify-content: center; gap: 13px; }
+.audio-bars i { width: 20px; height: var(--h); border-radius: 12px; background: var(--accent-fill); }
+.audio-visual strong { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.video-frames { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.video-frames div { aspect-ratio: 1; border: 2px solid var(--edge); border-radius: 22px; background: var(--accent-wash); display: grid; align-content: center; justify-items: center; gap: 24px; }
+.video-frames b { width: 60px; height: 60px; border-radius: 50%; background: var(--accent-fill); }
+.video-frames div:nth-child(1) b { transform: translateX(-25px); }
+.video-frames div:nth-child(3) b { transform: translateX(25px); }
+.video-frames span { font-size: var(--fs-meta); color: var(--muted); }
+.cover-vis { background: var(--accent-wash); }
+.sens-carte { border-top: 7px solid var(--p2-fill); }
+.sens-cerveau { border-radius: 50%; aspect-ratio: 1; justify-content: center; }
+.quiz-pager { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+@media print {
+  .vf-quiz { grid-template-columns: 1fr 1fr; }
+  .vf-quiz .vf-row { grid-template-columns: 1fr; min-height: 0; gap: 8px; padding: 14px; }
+  .vf-quiz .vf-row[hidden] { display: grid !important; }
+  .vf-quiz .quiz-pager { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -640,15 +674,15 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <div class="c5 cover-text">
       <p class="cover-lead">Lire un scan, reconnaître une image, transcrire une voix, parler : des IA font tout cela depuis des années. Le LLM n’est qu’une famille parmi d’autres.</p>
       <p class="cover-name">Clément Bastien</p>
-      <p class="cover-def">OCR · vision · voix · traduction · images · LLM</p>
-      <p class="cover-maj">Mis à jour le 18 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
+      <p class="cover-def">Vision · voix · images · musique · vidéo · LLM</p>
+      <p class="cover-maj">Mis à jour le 6 novembre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7 cover-col">
-      <div class="card cover-vis" role="img" aria-label="Schéma : au centre, le LLM, le cerveau qui lit et écrit du texte. Autour, quatre IA spécialisées qui lui servent de sens : l’OCR lit un document, la vision reconnaît les objets d’une image, la transcription change la voix en texte, la synthèse vocale change le texte en voix.">
+      <div class="card cover-vis" role="img" aria-label="Quatre exemples de capacités spécialisées autour de la question : quelle entrée, quelle sortie ? OCR, vision, transcription et synthèse vocale.">
         <div class="sens" aria-hidden="true">
           <div class="sens-carte"><b>OCR</b><span>image → texte</span></div>
           <div class="sens-carte"><b>Vision</b><span>image → objets</span></div>
-          <div class="sens-cerveau"><b>LLM</b><span>le cerveau</span></div>
+          <div class="sens-cerveau"><b>Une tâche</b><span>entrée → sortie</span></div>
           <div class="sens-carte"><b>Voix</b><span>voix → texte</span></div>
           <div class="sens-carte"><b>Synthèse</b><span>texte → voix</span></div>
         </div>
@@ -719,10 +753,10 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : LES FAMILLES D’IA (slides 7 à 15) ================= -->
+<!-- ================= PARTIE 2 ================= -->
 
 <section class="slide" data-part="2" data-key="familles">
-  <h2 class="title">Les grandes familles, en un tableau</h2>
+  <h2 class="title">Un premier repère : les entrées et les sorties</h2>
   <div class="body">
     <table class="tbl tbl-familles">
       <thead><tr><th>Famille</th><th>Entrée → sortie</th><th>Des exemples</th></tr></thead>
@@ -862,6 +896,50 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
+
+<section class="slide" data-part="2" data-key="generation-audio">
+  <h2 class="title">Générer des sons et de la musique</h2>
+  <div class="body g12">
+    <div class="c7 stack-m">
+      <p class="lead">« Une pluie douce, puis un coup de tonnerre. » Le modèle produit un son à partir d’une description.</p>
+      <ul class="plain">
+        <li data-step="1"><b>Des bruitages</b> : AudioGen génère des sons d’ambiance et des effets.</li>
+        <li data-step="2"><b>De la musique</b> : MusicGen peut suivre un texte et une mélodie.</li>
+        <li data-step="3"><b>À vérifier</b> : la consigne respectée, les répétitions, la qualité du son et les droits d’utilisation.</li>
+      </ul>
+      <p class="lead strong" data-step="4">Lire une phrase avec Piper, c’est de la synthèse vocale. Composer un morceau, c’est une autre tâche.</p>
+    </div>
+    <figure class="c5 card audio-visual">
+      <p class="puce">Texte → son</p>
+      <div class="audio-bars" aria-hidden="true"><i style="--h:28%"></i><i style="--h:58%"></i><i style="--h:90%"></i><i style="--h:43%"></i><i style="--h:78%"></i><i style="--h:100%"></i><i style="--h:62%"></i><i style="--h:35%"></i><i style="--h:82%"></i><i style="--h:53%"></i><i style="--h:25%"></i></div>
+      <strong>Une voix, un bruit, une musique ?</strong>
+      <figcaption class="note">Trois sorties à distinguer. Schéma illustratif, aucun audio n’est généré ici.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide" data-part="2" data-key="generation-video">
+  <h2 class="title">Générer une vidéo : faire tenir le mouvement</h2>
+  <div class="body g12">
+    <div class="c7 stack-m">
+      <p class="lead">Un texte, ou une photo de départ, devient une courte séquence. Des modèles comme Wan peuvent générer ces images en mouvement.</p>
+      <ul class="plain">
+        <li data-step="1"><b>Le défi</b> : garder le même visage, le même objet et un mouvement cohérent d’une image à la suivante.</li>
+        <li data-step="2"><b>Les pièges</b> : un objet disparaît, une main se transforme, la physique devient étrange.</li>
+        <li data-step="3"><b>Pour ce cours</b> : on analyse des exemples préparés. La génération vidéo dépasse notre cible de portables sans carte graphique dédiée.</li>
+      </ul>
+    </div>
+    <div class="c5 stack-m">
+      <article class="card preuve">
+        <p class="puce">Texte ou image → séquence</p>
+        <div class="video-frames" aria-hidden="true"><div><b></b><span>01</span></div><div><b></b><span>02</span></div><div><b></b><span>03</span></div></div>
+        <p class="note">Schéma du mouvement, pas une vidéo générée.</p>
+      </article>
+      <p class="lead strong" data-step="4">Une belle image ne garantit pas une bonne vidéo.</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide" data-part="2" data-key="quiz">
   <h2 class="title">Quelle IA pour cette tâche ?</h2>
   <div class="body">
@@ -869,7 +947,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 3 : LES LLM (slides 16 à 21) ================= -->
+<!-- ================= PARTIE 3 ================= -->
 
 <section class="slide" data-part="3" data-key="llm">
   <h2 class="title">Un LLM prédit le mot suivant</h2>
@@ -975,7 +1053,40 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 4 : PRATIQUE (slides 22 et 23) ================= -->
+<!-- ================= PARTIE 4 ================= -->
+
+
+<section class="slide" data-part="4" data-key="pratiquer">
+  <h2 class="title">À vous de jouer : deux façons de pratiquer</h2>
+  <div class="body stack-m">
+    <p class="lead">D’abord essayer une capacité. Ensuite comprendre comment un assistant utilise ses outils.</p>
+    <div class="pratique-choix">
+      <article class="card pratique-carte"><span class="numero">01</span><h3>Atelier des IA</h3><p>Une image à classer, un scan à lire, un texte à écouter. Une tâche, un petit modèle, un résultat à vérifier.</p><p class="note">Trois ateliers locaux dans le prototype actuel. Sans compte ni clé d’API.</p><a class="btn primary" href="https://github.com/clement8426/atelier-des-ia" target="_blank" rel="noopener noreferrer">Découvrir l’Atelier <span class="sr">(nouvel onglet)</span>↗</a></article>
+      <article class="card pratique-carte"><span class="numero">02</span><h3>Le Harnais</h3><p>Donner des outils à un assistant : lire, écouter, voir, puis agir. Comprendre ce qui se passe autour du LLM.</p><p class="note">Un parcours de missions avec un modèle à connecter.</p><a class="btn" href="/comprendre-ia/types-ia/tuto/" target="_blank" rel="noopener noreferrer">Ouvrir le tuto <span class="sr">(nouvel onglet)</span>↗</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-part="4" data-key="atelier">
+  <h2 class="title">Atelier des IA : tester, comparer, comprendre</h2>
+  <div class="body g12">
+    <div class="c6 stack-m">
+      <p class="lead">Pas besoin de discuter avec un chatbot pour utiliser une IA.</p>
+      <ul class="plain">
+        <li data-step="1"><b>Classer</b> avec MobileNetV3 : que voit-il ?</li>
+        <li data-step="2"><b>Lire</b> un scan avec l’OCR : quels mots faut-il corriger ?</li>
+        <li data-step="3"><b>Écouter</b> un texte avec Piper : la prononciation est-elle juste ?</li>
+      </ul>
+      <p data-step="4">On commence avec les exemples fournis, puis on change un détail. Le diagnostic et le test sur l’appareil vérifient ce qui fonctionne sur votre machine.</p>
+      <a class="course-link" href="https://github.com/clement8426/atelier-des-ia" target="_blank" rel="noopener noreferrer">Le projet et son état actuel sur GitHub ↗<span class="sr"> (nouvel onglet)</span></a>
+    </div>
+    <figure class="c6 atelier-figure">
+      <img class="atelier-shot" src="./atelier-des-ia.png" width="1440" height="900" alt="Accueil du prototype Atelier des IA avec les trois ateliers : classer une image, lire un document, faire parler un texte.">
+      <figcaption>Capture réelle du prototype. Calcul local après téléchargement des modèles.</figcaption>
+      <p class="note"><b>Démo avec le formateur.</b> Code public, installateurs en validation. Génération d’images, de musique et de vidéos non intégrée.</p>
+    </figure>
+  </div>
+</section>
 
 <section class="slide" data-part="4" data-key="exercice">
   <h2 class="title">L’exercice : donner des sens à une IA, avec Le Harnais</h2>
@@ -995,7 +1106,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <article class="card preuve" data-step="3">
         <p class="puce">Prototype, pas fini</p>
         <p>Windows 10 ou 11 seulement, application non signée. Environ 900 Mo à télécharger, un micro, et une IA à brancher : un abonnement ChatGPT ou une clé d’API.</p>
-        <p class="note">Le tuto pas à pas et toutes les conditions sont sur la page du cours.</p>
+        <p class="note"><a class="course-link" href="/comprendre-ia/types-ia/tuto/" target="_blank" rel="noopener noreferrer">Ouvrir le tuto pas à pas ↗<span class="sr"> (nouvel onglet)</span></a> · Conditions sur la page du cours.</p>
       </article>
     </div>
   </div>
@@ -1048,63 +1159,182 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
      « quelle IA pour cette tâche ? », chaîne de traitement, lexique, sources.
    ===================================================================== */
 const CONFIG = {
-  auteur: 'Clément Bastien',
-  theme: 'light', // 'light' ou 'dark' (touche T pour basculer)
-  policesUrl: 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@400;500;600;700&display=swap',
-
+  auteur: "Clément Bastien",
+  theme: "light",
+  policesUrl: "",
   minutes: [
-    0.5, 3, 3, 4, 2, 4, // 1 à 6 : l'IA avant ChatGPT (16,5 min)
-    3, 3, 3, 2, 3, 2, 2.5, 2.5, 5, // 7 à 15 : les familles d'IA (26 min)
-    3, 2, 3, 3, 3, 3, // 16 à 21 : les LLM (17 min)
-    3, 1.5, // 22 et 23 : pratique (4,5 min, hors exercice)
-    0, 0 // 24 et 25 : annexes, hors budget
+    0.5,
+    3,
+    3,
+    4,
+    2,
+    4,
+    3,
+    3,
+    3,
+    2,
+    3,
+    2,
+    2.5,
+    2.5,
+    2,
+    2.5,
+    5,
+    3,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    1.5,
+    0,
+    0
   ],
   parties: [
-    { nom: 'L’IA avant ChatGPT', de: 1, a: 6 },
-    { nom: 'Les familles d’IA', de: 7, a: 15 },
-    { nom: 'Les LLM', de: 16, a: 21 },
-    { nom: 'Pratique', de: 22, a: 23 },
-    { nom: 'Annexes', de: 24, a: 25, hors: true }
+    {
+      "nom": "L’IA avant ChatGPT",
+      "de": 1,
+      "a": 6
+    },
+    {
+      "nom": "Les familles d’IA",
+      "de": 7,
+      "a": 17
+    },
+    {
+      "nom": "Les LLM",
+      "de": 18,
+      "a": 23
+    },
+    {
+      "nom": "Pratique",
+      "de": 24,
+      "a": 27
+    },
+    {
+      "nom": "Annexes",
+      "de": 28,
+      "a": 29,
+      "hors": true
+    }
   ],
   bonus: [],
-  alerteAmbre: 1.10,
+  alerteAmbre: 1.1,
   alerteRouge: 1.25,
   textes: {},
   urls: {},
   images: {},
-
-  // Slide 2 : question ouverte, puis la réponse
-  question: 'Sans doute plusieurs, sans le savoir : le filtre anti-spam de votre messagerie, la traduction automatique d’une page web, l’assistant vocal du téléphone. Ces IA existent depuis des années, bien avant ChatGPT.',
-
-  // Slide 6 : vrai ou faux
+  question: "Sans doute plusieurs, sans le savoir : le filtre anti-spam de votre messagerie, la traduction automatique d’une page web, l’assistant vocal du téléphone. Ces IA existent depuis des années, bien avant ChatGPT.",
   vraiFaux: [
-    { txt: 'ChatGPT est la première IA.', vrai: false, why: 'L’OCR, la vision, la traduction ou les filtres anti-spam existaient bien avant 2022.' },
-    { txt: 'Lire un scan demande forcément un LLM.', vrai: false, why: 'L’OCR existait avant les années 1970 ; la machine à lire de Kurzweil date de 1976.' },
-    { txt: 'Une IA peut tourner sur votre ordinateur, sans internet.', vrai: true, why: 'Tesseract (OCR) et Whisper (transcription) se téléchargent et tournent sur votre ordinateur.' },
-    { txt: 'Un LLM garantit que chaque affirmation a été vérifiée auprès d’une source.', vrai: false, why: 'Il peut produire une réponse plausible sans source fiable. Un assistant outillé peut chercher, mais ses sources restent à contrôler.' },
-    { txt: 'Reconnaître un visage, c’est de l’IA.', vrai: true, why: 'C’est de la vision par ordinateur : un modèle entraîné à reconnaître des visages.' }
+    {
+      "txt": "ChatGPT est la première IA.",
+      "vrai": false,
+      "why": "L’OCR, la vision, la traduction ou les filtres anti-spam existaient bien avant 2022."
+    },
+    {
+      "txt": "Lire un scan demande forcément un LLM.",
+      "vrai": false,
+      "why": "L’OCR existait avant les années 1970 ; la machine à lire de Kurzweil date de 1976."
+    },
+    {
+      "txt": "Une IA peut tourner sur votre ordinateur, sans internet.",
+      "vrai": true,
+      "why": "Tesseract (OCR) et Whisper (transcription) se téléchargent et tournent sur votre ordinateur."
+    },
+    {
+      "txt": "Un LLM garantit que chaque affirmation a été vérifiée auprès d’une source.",
+      "vrai": false,
+      "why": "Il peut produire une réponse plausible sans source fiable. Un assistant outillé peut chercher, mais ses sources restent à contrôler."
+    },
+    {
+      "txt": "Reconnaître un visage, c’est de l’IA.",
+      "vrai": true,
+      "why": "C’est de la vision par ordinateur : un modèle entraîné à reconnaître des visages."
+    }
   ],
-
-  // Slide 15 : quelle IA pour cette tâche ?
   quiz: [
-    { txt: 'Transformer une facture scannée en texte', rep: 'OCR', why: 'Une image de texte, un texte en sortie.' },
-    { txt: 'Sous-titrer une vidéo', rep: 'STT (speech-to-text)', why: 'La voix devient du texte.' },
-    { txt: 'Lire un article à voix haute', rep: 'TTS (text-to-speech)', why: 'Le texte devient une voix.' },
-    { txt: 'Compter les voitures sur une photo', rep: 'Vision (object detection)', why: 'Détection d’objets : chaque voiture, avec son cadre.' },
-    { txt: 'Décrire une photo pour une personne aveugle', rep: 'Image captioning', why: 'Elle dit ce qu’on voit, pas ce qui est écrit.' },
-    { txt: 'Résumer un rapport de vingt pages', rep: 'LLM', why: 'Du texte en entrée, un texte plus court en sortie.' }
+    {
+      "txt": "Transformer une facture scannée en texte",
+      "rep": "OCR",
+      "why": "Une image de texte, un texte en sortie."
+    },
+    {
+      "txt": "Sous-titrer une vidéo",
+      "rep": "STT (speech-to-text)",
+      "why": "La voix devient du texte."
+    },
+    {
+      "txt": "Lire un article à voix haute",
+      "rep": "TTS (text-to-speech)",
+      "why": "Le texte devient une voix."
+    },
+    {
+      "txt": "Compter les voitures sur une photo",
+      "rep": "Vision (object detection)",
+      "why": "Détection d’objets : chaque voiture, avec son cadre."
+    },
+    {
+      "txt": "Décrire une photo pour une personne aveugle",
+      "rep": "Image captioning",
+      "why": "Elle dit ce qu’on voit, pas ce qui est écrit."
+    },
+    {
+      "txt": "Résumer un rapport de vingt pages",
+      "rep": "LLM",
+      "why": "Du texte en entrée, un texte plus court en sortie."
+    },
+    {
+      "txt": "Créer un bruit de pluie à partir d’une description",
+      "rep": "Génération audio",
+      "why": "Le texte décrit un son à fabriquer. Il ne s’agit ni de dicter, ni de lire un texte."
+    },
+    {
+      "txt": "Animer une photo pour obtenir un court clip",
+      "rep": "Génération vidéo",
+      "why": "Une image de départ devient une séquence à garder cohérente dans le temps."
+    }
   ],
-
-  // Slide 21 : une chaîne où chaque IA est à sa place
   chaine: [
-    { nom: 'Lire', chip: 'OCR', ou: 'Sur l’ordinateur', titre: 'Le scan devient du texte', txt: 'L’OCR extrait le texte du document, sans rien envoyer en ligne.' },
-    { nom: 'Écouter', chip: 'Transcription', ou: 'Sur l’ordinateur', titre: 'La note vocale devient du texte', txt: 'Whisper transcrit l’audio sur l’ordinateur. Le son ne part nulle part.' },
-    { nom: 'Relire', chip: 'Humain', ou: 'Vous', titre: 'Un humain corrige', txt: 'Les noms, les dates, les chiffres : l’OCR et la transcription se trompent. On corrige avant d’aller plus loin.', note: 'Sans cette étape, le LLM rédigerait à partir d’erreurs.' },
-    { nom: 'Rédiger', chip: 'LLM', ou: 'En ligne ou en local', titre: 'Le LLM rédige', txt: 'Seul le texte relu part vers le LLM, qui rédige le compte rendu. Pour un document sensible : traitement local maîtrisé ou prestataire préalablement validé pour ce contenu et le secret.' },
-    { nom: 'Vérifier', chip: 'Humain', ou: 'Vous', titre: 'Un humain valide', txt: 'Le texte final se relit : le LLM peut inventer un détail.' }
+    {
+      "nom": "Lire",
+      "chip": "OCR",
+      "ou": "Sur l’ordinateur",
+      "titre": "Le scan devient du texte",
+      "txt": "L’OCR extrait le texte du document, sans rien envoyer en ligne."
+    },
+    {
+      "nom": "Écouter",
+      "chip": "Transcription",
+      "ou": "Sur l’ordinateur",
+      "titre": "La note vocale devient du texte",
+      "txt": "Whisper transcrit l’audio sur l’ordinateur. Le son ne part nulle part."
+    },
+    {
+      "nom": "Relire",
+      "chip": "Humain",
+      "ou": "Vous",
+      "titre": "Un humain corrige",
+      "txt": "Les noms, les dates, les chiffres : l’OCR et la transcription se trompent. On corrige avant d’aller plus loin.",
+      "note": "Sans cette étape, le LLM rédigerait à partir d’erreurs."
+    },
+    {
+      "nom": "Rédiger",
+      "chip": "LLM",
+      "ou": "En ligne ou en local",
+      "titre": "Le LLM rédige",
+      "txt": "Seul le texte relu part vers le LLM, qui rédige le compte rendu. Pour un document sensible : traitement local maîtrisé ou prestataire préalablement validé pour ce contenu et le secret."
+    },
+    {
+      "nom": "Vérifier",
+      "chip": "Humain",
+      "ou": "Vous",
+      "titre": "Un humain valide",
+      "txt": "Le texte final se relit : le LLM peut inventer un détail."
+    }
   ],
-
-  // Lexique (avant-dernière slide). cle : identifiant de la slide où le terme est expliqué.
   lexique: [
     {
       "terme": "IA",
@@ -1214,10 +1444,28 @@ const CONFIG = {
       "terme": "Harnais",
       "def": "Le logiciel qui relie un LLM à des outils, et décide de ce qu’il a le droit de faire.",
       "cle": "exercice"
+    },
+    {
+      "terme": "Génération audio",
+      "def": "Créer des sons ou de la musique à partir d’une consigne, à distinguer de la simple lecture vocale.",
+      "cle": "generation-audio"
+    },
+    {
+      "terme": "Génération vidéo",
+      "def": "Créer une séquence d’images en mouvement à partir d’un texte ou d’une image.",
+      "cle": "generation-video"
+    },
+    {
+      "terme": "Classification",
+      "def": "Attribuer une catégorie à une image. Cela ne localise pas chaque objet de l’image.",
+      "cle": "atelier"
+    },
+    {
+      "terme": "Inférence",
+      "def": "Faire fonctionner un modèle déjà entraîné pour obtenir un résultat à partir d’une entrée.",
+      "cle": "atelier"
     }
   ],
-
-  // Sources (dernière slide), neuf par page.
   references: [
     {
       "titre": "« Computing Machinery and Intelligence »",
@@ -1343,10 +1591,23 @@ const CONFIG = {
       "titre": "Voix locales et distantes : localService",
       "source": "MDN",
       "url": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
+    },
+    {
+      "titre": "AudioCraft : AudioGen et MusicGen",
+      "source": "Meta · dépôt officiel",
+      "url": "https://github.com/facebookresearch/audiocraft"
+    },
+    {
+      "titre": "Wan : génération de vidéo et matériel requis",
+      "source": "Wan · dépôt officiel",
+      "url": "https://github.com/Wan-Video/Wan2.1"
+    },
+    {
+      "titre": "Atelier des IA : prototype et conditions",
+      "source": "Clément Bastien · GitHub",
+      "url": "https://github.com/clement8426/atelier-des-ia"
     }
   ],
-
-  // Vue présentateur : trois mots-clés par slide
   sources: {
     "ocr": [
       {
@@ -1449,10 +1710,37 @@ const CONFIG = {
         "t": "Voix locale ou distante",
         "u": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
       }
+    ],
+    "generation-audio": [
+      {
+        "t": "AudioCraft · Meta",
+        "u": "https://github.com/facebookresearch/audiocraft"
+      }
+    ],
+    "generation-video": [
+      {
+        "t": "Wan · capacités et matériel",
+        "u": "https://github.com/Wan-Video/Wan2.1"
+      }
+    ],
+    "atelier": [
+      {
+        "t": "Atelier des IA · README et validation",
+        "u": "https://github.com/clement8426/atelier-des-ia"
+      }
+    ],
+    "pratiquer": [
+      {
+        "t": "Atelier des IA",
+        "u": "https://github.com/clement8426/atelier-des-ia"
+      },
+      {
+        "t": "Le Harnais",
+        "u": "https://github.com/clement8426/le-harnais"
+      }
     ]
   },
   motsCles: [],
-  // Vue présentateur : ce qui se dit à l'oral
   notes: {}
 };
 
@@ -1909,14 +2197,28 @@ const CONFIG = {
   function initQuiz() {
     const el = $('[data-comp="quiz"]');
     if (!el) return;
+    const rows = [], parPage = 4;
+    let page = 0;
     CONFIG.quiz.forEach(q => {
       const ans = h('div', { class: 'vf-ans' });
       const reveal = () => { ans.textContent = ''; ans.append(h('span', { class: 'vf-tag rep', text: q.rep }), h('span', { class: 'vf-why', text: q.why })); };
       const b = btn('Révéler', reveal, 'primary');
       b.setAttribute('aria-label', fr('Révéler la réponse : ' + q.txt));
       ans.append(b); printers.push(reveal);
-      el.append(h('div', { class: 'vf-row' }, h('p', { text: q.txt }), ans));
+      const row = h('div', { class: 'vf-row' }, h('p', { text: q.txt }), ans);
+      rows.push(row); el.append(row);
     });
+    const info = h('span', { 'aria-live': 'polite' });
+    const draw = () => {
+      rows.forEach((r, i) => { r.hidden = Math.floor(i / parPage) !== page; });
+      info.textContent = fr('Questions ' + (page * parPage + 1) + ' à ' + Math.min(rows.length, (page + 1) * parPage) + ' sur ' + rows.length);
+      avant.disabled = page === 0;
+      apres.disabled = (page + 1) * parPage >= rows.length;
+    };
+    const avant = btn('Précédentes', () => { page--; draw(); });
+    const apres = btn('Suivantes', () => { page++; draw(); });
+    if (rows.length > parPage) el.append(h('div', { class: 'quiz-pager' }, avant, info, apres));
+    draw();
   }
 
   /* --- Lexique : un terme, une phrase, et un raccourci vers la slide qui l'explique --- */

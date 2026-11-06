@@ -24,6 +24,7 @@ export default async function PageCours(props: ParamsCours) {
   if (!categorie || !cours) notFound();
   const base = `/${categorie.slug}/${cours.slug}`;
   const cle = `${categorie.slug}/${cours.slug}`;
+  const exercices = [...(cours.exercice ? [cours.exercice] : []), ...(cours.exercicesComplementaires ?? [])];
 
   if (cours.enPreparation) {
     return (
@@ -69,6 +70,7 @@ export default async function PageCours(props: ParamsCours) {
           <div className="actions">
             {cours.diapos && <Link className="bouton" href={`${base}/diapos/`}>Ouvrir les diapos</Link>}
             {cours.demos.length > 0 && <Link className="bouton-secondaire" href="#demos">Voir les démonstrations</Link>}
+            {exercices.length > 1 && <Link className="bouton-secondaire" href="#pratique">Passer à la pratique</Link>}
           </div>
         </header>
         {cours.diapos && (
@@ -137,27 +139,27 @@ export default async function PageCours(props: ParamsCours) {
         </section>
       )}
 
-      {cours.exercice && (
-        <section className="section exercice-hors" aria-labelledby="titre-exercice">
-          <h2 id="titre-exercice">L’exercice : {cours.exercice.titre}</h2>
-          <p className="intro-section">{cours.exercice.resume}</p>
+      {exercices.map((exercice, index) => (
+        <section key={exercice.titre} id={index === 0 ? 'pratique' : undefined} className="section exercice-hors" aria-labelledby={`titre-exercice-${index}`}>
+          <h2 id={`titre-exercice-${index}`}>L’exercice : {exercice.titre}</h2>
+          <p className="intro-section">{exercice.resume}</p>
           <div className="avis-prototype" role="note">
             <p className="avis-titre">Prototype</p>
-            <p>{cours.exercice.prototype}</p>
+            <p>{exercice.prototype}</p>
             <ul>
-              {cours.exercice.conditions.map((c) => <li key={c}>{c}</li>)}
+              {exercice.conditions.map((c) => <li key={c}>{c}</li>)}
             </ul>
           </div>
           <div className="actions">
-            {cours.exercice.tuto && <Link className="bouton" href={`${base}/tuto/`}>{cours.exercice.tuto.titre}</Link>}
-            {cours.exercice.lien && (
-              <a className="bouton-secondaire" href={cours.exercice.lien} target="_blank" rel="noreferrer">
-                Le dépôt GitHub, pour télécharger<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
+            {exercice.tuto && <Link className="bouton" href={`${base}/tuto/`}>{exercice.tuto.titre}</Link>}
+            {exercice.lien && (
+              <a className="bouton-secondaire" href={exercice.lien} target="_blank" rel="noreferrer">
+                Ouvrir {exercice.titre} sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
               </a>
             )}
           </div>
         </section>
-      )}
+      ))}
 
       <section className="section lien-ligne" aria-labelledby="titre-sources">
         <div>

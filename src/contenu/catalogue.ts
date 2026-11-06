@@ -32,6 +32,8 @@ export type Demo = {
 // Le déroulé du cours, calé sur les trois parties des diapos.
 export type Partie = { titre: string; resume: string; duree: string; diapos: [number, number]; demos?: boolean };
 
+export type Exercice = { titre: string; resume: string; prototype: string; conditions: string[]; lien?: string; tuto?: { href: string; titre: string; parties: { titre: string; diapo: number }[] } };
+
 export type Cours = {
   slug: string;
   titre: string;
@@ -48,7 +50,8 @@ export type Cours = {
   misAJour?: string; // date de la dernière modification, AAAA-MM-JJ
   enPreparation?: boolean; // annoncé : une page de présentation seulement, sans diapos ni démonstrations
   // Un exercice hors du site : une application à installer. Un prototype le dit, avec ses conditions.
-  exercice?: { titre: string; resume: string; prototype: string; conditions: string[]; lien?: string; tuto?: { href: string; titre: string; parties: { titre: string; diapo: number }[] } };
+  exercice?: Exercice;
+  exercicesComplementaires?: Exercice[];
 };
 
 export type Categorie = {
@@ -188,6 +191,8 @@ const REGLES_IA: RegleGroupe[] = [
 
 // Le cours « Les types d'IA » : ses sources, de l'histoire aux outils libres.
 const REGLES_TYPES: RegleGroupe[] = [
+  { nom: 'Générer du son et de la vidéo', adresses: ['facebookresearch/audiocraft', 'Wan-Video'] },
+  { nom: 'Passer à la pratique', adresses: ['clement8426/atelier-des-ia', 'clement8426/le-harnais'] },
   { nom: 'Avant ChatGPT : les grandes étapes', adresses: ['cse.msu.edu', 'Kurzweil', 'ibm.com', 'paulgraham', 'papers.nips', 'research.google', 'deepl.com'] },
   { nom: 'Lire, voir, écouter, parler : des outils libres', adresses: ['wikipedia.org/wiki/Reconnaissance', 'tesseract', 'facebookresearch', 'openai/whisper', 'alphacephei', 'OHF-Voice'] },
   { nom: 'Générer des images', adresses: ['2006.11239', 'stability.ai'] },
@@ -197,23 +202,24 @@ const REGLES_TYPES: RegleGroupe[] = [
 
 const typesIa: Cours = {
   slug: 'types-ia',
-  misAJour: '2026-10-18',
+  misAJour: '2026-11-06',
   titre: 'Les types d’IA',
-  accroche: 'OCR, vision, voix, traduction, images, LLM : l’IA existait bien avant ChatGPT. Chaque famille a son entrée, sa sortie et ses limites.',
-  duree: 'Environ 1 h, plus l’exercice du Harnais',
+  accroche: 'Lire, voir, parler, créer des images, des sons ou des vidéos : l’IA ne se résume pas à ChatGPT. Chaque famille a son entrée, sa sortie et ses limites.',
+  duree: 'Environ 1 h 15, puis les ateliers pratiques',
   public: 'Débutants, aucun prérequis technique',
   objectifs: [
     'Situer les grandes étapes de l’IA depuis 1950 : elle ne commence pas avec ChatGPT.',
-    'Reconnaître les familles d’IA par leur entrée et leur sortie : OCR, vision, description d’image, transcription, synthèse vocale, traduction, génération d’images, LLM.',
+    'Reconnaître les familles d’IA par leur entrée et leur sortie : OCR, vision, transcription, synthèse vocale, traduction, génération d’images, de sons, de musique et de vidéos, LLM.',
     'Comprendre ce qu’est un LLM : un modèle qui prédit la suite d’un texte, avec ses forces et ses limites.',
     'Choisir entre une IA spécialisée et un LLM, et les combiner : les sens sur l’ordinateur, le LLM pour rédiger.',
+    'Tester une capacité dans l’Atelier des IA, comparer son résultat avec l’exemple fourni et repérer ses erreurs.',
   ],
   diapos: { href: '/diapos/types-ia/', apercu: '/apercus/types-ia-diapos.jpg' },
   parties: [
     { titre: 'L’IA avant ChatGPT', resume: 'Ce qu’est une IA, plus de soixante-dix ans d’histoire, et l’idée clé : une entrée, une sortie.', duree: '15 min', diapos: [1, 6] },
-    { titre: 'Les familles d’IA', resume: 'OCR, vision, description d’image, transcription, synthèse vocale, traduction, génération d’images : ce que chacune fait, et où elle se trompe.', duree: '25 min', diapos: [7, 15] },
-    { titre: 'Les LLM', resume: 'Prédire le mot suivant, le Transformer, les forces et les limites, et comment combiner un LLM avec les autres IA.', duree: '15 min', diapos: [16, 21] },
-    { titre: 'Pratique', resume: 'Donner des sens à une IA avec Le Harnais : dicter, écouter, lire un scan, voir une image.', duree: '5 min, puis l’exercice', diapos: [22, 23] },
+    { titre: 'Les familles d’IA', resume: 'OCR, vision, voix, traduction, images, sons, musique et vidéo : ce que chacune reçoit, produit, et où elle se trompe.', duree: '30 min', diapos: [7, 17] },
+    { titre: 'Les LLM', resume: 'Prédire le mot suivant, le Transformer, les forces et les limites, et comment combiner un LLM avec les autres IA.', duree: '20 min', diapos: [18, 23] },
+    { titre: 'Pratique', resume: 'Essayer trois capacités locales avec l’Atelier des IA, puis donner des outils à un assistant avec Le Harnais.', duree: '10 min, puis les exercices', diapos: [24, 27] },
   ],
   demos: [],
   exercice: {
@@ -239,6 +245,18 @@ const typesIa: Cours = {
       ],
     },
   },
+  exercicesComplementaires: [{
+    titre: 'Atelier des IA',
+    resume: 'Une petite application pour découvrir les IA sans chatbot et sans compte : classer une image, lire le texte d’un document et faire parler un texte. On commence avec les exemples fournis, puis on change un détail et on observe le résultat. Ces trois ateliers utilisent de vrais modèles sur l’ordinateur, après leur téléchargement.',
+    prototype: 'Prototype en validation : le code et la documentation sont publics. Aucun installateur prêt à l’emploi n’est encore publié. Pour le cours, la démonstration se prépare avec le formateur.',
+    conditions: [
+      'Le diagnostic de l’ordinateur et un test dans l’application permettent de vérifier les capacités disponibles. Un seul calcul fonctionne à la fois.',
+      'La cible est un portable avec 8 à 16 Go de mémoire, sans carte graphique dédiée. La validation sur ces machines et des installateurs Windows, macOS et Linux est encore en cours.',
+      'Dans cette version : classification d’image, OCR et voix française. La génération d’images, de musique et de vidéos n’est pas intégrée.',
+      'Utilisez les images et textes d’exemple pour commencer. Aucune clé d’API ni aucun abonnement à une IA ne sont nécessaires.',
+    ],
+    lien: 'https://github.com/clement8426/atelier-des-ia',
+  }],
   lexique: sourcesTypes.lexique,
   references: grouper(sourcesTypes.references, REGLES_TYPES),
 };

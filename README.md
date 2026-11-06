@@ -153,6 +153,18 @@ Les anciennes adresses (`/exercices/`, `/comparer/formulaire-adresse/`) redirige
 
 Les diapos s'ouvrent à une diapo précise avec `?diapo=22`.
 
+### Les types d’IA
+
+Le cours comprend 29 diapos : histoire (1–6), familles d’IA (7–17, dont génération d’images, de sons, de musique et de vidéos), LLM (18–23), pratique (24–27), puis lexique et sources (28–29). La palette crème, cobalt, sarcelle et corail reprend la direction visuelle d’UX × IA. Les deux polices de cette présentation sont servies localement, avec leurs licences dans `public/diapos/types-ia/polices/`.
+
+Deux exercices complémentaires sont liés depuis les diapos et la page du cours : **Atelier des IA** pour découvrir trois capacités locales séparées, **Le Harnais** pour les combiner avec un assistant. L’Atelier est un prototype dont le code est public, sans installateur publié ; les textes ne doivent pas laisser croire que Windows, macOS, Linux ou les portables des apprenants sont déjà qualifiés. La capture de son accueil vient du dépôt de l’application. La musique et la vidéo sont expliquées, sans génération intégrée à ce prototype.
+
+Après une modification, synchroniser le lexique et les références avec `npm run sources -- public/diapos/types-ia/index.html types-ia`, puis construire le site. Vérifier la navigation, les liens de pratique et les deux thèmes ; les plages du catalogue doivent correspondre à `CONFIG.parties`. Le cours et le tuto du Harnais restent accessibles à leurs adresses existantes.
+
+Vérification ciblée : après avoir servi le site construit, `node scripts/verifier-types-ia.mjs` contrôle le cadrage des 29 diapos en deux thèmes et cinq tailles d’écran, l’accessibilité des ajouts et de la page du cours, le quiz et la navigation. Variables : `UX_OUTILS` pour Playwright/axe, `SITE_URL` pour le serveur et `PREUVES_TYPES` pour les captures et le rapport JSON (par défaut `preuves-types-ia/`, ignoré par Git).
+
+Validation du 6 novembre 2026 : construction avec Next.js 16.4.5 et vérification ciblée réussies ; aucune vulnérabilité signalée par `npm audit --omit=dev`. Le contrôle général passe l’accessibilité et le débordement des 26 pages en deux thèmes sur bureau et mobile. Sa suite historique s’arrête sur Escale : elle attend encore un ancien lien GitHub, remplacé avant cette modification. Elle ne constitue donc pas une validation complète des parcours UX actuels.
+
 ### Sources et dates
 
 - **Chaque chiffre ou fait cité doit avoir une source.** Dans une présentation, `CONFIG.sources` associe l'identifiant d'une diapo (`data-key`) à une liste `{ t: nom court, u: adresse }` : les liens « source » s'affichent en haut de la diapo, avec une flèche. Les passages très précis (la frise des types d'IA) ont aussi une pastille « source » dans le texte.

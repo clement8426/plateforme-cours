@@ -108,6 +108,26 @@
       "terme": "Harnais",
       "def": "Le logiciel qui relie un LLM à des outils, et décide de ce qu’il a le droit de faire.",
       "cle": "exercice"
+    },
+    {
+      "terme": "Génération audio",
+      "def": "Créer des sons ou de la musique à partir d’une consigne, à distinguer de la simple lecture vocale.",
+      "cle": "generation-audio"
+    },
+    {
+      "terme": "Génération vidéo",
+      "def": "Créer une séquence d’images en mouvement à partir d’un texte ou d’une image.",
+      "cle": "generation-video"
+    },
+    {
+      "terme": "Classification",
+      "def": "Attribuer une catégorie à une image. Cela ne localise pas chaque objet de l’image.",
+      "cle": "atelier"
+    },
+    {
+      "terme": "Inférence",
+      "def": "Faire fonctionner un modèle déjà entraîné pour obtenir un résultat à partir d’une entrée.",
+      "cle": "atelier"
     }
   ],
   "references": [
@@ -235,6 +255,21 @@
       "titre": "Voix locales et distantes : localService",
       "source": "MDN",
       "url": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
+    },
+    {
+      "titre": "AudioCraft : AudioGen et MusicGen",
+      "source": "Meta · dépôt officiel",
+      "url": "https://github.com/facebookresearch/audiocraft"
+    },
+    {
+      "titre": "Wan : génération de vidéo et matériel requis",
+      "source": "Wan · dépôt officiel",
+      "url": "https://github.com/Wan-Video/Wan2.1"
+    },
+    {
+      "titre": "Atelier des IA : prototype et conditions",
+      "source": "Clément Bastien · GitHub",
+      "url": "https://github.com/clement8426/atelier-des-ia"
     }
   ]
 }
