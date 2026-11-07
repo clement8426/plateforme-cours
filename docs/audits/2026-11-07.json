@@ -1525,6 +1525,7 @@
   },
   "parcours": [
     "20 pages indexables : canonique, titre, description et Open Graph propres ; sitemap et robots cohérents.",
+    "30 annexes HTML : consigne noindex vérifiée dans le document, sans dépendre des en-têtes de l’hébergeur.",
     "types-ia : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
     "ux-ia : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
     "ia-donnees : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
@@ -1548,9 +1549,393 @@
     "constat": "Les en-tetes Vercel de dossiers statiques ne sont pas appliques aux reponses 200; methode remplacee par une consigne HTML portable."
   },
   "integrationContinue": {
-    "url": "https://github.com/clement8426/plateforme-cours/actions/runs/42370019117",
+    "url": "https://github.com/clement8426/plateforme-cours/actions/runs/42370653345",
     "windows": "success",
     "linux": "success",
-    "macos": "cancelled before execution"
+    "macos15": "success",
+    "remarque": "Image macOS 14 retiree par GitHub; migration vers macOS 15 et nouveau passage reussi."
+  },
+  "production": {
+    "date": "2026-11-07T12:02:05.272Z",
+    "base": "https://www.labonumerique.ch",
+    "commit": "da9e16a8efe92b1e6c8839c295008a051e5a92d6",
+    "pages": [
+      {
+        "route": "/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/"
+      },
+      {
+        "route": "/accessibilite/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/accessibilite/"
+      },
+      {
+        "route": "/comprendre-ia/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/comprendre-ia/"
+      },
+      {
+        "route": "/comprendre-ia/types-ia/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/comprendre-ia/types-ia/"
+      },
+      {
+        "route": "/comprendre-ia/types-ia/diapos/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/comprendre-ia/types-ia/diapos/"
+      },
+      {
+        "route": "/comprendre-ia/types-ia/exercices/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/comprendre-ia/types-ia/#pratique"
+      },
+      {
+        "route": "/comprendre-ia/types-ia/sources/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/comprendre-ia/types-ia/sources/"
+      },
+      {
+        "route": "/comprendre-ia/types-ia/tuto/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/comprendre-ia/types-ia/tuto/"
+      },
+      {
+        "route": "/developpement/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/developpement/"
+      },
+      {
+        "route": "/developpement/app-hebergee-suisse/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/developpement/app-hebergee-suisse/"
+      },
+      {
+        "route": "/developpement/wordpress-e-commerce/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/developpement/wordpress-e-commerce/"
+      },
+      {
+        "route": "/hors-ligne/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/hors-ligne/"
+      },
+      {
+        "route": "/ia-legislation/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/demos/dossier-exemple/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/dossier-exemple/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/demos/dossier-mme-fictive/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/dossier-exemple/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/demos/reidentification/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/reidentification/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/diapos/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/diapos/"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/exercices/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/#demos"
+      },
+      {
+        "route": "/ia-legislation/ia-donnees/sources/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-donnees/sources/"
+      },
+      {
+        "route": "/ia-legislation/ia-souveraine/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ia-legislation/ia-souveraine/"
+      },
+      {
+        "route": "/ux/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/"
+      },
+      {
+        "route": "/ux/ux-ia/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/"
+      },
+      {
+        "route": "/ux/ux-ia/comparer/formulaire-adresse/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/demos/formulaire-adresse/"
+      },
+      {
+        "route": "/ux/ux-ia/demos/affiche/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/demos/affiche/"
+      },
+      {
+        "route": "/ux/ux-ia/demos/escale/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/demos/escale/"
+      },
+      {
+        "route": "/ux/ux-ia/demos/formulaire-adresse/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/demos/formulaire-adresse/"
+      },
+      {
+        "route": "/ux/ux-ia/demos/labo-ux-demo/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/demos/escale/"
+      },
+      {
+        "route": "/ux/ux-ia/demos/tilleul/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/demos/escale/"
+      },
+      {
+        "route": "/ux/ux-ia/diapos/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/diapos/"
+      },
+      {
+        "route": "/ux/ux-ia/exercices/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/#demos"
+      },
+      {
+        "route": "/ux/ux-ia/sources/",
+        "status": 200,
+        "finale": "https://www.labonumerique.ch/ux/ux-ia/sources/"
+      }
+    ],
+    "redirections": [
+      {
+        "source": "/ux/ux-ia/demos/tilleul/",
+        "statut": 308,
+        "destination": "/ux/ux-ia/demos/escale/"
+      },
+      {
+        "source": "/ux/ux-ia/demos/labo-ux-demo/",
+        "statut": 308,
+        "destination": "/ux/ux-ia/demos/escale/"
+      },
+      {
+        "source": "/ux/ux-ia/exercices/",
+        "statut": 308,
+        "destination": "/ux/ux-ia/#demos"
+      },
+      {
+        "source": "/ia-legislation/ia-donnees/exercices/",
+        "statut": 308,
+        "destination": "/ia-legislation/ia-donnees/#demos"
+      },
+      {
+        "source": "/comprendre-ia/types-ia/exercices/",
+        "statut": 308,
+        "destination": "/comprendre-ia/types-ia/#pratique"
+      },
+      {
+        "source": "/ux/ux-ia/comparer/formulaire-adresse/",
+        "statut": 308,
+        "destination": "/ux/ux-ia/demos/formulaire-adresse/"
+      },
+      {
+        "source": "/ia-legislation/ia-donnees/demos/dossier-mme-fictive/",
+        "statut": 308,
+        "destination": "/ia-legislation/ia-donnees/demos/dossier-exemple/"
+      }
+    ],
+    "exclusions": [
+      {
+        "path": "/comparateur/formulaire-adresse/casse/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/comparateur/formulaire-adresse/corrige/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/harnais/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ia-donnees/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/types-ia/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/axe-apres.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/axe-avant.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/lighthouse-apres.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/lighthouse-avant.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-apres/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/snapshot.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/uiMode.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-avant/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/snapshot.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/uiMode.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/diapos/ux-ia/preuves/traverse-lighthouse.html",
+        "robots": "noindex"
+      },
+      {
+        "path": "/formulaires/adresse/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/boutique/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/commande/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/panier/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/produit/assiette-lin/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/produit/bol-galet/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/produit/carafe-rive/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/produit/pichet-ocre/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/produit/tasse-brume/",
+        "robots": "noindex"
+      },
+      {
+        "path": "/tilleul/produit/vase-dune/",
+        "robots": "noindex"
+      }
+    ],
+    "lecture": "Types d’IA : lien de lecture et 29 sections en production vérifiés"
+  },
+  "lighthouseApres": [
+    {
+      "url": "https://www.labonumerique.ch/",
+      "date": "2026-11-07T12:04:43.395Z",
+      "version": "13.5.0",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 2119.214,
+      "tbt": 54,
+      "erreurCollecteRobots": null
+    },
+    {
+      "url": "https://www.labonumerique.ch/comprendre-ia/types-ia/",
+      "date": "2026-11-07T12:07:46.522Z",
+      "version": "13.5.0",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 92
+      },
+      "lcp": 1683.266,
+      "tbt": 0,
+      "erreurCollecteRobots": "Fetch of robots.txt failed: Timed out fetching resource"
+    }
+  ],
+  "lighthouseEssaiTransportConserve": {
+    "url": "https://www.labonumerique.ch/comprendre-ia/types-ia/",
+    "date": "2026-11-07T12:03:55.001Z",
+    "version": "13.5.0",
+    "scores": {
+      "performance": 92,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 92
+    },
+    "lcp": 2054.726,
+    "tbt": 316,
+    "erreurCollecteRobots": "Fetch of robots.txt failed: Waiting for the end of the IO stream exceeded the allotted time."
+  },
+  "verificationDirecteRobots": {
+    "date": "2026-11-07T12:12:05.878Z",
+    "status": 200,
+    "type": "text/plain; charset=utf-8",
+    "contenu": "User-Agent: *\nAllow: /\n\nHost: https://www.labonumerique.ch\nSitemap: https://www.labonumerique.ch/sitemap.xml\n",
+    "navigateur": "Lecture egalement verifiee avec Chromium et service worker actif."
   }
 }
