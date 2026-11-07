@@ -45,7 +45,7 @@ export default function Accueil() {
         </ul>
       </section>
 
-      <section className="vitrine" aria-labelledby="titre-en-ligne">
+      <section className="en-ligne" aria-labelledby="titre-en-ligne">
         <h2 id="titre-en-ligne">Les cours en ligne</h2>
         <ul>
           {cours.map((c) => (
