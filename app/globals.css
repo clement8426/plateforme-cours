@@ -854,3 +854,34 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
 @media (max-width: 720px) { .import-fiche { grid-template-columns: minmax(0, 1fr); } .etapes-entonnoir li { font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .sommaire-jauge span, .option, .niveau span, .carte-choix, .champ input, .champ textarea { transition: none; } }
 .fonction-suppr { grid-column: auto; }
+
+/* ---------- accueil : la fiole en grand ---------- */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr); align-items: center; gap: clamp(16px, 4vw, 56px); margin-top: 8px; padding: clamp(28px, 4.4vw, 60px) clamp(24px, 5vw, 72px); overflow: hidden; border-radius: 28px; background: var(--bleu); color: var(--sur-bleu); }
+.hero-texte { display: grid; gap: 18px; justify-items: start; }
+.hero h1 { max-width: 13ch; font-size: clamp(40px, 5.4vw, 80px); line-height: .98; letter-spacing: -.04em; }
+.hero-texte p { max-width: 34em; font-size: clamp(18px, 1.7vw, 21px); line-height: 1.45; }
+.hero-texte .actions { margin-top: 6px; }
+.hero-bouton { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border: 2px solid var(--sur-bleu); border-radius: 12px; background: var(--sur-bleu); color: var(--bleu); font-weight: 600; text-decoration: none; transition: transform .15s ease; }
+.hero-bouton.est-contour { background: transparent; color: var(--sur-bleu); }
+.hero-bouton:hover { transform: translateY(-2px); }
+.hero-bouton:focus-visible { outline-color: var(--sur-bleu); }
+.fiole { justify-self: center; width: 100%; max-width: 300px; max-height: 320px; overflow: visible; }
+.fiole-verre { fill: #FFFFFF; }
+.fiole-liquide { transform-box: view-box; transform-origin: 100px 150px; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.fiole-montee { animation: fiole-monte 1.1s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes fiole-monte { from { transform: translateY(100px); } to { transform: none; } }
+
+.portes { margin-top: 16px; }
+.porte { gap: 10px; border: 0; background: color-mix(in srgb, var(--teinte) 13%, var(--surface)); box-shadow: none; grid-template-rows: auto auto 1fr auto; transition: transform .15s ease, background-color .15s ease; }
+.porte:hover { transform: translateY(-3px); background: color-mix(in srgb, var(--teinte) 20%, var(--surface)); }
+.porte-icone { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 6px; border-radius: 15px; background: var(--teinte); color: var(--sur-pastille); }
+.porte-icone svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.porte p { color: var(--encre); }
+.porte .porte-action { color: var(--encre); }
+.accueil-suite { display: grid; gap: 18px; margin-top: clamp(40px, 5vw, 64px); }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1fr); border-radius: 22px; }
+  .fiole { max-width: 170px; max-height: 190px; }
+}
+@media (prefers-reduced-motion: reduce) { .fiole-montee { animation: none; } .fiole-liquide, .porte, .hero-bouton { transition: none; } .porte:hover, .hero-bouton:hover { transform: none; } }
+@media (min-width: 1800px) { .fiole { max-width: 400px; max-height: 420px; } }
