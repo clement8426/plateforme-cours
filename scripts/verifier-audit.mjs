@@ -1,7 +1,7 @@
 // Régressions de référencement, lecture et navigation. Complète axe par des gestes clavier.
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 const require=createRequire(resolve(process.env.UX_OUTILS??'../ux-outils','package.json'));
 const {chromium}=require('playwright'),{AxeBuilder}=require('@axe-core/playwright');
@@ -32,6 +32,14 @@ try{
  }
  const robots=await(await fetch(base+'/robots.txt')).text();assert(robots.includes('Sitemap: https://www.labonumerique.ch/sitemap.xml'));
  preuves.push(`${urls.length} pages indexables : canonique, titre, description et Open Graph propres ; sitemap et robots cohérents.`);
+ const annexes=readdirSync('public',{recursive:true}).filter(f=>f.endsWith('.html'));
+ for(const fichier of annexes){
+  const chemin='/'+fichier.replaceAll('\\','/').replace(/index\.html$/,'');
+  const r=await fetch(base+chemin);assert.equal(r.status,200,chemin);const html=await r.text();
+  const noindex=await p.evaluate(s=>[...new DOMParser().parseFromString(s,'text/html').querySelectorAll('head meta[name="robots"]')].some(m=>m.content.includes('noindex')),html);
+  assert(noindex,'noindex dans le document : '+chemin);
+ }
+ preuves.push(`${annexes.length} annexes HTML : consigne noindex vérifiée dans le document, sans dépendre des en-têtes de l’hébergeur.`);
  for(const chemin of ['/developpement/','/developpement/app-hebergee-suisse/','/ux/ux-ia/demos/affiche/','/hors-ligne/']){
   await p.goto(base+chemin);assert((await p.locator('meta[name="robots"]').getAttribute('content')).includes('noindex'));
  }

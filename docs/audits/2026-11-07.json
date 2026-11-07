@@ -208,13 +208,13 @@
       "route": "/comparateur/formulaire-adresse/casse/",
       "status": 200,
       "canonical": "",
-      "robots": "noindex"
+      "robots": "noindex, follow"
     },
     {
       "route": "/comparateur/formulaire-adresse/corrige/",
       "status": 200,
       "canonical": "",
-      "robots": "noindex"
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/harnais/",
@@ -244,145 +244,145 @@
       "route": "/diapos/ux-ia/preuves/escale/axe-apres.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/axe-avant.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/lighthouse-apres.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/lighthouse-avant.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-apres/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/snapshot.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/uiMode.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-avant/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/snapshot.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/uiMode.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/diapos/ux-ia/preuves/traverse-lighthouse.html",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/formulaires/adresse/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/boutique/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/commande/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/panier/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/produit/assiette-lin/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/produit/bol-galet/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/produit/carafe-rive/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/produit/pichet-ocre/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/produit/tasse-brume/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/tilleul/produit/vase-dune/",
       "status": 200,
       "canonical": "",
-      "robots": ""
+      "robots": "noindex, follow"
     },
     {
       "route": "/page-qui-nexiste-pas/",
@@ -1541,5 +1541,16 @@
       "seo": 100
     },
     "lcp": 2413.5074999999997
+  },
+  "controlesIndexation": {
+    "documentsAuxiliaires": 30,
+    "methode": "meta robots noindex dans head",
+    "constat": "Les en-tetes Vercel de dossiers statiques ne sont pas appliques aux reponses 200; methode remplacee par une consigne HTML portable."
+  },
+  "integrationContinue": {
+    "url": "https://github.com/clement8426/plateforme-cours/actions/runs/42370019117",
+    "windows": "success",
+    "linux": "success",
+    "macos": "cancelled before execution"
   }
 }

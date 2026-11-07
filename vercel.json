@@ -1,18 +1,40 @@
 {
   "redirects": [
-    { "source": "/ux/ux-ia/demos/tilleul/", "destination": "/ux/ux-ia/demos/escale/", "permanent": true },
-    { "source": "/ux/ux-ia/demos/labo-ux-demo/", "destination": "/ux/ux-ia/demos/escale/", "permanent": true },
-    { "source": "/ux/ux-ia/exercices/", "destination": "/ux/ux-ia/#demos", "permanent": true },
-    { "source": "/ia-legislation/ia-donnees/exercices/", "destination": "/ia-legislation/ia-donnees/#demos", "permanent": true },
-    { "source": "/comprendre-ia/types-ia/exercices/", "destination": "/comprendre-ia/types-ia/#pratique", "permanent": true },
-    { "source": "/ux/ux-ia/comparer/formulaire-adresse/", "destination": "/ux/ux-ia/demos/formulaire-adresse/", "permanent": true },
-    { "source": "/ia-legislation/ia-donnees/demos/dossier-mme-fictive/", "destination": "/ia-legislation/ia-donnees/demos/dossier-exemple/", "permanent": true }
-  ],
-  "headers": [
-    { "source": "/diapos/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] },
-    { "source": "/comparateur/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] },
-    { "source": "/formulaires/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] },
-    { "source": "/tilleul/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] }
+    {
+      "source": "/ux/ux-ia/demos/tilleul/",
+      "destination": "/ux/ux-ia/demos/escale/",
+      "permanent": true
+    },
+    {
+      "source": "/ux/ux-ia/demos/labo-ux-demo/",
+      "destination": "/ux/ux-ia/demos/escale/",
+      "permanent": true
+    },
+    {
+      "source": "/ux/ux-ia/exercices/",
+      "destination": "/ux/ux-ia/#demos",
+      "permanent": true
+    },
+    {
+      "source": "/ia-legislation/ia-donnees/exercices/",
+      "destination": "/ia-legislation/ia-donnees/#demos",
+      "permanent": true
+    },
+    {
+      "source": "/comprendre-ia/types-ia/exercices/",
+      "destination": "/comprendre-ia/types-ia/#pratique",
+      "permanent": true
+    },
+    {
+      "source": "/ux/ux-ia/comparer/formulaire-adresse/",
+      "destination": "/ux/ux-ia/demos/formulaire-adresse/",
+      "permanent": true
+    },
+    {
+      "source": "/ia-legislation/ia-donnees/demos/dossier-mme-fictive/",
+      "destination": "/ia-legislation/ia-donnees/demos/dossier-exemple/",
+      "permanent": true
+    }
   ],
   "rewrites": [
     {
