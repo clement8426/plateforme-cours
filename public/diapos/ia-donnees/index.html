@@ -583,9 +583,13 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
 }
 </style>
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="../lecture.css">
+<link rel="stylesheet" href="../../polices/diapos.css">
 </head>
 <body>
-<div id="viewport">
+<div id="viewport" role="main">
+<h1 class="sr">IA, données et responsabilité, cours de Clément Bastien</h1>
   <main id="stage" tabindex="-1" aria-label="Présentation IA, données et responsabilité">
     <h1 class="sr">IA, données et responsabilité : cours de Clément Bastien</h1>
     <div id="slides">
@@ -1059,7 +1063,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 const CONFIG = {
   auteur: 'Clément Bastien',
   theme: 'light', // 'light' ou 'dark' (touche T pour basculer)
-  policesUrl: 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@400;500;600;700&display=swap',
+  policesUrl: '',
 
   minutes: [
     0.5, 2, 2, 1.5, 3, 3, 3, 4, // 1 à 8 : comprendre l'outil (19 min)
@@ -1870,6 +1874,7 @@ const CONFIG = {
     $$('[data-step]', slides[state.i]).forEach(e => {
       const n = Number(e.dataset.step);
       e.classList.toggle('on', n <= state.step);
+      e.inert = n > state.step; // Une étape invisible ne doit pas recevoir le focus ni être annoncée.
       e.classList.toggle('step-current', n === state.step);
     });
   }
@@ -2476,5 +2481,6 @@ const CONFIG = {
   }
 })();
 </script>
+<script src="../lecture.js" data-retour="/ia-legislation/ia-donnees/diapos/" defer></script>
 </body>
 </html>

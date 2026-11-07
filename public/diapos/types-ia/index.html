@@ -659,9 +659,12 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   .vf-quiz .quiz-pager { display: none !important; }
 }
 </style>
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="../lecture.css">
 </head>
 <body>
-<div id="viewport">
+<div id="viewport" role="main">
+<h1 class="sr">Les types d’IA, cours de Clément Bastien</h1>
   <main id="stage" tabindex="-1" aria-label="Présentation Les types d’IA">
     <h1 class="sr">Les types d’IA : cours de Clément Bastien</h1>
     <div id="slides">
@@ -719,7 +722,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Plus de soixante-dix ans d’IA, avant ChatGPT</h2>
   <div class="body">
     <ol class="tl tl-8">
-      <li class="card" data-step="1"><p class="tl-date">1950</p><p class="tl-qui">Alan Turing</p><p>Il remplace la question « Les machines peuvent-elles penser ? » par un jeu d’imitation.<a class="src" href="https://www.cse.msu.edu/~cse841/papers/Turing.html" target="_blank" rel="noopener noreferrer" aria-label="Source : Alan Turing, 1950 (nouvel onglet)"><i data-icon="external"></i>source</a></p></li>
+      <li class="card" data-step="1"><p class="tl-date">1950</p><p class="tl-qui">Alan Turing</p><p>Il remplace la question « Les machines peuvent-elles penser ? » par un jeu d’imitation.<a class="src" href="https://www.csee.umbc.edu/courses/471/papers/turing.pdf" target="_blank" rel="noopener noreferrer" aria-label="Source : Alan Turing, 1950 (nouvel onglet)"><i data-icon="external"></i>source</a></p></li>
       <li class="card" data-step="1"><p class="tl-date">1976</p><p class="tl-qui">Ray Kurzweil</p><p>Sa machine à lire reconnaît le texte imprimé (OCR) et le lit à voix haute pour les personnes aveugles.<a class="src" href="https://en.wikipedia.org/wiki/Kurzweil_Computer_Products" target="_blank" rel="noopener noreferrer" aria-label="Source : machine à lire de Kurzweil (nouvel onglet)"><i data-icon="external"></i>source</a></p></li>
       <li class="card" data-step="2"><p class="tl-date">1997</p><p class="tl-qui">IBM Deep Blue</p><p>L’ordinateur bat le champion du monde d’échecs, Garry Kasparov.<a class="src" href="https://www.ibm.com/history/deep-blue" target="_blank" rel="noopener noreferrer" aria-label="Source : IBM, Deep Blue (nouvel onglet)"><i data-icon="external"></i>source</a></p></li>
       <li class="card" data-step="2"><p class="tl-date">2002</p><p class="tl-qui">Filtres anti-spam</p><p>Les messageries apprennent à trier le spam à partir des messages déjà classés.<a class="src" href="https://paulgraham.com/spam.html" target="_blank" rel="noopener noreferrer" aria-label="Source : Paul Graham, 2002 (nouvel onglet)"><i data-icon="external"></i>source</a></p></li>
@@ -1469,7 +1472,7 @@ const CONFIG = {
     {
       "titre": "« Computing Machinery and Intelligence »",
       "source": "Alan Turing, Mind, 1950",
-      "url": "https://www.cse.msu.edu/~cse841/papers/Turing.html"
+      "url": "https://www.csee.umbc.edu/courses/471/papers/turing.pdf"
     },
     {
       "titre": "La machine à lire de Kurzweil, 1976",
@@ -1868,6 +1871,7 @@ const CONFIG = {
     $$('[data-step]', slides[state.i]).forEach(e => {
       const n = Number(e.dataset.step);
       e.classList.toggle('on', n <= state.step);
+      e.inert = n > state.step; // Une étape invisible ne doit pas recevoir le focus ni être annoncée.
       e.classList.toggle('step-current', n === state.step);
     });
   }
@@ -2325,5 +2329,6 @@ const CONFIG = {
   }
 })();
 </script>
+<script src="../lecture.js" data-retour="/comprendre-ia/types-ia/diapos/" defer></script>
 </body>
 </html>

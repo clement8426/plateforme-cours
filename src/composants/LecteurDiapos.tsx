@@ -20,7 +20,13 @@ export default function LecteurDiapos({ href, titre, parties = [] }: Props) {
     const n = Number(new URLSearchParams(window.location.search).get('diapo'));
     if (Number.isInteger(n) && n > 1) setSource(`${href}#${n}`);
   }, [href]);
-  const allerA = (n: number) => { setSource(`${href}#${n}`); cadre.current?.focus(); };
+  const allerA = (n: number) => {
+    setSource(`${href}#${n}`);
+    const url = new URL(window.location.href);
+    url.searchParams.set('diapo', String(n));
+    window.history.replaceState(null, '', url);
+    cadre.current?.focus();
+  };
 
   const entrer = useCallback(async () => {
     const el = scene.current;
@@ -43,8 +49,51 @@ export default function LecteurDiapos({ href, titre, parties = [] }: Props) {
       try { await document.exitFullscreen(); } catch { /* déjà sorti */ }
     }
     setTheatre(false);
-    declencheur.current?.focus();
   }, []);
+
+  // En plein cadre, les commandes et les liens de la page derrière restent hors du parcours clavier.
+  const etaitActif = useRef(false);
+  useEffect(() => {
+    if (!actif || !scene.current) {
+      if (etaitActif.current) declencheur.current?.focus();
+      etaitActif.current = false;
+      return;
+    }
+    etaitActif.current = true;
+    const modifies: { element: HTMLElement; inert: boolean }[] = [];
+    let element: HTMLElement = scene.current;
+    while (element.parentElement) {
+      for (const voisin of element.parentElement.children) {
+        if (voisin !== element && voisin instanceof HTMLElement) {
+          modifies.push({ element: voisin, inert: voisin.inert }); voisin.inert = true;
+        }
+      }
+      element = element.parentElement;
+      if (element === document.body) break;
+    }
+    const ciblesDuCadre = () => {
+      const doc = cadre.current?.contentDocument;
+      return doc ? [...doc.querySelectorAll<HTMLElement>('a[href],button,input,select,textarea,[tabindex]')].filter(el => el.tabIndex >= 0 && !el.matches(':disabled') && !el.closest('[inert]') && el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden') : [];
+    };
+    const surTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || document.activeElement !== scene.current?.querySelector('.quitter-plein')) return;
+      const cibles = ciblesDuCadre();
+      e.preventDefault();
+      if (cibles.length) cibles[e.shiftKey ? cibles.length - 1 : 0].focus();
+      else cadre.current?.focus();
+    };
+    document.addEventListener('keydown', surTab);
+    const doc = cadre.current?.contentDocument;
+    const surTabCadre = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !doc) return;
+      const cibles = ciblesDuCadre();
+      if ((!e.shiftKey && doc.activeElement === cibles.at(-1)) || (e.shiftKey && doc.activeElement === cibles[0])) {
+        e.preventDefault(); scene.current?.querySelector<HTMLButtonElement>('.quitter-plein')?.focus();
+      }
+    };
+    doc?.addEventListener('keydown', surTabCadre, true);
+    return () => { modifies.forEach(v => { v.element.inert = v.inert; }); document.removeEventListener('keydown', surTab); doc?.removeEventListener('keydown', surTabCadre, true); };
+  }, [actif]);
 
   const basculer = useCallback(() => (actif ? sortir() : entrer()), [actif, entrer, sortir]);
 
@@ -93,10 +142,11 @@ export default function LecteurDiapos({ href, titre, parties = [] }: Props) {
         <button ref={declencheur} type="button" className="bouton" onClick={basculer} aria-pressed={actif}>
           Plein écran
         </button>
-        <a className="bouton-secondaire" href={href} target="_blank" rel="noreferrer">Ouvrir dans un onglet</a>
+        <a className="bouton-secondaire" href={`${href}?lecture=1`}>Lire la version texte</a>
+        <a className="bouton-secondaire" href={source} target="_blank" rel="noreferrer">Ouvrir dans un onglet<span className="visuellement-cache"> (nouvel onglet)</span></a>
       </div>
       </div>
-      <div ref={scene} className={`lecteur${theatre ? ' est-theatre' : ''}`}>
+      <div ref={scene} className={`lecteur${theatre ? ' est-theatre' : ''}`} role={actif ? 'dialog' : undefined} aria-modal={actif || undefined} aria-label={actif ? `Présentation : ${titre}` : undefined}>
         <iframe ref={cadre} className="cadre-diapos" src={source} title={`Diapos du cours ${titre}`} />
         {actif && (
           <button type="button" className="quitter-plein" onClick={sortir}>

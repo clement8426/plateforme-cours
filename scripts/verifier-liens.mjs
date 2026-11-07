@@ -12,7 +12,7 @@ function textes(dossier) {
   });
 }
 const fichiers = [
-  ...readdirSync(resolve(racine, 'public/diapos')).map((nom) => `public/diapos/${nom}/index.html`),
+  ...readdirSync(resolve(racine, 'public/diapos'), { withFileTypes: true }).filter(e => e.isDirectory()).map(e => `public/diapos/${e.name}/index.html`),
   ...readdirSync(resolve(racine, 'src/contenu')).filter((nom) => /\.(json|ts)$/.test(nom)).map((nom) => `src/contenu/${nom}`),
   ...textes('src/composants'), ...textes('app'), 'README.md',
 ];
@@ -23,7 +23,7 @@ for (const fichier of fichiers) {
     const adresse = match[0].replace(/&amp;/g, '&').replace(/[),.;]+$/, '');
     let url;
     try { url = new URL(adresse); } catch { continue; }
-    if (!url.hostname.includes('.') || url.hostname.endsWith('.example') || url.hostname === 'example.com') continue;
+    if (!url.hostname.includes('.') || url.hostname.endsWith('.example') || ['example.com', '127.0.0.1', 'schema.org', 'www.schema.org'].includes(url.hostname)) continue;
     // Origines techniques de preconnect et espace de noms SVG : ce ne sont pas des pages liées.
     if (url.href === 'https://fonts.gstatic.com/' || url.href === 'http://www.w3.org/2000/svg') continue;
     url.hash = '';

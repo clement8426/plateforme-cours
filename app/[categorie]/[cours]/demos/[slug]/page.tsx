@@ -13,6 +13,7 @@ import ExerciceEscale from '@/composants/ExerciceEscale';
 import Redirection from '@/composants/Redirection';
 import { CATEGORIES, trouverCategorie, trouverCours, trouverDemo } from '@/contenu/catalogue';
 import { trouverComparateur } from '@/contenu/comparateurs';
+import { metadonnees } from '@/contenu/site';
 
 type Props = { params: Promise<{ categorie: string; cours: string; slug: string }> };
 
@@ -30,8 +31,11 @@ async function lire({ params }: Props) {
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { demo } = await lire(props);
-  return { title: demo?.titre, description: demo?.resume };
+  const { categorie, cours, demo, slug } = await lire(props);
+  if (!categorie || !cours) return {};
+  if (['tilleul', 'labo-ux-demo'].includes(slug)) return metadonnees({ titre: 'La démonstration a déménagé', description: 'Retrouvez l’atelier UX Escale et ses missions guidées.', chemin: '/ux/ux-ia/demos/escale/', indexable: false });
+  if (!demo) return {};
+  return metadonnees({ titre: demo.titre, description: demo.resume, chemin: `/${categorie.slug}/${cours.slug}/demos/${slug}/`, image: demo.apercu, indexable: !demo.indisponible });
 }
 
 export default async function PageDemo(props: Props) {

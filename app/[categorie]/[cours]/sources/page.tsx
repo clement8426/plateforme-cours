@@ -5,13 +5,15 @@ import MarqueVu from '@/composants/MarqueVu';
 import { BLOCS } from '@/contenu/blocs';
 import { compterReferences } from '@/contenu/catalogue';
 import { type ParamsCours, lireCours, tousLesCoursPublies } from '@/contenu/parametres';
+import { metadonnees } from '@/contenu/site';
 
 export const dynamicParams = false;
 export const generateStaticParams = tousLesCoursPublies;
 
 export async function generateMetadata(props: ParamsCours): Promise<Metadata> {
-  const { cours } = await lireCours(props);
-  return { title: cours ? `Sources et lexique, ${cours.titre}` : undefined };
+  const { categorie, cours } = await lireCours(props);
+  if (!categorie || !cours) return {};
+  return metadonnees({ titre: `Sources et lexique, ${cours.titre}`, description: `Les ${compterReferences(cours)} références et les ${cours.lexique.length} termes du cours « ${cours.titre} » : sources citées et définitions pour approfondir.`, chemin: `/${categorie.slug}/${cours.slug}/sources/` });
 }
 
 export default async function PageSources(props: ParamsCours) {
@@ -26,7 +28,7 @@ export default async function PageSources(props: ParamsCours) {
         { nom: 'Sources et lexique' },
       ]} />
       <header className="tete">
-        <h1>Sources et lexique</h1>
+        <h1>Sources et lexique : {cours.titre}</h1>
         <p className="chapeau">Les références citées dans le cours, et les mots du cours expliqués en une phrase.</p>
       </header>
 

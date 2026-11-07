@@ -1,0 +1,1545 @@
+{
+  "date": "2026-11-07",
+  "outils": {
+    "playwright": "1.62.0",
+    "axe": "4.14.0",
+    "next": "16.4.5"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/accessibilite/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/accessibilite/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/comprendre-ia/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/comprendre-ia/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/comprendre-ia/types-ia/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/comprendre-ia/types-ia/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/comprendre-ia/types-ia/diapos/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/comprendre-ia/types-ia/diapos/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/comprendre-ia/types-ia/exercices/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/comprendre-ia/types-ia/sources/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/comprendre-ia/types-ia/sources/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/comprendre-ia/types-ia/tuto/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/comprendre-ia/types-ia/tuto/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/developpement/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/developpement/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/developpement/app-hebergee-suisse/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/developpement/app-hebergee-suisse/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/developpement/wordpress-e-commerce/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/developpement/wordpress-e-commerce/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/hors-ligne/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/ia-legislation/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-donnees/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/demos/dossier-exemple/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/dossier-exemple/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/demos/dossier-mme-fictive/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/demos/reidentification/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-donnees/demos/reidentification/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/diapos/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-donnees/diapos/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/exercices/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/ia-legislation/ia-donnees/sources/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-donnees/sources/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ia-legislation/ia-souveraine/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ia-legislation/ia-souveraine/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/ux/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ux/ux-ia/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ux/ux-ia/comparer/formulaire-adresse/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/ux/ux-ia/demos/affiche/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/demos/affiche/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/ux/ux-ia/demos/escale/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/demos/escale/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ux/ux-ia/demos/formulaire-adresse/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/demos/formulaire-adresse/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ux/ux-ia/demos/labo-ux-demo/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/demos/escale/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/ux/ux-ia/demos/tilleul/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/demos/escale/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/ux/ux-ia/diapos/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/diapos/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/ux/ux-ia/exercices/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/ux/ux-ia/sources/",
+      "status": 200,
+      "canonical": "https://www.labonumerique.ch/ux/ux-ia/sources/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/comparateur/formulaire-adresse/casse/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/comparateur/formulaire-adresse/corrige/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex"
+    },
+    {
+      "route": "/diapos/harnais/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/diapos/ia-donnees/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/diapos/types-ia/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/diapos/ux-ia/",
+      "status": 200,
+      "canonical": "",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/axe-apres.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/axe-avant.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/lighthouse-apres.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/lighthouse-avant.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/snapshot.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/uiMode.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/snapshot.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/uiMode.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/traverse-lighthouse.html",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/formulaires/adresse/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/boutique/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/commande/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/panier/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/produit/assiette-lin/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/produit/bol-galet/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/produit/carafe-rive/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/produit/pichet-ocre/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/produit/tasse-brume/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/tilleul/produit/vase-dune/",
+      "status": 200,
+      "canonical": "",
+      "robots": ""
+    },
+    {
+      "route": "/page-qui-nexiste-pas/",
+      "status": 404,
+      "canonical": "",
+      "robots": "noindex,noindex, follow"
+    }
+  ],
+  "configurations": [
+    {
+      "mode": "bureau-clair",
+      "pages": 34,
+      "violations": 0,
+      "debordements": 0,
+      "titresOuIdentifiants": 0
+    },
+    {
+      "mode": "bureau-sombre",
+      "pages": 34,
+      "violations": 0,
+      "debordements": 0,
+      "titresOuIdentifiants": 0
+    },
+    {
+      "mode": "mobile-clair",
+      "pages": 34,
+      "violations": 0,
+      "debordements": 0,
+      "titresOuIdentifiants": 0
+    },
+    {
+      "mode": "mobile-sombre",
+      "pages": 34,
+      "violations": 0,
+      "debordements": 0,
+      "titresOuIdentifiants": 0
+    },
+    {
+      "mode": "reflow-320",
+      "pages": 34,
+      "violations": 0,
+      "debordements": 0,
+      "titresOuIdentifiants": 0
+    },
+    {
+      "mode": "contraste-eleve",
+      "pages": 34,
+      "violations": 0,
+      "debordements": 0,
+      "titresOuIdentifiants": 0
+    }
+  ],
+  "annexes": [
+    {
+      "route": "/comparateur/formulaire-adresse/casse/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "label",
+          "nodes": [
+            {
+              "cible": [
+                "input[name=\"prenom\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "cible": [
+                "input[name=\"nom\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/comparateur/formulaire-adresse/corrige/",
+      "pedagogique": false,
+      "archive": false,
+      "violations": []
+    },
+    {
+      "route": "/diapos/harnais/",
+      "pedagogique": false,
+      "archive": false,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ia-donnees/",
+      "pedagogique": false,
+      "archive": false,
+      "violations": []
+    },
+    {
+      "route": "/diapos/types-ia/",
+      "pedagogique": false,
+      "archive": false,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/",
+      "pedagogique": false,
+      "archive": false,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/axe-apres.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/axe-avant.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/lighthouse-apres.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/lighthouse-avant.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/snapshot.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-apres/trace/uiMode.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/snapshot.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/escale/playwright-avant/trace/uiMode.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/diapos/ux-ia/preuves/traverse-lighthouse.html",
+      "pedagogique": false,
+      "archive": true,
+      "violations": []
+    },
+    {
+      "route": "/formulaires/adresse/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "label",
+          "nodes": [
+            {
+              "cible": [
+                "input[name=\"prenom\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "cible": [
+                "input[name=\"nom\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/boutique/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/commande/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": []
+    },
+    {
+      "route": "/tilleul/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".bouton-promo"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.98 (foreground color: #ffffff, background color: #e07a3f, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div[data-defaut=\"7\"] > .carte-categorie"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 9.4pt (12.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div[data-defaut=\"7\"] > .prix > s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".carte-produit:nth-child(2) > .carte-categorie"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 9.4pt (12.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".carte-produit:nth-child(2) > .prix > s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".carte-produit:nth-child(3) > .carte-categorie"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 9.4pt (12.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".carte-produit:nth-child(3) > .prix > s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".arguments > div:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.74 (foreground color: #b5aea2, background color: #dde7e2, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".arguments > div:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.74 (foreground color: #b5aea2, background color: #dde7e2, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".arguments > div:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.74 (foreground color: #b5aea2, background color: #dde7e2, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "div[data-defaut=\"7\"] > .image-produit[width=\"400\"][height=\"400\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "cible": [
+                ".carte-produit:nth-child(2) > .image-produit[width=\"400\"][height=\"400\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "cible": [
+                ".carte-produit:nth-child(3) > .image-produit[width=\"400\"][height=\"400\"]"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/panier/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/produit/assiette-lin/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                "s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 14.3pt (19px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(1) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(2) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(2)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "p:nth-child(3)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(4)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(4) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(5) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(6) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".mention"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "img"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/produit/bol-galet/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                "s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 14.3pt (19px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(1) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(2) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(2)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "p:nth-child(3)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(4)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(4) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(5) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(6) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".mention"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "img"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/produit/carafe-rive/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                "s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 14.3pt (19px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(1) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(2) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(2)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "p:nth-child(3)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(4)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(4) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(5) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(6) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".mention"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "img"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/produit/pichet-ocre/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                "s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 14.3pt (19px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(1) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(2) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(2)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "p:nth-child(3)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(4)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(4) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(5) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(6) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".mention"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "img"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/produit/tasse-brume/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                "s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 14.3pt (19px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(1) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(2) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(2)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "p:nth-child(3)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(4)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(4) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(5) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(6) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".mention"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "img"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tilleul/produit/vase-dune/",
+      "pedagogique": true,
+      "archive": false,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "cible": [
+                "s"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 14.3pt (19px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".chapeau"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 13.9pt (18.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(1) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "div:nth-child(2) > dt"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 11.6pt (15.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(2)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "p:nth-child(3)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".entretien > p:nth-child(4)"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(1) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(2) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(3) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(4) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(5) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                "li:nth-child(6) > p"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #b5aea2, background color: #f7f3ec, font size: 12.4pt (16.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "cible": [
+                ".mention"
+              ],
+              "raison": "Fix any of the following:\n  Element has insufficient color contrast of 1.68 (foreground color: #c4bdb0, background color: #f7f3ec, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "image-alt",
+          "nodes": [
+            {
+              "cible": [
+                "img"
+              ],
+              "raison": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "diapos": [
+    {
+      "presentation": "types-ia",
+      "diapos": 29,
+      "exceptions": [],
+      "erreursHorsExemples": 0
+    },
+    {
+      "presentation": "ux-ia",
+      "diapos": 46,
+      "exceptions": [
+        {
+          "diapo": 14,
+          "cle": "accessibilite",
+          "theme": "light",
+          "invisibles": [],
+          "violations": [
+            {
+              "id": "color-contrast",
+              "aide": "Elements must meet minimum color contrast ratio thresholds",
+              "nodes": [
+                {
+                  "cible": [
+                    ".acc-mini-price > b"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.81 (foreground color: #9a9a9a, background color: #ffffff, font size: 31.5pt (42px), font weight: bold). Expected contrast ratio of 3:1",
+                  "html": "<b>29,90&nbsp;€</b>",
+                  "exempleVolontaire": true
+                },
+                {
+                  "cible": [
+                    ".acc-pay > em"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #faf5eb, background color: #858edf, font size: 16.5pt (22px), font weight: bold). Expected contrast ratio of 3:1",
+                  "html": "<em>Payer</em>",
+                  "exempleVolontaire": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "diapo": 15,
+          "cle": "contraste",
+          "theme": "light",
+          "invisibles": [],
+          "violations": [
+            {
+              "id": "color-contrast",
+              "aide": "Elements must meet minimum color contrast ratio thresholds",
+              "nodes": [
+                {
+                  "cible": [
+                    "#b-price"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.35 (foreground color: #a9a8b1, background color: #ffffff, font size: 93.0pt (124px), font weight: bold). Expected contrast ratio of 3:1",
+                  "html": "<p class=\"s-price\" id=\"b-price\">29,90&nbsp;€</p>",
+                  "exempleVolontaire": true
+                },
+                {
+                  "cible": [
+                    "#b-desc"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.35 (foreground color: #a9a8b1, background color: #ffffff, font size: 27.1pt (36.096px), font weight: normal). Expected contrast ratio of 3:1",
+                  "html": "<p class=\"s-desc\" id=\"b-desc\">Livraison offerte dès demain, retour gratuit.</p>",
+                  "exempleVolontaire": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "diapo": 14,
+          "cle": "accessibilite",
+          "theme": "dark",
+          "invisibles": [],
+          "violations": [
+            {
+              "id": "color-contrast",
+              "aide": "Elements must meet minimum color contrast ratio thresholds",
+              "nodes": [
+                {
+                  "cible": [
+                    ".acc-mini-price > b"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.81 (foreground color: #9a9a9a, background color: #ffffff, font size: 31.5pt (42px), font weight: bold). Expected contrast ratio of 3:1",
+                  "html": "<b>29,90&nbsp;€</b>",
+                  "exempleVolontaire": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "diapo": 15,
+          "cle": "contraste",
+          "theme": "dark",
+          "invisibles": [],
+          "violations": [
+            {
+              "id": "color-contrast",
+              "aide": "Elements must meet minimum color contrast ratio thresholds",
+              "nodes": [
+                {
+                  "cible": [
+                    "#b-price"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.35 (foreground color: #a9a8b1, background color: #ffffff, font size: 93.0pt (124px), font weight: bold). Expected contrast ratio of 3:1",
+                  "html": "<p class=\"s-price\" id=\"b-price\">29,90&nbsp;€</p>",
+                  "exempleVolontaire": true
+                },
+                {
+                  "cible": [
+                    "#b-desc"
+                  ],
+                  "raison": "Fix any of the following:\n  Element has insufficient color contrast of 2.35 (foreground color: #a9a8b1, background color: #ffffff, font size: 27.1pt (36.096px), font weight: normal). Expected contrast ratio of 3:1",
+                  "html": "<p class=\"s-desc\" id=\"b-desc\">Livraison offerte dès demain, retour gratuit.</p>",
+                  "exempleVolontaire": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "erreursHorsExemples": 0
+    },
+    {
+      "presentation": "ia-donnees",
+      "diapos": 35,
+      "exceptions": [],
+      "erreursHorsExemples": 0
+    },
+    {
+      "presentation": "harnais",
+      "diapos": 30,
+      "exceptions": [],
+      "erreursHorsExemples": 0
+    }
+  ],
+  "liens": {
+    "internes": 167,
+    "erreursInternes": 0,
+    "externes": 150,
+    "erreursExternes": 0
+  },
+  "parcours": [
+    "20 pages indexables : canonique, titre, description et Open Graph propres ; sitemap et robots cohérents.",
+    "types-ia : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
+    "ux-ia : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
+    "ia-donnees : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
+    "harnais : lecture complète, trois affichages, axe, polices locales et retour au clavier.",
+    "Mode théâtre : focus contenu, Échap, restauration ; liens de partie partageables ; lien d’évitement fonctionnel.",
+    "Plein écran natif : grille et fermeture à deux niveaux, retour au déclencheur."
+  ],
+  "lighthouseAvant": {
+    "url": "https://www.labonumerique.ch/comprendre-ia/types-ia/",
+    "scores": {
+      "performance": 98,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcp": 2413.5074999999997
+  }
+}

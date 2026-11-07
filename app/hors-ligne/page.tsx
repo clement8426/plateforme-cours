@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = { title: 'Hors connexion' };
+export const metadata: Metadata = { title: 'Hors connexion', robots: { index: false, follow: true } };
 
 // Affichée par le service worker quand une page n'a jamais été visitée et que la connexion manque.
 export default function HorsLigne() {

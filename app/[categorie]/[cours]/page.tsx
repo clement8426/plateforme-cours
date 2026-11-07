@@ -7,13 +7,16 @@ import AvisDate from '@/composants/AvisDate';
 import PucesBlocs from '@/composants/PucesBlocs';
 import { compterReferences } from '@/contenu/catalogue';
 import { type ParamsCours, lireCours, tousLesCours } from '@/contenu/parametres';
+import { AUTEUR, metadonnees, urlAbsolue } from '@/contenu/site';
+import DonneesStructurees from '@/composants/DonneesStructurees';
 
 export const dynamicParams = false;
 export const generateStaticParams = tousLesCours;
 
 export async function generateMetadata(props: ParamsCours): Promise<Metadata> {
-  const { cours } = await lireCours(props);
-  return { title: cours?.titre, description: cours?.accroche };
+  const { categorie, cours } = await lireCours(props);
+  if (!categorie || !cours) return {};
+  return metadonnees({ titre: cours.titre, description: cours.accroche, chemin: `/${categorie.slug}/${cours.slug}/`, image: cours.diapos?.apercu, indexable: !cours.enPreparation });
 }
 
 const Externe = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg>;
@@ -57,6 +60,7 @@ export default async function PageCours(props: ParamsCours) {
 
   return (
     <div className="page">
+      <DonneesStructurees valeur={{ '@context': 'https://schema.org', '@type': 'Course', name: cours.titre, description: cours.accroche, url: urlAbsolue(base + '/'), inLanguage: 'fr', isAccessibleForFree: true, provider: AUTEUR, teaches: cours.objectifs, ...(cours.misAJour ? { dateModified: cours.misAJour } : {}) }} />
       <FilAriane etapes={[{ nom: categorie.nom, href: `/${categorie.slug}/` }, { nom: cours.titre }]} />
       <div className="cours-tete">
         <header className="tete">
@@ -133,7 +137,7 @@ export default async function PageCours(props: ParamsCours) {
           </a>
           <ul>
             {cours.demos.map((d) => (
-              <li key={d.slug}><strong>{d.titre}</strong>{d.exerciceUrl ? <a href={d.exerciceUrl} target="_blank" rel="noreferrer">Dépôt Labo UX Démo<span className="visuellement-cache"> (nouvel onglet)</span></a> : <code>{d.exercice}/</code>}</li>
+              <li key={d.slug}><strong>{d.titre}</strong>{d.exerciceUrl ? <a href={d.exerciceUrl} target="_blank" rel="noreferrer">Dépôt de l’exercice<span className="visuellement-cache"> (nouvel onglet)</span></a> : <code>{d.exercice}/</code>}</li>
             ))}
           </ul>
         </section>

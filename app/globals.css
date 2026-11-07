@@ -80,6 +80,8 @@ p, ul, ol, dl, dd, figure { margin: 0; }
 a { color: var(--bleu); text-decoration-thickness: 1px; text-underline-offset: 4px; }
 :focus-visible { outline: 3px solid var(--bleu); outline-offset: 3px; border-radius: 6px; }
 main { flex: 1; width: 100%; }
+.lecture-information .section { display: grid; gap: 18px; max-width: 75ch; }
+.lecture-information ul { padding-left: 24px; display: grid; gap: 12px; }
 img { display: block; max-width: 100%; height: auto; }
 .visuellement-cache { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 

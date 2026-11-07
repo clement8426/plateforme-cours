@@ -6,13 +6,15 @@ import AvisDate from '@/composants/AvisDate';
 import MarqueVu from '@/composants/MarqueVu';
 import { trouverCours } from '@/contenu/catalogue';
 import { type ParamsCours, lireCours, tousLesCours } from '@/contenu/parametres';
+import { metadonnees } from '@/contenu/site';
 
 export const dynamicParams = false;
 export const generateStaticParams = () => tousLesCours().filter((p) => trouverCours(p.categorie, p.cours)?.exercice?.tuto);
 
 export async function generateMetadata(props: ParamsCours): Promise<Metadata> {
-  const { cours } = await lireCours(props);
-  return { title: cours?.exercice ? `${cours.exercice.titre} : le tuto` : undefined };
+  const { categorie, cours } = await lireCours(props);
+  if (!categorie || !cours?.exercice) return {};
+  return metadonnees({ titre: `${cours.exercice.titre} : le tuto`, description: 'Le tutoriel du Harnais, prototype pédagogique : installation, missions, outils de l’assistant et aide en cas de difficulté, étape par étape.', chemin: `/${categorie.slug}/${cours.slug}/tuto/` });
 }
 
 export default async function PageTuto(props: ParamsCours) {

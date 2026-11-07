@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import CarteCours from '@/composants/CarteCours';
 import FilAriane from '@/composants/FilAriane';
 import { CATEGORIES, trouverCategorie } from '@/contenu/catalogue';
+import { metadonnees } from '@/contenu/site';
 
 type Props = { params: Promise<{ categorie: string }> };
 
@@ -12,7 +13,8 @@ export const generateStaticParams = () => CATEGORIES.map((c) => ({ categorie: c.
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const categorie = trouverCategorie((await params).categorie);
-  return { title: categorie?.nom, description: categorie?.description };
+  if (!categorie) return {};
+  return metadonnees({ titre: categorie.nom, description: categorie.description, chemin: `/${categorie.slug}/`, indexable: categorie.cours.some(c => !c.enPreparation) });
 }
 
 export default async function PageCategorie({ params }: Props) {

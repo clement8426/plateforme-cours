@@ -193,7 +193,7 @@ const REGLES_IA: RegleGroupe[] = [
 const REGLES_TYPES: RegleGroupe[] = [
   { nom: 'Générer du son et de la vidéo', adresses: ['facebookresearch/audiocraft', 'Wan-Video'] },
   { nom: 'Passer à la pratique', adresses: ['clement8426/atelier-des-ia', 'clement8426/le-harnais'] },
-  { nom: 'Avant ChatGPT : les grandes étapes', adresses: ['cse.msu.edu', 'Kurzweil', 'ibm.com', 'paulgraham', 'papers.nips', 'research.google', 'deepl.com'] },
+  { nom: 'Avant ChatGPT : les grandes étapes', adresses: ['cse.msu.edu', 'csee.umbc.edu', 'Kurzweil', 'ibm.com', 'paulgraham', 'papers.nips', 'research.google', 'deepl.com'] },
   { nom: 'Lire, voir, écouter, parler : des outils libres', adresses: ['wikipedia.org/wiki/Reconnaissance', 'tesseract', 'facebookresearch', 'openai/whisper', 'alphacephei', 'OHF-Voice'] },
   { nom: 'Générer des images', adresses: ['2006.11239', 'stability.ai'] },
   { nom: 'Les LLM', adresses: ['1706.03762', 'cdn.openai.com', '2005.14165', 'openai.com/index'] },

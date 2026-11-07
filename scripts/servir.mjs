@@ -12,6 +12,8 @@ const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.txt': 'text/plain',
   '.pdf': 'application/pdf',
+  '.xml': 'application/xml; charset=utf-8', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
+  '.woff': 'font/woff', '.ttf': 'font/ttf', '.zip': 'application/zip', '.wasm': 'application/wasm',
 };
 
 export async function demarrerServeur({port=3000,autoPort=false,ouvrir=false}={}) {

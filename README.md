@@ -10,11 +10,11 @@ Next.js 16, export statique. Polices Bricolage Grotesque et Instrument Sans, ser
 ## Pratique UX × IA : Escale
 
 La pratique principale est **Escale**, une boutique Next.js de 18 produits et neuf défauts activables séparément : `/ux/ux-ia/demos/escale/`.
-Les diapos 32 à 41 présentent la mission et les cinq blocs pratiques. Le bloc 4 comportement reste théorique, sans données inventées. Le formulaire d’adresse reste en bonus (42 à 44), la conclusion est en 45 et les annexes en 46 et 47.
+Les diapos 31 à 40 présentent la mission et les cinq blocs pratiques. Le bloc 4 comportement reste théorique, sans données inventées. Le formulaire d’adresse reste en bonus (41 à 43), la conclusion est en 44 et les annexes en 45 et 46.
 
 Les gestes manuels, les captures avant/après et les prompts agents sont intégrés aux slides. Les anciens liens Traverse et Tilleul redirigent vers Escale. La partie 3 ne dépend pas du plugin Labo UX.
 
-Le [fichier de préparation](public/diapos/ux-ia/demarrer-escale.md) permet à un agent de démarrer le projet sans corriger ses défauts. Le projet et ses vrais rapports sont dans [labo-ux-demos/exercices/escale](https://github.com/clement8426/labo-ux-demos/tree/main/exercices/escale), dépôt privé : donner les accès aux apprenants.
+Le [fichier de préparation](public/diapos/ux-ia/demarrer-escale.md) accompagne la démonstration. Le [dépôt public escale-eleves](https://github.com/clement8426/escale-eleves) contient les missions et le démarrage pour les apprenants.
 
 Les données pédagogiques sont dans `pratique-escale-data.js`, les interactions dans `pratique-escale.js` et les styles dans `pratique-escale.css`. `scripts/preparer-pratique-escale.mjs` réimporte explicitement les tutoriels et prompts depuis le dépôt des démos ; le build Vercel utilise les fichiers déjà versionnés et ne dépend pas de ce dépôt local.
 
@@ -76,7 +76,23 @@ Avec le site construit et servi (`npm run build`, puis `npm start` dans un autre
 UX_OUTILS=../ux-outils npm run verifier
 ```
 
-Le script contrôle, sur toutes les pages : l'accessibilité automatique (axe, WCAG 2.2 AA) en thème clair et sombre, sur ordinateur et sur mobile, l'absence de débordement, la structure des titres, l'ordre du clavier, la mémoire de progression, et les liens profonds vers Tilleul. Il se termine en échec si un contrôle échoue. Il utilise Playwright et axe de la boîte à outils `ux-outils`. `SITE_URL` permet de viser une autre adresse.
+Le script contrôle les pages des parcours répertoriés : l'accessibilité automatique (axe, WCAG 2.2 AA) en thème clair et sombre, sur ordinateur et sur mobile, l'absence de débordement, la structure des titres, l'ordre du clavier, la mémoire de progression, et les liens profonds vers les diapos. Il se termine en échec si un contrôle échoue. Il utilise Playwright et axe de la boîte à outils `ux-outils`. `SITE_URL` permet de viser une autre adresse. `--parcours-seulement` relance les interactions après un audit d’affichage déjà réussi ; ce mode annonce explicitement les contrôles non relancés.
+
+L’audit complet du 7 novembre 2026 est documenté dans [docs/audits/2026-11-07.md](docs/audits/2026-11-07.md). Les commandes complémentaires utilisent le même `UX_OUTILS` et `SITE_URL` :
+
+- `npm run audit:site` inventorie les routes du build et les annexes HTML, les métadonnées et les liens internes, puis passe axe sur six affichages (bureau/mobile, clair/sombre, 320 px et contraste élevé). `AUDIT_ANNEXES=1` examine aussi les exemples et rapports HTML. `AUDIT_SORTIE` change le dossier de preuves (par défaut `.audit-site/`, ignoré par Git).
+- `npm run audit:diapos` examine les 140 diapos dans les deux thèmes. Les erreurs volontaires portant `data-contrast-skip` restent dans le rapport, avec leur motif ; elles ne sont pas effacées pour obtenir un score artificiel.
+- `npm run verifier:qualite` vérifie les métadonnées des pages du sitemap, la lecture texte des quatre diaporamas, le clavier et le mode théâtre.
+
+Les scores automatiques ne constituent pas une déclaration de conformité. La page publique `/accessibilite/` décrit les aides disponibles, les contre-exemples pédagogiques et les vérifications restant à compléter avec des technologies d’assistance.
+
+## Référencement et lecture
+
+Le domaine de référence est `https://www.labonumerique.ch`. `src/contenu/site.ts` centralise les URL canoniques, les aperçus Open Graph/Twitter et les pages du sitemap ; les pages en préparation, indisponibles ou de service ne sont pas indexables. `app/sitemap.ts` et `app/robots.ts` sont exportés statiquement. Les données Schema.org reprennent l’auteur, les cours, leur liste et le fil d’Ariane, sans note ou avis inventé. Les dates de modification viennent du contenu, pas de l’heure du build.
+
+Les anciennes adresses disposent de redirections HTTP permanentes sur Vercel (`vercel.json`) et d’un repli HTML/JavaScript pour les autres hébergeurs statiques. Les diapos brutes, rapports d’outils et exemples sont exclus de l’indexation par en-tête HTTP sur Vercel. Les diapos portent aussi une métadonnée `noindex`. Le référencement des moteurs de réponse IA repose ici sur les mêmes fondations : contenu lisible, auteur identifié, sources et accès des robots. Aucun classement ou reprise par une IA n’est garanti.
+
+Le lien « Lire la version texte » active `?lecture=1` sur une présentation. `public/diapos/lecture.js` reprend son contenu réel et les réponses du lexique/quiz ; `lecture.css` fournit une lecture continue, un sommaire repliable et des tableaux focalisables. Le mode présentation reste disponible. Les polices des quatre diaporamas sont locales ; les licences sont conservées dans `public/polices/` et `public/diapos/types-ia/polices/`.
 
 Pour contrôler les liens externes des quatre présentations, du catalogue et des sources : `npm run liens`. Le script effectue des requêtes GET, suit les redirections et distingue les erreurs des refus d’accès (403/429). Aucun lien bloqué n’est déclaré valide. `node scripts/verifier-liens.mjs --json` donne les adresses et les fichiers concernés. Un succès HTTP ne remplace pas la lecture de la source : il faut aussi vérifier qu’elle étaye le texte.
 
@@ -145,9 +161,11 @@ scripts/                  diapos, Tilleul, aperçus, icônes, serveur local, ét
 
 Une page par démonstration, `/ux/ux-ia/demos/<slug>/` : le déroulé à suivre devant la salle, une scène interactive, ce qu'il faut retenir, et le lien vers l'exercice correspondant dans le dépôt GitHub.
 
-- **L'affiche qui se lit en 3 secondes** (`affiche`) : deux affiches pour la même promotion, montrées 3 secondes, puis révélées avec quoi, quand et où entourés.
-- **Tilleul, la boutique piégée** (`tilleul`) : la boutique dans un cadre, avec un interrupteur « Sans aide » / « Mode cours ».
+- **Escale, mon atelier UX pas à pas** (`escale`) : le démarrage et les missions du dépôt public apprenants, à préparer avec leur agent.
 - **Le formulaire d'adresse, avant et après** (`formulaire-adresse`) : la comparaison des deux versions et les sept défauts.
+- **L'affiche qui se lit en 3 secondes** (`affiche`) : conservée mais signalée indisponible dans le catalogue ; aucun lien d’action sur sa carte.
+
+Tilleul est une ancienne boutique volontairement piégée, conservée comme exemple archivé. Son ancienne page de démonstration renvoie vers Escale.
 
 Les anciennes adresses (`/exercices/`, `/comparer/formulaire-adresse/`) redirigent vers les nouvelles. Le contenu est dans `src/contenu/catalogue.ts` (déroulé, à retenir, dossier de l'exercice).
 
@@ -167,7 +185,7 @@ Après une modification, synchroniser le lexique et les références avec `npm r
 
 Vérification ciblée : après avoir servi le site construit, `node scripts/verifier-types-ia.mjs` contrôle le cadrage des 29 diapos en deux thèmes et cinq tailles d’écran, l’accessibilité des ajouts et de la page du cours, le quiz et la navigation. Variables : `UX_OUTILS` pour Playwright/axe, `SITE_URL` pour le serveur et `PREUVES_TYPES` pour les captures et le rapport JSON (par défaut `preuves-types-ia/`, ignoré par Git).
 
-Validation du 6 novembre 2026 : construction avec Next.js 16.4.5 et vérification ciblée réussies ; aucune vulnérabilité signalée par `npm audit --omit=dev`. Le contrôle général passe l’accessibilité et le débordement des 26 pages en deux thèmes sur bureau et mobile. Sa suite historique attend un badge pour l’affiche désormais déclarée indisponible et s’arrête sur un ancien lien GitHub d’Escale, remplacé avant cette modification. Le stockage de progression conserve bien les visites des deux démos ; le badge de l’affiche indisponible est masqué volontairement. Cette suite ne constitue donc pas une validation complète des parcours UX actuels.
+Validation ciblée des Types d’IA : construction avec Next.js 16.4.5, navigation et contrôle des 29 diapos réussis le 6 novembre 2026. L’audit du 7 novembre actualise aussi les attentes historiques du test général sur Escale et les cartes indisponibles ; son périmètre et ses résultats sont dans le rapport d’audit.
 
 ### Sources et dates
 
@@ -180,5 +198,5 @@ Validation du 6 novembre 2026 : construction avec Next.js 16.4.5 et vérificatio
 
 - Mise à jour : `npm run comparateur -- ../Downloads/formulaire-adresse-formateur.zip` ne publie que `casse/` et `corrige/` (jamais `SOLUTIONS.md` ni le README formateur).
 - Compromis : la version réparée est publique. C’est voulu : c'est la démonstration.
-- Vie privée : les suggestions d’adresse sont simulées dans le navigateur (`scripts/modeles/demo-photon.js`). Le vrai service Photon n’est appelé que si la personne coche la case prévue.
+- Vie privée : la recherche Photon est active par défaut et son fonctionnement est expliqué avant le formulaire. La case « Rechercher avec Photon » permet de passer aux exemples locaux, sans requête externe. Utiliser des adresses fictives pour le cours.
 - Contenu des défauts : `src/contenu/comparateurs.ts`.

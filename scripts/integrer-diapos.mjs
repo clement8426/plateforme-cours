@@ -109,6 +109,20 @@ vider('motsCles', '[', ']');
 html = html.replace(/<script id="pont-plateforme">[\s\S]*?<\/script>\s*/, '');
 html = html.replace('</body>', `${PONT}</body>`);
 
+// Lecture continue et étapes non focalisables tant qu’elles sont invisibles.
+if (!html.includes('src="../lecture.js"')) {
+  html = html.replace('</head>', '<meta name="robots" content="noindex, follow">\n<link rel="stylesheet" href="../lecture.css">\n</head>');
+  html = html.replace('</body>', `<script src="../lecture.js" data-retour="${retour}" defer></script>\n</body>`);
+}
+html = html.replace('<div id="viewport">', '<div id="viewport" role="main">');
+if (!/<h1\b/i.test(html)) html = html.replace(/(<div id="viewport"[^>]*>)/, `$1\n<h1 class="sr">${html.match(/<title>([^<]*)/i)?.[1] ?? 'Présentation'}</h1>`);
+if (!html.includes('e.inert = n > state.step')) html = html.replace("e.classList.toggle('on', n <= state.step);", "e.classList.toggle('on', n <= state.step);\n      e.inert = n > state.step;");
+if (['ux-ia', 'types-ia', 'ia-donnees', 'harnais'].includes(nom)) {
+  html = html.replace(/policesUrl: '[^']*'/, "policesUrl: ''");
+  const css = ['ux-ia', 'types-ia'].includes(nom) ? '../../polices/ux.css' : '../../polices/diapos.css';
+  if (!html.includes(css)) html = html.replace('</head>', `<link rel="stylesheet" href="${css}">\n</head>`);
+}
+
 // Un dossier avec index.html : l'adresse /diapos/<nom>/ marche partout (Vercel renvoie 404 pour un .html avec trailingSlash).
 const dossier = resolve(import.meta.dirname, '..', 'public', 'diapos', nom);
 mkdirSync(dossier, { recursive: true });

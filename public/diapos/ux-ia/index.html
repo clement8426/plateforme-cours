@@ -12,6 +12,8 @@
   Export PDF : imprimer, format A4 paysage, sans marges, avec les arrière-plans.
 -->
 <style>
+@font-face{font-family:Bricolage Grotesque;font-style:normal;font-weight:200 800;font-stretch:100%;font-display:swap;src:url(../types-ia/polices/bricolage-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Instrument Sans;font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(../types-ia/polices/instrument-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* ========== 1. Variables ==========
    Le thème par défaut (clair) est défini juste en dessous : couleurs, polices, rayons, ombres.
    Le thème sombre (touche T) le redéfinit juste après. Aucun composant n'utilise de couleur en dur liée à un thème. */
@@ -858,9 +860,12 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </style>
   <link rel="stylesheet" href="./atelier-blocs.css">
   <link rel="stylesheet" href="./pratique-escale.css">
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="../lecture.css">
 </head>
 <body>
-<div id="viewport">
+<div id="viewport" role="main">
+<h1 class="sr">UX × IA, mini-formation de Clément Bastien</h1>
   <main id="stage" tabindex="-1" aria-label="Présentation UX × IA">
     <h1 class="sr">UX × IA : mini-formation de Clément Bastien</h1>
     <div id="slides">
@@ -1459,7 +1464,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 const CONFIG = {
   auteur: 'Clément Bastien',
   theme: 'light', // 'light' ou 'dark' (touche T pour basculer)
-  policesUrl: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap', // feuille Google Fonts du thème ; les familles sont dans les variables CSS --font-title et --font-body
+  policesUrl: '', // feuille Google Fonts du thème ; les familles sont dans les variables CSS --font-title et --font-body
 
   minutes: [
     0.5, 1.5, 1, 2, 2, 1.5, 1.5, 2.5, 2.5, 1, 2, 2, 1.5, 1.5, 1.5, 2, 1.5, 2.5, 2, 1.5, 3, 2, // slides 1 à 22 : théorie (14 à 16 : accessibilité)
@@ -2644,6 +2649,7 @@ const IMAGES_INTEGREES = {};
     $$('[data-step]', slides[state.i]).forEach(e => {
       const n = Number(e.dataset.step);
       e.classList.toggle('on', n <= state.step);
+      e.inert = n > state.step; // Une étape invisible ne doit pas recevoir le focus ni être annoncée.
       e.classList.toggle('step-current', n === state.step);
     });
   }
@@ -3422,5 +3428,6 @@ const IMAGES_INTEGREES = {};
   }
 })();
 </script>
+<script src="../lecture.js" data-retour="/ux/ux-ia/diapos/" defer></script>
 </body>
 </html>

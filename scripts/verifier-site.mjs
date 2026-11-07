@@ -19,6 +19,7 @@ const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'O
 
 const PAGES = ['/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/types-ia/tuto/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/escale/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
+if (!process.argv.includes('--parcours-seulement')) {
 // 1. Accessibilité automatique, deux thèmes, deux tailles
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
   for (const schema of ['light', 'dark']) {
@@ -65,6 +66,8 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await ctx.close();
 }
 
+} else console.log('Mode parcours : les contrôles automatiques des pages et de leur structure ne sont pas relancés.');
+
 // 3. Clavier : lien d'évitement, ordre, repère de focus, page courante
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
@@ -106,7 +109,8 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.goto(base + '/ux/ux-ia/');
   await p.waitForLoadState('networkidle');
   await p.waitForTimeout(300);
-  verifier('page du cours : les démos de l’affiche et de Escale sont marquées « Vue »', (await p.locator('.demo-carte .vu').count()) === 2);
+  await p.waitForFunction(() => document.querySelectorAll('.demo-carte:not(.est-indisponible) .vu').length === 1);
+  verifier('progression : Escale est marqué « Vue », la carte indisponible de l’affiche ne propose pas d’action', (await p.locator('.demo-carte .vu').count()) === 1 && (await p.locator('.demo-carte.est-indisponible a').count()) === 0);
   await ctx.close();
 }
 {
@@ -180,9 +184,9 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   await p.goto(base + '/ux/ux-ia/demos/tilleul/');
   await p.waitForURL('**/demos/escale/');
   verifier('ancienne démo Tilleul : redirige vers Escale', p.url().endsWith('/demos/escale/'));
-  verifier('Escale : le lien GitHub utilise le dépôt distinct', (await p.getByRole('link', { name: /Ouvrir l’exercice sur GitHub/ }).getAttribute('href')) === 'https://github.com/clement8426/labo-ux-demos/tree/main/exercices/escale');
+  verifier('Escale : le téléchargement utilise le dépôt public apprenants', (await p.getByRole('link', { name: '1. Télécharger l’exercice' }).getAttribute('href')) === 'https://github.com/clement8426/escale-eleves/archive/refs/heads/main.zip');
   const consigne = await (await ctx.request.get(base + '/diapos/ux-ia/demarrer-escale.md')).text();
-  verifier('Escale : préparation sans plugin et coordonnées fictives', consigne.includes('sans installer Labo UX') && consigne.includes('npm ci') && consigne.includes('4201'));
+  verifier('Escale : préparation guidée, boutique fictive et adresse réellement détectée', consigne.includes('boutique fictive') && consigne.includes('node atelier.mjs') && consigne.includes('Ne suppose jamais le port'));
 
   await p.goto(base + '/ux/ux-ia/exercices/');
   await p.waitForURL('**/ux/ux-ia/', { timeout: 5000 }).catch(() => {});
@@ -220,13 +224,13 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
 
   const exercice = await ctx.newPage();
   await exercice.goto(base + '/ux/ux-ia/demos/escale/');
-  verifier('Escale : la pratique et les prompts sont accessibles', await exercice.getByRole('link', { name: 'Ouvrir la pratique dans les slides' }).count() === 1 && await exercice.getByRole('link', { name: 'Emporter les prompts' }).count() === 1);
+  verifier('Escale : la consigne et le démarrage téléchargeable sont accessibles', await exercice.getByRole('button', { name: 'Copier la consigne de démarrage' }).count() === 1 && await exercice.getByRole('link', { name: 'Garder le démarrage sous la main' }).count() === 1);
   await exercice.close();
 
   const presentation = await ctx.newPage();
   const erreursDiapos = [];
   presentation.on('pageerror', (e) => erreursDiapos.push(e.message));
-  await presentation.goto(base + '/diapos/ux-ia/#31');
+  await presentation.goto(base + '/diapos/ux-ia/#32');
   await presentation.waitForTimeout(500);
   verifier('diapos : 46 slides et initialisation sans erreur JavaScript', (await presentation.locator('.slide').count()) === 46 && erreursDiapos.length === 0, erreursDiapos.join(' | '));
   verifier('diapos : lien de pratique vers le nouvel exercice', new URL(await presentation.getByRole('link', {name:'Retrouver le projet',exact:true}).getAttribute('href'), base).pathname === '/ux/ux-ia/demos/escale/');
