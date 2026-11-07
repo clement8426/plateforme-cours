@@ -7,7 +7,7 @@ export const dynamic = 'force-static';
 
 const espaces = (v: string) => v.replace(/[  ]/g, ' ');
 
-// Présente le site aux agents IA : espaces, données publiques et lien de l'entonnoir.
+// Présente le site aux agents IA : espaces, données publiques et lien du diagnostic.
 export function GET() {
   const cours = CATEGORIES.flatMap((c) => c.cours.filter((x) => !x.enPreparation).map((x) => `- [${x.titre}](${urlAbsolue(`/${c.slug}/${x.slug}/`)})`));
   const texte = [
@@ -16,8 +16,8 @@ export function GET() {
     '## Données publiques', '',
     `- [Catalogue d’outils validés](${urlAbsolue('/api/catalog.json')})`,
     `- [Taxonomie, angles morts et règles](${urlAbsolue('/api/rules.json')})`, '',
-    '## Entonnoir', '',
-    `Le plan se calcule dans le navigateur à ${urlAbsolue('/entonnoir/')}. Un lien se construit dans le fragment : #i=<intention>&t=<type>&c=<question>:<o|n|s>,...&o=<outil>. o = oui, n = non, s = je ne sais pas. Sans navigateur, refais le calcul avec les règles publiques.`, '',
+    '## Diagnostic', '',
+    `Le plan se calcule dans le navigateur à ${urlAbsolue('/diagnostic/')}. Un lien se construit dans le fragment : #i=<intention>&t=<type>&c=<question>:<o|n|s>,...&o=<outil>. o = oui, n = non, s = je ne sais pas. Sans navigateur, refais le calcul avec les règles publiques.`, '',
     '## Bonnes pratiques', '',
     ...PRATIQUES.map((p) => `- [${p.titre}](${urlAbsolue(`/bonnes-pratiques/${p.id}/`)}) : ${p.resume}`), '',
     '## Angles morts', '',

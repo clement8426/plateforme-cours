@@ -36,9 +36,9 @@ export default function PageDemarrer() {
       <section className="section lien-ligne" aria-labelledby="titre-suite">
         <div>
           <h2 id="titre-suite">Et ensuite ?</h2>
-          <p>L’entonnoir trouve ce que ton projet a oublié, et tes fiches peuvent le pré-remplir.</p>
+          <p>Le diagnostic trouve ce que ton projet a oublié, et tes fiches peuvent le pré-remplir.</p>
         </div>
-        <Link className="bouton" href="/entonnoir/">Analyser mon projet</Link>
+        <Link className="bouton" href="/diagnostic/">Analyser mon projet</Link>
       </section>
     </div>
   );

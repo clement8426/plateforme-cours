@@ -29,7 +29,7 @@ export default async function Page({ params }: Props) {
         <p className="pratique-risque">{p.risque}</p>
         <section><h2>Un exemple</h2><p>{p.exemple}</p></section>
         <section><h2>Trois vérifications</h2><ol>{p.verifications.map((v) => <li key={v}>{v}</li>)}</ol></section>
-        {outils.length > 0 && <section><h2>Outils qui aident</h2><ul>{outils.map((o) => <li key={o.id}><Link href={`/entonnoir/catalogue/${o.id}/`}>{o.name}</Link></li>)}</ul></section>}
+        {outils.length > 0 && <section><h2>Outils qui aident</h2><ul>{outils.map((o) => <li key={o.id}><Link href={`/diagnostic/catalogue/${o.id}/`}>{o.name}</Link></li>)}</ul></section>}
         <section>
           <h2>Pour aller plus loin</h2>
           <ul>

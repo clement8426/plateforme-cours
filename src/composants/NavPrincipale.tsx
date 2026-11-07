@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 const ZONES = [
   { href: '/cours/', nom: 'Cours' },
   { href: '/demarrer/', nom: 'Démarrer' },
-  { href: '/entonnoir/', nom: 'Entonnoir' },
+  { href: '/diagnostic/', nom: 'Diagnostic' },
   { href: '/bonnes-pratiques/', nom: 'Bonnes pratiques' },
 ];
 

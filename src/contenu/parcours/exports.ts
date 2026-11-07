@@ -63,7 +63,7 @@ export function nomFichier(fiche: Fiche, r: Reponses, extension: 'pdf' | 'md' | 
 
 const cellule = (v: string) => v.replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 
-// Le commentaire de tête permet de recharger la fiche dans l'entonnoir. Il reste dans le fichier de l'élève.
+// Le commentaire de tête permet de recharger la fiche dans le diagnostic. Il reste dans le fichier de l'élève.
 export const MARQUE = 'le-labo-fiche';
 export function versMarkdown(fiche: Fiche, r: Reponses) {
   const donnees = JSON.stringify({ fiche: fiche.slug, reponses: r }).replace(/--/g, '-\\u002d');

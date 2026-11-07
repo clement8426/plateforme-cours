@@ -203,7 +203,7 @@ Validation ciblée des Types d’IA : construction avec Next.js 16.4.5, navigati
 
 ## Démarrer et Bonnes pratiques
 
-Le site a quatre zones : `/cours/`, `/demarrer/`, `/entonnoir/` et `/bonnes-pratiques/`. Les décisions sont dans `INTEGRATION-PLAN.md`.
+Le site a quatre zones : `/cours/`, `/demarrer/`, `/diagnostic/` et `/bonnes-pratiques/`. Les décisions sont dans `INTEGRATION-PLAN.md`.
 
 - **Fiches :** `src/contenu/parcours/fiches.ts`. Le texte vient de `docs/parcours/` ; `npm run verifier:fiches` détecte toute reformulation.
 - **Corrigé du test :** il ne doit jamais entrer dans ce dépôt, qui est public.

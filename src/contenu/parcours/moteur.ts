@@ -1,4 +1,4 @@
-// Calcule le plan de l'entonnoir à partir des réponses. Tout tourne dans le navigateur, sans serveur.
+// Calcule le plan du diagnostic à partir des réponses. Tout tourne dans le navigateur, sans serveur.
 import anglesBruts from '../../../data/blind_spots.json';
 import reglesBrutes from '../../../data/rules.json';
 import taxonomieBrute from '../../../data/taxonomy.json';

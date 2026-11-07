@@ -14,8 +14,8 @@ export const generateStaticParams = () => (OUTILS.length ? OUTILS.map((o) => ({ 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { outil } = await params;
   const o = trouverOutil(outil);
-  if (!o) return metadonnees({ titre: 'Catalogue en cours de validation', description: 'Chaque outil est relu à la main avant d’être publié.', chemin: '/entonnoir/catalogue/', indexable: false });
-  return metadonnees({ titre: o.name, description: o.description, chemin: `/entonnoir/catalogue/${o.id}/` });
+  if (!o) return metadonnees({ titre: 'Catalogue en cours de validation', description: 'Chaque outil est relu à la main avant d’être publié.', chemin: '/diagnostic/catalogue/', indexable: false });
+  return metadonnees({ titre: o.name, description: o.description, chemin: `/diagnostic/catalogue/${o.id}/` });
 }
 
 const AGENTS: Record<string, string> = { claude: 'Claude Code', codex: 'Codex', opencode: 'OpenCode', terminal: 'Terminal' };
@@ -24,11 +24,11 @@ export default async function Page({ params }: Props) {
   const { outil } = await params;
   const o = trouverOutil(outil);
   if (!o && outil !== 'en-validation') notFound();
-  if (!o) return <div className="page"><header className="tete"><h1>Catalogue en cours de validation</h1></header><Link href="/entonnoir/catalogue/">Retour au catalogue</Link></div>;
+  if (!o) return <div className="page"><header className="tete"><h1>Catalogue en cours de validation</h1></header><Link href="/diagnostic/catalogue/">Retour au catalogue</Link></div>;
 
   return (
     <div className="page">
-      <FilAriane etapes={[{ nom: 'Entonnoir', href: '/entonnoir/' }, { nom: 'Catalogue', href: '/entonnoir/catalogue/' }, { nom: o.name }]} />
+      <FilAriane etapes={[{ nom: 'Diagnostic', href: '/diagnostic/' }, { nom: 'Catalogue', href: '/diagnostic/catalogue/' }, { nom: o.name }]} />
       <header className="tete tete-compacte">
         <h1>{o.name}</h1>
         <p className="chapeau">{o.description}</p>

@@ -10,7 +10,7 @@ export const metadata = { ...metadonnees({ titre: 'Le Labo, cours de numérique'
 const PORTES = [
   { href: '/cours/', titre: 'Cours', texte: 'Diapos, démonstrations à manipuler et exercices à refaire chez soi.', couleur: '--vif-rose' },
   { href: '/demarrer/', titre: 'Démarrer son projet', texte: 'Un test et deux fiches pour clarifier votre idée et faire le point.', couleur: '--vif-vert' },
-  { href: '/entonnoir/', titre: 'Entonnoir', texte: 'Trouvez ce que votre projet a oublié, puis repartez avec un plan et un kit pour votre agent IA.', couleur: '--vif-jaune' },
+  { href: '/diagnostic/', titre: 'Diagnostic', texte: 'Trouvez ce que votre projet a oublié, puis repartez avec un plan et un kit pour votre agent IA.', couleur: '--vif-jaune' },
   { href: '/bonnes-pratiques/', titre: 'Bonnes pratiques', texte: 'Des pages courtes sur le légal et la sécurité, avec des vérifications à faire et des sources datées.', couleur: '--vif-violet' },
 ];
 
@@ -25,7 +25,7 @@ export default function Accueil() {
           <p>Apprendre, lancer son projet sans rien oublier, vérifier son travail. Libre d’accès, sans compte.</p>
           <div className="actions">
             <Link className="hero-bouton" href="/cours/">Voir les cours</Link>
-            <Link className="hero-bouton est-contour" href="/entonnoir/">Analyser mon projet</Link>
+            <Link className="hero-bouton est-contour" href="/diagnostic/">Analyser mon projet</Link>
           </div>
         </div>
         <FioleAccueil />

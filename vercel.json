@@ -1,18 +1,33 @@
 {
   "redirects": [
     {
+      "source": "/entonnoir/",
+      "destination": "/diagnostic/",
+      "permanent": true
+    },
+    {
+      "source": "/entonnoir/catalogue/",
+      "destination": "/diagnostic/catalogue/",
+      "permanent": true
+    },
+    {
+      "source": "/entonnoir/catalogue/:outil/",
+      "destination": "/diagnostic/catalogue/:outil/",
+      "permanent": true
+    },
+    {
       "source": "/demarrer/entonnoir/",
-      "destination": "/entonnoir/",
+      "destination": "/diagnostic/",
       "permanent": true
     },
     {
       "source": "/demarrer/catalogue/",
-      "destination": "/entonnoir/catalogue/",
+      "destination": "/diagnostic/catalogue/",
       "permanent": true
     },
     {
       "source": "/demarrer/catalogue/:outil/",
-      "destination": "/entonnoir/catalogue/:outil/",
+      "destination": "/diagnostic/catalogue/:outil/",
       "permanent": true
     },
     {
