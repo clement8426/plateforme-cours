@@ -22,10 +22,16 @@
     "verifier:formulaire": "node scripts/verifier-formulaire.mjs",
     "audit:site": "node scripts/auditer-site.mjs",
     "audit:diapos": "node scripts/auditer-diapos.mjs",
-    "verifier:qualite": "node scripts/verifier-audit.mjs"
+    "verifier:qualite": "node scripts/verifier-audit.mjs",
+    "verifier:fiches": "node scripts/verifier-fiches.mjs",
+    "verifier:parcours": "node scripts/verifier-parcours.mjs",
+    "catalogue:collecter": "node scripts/catalogue-collecter.mjs",
+    "catalogue:valider": "node scripts/catalogue-valider.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.9",
     "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0"

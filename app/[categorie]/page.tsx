@@ -23,7 +23,7 @@ export default async function PageCategorie({ params }: Props) {
 
   return (
     <div className="page">
-      <FilAriane etapes={[{ nom: categorie.nom }]} />
+      <FilAriane etapes={[{ nom: 'Cours', href: '/cours/' }, { nom: categorie.nom }]} />
       <header className="tete">
         <h1>{categorie.nom}</h1>
         <p className="chapeau">{categorie.description}</p>

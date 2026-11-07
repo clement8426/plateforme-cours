@@ -8,3 +8,4 @@ next-env.d.ts
 preuves-types-ia/
 .audit-site/
 .audit-site-liens.json
+data/raw/

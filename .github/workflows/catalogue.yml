@@ -1,0 +1,36 @@
+name: Collecte du catalogue
+
+# Propose de nouveaux outils dans une pull request. La fusion reste une décision manuelle.
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  collecter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/catalogue-collecter.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Ouvrir la pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCHE="catalogue/$(date +%F)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCHE"
+          git add data/candidates.json data/candidates.md data/alerts.json
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "chore(catalogue): propose les candidats du $(date +%F)"
+          git push origin "$BRANCHE"
+          gh pr create --title "Catalogue : collecte du $(date +%F)" --body-file data/candidates.md --base main --head "$BRANCHE"

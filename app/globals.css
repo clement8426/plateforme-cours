@@ -633,3 +633,104 @@ button.reid-fragment:hover { background: #FFE38A; }
 .escale-reassurance{padding:30px;background:var(--vert-doux);border-radius:var(--rayon)}
 .escale-reassurance summary{cursor:pointer;font-weight:600;margin-top:20px}
 @media(max-width:700px){.escale-missions{grid-template-columns:1fr}.escale-demarrage>li{padding:20px}.escale-reassurance{padding:22px}}
+
+/* ---------- accueil en trois portes ---------- */
+.portes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px; padding: 0; list-style: none; }
+.porte { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 12px; padding: clamp(22px, 3vw, 32px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); box-shadow: var(--ombre); }
+.porte:hover { border-color: var(--encre); }
+.porte:focus-within { outline: 3px solid var(--bleu); outline-offset: 3px; }
+.porte h3 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.1; }
+.porte h3 a { color: var(--encre); text-decoration: none; }
+.porte h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--rayon); }
+.porte h3 a:focus-visible { outline: none; }
+.porte p { color: var(--discret); }
+.porte .porte-action { display: inline-flex; align-items: center; gap: 6px; color: var(--bleu); font-weight: 600; }
+.porte-action svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.section-theme { margin-top: 44px; }
+.section-theme:first-of-type { margin-top: 0; }
+.section-theme .titre-section a { color: var(--encre); }
+.section-theme .liste-cours { margin-top: 18px; }
+.etapes-parcours { margin-top: 20px; }
+
+/* ---------- fiches ---------- */
+.fiche { display: grid; gap: 20px; max-width: 860px; }
+.fiche-regle { font-weight: 600; }
+.fiche-ephemere { max-width: 70ch; padding: 14px 18px; border: 1px solid var(--ligne); border-radius: var(--rayon-petit); background: var(--surface); }
+.fiche-identite { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 14px; }
+.fiche-section { display: grid; gap: 20px; padding-top: 28px; border-top: 1px solid var(--ligne); }
+.fiche-section h2, .fiche-fin h2 { font-size: var(--t-section); line-height: 1.15; }
+.fiche-fin { display: grid; gap: 14px; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
+.fiche-statut { font-weight: 600; }
+.fiche-alerte { margin-top: 12px; padding: 12px 16px; border: 2px solid var(--encre); border-radius: var(--rayon-petit); font-weight: 600; }
+.champ { display: grid; gap: 6px; min-width: 0; }
+.champ label, .champ-groupe > legend, .grille-ligne > legend { font-weight: 600; }
+.champ-aide { color: var(--discret); font-size: 15px; }
+.champ-texte { max-width: 70ch; }
+.champ input:not([type="checkbox"], [type="radio"]), .champ textarea, .champ select, .filtres select, .filtres input { width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid var(--discret); border-radius: var(--rayon-petit); background: var(--surface); color: var(--encre); font: inherit; }
+.champ textarea { resize: vertical; }
+.champ-groupe, .grille-ligne { min-width: 0; margin: 0; padding: 0; border: 0; }
+.champ-groupe > legend { padding: 0; margin-bottom: 8px; }
+.champ-options { display: grid; gap: 2px; }
+.option { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding: 10px 0; cursor: pointer; }
+.option input { flex: none; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--bleu); }
+.champ-mots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.champ-lignes, .champ-grille { display: grid; gap: 18px; }
+.grille-ligne { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2px 18px; padding-bottom: 8px; border-bottom: 1px solid var(--ligne); }
+.grille-ligne > legend { float: left; max-width: 100%; padding: 10px 0 0; }
+.grille-ligne > div { display: flex; flex-wrap: wrap; gap: 0 14px; margin-left: auto; }
+.option-niveau { min-width: 44px; }
+.fonctions { display: grid; gap: 14px; justify-items: start; }
+.fonctions > ol { display: grid; gap: 12px; width: 100%; padding: 0; list-style: none; }
+.fonction { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 14px; padding: 14px; border: 1px solid var(--ligne); border-radius: var(--rayon-petit); background: var(--surface); }
+.fonction-num { font: 700 20px/1.4 var(--police-titre), sans-serif; }
+.fonction-champs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; align-items: end; }
+.fonction-suppr { grid-column: 2; justify-self: start; }
+.idees { display: grid; gap: 8px; }
+.idees ul { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; list-style: none; }
+.puce { min-height: 44px; padding: 6px 14px; border: 1px solid var(--ligne); border-radius: 999px; background: var(--surface); color: var(--encre); font: inherit; font-size: 15px; cursor: pointer; }
+.puce:hover, .puce[aria-pressed="true"] { border-color: var(--encre); }
+.puce[aria-pressed="true"] { background: var(--encre); color: var(--fond); }
+
+/* ---------- entonnoir et catalogue ---------- */
+.entonnoir { display: grid; gap: 22px; max-width: 900px; }
+.entonnoir-etape { font-weight: 600; color: var(--discret); }
+.entonnoir h2:focus { outline: none; }
+.cartes-choix { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; padding: 0; list-style: none; }
+.carte-choix { display: grid; gap: 4px; width: 100%; height: 100%; min-height: 88px; padding: 16px 18px; border: 1px solid var(--ligne); border-radius: var(--rayon-petit); background: var(--surface); color: var(--encre); font: inherit; text-align: left; cursor: pointer; }
+.carte-choix:hover { border-color: var(--encre); }
+.carte-choix[aria-pressed="true"] { border: 2px solid var(--encre); padding: 15px 17px; }
+.carte-choix strong { font: 600 18px/1.25 var(--police-titre), sans-serif; }
+.carte-choix span { color: var(--discret); font-size: 15px; }
+.contexte-question { display: grid; gap: 8px; margin: 0; padding: 0 0 14px; border: 0; border-bottom: 1px solid var(--ligne); min-width: 0; }
+.contexte-question legend { padding: 0; font-weight: 600; }
+.contexte-reponses { display: flex; flex-wrap: wrap; gap: 0 22px; }
+.plan-liste { display: grid; gap: 12px; padding: 0; list-style: none; }
+.plan-carte { display: grid; gap: 8px; padding: 18px 20px; border: 1px solid var(--ligne); border-radius: var(--rayon-petit); background: var(--surface); }
+.plan-carte h4 { font-size: 19px; line-height: 1.25; }
+.plan-carte p { color: var(--discret); }
+.plan-carte .plan-gravite { font-size: 14px; font-weight: 700; color: var(--encre); }
+details.plan-plus { border-top: 1px solid var(--ligne); padding-top: 12px; }
+details.plan-plus summary { min-height: 44px; display: flex; align-items: center; font-weight: 600; cursor: pointer; }
+details.plan-plus[open] summary { margin-bottom: 12px; }
+.bloc-plan { display: grid; gap: 14px; }
+.bloc-plan h3 { font-size: 24px; }
+.kit { display: grid; gap: 16px; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
+.kit h3 { font-size: 24px; }
+.filtres { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; margin-bottom: 20px; }
+.filtres label { display: grid; gap: 6px; font-weight: 600; }
+.outils-liste { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; padding: 0; list-style: none; }
+.outil-carte { position: relative; display: grid; gap: 8px; align-content: start; padding: 18px 20px; border: 1px solid var(--ligne); border-radius: var(--rayon-petit); background: var(--surface); }
+.outil-carte:hover { border-color: var(--encre); }
+.outil-carte h3 { font: 600 19px/1.25 var(--police-titre), sans-serif; }
+.outil-carte h3 a { color: var(--encre); text-decoration: none; }
+.outil-carte h3 a::after { content: ""; position: absolute; inset: 0; }
+.outil-carte p { color: var(--discret); font-size: 15px; }
+.pratique { display: grid; gap: 30px; max-width: 75ch; }
+.pratique section { display: grid; gap: 10px; }
+.pratique h2 { font-size: 24px; line-height: 1.2; }
+.pratique ul, .pratique ol { display: grid; gap: 8px; padding-left: 22px; }
+.pratique a { overflow-wrap: anywhere; }
+.pratique code, .outil-commande { font: 500 14px/1.5 ui-monospace, "Cascadia Code", monospace; overflow-wrap: anywhere; }
+.pratique-risque { font-size: clamp(19px, 2vw, 22px); line-height: 1.45; }
+.accueil-compact { padding: clamp(24px, 4vw, 48px) 0 clamp(24px, 3vw, 36px); gap: 14px; }
+.accueil-compact h1 { font-size: clamp(40px, 5.6vw, 72px); line-height: 1; letter-spacing: -.035em; max-width: 18ch; }

@@ -1,0 +1,1634 @@
+[
+ {
+  "id": "playwright-mcp",
+  "kind": "mcp",
+  "name": "Playwright MCP",
+  "repo": "microsoft/playwright-mcp",
+  "description": "Pilote un vrai navigateur pour tester un parcours.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "claude mcp add playwright npx @playwright/mcp@latest",
+   "codex": "codex mcp add playwright npx \"@playwright/mcp@latest\""
+  },
+  "stars": 39293,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "mobile",
+   "etats",
+   "clavier"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "chrome-devtools-mcp",
+  "kind": "mcp",
+  "name": "Chrome DevTools MCP",
+  "repo": "ChromeDevTools/chrome-devtools-mcp",
+  "description": "Inspecte une page dans Chrome : réseau, console, performance.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npm i chrome-devtools-mcp@latest -g"
+  },
+  "stars": 54917,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "seo",
+   "cookies"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "github-mcp",
+  "kind": "mcp",
+  "name": "GitHub MCP Server",
+  "repo": "github/github-mcp-server",
+  "description": "Donne à l’agent l’accès à tes dépôts, issues et pull requests.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 34298,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Demande un jeton GitHub : limite ses droits."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "supabase-mcp",
+  "kind": "mcp",
+  "name": "Supabase MCP",
+  "repo": "supabase/mcp",
+  "description": "Connecte l’agent à un projet Supabase.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 2996,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "rls"
+  ],
+  "constraints": [
+   "L’agent accède à ta base : utilise un projet de test et jamais des données réelles."
+  ],
+  "alternatives": [
+   "Travailler avec des données factices."
+  ],
+  "data_location": {
+   "pays": "À vérifier dans ton contrat",
+   "societe": "Supabase"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "context7",
+  "kind": "mcp",
+  "name": "Context7",
+  "repo": "upstash/context7",
+  "description": "Fournit à l’agent une documentation à jour des bibliothèques.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npx ctx7 setup"
+  },
+  "stars": 64310,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Tes questions partent vers le service. N’y mets pas de données réelles."
+  ],
+  "alternatives": [],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Upstash"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "sentry-mcp",
+  "kind": "mcp",
+  "name": "Sentry MCP",
+  "repo": "getsentry/toolkit",
+  "description": "Donne à l’agent l’accès aux erreurs remontées par Sentry.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "claude plugin marketplace add getsentry/sentry-mcp"
+  },
+  "stars": 958,
+  "installs": null,
+  "audit": null,
+  "license": null,
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "supervision"
+  ],
+  "constraints": [
+   "Compte du service requis.",
+   "Les erreurs peuvent contenir des données personnelles."
+  ],
+  "alternatives": [],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Sentry"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "notion-mcp",
+  "kind": "mcp",
+  "name": "Notion MCP Server",
+  "repo": "makenotion/notion-mcp-server",
+  "description": "Connecte l’agent à un espace Notion.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npx @notionhq/notion-mcp-server"
+  },
+  "stars": 4699,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-10-29",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "pilotage"
+  ],
+  "project_types": [
+   "automatisation",
+   "rh"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Limite l’accès aux pages utiles.",
+   "Les contenus restent chez Notion."
+  ],
+  "alternatives": [],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Notion"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "cloudflare-mcp",
+  "kind": "mcp",
+  "name": "Cloudflare MCP",
+  "repo": "cloudflare/mcp-server-cloudflare",
+  "description": "Connecte l’agent aux services Cloudflare.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 4453,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-10-22",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "app-web"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "supervision"
+  ],
+  "constraints": [
+   "Compte du service requis."
+  ],
+  "alternatives": [],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Cloudflare"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "security-guidance",
+  "kind": "plugin",
+  "name": "Security guidance",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Plugin de sécurité de la marketplace Claude Code.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install security-guidance@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "cles",
+   "rls"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "code-review",
+  "kind": "plugin",
+  "name": "Code review",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Relecture de code dans Claude Code.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install code-review@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "pr-review-toolkit",
+  "kind": "plugin",
+  "name": "PR review toolkit",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Outils de relecture de pull requests.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install pr-review-toolkit@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "frontend-design",
+  "kind": "plugin",
+  "name": "Frontend design",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Aide à concevoir des interfaces.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install frontend-design@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "citizen-dev",
+   "marketing"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "debutant",
+  "blind_spots": [
+   "etats",
+   "microcopie"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "feature-dev",
+  "kind": "plugin",
+  "name": "Feature dev",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Cadre le développement d’une fonctionnalité.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install feature-dev@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "semgrep-plugin",
+  "kind": "plugin",
+  "name": "Semgrep pour Claude Code",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Analyse de sécurité de Semgrep dans Claude Code.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install semgrep@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "cles",
+   "rls"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "supabase-plugin",
+  "kind": "plugin",
+  "name": "Supabase pour Claude Code",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Plugin Supabase de la marketplace officielle.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install supabase@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "rls"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait.",
+   "N’utilise pas de données réelles pendant les essais."
+  ],
+  "alternatives": [
+   "Un projet de test avec des données factices."
+  ],
+  "data_location": {
+   "pays": "À vérifier dans ton contrat",
+   "societe": "Supabase"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "stripe-plugin",
+  "kind": "plugin",
+  "name": "Stripe pour Claude Code",
+  "repo": "stripe/ai",
+  "description": "Plugin Stripe pour construire un paiement.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "claude plugin install stripe@claude-plugins-official"
+  },
+  "stars": 2046,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "boutique",
+   "app-web"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "tva",
+   "cgv"
+  ],
+  "constraints": [
+   "Compte du service requis.",
+   "Reste en mode test tant que tout n’est pas vérifié."
+  ],
+  "alternatives": [],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Stripe"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "vercel-plugin",
+  "kind": "plugin",
+  "name": "Vercel pour Claude Code",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Plugin Vercel de la marketplace officielle.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install vercel@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "supervision"
+  ],
+  "constraints": [
+   "Compte du service requis.",
+   "Société américaine : voir la page Cloud Act."
+  ],
+  "alternatives": [
+   "Un hébergeur suisse."
+  ],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Vercel"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "figma-plugin",
+  "kind": "plugin",
+  "name": "Figma pour Claude Code",
+  "repo": "anthropics/claude-plugins-official",
+  "description": "Plugin Figma de la marketplace officielle.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install figma@claude-plugins-official"
+  },
+  "stars": 46335,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "marketing",
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "contrastes"
+  ],
+  "constraints": [
+   "Compte du service requis."
+  ],
+  "alternatives": [],
+  "data_location": {
+   "pays": "À vérifier",
+   "societe": "Figma"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "superpowers",
+  "kind": "plugin",
+  "name": "Superpowers",
+  "repo": "obra/superpowers",
+  "description": "Méthode de développement en skills pour les agents.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin install superpowers@claude-plugins-official"
+  },
+  "stars": 313856,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-03",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Un plugin s’exécute avec tes droits : relis ce qu’il fait."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "anthropic-skills",
+  "kind": "skill",
+  "name": "Agent Skills d’Anthropic",
+  "repo": "anthropics/skills",
+  "description": "Skills publics, dont des skills de documents.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "claude": "/plugin marketplace add anthropics/skills"
+  },
+  "stars": 188363,
+  "installs": null,
+  "audit": null,
+  "license": null,
+  "last_push": "2026-11-06",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "pilotage",
+   "marketing"
+  ],
+  "project_types": [
+   "automatisation",
+   "campagne"
+  ],
+  "level": "debutant",
+  "blind_spots": [
+   "nommage"
+  ],
+  "constraints": [
+   "Lis la licence de chaque skill."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "vercel-agent-skills",
+  "kind": "skill",
+  "name": "Agent skills de Vercel",
+  "repo": "vercel-labs/agent-skills",
+  "description": "Collection de skills publiée par Vercel.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npx skills add vercel-labs/agent-skills"
+  },
+  "stars": 33667,
+  "installs": null,
+  "audit": null,
+  "license": null,
+  "last_push": "2026-10-28",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "seo",
+   "contrastes"
+  ],
+  "constraints": [
+   "Lis la licence de chaque skill."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "axe-core",
+  "kind": "audit",
+  "name": "axe-core",
+  "repo": "dequelabs/axe-core",
+  "description": "Moteur de tests d’accessibilité automatiques.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 7774,
+  "installs": null,
+  "audit": null,
+  "license": "MPL-2.0",
+  "last_push": "2026-11-05",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "contrastes",
+   "alt",
+   "clavier"
+  ],
+  "constraints": [
+   "Un test automatique ne couvre pas toute l’accessibilité."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "pa11y",
+  "kind": "audit",
+  "name": "Pa11y",
+  "repo": "pa11y/pa11y",
+  "description": "Test d’accessibilité en ligne de commande.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npm install -g pa11y"
+  },
+  "stars": 4593,
+  "installs": null,
+  "audit": null,
+  "license": "LGPL-3.0",
+  "last_push": "2026-11-02",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "contrastes",
+   "alt"
+  ],
+  "constraints": [
+   "Un test automatique ne couvre pas toute l’accessibilité."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "lighthouse",
+  "kind": "audit",
+  "name": "Lighthouse",
+  "repo": "GoogleChrome/lighthouse",
+  "description": "Audit de performance, d’accessibilité et de bonnes pratiques.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 31025,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "marketing",
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "level": "debutant",
+  "blind_spots": [
+   "seo",
+   "mobile",
+   "apercus"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "semgrep",
+  "kind": "audit",
+  "name": "Semgrep",
+  "repo": "semgrep/semgrep",
+  "description": "Analyse du code pour trouver des failles connues.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "brew install semgrep"
+  },
+  "stars": 17535,
+  "installs": null,
+  "audit": null,
+  "license": "LGPL-2.1",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "cles"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "gitleaks",
+  "kind": "audit",
+  "name": "Gitleaks",
+  "repo": "gitleaks/gitleaks",
+  "description": "Cherche les secrets dans un dépôt Git.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "brew install gitleaks"
+  },
+  "stars": 30755,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-10-28",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation",
+   "agent-ia"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "cles"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "trufflehog",
+  "kind": "audit",
+  "name": "TruffleHog",
+  "repo": "trufflesecurity/trufflehog",
+  "description": "Cherche et vérifie des identifiants exposés.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "brew install trufflehog"
+  },
+  "stars": 28928,
+  "installs": null,
+  "audit": null,
+  "license": "AGPL-3.0",
+  "last_push": "2026-11-05",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "automatisation"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "cles"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "trivy",
+  "kind": "audit",
+  "name": "Trivy",
+  "repo": "aquasecurity/trivy",
+  "description": "Cherche failles, secrets et mauvaises configurations.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "brew install trivy"
+  },
+  "stars": 39090,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "automatisation"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "cles",
+   "sauvegardes"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "osv-scanner",
+  "kind": "audit",
+  "name": "OSV-Scanner",
+  "repo": "google/osv-scanner",
+  "description": "Vérifie les failles connues de tes dépendances.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 11447,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "supervision"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "zap",
+  "kind": "audit",
+  "name": "ZAP",
+  "repo": "zaproxy/zaproxy",
+  "description": "Teste la sécurité d’une application web.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 16125,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-06",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "boutique"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "sessions",
+   "roles"
+  ],
+  "constraints": [
+   "Ne teste que tes propres sites."
+  ],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "opencode",
+  "kind": "agent",
+  "name": "OpenCode",
+  "repo": "anomalyco/opencode",
+  "description": "Agent de code open source.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npm i -g @opencode/cli@latest"
+  },
+  "stars": 225175,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "cloud-act"
+  ],
+  "constraints": [
+   "Le modèle choisi décide où partent tes données."
+  ],
+  "alternatives": [
+   "Un modèle européen ou hébergé en Suisse pour les données sensibles."
+  ],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "hermes-agent",
+  "kind": "agent",
+  "name": "Hermes Agent",
+  "repo": "NousResearch/hermes-agent",
+  "description": "Agent open source de Nous Research.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 261360,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "automatisation",
+   "agent-ia"
+  ],
+  "level": "avance",
+  "blind_spots": [
+   "cloud-act"
+  ],
+  "constraints": [
+   "Le modèle choisi décide où partent tes données."
+  ],
+  "alternatives": [
+   "Un modèle européen ou hébergé en Suisse pour les données sensibles."
+  ],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "codex",
+  "kind": "agent",
+  "name": "Codex CLI",
+  "repo": "openai/codex",
+  "description": "Agent de code d’OpenAI dans le terminal.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npm install -g @openai/codex"
+  },
+  "stars": 133547,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "documentation"
+  ],
+  "constraints": [
+   "Service américain : n’envoie que des données factices ou anonymisées."
+  ],
+  "alternatives": [
+   "OpenCode avec un modèle européen ou hébergé en Suisse."
+  ],
+  "data_location": {
+   "pays": "États-Unis",
+   "societe": "OpenAI"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "supabase",
+  "kind": "service",
+  "name": "Supabase",
+  "repo": "supabase/supabase",
+  "description": "Base Postgres, comptes et stockage pour un MVP.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 114629,
+  "installs": null,
+  "audit": null,
+  "license": "Apache-2.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "app-web",
+   "mobile"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "rls",
+   "cloud-act",
+   "cout-echelle"
+  ],
+  "constraints": [
+   "Vérifie la société citée dans ton contrat : les versions du DPA diffèrent.",
+   "Surveille les coûts à l’échelle d’un SaaS.",
+   "Active RLS sur chaque table."
+  ],
+  "alternatives": [
+   "Auto-hébergement.",
+   "Un hébergeur suisse comme Infomaniak."
+  ],
+  "data_location": {
+   "pays": "À vérifier dans ton contrat",
+   "societe": "Supabase"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "n8n",
+  "kind": "service",
+  "name": "n8n",
+  "repo": "n8n-io/n8n",
+  "description": "Automatisation de flux entre outils.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 209748,
+  "installs": null,
+  "audit": null,
+  "license": null,
+  "last_push": "2026-11-07",
+  "piliers": [
+   "ia"
+  ],
+  "cercles": [
+   "pilotage",
+   "rh"
+  ],
+  "project_types": [
+   "automatisation",
+   "rh"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "cles",
+   "reversibilite"
+  ],
+  "constraints": [
+   "Licence fair-code : lis ses conditions.",
+   "Les flux peuvent transporter des données personnelles."
+  ],
+  "alternatives": [
+   "Auto-hébergement."
+  ],
+  "data_location": {
+   "pays": "À vérifier selon l’offre",
+   "societe": "n8n GmbH"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "umami",
+  "kind": "service",
+  "name": "Umami",
+  "repo": "umami-software/umami",
+  "description": "Mesure d’audience open source.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 39963,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-04",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "marketing"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "campagne"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "mesure",
+   "cookies"
+  ],
+  "constraints": [
+   "Vérifie ce que tu collectes."
+  ],
+  "alternatives": [
+   "Auto-hébergement."
+  ],
+  "data_location": {
+   "pays": "Selon ton hébergeur",
+   "societe": "Selon ton hébergeur"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "plausible",
+  "kind": "service",
+  "name": "Plausible",
+  "repo": "plausible/analytics",
+  "description": "Mesure d’audience open source, sans cookie selon l’éditeur.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {},
+  "stars": 29788,
+  "installs": null,
+  "audit": null,
+  "license": "AGPL-3.0",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "experience"
+  ],
+  "cercles": [
+   "marketing"
+  ],
+  "project_types": [
+   "vitrine",
+   "boutique",
+   "campagne"
+  ],
+  "level": "debutant",
+  "blind_spots": [
+   "mesure",
+   "cookies"
+  ],
+  "constraints": [
+   "Licence AGPL pour l’auto-hébergement."
+  ],
+  "alternatives": [
+   "Auto-hébergement."
+  ],
+  "data_location": {
+   "pays": "À vérifier selon l’offre",
+   "societe": "Plausible Insights"
+  },
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ },
+ {
+  "id": "next-js",
+  "kind": "generateur",
+  "name": "Next.js",
+  "repo": "vercel/next.js",
+  "description": "Cadre React pour créer un site ou une application.",
+  "sources": [
+   "saisie-manuelle"
+  ],
+  "install": {
+   "terminal": "npx create-next-app@latest"
+  },
+  "stars": 143379,
+  "installs": null,
+  "audit": null,
+  "license": "MIT",
+  "last_push": "2026-11-07",
+  "piliers": [
+   "numerique"
+  ],
+  "cercles": [
+   "citizen-dev"
+  ],
+  "project_types": [
+   "vitrine",
+   "app-web"
+  ],
+  "level": "intermediaire",
+  "blind_spots": [
+   "seo"
+  ],
+  "constraints": [],
+  "alternatives": [],
+  "data_location": null,
+  "tuto_url": null,
+  "learn_course_url": null,
+  "validated_by": null,
+  "validated_at": null
+ }
+]

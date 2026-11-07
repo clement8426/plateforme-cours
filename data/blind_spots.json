@@ -1,0 +1,802 @@
+[
+ {
+  "id": "cgv",
+  "family": "legal",
+  "title": "CGV absentes",
+  "question": "Tes clients acceptent-ils des conditions avant de payer ?",
+  "severity": "important",
+  "show_if": "paiement en ligne",
+  "when": {
+   "contexte": [
+    "paiement"
+   ]
+  },
+  "why": "Les CGV ne sont pas obligatoires en Suisse, mais elles ne lient le client que s’il a pu les lire et les accepter avant de conclure.",
+  "warning": "Le paiement se fait sans aucune case ni lien vers des conditions.",
+  "action": "Rédige tes conditions et fais-les accepter avant le paiement.",
+  "practice": "marche-suisse",
+  "learn_course_url": null,
+  "swiss_legal_ref": "Site PME de la Confédération, obligations du e-commerce"
+ },
+ {
+  "id": "mentions",
+  "family": "legal",
+  "title": "Identité et mentions légales",
+  "question": "Un visiteur sait-il qui édite le site et comment te joindre ?",
+  "severity": "bloquant",
+  "show_if": "toujours",
+  "when": {
+   "toujours": true
+  },
+  "why": "Un vendeur en ligne doit indiquer clairement son identité et son adresse de contact, e-mail compris.",
+  "warning": "Le site n’a qu’un formulaire de contact.",
+  "action": "Publie le nom, l’adresse postale et l’adresse e-mail de l’éditeur.",
+  "practice": "marche-suisse",
+  "learn_course_url": null,
+  "swiss_legal_ref": "Art. 3 al. 1 let. s LCD"
+ },
+ {
+  "id": "confidentialite",
+  "family": "legal",
+  "title": "Déclaration de confidentialité",
+  "question": "Expliques-tu quelles données tu collectes, pourquoi et où elles partent ?",
+  "severity": "bloquant",
+  "show_if": "données personnelles",
+  "when": {
+   "contexte": [
+    "donnees"
+   ]
+  },
+  "why": "La personne doit savoir qui traite ses données, dans quel but, et dans quel pays elles partent.",
+  "warning": "Aucune page ne dit où partent les données du formulaire.",
+  "action": "Liste les données, les finalités, les destinataires et les pays.",
+  "practice": "nlpd",
+  "learn_course_url": "/ia-legislation/ia-donnees/",
+  "swiss_legal_ref": "Art. 19 LPD"
+ },
+ {
+  "id": "marche-ue",
+  "family": "legal",
+  "title": "Ouverture au marché européen",
+  "question": "Des clients de l’UE peuvent-ils s’inscrire ou acheter ?",
+  "severity": "important",
+  "show_if": "marché Europe ou je ne sais pas",
+  "when": {
+   "verifier": "Si des personnes de l’UE sont visées."
+  },
+  "why": "Viser des personnes dans l’UE peut rendre le RGPD applicable en plus de la loi suisse.",
+  "warning": "Tu proposes l’euro ou la livraison en France sans y avoir réfléchi.",
+  "action": "Décide si tu vises l’UE, puis vérifie les règles qui s’ajoutent.",
+  "practice": "rgpd",
+  "learn_course_url": "/ia-legislation/ia-donnees/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "cookies",
+  "family": "legal",
+  "title": "Cookies et traceurs",
+  "question": "Quels outils de mesure ou de pub déposent des cookies ?",
+  "severity": "important",
+  "show_if": "site public",
+  "when": {
+   "types": [
+    "vitrine",
+    "boutique",
+    "app-web",
+    "campagne"
+   ]
+  },
+  "why": "Chaque outil tiers ajouté au site peut transmettre des données de visite.",
+  "warning": "Tu ne sais pas lister les scripts chargés par ton site.",
+  "action": "Fais l’inventaire des scripts et retire ceux qui ne servent pas.",
+  "practice": "vie-privee",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "factures",
+  "family": "legal",
+  "title": "Conservation des factures",
+  "question": "Peux-tu retrouver une facture d’il y a 10 ans ?",
+  "severity": "bloquant",
+  "show_if": "facturation",
+  "when": {
+   "contexte": [
+    "paiement"
+   ],
+   "verifier": "Si tu émets des factures."
+  },
+  "why": "Les pièces comptables se conservent au moins dix ans, à compter de la fin de l’exercice.",
+  "warning": "Les factures vivent seulement dans un service que tu pourrais quitter.",
+  "action": "Prévois un archivage exportable et testé.",
+  "practice": "marche-suisse",
+  "learn_course_url": null,
+  "swiss_legal_ref": "Art. 958f CO"
+ },
+ {
+  "id": "droits-ia",
+  "family": "legal",
+  "title": "Droits sur les contenus IA",
+  "question": "Qui détient les droits sur les textes, images et code générés ?",
+  "severity": "important",
+  "show_if": "IA utilisée",
+  "when": {
+   "types": [
+    "agent-ia",
+    "campagne"
+   ],
+   "signaux": [
+    "ia"
+   ],
+   "verifier": "Si tu utilises une IA pour produire du contenu."
+  },
+  "why": "Les conditions de chaque outil et le droit applicable décident de ce que tu peux faire du contenu généré.",
+  "warning": "Tu promets à un client une exclusivité sur des visuels générés.",
+  "action": "Lis les conditions de l’outil et ne promets pas plus qu’elles.",
+  "practice": "ai-act",
+  "learn_course_url": "/comprendre-ia/types-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "decision-auto",
+  "family": "legal",
+  "title": "Décision automatisée",
+  "question": "L’outil décide-t-il seul quelque chose sur une personne (tri de CV, score) ?",
+  "severity": "bloquant",
+  "show_if": "RH ou IA",
+  "when": {
+   "types": [
+    "rh",
+    "agent-ia"
+   ],
+   "signaux": [
+    "ia"
+   ]
+  },
+  "why": "Une décision prise uniquement par un traitement automatisé doit être annoncée, et la personne peut demander une revue humaine.",
+  "warning": "Aucun humain ne relit le tri des candidatures.",
+  "action": "Garde une personne dans la boucle et informe les personnes concernées.",
+  "practice": "nlpd",
+  "learn_course_url": "/ia-legislation/ia-donnees/",
+  "swiss_legal_ref": "Art. 21 LPD"
+ },
+ {
+  "id": "cloud-act",
+  "family": "souverainete",
+  "title": "Hébergeur soumis au Cloud Act",
+  "question": "Ton hébergeur ou ta base appartiennent-ils à une société américaine ?",
+  "severity": "important",
+  "show_if": "marché Suisse et données personnelles",
+  "when": {
+   "contexte": [
+    "donnees"
+   ],
+   "outils": [
+    "supabase"
+   ]
+  },
+  "why": "Les autorités américaines peuvent exiger d’un fournisseur américain des données qu’il contrôle, même stockées hors des États-Unis.",
+  "warning": "Le serveur est en Europe, mais la société mère est américaine.",
+  "action": "Identifie la société qui contrôle les données, puis décide si ce risque est acceptable.",
+  "practice": "cloud-act",
+  "learn_course_url": "/ia-legislation/ia-donnees/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "promesse-suisse",
+  "family": "souverainete",
+  "title": "Promesse « suisse »",
+  "question": "Ta communication promet-elle des données gardées en Suisse ?",
+  "severity": "bloquant",
+  "show_if": "argument suisse",
+  "when": {
+   "verifier": "Si ta communication parle de Suisse ou de souveraineté."
+  },
+  "why": "Une promesse que l’architecture ne tient pas trompe le client.",
+  "warning": "Tes services tiers hébergent des données ailleurs.",
+  "action": "Vérifie chaque service avant d’écrire la promesse.",
+  "practice": "cloud-act",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "reversibilite",
+  "family": "souverainete",
+  "title": "Réversibilité",
+  "question": "Peux-tu exporter toute ta base et tes fichiers demain ?",
+  "severity": "important",
+  "show_if": "service cloud",
+  "when": {
+   "types": [
+    "app-web",
+    "mobile",
+    "boutique",
+    "automatisation"
+   ]
+  },
+  "why": "Sans export complet, changer de service coûte très cher.",
+  "warning": "Tu n’as jamais fait d’export complet.",
+  "action": "Fais un export complet et vérifie qu’il est lisible ailleurs.",
+  "practice": "cloud-act",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "cout-echelle",
+  "family": "souverainete",
+  "title": "Coût à l’échelle",
+  "question": "Combien paies-tu avec dix fois plus d’utilisateurs ?",
+  "severity": "important",
+  "show_if": "SaaS ou app",
+  "when": {
+   "types": [
+    "app-web",
+    "mobile"
+   ]
+  },
+  "why": "Les offres gratuites changent vite de prix quand l’usage grandit.",
+  "warning": "Tu ne connais pas le palier suivant de ton offre.",
+  "action": "Calcule la facture à dix fois ton usage actuel.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "rls",
+  "family": "securite",
+  "title": "RLS sur les tables",
+  "question": "Chaque table refuse-t-elle par défaut les données d’un autre utilisateur ?",
+  "severity": "bloquant",
+  "show_if": "Supabase ou Postgres",
+  "when": {
+   "outils": [
+    "supabase"
+   ]
+  },
+  "why": "Sans règles sur chaque table, un utilisateur peut lire ou modifier les données des autres.",
+  "warning": "Une table est accessible avec la seule clé publique.",
+  "action": "Active RLS sur chaque table et teste avec deux comptes.",
+  "practice": "rls",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "sessions",
+  "family": "securite",
+  "title": "Sessions et tokens",
+  "question": "Combien de temps reste-t-on connecté, et que se passe-t-il si un téléphone est volé ?",
+  "severity": "bloquant",
+  "show_if": "comptes utilisateurs",
+  "when": {
+   "contexte": [
+    "comptes"
+   ]
+  },
+  "why": "Un jeton volé donne le même accès que le mot de passe, tant qu’il reste valable.",
+  "warning": "Personne ne peut fermer une session à distance.",
+  "action": "Fixe une durée de vie courte et prévois la révocation.",
+  "practice": "sessions",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "cles",
+  "family": "securite",
+  "title": "Clés exposées",
+  "question": "Une clé secrète apparaît-elle dans le navigateur ou le dépôt Git ?",
+  "severity": "bloquant",
+  "show_if": "app ou automatisation",
+  "when": {
+   "types": [
+    "app-web",
+    "mobile",
+    "automatisation",
+    "agent-ia"
+   ]
+  },
+  "why": "Une clé visible dans le navigateur ou le dépôt est publique.",
+  "warning": "Tu trouves une clé de service dans le code envoyé au navigateur.",
+  "action": "Scanne le dépôt, puis remplace toute clé exposée.",
+  "practice": "cles-exposees",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "sauvegardes",
+  "family": "securite",
+  "title": "Sauvegardes testées",
+  "question": "As-tu déjà restauré une sauvegarde pour de vrai ?",
+  "severity": "bloquant",
+  "show_if": "base de données",
+  "when": {
+   "types": [
+    "app-web",
+    "mobile",
+    "boutique"
+   ],
+   "outils": [
+    "supabase",
+    "wordpress"
+   ]
+  },
+  "why": "Une sauvegarde jamais restaurée n’est qu’une hypothèse.",
+  "warning": "Tu ne sais pas combien de temps prendrait une restauration.",
+  "action": "Restaure une sauvegarde sur un environnement de test.",
+  "practice": "serveur",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "roles",
+  "family": "securite",
+  "title": "Rôles et permissions",
+  "question": "Un utilisateur peut-il voir ou modifier ce qui ne le concerne pas ?",
+  "severity": "bloquant",
+  "show_if": "plusieurs rôles",
+  "when": {
+   "signaux": [
+    "roles"
+   ],
+   "contexte": [
+    "comptes"
+   ]
+  },
+  "why": "Masquer un bouton ne protège rien : le serveur doit refuser l’action.",
+  "warning": "Changer un identifiant dans l’adresse affiche la fiche d’un autre.",
+  "action": "Teste chaque action avec un compte sans droit.",
+  "practice": "rls",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "fuite",
+  "family": "securite",
+  "title": "Fuite de données",
+  "question": "Qui préviens-tu si des données fuient ?",
+  "severity": "important",
+  "show_if": "données personnelles",
+  "when": {
+   "contexte": [
+    "donnees"
+   ]
+  },
+  "why": "Une violation entraînant vraisemblablement un risque élevé s’annonce au PFPDT dans les meilleurs délais.",
+  "warning": "Personne n’est désigné pour réagir.",
+  "action": "Écris à l’avance qui décide, qui prévient et comment.",
+  "practice": "nlpd",
+  "learn_course_url": "/ia-legislation/ia-donnees/",
+  "swiss_legal_ref": "Art. 24 LPD"
+ },
+ {
+  "id": "multilingue",
+  "family": "produit",
+  "title": "Multilingue",
+  "question": "Tes textes sont-ils écrits en dur dans les pages ?",
+  "severity": "important",
+  "show_if": "marché Suisse",
+  "when": {
+   "contexte": [
+    "langues"
+   ]
+  },
+  "why": "Ajouter une langue coûte beaucoup plus cher quand les textes sont dispersés dans le code.",
+  "warning": "Les textes sont dans les composants.",
+  "action": "Range les textes dans des fichiers de traduction dès le début.",
+  "practice": "marche-suisse",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "b2b-b2c",
+  "family": "produit",
+  "title": "B2B ou B2C",
+  "question": "Connais-tu à l’avance le nombre d’utilisateurs ?",
+  "severity": "important",
+  "show_if": "SaaS",
+  "when": {
+   "types": [
+    "app-web"
+   ]
+  },
+  "why": "Vendre à des entreprises ou à des particuliers change les comptes, la facturation et le support.",
+  "warning": "Tu ne sais pas qui paie.",
+  "action": "Décide qui achète et qui utilise, puis adapte les comptes.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "tva",
+  "family": "produit",
+  "title": "TVA, devises, formats",
+  "question": "Gères-tu CHF et EUR, la TVA et les formats de date ?",
+  "severity": "important",
+  "show_if": "paiement",
+  "when": {
+   "contexte": [
+    "paiement"
+   ]
+  },
+  "why": "Une facture ou un prix mal formaté crée des erreurs et du travail manuel.",
+  "warning": "Le prix est stocké sans devise.",
+  "action": "Stocke la devise et le taux, et fais valider la TVA par une personne compétente.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "multi-clients",
+  "family": "produit",
+  "title": "Plusieurs clients, une base",
+  "question": "Plusieurs entreprises partagent-elles la même base ?",
+  "severity": "bloquant",
+  "show_if": "SaaS B2B",
+  "when": {
+   "signaux": [
+    "b2b"
+   ],
+   "verifier": "Si plusieurs entreprises utilisent la même application."
+  },
+  "why": "Une erreur de filtre peut montrer les données d’une entreprise à une autre.",
+  "warning": "Les requêtes ne filtrent pas toujours par entreprise.",
+  "action": "Sépare les entreprises au niveau de la base et teste avec deux comptes.",
+  "practice": "rls",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "contrastes",
+  "family": "accessibilite",
+  "title": "Contrastes et couleurs",
+  "question": "L’information passe-t-elle aussi sans la couleur ?",
+  "severity": "important",
+  "show_if": "toujours, visuels marketing compris",
+  "when": {
+   "toujours": true
+  },
+  "why": "Une information portée seulement par la couleur échappe à une partie du public.",
+  "warning": "Un champ en erreur est seulement rouge.",
+  "action": "Ajoute un texte ou une icône, et vérifie le contraste.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "clavier",
+  "family": "accessibilite",
+  "title": "Navigation clavier",
+  "question": "Peut-on tout faire sans souris ?",
+  "severity": "important",
+  "show_if": "interface",
+  "when": {
+   "types": [
+    "vitrine",
+    "boutique",
+    "app-web",
+    "automatisation",
+    "rh"
+   ],
+   "contexte": [
+    "handicap"
+   ]
+  },
+  "why": "Certaines personnes n’utilisent jamais de souris.",
+  "warning": "Le focus disparaît ou reste bloqué dans une fenêtre.",
+  "action": "Fais ton parcours principal avec la seule touche Tab.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "alt",
+  "family": "accessibilite",
+  "title": "Textes alternatifs",
+  "question": "Les images utiles ont-elles un texte alternatif ?",
+  "severity": "important",
+  "show_if": "images, réseaux sociaux compris",
+  "when": {
+   "types": [
+    "vitrine",
+    "boutique",
+    "campagne",
+    "app-web"
+   ],
+   "contexte": [
+    "handicap"
+   ]
+  },
+  "why": "Sans alternative, une image utile n’existe pas pour un lecteur d’écran.",
+  "warning": "Le texte alternatif reprend le nom du fichier.",
+  "action": "Décris ce que l’image apporte, et laisse vide si elle est décorative.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "microcopie",
+  "family": "accessibilite",
+  "title": "Microcopie",
+  "question": "Chaque bouton dit-il ce qu’il fait (« Modifier » plutôt que « Action ») ?",
+  "severity": "important",
+  "show_if": "toujours",
+  "when": {
+   "toujours": true
+  },
+  "why": "Un libellé flou fait hésiter et augmente les erreurs.",
+  "warning": "Tes boutons disent OK ou Valider partout.",
+  "action": "Relis chaque bouton et nomme l’action réelle.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "etats",
+  "family": "accessibilite",
+  "title": "États vides, erreurs, chargement",
+  "question": "Que voit l’utilisateur quand il n’y a rien ou quand ça plante ?",
+  "severity": "important",
+  "show_if": "app",
+  "when": {
+   "types": [
+    "app-web",
+    "mobile"
+   ]
+  },
+  "why": "Ces écrans sont souvent oubliés, y compris par l’IA qui génère le code.",
+  "warning": "Une page blanche quand la liste est vide.",
+  "action": "Prévois un message et une action pour chaque état.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "mobile",
+  "family": "accessibilite",
+  "title": "Mobile",
+  "question": "L’outil s’utilise-t-il au pouce sur un téléphone ?",
+  "severity": "important",
+  "show_if": "toujours",
+  "when": {
+   "toujours": true
+  },
+  "why": "Une grande partie du public ouvrira le lien sur un téléphone.",
+  "warning": "Il faut zoomer pour toucher un bouton.",
+  "action": "Teste le parcours principal sur un vrai téléphone.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "nommage",
+  "family": "exploitation",
+  "title": "Nommage des documents",
+  "question": "Retrouves-tu un PDF parmi 300 par une simple recherche ?",
+  "severity": "important",
+  "show_if": "documents générés",
+  "when": {
+   "verifier": "Si ton outil génère des documents."
+  },
+  "why": "Des noms de fichiers improvisés rendent les documents introuvables.",
+  "warning": "Tes fichiers s’appellent document-final-2.pdf.",
+  "action": "Fixe une règle de nom avec la date et le client.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "numerotation",
+  "family": "exploitation",
+  "title": "Numérotation des factures",
+  "question": "Tes numéros de facture sont-ils uniques et continus ?",
+  "severity": "bloquant",
+  "show_if": "facturation",
+  "when": {
+   "contexte": [
+    "paiement"
+   ],
+   "verifier": "Si tu émets des factures."
+  },
+  "why": "Des numéros en double ou manquants compliquent le contrôle comptable.",
+  "warning": "Deux factures portent le même numéro.",
+  "action": "Laisse un seul système attribuer les numéros.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "exports",
+  "family": "exploitation",
+  "title": "Exports",
+  "question": "Un client peut-il récupérer ses données en CSV ?",
+  "severity": "confort",
+  "show_if": "SaaS",
+  "when": {
+   "types": [
+    "app-web"
+   ]
+  },
+  "why": "Un client qui peut partir facilement fait plus confiance.",
+  "warning": "Seul le support peut extraire les données.",
+  "action": "Ajoute un export simple des données du client.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "emails",
+  "family": "exploitation",
+  "title": "E-mails transactionnels",
+  "question": "Tes e-mails arrivent-ils ou finissent-ils en spam (SPF, DKIM) ?",
+  "severity": "important",
+  "show_if": "e-mails envoyés",
+  "when": {
+   "signaux": [
+    "emails"
+   ],
+   "contexte": [
+    "comptes"
+   ],
+   "verifier": "Si ton projet envoie des e-mails."
+  },
+  "why": "Sans configuration du domaine, les e-mails arrivent mal.",
+  "warning": "Les confirmations finissent dans les indésirables.",
+  "action": "Configure SPF et DKIM, puis teste vers plusieurs boîtes.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "supervision",
+  "family": "exploitation",
+  "title": "Supervision",
+  "question": "Sais-tu que l’app est en panne avant ton client ?",
+  "severity": "important",
+  "show_if": "en production",
+  "when": {
+   "contexte": [
+    "enligne"
+   ]
+  },
+  "why": "Sans alerte, tu découvres les pannes par tes clients.",
+  "warning": "Personne n’est prévenu si le site tombe.",
+  "action": "Mets une alerte de disponibilité et un suivi des erreurs.",
+  "practice": "serveur",
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "seo",
+  "family": "visibilite",
+  "title": "SEO et GEO",
+  "question": "Google et les IA comprennent-ils ce que tu proposes ?",
+  "severity": "important",
+  "show_if": "site public",
+  "when": {
+   "types": [
+    "vitrine",
+    "boutique",
+    "campagne"
+   ]
+  },
+  "why": "Une page sans titre clair ni structure est mal comprise par les moteurs et les IA.",
+  "warning": "Toutes tes pages ont le même titre.",
+  "action": "Donne à chaque page un titre, une description et une structure claire.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "mesure",
+  "family": "visibilite",
+  "title": "Mesure avec consentement",
+  "question": "Mesures-tu ton audience sans traceur non consenti ?",
+  "severity": "important",
+  "show_if": "site public",
+  "when": {
+   "types": [
+    "vitrine",
+    "boutique",
+    "campagne",
+    "app-web"
+   ]
+  },
+  "why": "Une mesure mal choisie transmet plus de données que nécessaire.",
+  "warning": "Tu as installé un outil sans lire ce qu’il collecte.",
+  "action": "Choisis l’outil le plus sobre qui répond à ta question.",
+  "practice": "vie-privee",
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "apercus",
+  "family": "visibilite",
+  "title": "Aperçus de partage",
+  "question": "Que voit-on quand ton lien est partagé sur LinkedIn ?",
+  "severity": "confort",
+  "show_if": "site public",
+  "when": {
+   "types": [
+    "vitrine",
+    "boutique",
+    "campagne"
+   ]
+  },
+  "why": "Un lien sans aperçu attire moins de clics.",
+  "warning": "Le partage affiche une image vide.",
+  "action": "Renseigne le titre, la description et l’image de partage.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "maintenance",
+  "family": "humain",
+  "title": "Maintenance après la formation",
+  "question": "Qui corrige un bug dans six mois ?",
+  "severity": "bloquant",
+  "show_if": "projet client ou d’équipe",
+  "when": {
+   "verifier": "Si le projet est pour un client ou une équipe."
+  },
+  "why": "Un projet sans responsable se dégrade dès la première panne.",
+  "warning": "Personne n’a les accès à part toi.",
+  "action": "Nomme un responsable et note les accès.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "documentation",
+  "family": "humain",
+  "title": "Documentation",
+  "question": "Quelqu’un peut-il reprendre ton projet en une journée ?",
+  "severity": "important",
+  "show_if": "reprise",
+  "when": {
+   "intentions": [
+    "reprendre",
+    "finaliser"
+   ]
+  },
+  "why": "Un code généré par IA sans notes est difficile à reprendre, même pour toi.",
+  "warning": "Il n’y a pas de README à jour.",
+  "action": "Écris comment installer, lancer et déployer le projet.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "cession",
+  "family": "humain",
+  "title": "Cession des droits",
+  "question": "Le client possède-t-il le code et le nom de domaine ?",
+  "severity": "important",
+  "show_if": "projet pour un client",
+  "when": {
+   "verifier": "Si tu construis pour un client."
+  },
+  "why": "Sans accord écrit, la propriété du code et du domaine devient un conflit.",
+  "warning": "Le domaine est à ton nom personnel.",
+  "action": "Écris qui possède quoi avant de livrer.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null
+ },
+ {
+  "id": "test-cible",
+  "family": "humain",
+  "title": "Test avec la cible",
+  "question": "As-tu montré l’outil à cinq personnes de ta cible ?",
+  "severity": "important",
+  "show_if": "toujours",
+  "when": {
+   "toujours": true
+  },
+  "why": "Observer de vraies personnes révèle ce qu’aucune checklist ne voit.",
+  "warning": "Seuls toi et tes proches ont testé.",
+  "action": "Observe cinq personnes de ta cible sans les aider.",
+  "practice": null,
+  "learn_course_url": "/ux/ux-ia/",
+  "swiss_legal_ref": null
+ }
+]

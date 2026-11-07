@@ -1,0 +1,158 @@
+// Pages de bonnes pratiques. Chaque source a été ouverte à la date indiquée ; les exemples sont fictifs.
+import { typoProfonde } from '../typo';
+
+export type Pratique = {
+  id: string;
+  groupe: 'Principe' | 'Légal et éthique' | 'Technique';
+  titre: string;
+  resume: string;
+  risque: string;
+  exemple: string;
+  verifications: [string, string, string];
+  angles: string[];
+  cours?: { href: string; nom: string };
+  sources: { titre: string; url: string }[];
+};
+
+export const DATE_VERIFICATION = '2026-11-07';
+
+const LPD = { titre: 'Loi fédérale sur la protection des données (LPD), Fedlex', url: 'https://www.fedlex.admin.ch/eli/cc/2022/491/fr' };
+const IA = { href: '/ia-legislation/ia-donnees/', nom: 'IA, données et responsabilité' };
+
+export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
+  {
+    id: 'donnees-ia', groupe: 'Principe', titre: 'Ce qu’on envoie à l’IA',
+    resume: 'Ce que tu envoies à l’IA compte plus que l’outil.',
+    risque: 'Ce que tu envoies à une IA compte plus que le nom de l’outil. Un vrai fichier client collé dans un service en ligne sort de ton contrôle.',
+    exemple: 'Une élève veut trier un fichier de clients. Elle donne à l’IA un tableur de même structure, rempli de faux noms et de fausses adresses, puis applique le résultat à son vrai fichier sur son ordinateur.',
+    verifications: ['Le fichier envoyé contient-il de vrais noms, numéros ou adresses ?', 'Un tableur modèle avec de fausses données suffirait-il pour cette tâche ?', 'Pour des données médicales, juridiques ou RH, as-tu envisagé un agent open source avec un modèle européen ou hébergé en Suisse ?'],
+    angles: ['cloud-act', 'confidentialite'], cours: IA,
+    sources: [LPD, { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' }],
+  },
+  {
+    id: 'cloud-act', groupe: 'Légal et éthique', titre: 'Cloud Act',
+    resume: 'Un serveur en Europe ne suffit pas si le fournisseur est américain.',
+    risque: 'Les autorités américaines peuvent exiger d’un fournisseur américain des données qu’il contrôle, même stockées hors des États-Unis.',
+    exemple: 'Une application suisse héberge ses données à Francfort chez un fournisseur américain. Le serveur est en Europe, mais la société qui contrôle les données reste soumise au droit américain.',
+    verifications: ['Quelle société signe ton contrat, et où est sa maison mère ?', 'Ta communication promet-elle plus que ce que ton architecture garantit ?', 'Quelles données peux-tu garder chez un prestataire suisse ou européen ?'],
+    angles: ['cloud-act', 'promesse-suisse', 'reversibilite'], cours: IA,
+    sources: [
+      { titre: 'CLOUD Act Resources, Département de la justice des États-Unis', url: 'https://www.justice.gov/criminal/cloud-act-resources' },
+      { titre: 'Audition de Microsoft France, Sénat français, 10 juin 2025', url: 'https://www.senat.fr/compte-rendu-commissions/20250609/ce_commande_publique.html' },
+    ],
+  },
+  {
+    id: 'nlpd', groupe: 'Légal et éthique', titre: 'nLPD (Suisse)',
+    resume: 'Informer, choisir ses transferts, annoncer les fuites graves.',
+    risque: 'La loi suisse s’applique aux situations qui ont un effet en Suisse. Elle demande d’informer les personnes, d’encadrer les envois à l’étranger et d’annoncer certaines fuites.',
+    exemple: 'Un formulaire de contact envoie ses réponses à un outil américain. La page de confidentialité doit nommer ce destinataire et le pays concerné, avec les garanties prévues.',
+    verifications: ['Ta déclaration dit-elle qui traite les données, pourquoi et à qui elles sont transmises (art. 19) ?', 'Une décision prise uniquement par une machine est-elle annoncée, avec une revue humaine possible (art. 21) ?', 'Sais-tu qui annonce au PFPDT une violation à risque élevé, dans les meilleurs délais (art. 24) ?'],
+    angles: ['confidentialite', 'decision-auto', 'fuite'], cours: IA,
+    sources: [LPD, { titre: 'La nouvelle loi sur la protection des données du point de vue du PFPDT', url: 'https://www.edoeb.admin.ch/fr/la-nouvelle-loi-federale-sur-la-protection-des-donnees-du-point-de-vue-du-pfpdt' }],
+  },
+  {
+    id: 'rgpd', groupe: 'Légal et éthique', titre: 'RGPD (Europe)',
+    resume: 'Il peut s’appliquer dès que tu vises des personnes dans l’UE.',
+    risque: 'Le RGPD peut s’appliquer à une entreprise suisse dès qu’elle propose des biens ou des services à des personnes dans l’UE, ou qu’elle suit leur comportement.',
+    exemple: 'Une boutique de Neuchâtel affiche ses prix en euros et livre en France : elle vise des personnes dans l’UE et doit vérifier ses obligations européennes.',
+    verifications: ['Proposes-tu une langue, une devise ou une livraison pour un pays de l’UE ?', 'Suis-tu le comportement de personnes dans l’UE ?', 'As-tu vérifié si un représentant dans l’UE est nécessaire (art. 27) ?'],
+    angles: ['marche-ue', 'confidentialite'], cours: IA,
+    sources: [{ titre: 'Règlement (UE) 2016/679 (RGPD), EUR-Lex', url: 'https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32016R0679' }],
+  },
+  {
+    id: 'ai-act', groupe: 'Légal et éthique', titre: 'AI Act',
+    resume: 'Le tri de candidatures fait partie des usages à haut risque.',
+    risque: 'Le règlement européen classe les usages de l’IA selon leur risque. Le tri de candidatures fait partie des usages à haut risque, même dans un petit projet.',
+    exemple: 'Un outil interne classe des CV et écarte seul une partie des candidats. Ce n’est plus un simple assistant : c’est un usage à vérifier avant de le déployer.',
+    verifications: ['Ton outil touche-t-il à l’emploi, à l’éducation ou au crédit ?', 'Une personne relit-elle ce que l’IA décide ?', 'Tes utilisateurs savent-ils quand ils parlent à une IA ?'],
+    angles: ['decision-auto', 'droits-ia'], cours: IA,
+    sources: [
+      { titre: 'Règlement (UE) 2024/1689 (AI Act), EUR-Lex', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+      { titre: 'EU AI Omnibus enters into force, White & Case (analyse)', url: 'https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act' },
+    ],
+  },
+  {
+    id: 'marche-suisse', groupe: 'Légal et éthique', titre: 'Marché suisse et européen',
+    resume: 'Impressum, processus de commande, CGV et conservation.',
+    risque: 'Vendre en ligne en Suisse impose d’indiquer clairement son identité et un processus de commande transparent. Les pièces comptables se gardent au moins dix ans.',
+    exemple: 'Une boutique n’affiche qu’un formulaire de contact. Il manque le nom de l’entreprise, l’adresse postale et l’adresse e-mail.',
+    verifications: ['Ton impressum donne-t-il le nom, l’adresse postale et l’e-mail ?', 'Le client peut-il corriger sa commande, et reçoit-il une confirmation électronique ?', 'Tes factures restent-elles disponibles dix ans après la fin de l’exercice ?'],
+    angles: ['mentions', 'cgv', 'factures', 'multilingue', 'tva'],
+    sources: [
+      { titre: 'Obligations légales du e-commerce, site PME de la Confédération', url: 'https://www.kmu.admin.ch/fr/obligations-legales-les-lois-suisses-et-europeennes-sur-le-e-commerce' },
+      { titre: 'Commerce électronique, SECO', url: 'https://www.seco.admin.ch/fr/commerce-electronique' },
+      { titre: 'Conservation électronique des livres de comptes, site PME', url: 'https://www.kmu.admin.ch/fr/conservation-electronique-des-livres-de-comptes' },
+    ],
+  },
+  {
+    id: 'rls', groupe: 'Technique', titre: 'Policies et RLS',
+    resume: 'Chaque table doit refuser par défaut les données des autres.',
+    risque: 'Sans règles sur chaque table exposée, un utilisateur peut lire ou modifier les données des autres.',
+    exemple: 'Une application fictive liste les commandes du compte connecté. L’écran filtre bien, mais la table n’a pas de RLS : une requête directe renvoie les commandes de tout le monde.',
+    verifications: ['RLS est-il activé sur chaque table d’un schéma exposé ?', 'Deux comptes de test voient-ils uniquement leurs données ?', 'La clé secrète reste-t-elle uniquement côté serveur ?'],
+    angles: ['rls', 'roles', 'multi-clients'],
+    sources: [{ titre: 'Row Level Security, documentation Supabase', url: 'https://supabase.com/docs/guides/database/postgres/row-level-security' }],
+  },
+  {
+    id: 'injections-sql', groupe: 'Technique', titre: 'Injections SQL',
+    resume: 'Ne jamais coller du texte saisi dans une requête.',
+    risque: 'Une requête construite en collant du texte saisi peut être détournée pour lire ou effacer la base.',
+    exemple: 'Un champ de recherche fictif colle directement le mot saisi dans la requête. Un visiteur y écrit du SQL, et la base l’exécute.',
+    verifications: ['Toutes les requêtes utilisent-elles des paramètres ?', 'Le compte de la base a-t-il seulement les droits nécessaires ?', 'Ton agent a-t-il cherché les requêtes construites par concaténation ?'],
+    angles: ['roles'],
+    sources: [{ titre: 'SQL Injection Prevention Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html' }],
+  },
+  {
+    id: 'xss', groupe: 'Technique', titre: 'Failles XSS',
+    resume: 'Ne jamais afficher du contenu utilisateur sans l’échapper.',
+    risque: 'Un contenu saisi par un utilisateur et affiché sans protection peut exécuter du code dans le navigateur des autres.',
+    exemple: 'Un commentaire fictif contient une balise de script. La page l’insère telle quelle, et le code tourne chez chaque visiteur.',
+    verifications: ['Le texte saisi est-il échappé à l’affichage ?', 'Le code utilise-t-il des insertions de HTML brut ?', 'Le HTML fourni par un utilisateur passe-t-il par un nettoyage reconnu ?'],
+    angles: ['sessions'],
+    sources: [{ titre: 'Cross Site Scripting Prevention Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html' }],
+  },
+  {
+    id: 'sessions', groupe: 'Technique', titre: 'Jetons de session',
+    resume: 'Durée limitée, stockage sûr, révocation possible.',
+    risque: 'Un identifiant de session volé donne le même accès que le mot de passe, tant que le serveur ne l’a pas révoqué.',
+    exemple: 'Dans une application fictive, la déconnexion vide seulement le cookie. Un jeton copié avant reste valable, car le serveur ne l’a pas invalidé.',
+    verifications: ['Le serveur applique-t-il un délai d’inactivité et une durée maximale ?', 'Les cookies de session ont-ils les attributs Secure, HttpOnly et SameSite ?', 'La déconnexion invalide-t-elle la session côté serveur ?'],
+    angles: ['sessions'],
+    sources: [{ titre: 'Session Management Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html' }],
+  },
+  {
+    id: 'vie-privee', groupe: 'Technique', titre: 'Vie privée des utilisateurs',
+    resume: 'Collecter le minimum, expliquer pourquoi, permettre la suppression.',
+    risque: 'Chaque donnée collectée devient une chose à protéger, à expliquer et à supprimer.',
+    exemple: 'Un formulaire fictif demande la date de naissance alors qu’il sert seulement à envoyer une newsletter. Ce champ peut disparaître.',
+    verifications: ['Chaque champ d’un formulaire a-t-il une utilité réelle ?', 'As-tu la liste des scripts tiers chargés par ton site ?', 'Une personne peut-elle demander la suppression de ses données ?'],
+    angles: ['cookies', 'mesure', 'confidentialite'], cours: IA,
+    sources: [LPD, { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' }],
+  },
+  {
+    id: 'serveur', groupe: 'Technique', titre: 'Configuration serveur',
+    resume: 'Ports fermés, secrets hors du code, mises à jour.',
+    risque: 'Un serveur laissé par défaut expose des services, des secrets ou des failles déjà connues.',
+    exemple: 'Un serveur fictif laisse sa base accessible depuis Internet alors que seule l’application en a besoin.',
+    verifications: ['Seuls les ports nécessaires sont-ils ouverts ?', 'Les secrets sont-ils hors du code et du dépôt ?', 'Une sauvegarde a-t-elle déjà été restaurée pour de vrai ?'],
+    angles: ['sauvegardes', 'supervision'],
+    sources: [
+      { titre: 'OWASP Top 10', url: 'https://owasp.org/Top10/' },
+      { titre: 'Secrets Management Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html' },
+    ],
+  },
+  {
+    id: 'cles-exposees', groupe: 'Technique', titre: 'Clés exposées côté client',
+    resume: 'Une clé visible dans le navigateur est publique.',
+    risque: 'Tout ce que reçoit le navigateur est public. Une clé de service exposée donne un accès que tes règles ne contrôlent plus.',
+    exemple: 'Chez Supabase, la clé publique est prévue pour le navigateur, mais la clé secrète contourne toutes les règles RLS et doit rester sur le serveur.',
+    verifications: ['Distingues-tu la clé publique de la clé secrète ?', 'As-tu scanné le dépôt et son historique ?', 'Sais-tu révoquer une clé immédiatement ?'],
+    angles: ['cles', 'rls'],
+    sources: [
+      { titre: 'Understanding API keys, documentation Supabase', url: 'https://supabase.com/docs/guides/api/api-keys' },
+      { titre: 'Secrets Management Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html' },
+    ],
+  },
+]);
+
+export const trouverPratique = (id: string) => PRATIQUES.find((p) => p.id === id);

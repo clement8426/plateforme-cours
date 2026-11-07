@@ -1,0 +1,212 @@
+{
+ "piliers": [
+  {
+   "id": "numerique",
+   "label_fr": "Numérique"
+  },
+  {
+   "id": "experience",
+   "label_fr": "Expérience client"
+  },
+  {
+   "id": "ia",
+   "label_fr": "IA"
+  }
+ ],
+ "cercles": [
+  {
+   "id": "marketing",
+   "label_fr": "Marketing et communication"
+  },
+  {
+   "id": "rh",
+   "label_fr": "Gestion des talents"
+  },
+  {
+   "id": "pilotage",
+   "label_fr": "Pilotage et gestion"
+  },
+  {
+   "id": "citizen-dev",
+   "label_fr": "Citizen dev"
+  }
+ ],
+ "familles": [
+  {
+   "id": "legal",
+   "label_fr": "Légal et commercial"
+  },
+  {
+   "id": "souverainete",
+   "label_fr": "Souveraineté et dépendance"
+  },
+  {
+   "id": "securite",
+   "label_fr": "Sécurité"
+  },
+  {
+   "id": "produit",
+   "label_fr": "Anticipation produit"
+  },
+  {
+   "id": "accessibilite",
+   "label_fr": "Accessibilité et UX"
+  },
+  {
+   "id": "exploitation",
+   "label_fr": "Exploitation au quotidien"
+  },
+  {
+   "id": "visibilite",
+   "label_fr": "Visibilité et acquisition"
+  },
+  {
+   "id": "humain",
+   "label_fr": "Humain et organisation"
+  }
+ ],
+ "intentions": [
+  {
+   "id": "demarrer",
+   "label_fr": "Démarrer",
+   "exemple": "J’ai une idée et rien de construit.",
+   "ordre": [
+    "humain",
+    "produit",
+    "legal"
+   ]
+  },
+  {
+   "id": "reprendre",
+   "label_fr": "Reprendre un projet existant",
+   "exemple": "J’ai un projet commencé et je ne sais plus où il en est.",
+   "ordre": [
+    "securite",
+    "humain",
+    "legal"
+   ]
+  },
+  {
+   "id": "finaliser",
+   "label_fr": "Finaliser et mettre en ligne",
+   "exemple": "Ça marche, mais j’ai peur de le mettre en ligne.",
+   "ordre": [
+    "securite",
+    "legal",
+    "exploitation"
+   ]
+  },
+  {
+   "id": "auditer",
+   "label_fr": "Auditer",
+   "exemple": "Mon projet est en ligne, je veux savoir ce qui cloche.",
+   "ordre": [
+    "securite",
+    "legal",
+    "souverainete"
+   ]
+  },
+  {
+   "id": "apprendre",
+   "label_fr": "Apprendre sans projet",
+   "exemple": "Je veux comprendre ce qu’on oublie souvent.",
+   "ordre": [
+    "legal",
+    "securite",
+    "accessibilite"
+   ]
+  }
+ ],
+ "types": [
+  {
+   "id": "vitrine",
+   "label_fr": "Site vitrine",
+   "exemple": "Présenter une activité."
+  },
+  {
+   "id": "boutique",
+   "label_fr": "Boutique en ligne",
+   "exemple": "Vendre des produits ou des services."
+  },
+  {
+   "id": "app-web",
+   "label_fr": "Application web ou SaaS",
+   "exemple": "Un outil utilisé dans le navigateur."
+  },
+  {
+   "id": "mobile",
+   "label_fr": "Application mobile",
+   "exemple": "Une application iPhone ou Android."
+  },
+  {
+   "id": "automatisation",
+   "label_fr": "Automatisation",
+   "exemple": "Un flux entre plusieurs outils."
+  },
+  {
+   "id": "agent-ia",
+   "label_fr": "Agent IA",
+   "exemple": "Une IA qui enchaîne des actions."
+  },
+  {
+   "id": "campagne",
+   "label_fr": "Campagne marketing ou contenu",
+   "exemple": "Une newsletter, une campagne, des visuels."
+  },
+  {
+   "id": "rh",
+   "label_fr": "Processus RH ou gestion",
+   "exemple": "Recrutement, onboarding, suivi d’équipe."
+  }
+ ],
+ "contexte": [
+  {
+   "id": "donnees",
+   "label_fr": "Vas-tu traiter des données personnelles ou sensibles ?",
+   "aide": "Un nom, une adresse e-mail ou un dossier de santé comptent."
+  },
+  {
+   "id": "comptes",
+   "label_fr": "Y aura-t-il des comptes utilisateurs ?",
+   "aide": "Une personne se connecte pour retrouver ses informations."
+  },
+  {
+   "id": "paiement",
+   "label_fr": "Y aura-t-il un paiement ou une facturation ?",
+   "aide": "Même plus tard, ou par un service externe."
+  },
+  {
+   "id": "langues",
+   "label_fr": "Faut-il plusieurs langues ?",
+   "aide": "Français et allemand, par exemple."
+  },
+  {
+   "id": "handicap",
+   "label_fr": "Ton public compte-t-il des personnes en situation de handicap ?",
+   "aide": "Si tu ne sais pas, réponds je ne sais pas : tout public peut en compter."
+  },
+  {
+   "id": "enligne",
+   "label_fr": "Le projet est-il déjà en ligne ?",
+   "aide": "Des personnes extérieures peuvent déjà l’ouvrir."
+  }
+ ],
+ "outils": [
+  {
+   "id": "supabase",
+   "label_fr": "Supabase ou Postgres"
+  },
+  {
+   "id": "wordpress",
+   "label_fr": "WordPress"
+  },
+  {
+   "id": "autre",
+   "label_fr": "Un autre outil"
+  },
+  {
+   "id": "aucun",
+   "label_fr": "Pas encore d’outil"
+  }
+ ]
+}

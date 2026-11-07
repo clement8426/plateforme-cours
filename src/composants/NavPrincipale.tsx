@@ -3,22 +3,22 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-type Lien = { slug: string; court: string };
+const ZONES = [
+  { href: '/cours/', nom: 'Cours' },
+  { href: '/demarrer/', nom: 'Démarrer' },
+  { href: '/bonnes-pratiques/', nom: 'Bonnes pratiques' },
+];
 
-// Navigation par thème. Le thème où l'on se trouve est souligné, et annoncé comme tel aux lecteurs d'écran.
-export default function NavPrincipale({ liens }: { liens: Lien[] }) {
+// Les trois zones du site. Les pages d'un thème appartiennent à la zone Cours, annoncée comme courante.
+export default function NavPrincipale({ themes }: { themes: string[] }) {
   const chemin = usePathname() ?? '';
+  const dansCours = themes.some((t) => chemin.startsWith(`/${t}/`));
   return (
-    <nav aria-label="Thèmes">
+    <nav aria-label="Zones du site">
       <ul>
-        {liens.map((l) => {
-          const racine = `/${l.slug}/`;
-          const courant = chemin === racine ? 'page' : chemin.startsWith(racine) ? 'true' : undefined;
-          return (
-            <li key={l.slug}>
-              <Link href={racine} aria-current={courant}>{l.court}</Link>
-            </li>
-          );
+        {ZONES.map((z) => {
+          const courant = chemin === z.href ? 'page' : chemin.startsWith(z.href) || (z.href === '/cours/' && dansCours) ? 'true' : undefined;
+          return <li key={z.href}><Link href={z.href} aria-current={courant}>{z.nom}</Link></li>;
         })}
       </ul>
     </nav>

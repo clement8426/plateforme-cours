@@ -200,3 +200,15 @@ Validation ciblée des Types d’IA : construction avec Next.js 16.4.5, navigati
 - Compromis : la version réparée est publique. C’est voulu : c'est la démonstration.
 - Vie privée : la recherche Photon est active par défaut et son fonctionnement est expliqué avant le formulaire. La case « Rechercher avec Photon » permet de passer aux exemples locaux, sans requête externe. Utiliser des adresses fictives pour le cours.
 - Contenu des défauts : `src/contenu/comparateurs.ts`.
+
+## Démarrer et Bonnes pratiques
+
+Le site a trois zones : `/cours/`, `/demarrer/` et `/bonnes-pratiques/`. Les décisions sont dans `INTEGRATION-PLAN.md`.
+
+- **Fiches :** `src/contenu/parcours/fiches.ts`. Le texte vient de `docs/parcours/` ; `npm run verifier:fiches` détecte toute reformulation.
+- **Corrigé du test :** il ne doit jamais entrer dans ce dépôt, qui est public.
+- **Angles morts et règles :** `data/blind_spots.json`, `data/rules.json` et `data/taxonomy.json`.
+- **Catalogue :** `data/tools.json`. Un outil n'est public qu'une fois validé : `npm run catalogue:valider -- <id>`, ou `-- --tous`.
+- **Aperçu du catalogue :** `NEXT_PUBLIC_CATALOGUE_APERCU=1 npm run build` montre aussi les outils non validés.
+- **Collecte :** `.github/workflows/catalogue.yml` ouvre chaque lundi une pull request de candidats. Seuils dans `data/collecte.config.json`.
+- **Vérification :** `SITE_URL=http://127.0.0.1:3000 UX_OUTILS=../ux-outils npm run verifier:parcours`.

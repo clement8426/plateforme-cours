@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
 import Link from 'next/link';
-import { Analytics } from '@vercel/analytics/next';
 import Avatar from '@/composants/Avatar';
 import BoutonContraste from '@/composants/BoutonContraste';
 import BoutonTheme from '@/composants/BoutonTheme';
 import EnregistrementPwa from '@/composants/EnregistrementPwa';
 import NavPrincipale from '@/composants/NavPrincipale';
+import StatistiquesVisite from '@/composants/StatistiquesVisite';
 import { CATEGORIES } from '@/contenu/catalogue';
 import { AUTEUR, ORIGINE } from '@/contenu/site';
 import DonneesStructurees from '@/composants/DonneesStructurees';
@@ -58,7 +58,7 @@ export default function Racine({ children }: { children: React.ReactNode }) {
             <span>Le Labo</span>
           </Link>
           <div className="entete-outils">
-            <NavPrincipale liens={CATEGORIES.map((c) => ({ slug: c.slug, court: c.court }))} />
+            <NavPrincipale themes={CATEGORIES.map((c) => c.slug)} />
             <BoutonTheme />
             <BoutonContraste />
           </div>
@@ -78,7 +78,7 @@ export default function Racine({ children }: { children: React.ReactNode }) {
         <EnregistrementPwa />
         <DonneesStructurees valeur={{ '@context': 'https://schema.org', '@graph': [AUTEUR, { '@type': 'WebSite', '@id': `${ORIGINE}/#site`, name: 'Le Labo', url: ORIGINE, inLanguage: 'fr', publisher: { '@id': AUTEUR['@id'] } }] }} />
         {/* Statistiques de visite de Vercel : anonymes, sans cookie. Elles ne comptent que sur Vercel, une fois Web Analytics activé dans le projet. */}
-        <Analytics />
+        <StatistiquesVisite />
       </body>
     </html>
   );

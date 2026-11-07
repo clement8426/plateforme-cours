@@ -1,0 +1,300 @@
+[
+ {
+  "id": "reprise-supabase",
+  "if": {
+   "intentions": [
+    "reprendre",
+    "auditer"
+   ],
+   "outils": [
+    "supabase"
+   ]
+  },
+  "then": [
+   "rls",
+   "sessions",
+   "cles"
+  ],
+  "priority_boost": 30
+ },
+ {
+  "id": "supabase-souverainete",
+  "if": {
+   "outils": [
+    "supabase"
+   ],
+   "contexte": [
+    "donnees"
+   ]
+  },
+  "then": [
+   "cloud-act",
+   "confidentialite"
+  ],
+  "priority_boost": 20
+ },
+ {
+  "id": "finaliser-legal",
+  "if": {
+   "intentions": [
+    "finaliser"
+   ]
+  },
+  "then": [
+   "mentions",
+   "confidentialite"
+  ],
+  "priority_boost": 20
+ },
+ {
+  "id": "finaliser-securite",
+  "if": {
+   "intentions": [
+    "finaliser"
+   ],
+   "types": [
+    "app-web",
+    "mobile",
+    "boutique"
+   ]
+  },
+  "then": [
+   "cles",
+   "sauvegardes"
+  ],
+  "priority_boost": 20
+ },
+ {
+  "id": "finaliser-exploitation",
+  "if": {
+   "intentions": [
+    "finaliser"
+   ]
+  },
+  "then": [
+   "supervision",
+   "test-cible"
+  ],
+  "priority_boost": 10
+ },
+ {
+  "id": "auditer-securite",
+  "if": {
+   "intentions": [
+    "auditer"
+   ]
+  },
+  "then": [
+   "cles",
+   "fuite"
+  ],
+  "priority_boost": 20
+ },
+ {
+  "id": "auditer-ligne",
+  "if": {
+   "intentions": [
+    "auditer"
+   ],
+   "contexte": [
+    "enligne"
+   ]
+  },
+  "then": [
+   "supervision",
+   "sauvegardes"
+  ],
+  "priority_boost": 15
+ },
+ {
+  "id": "reprendre-docs",
+  "if": {
+   "intentions": [
+    "reprendre"
+   ]
+  },
+  "then": [
+   "documentation",
+   "maintenance"
+  ],
+  "priority_boost": 20
+ },
+ {
+  "id": "demarrer-cible",
+  "if": {
+   "intentions": [
+    "demarrer"
+   ]
+  },
+  "then": [
+   "test-cible",
+   "b2b-b2c"
+  ],
+  "priority_boost": 25
+ },
+ {
+  "id": "demarrer-cout",
+  "if": {
+   "intentions": [
+    "demarrer"
+   ],
+   "types": [
+    "app-web",
+    "mobile"
+   ]
+  },
+  "then": [
+   "cout-echelle",
+   "reversibilite"
+  ],
+  "priority_boost": 10
+ },
+ {
+  "id": "rh-decision",
+  "if": {
+   "types": [
+    "rh"
+   ]
+  },
+  "then": [
+   "decision-auto",
+   "confidentialite",
+   "fuite"
+  ],
+  "priority_boost": 30
+ },
+ {
+  "id": "agent-ia",
+  "if": {
+   "types": [
+    "agent-ia"
+   ]
+  },
+  "then": [
+   "decision-auto",
+   "droits-ia",
+   "cles"
+  ],
+  "priority_boost": 25
+ },
+ {
+  "id": "boutique-paiement",
+  "if": {
+   "types": [
+    "boutique"
+   ]
+  },
+  "then": [
+   "cgv",
+   "tva",
+   "factures"
+  ],
+  "priority_boost": 15
+ },
+ {
+  "id": "boutique-ue",
+  "if": {
+   "types": [
+    "boutique"
+   ]
+  },
+  "then": [
+   "marche-ue"
+  ],
+  "priority_boost": 5
+ },
+ {
+  "id": "campagne-accessible",
+  "if": {
+   "types": [
+    "campagne"
+   ]
+  },
+  "then": [
+   "contrastes",
+   "alt",
+   "mesure"
+  ],
+  "priority_boost": 15
+ },
+ {
+  "id": "vitrine-base",
+  "if": {
+   "types": [
+    "vitrine"
+   ]
+  },
+  "then": [
+   "mentions",
+   "seo"
+  ],
+  "priority_boost": 10
+ },
+ {
+  "id": "mobile-etats",
+  "if": {
+   "types": [
+    "mobile"
+   ]
+  },
+  "then": [
+   "etats",
+   "sessions"
+  ],
+  "priority_boost": 10
+ },
+ {
+  "id": "comptes-securite",
+  "if": {
+   "contexte": [
+    "comptes"
+   ]
+  },
+  "then": [
+   "roles",
+   "sessions"
+  ],
+  "priority_boost": 15
+ },
+ {
+  "id": "wordpress-maj",
+  "if": {
+   "outils": [
+    "wordpress"
+   ]
+  },
+  "then": [
+   "sauvegardes",
+   "supervision"
+  ],
+  "priority_boost": 15
+ },
+ {
+  "id": "handicap-priorite",
+  "if": {
+   "contexte": [
+    "handicap"
+   ]
+  },
+  "then": [
+   "clavier",
+   "alt",
+   "contrastes"
+  ],
+  "priority_boost": 15
+ },
+ {
+  "id": "apprendre-tout",
+  "if": {
+   "intentions": [
+    "apprendre"
+   ]
+  },
+  "then": [
+   "confidentialite",
+   "cloud-act",
+   "cles"
+  ],
+  "priority_boost": 5
+ }
+]

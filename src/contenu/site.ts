@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { CATEGORIES } from './catalogue';
+import { ANGLES, OUTILS } from './parcours/moteur';
+import { DATE_VERIFICATION, PRATIQUES } from './parcours/pratiques';
 
 export const ORIGINE = 'https://www.labonumerique.ch';
 export const AUTEUR = { '@type': 'Person', '@id': `${ORIGINE}/#auteur`, name: 'Clément Bastien', url: `${ORIGINE}/` };
@@ -22,7 +24,10 @@ export function metadonnees({ titre, description, chemin, image, indexable = tru
 
 // Une seule source pour le sitemap et les contrôles d’indexation. Pas de page « bientôt », de redirection ou de prototype cassé.
 export function pagesIndexables() {
-  const pages: { chemin: string; date?: string }[] = [{ chemin: '/' }, { chemin: '/accessibilite/', date: '2026-11-07' }];
+  const pages: { chemin: string; date?: string }[] = [{ chemin: '/' }, { chemin: '/accessibilite/', date: '2026-11-07' }, { chemin: '/cours/' }, { chemin: '/demarrer/' }, { chemin: '/demarrer/test/' }, { chemin: '/demarrer/idee/' }, { chemin: '/demarrer/technique/' }, { chemin: '/demarrer/entonnoir/' }, { chemin: '/demarrer/catalogue/' }, { chemin: '/bonnes-pratiques/' }];
+  for (const p of PRATIQUES) pages.push({ chemin: `/bonnes-pratiques/${p.id}/`, date: DATE_VERIFICATION });
+  for (const a of ANGLES) pages.push({ chemin: `/bonnes-pratiques/angles-morts/${a.id}/`, date: DATE_VERIFICATION });
+  for (const o of OUTILS) pages.push({ chemin: `/demarrer/catalogue/${o.id}/` });
   for (const categorie of CATEGORIES) {
     const publies = categorie.cours.filter(c => !c.enPreparation);
     if (!publies.length) continue;

@@ -17,7 +17,7 @@ const b = await chromium.launch();
 const ok = [];
 const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'OK    ' : 'ÉCHEC ', nom, detail); };
 
-const PAGES = ['/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/types-ia/tuto/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/escale/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
+const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/demarrer/entonnoir/', '/demarrer/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/types-ia/tuto/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/escale/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
 if (!process.argv.includes('--parcours-seulement')) {
 // 1. Accessibilité automatique, deux thèmes, deux tailles
@@ -81,8 +81,8 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const arrets = [];
   for (let i = 0; i < 14; i += 1) { await p.keyboard.press('Tab'); arrets.push(await p.evaluate(() => document.activeElement?.textContent?.trim().replace(/\s+/g, ' ').slice(0, 28))); }
   console.log('      ordre des arrêts :', JSON.stringify(arrets));
-  const courant = await p.evaluate(() => [...document.querySelectorAll('nav[aria-label="Thèmes"] a')].map((a) => `${a.textContent}:${a.getAttribute('aria-current')}`));
-  verifier('navigation : le thème courant est annoncé', courant.some((c) => c === 'UX et design:true'), JSON.stringify(courant));
+  const courant = await p.evaluate(() => [...document.querySelectorAll('nav[aria-label="Zones du site"] a')].map((a) => `${a.textContent}:${a.getAttribute('aria-current')}`));
+  verifier('navigation : la zone courante est annoncée', courant.some((c) => c === 'Cours:true'), JSON.stringify(courant));
   const contour = await p.evaluate(() => {
     const el = document.querySelector('.demo-carte h4 a'); el.focus();
     const carte = el.closest('.demo-carte'); const s = getComputedStyle(carte);
@@ -99,9 +99,9 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
   const p = await ctx.newPage();
-  await p.goto(base + '/');
+  await p.goto(base + '/cours/');
   await p.waitForLoadState('networkidle');
-  verifier('accueil : le nom « Le Labo », trois cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 3 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
+  verifier('page Cours : le nom « Le Labo », trois cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 3 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.goto(base + '/ux/ux-ia/demos/escale/');
