@@ -1,6 +1,7 @@
 // Transforme les réponses d'une fiche en blocs communs, puis en Markdown. Le PDF lit les mêmes blocs (voir pdf.ts).
 // Tout se passe dans le navigateur : rien n'est envoyé.
 import type { Champ, Fiche } from './fiches';
+import { calculerScore } from './score';
 
 export type LigneFonction = { fonction: string; pourquoi: string; mvp: boolean; priorite: string };
 export type Reponses = Record<string, string | string[] | LigneFonction[]>;
@@ -55,7 +56,7 @@ export const identite = (fiche: Fiche, r: Reponses) => [
 
 const nettoyer = (v: string) => v.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export function nomFichier(fiche: Fiche, r: Reponses, extension: 'pdf' | 'md') {
+export function nomFichier(fiche: Fiche, r: Reponses, extension: 'pdf' | 'md' | 'docx') {
   const date = texte(r, 'identite.date') || new Date().toISOString().slice(0, 10);
   return `${fiche.fichier}_${nettoyer(texte(r, 'identite.nom')) || 'eleve'}_${date}.${extension}`;
 }
@@ -69,6 +70,8 @@ export function versMarkdown(fiche: Fiche, r: Reponses) {
   const sortie = [`<!-- ${MARQUE} ${donnees} -->`, '', `# ${fiche.titre}`, ''];
   for (const [nom, valeur] of identite(fiche, r)) sortie.push(`**${nom} :** ${valeur}  `);
   sortie.push('');
+  const score = calculerScore(fiche, r);
+  if (score) sortie.push('## Ton score', '', ...score.lignes.map((l) => `${l}  `), '');
   for (const b of blocs(fiche, r)) {
     if (b.type === 'section') sortie.push(`## ${b.titre}`, '', ...(b.intro ? [b.intro, ''] : []));
     if (b.type === 'texte') sortie.push(b.texte, '');

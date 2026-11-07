@@ -63,7 +63,22 @@ verifier('le rechargement efface les réponses', await p.getByLabel('Nom du proj
 // Test et fiche 1 : la page affiche toutes les parties
 await p.goto(`${base}/demarrer/test/`);
 verifier('test : 6 parties', await p.locator('.fiche-section h2').count() === 6);
-verifier('test : aucune note affichée', !(await p.locator('main').innerText()).includes('Ton score'));
+await p.waitForLoadState('networkidle');
+await p.getByRole('group', { name: /Q1\. Qu.est-ce qu.un terminal/ }).getByText(/Une fenêtre où/).click();
+await p.getByRole('group', { name: /Q2\. Le front-end/ }).getByText('Le serveur qui stocke').click();
+await p.getByRole('group', { name: 'API', exact: true }).getByRole('radio', { name: '4' }).check();
+const [testMd] = await Promise.all([p.waitForEvent('download'), p.getByRole('button', { name: 'Télécharger en Markdown' }).click()]);
+const contenuTest = (await texte(testMd)).toString('utf8');
+verifier('test : le score est dans le fichier', contenuTest.includes('Bonnes réponses : 1 sur 19') && contenuTest.includes('Auto-évaluation : 4 sur 50'), contenuTest.slice(0, 400));
+verifier('test : le score s’affiche à la fin', (await p.locator('.score').innerText()).includes('1'));
+const [testWord] = await Promise.all([p.waitForEvent('download'), p.getByRole('button', { name: 'Télécharger en Word' }).click()]);
+verifier('Word téléchargé', testWord.suggestedFilename().endsWith('.docx') && (await texte(testWord)).subarray(0, 2).toString() === 'PK', testWord.suggestedFilename());
+for (const [nom, extension] of [['Word', 'docx'], ['Markdown', 'md']]) {
+  const r = await p.request.get(`${base}/telechargements/parcours/test-positionnement-modele.${extension}`);
+  verifier(`modèle ${nom} disponible`, r.ok());
+}
+const [modele] = await Promise.all([p.waitForEvent('download'), p.locator('.fiche-modele').getByRole('button', { name: 'PDF' }).click()]);
+verifier('modèle PDF téléchargé', modele.suggestedFilename() === 'test-positionnement-modele.pdf' && (await texte(modele)).subarray(0, 4).toString() === '%PDF');
 await p.goto(`${base}/demarrer/idee/`);
 await p.waitForLoadState('networkidle');
 await p.getByLabel('Décris ton idée en 5 lignes maximum.').fill('1\n2\n3\n4\n5\n6\n7');

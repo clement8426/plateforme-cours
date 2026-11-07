@@ -3,6 +3,7 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import type { Fiche } from './fiches';
 import { blocs, identite, NON_RENSEIGNE, type Reponses } from './exports';
+import { calculerScore } from './score';
 
 // Les polices intégrées au PDF ne connaissent pas ces espaces fines.
 const propre = (v: string) => v.replace(/[  ]/g, ' ');
@@ -31,6 +32,8 @@ export function ficheEnPdf(fiche: Fiche, r: Reponses) {
   o.ecrire(fiche.titre, 18, 'bold', 4);
   for (const [nom, valeur] of identite(fiche, r)) o.ecrire(`${nom} : ${valeur}`, 11, 'normal', 1);
   o.y += 3;
+  const score = calculerScore(fiche, r);
+  if (score) { o.ecrire('Ton score', 14, 'bold', 3); for (const l of score.lignes) o.ecrire(l, 11, 'normal', 1); o.y += 3; }
   for (const b of blocs(fiche, r)) {
     if (b.type === 'section') { o.y += 3; o.ecrire(b.titre, 14, 'bold', 3); if (b.intro) o.ecrire(b.intro, 11, 'normal', 3); }
     if (b.type === 'texte') o.ecrire(b.texte, 11, 'normal', 3);
@@ -49,6 +52,46 @@ export function ficheEnPdf(fiche: Fiche, r: Reponses) {
         headStyles: { fillColor: 235, textColor: 0, fontStyle: 'bold' },
       });
       o.y = (o.doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 5;
+    }
+  }
+  return o.doc.output('arraybuffer');
+}
+
+// Le modèle vide à imprimer : cases à cocher et lignes à remplir.
+export function modeleEnPdf(fiche: Fiche) {
+  const o = outil();
+  const ligne = () => { o.place(8); o.y += 6; o.doc.setDrawColor(120).setLineWidth(0.2).line(o.marge, o.y, o.doc.internal.pageSize.getWidth() - o.marge, o.y); o.y += 2; };
+  const tableau = (head: string[], body: string[][]) => {
+    autoTable(o.doc, { startY: o.y, margin: { left: o.marge, right: o.marge }, theme: 'grid', head: [head.map(propre)], body: body.map((l) => l.map(propre)), styles: { font: 'helvetica', fontSize: 9, textColor: 0, lineColor: 0, lineWidth: 0.1, minCellHeight: 8 }, headStyles: { fillColor: 235, textColor: 0, fontStyle: 'bold' } });
+    o.y = (o.doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 5;
+  };
+  o.ecrire(fiche.titre, 18, 'bold', 4);
+  o.ecrire(fiche.intro, 11, 'normal', 3);
+  for (const nom of [fiche.identite.projet, fiche.identite.nom, 'Date'].filter(Boolean) as string[]) { o.ecrire(`${nom} :`, 11, 'bold', 0); ligne(); }
+  for (const s of fiche.sections) {
+    o.y += 4;
+    o.ecrire(s.titre, 14, 'bold', 3);
+    if (s.intro) o.ecrire(s.intro, 11, 'normal', 3);
+    for (const c of s.champs) {
+      if (c.type === 'texte') o.ecrire(c.texte, 11, 'normal', 3);
+      if (c.type === 'ligne' || c.type === 'zone') { o.ecrire(c.label, 11, 'bold', 0); if (c.aide) o.ecrire(c.aide, 10, 'normal', 0); for (let i = 0; i < (c.type === 'zone' ? c.lignes : 1); i += 1) ligne(); o.y += 2; }
+      if (c.type === 'mots') { o.ecrire(c.label, 11, 'bold', 0); ligne(); o.y += 2; }
+      if (c.type === 'choix') {
+        o.ecrire(c.label, 11, 'bold', 2);
+        for (const option of c.options) {
+          o.place(7);
+          o.doc.setDrawColor(0).setLineWidth(0.25).rect(o.marge, o.y + 0.6, 3.4, 3.4);
+          const y = o.y;
+          o.doc.setFont('helvetica', 'normal').setFontSize(11).setTextColor(0);
+          const lignes: string[] = o.doc.splitTextToSize(propre(option), o.doc.internal.pageSize.getWidth() - o.marge * 2 - 6);
+          lignes.forEach((l, i) => o.doc.text(l, o.marge + 6, y + 3.6 + i * 4.8));
+          o.y = y + lignes.length * 4.8 + 1.6;
+        }
+        o.y += 2;
+      }
+      if (c.type === 'grille') { o.ecrire(c.label, 11, 'normal', 2); tableau(['Notion', '1', '2', '3', '4', '5'], c.notions.map((n) => [n, '', '', '', '', ''])); }
+      if (c.type === 'tableau') { o.ecrire(c.label, 11, 'bold', 2); tableau(c.colonnes, Array.from({ length: c.lignes }, () => c.colonnes.map(() => ''))); }
+      if (c.type === 'fonctionnalites') tableau(['N°', 'Fonctionnalité', 'Pourquoi l’utilisateur en a besoin', 'MVP', 'Priorité'], Array.from({ length: 15 }, (_, i) => [String(i + 1), '', '', '', '']));
     }
   }
   return o.doc.output('arraybuffer');

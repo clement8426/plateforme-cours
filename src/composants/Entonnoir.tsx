@@ -14,7 +14,7 @@ function CarteAngle({ a }: { a: Angle }) {
   const outils = outilsDe(a.id);
   return (
     <li className="plan-carte">
-      <p className="plan-gravite">{GRAVITES[a.severity].nom} · {famille(a.family)}</p>
+      <p className="plan-tags"><span className={`plan-tag est-${a.severity}`}>{GRAVITES[a.severity].nom}</span><span className="plan-tag">{famille(a.family)}</span></p>
       <h4>{a.title}</h4>
       <p>{a.question}</p>
       <p>{a.action}</p>
@@ -85,7 +85,9 @@ export default function Entonnoir() {
 
   return (
     <div className="entonnoir">
-      <p className="entonnoir-etape">Étape {etape + 1} sur 4 : {ETAPES[etape]}</p>
+      <ol className="etapes-entonnoir" aria-label="Étapes">
+        {ETAPES.map((e, i) => <li key={e} className={i < etape ? 'est-passe' : undefined} aria-current={i === etape ? 'step' : undefined}>{e}</li>)}
+      </ol>
 
       {etape === 0 && <>
         <h2 ref={titre} tabIndex={-1} className="titre-section">Où en es-tu ?</h2>
@@ -106,10 +108,17 @@ export default function Entonnoir() {
       {etape === 2 && <>
         <h2 ref={titre} tabIndex={-1} className="titre-section">Ton contexte</h2>
         <p>« Je ne sais pas » compte comme un oui : mieux vaut vérifier.</p>
-        <div className="champ">
-          <label htmlFor="fiche-import">Tu as rempli une fiche ? Charge ton fichier Markdown pour gagner du temps.</label>
-          <input id="fiche-import" type="file" accept=".md,text/markdown" onChange={importer} />
-        </div>
+        <section className="import-fiche" aria-labelledby="import-titre">
+          <div>
+            <h3 id="import-titre">Facultatif : gagne du temps avec tes fiches</h3>
+            <p>Si tu as rempli la <Link href="/demarrer/technique/">fiche 2</Link> ou la <Link href="/demarrer/idee/">fiche 1</Link> sur ce site, reprends le fichier .md téléchargé à la fin. Les réponses déjà données seront cochées ici. Le fichier reste sur ton ordinateur. Sinon, réponds simplement aux questions.</p>
+          </div>
+          <div>
+            <input id="fiche-import" type="file" accept=".md,text/markdown" onChange={importer} />
+            <label htmlFor="fiche-import" className="bouton-secondaire">Choisir mon fichier .md</label>
+          </div>
+        </section>
+        <div className="contexte-grille">
         {TAXONOMIE.contexte.map((q) => (
           <fieldset className="contexte-question" key={q.id}>
             <legend>{q.label_fr}</legend>
@@ -125,18 +134,22 @@ export default function Entonnoir() {
             {[...TAXONOMIE.outils, { id: 'jnsp', label_fr: 'Je ne sais pas' }].map((o) => <label className="option" key={o.id}><input type="radio" name="outil" checked={c.outil === o.id} onChange={() => setC((p) => ({ ...p, outil: o.id }))} /><span>{o.label_fr}</span></label>)}
           </div>
         </fieldset>
+        </div>
         <div className="actions"><button type="button" className="bouton" onClick={() => setEtape(3)}>Voir mon plan</button></div>
       </>}
 
       {etape === 3 && <>
         <h2 ref={titre} tabIndex={-1} className="titre-section">Ton plan</h2>
         <p>{plan.actifs.length} angles morts à regarder, dont {bloquants.length} bloquant{bloquants.length > 1 ? 's' : ''}.</p>
+        <div className="plan-grille">
+        <div className="plan-colonne">
         <section className="bloc-plan" aria-labelledby="plan-priorites">
           <h3 id="plan-priorites">Par quoi commencer</h3>
           <ul className="plan-liste">{prioritaires.map((a) => <CarteAngle key={a.id} a={a} />)}</ul>
         </section>
         {reste.length > 0 && <details className="plan-plus"><summary>Voir les {reste.length} autres angles morts</summary><ul className="plan-liste">{reste.map((a) => <CarteAngle key={a.id} a={a} />)}</ul></details>}
         {plan.aVerifier.length > 0 && <details className="plan-plus"><summary>À vérifier aussi ({plan.aVerifier.length})</summary><ul className="plan-liste">{plan.aVerifier.map((a) => <li key={a.id} className="plan-carte"><h4>{a.title}</h4><p>{a.when.verifier}</p><p><Link prefetch={false} href={`/bonnes-pratiques/angles-morts/${a.id}/`}>Lire la fiche<span className="visuellement-cache"> : {a.title}</span></Link></p></li>)}</ul></details>}
+        </div>
 
         <section className="kit" aria-labelledby="titre-kit">
           <h3 id="titre-kit">Ton kit pour l’agent IA</h3>
@@ -154,6 +167,7 @@ export default function Entonnoir() {
             <button type="button" className="bouton-secondaire" onClick={() => void partager()}>Copier le lien du plan</button>
           </div>
         </section>
+        </div>
       </>}
 
       <p role="status" aria-live="polite" className="fiche-statut">{statut}</p>

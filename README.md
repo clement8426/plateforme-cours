@@ -207,6 +207,8 @@ Le site a trois zones : `/cours/`, `/demarrer/` et `/bonnes-pratiques/`. Les dé
 
 - **Fiches :** `src/contenu/parcours/fiches.ts`. Le texte vient de `docs/parcours/` ; `npm run verifier:fiches` détecte toute reformulation.
 - **Corrigé du test :** il ne doit jamais entrer dans ce dépôt, qui est public.
+- **Score du test :** `src/contenu/parcours/score.ts` ne contient que des empreintes des bonnes réponses.
+- **Modèles vides :** `public/telechargements/parcours/` pour Word et Markdown ; le PDF se crée dans le navigateur.
 - **Angles morts et règles :** `data/blind_spots.json`, `data/rules.json` et `data/taxonomy.json`.
 - **Catalogue :** `data/tools.json`. Un outil n'est public qu'une fois validé : `npm run catalogue:valider -- <id>`, ou `-- --tous`.
 - **Aperçu du catalogue :** `NEXT_PUBLIC_CATALOGUE_APERCU=1 npm run build` montre aussi les outils non validés.

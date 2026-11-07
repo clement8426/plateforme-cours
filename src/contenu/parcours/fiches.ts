@@ -41,7 +41,7 @@ const brut: Fiche[] = [
     fichier: 'test-positionnement',
     titre: 'Test de positionnement : numérique, IA et développement web',
     court: 'Test de positionnement',
-    intro: 'Ce test n\'est pas noté. Il sert à savoir d\'où tu pars. Réponds sans aide et sans IA. Si tu ne sais pas, coche « Je ne sais pas » : c\'est une réponse utile.',
+    intro: 'Ce test n\'est pas une évaluation : ton score sert seulement à mesurer tes progrès. Il sert à savoir d\'où tu pars. Réponds sans aide et sans IA. Si tu ne sais pas, coche « Je ne sais pas » : c\'est une réponse utile.',
     identite: { nom: 'Nom et prénom' },
     sections: [
       {

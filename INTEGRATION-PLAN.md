@@ -11,7 +11,8 @@ Décisions validées par Clément le 7 novembre 2026.
 | `/cours/` | Nouvelle page avec tous les cours, classés par thème. |
 | Adresses des cours | Inchangées (`/<thème>/<cours>/`), pour ne casser ni les diapos ni les liens déjà partagés. |
 | Test et fiches | Éphémères : aucune sauvegarde, alerte avant de quitter, téléchargement à la fin. |
-| Export | PDF direct en un clic, Markdown disponible à côté. |
+| Export | PDF direct en un clic, Word et Markdown à côté. Modèles vides en Word, PDF et Markdown en haut de page. |
+| Score du test | Affiché à la fin et écrit dans le fichier : bonnes réponses sur 19 et auto-évaluation sur 50. Les bonnes réponses ne sont dans le code que sous forme d’empreintes. |
 | Corrigé du test | Hors du dépôt, qui est public. |
 | Statistiques | Vercel Analytics ne reçoit plus ni paramètres ni fragment d'adresse. |
 | Lien de l'entonnoir | Fragment d'adresse (`#i=…`) calculé dans le navigateur. |

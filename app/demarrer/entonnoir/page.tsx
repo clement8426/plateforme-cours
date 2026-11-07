@@ -6,7 +6,7 @@ export const metadata = metadonnees({ titre: 'Entonnoir : ce que ton projet a ou
 
 export default function Page() {
   return (
-    <div className="page">
+    <div className="page page-formulaire">
       <FilAriane etapes={[{ nom: 'Démarrer', href: '/demarrer/' }, { nom: 'Entonnoir' }]} />
       <header className="tete tete-compacte">
         <h1>Trouve ce que ton projet a oublié</h1>

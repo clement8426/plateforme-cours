@@ -5,7 +5,7 @@ import { metadonnees } from '@/contenu/site';
 export const metadata = metadonnees({ titre: 'Démarrer son projet', description: 'Un test de positionnement, deux fiches à remplir, puis le plan des angles morts de ton projet et un kit pour ton agent IA. Sans compte et sans sauvegarde.', chemin: '/demarrer/' });
 
 const ETAPES = [
-  { href: '/demarrer/test/', titre: 'Test de positionnement', texte: 'Sache d’où tu pars, sans note et sans IA.', duree: '24 questions' },
+  { href: '/demarrer/test/', titre: 'Test de positionnement', texte: 'Sache d’où tu pars, sans IA, et mesure tes progrès.', duree: '24 questions' },
   { href: '/demarrer/idee/', titre: 'Fiche 1 : clarifier son idée', texte: 'L’idée, le problème, la cible, la marque et le parcours client.', duree: '7 parties' },
   { href: '/demarrer/technique/', titre: 'Fiche 2 : aspect technique', texte: 'Le type de produit, les données, les fonctionnalités et le MVP.', duree: '8 parties' },
   { href: '/demarrer/entonnoir/', titre: 'Entonnoir', texte: 'Quatre écrans pour trouver ce que ton projet a oublié, puis un kit à donner à ton agent IA.', duree: '4 écrans' },

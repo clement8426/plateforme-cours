@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",
+    "docx": "9.15.3",
     "jspdf": "4.2.1",
     "jspdf-autotable": "5.0.9",
     "next": "16.4.5",

@@ -2,7 +2,7 @@
 
 Nom et prénom : ____________________ Date : ____________
 
-Ce test n'est pas noté. Il sert à savoir d'où tu pars. Réponds sans aide et sans IA. Si tu ne sais pas, coche « Je ne sais pas » : c'est une réponse utile.
+Ce test n'est pas une évaluation : ton score sert seulement à mesurer tes progrès. Il sert à savoir d'où tu pars. Réponds sans aide et sans IA. Si tu ne sais pas, coche « Je ne sais pas » : c'est une réponse utile.
 
 ## Partie 1 : Auto-positionnement
 
