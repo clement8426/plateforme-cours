@@ -8,7 +8,7 @@ export const metadata = metadonnees({ titre: 'Tous les cours', description: 'Tou
 
 export default function PageCours() {
   return (
-    <div className="page">
+    <div className="page zone-cours">
       <FilAriane etapes={[{ nom: 'Cours' }]} />
       <header className="tete">
         <h1>Tous les cours</h1>

@@ -24,10 +24,10 @@ export default async function Page({ params }: Props) {
   const { outil } = await params;
   const o = trouverOutil(outil);
   if (!o && outil !== 'en-validation') notFound();
-  if (!o) return <div className="page"><header className="tete"><h1>Catalogue en cours de validation</h1></header><Link href="/diagnostic/catalogue/">Retour au catalogue</Link></div>;
+  if (!o) return <div className="page zone-diagnostic"><header className="tete"><h1>Catalogue en cours de validation</h1></header><Link href="/diagnostic/catalogue/">Retour au catalogue</Link></div>;
 
   return (
-    <div className="page">
+    <div className="page zone-diagnostic">
       <FilAriane etapes={[{ nom: 'Diagnostic', href: '/diagnostic/' }, { nom: 'Catalogue', href: '/diagnostic/catalogue/' }, { nom: o.name }]} />
       <header className="tete tete-compacte">
         <h1>{o.name}</h1>

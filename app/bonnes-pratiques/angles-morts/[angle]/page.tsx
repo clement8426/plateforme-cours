@@ -22,7 +22,7 @@ export default async function Page({ params }: Props) {
   const pratique = a.practice ? trouverPratique(a.practice) : undefined;
   const outils = outilsDe(a.id);
   return (
-    <div className="page">
+    <div className="page zone-pratiques">
       <FilAriane etapes={[{ nom: 'Bonnes pratiques', href: '/bonnes-pratiques/' }, { nom: a.title }]} />
       <header className="tete tete-compacte">
         <p className="diagnostic-etape">{famille(a.family)} · {GRAVITES[a.severity].nom}</p>

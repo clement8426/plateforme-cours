@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { CSSProperties } from 'react';
 
 const ZONES = [
-  { href: '/cours/', nom: 'Cours' },
-  { href: '/demarrer/', nom: 'Démarrer' },
-  { href: '/diagnostic/', nom: 'Diagnostic' },
-  { href: '/bonnes-pratiques/', nom: 'Bonnes pratiques' },
+  { href: '/cours/', nom: 'Cours', couleur: '--vif-rose' },
+  { href: '/demarrer/', nom: 'Démarrer', couleur: '--vif-vert' },
+  { href: '/diagnostic/', nom: 'Diagnostic', couleur: '--vif-jaune' },
+  { href: '/bonnes-pratiques/', nom: 'Bonnes pratiques', couleur: '--vif-violet' },
 ];
 
 // Les quatre zones du site. Les pages d'un thème appartiennent à la zone Cours, annoncée comme courante.
@@ -19,7 +20,7 @@ export default function NavPrincipale({ themes }: { themes: string[] }) {
       <ul>
         {ZONES.map((z) => {
           const courant = chemin === z.href ? 'page' : chemin.startsWith(z.href) || (z.href === '/cours/' && dansCours) ? 'true' : undefined;
-          return <li key={z.href}><Link href={z.href} aria-current={courant}>{z.nom}</Link></li>;
+          return <li key={z.href}><Link href={z.href} aria-current={courant} style={{ '--zone': `var(${z.couleur})` } as CSSProperties}>{z.nom}</Link></li>;
         })}
       </ul>
     </nav>

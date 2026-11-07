@@ -22,7 +22,7 @@ export default async function Page({ params }: Props) {
   if (!p) notFound();
   const outils = [...new Map(p.angles.flatMap(outilsDe).map((o) => [o.id, o])).values()];
   return (
-    <div className="page">
+    <div className="page zone-pratiques">
       <FilAriane etapes={[{ nom: 'Bonnes pratiques', href: '/bonnes-pratiques/' }, { nom: p.titre }]} />
       <header className="tete tete-compacte"><h1>{p.titre}</h1></header>
       <article className="pratique">

@@ -15,7 +15,7 @@ export const metaFiche = (slug: string) => metadonnees({ titre: trouverFiche(slu
 export default function PageFiche({ slug, suite }: { slug: string; suite: { href: string; nom: string } }) {
   const fiche = trouverFiche(slug)!;
   return (
-    <div className="page page-formulaire">
+    <div className="page zone-demarrer page-formulaire">
       <FilAriane etapes={[{ nom: 'Démarrer', href: '/demarrer/' }, { nom: fiche.court }]} />
       <header className="tete tete-compacte"><h1>{fiche.titre}</h1></header>
       <Fiche slug={slug} suite={suite} />

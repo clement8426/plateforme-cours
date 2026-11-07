@@ -10,7 +10,7 @@ const GROUPES = ['Principe', 'Légal et éthique', 'Technique'] as const;
 
 export default function Page() {
   return (
-    <div className="page">
+    <div className="page zone-pratiques">
       <FilAriane etapes={[{ nom: 'Bonnes pratiques' }]} />
       <header className="tete">
         <h1>Bonnes pratiques</h1>

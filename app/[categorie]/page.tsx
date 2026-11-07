@@ -22,7 +22,7 @@ export default async function PageCategorie({ params }: Props) {
   if (!categorie) notFound();
 
   return (
-    <div className="page">
+    <div className="page zone-cours">
       <FilAriane etapes={[{ nom: 'Cours', href: '/cours/' }, { nom: categorie.nom }]} />
       <header className="tete">
         <h1>{categorie.nom}</h1>

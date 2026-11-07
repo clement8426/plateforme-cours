@@ -31,7 +31,7 @@ export default async function PageCours(props: ParamsCours) {
 
   if (cours.enPreparation) {
     return (
-      <div className="page">
+      <div className="page zone-cours">
         <FilAriane etapes={[{ nom: 'Cours', href: '/cours/' }, { nom: categorie.nom, href: `/${categorie.slug}/` }, { nom: cours.titre }]} />
         <header className="tete">
           <p className="etat-prepa">En préparation</p>
@@ -59,7 +59,7 @@ export default async function PageCours(props: ParamsCours) {
   }
 
   return (
-    <div className="page">
+    <div className="page zone-cours">
       <DonneesStructurees valeur={{ '@context': 'https://schema.org', '@type': 'Course', name: cours.titre, description: cours.accroche, url: urlAbsolue(base + '/'), inLanguage: 'fr', isAccessibleForFree: true, provider: AUTEUR, teaches: cours.objectifs, ...(cours.misAJour ? { dateModified: cours.misAJour } : {}) }} />
       <FilAriane etapes={[{ nom: 'Cours', href: '/cours/' }, { nom: categorie.nom, href: `/${categorie.slug}/` }, { nom: cours.titre }]} />
       <div className="cours-tete">

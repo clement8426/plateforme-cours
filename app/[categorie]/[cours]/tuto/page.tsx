@@ -23,7 +23,7 @@ export default async function PageTuto(props: ParamsCours) {
   if (!categorie || !cours || !cours.exercice || !tuto) notFound();
 
   return (
-    <div className="page">
+    <div className="page zone-cours">
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `/${categorie.slug}/${cours.slug}/` },

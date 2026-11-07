@@ -30,6 +30,8 @@
   --sur-pastille: #FFFFFF;
   --vif-rose: #FF92B0; --vif-vert: #62D8A2; --vif-jaune: #E6C85C; --vif-bleu: #8CBDF2; --vif-orange: #FF9C73; --vif-violet: #C3A6F0;
   --sur-vif: #14161B;
+  --zone: var(--vif-orange);
+  --vague: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 16'%3E%3Cpath d='M0 16V8Q30-4 60 8T120 8V16Z'/%3E%3C/svg%3E");
 
   --ombre: 0 1px 2px rgba(20, 22, 27, .06), 0 12px 32px -18px rgba(20, 22, 27, .22);
   --largeur: 1120px;
@@ -870,7 +872,6 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
 @media (max-width: 480px) { .entete ul { gap: 0 12px; } .entete nav a { font-size: 15px; } }
 
 /* ---------- accueil : sous le hero, le liquide de la fiole en couches ---------- */
-.couches, .en-ligne { --vague: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 16'%3E%3Cpath d='M0 16V8Q30-4 60 8T120 8V16Z'/%3E%3C/svg%3E"); }
 .couches { padding: 0; list-style: none; }
 .couche, .en-ligne { position: relative; background: var(--couche); color: var(--sur-vif); }
 .couche::before, .en-ligne::before { content: ""; position: absolute; left: 0; right: 0; top: -15px; height: 16px; background: var(--couche); -webkit-mask: var(--vague) 0 0 / 120px 16px repeat-x; mask: var(--vague) 0 0 / 120px 16px repeat-x; pointer-events: none; }
@@ -921,4 +922,47 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
   .couche:hover .bulles i { animation: none; }
   .tirage:hover { transform: none; }
   .tirage:nth-child(n) { transform: none; }
+}
+
+/* ---------- la direction de l'accueil, plus discrète, sur toutes les pages ---------- */
+.zone-cours { --zone: var(--vif-rose); }
+.zone-demarrer { --zone: var(--vif-vert); }
+.zone-diagnostic { --zone: var(--vif-jaune); }
+.zone-pratiques { --zone: var(--vif-violet); }
+
+/* Les aplats vifs gardent une encre sombre, dans tous les thèmes. */
+.page > .tete, .cours-tete, .lien-ligne { --encre: var(--sur-vif); --discret: var(--sur-vif); --ligne: rgba(20, 22, 27, .4); --surface: #FFFFFF; --bleu: #2B44E8; --sur-bleu: #FFFFFF; background: var(--zone); color: var(--sur-vif); }
+.page > .tete, .cours-tete { position: relative; margin: 8px 0 clamp(40px, 5vw, 60px); padding: clamp(26px, 4vw, 52px) clamp(22px, 4.4vw, 60px); border-radius: 22px 22px 0 0; }
+.page > .tete::after, .cours-tete::after { content: ""; position: absolute; left: 0; right: 0; top: calc(100% - 1px); height: 16px; background: var(--zone); -webkit-mask: var(--vague) 0 0 / 120px 16px repeat-x; mask: var(--vague) 0 0 / 120px 16px repeat-x; transform: scaleY(-1); pointer-events: none; }
+.page > .tete-compacte { padding-block: clamp(20px, 2.6vw, 30px); }
+.cours-tete > .tete { padding: 0; }
+.page > .avis-date + * { margin-top: 24px; }
+.page > .tete a:not(.bouton, .bouton-secondaire), .cours-tete a:not(.bouton, .bouton-secondaire, .apercu-diapos), .lien-ligne a:not(.bouton, .bouton-secondaire) { color: var(--sur-vif); }
+.lien-ligne { padding: clamp(20px, 3vw, 30px) clamp(22px, 3.4vw, 40px); border: 0; border-radius: 22px; }
+
+
+/* Au survol, le liquide monte dans la carte. */
+.cours-carte:not(.est-vide, .est-prepa), .outil-carte { background-image: linear-gradient(var(--zone), var(--zone)); background-repeat: no-repeat; background-position: bottom; background-size: 100% 0; transition: background-size .35s cubic-bezier(.2, .8, .2, 1); }
+.cours-carte:not(.est-vide, .est-prepa):hover, .outil-carte:hover { --encre: var(--sur-vif); --discret: var(--sur-vif); background-size: 100% 100%; border-color: var(--sur-vif); }
+.fleche { background: var(--zone); color: var(--sur-vif); }
+.partie-num { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: var(--zone); color: var(--sur-vif); font-size: 30px; }
+.fiche-ephemere { border: 0; background: color-mix(in srgb, var(--zone) 24%, var(--surface)); }
+.bouton, .bouton-secondaire { transition: transform .15s ease; }
+.bouton:hover, .bouton-secondaire:hover { transform: translateY(-2px); }
+
+.entete nav a { --zone: var(--vif-orange); }
+.entete nav a:hover { box-shadow: inset 0 -4px 0 var(--zone); }
+.entete nav a[aria-current] { margin: 0 -8px; padding: 0 8px; border-radius: 8px 8px 0 0; background: var(--zone); color: var(--sur-vif); border-color: var(--sur-vif); box-shadow: none; }
+
+.pied { --discret: var(--sur-bleu); --encre: var(--sur-bleu); position: relative; width: 100%; max-width: none; margin-top: 24px; padding: 34px max(var(--gouttiere), calc((100% - var(--largeur)) / 2)) 40px; border-top: 0; background: var(--bleu); color: var(--sur-bleu); }
+.pied::before { content: ""; position: absolute; left: 0; right: 0; top: -15px; height: 16px; background: var(--bleu); -webkit-mask: var(--vague) 0 0 / 120px 16px repeat-x; mask: var(--vague) 0 0 / 120px 16px repeat-x; pointer-events: none; }
+.pied a { color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cours-carte:not(.est-vide, .est-prepa), .outil-carte, .bouton, .bouton-secondaire { transition: none; }
+  .bouton:hover, .bouton-secondaire:hover { transform: none; }
+}
+@media print {
+  .page > .tete, .cours-tete, .lien-ligne, .pied { background: none; }
+  .page > .tete::after, .cours-tete::after, .pied::before { display: none; }
 }

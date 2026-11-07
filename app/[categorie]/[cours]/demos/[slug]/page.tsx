@@ -49,7 +49,7 @@ export default async function PageDemo(props: Props) {
   const comparateur = demo.comparateur ? trouverComparateur(demo.comparateur) : undefined;
 
   return (
-    <div className={`page${['escale', 'comparateur', 'dossier', 'reidentification', 'tri'].includes(demo.scene) ? ' page-large' : ''}`}>
+    <div className={`page zone-cours${['escale', 'comparateur', 'dossier', 'reidentification', 'tri'].includes(demo.scene) ? ' page-large' : ''}`}>
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `${base}/` },

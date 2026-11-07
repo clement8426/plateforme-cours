@@ -12,7 +12,7 @@ const ETAPES = [
 
 export default function PageDemarrer() {
   return (
-    <div className="page">
+    <div className="page zone-demarrer">
       <FilAriane etapes={[{ nom: 'Démarrer' }]} />
       <header className="tete">
         <h1>Démarrer son projet</h1>

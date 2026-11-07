@@ -21,7 +21,7 @@ export default async function PageSources(props: ParamsCours) {
   if (!categorie || !cours) notFound();
 
   return (
-    <div className="page">
+    <div className="page zone-cours">
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `/${categorie.slug}/${cours.slug}/` },

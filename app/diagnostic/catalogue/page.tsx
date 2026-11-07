@@ -6,7 +6,7 @@ export const metadata = metadonnees({ titre: 'Catalogue d’outils IA', descript
 
 export default function Page() {
   return (
-    <div className="page">
+    <div className="page zone-diagnostic">
       <FilAriane etapes={[{ nom: 'Diagnostic', href: '/diagnostic/' }, { nom: 'Catalogue' }]} />
       <header className="tete tete-compacte">
         <h1>Catalogue d’outils</h1>
