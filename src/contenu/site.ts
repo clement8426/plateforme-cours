@@ -7,15 +7,15 @@ export const ORIGINE = 'https://www.labonumerique.ch';
 export const AUTEUR = { '@type': 'Person', '@id': `${ORIGINE}/#auteur`, name: 'Clément Bastien', url: `${ORIGINE}/` };
 export const urlAbsolue = (chemin: string) => new URL(chemin, ORIGINE).href;
 
-export function metadonnees({ titre, description, chemin, image, indexable = true }: {
-  titre: string; description: string; chemin: string; image?: string; indexable?: boolean;
+export function metadonnees({ titre, description, chemin, image, indexable = true, markdown }: {
+  titre: string; description: string; chemin: string; image?: string; indexable?: boolean; markdown?: string;
 }): Metadata {
   const url = urlAbsolue(chemin);
   const images = image
     ? [{ url: image, alt: titre }]
     : [{ url: '/icones/icone-512.png', width: 512, height: 512, alt: 'Le Labo' }];
   return {
-    title: titre, description, alternates: { canonical: url },
+    title: titre, description, alternates: { canonical: url, ...(markdown ? { types: { 'text/markdown': urlAbsolue(markdown) } } : {}) },
     robots: { index: indexable, follow: true },
     openGraph: { title: titre, description, url, siteName: 'Le Labo', locale: 'fr_CH', type: 'website', images },
     twitter: { card: image ? 'summary_large_image' : 'summary', title: titre, description, images: images.map(i => i.url) },

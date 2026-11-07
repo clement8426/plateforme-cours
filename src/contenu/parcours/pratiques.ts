@@ -1,9 +1,11 @@
 // Pages de bonnes pratiques. Chaque source a été ouverte à la date indiquée ; les exemples sont fictifs.
 import { typoProfonde } from '../typo';
 
+export const GROUPES = ['Principe', 'Tester', 'Légal et éthique', 'Technique'] as const;
+
 export type Pratique = {
   id: string;
-  groupe: 'Principe' | 'Légal et éthique' | 'Technique';
+  groupe: (typeof GROUPES)[number];
   titre: string;
   resume: string;
   risque: string;
@@ -12,6 +14,7 @@ export type Pratique = {
   angles: string[];
   cours?: { href: string; nom: string };
   sources: { titre: string; url: string }[];
+  blocs?: { titre: string; lignes: { nom: string; texte: string }[] }[];
 };
 
 export const DATE_VERIFICATION = '2026-11-07';
@@ -28,6 +31,41 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     verifications: ['Le fichier envoyé contient-il de vrais noms, numéros ou adresses ?', 'Un tableur modèle avec de fausses données suffirait-il pour cette tâche ?', 'Pour des données médicales, juridiques ou RH, as-tu envisagé un agent open source avec un modèle européen ou hébergé en Suisse ?'],
     angles: ['cloud-act', 'confidentialite'], cours: IA,
     sources: [LPD, { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' }],
+  },
+  {
+    id: 'cache', groupe: 'Tester', titre: 'Cache et hard refresh',
+    resume: 'Avant de conclure qu’un correctif ne marche pas, vérifie que tu ne regardes pas une ancienne version.',
+    risque: 'Ton navigateur, un service worker ou un CDN peuvent garder une ancienne version de ton site. Tu testes alors à l’aveugle : le correctif est en ligne, mais tu ne le vois pas.',
+    exemple: 'Un élève corrige un bouton, met en ligne et recharge la page : le bouton semble toujours cassé. Il réécrit son code pendant une heure, alors que son navigateur affichait l’ancien fichier. Un rechargement forcé lui aurait montré que le premier correctif marchait.',
+    verifications: ['As-tu forcé le rechargement avant de conclure qu’un correctif ne marche pas ?', 'Tes fichiers CSS et JavaScript changent-ils d’adresse à chaque mise en ligne, avec un hash ou une version ?', 'Si ton site a un service worker, sa version change-t-elle à chaque mise en ligne importante ?'],
+    angles: ['test-cible', 'supervision'],
+    blocs: [
+      { titre: 'Où se cache l’ancienne version', lignes: [
+        { nom: 'Le navigateur', texte: 'Il garde une copie privée sur ton appareil et la réutilise tant qu’elle est considérée comme fraîche.' },
+        { nom: 'Le service worker', texte: 'Un script du site peut servir ses propres copies, même après une mise en ligne.' },
+        { nom: 'Le CDN', texte: 'Des serveurs proches du visiteur gardent une copie partagée entre tous les visiteurs.' },
+      ] },
+      { titre: 'Forcer le rechargement', lignes: [
+        { nom: 'Chrome sur Windows et Linux', texte: '`Ctrl + Maj + R` ou `Maj + F5`' },
+        { nom: 'Chrome sur Mac', texte: '`⌘ + Maj + R`' },
+        { nom: 'Chrome et Firefox, pendant les tests', texte: 'Dans les outils de développement, onglet Réseau, coche la case qui désactive le cache.' },
+        { nom: 'Safari', texte: 'Apple ne donne pas ce raccourci sur sa page officielle et renvoie aux menus de l’application : cherche la commande dans les menus de Safari.' },
+      ] },
+      { titre: 'Quand ça ne suffit pas', lignes: [
+        { nom: 'Service worker', texte: 'Le rechargement forcé le contourne pour la page, mais sa nouvelle version attend que tous les onglets du site soient fermés. Dans Chrome, l’option « Update on reload » de l’onglet Application l’active à chaque chargement.' },
+        { nom: 'CDN', texte: 'Regarde les en-têtes avec `curl -I https://ton-site.ch/` : `Age`, `Cache-Control` et, sur Vercel, `x-vercel-cache`.' },
+        { nom: 'Réglage conseillé', texte: 'Pour le HTML : `Cache-Control: no-cache`, pour revalider à chaque visite. Pour les fichiers dont le nom contient un hash : `Cache-Control: public, max-age=31536000, immutable`.' },
+      ] },
+    ],
+    sources: [
+      { titre: 'HTTP caching, MDN', url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching' },
+      { titre: 'Chrome keyboard shortcuts, aide Google Chrome', url: 'https://support.google.com/chrome/answer/157179?hl=en' },
+      { titre: 'The service worker lifecycle, web.dev', url: 'https://web.dev/articles/service-worker-lifecycle' },
+      { titre: 'Network features reference, Chrome DevTools', url: 'https://developer.chrome.com/docs/devtools/network/reference' },
+      { titre: 'Network Monitor toolbar, documentation Firefox', url: 'https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/toolbar/index.html' },
+      { titre: 'Vercel CDN Cache, documentation Vercel', url: 'https://vercel.com/docs/caching/cdn-cache' },
+      { titre: 'Keyboard shortcuts in Safari, aide Apple', url: 'https://support.apple.com/guide/safari/keyboard-and-other-shortcuts-cpsh003/mac' },
+    ],
   },
   {
     id: 'cloud-act', groupe: 'Légal et éthique', titre: 'Cloud Act',

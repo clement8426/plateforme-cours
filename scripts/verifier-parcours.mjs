@@ -125,12 +125,14 @@ verifier('aucune réponse envoyée dans tout le parcours', envois.length === 0, 
 }
 
 // Données publiques
-for (const chemin of ['/llms.txt', '/api/catalog.json', '/api/rules.json']) verifier(`${chemin} répond`, (await p.request.get(base + chemin)).ok());
+for (const chemin of ['/llms.txt', '/api/catalog.json', '/api/rules.json', '/bonnes-pratiques/cache/index.md']) verifier(`${chemin} répond`, (await p.request.get(base + chemin)).ok());
+const guide = await (await p.request.get(`${base}/bonnes-pratiques/index.md`)).text();
+verifier('le guide pour agents couvre le cache et les angles morts', guide.includes('Cache et hard refresh') && guide.includes('## Angles morts') && !/[\u00A0\u202F]/.test(guide));
 const regles = await (await p.request.get(`${base}/api/rules.json`)).json();
 verifier('40 angles morts publics', regles.blind_spots.length === 40);
 
 // Accessibilité, clair, sombre et mobile
-const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/diagnostic/', '/diagnostic/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/diagnostic/#i=reprendre&t=app-web&c=donnees:o&o=supabase'];
+const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/diagnostic/', '/diagnostic/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cache/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/diagnostic/#i=reprendre&t=app-web&c=donnees:o&o=supabase'];
 for (const [nom, vp, mobile, sombre] of [['bureau clair', { width: 1440, height: 900 }, false, false], ['bureau sombre', { width: 1440, height: 900 }, false, true], ['mobile clair', { width: 390, height: 844 }, true, false], ['mobile sombre', { width: 390, height: 844 }, true, true]]) {
   const c = await b.newContext({ viewport: vp, isMobile: mobile, hasTouch: mobile });
   if (sombre) await c.addInitScript(() => localStorage.setItem('theme', 'sombre'));
