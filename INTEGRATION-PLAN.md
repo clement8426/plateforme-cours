@@ -7,7 +7,7 @@ Décisions validées par Clément le 7 novembre 2026.
 | Sujet | Décision |
 |---|---|
 | Nom | Le Labo, `labonumerique.ch`. Aucune marque Learn ni Digitalizers sur le site. |
-| Accueil | Trois portes : Cours, Démarrer, Bonnes pratiques. |
+| Accueil | Quatre portes : Cours, Démarrer, Entonnoir, Bonnes pratiques. |
 | `/cours/` | Nouvelle page avec tous les cours, classés par thème. |
 | Adresses des cours | Inchangées (`/<thème>/<cours>/`), pour ne casser ni les diapos ni les liens déjà partagés. |
 | Test et fiches | Éphémères : aucune sauvegarde, alerte avant de quitter, téléchargement à la fin. |
@@ -35,8 +35,8 @@ Décisions validées par Clément le 7 novembre 2026.
 | Test de positionnement | `/demarrer/test/` |
 | Fiche 1 | `/demarrer/idee/` |
 | Fiche 2 | `/demarrer/technique/` |
-| Entonnoir | `/demarrer/entonnoir/` |
-| Catalogue | `/demarrer/catalogue/` et `/demarrer/catalogue/<id>/` |
+| Entonnoir | `/entonnoir/`, zone à part entière |
+| Catalogue | `/entonnoir/catalogue/` et `/entonnoir/catalogue/<id>/` |
 | Bonnes pratiques | `/bonnes-pratiques/` et `/bonnes-pratiques/<id>/` |
 | Angles morts | `/bonnes-pratiques/angles-morts/<id>/` |
 

@@ -1,6 +1,21 @@
 {
   "redirects": [
     {
+      "source": "/demarrer/entonnoir/",
+      "destination": "/entonnoir/",
+      "permanent": true
+    },
+    {
+      "source": "/demarrer/catalogue/",
+      "destination": "/entonnoir/catalogue/",
+      "permanent": true
+    },
+    {
+      "source": "/demarrer/catalogue/:outil/",
+      "destination": "/entonnoir/catalogue/:outil/",
+      "permanent": true
+    },
+    {
       "source": "/ux/ux-ia/demos/tilleul/",
       "destination": "/ux/ux-ia/demos/escale/",
       "permanent": true

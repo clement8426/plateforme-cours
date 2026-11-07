@@ -23,7 +23,7 @@ export default function Catalogue() {
       </form>
       <p role="status" aria-live="polite">{liste.length} outil{liste.length > 1 ? 's' : ''}</p>
       <ul className="outils-liste">
-        {liste.map((o) => <li key={o.id} className="outil-carte"><h3><Link href={`/demarrer/catalogue/${o.id}/`}>{o.name}</Link></h3><p>{KINDS[o.kind]} · {NIVEAUX[o.level]}</p><p>{o.description}</p></li>)}
+        {liste.map((o) => <li key={o.id} className="outil-carte"><h3><Link href={`/entonnoir/catalogue/${o.id}/`}>{o.name}</Link></h3><p>{KINDS[o.kind]} · {NIVEAUX[o.level]}</p><p>{o.description}</p></li>)}
       </ul>
     </>
   );

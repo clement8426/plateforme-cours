@@ -18,7 +18,7 @@ function CarteAngle({ a }: { a: Angle }) {
       <h4>{a.title}</h4>
       <p>{a.question}</p>
       <p>{a.action}</p>
-      {outils.length > 0 && <p>Outils : {outils.slice(0, 3).map((o, i) => <span key={o.id}>{i > 0 && ', '}<Link prefetch={false} href={`/demarrer/catalogue/${o.id}/`}>{o.name}</Link></span>)}</p>}
+      {outils.length > 0 && <p>Outils : {outils.slice(0, 3).map((o, i) => <span key={o.id}>{i > 0 && ', '}<Link prefetch={false} href={`/entonnoir/catalogue/${o.id}/`}>{o.name}</Link></span>)}</p>}
       <p><Link prefetch={false} href={`/bonnes-pratiques/angles-morts/${a.id}/`}>Lire la fiche<span className="visuellement-cache"> : {a.title}</span></Link></p>
     </li>
   );

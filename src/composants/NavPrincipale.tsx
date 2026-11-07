@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation';
 const ZONES = [
   { href: '/cours/', nom: 'Cours' },
   { href: '/demarrer/', nom: 'Démarrer' },
+  { href: '/entonnoir/', nom: 'Entonnoir' },
   { href: '/bonnes-pratiques/', nom: 'Bonnes pratiques' },
 ];
 
-// Les trois zones du site. Les pages d'un thème appartiennent à la zone Cours, annoncée comme courante.
+// Les quatre zones du site. Les pages d'un thème appartiennent à la zone Cours, annoncée comme courante.
 export default function NavPrincipale({ themes }: { themes: string[] }) {
   const chemin = usePathname() ?? '';
   const dansCours = themes.some((t) => chemin.startsWith(`/${t}/`));

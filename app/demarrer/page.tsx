@@ -2,13 +2,12 @@ import Link from 'next/link';
 import FilAriane from '@/composants/FilAriane';
 import { metadonnees } from '@/contenu/site';
 
-export const metadata = metadonnees({ titre: 'Démarrer son projet', description: 'Un test de positionnement, deux fiches à remplir, puis le plan des angles morts de ton projet et un kit pour ton agent IA. Sans compte et sans sauvegarde.', chemin: '/demarrer/' });
+export const metadata = metadonnees({ titre: 'Démarrer son projet', description: 'Un test de positionnement et deux fiches pour clarifier ton idée et ton projet. Sans compte et sans sauvegarde.', chemin: '/demarrer/' });
 
 const ETAPES = [
   { href: '/demarrer/test/', titre: 'Test de positionnement', texte: 'Sache d’où tu pars, sans IA, et mesure tes progrès.', duree: '24 questions' },
   { href: '/demarrer/idee/', titre: 'Fiche 1 : clarifier son idée', texte: 'L’idée, le problème, la cible, la marque et le parcours client.', duree: '7 parties' },
   { href: '/demarrer/technique/', titre: 'Fiche 2 : aspect technique', texte: 'Le type de produit, les données, les fonctionnalités et le MVP.', duree: '8 parties' },
-  { href: '/demarrer/entonnoir/', titre: 'Entonnoir', texte: 'Quatre écrans pour trouver ce que ton projet a oublié, puis un kit à donner à ton agent IA.', duree: '4 écrans' },
 ];
 
 export default function PageDemarrer() {
@@ -17,7 +16,7 @@ export default function PageDemarrer() {
       <FilAriane etapes={[{ nom: 'Démarrer' }]} />
       <header className="tete">
         <h1>Démarrer son projet</h1>
-        <p className="chapeau">Du test à un plan concret. Chaque étape marche seule : commence où tu veux.</p>
+        <p className="chapeau">Du test à une idée claire. Chaque étape marche seule : commence où tu veux.</p>
       </header>
       <p className="fiche-ephemere"><strong>Rien n’est enregistré.</strong> Pas de compte, pas de sauvegarde : tes réponses restent dans la page et tu repars avec ton fichier.</p>
 
@@ -34,12 +33,12 @@ export default function PageDemarrer() {
         </ol>
       </section>
 
-      <section className="section lien-ligne" aria-labelledby="titre-catalogue">
+      <section className="section lien-ligne" aria-labelledby="titre-suite">
         <div>
-          <h2 id="titre-catalogue">Catalogue d’outils</h2>
-          <p>Des skills, plugins et serveurs MCP triés à la main, avec leurs contraintes et leurs alternatives.</p>
+          <h2 id="titre-suite">Et ensuite ?</h2>
+          <p>L’entonnoir trouve ce que ton projet a oublié, et tes fiches peuvent le pré-remplir.</p>
         </div>
-        <Link className="bouton-secondaire" href="/demarrer/catalogue/">Voir le catalogue</Link>
+        <Link className="bouton" href="/entonnoir/">Analyser mon projet</Link>
       </section>
     </div>
   );

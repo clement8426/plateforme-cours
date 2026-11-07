@@ -85,7 +85,7 @@ await p.getByLabel('Décris ton idée en 5 lignes maximum.').fill('1\n2\n3\n4\n5
 verifier('fiche 1 : limite de 5 lignes', (await p.getByLabel('Décris ton idée en 5 lignes maximum.').inputValue()).split('\n').length === 5);
 
 // Entonnoir : parcours complet avec import de la fiche
-await p.goto(`${base}/demarrer/entonnoir/`);
+await p.goto(`${base}/entonnoir/`);
 await p.waitForLoadState('networkidle');
 await p.getByRole('button', { name: /Reprendre un projet existant/ }).click();
 await p.getByRole('button', { name: /Application web ou SaaS/ }).click();
@@ -104,7 +104,7 @@ const contenuKit = (await texte(kit)).toString('utf8');
 verifier('kit : plan, mémoire et bilan', contenuKit.includes('RLS sur les tables') && contenuKit.includes('CLAUDE.md') && contenuKit.includes('installed, working, unavailable, blocked'));
 
 // Lien partagé : tout est dans le fragment, jamais dans la requête
-await p.goto(`${base}/demarrer/entonnoir/#i=reprendre&t=app-web&c=donnees:o&o=supabase`);
+await p.goto(`${base}/entonnoir/#i=reprendre&t=app-web&c=donnees:o&o=supabase`);
 await p.locator('.plan-carte').first().waitFor();
 verifier('le lien partagé rouvre le plan', (await p.locator('.plan-carte h4').allInnerTexts()).includes('RLS sur les tables'));
 verifier('aucune réponse envoyée dans tout le parcours', envois.length === 0, envois.join(' '));
@@ -118,7 +118,7 @@ verifier('aucune réponse envoyée dans tout le parcours', envois.length === 0, 
   const vues = [];
   await q.route('**/_vercel/insights/script.js', (r) => r.fulfill({ contentType: 'text/javascript', body: script }));
   await q.route('**/_vercel/insights/view', (r) => { vues.push(r.request().postData() ?? ''); r.fulfill({ status: 200, body: '{}' }); });
-  await q.goto(`${base}/demarrer/entonnoir/?secret=1#i=reprendre&t=app-web&c=donnees:o&o=supabase`);
+  await q.goto(`${base}/entonnoir/?secret=1#i=reprendre&t=app-web&c=donnees:o&o=supabase`);
   await q.waitForTimeout(2000);
   verifier('Vercel ne reçoit ni paramètre ni fragment', vues.length > 0 && vues.every((v) => !/secret|donnees|supabase|#/.test(v)), vues.join(' ') || 'aucun envoi observé');
   await c.close();
@@ -130,7 +130,7 @@ const regles = await (await p.request.get(`${base}/api/rules.json`)).json();
 verifier('40 angles morts publics', regles.blind_spots.length === 40);
 
 // Accessibilité, clair, sombre et mobile
-const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/demarrer/entonnoir/', '/demarrer/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/demarrer/entonnoir/#i=reprendre&t=app-web&c=donnees:o&o=supabase'];
+const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/entonnoir/', '/entonnoir/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/entonnoir/#i=reprendre&t=app-web&c=donnees:o&o=supabase'];
 for (const [nom, vp, mobile, sombre] of [['bureau clair', { width: 1440, height: 900 }, false, false], ['bureau sombre', { width: 1440, height: 900 }, false, true], ['mobile clair', { width: 390, height: 844 }, true, false], ['mobile sombre', { width: 390, height: 844 }, true, true]]) {
   const c = await b.newContext({ viewport: vp, isMobile: mobile, hasTouch: mobile });
   if (sombre) await c.addInitScript(() => localStorage.setItem('theme', 'sombre'));

@@ -33,7 +33,7 @@ export default async function Page({ params }: Props) {
         <section><h2>Pourquoi ça compte</h2><p>{a.why}</p>{a.swiss_legal_ref && <p>Référence : {a.swiss_legal_ref}.</p>}</section>
         <section><h2>Signe d’alerte</h2><p>{a.warning}</p></section>
         <section><h2>Quoi faire</h2><p>{a.action}</p></section>
-        {outils.length > 0 && <section><h2>Outils qui aident</h2><ul>{outils.map((o) => <li key={o.id}><Link href={`/demarrer/catalogue/${o.id}/`}>{o.name}</Link></li>)}</ul></section>}
+        {outils.length > 0 && <section><h2>Outils qui aident</h2><ul>{outils.map((o) => <li key={o.id}><Link href={`/entonnoir/catalogue/${o.id}/`}>{o.name}</Link></li>)}</ul></section>}
         {(pratique || a.learn_course_url) && <section>
           <h2>Pour aller plus loin</h2>
           <ul>

@@ -26,7 +26,7 @@ export default function Page() {
       ))}
       <section className="section" aria-labelledby="titre-angles">
         <h2 id="titre-angles" className="titre-section">Les {ANGLES.length} angles morts</h2>
-        <p className="intro-section">Ce que ni l’élève ni l’IA n’anticipent. L’<Link href="/demarrer/entonnoir/">entonnoir</Link> les trie pour ton projet.</p>
+        <p className="intro-section">Ce que ni l’élève ni l’IA n’anticipent. L’<Link href="/entonnoir/">entonnoir</Link> les trie pour ton projet.</p>
         {TAXONOMIE.familles.map((f) => (
           <details className="plan-plus" key={f.id}>
             <summary>{famille(f.id)}</summary>

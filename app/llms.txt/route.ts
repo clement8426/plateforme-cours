@@ -17,7 +17,7 @@ export function GET() {
     `- [Catalogue d’outils validés](${urlAbsolue('/api/catalog.json')})`,
     `- [Taxonomie, angles morts et règles](${urlAbsolue('/api/rules.json')})`, '',
     '## Entonnoir', '',
-    `Le plan se calcule dans le navigateur à ${urlAbsolue('/demarrer/entonnoir/')}. Un lien se construit dans le fragment : #i=<intention>&t=<type>&c=<question>:<o|n|s>,...&o=<outil>. o = oui, n = non, s = je ne sais pas. Sans navigateur, refais le calcul avec les règles publiques.`, '',
+    `Le plan se calcule dans le navigateur à ${urlAbsolue('/entonnoir/')}. Un lien se construit dans le fragment : #i=<intention>&t=<type>&c=<question>:<o|n|s>,...&o=<outil>. o = oui, n = non, s = je ne sais pas. Sans navigateur, refais le calcul avec les règles publiques.`, '',
     '## Bonnes pratiques', '',
     ...PRATIQUES.map((p) => `- [${p.titre}](${urlAbsolue(`/bonnes-pratiques/${p.id}/`)}) : ${p.resume}`), '',
     '## Angles morts', '',
