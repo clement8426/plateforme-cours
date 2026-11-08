@@ -26,33 +26,28 @@ jobs:
   collecter:
     runs-on: ubuntu-latest
     timeout-minutes: 330
-    # Sans le secret ANNUAIRE_GH_TOKEN, toutes les étapes sont ignorées : le job reste vert et ne fait rien.
+    # Le jeton automatique de GitHub Actions suffit a priori. ANNUAIRE_GH_TOKEN, facultatif, donne des quotas plus larges.
     env:
-      JETON: ${{ secrets.ANNUAIRE_GH_TOKEN }}
+      JETON: ${{ secrets.ANNUAIRE_GH_TOKEN || github.token }}
     steps:
       - uses: actions/checkout@v4
-        if: env.JETON != ''
       - uses: actions/setup-node@v4
-        if: env.JETON != ''
         with:
           node-version: 22
       - name: Reprendre l'état du passage précédent
-        if: env.JETON != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p data/raw
           gh release download annuaire-etat --pattern etat.json --dir data/raw --clobber || echo "Pas d'état : premier passage."
       - name: Collecter
-        if: env.JETON != ''
         env:
-          GITHUB_TOKEN: ${{ secrets.ANNUAIRE_GH_TOKEN }}
+          GITHUB_TOKEN: ${{ env.JETON }}
           ANNUAIRE_FORCER: ${{ inputs.forcer && '1' || '' }}
           # Le dimanche seulement, la recherche de fichiers (longue) : 30 + 30 + 120 minutes.
           ANNUAIRE_BUDGETS: ${{ github.event.schedule == '17 1 * * 0' && '{"marketplaces":30,"pluginsJson":30,"skills":120,"npm":15}' || '{"marketplaces":0,"pluginsJson":0,"skills":0,"npm":15}' }}
         run: node scripts/annuaire-collecter.mjs
       - name: Publier
-        if: env.JETON != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -62,20 +57,18 @@ jobs:
           git pull --rebase origin main
           git push origin HEAD:main
       - name: Relancer la mise en ligne du site
-        if: env.JETON != ''
         env:
           VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |
           if [ -n "$VERCEL_DEPLOY_HOOK" ]; then curl -fsS -X POST "$VERCEL_DEPLOY_HOOK" >/dev/null && echo "Mise en ligne demandée."; else echo "Pas de VERCEL_DEPLOY_HOOK : la mise en ligne dépend du push."; fi
       - name: Garder l'état pour le prochain passage
-        if: env.JETON != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release view annuaire-etat >/dev/null 2>&1 || gh release create annuaire-etat --prerelease --title "État de l'annuaire" --notes "Fichier technique : état de la recherche GitHub entre deux passages."
           gh release upload annuaire-etat data/raw/etat.json --clobber
       - name: Signaler l'échec
-        if: failure() && env.JETON != ''
+        if: failure()
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh issue create --title "Annuaire : la mise à jour a échoué le $(date +%F)" --body "Voir le journal : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Rien n'a été publié, la liste en ligne est inchangée."

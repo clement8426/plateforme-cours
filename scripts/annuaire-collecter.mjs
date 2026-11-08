@@ -14,7 +14,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { creerBase } from './annuaire/base.mjs';
-import { chargerSuffixes, clientGithub, journal, json, lireConfig, nettoyer, pause } from './annuaire/outils.mjs';
+import { chargerSuffixes, clientGithub, journal, json, lireConfig, nettoyer, parLots, pause } from './annuaire/outils.mjs';
 import * as S from './annuaire/sources.mjs';
 
 const racine = new URL('../', import.meta.url);
@@ -116,13 +116,24 @@ for (let i = 0; i < lots.length; i += 4) {
 if (lots.length && lotsEnEchec / lots.length > 0.03) sources.push({ nom: 'enrichissement GitHub', n: lots.length, ok: false, erreur: `${lotsEnEchec} lots abandonnés` });
 else sources.push({ nom: 'enrichissement GitHub', n: depotsAEnrichir.length, ok: true });
 
+// ---------- Taille réelle des dépôts de skills : la recherche n'en voit qu'une partie ----------
+// Un dépôt qui contient des centaines de skills est un recueil : ses étoiles ne disent rien de chacun.
+const tailleDepot = new Map();
+const aCompter = [...new Set(entreesSimples('skills').filter((e) => !e.refs.size && !e.partage && (infos.get(e.repo?.toLowerCase())?.stargazerCount ?? 0) >= etoilesMin).map((e) => e.repo))];
+journal('dépôts de skills à mesurer', aCompter.length);
+await parLots(aCompter, 6, async (repo) => {
+  const arbre = await gh.api(`/repos/${repo}/git/trees/HEAD?recursive=1`);
+  if (!arbre?.tree) return;
+  tailleDepot.set(repo.toLowerCase(), arbre.truncated ? 9999 : arbre.tree.filter((x) => x.type === 'blob' && /(^|\/)SKILL\.md$/.test(x.path)).length);
+});
+
 // ---------- Dépôts partagés : leurs étoiles appartiennent au dépôt, pas à l'outil ----------
 const compteParDepot = { mcp: new Map(), plugins: new Map(), skills: new Map() };
 const incrementer = (nature, repo) => repo && compteParDepot[nature].set(repo.toLowerCase(), (compteParDepot[nature].get(repo.toLowerCase()) ?? 0) + 1);
 base.mcp.forEach((e) => incrementer('mcp', e.repo));
 ['plugins', 'skills'].forEach((n) => entreesSimples(n).forEach((e) => incrementer(n, e.repo)));
 const infoDe = (repo) => (repo ? infos.get(repo.toLowerCase()) : null);
-const estPartage = (nature, e) => !!(e.partage || e.sousDossier || (e.repo && (compteParDepot[nature].get(e.repo.toLowerCase()) ?? 0) > maxParDepot));
+const estPartage = (nature, e) => !!(e.partage || e.sousDossier || (e.repo && Math.max(compteParDepot[nature].get(e.repo.toLowerCase()) ?? 0, nature === 'skills' ? tailleDepot.get(e.repo.toLowerCase()) ?? 0 : 0) > maxParDepot));
 const etoilesDe = (nature, e) => (estPartage(nature, e) ? 0 : infoDe(e.repo)?.stargazerCount ?? 0);
 
 // ---------- Téléchargements npm : seulement pour les éditeurs prouvés qui n'ont pas déjà de quoi être publiés ----------
@@ -161,6 +172,7 @@ const idsRefs = config.references.map(([id]) => id);
 
 // Un nom de registre comme com.notion/mcp se lit mal : on garde le produit.
 function nomLisible(e) {
+  if (/^[a-z]{4,}$/.test(e.n)) return e.n.charAt(0).toUpperCase() + e.n.slice(1);
   if (e.nomPropre || !/^[a-z0-9.-]+\/[\w.-]+$/i.test(e.n)) return e.n;
   const fin = e.n.split('/')[1];
   if (e.dom && /^(mcp|mcp-server|server)$/i.test(fin)) { const b = e.dom.split('.')[0]; return b.charAt(0).toUpperCase() + b.slice(1); }

@@ -94,9 +94,23 @@ export async function chargerSuffixes() {
 
 export const hoteDe = (url) => { try { return new URL(url).hostname.toLowerCase(); } catch { return null; } };
 
+// Des éditeurs laissent parfois une clé dans leur adresse publique : on ne la republie jamais.
+const VALEUR_SECRETE = /zpka_\w{10,}|sk_(?:live|test)_[A-Za-z0-9]{10,}|ghp_[A-Za-z0-9]{20,}|github_pat_\w{20,}|xox[bpoa]-[\w-]{10,}|AKIA[0-9A-Z]{16}|eyJ[\w-]{15,}\.[\w-]{10,}|sk-[a-zA-Z0-9]{32,}|AIza[\w-]{30,}/;
+const NOM_SECRET = /(^|[_-])(key|apikey|api_key|token|secret|password|passwd|auth|authorization|credential|access_token|sig|signature)($|[_-])/i;
+export function contientSecret(url) {
+  if (VALEUR_SECRETE.test(url)) return true;
+  try {
+    const u = new URL(url);
+    if (u.username || u.password) return true;
+    if ([...u.searchParams].some(([k, v]) => NOM_SECRET.test(k) && v.length >= 8)) return true;
+    return u.pathname.split('/').some((s) => s.length >= 32 && /^[\w-]+$/.test(s) && /\d/.test(s) && /[a-z]/i.test(s));
+  } catch { return true; }
+}
+
 // Une adresse MCP valable : https, un vrai nom d'hôte, sans modèle à remplir.
 export function adresseValable(url) {
   if (typeof url !== 'string' || /[\s{}<>]/.test(url) || !/^https:\/\//i.test(url)) return null;
+  if (contientSecret(url)) return null;
   const hote = hoteDe(url);
   return hote && hote.includes('.') && !/^(localhost|127\.|0\.0\.0\.0)/.test(hote) ? url : null;
 }

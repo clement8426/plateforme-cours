@@ -1,14 +1,14 @@
 {
  "date": "2026-11-08",
  "comptes": {
-  "mcp": 1752,
-  "plugins": 697,
-  "skills": 1242
+  "mcp": 2499,
+  "plugins": 951,
+  "skills": 1207
  },
  "trouves": {
-  "mcp": 5603,
-  "plugins": 1450,
-  "skills": 2527
+  "mcp": 52776,
+  "plugins": 19060,
+  "skills": 12273
  },
  "sources": [
   {
@@ -127,6 +127,11 @@
    "ok": true
   },
   {
+   "nom": "connecteurs Claude",
+   "n": 866,
+   "ok": true
+  },
+  {
    "nom": "extensions Gemini",
    "n": 2198,
    "ok": true
@@ -138,7 +143,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 3808,
+   "n": 50122,
    "ok": true
   }
  ],
