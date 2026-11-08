@@ -1,13 +1,13 @@
 {
  "date": "2026-11-08",
  "comptes": {
-  "mcp": 2499,
+  "mcp": 2497,
   "plugins": 951,
   "skills": 1207
  },
  "trouves": {
-  "mcp": 52776,
-  "plugins": 19060,
+  "mcp": 52856,
+  "plugins": 19057,
   "skills": 12273
  },
  "sources": [
@@ -128,7 +128,7 @@
   },
   {
    "nom": "connecteurs Claude",
-   "n": 866,
+   "n": 864,
    "ok": true
   },
   {
@@ -143,7 +143,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 50122,
+   "n": 50144,
    "ok": true
   }
  ],
