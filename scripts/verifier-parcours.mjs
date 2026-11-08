@@ -125,11 +125,13 @@ verifier('aucune réponse envoyée dans tout le parcours', envois.length === 0, 
 }
 
 // Données publiques
-for (const chemin of ['/llms.txt', '/api/catalog.json', '/api/rules.json', '/bonnes-pratiques/cache/index.md']) verifier(`${chemin} répond`, (await p.request.get(base + chemin)).ok());
+for (const chemin of ['/llms.txt', '/api/catalog.json', '/api/rules.json', '/bonnes-pratiques/cache/index.md', '/annuaire/index.json', '/annuaire/mcp.json', '/annuaire/plugins.json', '/annuaire/skills.json']) verifier(`${chemin} répond`, (await p.request.get(base + chemin)).ok());
 const guide = await (await p.request.get(`${base}/bonnes-pratiques/index.md`)).text();
 verifier('le guide pour agents couvre le cache et les angles morts', guide.includes('Cache et hard refresh') && guide.includes('## Angles morts') && !/[\u00A0\u202F]/.test(guide));
 const regles = await (await p.request.get(`${base}/api/rules.json`)).json();
 verifier('40 angles morts publics', regles.blind_spots.length === 40);
+const usagesConnus = new Set(regles.taxonomy.usages.map((u) => u.id));
+verifier('chaque outil a des usages connus', JSON.parse(readFileSync('data/tools.json', 'utf8')).every((o) => o.usages.length && o.usages.every((u) => usagesConnus.has(u))));
 
 // Accessibilité, clair, sombre et mobile
 const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/diagnostic/', '/diagnostic/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cache/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/diagnostic/#i=reprendre&t=app-web&c=donnees:o&o=supabase'];

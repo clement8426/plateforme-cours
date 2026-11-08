@@ -1,0 +1,296 @@
+{
+ "date": "2026-11-08",
+ "comptes": {
+  "mcp": 1752,
+  "plugins": 697,
+  "skills": 1242
+ },
+ "trouves": {
+  "mcp": 5603,
+  "plugins": 1450,
+  "skills": 2527
+ },
+ "sources": [
+  {
+   "nom": "registre officiel MCP",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "registre GitHub",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "marketplace anthropics/claude-plugins-official",
+   "n": 317,
+   "ok": true
+  },
+  {
+   "nom": "marketplace anthropics/knowledge-work-plugins",
+   "n": 123,
+   "ok": true
+  },
+  {
+   "nom": "marketplace openai/plugins",
+   "n": 65,
+   "ok": true
+  },
+  {
+   "nom": "marketplace cursor/plugins",
+   "n": 131,
+   "ok": true
+  },
+  {
+   "nom": "marketplace github/copilot-plugins",
+   "n": 18,
+   "ok": true
+  },
+  {
+   "nom": "skills anthropics/skills",
+   "n": 20,
+   "ok": true
+  },
+  {
+   "nom": "skills openai/skills",
+   "n": 39,
+   "ok": true
+  },
+  {
+   "nom": "skills google/skills",
+   "n": 192,
+   "ok": true
+  },
+  {
+   "nom": "skills aws/agent-toolkit-for-aws",
+   "n": 200,
+   "ok": true
+  },
+  {
+   "nom": "skills microsoft/skills",
+   "n": 210,
+   "ok": true
+  },
+  {
+   "nom": "skills trailofbits/skills",
+   "n": 98,
+   "ok": true
+  },
+  {
+   "nom": "skills stripe/ai",
+   "n": 60,
+   "ok": true
+  },
+  {
+   "nom": "skills vercel-labs/agent-skills",
+   "n": 9,
+   "ok": true
+  },
+  {
+   "nom": "skills getsentry/skills",
+   "n": 31,
+   "ok": true
+  },
+  {
+   "nom": "skills cloudflare/skills",
+   "n": 22,
+   "ok": true
+  },
+  {
+   "nom": "skills hashicorp/agent-skills",
+   "n": 20,
+   "ok": true
+  },
+  {
+   "nom": "skills supabase/agent-skills",
+   "n": 2,
+   "ok": true
+  },
+  {
+   "nom": "catalogue Docker",
+   "n": 329,
+   "ok": true
+  },
+  {
+   "nom": "serveurs modelcontextprotocol/servers",
+   "n": 7,
+   "ok": true
+  },
+  {
+   "nom": "serveurs awslabs/mcp",
+   "n": 63,
+   "ok": true
+  },
+  {
+   "nom": "Google Cloud",
+   "n": 83,
+   "ok": true
+  },
+  {
+   "nom": "extensions Gemini",
+   "n": 2198,
+   "ok": true
+  },
+  {
+   "nom": "topics GitHub",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "enrichissement GitHub",
+   "n": 3808,
+   "ok": true
+  }
+ ],
+ "criteres": {
+  "references": "référencé par un répertoire reconnu",
+  "etoiles": 1000,
+  "telechargementsNpmParSemaine": 10000,
+  "maxParDepot": 25
+ },
+ "references": [
+  [
+   "claude",
+   "Claude (Anthropic)"
+  ],
+  [
+   "openai",
+   "OpenAI"
+  ],
+  [
+   "google",
+   "Google"
+  ],
+  [
+   "github",
+   "GitHub"
+  ],
+  [
+   "docker",
+   "Docker"
+  ],
+  [
+   "cursor",
+   "Cursor"
+  ],
+  [
+   "aws",
+   "AWS"
+  ],
+  [
+   "mcp",
+   "Projet MCP"
+  ],
+  [
+   "editeur",
+   "Éditeur officiel"
+  ]
+ ],
+ "usages": [
+  {
+   "id": "tester",
+   "label_fr": "Tester"
+  },
+  {
+   "id": "securite",
+   "label_fr": "Sécurité"
+  },
+  {
+   "id": "accessibilite",
+   "label_fr": "Accessibilité"
+  },
+  {
+   "id": "performance",
+   "label_fr": "Performance"
+  },
+  {
+   "id": "design",
+   "label_fr": "Design"
+  },
+  {
+   "id": "code",
+   "label_fr": "Écrire et relire le code"
+  },
+  {
+   "id": "deploiement",
+   "label_fr": "Mettre en ligne"
+  },
+  {
+   "id": "donnees",
+   "label_fr": "Données"
+  },
+  {
+   "id": "mesure",
+   "label_fr": "Mesure et suivi"
+  },
+  {
+   "id": "paiement",
+   "label_fr": "Paiement"
+  },
+  {
+   "id": "contenu",
+   "label_fr": "Contenu et documents"
+  },
+  {
+   "id": "documentation",
+   "label_fr": "Documentation"
+  },
+  {
+   "id": "orchestration",
+   "label_fr": "Automatiser et enchaîner"
+  }
+ ],
+ "types": [
+  {
+   "id": "vitrine",
+   "label_fr": "Site vitrine"
+  },
+  {
+   "id": "boutique",
+   "label_fr": "Boutique en ligne"
+  },
+  {
+   "id": "app-web",
+   "label_fr": "Application web ou SaaS"
+  },
+  {
+   "id": "mobile",
+   "label_fr": "Application mobile"
+  },
+  {
+   "id": "automatisation",
+   "label_fr": "Automatisation"
+  },
+  {
+   "id": "agent-ia",
+   "label_fr": "Agent IA"
+  },
+  {
+   "id": "campagne",
+   "label_fr": "Campagne marketing ou contenu"
+  },
+  {
+   "id": "rh",
+   "label_fr": "Processus RH ou gestion"
+  }
+ ],
+ "colonnes": [
+  "nom",
+  "depot",
+  "description",
+  "etoiles",
+  "dernier_push",
+  "archive",
+  "licence",
+  "usages",
+  "types",
+  "commande_locale",
+  "adresse_mcp_en_ligne",
+  "domaine_verifie",
+  "references",
+  "telechargements_npm_semaine",
+  "acces_1_local_2_en_ligne",
+  "depot_partage",
+  "copies"
+ ]
+}

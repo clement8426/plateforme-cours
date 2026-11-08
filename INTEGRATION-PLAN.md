@@ -17,8 +17,8 @@ Décisions validées par Clément le 7 novembre 2026.
 | Statistiques | Vercel Analytics ne reçoit plus ni paramètres ni fragment d'adresse. |
 | Lien du diagnostic | Fragment d'adresse (`#i=…`) calculé dans le navigateur. |
 | Lecture par les agents | Kit, `llms.txt`, `/api/catalog.json`, `/api/rules.json` et pages statiques. |
-| Catalogue | Saisie manuelle, registre MCP, marketplace Claude et GitHub. Sans Smithery ni skills.sh. |
-| Validation | Un outil sans `validated_by` n'est jamais publié. Seul Clément valide. |
+| Annuaire | Registre MCP, marketplaces Claude et recherche GitHub. Sans Smithery ni skills.sh. |
+| Validation | Abandonnée le 8 novembre 2026 : l'annuaire est automatique et signale qu'il n'est pas relu. Seuil : 1 000 étoiles, ou éditeur vérifié pour un serveur hébergé. |
 | Accessibilité | WCAG 2.2 AA. |
 | Gravité | Bloquant, important, confort. |
 | CGV | Important, et non bloquant : elles ne sont pas obligatoires en Suisse. |
@@ -47,7 +47,7 @@ Décisions validées par Clément le 7 novembre 2026.
 3. **Catalogue.** `data/tools.json`, pages, contraintes et alternatives.
 4. **Diagnostic.** Quatre écrans, plan, kit agent, lien partageable, import d'une fiche.
 5. **Bonnes pratiques.** Pages sourcées, `llms.txt`, JSON publics.
-6. **Pipeline.** Collecte hebdomadaire et pull request de validation.
+6. **Pipeline.** Collecte hebdomadaire, publiée sans relecture.
 
 ## Critères de fin
 

@@ -3,7 +3,6 @@ import anglesBruts from '../../../data/blind_spots.json';
 import reglesBrutes from '../../../data/rules.json';
 import taxonomieBrute from '../../../data/taxonomy.json';
 import outilsBruts from '../../../data/tools.json';
-import alertes from '../../../data/alerts.json';
 import { typoProfonde } from '../typo';
 
 export type Quand = { toujours?: boolean; contexte?: string[]; types?: string[]; outils?: string[]; signaux?: string[]; intentions?: string[]; verifier?: string };
@@ -12,19 +11,17 @@ export type Regle = { id: string; if: { intentions?: string[]; types?: string[];
 export type Outil = {
   id: string; kind: string; name: string; repo: string; description: string; sources: string[]; install: Record<string, string>;
   stars: number; installs: number | null; audit: string | null; license: string | null; last_push: string;
-  piliers: string[]; cercles: string[]; project_types: string[]; level: string; blind_spots: string[];
+  piliers: string[]; cercles: string[]; project_types: string[]; usages: string[]; level: string; blind_spots: string[];
   constraints: string[]; alternatives: string[]; data_location: { pays: string; societe: string } | null;
-  tuto_url: string | null; learn_course_url: string | null; validated_by: string | null; validated_at: string | null;
-  warning?: string;
+  tuto_url: string | null; learn_course_url: string | null;
 };
 
 export const ANGLES = typoProfonde(anglesBruts) as Angle[];
 export const REGLES = reglesBrutes as Regle[];
 export const TAXONOMIE = typoProfonde(taxonomieBrute);
 
-// Règle du catalogue : sans validation de Clément, un outil n'est pas public. L'aperçu local les montre tous.
-const apercu = process.env.NEXT_PUBLIC_CATALOGUE_APERCU === '1';
-export const OUTILS = (typoProfonde(outilsBruts) as Outil[]).filter((o) => o.validated_by || apercu).map((o) => ({ ...o, warning: (alertes as { id: string; warning: string }[]).find((a) => a.id === o.id)?.warning }));
+// Les outils que le diagnostic peut recommander. L'annuaire complet vit dans public/annuaire/.
+export const OUTILS = typoProfonde(outilsBruts) as Outil[];
 
 export const GRAVITES: Record<Angle['severity'], { nom: string; poids: number }> = {
   bloquant: { nom: 'Bloquant', poids: 300 },

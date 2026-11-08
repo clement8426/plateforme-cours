@@ -880,7 +880,7 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
 .couche h3 a { color: inherit; text-decoration: none; }
 .couche h3 a::after { content: ""; position: absolute; inset: 0; }
 .couche h3 a:focus-visible { outline: none; }
-.couche:focus-within { outline: 3px solid var(--sur-vif); outline-offset: -8px; }
+.couche:has(a:focus-visible) { outline: 3px solid var(--sur-vif); outline-offset: -8px; }
 .couche p { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; }
 .couche-fleche { width: 44px; height: 44px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s cubic-bezier(.2, .8, .2, 1); }
 .couche:hover .couche-fleche { transform: translateX(10px); }
@@ -906,7 +906,7 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
 .tirage h3 a { color: inherit; text-decoration: none; }
 .tirage h3 a::after { content: ""; position: absolute; inset: 0; }
 .tirage h3 a:focus-visible { outline: none; }
-.tirage:focus-within { outline: 3px solid var(--sur-vif); outline-offset: 3px; }
+.tirage:has(a:focus-visible) { outline: 3px solid var(--sur-vif); outline-offset: 3px; }
 .tirage p { padding: 0 8px; color: #4A505A; }
 @media (max-width: 760px) {
   .couche { grid-template-columns: minmax(0, 1fr) 36px; }
@@ -1015,3 +1015,27 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
   .pratique-blocs div { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .rayon li { transition: none; } }
+
+/* ---------- annuaire ---------- */
+.annuaire-onglets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.annuaire-onglets button { display: inline-flex; align-items: baseline; gap: 10px; min-height: 48px; padding: 8px 18px; border: 2px solid var(--encre); border-radius: 14px; background: transparent; color: var(--encre); font: 650 18px/1.1 var(--police-titre), sans-serif; cursor: pointer; }
+.annuaire-onglets button span { font: 500 15px/1 var(--police-texte, inherit), sans-serif; }
+.annuaire-onglets button[aria-pressed="true"] { background: var(--zone); border-color: var(--sur-vif); color: var(--sur-vif); }
+.annuaire-case { display: flex !important; align-items: center; gap: 8px; align-self: end; min-height: 44px; }
+.annuaire-case input { width: 20px; height: 20px; }
+.annuaire-liste { margin-top: 16px; padding: 0; list-style: none; border-top: 2px solid var(--encre); }
+.annuaire-liste li { display: grid; gap: 6px; padding: 16px 4px; border-bottom: 1px solid var(--ligne); }
+.annuaire-liste h3 { font-size: 20px; line-height: 1.2; overflow-wrap: anywhere; }
+.annuaire-liste h3 a { color: var(--encre); }
+.annuaire-liste p { max-width: 90ch; overflow-wrap: anywhere; }
+.annuaire-meta { display: flex; flex-wrap: wrap; gap: 2px 16px; color: var(--discret); font-size: 15px; }
+.annuaire-commande { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.annuaire-commande code { padding: 4px 10px; border-radius: 8px; background: var(--surface-2); font: 500 14px/1.5 ui-monospace, "Cascadia Code", monospace; overflow-wrap: anywhere; }
+.annuaire-commande .bouton-secondaire { min-height: 44px; padding: 0 14px; }
+.annuaire-plus { margin-top: 20px; }
+.annuaire-badge { padding: 1px 10px; border-radius: 999px; background: var(--zone); color: var(--sur-vif); font-weight: 600; }
+.annuaire-meta strong { color: var(--encre); font-weight: 600; }
+.annuaire-commande > span:first-child { min-width: 9.5em; color: var(--discret); font-size: 15px; }
+.annuaire-sources { margin-top: 40px; max-width: 80ch; }
+.annuaire-sources summary { min-height: 44px; display: flex; align-items: center; font-weight: 600; cursor: pointer; }
+.annuaire-sources ul { display: grid; gap: 6px; padding-left: 22px; margin: 8px 0 14px; }

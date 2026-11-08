@@ -210,7 +210,10 @@ Le site a quatre zones : `/cours/`, `/demarrer/`, `/diagnostic/` et `/bonnes-pra
 - **Score du test :** `src/contenu/parcours/score.ts` ne contient que des empreintes des bonnes réponses.
 - **Modèles vides :** `public/telechargements/parcours/` pour Word et Markdown ; le PDF se crée dans le navigateur.
 - **Angles morts et règles :** `data/blind_spots.json`, `data/rules.json` et `data/taxonomy.json`.
-- **Catalogue :** `data/tools.json`. Un outil n'est public qu'une fois validé : `npm run catalogue:valider -- <id>`, ou `-- --tous`.
-- **Aperçu du catalogue :** `NEXT_PUBLIC_CATALOGUE_APERCU=1 npm run build` montre aussi les outils non validés.
-- **Collecte :** `.github/workflows/catalogue.yml` ouvre chaque lundi une pull request de candidats. Seuils dans `data/collecte.config.json`.
+- **Annuaire :** `public/annuaire/` (MCP, plugins, skills), reconstruit par `npm run annuaire:collecter` (avec `GITHUB_TOKEN`). Code dans `scripts/annuaire-collecter.mjs` et `scripts/annuaire/`, règles et sources dans `data/classement.config.json`.
+  - **Publié si :** référencé par un répertoire reconnu (Claude, OpenAI, Google, GitHub, Docker, Cursor, AWS, projet MCP, dépôt d'éditeur), ou au moins 1 000 étoiles sur un dépôt qui appartient à l'auteur, ou éditeur prouvé par le registre MCP et 10 000 téléchargements npm par semaine.
+  - **Sûreté :** si une source échoue, rien n'est publié (code 2). Si une liste perd plus de 15 %, rien non plus (code 3, `ANNUAIRE_FORCER=1` pour passer outre). L'état de la recherche GitHub est gardé dans `data/raw/etat.json`.
+  - **Fiches Claude :** lues une fois par semaine, une toutes les 1,5 seconde, nom et adresse seulement (`claudeConnecteurs` dans la config, `ANNUAIRE_CLAUDE=0` pour les couper). Les conditions d'Anthropic ne tranchent pas ce cas : à revoir si Anthropic répond.
+  - **Planification :** `.github/workflows/catalogue.yml`, chaque jour à 5 h 23 UTC (répertoires), chaque dimanche à 1 h 17 UTC (en plus, recherche GitHub longue). Secrets à créer dans GitHub : `ANNUAIRE_GH_TOKEN` (jeton en lecture seule, sinon `GITHUB_TOKEN` limité), `VERCEL_DEPLOY_HOOK` (adresse de redéploiement). Un échec ouvre un ticket et laisse la liste en ligne intacte. GitHub désactive un workflow planifié après 60 jours sans activité : le commit hebdomadaire l'évite.
+- **Outils du diagnostic :** `data/tools.json`, saisi à la main.
 - **Vérification :** `SITE_URL=http://127.0.0.1:3000 UX_OUTILS=../ux-outils npm run verifier:parcours`.

@@ -29,7 +29,7 @@ export function kitMarkdown(c: Choix, plan: Plan, niveau: string, notes: string[
       ...Object.entries(o.install).map(([agent, commande]) => `- ${agent}: \`${commande}\``),
       ...o.constraints.map((x) => `- Constraint: ${x}`),
       'Verify it works before moving on. If it is not available for this agent, report it instead of inventing a command.', '',
-    ]) : ['No validated tool applies yet. Continue with the blind spots.', '']),
+    ]) : ['No listed tool applies yet. Continue with the blind spots.', '']),
     '## Blind spots, in order', '',
     ...plan.actifs.flatMap((a, i) => [
       `${i + 1}. **${a.title}** (${a.severity})`,

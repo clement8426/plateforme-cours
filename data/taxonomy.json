@@ -208,5 +208,59 @@
    "id": "aucun",
    "label_fr": "Pas encore d’outil"
   }
+ ],
+ "usages": [
+  {
+   "id": "tester",
+   "label_fr": "Tester"
+  },
+  {
+   "id": "securite",
+   "label_fr": "Sécurité"
+  },
+  {
+   "id": "accessibilite",
+   "label_fr": "Accessibilité"
+  },
+  {
+   "id": "performance",
+   "label_fr": "Performance"
+  },
+  {
+   "id": "design",
+   "label_fr": "Design"
+  },
+  {
+   "id": "code",
+   "label_fr": "Écrire et relire le code"
+  },
+  {
+   "id": "deploiement",
+   "label_fr": "Mettre en ligne"
+  },
+  {
+   "id": "donnees",
+   "label_fr": "Données"
+  },
+  {
+   "id": "mesure",
+   "label_fr": "Mesure et suivi"
+  },
+  {
+   "id": "paiement",
+   "label_fr": "Paiement"
+  },
+  {
+   "id": "contenu",
+   "label_fr": "Contenu et documents"
+  },
+  {
+   "id": "documentation",
+   "label_fr": "Documentation"
+  },
+  {
+   "id": "orchestration",
+   "label_fr": "Automatiser et enchaîner"
+  }
  ]
 }

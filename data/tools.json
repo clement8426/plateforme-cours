@@ -12,7 +12,7 @@
    "claude": "claude mcp add playwright npx @playwright/mcp@latest",
    "codex": "codex mcp add playwright npx \"@playwright/mcp@latest\""
   },
-  "stars": 39293,
+  "stars": 39303,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -39,8 +39,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "tester"
+  ]
  },
  {
   "id": "chrome-devtools-mcp",
@@ -54,7 +55,7 @@
   "install": {
    "terminal": "npm i chrome-devtools-mcp@latest -g"
   },
-  "stars": 54917,
+  "stars": 54931,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -80,8 +81,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "tester",
+   "performance"
+  ]
  },
  {
   "id": "github-mcp",
@@ -93,7 +96,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 34298,
+  "stars": 34303,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -120,8 +123,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code"
+  ]
  },
  {
   "id": "supabase-mcp",
@@ -146,7 +150,8 @@
   ],
   "project_types": [
    "app-web",
-   "mobile"
+   "mobile",
+   "boutique"
   ],
   "level": "avance",
   "blind_spots": [
@@ -164,8 +169,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "donnees"
+  ]
  },
  {
   "id": "context7",
@@ -179,7 +185,7 @@
   "install": {
    "terminal": "npx ctx7 setup"
   },
-  "stars": 64310,
+  "stars": 64318,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -193,7 +199,8 @@
   "project_types": [
    "app-web",
    "mobile",
-   "automatisation"
+   "automatisation",
+   "agent-ia"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -209,8 +216,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "documentation"
+  ]
  },
  {
   "id": "sentry-mcp",
@@ -237,7 +245,8 @@
   ],
   "project_types": [
    "app-web",
-   "mobile"
+   "mobile",
+   "boutique"
   ],
   "level": "avance",
   "blind_spots": [
@@ -254,8 +263,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "mesure"
+  ]
  },
  {
   "id": "notion-mcp",
@@ -299,8 +309,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "documentation"
+  ]
  },
  {
   "id": "cloudflare-mcp",
@@ -312,7 +323,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 4453,
+  "stars": 4454,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -325,7 +336,8 @@
   ],
   "project_types": [
    "vitrine",
-   "app-web"
+   "app-web",
+   "boutique"
   ],
   "level": "avance",
   "blind_spots": [
@@ -341,8 +353,10 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "deploiement",
+   "documentation"
+  ]
  },
  {
   "id": "security-guidance",
@@ -356,7 +370,7 @@
   "install": {
    "claude": "/plugin install security-guidance@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -370,7 +384,8 @@
   "project_types": [
    "app-web",
    "mobile",
-   "automatisation"
+   "automatisation",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -384,8 +399,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "code-review",
@@ -399,7 +415,7 @@
   "install": {
    "claude": "/plugin install code-review@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -425,8 +441,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code"
+  ]
  },
  {
   "id": "pr-review-toolkit",
@@ -440,7 +457,7 @@
   "install": {
    "claude": "/plugin install pr-review-toolkit@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -466,8 +483,11 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code",
+   "tester",
+   "design"
+  ]
  },
  {
   "id": "frontend-design",
@@ -481,7 +501,7 @@
   "install": {
    "claude": "/plugin install frontend-design@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -496,7 +516,8 @@
   "project_types": [
    "vitrine",
    "boutique",
-   "app-web"
+   "app-web",
+   "campagne"
   ],
   "level": "debutant",
   "blind_spots": [
@@ -510,8 +531,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "design"
+  ]
  },
  {
   "id": "feature-dev",
@@ -525,7 +547,7 @@
   "install": {
    "claude": "/plugin install feature-dev@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -551,8 +573,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code",
+   "orchestration"
+  ]
  },
  {
   "id": "semgrep-plugin",
@@ -566,7 +590,7 @@
   "install": {
    "claude": "/plugin install semgrep@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -580,7 +604,8 @@
   "project_types": [
    "app-web",
    "mobile",
-   "automatisation"
+   "automatisation",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -594,8 +619,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "supabase-plugin",
@@ -609,7 +635,7 @@
   "install": {
    "claude": "/plugin install supabase@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -622,7 +648,8 @@
   ],
   "project_types": [
    "app-web",
-   "mobile"
+   "mobile",
+   "boutique"
   ],
   "level": "avance",
   "blind_spots": [
@@ -641,8 +668,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "donnees"
+  ]
  },
  {
   "id": "stripe-plugin",
@@ -656,7 +684,7 @@
   "install": {
    "claude": "claude plugin install stripe@claude-plugins-official"
   },
-  "stars": 2046,
+  "stars": 2047,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -687,8 +715,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "paiement"
+  ]
  },
  {
   "id": "vercel-plugin",
@@ -702,7 +731,7 @@
   "install": {
    "claude": "/plugin install vercel@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -715,7 +744,8 @@
   ],
   "project_types": [
    "vitrine",
-   "app-web"
+   "app-web",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -734,8 +764,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "deploiement"
+  ]
  },
  {
   "id": "figma-plugin",
@@ -749,7 +780,7 @@
   "install": {
    "claude": "/plugin install figma@claude-plugins-official"
   },
-  "stars": 46335,
+  "stars": 46349,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -764,7 +795,8 @@
   "project_types": [
    "vitrine",
    "boutique",
-   "app-web"
+   "app-web",
+   "campagne"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -780,8 +812,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "design"
+  ]
  },
  {
   "id": "superpowers",
@@ -795,7 +828,7 @@
   "install": {
    "claude": "/plugin install superpowers@claude-plugins-official"
   },
-  "stars": 313856,
+  "stars": 314015,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -809,7 +842,8 @@
   "project_types": [
    "app-web",
    "mobile",
-   "automatisation"
+   "automatisation",
+   "agent-ia"
   ],
   "level": "avance",
   "blind_spots": [
@@ -822,8 +856,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code",
+   "tester"
+  ]
  },
  {
   "id": "anthropic-skills",
@@ -837,7 +873,7 @@
   "install": {
    "claude": "/plugin marketplace add anthropics/skills"
   },
-  "stars": 188363,
+  "stars": 188590,
   "installs": null,
   "audit": null,
   "license": null,
@@ -851,7 +887,9 @@
   ],
   "project_types": [
    "automatisation",
-   "campagne"
+   "campagne",
+   "agent-ia",
+   "rh"
   ],
   "level": "debutant",
   "blind_spots": [
@@ -864,8 +902,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "contenu",
+   "code"
+  ]
  },
  {
   "id": "vercel-agent-skills",
@@ -879,7 +919,7 @@
   "install": {
    "terminal": "npx skills add vercel-labs/agent-skills"
   },
-  "stars": 33667,
+  "stars": 33683,
   "installs": null,
   "audit": null,
   "license": null,
@@ -892,7 +932,10 @@
   ],
   "project_types": [
    "vitrine",
-   "app-web"
+   "app-web",
+   "automatisation",
+   "agent-ia",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -906,8 +949,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "deploiement",
+   "design"
+  ]
  },
  {
   "id": "axe-core",
@@ -919,7 +964,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 7774,
+  "stars": 7776,
   "installs": null,
   "audit": null,
   "license": "MPL-2.0",
@@ -948,8 +993,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "accessibilite"
+  ]
  },
  {
   "id": "pa11y",
@@ -991,8 +1037,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "accessibilite",
+   "tester"
+  ]
  },
  {
   "id": "lighthouse",
@@ -1004,7 +1052,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 31025,
+  "stars": 31026,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -1032,8 +1080,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "performance",
+   "tester"
+  ]
  },
  {
   "id": "semgrep",
@@ -1047,7 +1097,7 @@
   "install": {
    "terminal": "brew install semgrep"
   },
-  "stars": 17535,
+  "stars": 17538,
   "installs": null,
   "audit": null,
   "license": "LGPL-2.1",
@@ -1061,7 +1111,8 @@
   "project_types": [
    "app-web",
    "mobile",
-   "automatisation"
+   "automatisation",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -1072,8 +1123,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "gitleaks",
@@ -1087,7 +1139,7 @@
   "install": {
    "terminal": "brew install gitleaks"
   },
-  "stars": 30755,
+  "stars": 30758,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -1102,7 +1154,8 @@
    "app-web",
    "mobile",
    "automatisation",
-   "agent-ia"
+   "agent-ia",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -1113,8 +1166,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "trufflehog",
@@ -1141,7 +1195,9 @@
   ],
   "project_types": [
    "app-web",
-   "automatisation"
+   "automatisation",
+   "boutique",
+   "mobile"
   ],
   "level": "avance",
   "blind_spots": [
@@ -1152,8 +1208,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "trivy",
@@ -1167,7 +1224,7 @@
   "install": {
    "terminal": "brew install trivy"
   },
-  "stars": 39090,
+  "stars": 39098,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -1180,7 +1237,9 @@
   ],
   "project_types": [
    "app-web",
-   "automatisation"
+   "automatisation",
+   "boutique",
+   "mobile"
   ],
   "level": "avance",
   "blind_spots": [
@@ -1192,8 +1251,10 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite",
+   "deploiement"
+  ]
  },
  {
   "id": "osv-scanner",
@@ -1205,11 +1266,11 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 11447,
+  "stars": 11449,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
-  "last_push": "2026-11-06",
+  "last_push": "2026-11-07",
   "piliers": [
    "numerique"
   ],
@@ -1218,7 +1279,9 @@
   ],
   "project_types": [
    "app-web",
-   "mobile"
+   "mobile",
+   "boutique",
+   "automatisation"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -1229,8 +1292,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "zap",
@@ -1242,7 +1306,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 16125,
+  "stars": 16128,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -1255,7 +1319,8 @@
   ],
   "project_types": [
    "app-web",
-   "boutique"
+   "boutique",
+   "automatisation"
   ],
   "level": "avance",
   "blind_spots": [
@@ -1269,8 +1334,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "securite"
+  ]
  },
  {
   "id": "opencode",
@@ -1284,7 +1350,7 @@
   "install": {
    "terminal": "npm i -g @opencode/cli@latest"
   },
-  "stars": 225175,
+  "stars": 225243,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -1313,8 +1379,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code"
+  ]
  },
  {
   "id": "hermes-agent",
@@ -1326,7 +1393,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 261360,
+  "stars": 261444,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -1354,8 +1421,9 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "orchestration"
+  ]
  },
  {
   "id": "codex",
@@ -1369,7 +1437,7 @@
   "install": {
    "terminal": "npm install -g @openai/codex"
   },
-  "stars": 133547,
+  "stars": 133579,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -1401,8 +1469,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code"
+  ]
  },
  {
   "id": "supabase",
@@ -1414,7 +1483,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 114629,
+  "stars": 114639,
   "installs": null,
   "audit": null,
   "license": "Apache-2.0",
@@ -1427,7 +1496,8 @@
   ],
   "project_types": [
    "app-web",
-   "mobile"
+   "mobile",
+   "boutique"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -1450,8 +1520,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "donnees"
+  ]
  },
  {
   "id": "n8n",
@@ -1463,7 +1534,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 209748,
+  "stars": 209765,
   "installs": null,
   "audit": null,
   "license": null,
@@ -1477,7 +1548,8 @@
   ],
   "project_types": [
    "automatisation",
-   "rh"
+   "rh",
+   "agent-ia"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -1497,8 +1569,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "orchestration"
+  ]
  },
  {
   "id": "umami",
@@ -1510,11 +1583,11 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 39963,
+  "stars": 39974,
   "installs": null,
   "audit": null,
   "license": "MIT",
-  "last_push": "2026-11-04",
+  "last_push": "2026-11-07",
   "piliers": [
    "experience"
   ],
@@ -1524,7 +1597,8 @@
   "project_types": [
    "vitrine",
    "boutique",
-   "campagne"
+   "campagne",
+   "app-web"
   ],
   "level": "intermediaire",
   "blind_spots": [
@@ -1543,8 +1617,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "mesure"
+  ]
  },
  {
   "id": "plausible",
@@ -1556,7 +1631,7 @@
    "saisie-manuelle"
   ],
   "install": {},
-  "stars": 29788,
+  "stars": 29790,
   "installs": null,
   "audit": null,
   "license": "AGPL-3.0",
@@ -1570,7 +1645,8 @@
   "project_types": [
    "vitrine",
    "boutique",
-   "campagne"
+   "campagne",
+   "app-web"
   ],
   "level": "debutant",
   "blind_spots": [
@@ -1589,8 +1665,9 @@
   },
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "mesure"
+  ]
  },
  {
   "id": "next-js",
@@ -1604,7 +1681,7 @@
   "install": {
    "terminal": "npx create-next-app@latest"
   },
-  "stars": 143379,
+  "stars": 143380,
   "installs": null,
   "audit": null,
   "license": "MIT",
@@ -1628,7 +1705,8 @@
   "data_location": null,
   "tuto_url": null,
   "learn_course_url": null,
-  "validated_by": null,
-  "validated_at": null
+  "usages": [
+   "code"
+  ]
  }
 ]

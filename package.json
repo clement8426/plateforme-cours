@@ -25,8 +25,7 @@
     "verifier:qualite": "node scripts/verifier-audit.mjs",
     "verifier:fiches": "node scripts/verifier-fiches.mjs",
     "verifier:parcours": "node scripts/verifier-parcours.mjs",
-    "catalogue:collecter": "node scripts/catalogue-collecter.mjs",
-    "catalogue:valider": "node scripts/catalogue-valider.mjs"
+    "annuaire:collecter": "node scripts/annuaire-collecter.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

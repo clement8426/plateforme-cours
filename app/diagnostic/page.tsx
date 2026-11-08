@@ -16,10 +16,10 @@ export default function Page() {
       <Diagnostic />
       <section className="section lien-ligne" aria-labelledby="titre-catalogue">
         <div>
-          <h2 id="titre-catalogue">Catalogue d’outils</h2>
-          <p>Des skills, plugins et serveurs MCP triés à la main, avec leurs contraintes et leurs alternatives.</p>
+          <h2 id="titre-catalogue">Annuaire des outils</h2>
+          <p>Tous les serveurs MCP, plugins et skills que nous avons trouvés, classés par besoin et par type de projet.</p>
         </div>
-        <Link className="bouton-secondaire" prefetch={false} href="/diagnostic/catalogue/">Voir le catalogue</Link>
+        <Link className="bouton-secondaire" prefetch={false} href="/diagnostic/catalogue/">Ouvrir l’annuaire</Link>
       </section>
     </div>
   );

@@ -1,0 +1,485 @@
+{
+ "types": {
+  "vitrine": [
+   "landing page",
+   "static site",
+   "site vitrine",
+   "portfolio",
+   "cms",
+   "wordpress",
+   "seo",
+   "website"
+  ],
+  "boutique": [
+   "e-?commerce",
+   "online store",
+   "shopify",
+   "woocommerce",
+   "checkout",
+   "shopping cart",
+   "payments?",
+   "boutique",
+   "stripe"
+  ],
+  "app-web": [
+   "web app(lication)?s?",
+   "saas",
+   "full-?stack",
+   "backend",
+   "authentication",
+   "dashboard",
+   "postgres",
+   "next\\.js",
+   "react"
+  ],
+  "mobile": [
+   "mobile apps?",
+   "ios",
+   "android",
+   "react native",
+   "expo",
+   "flutter",
+   "swiftui"
+  ],
+  "automatisation": [
+   "workflow automation",
+   "automation",
+   "automate",
+   "webhooks?",
+   "ci/?cd",
+   "integrations?",
+   "pipelines?",
+   "zapier",
+   "n8n"
+  ],
+  "agent-ia": [
+   "multi-?agent",
+   "agent framework",
+   "autonomous agents?",
+   "ai agents?",
+   "rag",
+   "agent memory",
+   "build agents"
+  ],
+  "campagne": [
+   "marketing",
+   "newsletter",
+   "email campaigns?",
+   "social media",
+   "advertising",
+   "copywriting",
+   "brand",
+   "crm",
+   "web analytics",
+   "content creation"
+  ],
+  "rh": [
+   "recruit(ing|ment)",
+   "hiring",
+   "onboarding",
+   "payroll",
+   "human resources",
+   "project management",
+   "knowledge base",
+   "meeting notes",
+   "team wiki",
+   "notion",
+   "jira",
+   "linear",
+   "slack"
+  ]
+ },
+ "usages": {
+  "tester": [
+   "end-to-end",
+   "e2e",
+   "browser automation",
+   "test(s|ing)?",
+   "qa",
+   "debug(ging)?",
+   "tester",
+   "parcours",
+   "navigateur",
+   "vrai navigateur",
+   "audit",
+   "audite"
+  ],
+  "securite": [
+   "security",
+   "vulnerabilit(y|ies)",
+   "secrets?",
+   "sast",
+   "owasp",
+   "dast",
+   "penetration",
+   "cve",
+   "sécurité",
+   "failles?",
+   "vulnérabilités?",
+   "fuites?",
+   "dépendances vulnérables",
+   "clés?"
+  ],
+  "accessibilite": [
+   "accessibility",
+   "a11y",
+   "wcag",
+   "accessibilité"
+  ],
+  "performance": [
+   "lighthouse",
+   "core web vitals",
+   "web vitals",
+   "performances?",
+   "vitesse"
+  ],
+  "design": [
+   "design",
+   "figma",
+   "ui components?",
+   "user interface",
+   "ux",
+   "interfaces?",
+   "maquettes?",
+   "visuels?",
+   "figma"
+  ],
+  "code": [
+   "code review",
+   "pull requests?",
+   "refactor",
+   "coding agent",
+   "software development",
+   "feature development",
+   "repositor(y|ies)",
+   "revue de code",
+   "relecture",
+   "développer",
+   "agent de code",
+   "next\\.js",
+   "framework",
+   "github",
+   "react"
+  ],
+  "deploiement": [
+   "deploy(ment|ments|ing)?",
+   "hosting",
+   "cdn",
+   "infrastructure",
+   "docker",
+   "kubernetes",
+   "serverless",
+   "déployer",
+   "déploiement",
+   "mettre en ligne",
+   "mise en ligne",
+   "hébergement",
+   "conteneurs?",
+   "cloudflare",
+   "vercel"
+  ],
+  "donnees": [
+   "database",
+   "postgres",
+   "sql",
+   "storage",
+   "base de données",
+   "bases de données",
+   "rls",
+   "supabase"
+  ],
+  "mesure": [
+   "analytics",
+   "monitoring",
+   "error tracking",
+   "observability",
+   "traffic",
+   "mesure",
+   "audience",
+   "statistiques",
+   "erreurs? en production",
+   "suivi",
+   "sentry",
+   "erreurs?"
+  ],
+  "paiement": [
+   "payments?",
+   "billing",
+   "invoices?",
+   "subscriptions?",
+   "paiements?",
+   "facturation",
+   "abonnements?",
+   "stripe"
+  ],
+  "contenu": [
+   "documents?",
+   "pdf",
+   "docx",
+   "presentations?",
+   "spreadsheets?",
+   "writing",
+   "content",
+   "contenus?",
+   "rédiger",
+   "rédaction"
+  ],
+  "documentation": [
+   "documentation",
+   "docs",
+   "up-to-date",
+   "knowledge",
+   "à jour",
+   "bibliothèques?",
+   "pages notion",
+   "notion"
+  ],
+  "orchestration": [
+   "automation",
+   "orchestrat(e|ion)",
+   "flux",
+   "automatiser",
+   "automatisation",
+   "méthode",
+   "agent autonome",
+   "n8n",
+   "agents? autonomes?",
+   "assistant",
+   "workflows? automation",
+   "orchestrator"
+  ]
+ },
+ "typesParUsage": {
+  "tester": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "securite": [
+   "boutique",
+   "app-web",
+   "mobile",
+   "automatisation"
+  ],
+  "accessibilite": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "performance": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "design": [
+   "vitrine",
+   "boutique",
+   "app-web",
+   "campagne"
+  ],
+  "code": [
+   "app-web",
+   "mobile"
+  ],
+  "deploiement": [
+   "vitrine",
+   "boutique",
+   "app-web"
+  ],
+  "donnees": [
+   "boutique",
+   "app-web",
+   "mobile"
+  ],
+  "mesure": [
+   "vitrine",
+   "boutique",
+   "app-web",
+   "campagne"
+  ],
+  "paiement": [
+   "boutique",
+   "app-web"
+  ],
+  "contenu": [
+   "campagne",
+   "rh"
+  ],
+  "documentation": [
+   "app-web",
+   "mobile"
+  ],
+  "orchestration": [
+   "automatisation",
+   "agent-ia"
+  ]
+ },
+ "usagesMax": 3,
+ "budgets": {
+  "marketplaces": 15,
+  "pluginsJson": 15,
+  "skills": 45,
+  "npm": 10
+ },
+ "publication": {
+  "etoilesMin": 1000,
+  "maxParDepot": 25,
+  "telechargementsMin": 10000
+ },
+ "references": [
+  [
+   "claude",
+   "Claude (Anthropic)"
+  ],
+  [
+   "openai",
+   "OpenAI"
+  ],
+  [
+   "google",
+   "Google"
+  ],
+  [
+   "github",
+   "GitHub"
+  ],
+  [
+   "docker",
+   "Docker"
+  ],
+  [
+   "cursor",
+   "Cursor"
+  ],
+  [
+   "aws",
+   "AWS"
+  ],
+  [
+   "mcp",
+   "Projet MCP"
+  ],
+  [
+   "editeur",
+   "Éditeur officiel"
+  ]
+ ],
+ "marketplaces": [
+  {
+   "repo": "anthropics/claude-plugins-official",
+   "chemin": ".claude-plugin/marketplace.json",
+   "ref": "claude"
+  },
+  {
+   "repo": "anthropics/knowledge-work-plugins",
+   "chemin": ".claude-plugin/marketplace.json",
+   "ref": "claude"
+  },
+  {
+   "repo": "openai/plugins",
+   "chemin": ".agents/plugins/marketplace.json",
+   "ref": "openai",
+   "manifeste": ".codex-plugin/plugin.json"
+  },
+  {
+   "repo": "cursor/plugins",
+   "chemin": ".cursor-plugin/marketplace.json",
+   "ref": "cursor",
+   "manifeste": ".cursor-plugin/plugin.json"
+  },
+  {
+   "repo": "github/copilot-plugins",
+   "chemin": ".github/plugin/marketplace.json",
+   "ref": "github"
+  }
+ ],
+ "depotsSkills": [
+  {
+   "repo": "anthropics/skills",
+   "ref": "claude"
+  },
+  {
+   "repo": "openai/skills",
+   "ref": "openai",
+   "dossier": "skills/.curated"
+  },
+  {
+   "repo": "google/skills",
+   "ref": "google"
+  },
+  {
+   "repo": "aws/agent-toolkit-for-aws",
+   "ref": "aws"
+  },
+  {
+   "repo": "microsoft/skills",
+   "ref": "editeur"
+  },
+  {
+   "repo": "trailofbits/skills",
+   "ref": "editeur"
+  },
+  {
+   "repo": "stripe/ai",
+   "ref": "editeur"
+  },
+  {
+   "repo": "vercel-labs/agent-skills",
+   "ref": "editeur"
+  },
+  {
+   "repo": "getsentry/skills",
+   "ref": "editeur"
+  },
+  {
+   "repo": "cloudflare/skills",
+   "ref": "editeur"
+  },
+  {
+   "repo": "hashicorp/agent-skills",
+   "ref": "editeur"
+  },
+  {
+   "repo": "supabase/agent-skills",
+   "ref": "editeur"
+  }
+ ],
+ "depotsServeurs": [
+  {
+   "repo": "modelcontextprotocol/servers",
+   "dossier": "src",
+   "ref": "mcp"
+  },
+  {
+   "repo": "awslabs/mcp",
+   "dossier": "src",
+   "ref": "aws",
+   "pyproject": true
+  }
+ ],
+ "topics": {
+  "mcp": [
+   "mcp-server",
+   "mcp-servers",
+   "mcp",
+   "model-context-protocol"
+  ],
+  "plugins": [
+   "claude-code-plugin",
+   "claude-plugin",
+   "claude-code-plugins"
+  ],
+  "skills": [
+   "claude-skills",
+   "claude-code-skills",
+   "agent-skills",
+   "agentskills",
+   "claude-skill"
+  ]
+ },
+ "claudeConnecteurs": {
+  "actif": true,
+  "pauseMs": 1500,
+  "jours": 6
+ }
+}
