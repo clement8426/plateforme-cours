@@ -71,4 +71,5 @@ jobs:
         if: failure()
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue create --title "Annuaire : la mise à jour a échoué le $(date +%F)" --body "Voir le journal : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Rien n'a été publié, la liste en ligne est inchangée."
+        run: |
+          gh issue create --title "Annuaire : la mise à jour a échoué le $(date +%F)" --body "Voir le journal : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Rien n'a été publié, la liste en ligne est inchangée."
