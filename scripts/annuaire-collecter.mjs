@@ -2,7 +2,7 @@
 // GITHUB_TOKEN=... npm run annuaire:collecter
 //
 // Règle de publication : un outil est publié s'il est référencé par un répertoire reconnu (Claude, OpenAI, Google,
-// GitHub, Docker, Cursor, AWS, projet MCP, dépôt d'éditeur), ou s'il compte au moins 1 000 étoiles sur un dépôt qui
+// GitHub, Docker, Cursor, AWS, projet MCP, skills.sh avec 1 000 installations, dépôt d'éditeur, ajout manuel), ou s'il compte au moins 1 000 étoiles sur un dépôt qui
 // lui appartient, ou si son éditeur est prouvé et que son paquet npm dépasse 10 000 téléchargements par semaine.
 // « Référencé » signifie reconnu, jamais vérifié : la page le dit.
 //
@@ -62,7 +62,9 @@ await source('catalogue Docker', () => S.docker(base, gh));
 for (const d of config.depotsServeurs) await source(`serveurs ${d.repo}`, () => S.serveursDeDepot(base, gh, d));
 await source('Google Cloud', () => S.googleCloud(base));
 if (config.claudeConnecteurs?.actif && process.env.ANNUAIRE_CLAUDE !== '0') await source('connecteurs Claude', () => S.connecteursClaude(base, etat, { ...config.claudeConnecteurs, force: process.env.ANNUAIRE_CLAUDE === 'force' }), { critique: false });
-await source('extensions Gemini', () => S.gemini(base));
+await source('extensions Gemini', () => S.gemini(base), { critique: false });
+await source('ajouts manuels', () => S.ajoutsManuels(base, JSON.parse(readFileSync(new URL('data/annuaire-ajouts.json', racine), 'utf8')).ajouts));
+if (config.skillssh?.actif && process.env.ANNUAIRE_SKILLSSH !== '0') await source('skills.sh', () => S.skillsSh(base, etat, { ...config.skillssh, force: process.env.ANNUAIRE_SKILLSSH === 'force', sansLecture: process.env.ANNUAIRE_SKILLSSH === 'cache' }), { critique: false });
 
 // ---------- Recherche GitHub : complète, sans jamais bloquer ----------
 await source('topics GitHub', () => S.topics(base, gh, { liste: config.topics, etoilesMin }), { critique: false });
@@ -188,10 +190,10 @@ function ligne(nature, e) {
   const [u, t] = classer(`${nom} ${d} ${sujets}`);
   const acces = (e.cmd || e.local ? 1 : 0) | (e.url ? 2 : 0);
   return [nom, g?.nameWithOwner ?? e.repo ?? '', d, etoilesDe(nature, e), g?.pushedAt?.slice(0, 10) ?? '', g?.isArchived ? 1 : 0, g?.licenseInfo?.spdxId ?? '', u, t,
-    e.cmd ?? '', e.url ?? '', e.domVerifie ? e.dom : '', [...e.refs].map((r) => idsRefs.indexOf(r)).filter((i) => i >= 0), e.dl ?? 0, acces, estPartage(nature, e) ? 1 : 0, e.copies ?? 1];
+    e.cmd ?? '', e.url ?? '', e.domVerifie ? e.dom : '', [...e.refs].map((r) => idsRefs.indexOf(r)).filter((i) => i >= 0), e.dl ?? e.installs ?? 0, acces, estPartage(nature, e) ? 1 : 0, e.copies ?? 1];
 }
 const publie = (nature, e) => {
-  if (infoDe(e.repo)?.isArchived) return false;
+  if (infoDe(e.repo)?.isArchived || e.auditEchec) return false;
   if (e.refs.size) return true;
   if (e.repoOk && !estPartage(nature, e) && etoilesDe(nature, e) >= etoilesMin) return true;
   return !!(e.prouve && (e.dl ?? 0) >= telechargementsMin);
@@ -227,7 +229,7 @@ journal('trouvés', JSON.stringify(trouves), 'publiés', JSON.stringify(comptes)
 
 // ---------- État du prochain passage : écrit avant les contrôles, un long passage n'est jamais perdu ----------
 const memoire = (nature) => entreesSimples(nature).filter((e) => e.recherche && infoDe(e.repo)).map(({ n, repo, d, h }) => ({ n, repo, d, h }));
-writeFileSync(fichierEtat, JSON.stringify({ date: new Date().toISOString().slice(0, 10), plugins: memoire('plugins'), skills: memoire('skills'), npm: etat.npm, claude: etat.claude }));
+writeFileSync(fichierEtat, JSON.stringify({ date: new Date().toISOString().slice(0, 10), plugins: memoire('plugins'), skills: memoire('skills'), npm: etat.npm, claude: etat.claude, skillssh: etat.skillssh }));
 
 // ---------- Contrôles avant publication ----------
 const problemes = sources.filter((s) => !s.ok).map((s) => `${s.nom} : ${s.erreur ?? `${s.erreurs} erreurs`}`);
@@ -246,7 +248,7 @@ if (chutes.length && !process.env.ANNUAIRE_FORCER) {
 for (const [nature, lignes] of Object.entries(listes)) writeFileSync(new URL(`${nature}.json`, sortie), JSON.stringify(lignes));
 rmSync(new URL('heberges.json', sortie), { force: true });
 const date = new Date().toISOString().slice(0, 10);
-const COLONNES = ['nom', 'depot', 'description', 'etoiles', 'dernier_push', 'archive', 'licence', 'usages', 'types', 'commande_locale', 'adresse_mcp_en_ligne', 'domaine_verifie', 'references', 'telechargements_npm_semaine', 'acces_1_local_2_en_ligne', 'depot_partage', 'copies'];
+const COLONNES = ['nom', 'depot', 'description', 'etoiles', 'dernier_push', 'archive', 'licence', 'usages', 'types', 'commande_locale', 'adresse_mcp_en_ligne', 'domaine_verifie', 'references', 'telechargements_npm_semaine_ou_installations', 'acces_1_local_2_en_ligne', 'depot_partage', 'copies'];
 writeFileSync(new URL('index.json', sortie), `${JSON.stringify({
   date, comptes, trouves, sources: sources.map(({ nom, n, ok }) => ({ nom, n, ok })),
   criteres: { references: 'référencé par un répertoire reconnu', etoiles: etoilesMin, telechargementsNpmParSemaine: telechargementsMin, maxParDepot },

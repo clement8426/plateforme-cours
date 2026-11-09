@@ -1,14 +1,14 @@
 {
- "date": "2026-11-08",
+ "date": "2026-11-09",
  "comptes": {
-  "mcp": 2497,
-  "plugins": 951,
-  "skills": 1207
+  "mcp": 2431,
+  "plugins": 890,
+  "skills": 8680
  },
  "trouves": {
-  "mcp": 52856,
-  "plugins": 19057,
-  "skills": 12273
+  "mcp": 52842,
+  "plugins": 18995,
+  "skills": 20015
  },
  "sources": [
   {
@@ -133,7 +133,17 @@
   },
   {
    "nom": "extensions Gemini",
-   "n": 2198,
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "ajouts manuels",
+   "n": 2,
+   "ok": true
+  },
+  {
+   "nom": "skills.sh",
+   "n": 8772,
    "ok": true
   },
   {
@@ -143,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 50144,
+   "n": 50652,
    "ok": true
   }
  ],
@@ -189,6 +199,10 @@
   [
    "editeur",
    "Éditeur officiel"
+  ],
+  [
+   "skillssh",
+   "skills.sh (1 000 installations ou plus)"
   ]
  ],
  "usages": [
@@ -293,7 +307,7 @@
   "adresse_mcp_en_ligne",
   "domaine_verifie",
   "references",
-  "telechargements_npm_semaine",
+  "telechargements_npm_semaine_ou_installations",
   "acces_1_local_2_en_ligne",
   "depot_partage",
   "copies"

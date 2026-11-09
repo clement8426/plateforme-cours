@@ -50,6 +50,8 @@ export function creerBase(domaineDe = () => null) {
     if (entree.nomPropre && !present.nomPropre) { present.n = entree.n; present.nomPropre = true; }
     if (!present.d && entree.d) present.d = entree.d;
     if (!present.h && entree.h) present.h = entree.h;
+    if (entree.installs) present.installs = entree.installs;
+    if (entree.auditEchec) present.auditEchec = true;
     present.recherche = present.recherche && entree.recherche;
     return present;
   }

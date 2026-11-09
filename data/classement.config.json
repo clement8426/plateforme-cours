@@ -362,6 +362,10 @@
   [
    "editeur",
    "Éditeur officiel"
+  ],
+  [
+   "skillssh",
+   "skills.sh (1 000 installations ou plus)"
   ]
  ],
  "marketplaces": [
@@ -481,5 +485,13 @@
   "actif": true,
   "pauseMs": 1500,
   "jours": 6
+ },
+ "skillssh": {
+  "actif": true,
+  "pauseMs": 1000,
+  "jours": 6,
+  "installsMin": 1000,
+  "installsMinOfficiel": 100,
+  "pagesMax": 6000
  }
 }

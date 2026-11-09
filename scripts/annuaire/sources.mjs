@@ -225,9 +225,102 @@ export async function connecteursClaude(base, etat, { pauseMs = 1500, jours = 6,
   return { n: entrees.length, erreurs };
 }
 
+// ---------- skills.sh (Vercel) : installations réelles et éditeurs officiels ----------
+// L'API exige un jeton Vercel et robots.txt interdit /api/ : on lit donc les pages publiques, une par seconde au plus,
+// une fois par semaine. Le plan du site est trié par installations : on s'arrête sous le seuil.
+const installsDe = (t) => { const m = String(t ?? '').replace(/,/g, '').match(/([\d.]+)\s*([KM])?/i); return m ? Math.round(Number(m[1]) * ({ K: 1e3, M: 1e6 }[m[2]?.toUpperCase()] ?? 1)) : 0; };
+export async function skillsSh(base, etat, { pauseMs = 1000, jours = 6, installsMin = 1000, installsMinOfficiel = 100, pagesMax = 6000, force = false, sansLecture = false }) {
+  const verser = (liste) => {
+    for (const e of liste) {
+      const refs = [...(e.officiel && e.installs >= installsMinOfficiel ? ['editeur'] : []), ...(e.installs >= installsMin ? ['skillssh'] : [])];
+      if (refs.length) base.ajouter('skills', { n: e.n, repo: e.repo, d: e.d, installs: e.installs, auditEchec: e.auditEchec, refs });
+    }
+  };
+  const memoire = etat.skillssh;
+  const recent = memoire?.date && Date.now() - Date.parse(memoire.date) < jours * 86_400_000;
+  if (memoire?.entrees?.length && !force && (recent || sansLecture)) { verser(memoire.entrees); return { n: memoire.entrees.length, erreurs: [], note: 'liste de la semaine reprise' }; }
+  const lecture = async () => {
+  const lire = async (chemin) => { const t = await texte(`https://skills.sh${chemin}`, { essais: 2, delai: 20_000, headers: { 'User-Agent': 'le-labo-annuaire (+https://www.labonumerique.ch)' } }); await pause(pauseMs); return t; };
+  const robots = await lire('/robots.txt');
+  if (!robots || /^\s*Disallow:\s*\/\s*$/im.test(robots)) throw new Error('robots.txt ne permet pas la lecture');
+  const entrees = new Map();
+  const cle = (repo, n) => `${repo}#${n}`.toLowerCase();
+  const proprietaires = [...((await lire('/official')) ?? '').matchAll(/href="\/([\w.-]+)"><div class="min-w-0 flex items-center gap-3">/g)].map((m) => m[1]);
+  if (proprietaires.length < 20) throw new Error('liste des éditeurs officiels illisible');
+  const erreurs = [];
+  for (const o of proprietaires) {
+    try {
+      const page = (await lire(`/${o}`)) ?? '';
+      const depots = [...new Set([...page.matchAll(new RegExp(`href="/${o.replace(/\./g, '\\.')}/([\\w.-]+)"`, 'g'))].map((m) => m[1]))];
+      for (const d of depots) {
+        const h = (await lire(`/${o}/${d}`)) ?? '';
+        for (const m of h.matchAll(/href="\/[\w.-]+\/[\w.-]+\/([^"]+)"[^>]*><div[^>]*><h3[^>]*>([^<]+)<\/h3><\/div><div[^>]*><span[^>]*>([\d.,]+[KM]?)<\/span>/g)) {
+          const repo = `${o}/${d}`;
+          entrees.set(cle(repo, m[2]), { n: nettoyer(m[2], 120), repo, slug: m[1], installs: installsDe(m[3]), officiel: true });
+        }
+      }
+    } catch (e) { erreurs.push(`${o} : ${e.message}`); }
+  }
+  let bas = 0;
+  let lues = 0;
+  for (const carte of ['sitemap-skills-1.xml', 'sitemap-skills-2.xml']) {
+    const plan = (await lire(`/${carte}`)) ?? '';
+    for (const [, chemin] of plan.matchAll(/<loc>https:\/\/(?:www\.)?skills\.sh\/([^<]+)<\/loc>/g)) {
+      if (bas >= 300 || lues >= pagesMax) break;
+      const [o, d, ...reste] = chemin.split('/');
+      if (!o || !d || !reste.length) continue;
+      try {
+        const h = await lire(`/${chemin}`);
+        if (!h) continue;
+        lues += 1;
+        const installs = installsDe(h.replace(/<[^>]+>/g, ' ').match(/Installs\s+([\d.,]+\s?[KM]?)/)?.[1]);
+        bas = installs < installsMin ? bas + 1 : 0;
+        if (installs < installsMin) continue;
+        const nom = nettoyer(h.match(/<title>([^<]+?)\s+[—–-]\s+[\w.-]+\/[\w.-]+/)?.[1] ?? reste.join('/'), 120);
+        const repo = `${o}/${d}`;
+        const present = entrees.get(cle(repo, nom));
+        entrees.set(cle(repo, nom), { ...present, n: nom, repo, installs, d: nettoyer(h.match(/<meta name="description" content="([^"]*)"/)?.[1]), auditEchec: />Fail</.test(h) || undefined });
+      } catch (e) { erreurs.push(`${chemin} : ${e.message}`); if (erreurs.length > 100) throw new Error(`trop d'erreurs sur skills.sh : ${e.message}`); }
+    }
+    if (bas >= 300 || lues >= pagesMax) break;
+  }
+  // Les éditeurs officiels sous le seuil général : leur fiche donne la description et les audits.
+  for (const e of entrees.values()) {
+    if (lues >= pagesMax) break;
+    if (!e.officiel || e.d || e.installs < installsMinOfficiel || !e.slug) continue;
+    try {
+      const h = await lire(`/${e.repo}/${e.slug}`);
+      if (!h) continue;
+      lues += 1;
+      e.d = nettoyer(h.match(/<meta name="description" content="([^"]*)"/)?.[1]);
+      if (/>Fail</.test(h)) e.auditEchec = true;
+    } catch (err) { erreurs.push(`${e.repo}/${e.slug} : ${err.message}`); if (erreurs.length > 100) throw new Error(`trop d'erreurs sur skills.sh : ${err.message}`); }
+  }
+  const liste = [...entrees.values()].filter((e) => e.installs >= installsMinOfficiel).map(({ slug, ...e }) => e);
+  if (liste.length < 200) throw new Error(`skills.sh : trop peu de skills lus (${liste.length})`);
+  etat.skillssh = { date: new Date().toISOString(), entrees: liste };
+  verser(liste);
+  journal('skills.sh pages lues', lues, 'éditeurs', proprietaires.length);
+  return { n: liste.length, erreurs };
+  };
+  // Une panne garde la liste de la semaine : un site indisponible ne retire rien de l'annuaire.
+  try { return await lecture(); } catch (err) {
+    if (!memoire?.entrees?.length) throw err;
+    journal('skills.sh indisponible, liste précédente gardée :', err.message);
+    verser(memoire.entrees);
+    return { n: memoire.entrees.length, erreurs: [] };
+  }
+}
+
+// ---------- Ajouts manuels : éditeurs officiels absents des répertoires ----------
+export function ajoutsManuels(base, ajouts) {
+  for (const a of ajouts) base.ajouterMcp({ n: nettoyer(a.nom), nomPropre: true, d: nettoyer(a.description), url: adresseValable(a.adresse), local: !!a.local, dom: a.domaine, domVerifie: !!a.domaine, refs: ['editeur'] });
+  return { n: ajouts.length, erreurs: [] };
+}
+
 // ---------- Extensions Gemini : seules celles de Google comptent comme référencées ----------
 export async function gemini(base) {
-  const liste = await json('https://geminicli.com/extensions.json');
+  const liste = await json('https://geminicli.com/extensions.json', { delai: 60_000 });
   const e = Array.isArray(liste) ? liste : liste?.extensions;
   if (!e?.length) throw new Error('galerie Gemini illisible');
   const vrai = (v) => v === true || v === 'True' || v === 'true';

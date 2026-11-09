@@ -107,6 +107,7 @@ export default function Annuaire({ comptes, usages, types, references, apercu }:
                 {nature === 'mcp' && (l[14] & 1) !== 0 && <span className="annuaire-badge">En local</span>}
                 {l[12].length > 0 && <strong>{`Référencé par ${l[12].map((i) => references[i]?.[1]).filter(Boolean).join(', ')}`}</strong>}
                 {l[3] > 0 && <span>{nombre.format(l[3])} étoiles</span>}
+                {l[13] > 0 && <span>{nombre.format(l[13])} {nature === 'skills' ? 'installations' : 'téléchargements par semaine'}</span>}
                 {l[15] === 1 && l[1] && <span>Dépôt partagé</span>}
                 {l[1] && <span>{l[1]}</span>}
                 {l[11] && <span>Domaine vérifié : {l[11]}</span>}

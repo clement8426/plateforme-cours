@@ -1,0 +1,19 @@
+{
+ "_note": "Serveurs d'éditeurs officiels absents des répertoires. Indiquer la preuve de chaque ajout.",
+ "ajouts": [
+  {
+   "nom": "Higgsfield",
+   "description": "Serveur MCP en ligne de Higgsfield : génération d'images et de vidéos.",
+   "adresse": "https://mcp.higgsfield.ai/mcp",
+   "domaine": "higgsfield.ai",
+   "preuve": "Le serveur annonce clerk.higgsfield.ai comme serveur d’autorisation (vérifié le 2026-11-08)."
+  },
+  {
+   "nom": "Higgsfield Video Editor",
+   "description": "Éditeur vidéo de Higgsfield, en local, installé comme extension de Claude Desktop.",
+   "local": true,
+   "domaine": "higgsfield.ai",
+   "preuve": "Paquet npm @higgsfield/video-editor-mcp, maintenu par des adresses @higgsfield.ai (vérifié le 2026-11-08)."
+  }
+ ]
+}

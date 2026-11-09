@@ -44,6 +44,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ env.JETON }}
           ANNUAIRE_FORCER: ${{ inputs.forcer && '1' || '' }}
+          # Le dimanche, la recherche longue prend le temps : skills.sh reprend la liste de la semaine.
+          ANNUAIRE_SKILLSSH: ${{ github.event.schedule == '17 1 * * 0' && 'cache' || '' }}
           # Le dimanche seulement, la recherche de fichiers (longue) : 30 + 30 + 120 minutes.
           ANNUAIRE_BUDGETS: ${{ github.event.schedule == '17 1 * * 0' && '{"marketplaces":30,"pluginsJson":30,"skills":120,"npm":15}' || '{"marketplaces":0,"pluginsJson":0,"skills":0,"npm":15}' }}
         run: node scripts/annuaire-collecter.mjs
