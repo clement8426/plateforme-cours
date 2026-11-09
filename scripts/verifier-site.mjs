@@ -58,11 +58,11 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
     if (info.h1 !== 1) problemes.push(`${u} : ${info.h1} h1`);
     if (info.saut) problemes.push(`${u} : saut de niveau de titre`);
     if (info.main !== 1) problemes.push(`${u} : ${info.main} main`);
-    if (info.lang !== 'fr') problemes.push(`${u} : lang ${info.lang}`);
+    if (info.lang !== 'fr-CH') problemes.push(`${u} : lang ${info.lang}`);
     if (titres.has(info.titre)) problemes.push(`${u} : titre de page en double « ${info.titre} »`);
     titres.add(info.titre);
   }
-  verifier('structure : un h1, titres sans saut, un main, lang fr, titres de page uniques', problemes.length === 0, problemes.join(' | '));
+  verifier('structure : un h1, titres sans saut, un main, lang fr-CH, titres de page uniques', problemes.length === 0, problemes.join(' | '));
   await ctx.close();
 }
 

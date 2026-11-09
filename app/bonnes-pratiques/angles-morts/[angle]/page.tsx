@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import FilAriane from '@/composants/FilAriane';
 import { ANGLES, famille, GRAVITES, outilsDe, trouverAngle } from '@/contenu/parcours/moteur';
 import { trouverPratique } from '@/contenu/parcours/pratiques';
-import { metadonnees } from '@/contenu/site';
+import { couperDescription, metadonnees } from '@/contenu/site';
 
 type Props = { params: Promise<{ angle: string }> };
 
@@ -13,7 +13,7 @@ export const generateStaticParams = () => ANGLES.map((a) => ({ angle: a.id }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const a = trouverAngle((await params).angle);
-  return a ? metadonnees({ titre: `${a.title} : angle mort`, description: `${a.question} ${a.why}`, chemin: `/bonnes-pratiques/angles-morts/${a.id}/` }) : {};
+  return a ? metadonnees({ titre: `${a.title} : angle mort`, description: couperDescription(`${a.question} ${a.why}`), chemin: `/bonnes-pratiques/angles-morts/${a.id}/` }) : {};
 }
 
 export default async function Page({ params }: Props) {

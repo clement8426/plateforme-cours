@@ -7,6 +7,13 @@ export const ORIGINE = 'https://www.labonumerique.ch';
 export const AUTEUR = { '@type': 'Person', '@id': `${ORIGINE}/#auteur`, name: 'Clément Bastien', url: `${ORIGINE}/` };
 export const urlAbsolue = (chemin: string) => new URL(chemin, ORIGINE).href;
 
+// Les moteurs coupent les descriptions vers 160 caractères : on coupe nous-mêmes, à la fin d’un mot.
+export function couperDescription(texte: string, max = 160) {
+  if (texte.length <= max) return texte;
+  const coupe = texte.slice(0, max - 1);
+  return `${coupe.slice(0, coupe.lastIndexOf(' ')).replace(/[\s,;:.]+$/, '')}…`;
+}
+
 export function metadonnees({ titre, description, chemin, image, indexable = true, markdown }: {
   titre: string; description: string; chemin: string; image?: string; indexable?: boolean; markdown?: string;
 }): Metadata {

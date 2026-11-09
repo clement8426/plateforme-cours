@@ -44,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function Racine({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${titre.variable} ${texte.variable}`} suppressHydrationWarning>
+    <html lang="fr-CH" className={`${titre.variable} ${texte.variable}`} suppressHydrationWarning>
       <head>
         {/* Contraste élevé : choix mémorisé, sinon réglage du système (prefers-contrast). Appliqué avant l'affichage. */}
         <script dangerouslySetInnerHTML={{ __html: "try{var c=localStorage.getItem('contraste');if(!c&&matchMedia('(prefers-contrast: more)').matches)c='eleve';if(c)document.documentElement.dataset.contraste=c;if(localStorage.getItem('theme')==='sombre')document.documentElement.dataset.theme='sombre'}catch(e){}" }} />

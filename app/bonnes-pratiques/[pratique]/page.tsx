@@ -8,7 +8,7 @@ import { cheminMarkdown, messagePratique } from '@/contenu/parcours/agent';
 import { outilsDe, trouverAngle } from '@/contenu/parcours/moteur';
 import { DATE_VERIFICATION, PRATIQUES, trouverPratique } from '@/contenu/parcours/pratiques';
 import { formaterDate } from '@/contenu/date';
-import { AUTEUR, metadonnees, urlAbsolue } from '@/contenu/site';
+import { AUTEUR, couperDescription, metadonnees, urlAbsolue } from '@/contenu/site';
 
 type Props = { params: Promise<{ pratique: string }> };
 
@@ -17,7 +17,7 @@ export const generateStaticParams = () => PRATIQUES.map((p) => ({ pratique: p.id
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = trouverPratique((await params).pratique);
-  return p ? metadonnees({ titre: p.titre, description: p.risque, chemin: `/bonnes-pratiques/${p.id}/`, markdown: cheminMarkdown(p.id) }) : {};
+  return p ? metadonnees({ titre: p.titre, description: couperDescription(p.risque), chemin: `/bonnes-pratiques/${p.id}/`, markdown: cheminMarkdown(p.id) }) : {};
 }
 
 // `code` dans un texte de données devient une balise code.
