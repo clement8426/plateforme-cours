@@ -20,30 +20,45 @@
 /* Direction A, « Agrume » : crème chaude, encre indigo, cobalt, sarcelle, corail */
 :root {
   color-scheme: light;
-  --ink: #FBF4E4; --surface: #FFFCF5; --surface-2: #F4E9D3; --line: #E7D9BD; --edge: #8A7C62;
-  --text: #17153B; --muted: #595470;
-  --p1: #2B44E8; --p1-text: #2B44E8; --p1-fill: #2B44E8; --on-p1: #FFFFFF;
-  --p2: #00897B; --p2-text: #00655F; --p2-fill: #00786F; --on-p2: #FFFFFF;
-  --p3: #F4573F; --p3-text: #B5301A; --p3-fill: #F4573F; --on-p3: #17153B;
-  --ok: #05653F; --ok-fill: #0A7A4E; --warn: #8A5700; --bad: #BF1048; --bad-fill: #BF1048; --on-bad: #FFFFFF;
-  --band: #E9DEC6; --logo-bg: #17153B; --sun: #FFCB47;
-  --shadow: 0 1px 0 rgba(23, 21, 59, .04), 0 24px 44px -28px rgba(23, 21, 59, .3);
-  --fill-edge: transparent; --soft-mix: 16%; --wash-mix: 16%;
+  --ink: #F3F4F6; --surface: #FFFFFF; --surface-2: #E9EBEF; --line: #DCDFE5; --edge: #8B93A1;
+  --text: #14161B; --muted: #4A505A;
+  --p1: #8CBDF2; --p1-text: #24609A; --p1-fill: #8CBDF2; --on-p1: #14161B;
+  --p2: #62D8A2; --p2-text: #2F7356; --p2-fill: #62D8A2; --on-p2: #14161B;
+  --p3: #FF9C73; --p3-text: #A63F17; --p3-fill: #FF9C73; --on-p3: #14161B;
+  --p4: #C3A6F0; --p4-text: #6E4A8E; --p4-fill: #C3A6F0; --on-p4: #14161B;
+  --p5: #FF92B0; --p5-text: #A3304F; --p5-fill: #FF92B0; --on-p5: #14161B;
+  --p6: #E6C85C; --p6-text: #7A6514; --p6-fill: #E6C85C; --on-p6: #14161B;
+  --hot-val: #E6C85C;
+  --ok: #0B6B4F; --ok-fill: #62D8A2; --warn: #A63F17; --warn-fill: #FF9C73; --bad: #A3304F; --bad-fill: #FF92B0; --on-bad: #14161B;
+  --band: #E3E5EA; --logo-bg: #14161B; --sun: #E6C85C; --sun-mix: 70%;
+  --shadow: 0 1px 0 rgba(20, 22, 27, .04), 0 24px 44px -28px rgba(20, 22, 27, .3);
+  --fill-edge: transparent;
+  --soft-mix: 16%;
+  --wash-mix: 16%;
   --font-title: "Bricolage Grotesque", "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-body: "Instrument Sans", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --title-weight: 700; --title-tracking: -.025em;
-  --r-s: 14px; --r-m: 22px; --r-l: 32px; --r-btn: 18px; --r-pill: 999px;
+  --title-weight: 700;
+  --title-tracking: -.025em;
+  --r-s: 14px;
+  --r-m: 22px;
+  --r-l: 32px;
+  --r-btn: 18px;
+  --r-pill: 999px;
 }
 /* thème sombre (touche T) : mêmes rôles, sur encre indigo */
 :root[data-deck="dark"] {
   color-scheme: dark;
-  --ink: #12112B; --surface: #1B1A3D; --surface-2: #252450; --line: #33325F; --edge: #807EAD;
-  --text: #FBF4E4; --muted: #B7B3CE;
-  --p1: #7F92FF; --p1-text: #9DABFF; --p1-fill: #8FA0FF; --on-p1: #12112B;
-  --p2: #2FC4B2; --p2-text: #2FC4B2; --p2-fill: #2FC4B2; --on-p2: #12112B;
-  --p3: #FF7A62; --p3-text: #FF8E79; --p3-fill: #FF7A62; --on-p3: #12112B;
-  --ok: #3DD68C; --ok-fill: #3DD68C; --warn: #FFCB47; --bad: #FF8FAE; --bad-fill: #FF6B93; --on-bad: #12112B;
-  --band: #0A0A1C; --logo-bg: #0A0A1C; --sun: #2B295C;
+  --ink: #1E2129; --surface: #272B35; --surface-2: #323744; --line: #3D4350; --edge: #8E96A6;
+  --text: #EEF0F4; --muted: #BCC1CB;
+  --p1: #8CBDF2; --p1-text: #8CBDF2; --p1-fill: #8CBDF2; --on-p1: #14161B;
+  --p2: #62D8A2; --p2-text: #62D8A2; --p2-fill: #62D8A2; --on-p2: #14161B;
+  --p3: #FF9C73; --p3-text: #FF9C73; --p3-fill: #FF9C73; --on-p3: #14161B;
+  --p4: #C3A6F0; --p4-text: #C3A6F0; --p4-fill: #C3A6F0; --on-p4: #14161B;
+  --p5: #FF92B0; --p5-text: #FF92B0; --p5-fill: #FF92B0; --on-p5: #14161B;
+  --p6: #E6C85C; --p6-text: #E6C85C; --p6-fill: #E6C85C; --on-p6: #14161B;
+  --hot-val: #3D4350;
+  --ok: #5FD3A8; --ok-fill: #62D8A2; --warn: #FF9C73; --warn-fill: #FF9C73; --bad: #FF92B0; --bad-fill: #FF92B0; --on-bad: #14161B;
+  --band: #14161B; --logo-bg: #14161B; --sun: #E6C85C; --sun-mix: 20%;
   --shadow: none;
 }
 /* signature : un quartier d'agrume safran dans l'angle */
@@ -60,10 +75,10 @@
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 /* une couleur par partie : 1 théorie, 2 pratique, 3 IA */
-[data-part="1"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
-[data-part="2"] { --accent: var(--p2); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
-[data-part="3"] { --accent: var(--p3); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
-[data-part="4"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
+[data-part="1"] { --accent: var(--p1); --sun: color-mix(in srgb, var(--p1) var(--sun-mix), var(--ink)); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
+[data-part="2"] { --accent: var(--p2); --sun: color-mix(in srgb, var(--p2) var(--sun-mix), var(--ink)); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
+[data-part="3"] { --accent: var(--p3); --sun: color-mix(in srgb, var(--p3) var(--sun-mix), var(--ink)); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
+[data-part="4"] { --accent: var(--p1); --sun: color-mix(in srgb, var(--p1) var(--sun-mix), var(--ink)); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
 [data-part] { --accent-soft: color-mix(in srgb, var(--accent) var(--soft-mix), var(--surface)); --accent-wash: color-mix(in srgb, var(--accent) var(--wash-mix), var(--ink)); }
 
 /* ========== 2. Base ========== */
@@ -857,6 +872,12 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .pratique-blocs .card { padding:28px; }
 .pratique-blocs h3 { font-size:30px; margin-bottom:10px; }
 .pratique-blocs p { font-size:30px; line-height:1.3; }
+/* La palette du site : la bande des six couleurs en haut de chaque slide, et des pastilles qui les reprennent. */
+.slide::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; z-index: 5; pointer-events: none;
+  background: linear-gradient(to right, var(--p4) 0 16.667%, var(--p3) 16.667% 33.333%, var(--p1) 33.333% 50%, var(--p6) 50% 66.667%, var(--p2) 66.667% 83.333%, var(--p5) 83.333% 100%); }
+.chips > .chip:not(.good):not(.off):not(.law):not(.bloc) { background: color-mix(in srgb, var(--chip-c, var(--p1)) 26%, var(--surface)); border-color: color-mix(in srgb, var(--chip-c, var(--p1)) 75%, var(--surface)); }
+.chips > .chip:nth-child(6n + 1) { --chip-c: var(--p1); } .chips > .chip:nth-child(6n + 2) { --chip-c: var(--p2); } .chips > .chip:nth-child(6n + 3) { --chip-c: var(--p3); }
+.chips > .chip:nth-child(6n + 4) { --chip-c: var(--p4); } .chips > .chip:nth-child(6n + 5) { --chip-c: var(--p5); } .chips > .chip:nth-child(6n + 6) { --chip-c: var(--p6); }
 </style>
   <link rel="stylesheet" href="./atelier-blocs.css">
   <link rel="stylesheet" href="./pratique-escale.css">

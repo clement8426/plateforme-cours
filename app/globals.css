@@ -1,9 +1,9 @@
 /* ====================================================================================================
    Le cahier d'audit. Fond neutre et clair, encre presque noire, un seul bleu pour ce qui se clique.
-   La seule signature visuelle : les six couleurs des blocs du cours (celles de Tilleul), en bande ou en puces.
+   L'identité : les six couleurs vives de la fiole (--vif-*), en aplats avec de l'encre dessus ; leurs tons profonds (--b-*) pour le texte coloré.
    Règles (à respecter pour tout ajout) :
    1. Trois étages de taille : titre de page, titre de section, texte. Les titres d'éléments restent proches du texte.
-   2. Le bleu ne sert qu'à ce qui se clique. Les couleurs des blocs ne servent qu'à désigner un bloc.
+   2. Le bleu ne sert qu'à ce qui se clique. Une zone du site = une couleur vive (Cours rose, Démarrer vert, Diagnostic jaune, Bonnes pratiques violet).
    3. Une carte blanche = une chose qu'on ouvre. Pas de carte pour décorer, pas de bordure de couleur sur un côté.
    ==================================================================================================== */
 :root {

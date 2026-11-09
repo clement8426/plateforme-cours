@@ -17,8 +17,8 @@ Décisions validées par Clément le 7 novembre 2026.
 | Statistiques | Vercel Analytics ne reçoit plus ni paramètres ni fragment d'adresse. |
 | Lien du diagnostic | Fragment d'adresse (`#i=…`) calculé dans le navigateur. |
 | Lecture par les agents | Kit, `llms.txt`, `/api/catalog.json`, `/api/rules.json` et pages statiques. |
-| Annuaire | Registre MCP, marketplaces Claude et recherche GitHub. Sans Smithery ni skills.sh. |
-| Validation | Abandonnée le 8 novembre 2026 : l'annuaire est automatique et signale qu'il n'est pas relu. Seuil : 1 000 étoiles, ou éditeur vérifié pour un serveur hébergé. |
+| Annuaire | Répertoires de Claude, OpenAI, Google, GitHub, Docker, Cursor, AWS, projet MCP, skills.sh et recherche GitHub. Sans Smithery, Glama, PulseMCP ni SkillsMP (conditions ou fiabilité). |
+| Validation | Abandonnée le 8 novembre 2026 : l'annuaire est automatique et signale qu'il n'est pas relu. Un outil est publié s'il est référencé par un répertoire reconnu, s'il compte 1 000 étoiles sur un dépôt de son auteur, s'il est d'un éditeur prouvé et très téléchargé, ou par ajout manuel avec preuve. |
 | Accessibilité | WCAG 2.2 AA. |
 | Gravité | Bloquant, important, confort. |
 | CGV | Important, et non bloquant : elles ne sont pas obligatoires en Suisse. |
@@ -36,7 +36,7 @@ Décisions validées par Clément le 7 novembre 2026.
 | Fiche 1 | `/demarrer/idee/` |
 | Fiche 2 | `/demarrer/technique/` |
 | Diagnostic | `/diagnostic/`, zone à part entière |
-| Catalogue | `/diagnostic/catalogue/` et `/diagnostic/catalogue/<id>/` |
+| Annuaire des outils | `/diagnostic/catalogue/` (liste) et `/diagnostic/catalogue/<id>/` (fiches des outils du diagnostic) |
 | Bonnes pratiques | `/bonnes-pratiques/` et `/bonnes-pratiques/<id>/` |
 | Angles morts | `/bonnes-pratiques/angles-morts/<id>/` |
 

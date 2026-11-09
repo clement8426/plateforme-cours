@@ -134,10 +134,12 @@ L'icône de l'application est `public/icones/icone.svg`. Si vous la changez, ré
 Elles sont écrites en tête de `app/globals.css` et s'appliquent à tout ajout :
 
 1. **Trois étages de taille** : titre de page, titre de section, texte. Les titres d'éléments restent proches du texte.
-2. **Le bleu ne sert qu'à ce qui se clique.** Les couleurs des six blocs (`--b-*`, les mêmes que dans Tilleul) ne servent qu'à désigner un bloc : en bande en haut de page, ou en puces.
+2. **Le bleu ne sert qu'à ce qui se clique** (et au bandeau d'accueil et au pied de page). Les six couleurs vives (`--vif-*`, celles de la fiole) font l'identité : aplats, bandeaux des zones, couches de l'accueil, toujours avec de l'encre dessus. Les tons profonds (`--b-*`, les mêmes que dans Tilleul) servent au texte coloré sur fond clair. Chaque zone a sa couleur : Cours rose, Démarrer vert, Diagnostic jaune, Bonnes pratiques violet.
 3. **Une carte blanche = une chose qu'on ouvre.** Pas de carte décorative, pas de bordure de couleur sur un côté.
 4. **Tout texte respecte le contraste AA (4,5:1)**, dans les deux thèmes. Les couleurs de blocs ont été calculées pour cela : ne les modifiez pas sans recalculer.
 5. **Cibles tactiles d'au moins 44 px** pour tout ce qui se clique, sauf les liens dans une phrase.
+
+Les trois jeux de diapos reprennent la même palette (`--p1` à `--p6`, rôles `--ok`, `--warn`, `--bad`) ; le détail et la façon de la contrôler sont dans `AGENTS.md`.
 
 ## Mémoire de progression
 
