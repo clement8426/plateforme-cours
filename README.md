@@ -181,13 +181,19 @@ Préférence visuelle de Clément : aucune bordure colorée décorative sur un s
 
 L’aperçu d’un cours est un vrai lien : accessible au clavier, avec un texte alternatif qui annonce l’ouverture des diapos. Ne pas le masquer avec `aria-hidden` ou `tabIndex=-1`. Après une nouvelle capture, actualiser aussi sa version `?v=…` dans le catalogue pour renouveler les copies en cache. La version de l’aperçu Types d’IA correspond aux dix premiers caractères de son SHA-256.
 
-Deux exercices complémentaires sont liés depuis les diapos et la page du cours : **Atelier des IA** pour découvrir trois capacités locales séparées, **Le Harnais** pour les combiner avec un assistant. L’Atelier est un prototype dont le code est public, sans installateur publié ; les textes ne doivent pas laisser croire que Windows, macOS, Linux ou les portables des apprenants sont déjà qualifiés. La capture de son accueil vient du dépôt de l’application. La musique et la vidéo sont expliquées, sans génération intégrée à ce prototype.
+L’exercice du cours est l’**Atelier des IA**, pour découvrir trois capacités locales séparées. **Le Harnais** est devenu un cours à part (voir plus bas) : les diapos `pratiquer` et `exercice` et la page du cours renvoient vers `/comprendre-ia/le-harnais/`. L’Atelier est un prototype dont le code est public, sans installateur publié ; les textes ne doivent pas laisser croire que Windows, macOS, Linux ou les portables des apprenants sont déjà qualifiés. La capture de son accueil vient du dépôt de l’application. La musique et la vidéo sont expliquées, sans génération intégrée à ce prototype.
 
-Après une modification, synchroniser le lexique et les références avec `npm run sources -- public/diapos/types-ia/index.html types-ia`, puis construire le site. Vérifier la navigation, les liens de pratique et les deux thèmes ; les plages du catalogue doivent correspondre à `CONFIG.parties`. Le cours et le tuto du Harnais restent accessibles à leurs adresses existantes.
+Après une modification, synchroniser le lexique et les références avec `npm run sources -- public/diapos/types-ia/index.html types-ia`, puis construire le site. Vérifier la navigation, les liens de pratique et les deux thèmes ; les plages du catalogue doivent correspondre à `CONFIG.parties`. L’ancienne adresse du tuto, `/comprendre-ia/types-ia/tuto/`, redirige (vercel.json) vers `/comprendre-ia/le-harnais/diapos/`.
 
 Vérification ciblée : après avoir servi le site construit, `node scripts/verifier-types-ia.mjs` contrôle le cadrage des 29 diapos en deux thèmes et cinq tailles d’écran, l’accessibilité des ajouts et de la page du cours, le quiz et la navigation. Variables : `UX_OUTILS` pour Playwright/axe, `SITE_URL` pour le serveur et `PREUVES_TYPES` pour les captures et le rapport JSON (par défaut `preuves-types-ia/`, ignoré par Git).
 
 Validation ciblée des Types d’IA : construction avec Next.js 16.4.5, navigation et contrôle des 29 diapos réussis le 6 novembre 2026. L’audit du 7 novembre actualise aussi les attentes historiques du test général sur Escale et les cartes indisponibles ; son périmètre et ses résultats sont dans le rapport d’audit.
+
+### Le Harnais
+
+Quatrième cours, à `/comprendre-ia/le-harnais/`, juste après Les types d’IA. Les diapos sont `public/diapos/harnais/` (toujours accessibles à `/diapos/harnais/`) : 34 diapos en quatre parties, Comprendre (1–9 : harness, prototype, cerveau-outils-droits-toi, boucle de l’agent, prompt système et fenêtre de contexte, conditions d’arrêt et boucle infinie `doom_loop`, principe, parcours), Installer et démarrer (10–18), Les missions (19–31), Quand ça ne marche pas (32–34). Public : débutants qui n’ont utilisé ChatGPT que dans un navigateur ; 45 à 60 min de diapos en classe, puis les 15 missions du prototype à la maison (Windows 10/11 64 bits, dossier Documents\LeLabo).
+
+L’exercice est l’application Le Harnais (dépôt `clement8426/le-harnais`, parcours `contenus/parcours/debutant.yaml`). Le lexique et les références sont dans `src/contenu/harnais-sources.json`, écrits à la main (le deck n’a pas de listes `lexique`/`references` dans CONFIG). Les plages `parties` du catalogue doivent correspondre à `CONFIG.parties` du deck. L’ancienne page `/comprendre-ia/types-ia/tuto/` a été retirée et redirige vers les diapos du cours.
 
 ### Sources et dates
 

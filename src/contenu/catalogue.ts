@@ -5,6 +5,7 @@ import { typoProfonde } from './typo';
 import sourcesIa from './ia-donnees-sources.json';
 import sourcesUx from './ux-ia-sources.json';
 import sourcesTypes from './types-ia-sources.json';
+import sourcesHarnais from './harnais-sources.json';
 
 export type Reference = { titre: string; source: string; url: string };
 export type Terme = { terme: string; nom?: string; def: string };
@@ -32,7 +33,10 @@ export type Demo = {
 // Le déroulé du cours, calé sur les trois parties des diapos.
 export type Partie = { titre: string; resume: string; duree: string; diapos: [number, number]; demos?: boolean };
 
-export type Exercice = { titre: string; resume: string; prototype: string; conditions: string[]; lien?: string; tuto?: { href: string; titre: string; parties: { titre: string; diapo: number }[] } };
+export type Exercice = { titre: string; resume: string; prototype: string; conditions: string[]; lien?: string };
+
+// Un lien vers un autre cours du Labo, affiché sur la page du cours.
+export type VoirAussi = { titre: string; texte: string; href: string };
 
 export type Cours = {
   slug: string;
@@ -52,6 +56,7 @@ export type Cours = {
   // Un exercice hors du site : une application à installer. Un prototype le dit, avec ses conditions.
   exercice?: Exercice;
   exercicesComplementaires?: Exercice[];
+  voirAussi?: VoirAussi[];
 };
 
 export type Categorie = {
@@ -202,7 +207,7 @@ const REGLES_TYPES: RegleGroupe[] = [
 
 const typesIa: Cours = {
   slug: 'types-ia',
-  misAJour: '2026-11-06',
+  misAJour: '2026-11-09',
   titre: 'Les types d’IA',
   accroche: 'Lire, voir, parler, créer des images, des sons ou des vidéos : l’IA ne se résume pas à ChatGPT. Chaque famille a son entrée, sa sortie et ses limites.',
   duree: 'Environ 1 h 15, puis les ateliers pratiques',
@@ -219,33 +224,10 @@ const typesIa: Cours = {
     { titre: 'L’IA avant ChatGPT', resume: 'Ce qu’est une IA, plus de soixante-dix ans d’histoire, et l’idée clé : une entrée, une sortie.', duree: '15 min', diapos: [1, 6] },
     { titre: 'Les familles d’IA', resume: 'OCR, vision, voix, traduction, images, sons, musique et vidéo : ce que chacune reçoit, produit, et où elle se trompe.', duree: '30 min', diapos: [7, 17] },
     { titre: 'Les LLM', resume: 'Prédire le mot suivant, le Transformer, les forces et les limites, et comment combiner un LLM avec les autres IA.', duree: '20 min', diapos: [18, 23] },
-    { titre: 'Pratique', resume: 'Essayer trois capacités locales avec l’Atelier des IA, puis donner des outils à un assistant avec Le Harnais.', duree: '10 min, puis les exercices', diapos: [24, 27] },
+    { titre: 'Pratique', resume: 'Essayer trois capacités locales avec l’Atelier des IA. Pour donner des outils à un assistant, la suite est dans le cours Le Harnais.', duree: '10 min, puis les exercices', diapos: [24, 27] },
   ],
   demos: [],
   exercice: {
-    titre: 'Le Harnais',
-    resume: 'Une surcouche d’OpenCode (licence MIT) pour comprendre comment fonctionne un harnais, en le manipulant. Une application de bureau où votre IA arrive sans aucun outil. Vous débloquez la dictée, la lecture à voix haute, la lecture d’un scan et la reconnaissance d’images en vous en servant, puis le terminal, le navigateur et les connecteurs. OCR, dictée et détection sont locales dans ce parcours ; leurs textes peuvent partir vers le modèle. La lecture vocale peut utiliser un service distant.',
-    prototype: 'Le Harnais est un prototype, pas un produit fini : version 0.1.0 en bêta, des défauts sont possibles, sans garantie ni assistance. Utilisez des données fictives uniquement. C’est une surcouche d’OpenCode : l’application est celle d’OpenCode, avec des missions par-dessus. Ce n’est pas un produit officiel d’OpenCode.',
-    conditions: [
-      'Windows 10 ou 11 (64 bits) seulement. Pas de macOS, pas de Linux.',
-      'Application non signée : Windows 11 peut la bloquer.',
-      'Environ 0,9 Go à télécharger, puis les modèles de voix et d’image à la première utilisation (environ 3 Go sur le disque, 8 Go de mémoire conseillés).',
-      'Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Dans cette version, Claude se configure par API ; les options gratuites d’OpenCode peuvent échouer. Consultez le guide du prototype.',
-      'Pas de mise à jour automatique : pour mettre à jour, on relance l’installateur.',
-    ],
-    lien: 'https://github.com/clement8426/le-harnais',
-    tuto: {
-      href: '/diapos/harnais/',
-      titre: 'Le tuto, pas à pas',
-      parties: [
-        { titre: 'Comprendre', diapo: 1 },
-        { titre: 'Installer et démarrer', diapo: 7 },
-        { titre: 'Les missions', diapo: 16 },
-        { titre: 'Quand ça ne marche pas', diapo: 29 },
-      ],
-    },
-  },
-  exercicesComplementaires: [{
     titre: 'Atelier des IA',
     resume: 'Une petite application pour découvrir les IA sans chatbot et sans compte : classer une image, lire le texte d’un document et faire parler un texte. On commence avec les exemples fournis, puis on change un détail et on observe le résultat. Ces trois ateliers utilisent de vrais modèles sur l’ordinateur, après leur téléchargement.',
     prototype: 'Prototype en validation : le code et la documentation sont publics. Aucun installateur prêt à l’emploi n’est encore publié. Pour le cours, la démonstration se prépare avec le formateur.',
@@ -256,9 +238,65 @@ const typesIa: Cours = {
       'Utilisez les images et textes d’exemple pour commencer. Aucune clé d’API ni aucun abonnement à une IA ne sont nécessaires.',
     ],
     lien: 'https://github.com/clement8426/atelier-des-ia',
+  },
+  voirAussi: [{
+    titre: 'Le Harnais',
+    texte: 'Pour aller plus loin : donner des outils à une IA, comprendre la boucle d’un agent, puis débloquer ses outils mission après mission.',
+    href: '/comprendre-ia/le-harnais/',
   }],
   lexique: sourcesTypes.lexique,
   references: grouper(sourcesTypes.references, REGLES_TYPES),
+};
+
+// Le cours « Le Harnais » : ses sources, du prototype aux outils des missions.
+const REGLES_HARNAIS: RegleGroupe[] = [
+  { nom: 'Le Harnais et OpenCode', adresses: ['clement8426/le-harnais', 'opencode.ai'] },
+  { nom: 'Comment fonctionne un agent', adresses: ['anthropic.com'] },
+  { nom: 'Les outils des missions', adresses: ['openai/whisper', 'tesseract', 'facebookresearch/detr', 'lighthouse', 'modelcontextprotocol', 'chrome-devtools-mcp'] },
+];
+
+const leHarnais: Cours = {
+  slug: 'le-harnais',
+  misAJour: '2026-11-09',
+  titre: 'Le Harnais',
+  accroche: 'ChatGPT répond. Un agent agit : il lit des fichiers, lance des commandes, ouvre des pages. Comprendre ce qui relie l’IA à ses outils, puis le manipuler soi-même, mission après mission.',
+  duree: 'Environ 45 à 60 min de diapos en classe, puis 15 missions à la maison',
+  public: 'Débutants qui n’ont utilisé ChatGPT que dans un navigateur. Pour les missions : un PC Windows 10 ou 11, 64 bits',
+  objectifs: [
+    'Expliquer ce qu’est un harnais (harness) : ce qui relie le modèle à ses outils, avec des droits, et vous qui décidez.',
+    'Décrire la boucle d’un agent : lire, agir avec un outil, observer, recommencer.',
+    'Comprendre le prompt système et la fenêtre de contexte, et pourquoi une longue session perd des détails.',
+    'Donner une condition d’arrêt claire, et reconnaître une boucle infinie pour l’interrompre.',
+    'Installer Le Harnais, brancher son IA et débloquer ses outils un par un, avec des données fictives.',
+  ],
+  diapos: { href: '/diapos/harnais/', apercu: '/apercus/harnais-diapos.jpg' },
+  parties: [
+    { titre: 'Comprendre', resume: 'Du chat à l’agent : ce qu’est un harnais, la boucle de l’agent, le prompt système, la fenêtre de contexte et les conditions d’arrêt.', duree: '15 à 20 min', diapos: [1, 9] },
+    { titre: 'Installer et démarrer', resume: 'Ce qu’il faut, l’installation en un double-clic, brancher son IA et écrire « Bonjour ».', duree: '10 à 15 min', diapos: [10, 18] },
+    { titre: 'Les missions', resume: 'Le terminal, les fichiers, la voix, la lecture d’un scan, la vision, le navigateur, les skills, les connecteurs MCP, puis le défi final. Présentées en classe, faites à la maison.', duree: '15 à 20 min en classe', diapos: [19, 31] },
+    { titre: 'Quand ça ne marche pas', resume: 'Les blocages fréquents, où partent vos données, et comment commencer chez soi.', duree: '5 min', diapos: [32, 34] },
+  ],
+  demos: [],
+  exercice: {
+    titre: 'Le Harnais',
+    resume: 'Une surcouche d’OpenCode (licence MIT) pour comprendre comment fonctionne un harnais, en le manipulant. Une application de bureau où votre IA arrive sans aucun outil. Vous débloquez la dictée, la lecture à voix haute, la lecture d’un scan et la reconnaissance d’images en vous en servant, puis le terminal, le navigateur et les connecteurs. OCR, dictée et détection sont locales dans ce parcours ; leurs textes peuvent partir vers le modèle. La lecture vocale peut utiliser un service distant. À faire à la maison : 15 missions en 6 chapitres, dans le dossier LeLabo de vos Documents.',
+    prototype: 'Le Harnais est un prototype, pas un produit fini : version 0.1.0 en bêta, des défauts sont possibles, sans garantie ni assistance. Utilisez des données fictives uniquement. C’est une surcouche d’OpenCode : l’application est celle d’OpenCode, avec des missions par-dessus. Ce n’est pas un produit officiel d’OpenCode.',
+    conditions: [
+      'Windows 10 ou 11 (64 bits) seulement. Pas de macOS, pas de Linux.',
+      'Application non signée : Windows 11 peut la bloquer.',
+      'Environ 0,9 Go à télécharger, puis les modèles de voix et d’image à la première utilisation (environ 3 Go sur le disque, 8 Go de mémoire conseillés).',
+      'Une IA à brancher : un abonnement ChatGPT ou une clé d’API. Dans cette version, Claude se configure par API ; les options gratuites d’OpenCode peuvent échouer. Consultez le guide du prototype.',
+      'Pas de mise à jour automatique : pour mettre à jour, on relance l’installateur.',
+    ],
+    lien: 'https://github.com/clement8426/le-harnais',
+  },
+  voirAussi: [{
+    titre: 'Les types d’IA',
+    texte: 'Avant ce cours, ou en parallèle : les familles d’IA, ce qu’est un LLM, et l’Atelier des IA pour essayer une capacité à la fois.',
+    href: '/comprendre-ia/types-ia/',
+  }],
+  lexique: sourcesHarnais.lexique,
+  references: grouper(sourcesHarnais.references, REGLES_HARNAIS),
 };
 
 const iaDonnees: Cours = {
@@ -421,7 +459,7 @@ export const CATEGORIES: Categorie[] = typoProfonde([
     nom: 'Comprendre l’IA',
     court: 'Comprendre l’IA',
     description: 'Ce qu’est une IA, ses grandes familles et leurs limites, avant de s’en servir.',
-    cours: [typesIa],
+    cours: [typesIa, leHarnais],
   },
   {
     slug: 'ia-legislation',

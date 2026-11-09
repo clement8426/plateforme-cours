@@ -1,0 +1,130 @@
+{
+  "lexique": [
+    {
+      "terme": "Harnais",
+      "nom": "Harnais (harness, en anglais)",
+      "def": "Le logiciel qui relie un modèle d'IA à des outils, avec des règles : ce que l'IA peut faire, ou seulement proposer.",
+      "cle": "harness"
+    },
+    {
+      "terme": "Modèle",
+      "def": "Le « cerveau » : le programme d'IA qui lit et répond. Seul, il ne fait que produire du texte.",
+      "cle": "idee"
+    },
+    {
+      "terme": "Agent",
+      "def": "Une IA qui agit avec des outils : elle lance des commandes, ouvre des fichiers ou des pages, puis regarde le résultat.",
+      "cle": "boucle"
+    },
+    {
+      "terme": "Outil",
+      "def": "Une action que le harnais met à la disposition de l'IA : terminal, fichiers, navigateur, voix, lecture d'un scan.",
+      "cle": "idee"
+    },
+    {
+      "terme": "Boucle de l'agent",
+      "def": "Le cycle d'un agent : lire, agir avec un outil, observer le résultat, recommencer, jusqu'à ce que le travail soit fini.",
+      "cle": "boucle"
+    },
+    {
+      "terme": "Prompt système",
+      "def": "Les consignes que le harnais donne à l'IA avant votre demande : son rôle, ses outils et ce qu'elle doit éviter.",
+      "cle": "contexte"
+    },
+    {
+      "terme": "Fenêtre de contexte",
+      "def": "Tout ce que l'IA voit à un moment donné. Sa taille est limitée : quand elle est pleine, le début est résumé ou oublié.",
+      "cle": "contexte"
+    },
+    {
+      "terme": "Condition d'arrêt",
+      "def": "Ce que « fini » veut dire, dit à l'IA dès le départ : sans elle, l'agent s'arrête trop tôt, ou ne s'arrête pas.",
+      "cle": "arret"
+    },
+    {
+      "terme": "Boucle infinie",
+      "nom": "Boucle infinie (doom loop)",
+      "def": "Quand l'IA relance le même outil, à l'identique, sans avancer. OpenCode a un garde-fou pour ce cas : doom_loop.",
+      "cle": "arret"
+    },
+    {
+      "terme": "Terminal",
+      "def": "La fenêtre où l'on tape des commandes pour l'ordinateur, au lieu de cliquer.",
+      "cle": "m03-terminal"
+    },
+    {
+      "terme": "OCR",
+      "nom": "OCR, reconnaissance optique de caractères",
+      "def": "L'outil qui recopie le texte d'une image ou d'un scan.",
+      "cle": "m08-lire"
+    },
+    {
+      "terme": "Skill",
+      "def": "Une fiche de savoir-faire que l'IA peut charger quand elle en a besoin : une méthode, des consignes, des exemples.",
+      "cle": "m12-skills"
+    },
+    {
+      "terme": "MCP",
+      "nom": "MCP, Model Context Protocol",
+      "def": "Une façon standard de brancher des connecteurs sur une IA : un navigateur, un agenda, un service en ligne.",
+      "cle": "m13-mcp"
+    }
+  ],
+  "references": [
+    {
+      "titre": "Le Harnais : le dépôt du prototype",
+      "source": "GitHub, Clément Bastien",
+      "url": "https://github.com/clement8426/le-harnais"
+    },
+    {
+      "titre": "Démarrer avec Le Harnais : le guide pas à pas",
+      "source": "GitHub, Clément Bastien",
+      "url": "https://github.com/clement8426/le-harnais/blob/main/docs/demarrer-eleve.md"
+    },
+    {
+      "titre": "OpenCode",
+      "source": "opencode.ai",
+      "url": "https://opencode.ai"
+    },
+    {
+      "titre": "Permissions, dont doom_loop",
+      "source": "Documentation OpenCode",
+      "url": "https://opencode.ai/docs/permissions/"
+    },
+    {
+      "titre": "Building effective agents",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents"
+    },
+    {
+      "titre": "Whisper : la transcription de la voix",
+      "source": "GitHub, OpenAI",
+      "url": "https://github.com/openai/whisper"
+    },
+    {
+      "titre": "Tesseract : l'OCR libre",
+      "source": "GitHub",
+      "url": "https://github.com/tesseract-ocr/tesseract"
+    },
+    {
+      "titre": "DETR : la détection d'objets",
+      "source": "GitHub, Meta",
+      "url": "https://github.com/facebookresearch/detr"
+    },
+    {
+      "titre": "Lighthouse",
+      "source": "Chrome for Developers",
+      "url": "https://developer.chrome.com/docs/lighthouse/overview"
+    },
+    {
+      "titre": "Model Context Protocol",
+      "source": "modelcontextprotocol.io",
+      "url": "https://modelcontextprotocol.io/"
+    },
+    {
+      "titre": "Chrome DevTools MCP",
+      "source": "GitHub, Chrome DevTools",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+    }
+  ]
+}

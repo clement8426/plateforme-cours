@@ -6,7 +6,7 @@ Instructions pour tout agent qui travaille dans ce dépôt (Claude Code, Codex, 
 
 Site de cours de numérique de Clément Bastien (Suisse romande), en ligne sur **https://www.labonumerique.ch**. Next.js 16 en export statique (`output: 'export'`, `trailingSlash`), déployé sur Vercel à chaque push sur `main`. Dépôt public : `clement8426/plateforme-cours`. Pas de base de données, pas de compte, pas de serveur applicatif.
 
-Quatre zones : **Cours** (`/cours/`, trois cours : UX × IA, Les types d'IA, IA données et responsabilité), **Démarrer** (`/demarrer/`, test et deux fiches), **Diagnostic** (`/diagnostic/`, plan d'angles morts, kit pour agent IA, annuaire d'outils en `/diagnostic/catalogue/`), **Bonnes pratiques** (`/bonnes-pratiques/`, lisibles par les élèves et par les agents IA).
+Quatre zones : **Cours** (`/cours/`, quatre cours : UX × IA, Les types d'IA, Le Harnais, IA données et responsabilité), **Démarrer** (`/demarrer/`, test et deux fiches), **Diagnostic** (`/diagnostic/`, plan d'angles morts, kit pour agent IA, annuaire d'outils en `/diagnostic/catalogue/`), **Bonnes pratiques** (`/bonnes-pratiques/`, lisibles par les élèves et par les agents IA).
 
 ## Règles permanentes (décisions de Clément, à ne jamais contourner)
 

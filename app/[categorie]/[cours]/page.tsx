@@ -155,13 +155,22 @@ export default async function PageCours(props: ParamsCours) {
             </ul>
           </div>
           <div className="actions">
-            {exercice.tuto && <Link className="bouton" href={`${base}/tuto/`}>{exercice.tuto.titre}</Link>}
             {exercice.lien && (
               <a className="bouton-secondaire" href={exercice.lien} target="_blank" rel="noreferrer">
                 Ouvrir {exercice.titre} sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
               </a>
             )}
           </div>
+        </section>
+      ))}
+
+      {cours.voirAussi?.map((v, index) => (
+        <section key={v.href} className="section lien-ligne" aria-labelledby={`titre-voir-${index}`}>
+          <div>
+            <h2 id={`titre-voir-${index}`}>Le cours {v.titre}</h2>
+            <p>{v.texte}</p>
+          </div>
+          <Link className="bouton-secondaire" href={v.href}>Ouvrir<span className="visuellement-cache"> le cours {v.titre}</span><Fleche /></Link>
         </section>
       ))}
 
