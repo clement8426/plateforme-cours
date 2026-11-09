@@ -5,50 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Le Harnais, cours, par Clément Bastien</title>
 <!--
-  Présentation autonome : un seul fichier, sans framework ni build. Même moteur que les cours UX × IA, IA, données et responsabilité, et Les types d’IA. 30 slides : le tuto du prototype Le Harnais, de l’installation au défi final.
+  Présentation autonome : un seul fichier, sans framework ni build. Même moteur que les cours UX × IA, IA, données et responsabilité, et Les types d’IA. 34 slides : le tuto du prototype Le Harnais, de l’installation au défi final.
   Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
   F plein écran, T thème clair ou sombre, B écran noir, S chrono (Maj + S : remise à zéro), N vue présentateur (Maj + N : panneau superposé).
   Tout ce qui se règle (minutes, notes, contenus des activités, lexique, sources) est dans l'objet CONFIG, au début du script.
   Export PDF : imprimer, format A4 paysage, sans marges, avec les arrière-plans.
 -->
 <style>
+@font-face{font-family:Bricolage Grotesque;font-style:normal;font-weight:200 800;font-stretch:100%;font-display:swap;src:url(../types-ia/polices/bricolage-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Instrument Sans;font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(../types-ia/polices/instrument-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* ========== 1. Variables ==========
    Le thème par défaut (clair) est défini juste en dessous : couleurs, polices, rayons, ombres.
    Le thème sombre (touche T) le redéfinit juste après. Aucun composant n'utilise de couleur en dur liée à un thème. */
-/* Palette du cours « Les types d'IA » : papier bleuté, encre nuit,
-   bleu (les familles d'IA), violet (les LLM), vert (la pratique) */
+/* Direction A, « Agrume » : crème chaude, encre indigo, cobalt, sarcelle, corail */
 :root {
   color-scheme: light;
-  --ink: #F6F7FA; --surface: #FFFFFF; --surface-2: #ECEFF4; --line: #DCE1E9; --edge: #858C99;
-  --text: #1B1F2A; --muted: #535A67;
-  --p1: #1B1F2A; --p1-text: #1B1F2A; --p1-fill: #1B1F2A; --on-p1: #F6F7FA;
-  --p2: #2A5A88; --p2-text: #24507A; --p2-fill: #2A5A88; --on-p2: #F6F7FA;
-  --p3: #64479C; --p3-text: #583D8C; --p3-fill: #64479C; --on-p3: #F6F7FA;
-  --p4: #2D6A55; --p4-text: #255A48; --p4-fill: #2D6A55; --on-p4: #F6F7FA;
-  --ok: #255A48; --ok-fill: #2D6A55; --warn: #7A5310; --warn-fill: #8A5F14; --bad: #A8401F; --bad-fill: #C1512F; --on-bad: #F6F7FA;
-  --hot-val: #C9B8EA;
-  --band: #E4E8EF; --logo-bg: #1B1F2A;
-  --shadow: 0 1px 0 rgba(27, 31, 42, .04), 0 24px 44px -30px rgba(27, 31, 42, .28);
-  --fill-edge: transparent; --soft-mix: 14%; --wash-mix: 14%; --decor-mix: 9%;
-  --font-title: "Libre Baskerville", Georgia, "Times New Roman", serif;
-  --font-body: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --title-weight: 700; --title-tracking: -.01em;
-  --r-s: 12px; --r-m: 18px; --r-l: 24px; --r-btn: 14px; --r-pill: 999px;
+  --ink: #F3F4F6; --surface: #FFFFFF; --surface-2: #E9EBEF; --line: #DCDFE5; --edge: #8B93A1;
+  --text: #14161B; --muted: #4A505A;
+  --p1: #8CBDF2; --p1-text: #24609A; --p1-fill: #8CBDF2; --on-p1: #14161B;
+  --p2: #62D8A2; --p2-text: #2F7356; --p2-fill: #62D8A2; --on-p2: #14161B;
+  --p3: #FF9C73; --p3-text: #A63F17; --p3-fill: #FF9C73; --on-p3: #14161B;
+  --p4: #C3A6F0; --p4-text: #6E4A8E; --p4-fill: #C3A6F0; --on-p4: #14161B;
+  --p5: #FF92B0; --p5-text: #A3304F; --p5-fill: #FF92B0; --on-p5: #14161B;
+  --p6: #E6C85C; --p6-text: #7A6514; --p6-fill: #E6C85C; --on-p6: #14161B;
+  --hot-val: #E6C85C;
+  --ok: #0B6B4F; --ok-fill: #62D8A2; --warn: #A63F17; --warn-fill: #FF9C73; --bad: #A3304F; --bad-fill: #FF92B0; --on-bad: #14161B;
+  --band: #E3E5EA; --logo-bg: #14161B; --sun: #E6C85C; --sun-mix: 70%;
+  --shadow: 0 1px 0 rgba(20, 22, 27, .04), 0 24px 44px -28px rgba(20, 22, 27, .3);
+  --fill-edge: transparent;
+  --soft-mix: 16%;
+  --wash-mix: 16%;
+  --font-title: "Bricolage Grotesque", "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Instrument Sans", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --title-weight: 700;
+  --title-tracking: -.025em;
+  --r-s: 14px;
+  --r-m: 22px;
+  --r-l: 32px;
+  --r-btn: 18px;
+  --r-pill: 999px;
 }
-/* thème sombre (touche T) : mêmes rôles, sur encre nuit */
+/* thème sombre (touche T) : mêmes rôles, sur encre indigo */
 :root[data-deck="dark"] {
   color-scheme: dark;
-  --ink: #1B1F2A; --surface: #252A36; --surface-2: #2F3542; --line: #3B4251; --edge: #8F96A3;
-  --text: #F3F4F7; --muted: #C3C8D2;
-  --p1: #E6E8EE; --p1-text: #E6E8EE; --p1-fill: #E6E8EE; --on-p1: #1B1F2A;
-  --p2: #8DB8E6; --p2-text: #8DB8E6; --p2-fill: #8DB8E6; --on-p2: #1B1F2A;
-  --p3: #BBA6E8; --p3-text: #BBA6E8; --p3-fill: #BBA6E8; --on-p3: #1B1F2A;
-  --p4: #8FC7AE; --p4-text: #8FC7AE; --p4-fill: #8FC7AE; --on-p4: #1B1F2A;
-  --ok: #8FC7AE; --ok-fill: #8FC7AE; --warn: #E2B865; --warn-fill: #E2B865; --bad: #E39E7E; --bad-fill: #D98C64; --on-bad: #1B1F2A;
-  --hot-val: #583D8C;
-  --band: #141720; --logo-bg: #141720;
-  --shadow: none; --decor-mix: 12%;
+  --ink: #1E2129; --surface: #272B35; --surface-2: #323744; --line: #3D4350; --edge: #8E96A6;
+  --text: #EEF0F4; --muted: #BCC1CB;
+  --p1: #8CBDF2; --p1-text: #8CBDF2; --p1-fill: #8CBDF2; --on-p1: #14161B;
+  --p2: #62D8A2; --p2-text: #62D8A2; --p2-fill: #62D8A2; --on-p2: #14161B;
+  --p3: #FF9C73; --p3-text: #FF9C73; --p3-fill: #FF9C73; --on-p3: #14161B;
+  --p4: #C3A6F0; --p4-text: #C3A6F0; --p4-fill: #C3A6F0; --on-p4: #14161B;
+  --p5: #FF92B0; --p5-text: #FF92B0; --p5-fill: #FF92B0; --on-p5: #14161B;
+  --p6: #E6C85C; --p6-text: #E6C85C; --p6-fill: #E6C85C; --on-p6: #14161B;
+  --hot-val: #3D4350;
+  --ok: #5FD3A8; --ok-fill: #62D8A2; --warn: #FF9C73; --warn-fill: #FF9C73; --bad: #FF92B0; --bad-fill: #FF92B0; --on-bad: #14161B;
+  --band: #14161B; --logo-bg: #14161B; --sun: #E6C85C; --sun-mix: 20%;
+  --shadow: none;
 }
+/* signature : un quartier d'agrume safran dans l'angle */
+[data-part] { --decor: radial-gradient(circle at 100% 0, var(--sun) 0 330px, transparent 331px); }
 :root {
   /* tailles fluides, bornées : 1cqw = 1 % de la largeur de la scène (19,2 px à 1920) */
   --fs-title: clamp(46px, 2.8cqw, 56px);
@@ -60,15 +75,13 @@
   --hit: 72px; /* 72 px sur la scène = 48 px réels dans une fenêtre 1280 x 720 */
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
-/* une couleur par partie : 1 avant ChatGPT (encre), 2 les familles (bleu), 3 les LLM (violet), 4 la pratique (vert), 5 annexes */
-[data-part="1"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
-[data-part="2"] { --accent: var(--p2); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
-[data-part="3"] { --accent: var(--p3); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
-[data-part="4"] { --accent: var(--p4); --accent-text: var(--p4-text); --accent-fill: var(--p4-fill); --on-accent: var(--on-p4); }
-[data-part="5"] { --accent: var(--p1); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
+/* Une couleur par partie : cobalt, sarcelle, corail, feuille. */
+[data-part="1"] { --accent: var(--p1); --sun: color-mix(in srgb, var(--p1) var(--sun-mix), var(--ink)); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
+[data-part="2"] { --accent: var(--p2); --sun: color-mix(in srgb, var(--p2) var(--sun-mix), var(--ink)); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
+[data-part="3"] { --accent: var(--p3); --sun: color-mix(in srgb, var(--p3) var(--sun-mix), var(--ink)); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
+[data-part="4"] { --accent: var(--p4); --sun: color-mix(in srgb, var(--p4) var(--sun-mix), var(--ink)); --accent-text: var(--p4-text); --accent-fill: var(--p4-fill); --on-accent: var(--on-p4); }
+[data-part="5"] { --accent: var(--p1); --sun: color-mix(in srgb, var(--p1) var(--sun-mix), var(--ink)); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
 [data-part] { --accent-soft: color-mix(in srgb, var(--accent) var(--soft-mix), var(--surface)); --accent-wash: color-mix(in srgb, var(--accent) var(--wash-mix), var(--ink)); }
-/* signature : un quart de cercle teinté de la couleur de la partie, dans l'angle */
-[data-part] { --decor: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--accent) var(--decor-mix), var(--ink)) 0 330px, transparent 331px); }
 
 /* ========== 2. Base ========== */
 *, *::before, *::after { box-sizing: border-box; }
@@ -555,9 +568,9 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .estime-val { font: 700 88px/1 var(--font-title); }
 .vf-tag.rep { background: var(--accent-fill); color: var(--on-accent); }
 .vf-quiz .vf-row { min-height: 100px; padding: 10px 28px; }
-.sens { width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 36px 28px; align-items: center; }
+.sens { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 360px minmax(0, 1fr); grid-template-rows: 1fr 1fr; gap: 36px 28px; align-items: center; }
 .sens-carte, .sens-cerveau { display: grid; justify-items: center; gap: 4px; padding: 22px 16px; border-radius: 22px; text-align: center; }
-.sens-carte { border: 3px solid var(--p2-fill); background: var(--surface); }
+.sens-carte { border: 2px solid var(--line); background: var(--surface); }
 .sens-carte b { font: 700 var(--fs-lead)/1.1 var(--font-title); color: var(--p2-text); }
 .sens-carte span { font-size: var(--fs-meta); color: var(--muted); }
 .sens-carte:nth-child(1) { grid-area: 1 / 1; } .sens-carte:nth-child(2) { grid-area: 1 / 3; }
@@ -570,7 +583,7 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 /* ========== 5 quinquies. Slides du tuto du Harnais ========== */
 .shot { margin: 0; border-radius: var(--r-m); overflow: hidden; border: 2px solid var(--line); background: #0F1117; box-shadow: var(--shadow); }
 .shot img { width: 100%; height: auto; max-height: 100%; object-fit: contain; }
-.code-ligne { font: 600 28px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; padding: 22px 28px; border-radius: var(--r-s); background: var(--surface-2); border: 2px solid var(--line); overflow-wrap: anywhere; }
+.code-ligne, .slide .rule-card > p.code-ligne { font: 600 28px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; padding: 22px 28px; border-radius: var(--r-s); background: var(--surface-2); border: 2px solid var(--line); overflow-wrap: anywhere; }
 .mini-h { font: 700 var(--fs-lead)/1.15 var(--font-title); margin-bottom: 10px; }
 .tbl-parcours td:first-child { width: 440px; }
 .tbl-aide td:first-child { width: 520px; }
@@ -635,10 +648,46 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   [data-step] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
   #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
 }
+
+/* Les nouvelles activités gardent la même scène 16:9 et les mêmes contrôles. */
+.course-link { color: var(--accent-text); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.btn { text-decoration: none; }
+.atelier-shot { width: 100%; height: auto; max-height: 500px; object-fit: contain; border-radius: 18px; border: 2px solid var(--line); box-shadow: var(--shadow); }
+.atelier-figure { display: grid; align-content: center; gap: 18px; }
+.atelier-figure figcaption { font-size: var(--fs-meta); color: var(--muted); }
+.pratique-choix { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pratique-carte { display: grid; grid-template-rows: auto auto 1fr auto; gap: 24px; padding: 48px; }
+.pratique-carte h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.pratique-carte .btn { justify-self: start; margin-top: 10px; }
+.pratique-carte .numero { color: var(--muted); font: 600 var(--fs-min)/1 var(--font-body); }
+.audio-visual { display: grid; align-content: center; gap: 34px; padding: 44px; background: var(--accent-wash); }
+.audio-bars { height: 190px; display: flex; align-items: center; justify-content: center; gap: 13px; }
+.audio-bars i { width: 20px; height: var(--h); border-radius: 12px; background: var(--accent-fill); }
+.audio-visual strong { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.video-frames { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.video-frames div { aspect-ratio: 1; border: 2px solid var(--edge); border-radius: 22px; background: var(--accent-wash); display: grid; align-content: center; justify-items: center; gap: 24px; }
+.video-frames b { width: 60px; height: 60px; border-radius: 50%; background: var(--accent-fill); }
+.video-frames div:nth-child(1) b { transform: translateX(-25px); }
+.video-frames div:nth-child(3) b { transform: translateX(25px); }
+.video-frames span { font-size: var(--fs-meta); color: var(--muted); }
+.cover-vis { background: var(--accent-wash); }
+.sens-cerveau { border-radius: 50%; aspect-ratio: 1; padding: 48px 30px; align-content: center; gap: 18px; }
+.quiz-pager { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+@media print {
+  .vf-quiz { grid-template-columns: 1fr 1fr; }
+  .vf-quiz .vf-row { grid-template-columns: 1fr; min-height: 0; gap: 8px; padding: 14px; }
+  .vf-quiz .vf-row[hidden] { display: grid !important; }
+  .vf-quiz .quiz-pager { display: none !important; }
+}
+/* La palette du site : la bande des six couleurs en haut de chaque slide, et des pastilles qui les reprennent. */
+.slide::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; z-index: 5; pointer-events: none;
+  background: linear-gradient(to right, var(--p4) 0 16.667%, var(--p3) 16.667% 33.333%, var(--p1) 33.333% 50%, var(--p6) 50% 66.667%, var(--p2) 66.667% 83.333%, var(--p5) 83.333% 100%); }
+.chips > .chip:not(.good):not(.off):not(.law):not(.bloc) { background: color-mix(in srgb, var(--chip-c, var(--p1)) 26%, var(--surface)); border-color: color-mix(in srgb, var(--chip-c, var(--p1)) 75%, var(--surface)); }
+.chips > .chip:nth-child(6n + 1) { --chip-c: var(--p1); } .chips > .chip:nth-child(6n + 2) { --chip-c: var(--p2); } .chips > .chip:nth-child(6n + 3) { --chip-c: var(--p3); }
+.chips > .chip:nth-child(6n + 4) { --chip-c: var(--p4); } .chips > .chip:nth-child(6n + 5) { --chip-c: var(--p5); } .chips > .chip:nth-child(6n + 6) { --chip-c: var(--p6); }
 </style>
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="../lecture.css">
-<link rel="stylesheet" href="../../polices/diapos.css">
 </head>
 <body>
 <div id="viewport" role="main">
