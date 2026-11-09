@@ -6,7 +6,7 @@ import outilsBruts from '../../../data/tools.json';
 import { typoProfonde } from '../typo';
 
 export type Quand = { toujours?: boolean; contexte?: string[]; types?: string[]; outils?: string[]; signaux?: string[]; intentions?: string[]; verifier?: string };
-export type Angle = { id: string; family: string; title: string; question: string; severity: 'bloquant' | 'important' | 'confort'; show_if: string; when: Quand; why: string; warning: string; action: string; practice: string | null; learn_course_url: string | null; swiss_legal_ref: string | null };
+export type Angle = { id: string; family: string; title: string; question: string; severity: 'bloquant' | 'important' | 'confort'; show_if: string; when: Quand; why: string; warning: string; action: string; practice: string | null; learn_course_url: string | null; swiss_legal_ref: string | null; sources?: { titre: string; url: string }[] };
 export type Regle = { id: string; if: { intentions?: string[]; types?: string[]; contexte?: string[]; outils?: string[] }; then: string[]; priority_boost: number };
 export type Outil = {
   id: string; kind: string; name: string; repo: string; description: string; sources: string[]; install: Record<string, string>;

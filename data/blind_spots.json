@@ -16,7 +16,13 @@
   "action": "Rédige tes conditions et fais-les accepter avant le paiement.",
   "practice": "marche-suisse",
   "learn_course_url": null,
-  "swiss_legal_ref": "Site PME de la Confédération, obligations du e-commerce"
+  "swiss_legal_ref": "Site PME de la Confédération, obligations du e-commerce",
+  "sources": [
+   {
+    "titre": "Obligations légales du e-commerce, site PME de la Confédération",
+    "url": "https://www.kmu.admin.ch/fr/obligations-legales-les-lois-suisses-et-europeennes-sur-le-e-commerce"
+   }
+  ]
  },
  {
   "id": "mentions",
@@ -33,7 +39,17 @@
   "action": "Publie le nom, l’adresse postale et l’adresse e-mail de l’éditeur.",
   "practice": "marche-suisse",
   "learn_course_url": null,
-  "swiss_legal_ref": "Art. 3 al. 1 let. s LCD"
+  "swiss_legal_ref": "Art. 3 al. 1 let. s LCD",
+  "sources": [
+   {
+    "titre": "Loi fédérale contre la concurrence déloyale (LCD), art. 3, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/fr#art_3"
+   },
+   {
+    "titre": "Obligations légales du e-commerce, site PME de la Confédération",
+    "url": "https://www.kmu.admin.ch/fr/obligations-legales-les-lois-suisses-et-europeennes-sur-le-e-commerce"
+   }
+  ]
  },
  {
   "id": "confidentialite",
@@ -52,7 +68,13 @@
   "action": "Liste les données, les finalités, les destinataires et les pays.",
   "practice": "nlpd",
   "learn_course_url": "/ia-legislation/ia-donnees/",
-  "swiss_legal_ref": "Art. 19 LPD"
+  "swiss_legal_ref": "Art. 19 LPD",
+  "sources": [
+   {
+    "titre": "Loi fédérale sur la protection des données (LPD), art. 19, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_19"
+   }
+  ]
  },
  {
   "id": "marche-ue",
@@ -69,7 +91,13 @@
   "action": "Décide si tu vises l’UE, puis vérifie les règles qui s’ajoutent.",
   "practice": "rgpd",
   "learn_course_url": "/ia-legislation/ia-donnees/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Règlement (UE) 2016/679 (RGPD), art. 3, EUR-Lex",
+    "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32016R0679"
+   }
+  ]
  },
  {
   "id": "cookies",
@@ -86,12 +114,22 @@
     "campagne"
    ]
   },
-  "why": "Chaque outil tiers ajouté au site peut transmettre des données de visite.",
+  "why": "En Suisse, l’art. 45c LTC demande d’informer sur les cookies, leur but et la façon de les refuser. Selon le PFPDT, un consentement n’est exigé que dans certains cas, par exemple pour des données sensibles. Pour des visiteurs de l’UE, les règles européennes peuvent l’exiger.",
   "warning": "Tu ne sais pas lister les scripts chargés par ton site.",
-  "action": "Fais l’inventaire des scripts et retire ceux qui ne servent pas.",
+  "action": "Fais l’inventaire des scripts, retire ceux qui ne servent pas et explique les autres, avec la façon de les refuser.",
   "practice": "vie-privee",
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": "Art. 45c LTC",
+  "sources": [
+   {
+    "titre": "Loi sur les télécommunications (LTC), art. 45c, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/1997/2187_2187_2187/fr#art_45_c"
+   },
+   {
+    "titre": "Aide-mémoire sur les cookies et le suivi en ligne, PFPDT (27 mars 2026)",
+    "url": "https://www.edoeb.admin.ch/dam/fr/sd-web/ByXs53ExpIEy/20260327%20Merkblatt%20Cookies_FR.pdf"
+   }
+  ]
  },
  {
   "id": "factures",
@@ -111,7 +149,13 @@
   "action": "Prévois un archivage exportable et testé.",
   "practice": "marche-suisse",
   "learn_course_url": null,
-  "swiss_legal_ref": "Art. 958f CO"
+  "swiss_legal_ref": "Art. 958f CO",
+  "sources": [
+   {
+    "titre": "Code des obligations (CO), art. 958f, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/fr#art_958_f"
+   }
+  ]
  },
  {
   "id": "droits-ia",
@@ -130,12 +174,26 @@
    ],
    "verifier": "Si tu utilises une IA pour produire du contenu."
   },
-  "why": "Les conditions de chaque outil et le droit applicable décident de ce que tu peux faire du contenu généré.",
+  "why": "En Suisse, le droit d’auteur protège les créations humaines : un contenu produit par l’IA sans apport créatif de ta part n’est en principe pas protégé, et les conditions de l’outil peuvent limiter son usage.",
   "warning": "Tu promets à un client une exclusivité sur des visuels générés.",
-  "action": "Lis les conditions de l’outil et ne promets pas plus qu’elles.",
-  "practice": "ai-act",
+  "action": "Lis les conditions de l’outil, ne promets pas d’exclusivité et demande conseil en cas de doute.",
+  "practice": null,
   "learn_course_url": "/comprendre-ia/types-ia/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": "Art. 2 LDA",
+  "sources": [
+   {
+    "titre": "Les outils d’IA peuvent-ils violer le droit d’auteur ?, IPI",
+    "url": "https://www.ige.ch/fr/blog/articles-du-blog/kuenstliche-intelligenz-koennen-ki-tools-urheberrecht-verletzen"
+   },
+   {
+    "titre": "Lire les conditions d’utilisation des plateformes d’IA générative, site PME de la Confédération",
+    "url": "https://www.kmu.admin.ch/fr/il-est-crucial-que-les-entreprises-lisent-les-conditions-dutilisation-des-plateformes-dia-generative"
+   },
+   {
+    "titre": "Loi sur le droit d’auteur (LDA), art. 2, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/1993/1798_1798_1798/fr#art_2"
+   }
+  ]
  },
  {
   "id": "decision-auto",
@@ -158,7 +216,13 @@
   "action": "Garde une personne dans la boucle et informe les personnes concernées.",
   "practice": "nlpd",
   "learn_course_url": "/ia-legislation/ia-donnees/",
-  "swiss_legal_ref": "Art. 21 LPD"
+  "swiss_legal_ref": "Art. 21 LPD",
+  "sources": [
+   {
+    "titre": "Loi fédérale sur la protection des données (LPD), art. 21, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_21"
+   }
+  ]
  },
  {
   "id": "cloud-act",
@@ -180,7 +244,13 @@
   "action": "Identifie la société qui contrôle les données, puis décide si ce risque est acceptable.",
   "practice": "cloud-act",
   "learn_course_url": "/ia-legislation/ia-donnees/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "CLOUD Act Resources, Département de la justice des États-Unis",
+    "url": "https://www.justice.gov/criminal/cloud-act-resources"
+   }
+  ]
  },
  {
   "id": "promesse-suisse",
@@ -258,7 +328,13 @@
   "action": "Active RLS sur chaque table et teste avec deux comptes.",
   "practice": "rls",
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Row Level Security, documentation Supabase",
+    "url": "https://supabase.com/docs/guides/database/postgres/row-level-security"
+   }
+  ]
  },
  {
   "id": "sessions",
@@ -277,7 +353,13 @@
   "action": "Fixe une durée de vie courte et prévois la révocation.",
   "practice": "sessions",
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Session Management Cheat Sheet, OWASP",
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+   }
+  ]
  },
  {
   "id": "cles",
@@ -299,7 +381,17 @@
   "action": "Scanne le dépôt, puis remplace toute clé exposée.",
   "practice": "cles-exposees",
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Understanding API keys, documentation Supabase",
+    "url": "https://supabase.com/docs/guides/api/api-keys"
+   },
+   {
+    "titre": "Secrets Management Cheat Sheet, OWASP",
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html"
+   }
+  ]
  },
  {
   "id": "sauvegardes",
@@ -346,7 +438,13 @@
   "action": "Teste chaque action avec un compte sans droit.",
   "practice": "rls",
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "A01:2025 Broken Access Control, OWASP Top 10",
+    "url": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/"
+   }
+  ]
  },
  {
   "id": "fuite",
@@ -365,7 +463,13 @@
   "action": "Écris à l’avance qui décide, qui prévient et comment.",
   "practice": "nlpd",
   "learn_course_url": "/ia-legislation/ia-donnees/",
-  "swiss_legal_ref": "Art. 24 LPD"
+  "swiss_legal_ref": "Art. 24 LPD",
+  "sources": [
+   {
+    "titre": "Loi fédérale sur la protection des données (LPD), art. 24, Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_24"
+   }
+  ]
  },
  {
   "id": "multilingue",
@@ -442,7 +546,13 @@
   "action": "Sépare les entreprises au niveau de la base et teste avec deux comptes.",
   "practice": "rls",
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Row Level Security, documentation Supabase",
+    "url": "https://supabase.com/docs/guides/database/postgres/row-level-security"
+   }
+  ]
  },
  {
   "id": "contrastes",
@@ -454,12 +564,22 @@
   "when": {
    "toujours": true
   },
-  "why": "Une information portée seulement par la couleur échappe à une partie du public.",
+  "why": "Une information portée seulement par la couleur échappe à une partie du public. Si tu vends en ligne à des consommateurs de l’UE, l’European Accessibility Act s’applique depuis le 28 juin 2025, sauf aux micro-entreprises de services.",
   "warning": "Un champ en erreur est seulement rouge.",
   "action": "Ajoute un texte ou une icône, et vérifie le contraste.",
   "practice": null,
   "learn_course_url": "/ux/ux-ia/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Understanding SC 1.4.3 Contrast (Minimum), W3C",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+   },
+   {
+    "titre": "Directive (UE) 2019/882 (European Accessibility Act), EUR-Lex",
+    "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882"
+   }
+  ]
  },
  {
   "id": "clavier",
@@ -485,7 +605,17 @@
   "action": "Fais ton parcours principal avec la seule touche Tab.",
   "practice": null,
   "learn_course_url": "/ux/ux-ia/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Understanding SC 2.1.1 Keyboard, W3C",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+   },
+   {
+    "titre": "Directive (UE) 2019/882 (European Accessibility Act), EUR-Lex",
+    "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0882"
+   }
+  ]
  },
  {
   "id": "alt",
@@ -510,7 +640,13 @@
   "action": "Décris ce que l’image apporte, et laisse vide si elle est décorative.",
   "practice": null,
   "learn_course_url": "/ux/ux-ia/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Images Tutorial, W3C WAI",
+    "url": "https://www.w3.org/WAI/tutorials/images/"
+   }
+  ]
  },
  {
   "id": "microcopie",
@@ -626,7 +762,7 @@
   "id": "emails",
   "family": "exploitation",
   "title": "E-mails transactionnels",
-  "question": "Tes e-mails arrivent-ils ou finissent-ils en spam (SPF, DKIM) ?",
+  "question": "Tes e-mails arrivent-ils ou finissent-ils en spam (SPF, DKIM, DMARC) ?",
   "severity": "important",
   "show_if": "e-mails envoyés",
   "when": {
@@ -638,12 +774,22 @@
    ],
    "verifier": "Si ton projet envoie des e-mails."
   },
-  "why": "Sans configuration du domaine, les e-mails arrivent mal.",
+  "why": "Sans configuration du domaine, les e-mails arrivent mal. Gmail et Yahoo exigent SPF, DKIM et DMARC pour les envois en nombre.",
   "warning": "Les confirmations finissent dans les indésirables.",
-  "action": "Configure SPF et DKIM, puis teste vers plusieurs boîtes.",
+  "action": "Configure SPF, DKIM et DMARC, puis teste vers plusieurs boîtes.",
   "practice": null,
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Consignes pour les expéditeurs d’e-mails, aide Gmail",
+    "url": "https://support.google.com/mail/answer/81126?hl=fr"
+   },
+   {
+    "titre": "Sender Best Practices, Yahoo",
+    "url": "https://senders.yahooinc.com/best-practices/"
+   }
+  ]
  },
  {
   "id": "supervision",
@@ -683,13 +829,19 @@
   "action": "Donne à chaque page un titre, une description et une structure claire.",
   "practice": null,
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Guide de démarrage SEO, Google Search Central",
+    "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr"
+   }
+  ]
  },
  {
   "id": "mesure",
   "family": "visibilite",
-  "title": "Mesure avec consentement",
-  "question": "Mesures-tu ton audience sans traceur non consenti ?",
+  "title": "Mesure d’audience sobre",
+  "question": "Mesures-tu ton audience avec un outil sobre, annoncé aux visiteurs ?",
   "severity": "important",
   "show_if": "site public",
   "when": {
@@ -705,7 +857,13 @@
   "action": "Choisis l’outil le plus sobre qui répond à ta question.",
   "practice": "vie-privee",
   "learn_course_url": "/ux/ux-ia/",
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Aide-mémoire sur les cookies et le suivi en ligne, PFPDT (27 mars 2026)",
+    "url": "https://www.edoeb.admin.ch/dam/fr/sd-web/ByXs53ExpIEy/20260327%20Merkblatt%20Cookies_FR.pdf"
+   }
+  ]
  },
  {
   "id": "apercus",
@@ -726,7 +884,13 @@
   "action": "Renseigne le titre, la description et l’image de partage.",
   "practice": null,
   "learn_course_url": null,
-  "swiss_legal_ref": null
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "The Open Graph protocol",
+    "url": "https://ogp.me/"
+   }
+  ]
  },
  {
   "id": "maintenance",

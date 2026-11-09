@@ -17,7 +17,7 @@ export type Pratique = {
   blocs?: { titre: string; lignes: { nom: string; texte: string }[] }[];
 };
 
-export const DATE_VERIFICATION = '2026-11-07';
+export const DATE_VERIFICATION = '2026-11-09';
 
 const LPD = { titre: 'Loi fédérale sur la protection des données (LPD), Fedlex', url: 'https://www.fedlex.admin.ch/eli/cc/2022/491/fr' };
 const IA = { href: '/ia-legislation/ia-donnees/', nom: 'IA, données et responsabilité' };
@@ -30,7 +30,17 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     exemple: 'Une élève veut trier un fichier de clients. Elle donne à l’IA un tableur de même structure, rempli de faux noms et de fausses adresses, puis applique le résultat à son vrai fichier sur son ordinateur.',
     verifications: ['Le fichier envoyé contient-il de vrais noms, numéros ou adresses ?', 'Un tableur modèle avec de fausses données suffirait-il pour cette tâche ?', 'Pour des données médicales, juridiques ou RH, as-tu envisagé un agent open source avec un modèle européen ou hébergé en Suisse ?'],
     angles: ['cloud-act', 'confidentialite'], cours: IA,
-    sources: [LPD, { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' }],
+    blocs: [
+      { titre: 'Avant d’envoyer', lignes: [
+        { nom: 'Les conditions de l’outil', texte: 'Lis ce qu’elles prévoient pour tes données et pour ce que l’outil produit. Elles changent d’un outil et d’une offre à l’autre.' },
+        { nom: 'Le compte utilisé', texte: 'Si ton école ou ton entreprise fournit un compte, utilise-le pour le travail plutôt que ton compte personnel.' },
+      ] },
+    ],
+    sources: [
+      LPD,
+      { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' },
+      { titre: 'Lire les conditions d’utilisation des plateformes d’IA générative, site PME de la Confédération', url: 'https://www.kmu.admin.ch/fr/il-est-crucial-que-les-entreprises-lisent-les-conditions-dutilisation-des-plateformes-dia-generative' },
+    ],
   },
   {
     id: 'cache', groupe: 'Tester', titre: 'Cache et hard refresh',
@@ -49,7 +59,9 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
         { nom: 'Chrome sur Windows et Linux', texte: '`Ctrl + Maj + R` ou `Maj + F5`' },
         { nom: 'Chrome sur Mac', texte: '`⌘ + Maj + R`' },
         { nom: 'Chrome et Firefox, pendant les tests', texte: 'Dans les outils de développement, onglet Réseau, coche la case qui désactive le cache.' },
-        { nom: 'Safari', texte: 'Apple ne donne pas ce raccourci sur sa page officielle et renvoie aux menus de l’application : cherche la commande dans les menus de Safari.' },
+        { nom: 'Firefox', texte: '`Ctrl + Maj + R` ou `Ctrl + F5`, et `⌘ + Maj + R` sur Mac' },
+        { nom: 'Safari', texte: '`⌥ + ⌘ + R` : « Recharger la page depuis l’origine », visible dans le menu Présentation en maintenant Option. Attention : `⌘ + Maj + R` ouvre le Lecteur et ne recharge rien.' },
+        { nom: 'Sur un téléphone', texte: 'Il n’y a pas de rechargement forcé : ouvre la page dans un onglet de navigation privée ou vide le cache du navigateur.' },
       ] },
       { titre: 'Quand ça ne suffit pas', lignes: [
         { nom: 'Service worker', texte: 'Le rechargement forcé le contourne pour la page, mais sa nouvelle version attend que tous les onglets du site soient fermés. Dans Chrome, l’option « Update on reload » de l’onglet Application l’active à chaque chargement.' },
@@ -63,6 +75,8 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
       { titre: 'The service worker lifecycle, web.dev', url: 'https://web.dev/articles/service-worker-lifecycle' },
       { titre: 'Network features reference, Chrome DevTools', url: 'https://developer.chrome.com/docs/devtools/network/reference' },
       { titre: 'Network Monitor toolbar, documentation Firefox', url: 'https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/toolbar/index.html' },
+      { titre: 'Keyboard shortcuts, assistance Firefox', url: 'https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly' },
+      { titre: 'Reload Page From Origin, notes de version Safari Technology Preview 27, WebKit', url: 'https://webkit.org/blog/7497/release-notes-for-safari-technology-preview-27/' },
       { titre: 'Vercel CDN Cache, documentation Vercel', url: 'https://vercel.com/docs/caching/cdn-cache' },
       { titre: 'Keyboard shortcuts in Safari, aide Apple', url: 'https://support.apple.com/guide/safari/keyboard-and-other-shortcuts-cpsh003/mac' },
     ],
@@ -99,14 +113,31 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
   },
   {
     id: 'ai-act', groupe: 'Légal et éthique', titre: 'AI Act',
-    resume: 'Le tri de candidatures fait partie des usages à haut risque.',
-    risque: 'Le règlement européen classe les usages de l’IA selon leur risque. Le tri de candidatures fait partie des usages à haut risque, même dans un petit projet.',
+    resume: 'Transparence depuis août 2026, haut risque dès décembre 2027.',
+    risque: 'Le règlement européen classe les usages de l’IA selon leur risque. Il peut concerner un projet suisse dont les résultats sont utilisés dans l’UE. Le tri de candidatures fait partie des usages à haut risque, même dans un petit projet.',
     exemple: 'Un outil interne classe des CV et écarte seul une partie des candidats. Ce n’est plus un simple assistant : c’est un usage à vérifier avant de le déployer.',
-    verifications: ['Ton outil touche-t-il à l’emploi, à l’éducation ou au crédit ?', 'Une personne relit-elle ce que l’IA décide ?', 'Tes utilisateurs savent-ils quand ils parlent à une IA ?'],
+    verifications: ['Ton outil touche-t-il à l’emploi, à l’éducation ou au crédit ?', 'Une personne relit-elle ce que l’IA décide ?', 'Tes utilisateurs savent-ils quand ils parlent à une IA ou voient un contenu généré (art. 50) ?'],
     angles: ['decision-auto', 'droits-ia'], cours: IA,
+    blocs: [
+      { titre: 'Les dates', lignes: [
+        { nom: '2 février 2025', texte: 'Les pratiques interdites s’appliquent.' },
+        { nom: '2 août 2026', texte: 'Transparence (art. 50) : annoncer un chatbot, signaler les deepfakes. Les systèmes déjà sur le marché ont jusqu’au 2 décembre 2026 pour marquer les contenus générés.' },
+        { nom: '2 décembre 2027', texte: 'Règles du haut risque de l’annexe III, dont l’emploi, l’éducation et le crédit. Ce report vient de l’Omnibus IA, en vigueur depuis le 27 juillet 2026.' },
+        { nom: '2 août 2028', texte: 'Haut risque pour l’IA intégrée à des produits réglementés (annexe I).' },
+      ] },
+      { titre: 'Et en Suisse', lignes: [
+        { nom: 'Aujourd’hui', texte: 'Pas de loi générale sur l’IA : la LPD et les lois existantes s’appliquent.' },
+        { nom: 'Ensuite', texte: 'La Suisse veut ratifier la Convention du Conseil de l’Europe sur l’IA. La consultation sur le projet de loi est prévue au printemps 2027.' },
+        { nom: 'Un projet suisse', texte: 'L’AI Act peut s’appliquer si tu mets un système sur le marché de l’UE ou si ses résultats y sont utilisés.' },
+      ] },
+    ],
     sources: [
       { titre: 'Règlement (UE) 2024/1689 (AI Act), EUR-Lex', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
-      { titre: 'EU AI Omnibus enters into force, White & Case (analyse)', url: 'https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act' },
+      { titre: 'When does enforcement start?, AI Act Service Desk, Commission européenne', url: 'https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/when-does-enforcement-start' },
+      { titre: 'AI Omnibus enters into force, Commission européenne', url: 'https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force' },
+      { titre: 'Article 50 : obligations de transparence, AI Act Service Desk', url: 'https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50' },
+      { titre: 'Un avant-projet pour réglementer l’IA d’ici début 2027, site PME de la Confédération', url: 'https://www.kmu.admin.ch/fr/un-avant-projet-visant-a-reglementer-lia-sera-elabore-dici-debut-2027' },
+      { titre: 'Intelligence artificielle, OFCOM', url: 'https://www.bakom.admin.ch/fr/intelligence-artificielle' },
     ],
   },
   {
@@ -165,7 +196,11 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     exemple: 'Un formulaire fictif demande la date de naissance alors qu’il sert seulement à envoyer une newsletter. Ce champ peut disparaître.',
     verifications: ['Chaque champ d’un formulaire a-t-il une utilité réelle ?', 'As-tu la liste des scripts tiers chargés par ton site ?', 'Une personne peut-elle demander la suppression de ses données ?'],
     angles: ['cookies', 'mesure', 'confidentialite'], cours: IA,
-    sources: [LPD, { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' }],
+    sources: [
+      LPD,
+      { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' },
+      { titre: 'Aide-mémoire sur les cookies et le suivi en ligne, PFPDT (27 mars 2026)', url: 'https://www.edoeb.admin.ch/dam/fr/sd-web/ByXs53ExpIEy/20260327%20Merkblatt%20Cookies_FR.pdf' },
+    ],
   },
   {
     id: 'serveur', groupe: 'Technique', titre: 'Configuration serveur',

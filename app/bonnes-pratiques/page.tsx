@@ -31,6 +31,7 @@ export default function Page() {
           <p>Copie ce message dans Claude Code, Codex ou ton agent. Il lit toutes les pages du Labo et passe ton projet en revue, point par point.</p>
           <CopieAgent texte={messageGuide()} classeBouton="hero-bouton" />
           <p><a href={CHEMIN_GUIDE}>Ouvrir le guide pour agents</a></p>
+          <p>Avant de lui ouvrir ton projet, décide ce qu’il a le droit de faire : c’est le sujet du cours <Link href="/comprendre-ia/le-harnais/">Le Harnais</Link>.</p>
         </div>
         <FioleAccueil />
       </section>

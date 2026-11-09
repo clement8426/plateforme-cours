@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import FilAriane from '@/composants/FilAriane';
+import { formaterDate } from '@/contenu/date';
 import { ANGLES, famille, GRAVITES, outilsDe, trouverAngle } from '@/contenu/parcours/moteur';
-import { trouverPratique } from '@/contenu/parcours/pratiques';
+import { DATE_VERIFICATION, trouverPratique } from '@/contenu/parcours/pratiques';
 import { couperDescription, metadonnees } from '@/contenu/site';
 
 type Props = { params: Promise<{ angle: string }> };
@@ -30,6 +31,7 @@ export default async function Page({ params }: Props) {
       </header>
       <article className="pratique">
         <p className="pratique-risque">{a.question}</p>
+        {pratique && <p>La fiche complète : <Link href={`/bonnes-pratiques/${pratique.id}/`}>{pratique.titre}</Link>.</p>}
         <section><h2>Pourquoi ça compte</h2><p>{a.why}</p>{a.swiss_legal_ref && <p>Référence : {a.swiss_legal_ref}.</p>}</section>
         <section><h2>Signe d’alerte</h2><p>{a.warning}</p></section>
         <section><h2>Quoi faire</h2><p>{a.action}</p></section>
@@ -41,6 +43,13 @@ export default async function Page({ params }: Props) {
             {a.learn_course_url && <li><Link href={a.learn_course_url}>Le cours lié</Link></li>}
           </ul>
         </section>}
+        <section>
+          {a.sources && a.sources.length > 0 && <>
+            <h2>Sources</h2>
+            <ul>{a.sources.map((s) => <li key={s.url}><a href={s.url} target="_blank" rel="noreferrer">{s.titre}</a></li>)}</ul>
+          </>}
+          <p>Vérifié le {formaterDate(DATE_VERIFICATION)}. Cette page informe et ne remplace pas un conseil juridique.</p>
+        </section>
       </article>
     </div>
   );
