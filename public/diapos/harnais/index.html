@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Le Harnais, tuto, par Clément Bastien</title>
+<title>Le Harnais, cours, par Clément Bastien</title>
 <!--
   Présentation autonome : un seul fichier, sans framework ni build. Même moteur que les cours UX × IA, IA, données et responsabilité, et Les types d’IA. 30 slides : le tuto du prototype Le Harnais, de l’installation au défi final.
   Raccourcis : flèches, Espace, PageUp et PageDown pour naviguer. G grille, un nombre puis Entrée pour aller à une slide,
@@ -642,21 +642,21 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </head>
 <body>
 <div id="viewport" role="main">
-<h1 class="sr">Le Harnais, tuto, par Clément Bastien</h1>
-  <main id="stage" tabindex="-1" aria-label="Tuto du Harnais">
-    <h1 class="sr">Le Harnais : tuto, par Clément Bastien</h1>
+<h1 class="sr">Le Harnais, cours, par Clément Bastien</h1>
+  <main id="stage" tabindex="-1" aria-label="Diapos du cours Le Harnais">
+    <h1 class="sr">Le Harnais : cours, par Clément Bastien</h1>
     <div id="slides">
-<!-- ================= PARTIE 1 : COMPRENDRE (slides 1 à 6) ================= -->
+<!-- ================= PARTIE 1 : COMPRENDRE (slides 1 à 9) ================= -->
 
 <section class="slide s-cover" data-part="1" data-key="titre">
   <h2 class="title">Le Harnais</h2>
   <div class="body g12">
     <div class="c5 cover-text">
-      <p class="cover-lead">Apprendre l’IA en débloquant ses outils, un par un. Tuto : de l’installation au défi final.</p>
+      <p class="cover-lead">Apprendre l’IA en débloquant ses outils, un par un. Le cours : comprendre, installer, puis les missions.</p>
       <p class="cover-name">Clément Bastien</p>
       <p class="cover-def">Une surcouche d’OpenCode, pour comprendre comment fonctionne un harnais.</p>
       <p class="cover-def">Prototype · Windows 10 et 11 seulement</p>
-      <p class="cover-maj">Mis à jour le 18 octobre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
+      <p class="cover-maj">Mis à jour le 9 novembre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7 cover-col">
       <div class="card cover-vis" role="img" aria-label="Schéma : toi, le harnais, puis le cerveau, c'est-à-dire le modèle d'IA. Sous le harnais, les outils : terminal, fichiers, navigateur, voix.">
@@ -730,6 +730,53 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
+<section class="slide" data-part="1" data-key="boucle">
+  <h2 class="title">La boucle de l’agent</h2>
+  <div class="body stack-m">
+    <ol class="flow">
+      <li data-step="1"><span class="flow-n" aria-hidden="true">1</span><p><b>Lire.</b> L’IA lit ta demande, ses consignes et tout ce qu’elle a déjà vu.</p></li>
+      <li data-step="2"><span class="flow-n" aria-hidden="true">2</span><p><b>Agir avec un outil.</b> Elle choisit une action : lancer une commande, ouvrir un fichier, une page web.</p></li>
+      <li data-step="3"><span class="flow-n" aria-hidden="true">3</span><p><b>Observer.</b> Le harnais lui rend le résultat : un texte, une erreur, une capture.</p></li>
+      <li data-step="4"><span class="flow-n" aria-hidden="true">4</span><p><b>Recommencer.</b> Avec ce résultat en plus, jusqu’à ce que le travail soit fini, ou qu’on l’arrête.</p></li>
+    </ol>
+    <p class="note" data-step="5">Dans ChatGPT, tu vois une réponse. Un agent fait souvent plusieurs tours de boucle avant de te répondre.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="contexte">
+  <h2 class="title">Ce que l’IA a sous les yeux</h2>
+  <div class="body stack-l">
+    <div class="vs">
+      <article class="card" data-step="1">
+        <h3><i data-icon="file"></i>Le prompt système</h3>
+        <p>Les consignes que le harnais donne à l’IA avant ta demande : son rôle, ses outils, ce qu’elle doit éviter. Tu ne les vois pas, mais elles comptent.</p>
+      </article>
+      <article class="card accent" data-step="2">
+        <h3><i data-icon="list"></i>La fenêtre de contexte</h3>
+        <p>Tout ce que l’IA « voit » à un moment : consignes, conversation, résultats des outils. Sa taille est limitée : quand elle est pleine, le début est résumé ou oublié.</p>
+      </article>
+    </div>
+    <p class="lead strong" data-step="3">Une longue session perd des détails. Pour une nouvelle tâche, ouvre une nouvelle session et redonne l’essentiel.</p>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="arret">
+  <h2 class="title">Savoir quand s’arrêter</h2>
+  <div class="body stack-l">
+    <div class="vs">
+      <article class="card" data-step="1">
+        <h3><i data-icon="check"></i>Une condition d’arrêt</h3>
+        <p>Dis ce que « fini » veut dire : « Arrête-toi quand rapport.md existe et contient trois points. » Sans elle, l’IA s’arrête trop tôt, ou ne s’arrête pas.</p>
+      </article>
+      <article class="card accent" data-step="2">
+        <h3><i data-icon="reset"></i>La boucle infinie <span lang="en">(doom loop)</span></h3>
+        <p>L’IA relance le même outil, à l’identique, sans avancer. OpenCode a un garde-fou pour ça, <b>doom_loop</b> : selon la version, il te demande s’il faut continuer.</p>
+      </article>
+    </div>
+    <p class="lead strong" data-step="3">Si elle tourne en rond : arrête-la, relis ce qu’elle a fait, puis reformule avec une condition d’arrêt.</p>
+  </div>
+</section>
+
 <section class="slide" data-part="1" data-key="principe">
   <h2 class="title">Tout est installé. Tout est verrouillé.</h2>
   <div class="body">
@@ -759,7 +806,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : INSTALLER ET DÉMARRER (slides 7 à 15) ================= -->
+<!-- ================= PARTIE 2 : INSTALLER ET DÉMARRER (slides 10 à 18) ================= -->
 
 <section class="slide" data-part="2" data-key="prerequis">
   <h2 class="title">Ce qu’il te faut</h2>
@@ -886,7 +933,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 3 : LES MISSIONS (slides 16 à 28) ================= -->
+<!-- ================= PARTIE 3 : LES MISSIONS (slides 19 à 31) ================= -->
 
 <section class="slide" data-part="3" data-key="m03-terminal">
   <h2 class="title">Le poste de travail : le terminal</h2>
@@ -1044,7 +1091,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 4 : QUAND ÇA NE MARCHE PAS (slides 29 à 31) ================= -->
+<!-- ================= PARTIE 4 : QUAND ÇA NE MARCHE PAS (slides 32 à 34) ================= -->
 
 <section class="slide" data-part="4" data-key="bloque">
   <h2 class="title">Quand ça ne marche pas</h2>
@@ -1112,16 +1159,16 @@ const CONFIG = {
   policesUrl: '',
 
   minutes: [
-    0.5, 1.5, 1.5, 1.5, 1, 1, // 1 à 6 : comprendre (dont intro harness)
-    1, 1, 1, 1, 1, 1, 1, 1, 1, // 7 à 15 : installer et démarrer
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 16 à 28 : les missions
-    1, 1, 0.5 // 29 à 31 : quand ça ne marche pas
+    0.5, 1.5, 1.5, 1.5, 2, 2, 2, 1, 1, // 1 à 9 : comprendre (harness, boucle, contexte, arrêt)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, // 10 à 18 : installer et démarrer
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 19 à 31 : les missions
+    1, 1, 0.5 // 32 à 34 : quand ça ne marche pas
   ],
   parties: [
-    { nom: 'Comprendre', de: 1, a: 6 },
-    { nom: 'Installer et démarrer', de: 7, a: 15 },
-    { nom: 'Les missions', de: 16, a: 28 },
-    { nom: 'Quand ça ne marche pas', de: 29, a: 31 }
+    { nom: 'Comprendre', de: 1, a: 9 },
+    { nom: 'Installer et démarrer', de: 10, a: 18 },
+    { nom: 'Les missions', de: 19, a: 31 },
+    { nom: 'Quand ça ne marche pas', de: 32, a: 34 }
   ],
   bonus: [],
   alerteAmbre: 1.10,
@@ -1132,6 +1179,12 @@ const CONFIG = {
 
   // Vue présentateur : trois mots-clés par slide
   sources: {
+    "arret": [
+      {
+        "t": "Permissions OpenCode (doom_loop)",
+        "u": "https://opencode.ai/docs/permissions/"
+      }
+    ],
     "titre": [
       {
         "t": "OpenCode",
@@ -1789,6 +1842,6 @@ const CONFIG = {
   }
 })();
 </script>
-<script src="../lecture.js" data-retour="/comprendre-ia/types-ia/tuto/" defer></script>
+<script src="../lecture.js" data-retour="/comprendre-ia/le-harnais/diapos/" defer></script>
 </body>
 </html>
