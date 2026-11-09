@@ -101,7 +101,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const p = await ctx.newPage();
   await p.goto(base + '/cours/');
   await p.waitForLoadState('networkidle');
-  verifier('page Cours : le nom « Le Labo », trois cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 3 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
+  verifier('page Cours : le nom « Le Labo », quatre cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 4 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.goto(base + '/ux/ux-ia/demos/escale/');
