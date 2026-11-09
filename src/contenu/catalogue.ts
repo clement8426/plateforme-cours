@@ -239,9 +239,9 @@ const typesIa: Cours = {
       titre: 'Le tuto, pas à pas',
       parties: [
         { titre: 'Comprendre', diapo: 1 },
-        { titre: 'Installer et démarrer', diapo: 6 },
-        { titre: 'Les missions', diapo: 15 },
-        { titre: 'Quand ça ne marche pas', diapo: 28 },
+        { titre: 'Installer et démarrer', diapo: 7 },
+        { titre: 'Les missions', diapo: 16 },
+        { titre: 'Quand ça ne marche pas', diapo: 29 },
       ],
     },
   },

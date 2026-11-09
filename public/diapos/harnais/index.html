@@ -646,7 +646,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <main id="stage" tabindex="-1" aria-label="Tuto du Harnais">
     <h1 class="sr">Le Harnais : tuto, par Clément Bastien</h1>
     <div id="slides">
-<!-- ================= PARTIE 1 : COMPRENDRE (slides 1 à 5) ================= -->
+<!-- ================= PARTIE 1 : COMPRENDRE (slides 1 à 6) ================= -->
 
 <section class="slide s-cover" data-part="1" data-key="titre">
   <h2 class="title">Le Harnais</h2>
@@ -669,6 +669,24 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="slide" data-part="1" data-key="harness">
+  <h2 class="title">Un harnais, c’est quoi ?</h2>
+  <div class="body stack-l">
+    <p class="lead" data-step="1">Tu connais ChatGPT dans le navigateur : l’IA lit et écrit. Elle ne touche pas à ton ordinateur.</p>
+    <div class="vs" data-step="2">
+      <article class="card">
+        <h3><i data-icon="chat"></i>Un chat</h3>
+        <p>Tu discutes. Le modèle (le « cerveau ») répond. Rien d’autre ne s’ouvre sur ton PC.</p>
+      </article>
+      <article class="card accent">
+        <h3><i data-icon="lock"></i>Un harnais <span lang="en">(harness)</span></h3>
+        <p>Comme le harnais d’un cheval : on guide une force. Ici, le logiciel relie le cerveau aux outils, avec des règles.</p>
+      </article>
+    </div>
+    <p class="lead strong" data-step="3">Cerveau, outils, droits — et toi qui décides. C'est ce qu’on va installer et débloquer, un outil après l'autre.</p>
   </div>
 </section>
 
@@ -741,7 +759,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 2 : INSTALLER ET DÉMARRER (slides 6 à 14) ================= -->
+<!-- ================= PARTIE 2 : INSTALLER ET DÉMARRER (slides 7 à 15) ================= -->
 
 <section class="slide" data-part="2" data-key="prerequis">
   <h2 class="title">Ce qu’il te faut</h2>
@@ -868,7 +886,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 3 : LES MISSIONS (slides 15 à 27) ================= -->
+<!-- ================= PARTIE 3 : LES MISSIONS (slides 16 à 28) ================= -->
 
 <section class="slide" data-part="3" data-key="m03-terminal">
   <h2 class="title">Le poste de travail : le terminal</h2>
@@ -1026,7 +1044,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   </div>
 </section>
 
-<!-- ================= PARTIE 4 : QUAND ÇA NE MARCHE PAS (slides 28 à 30) ================= -->
+<!-- ================= PARTIE 4 : QUAND ÇA NE MARCHE PAS (slides 29 à 31) ================= -->
 
 <section class="slide" data-part="4" data-key="bloque">
   <h2 class="title">Quand ça ne marche pas</h2>
@@ -1094,16 +1112,16 @@ const CONFIG = {
   policesUrl: '',
 
   minutes: [
-    0.5, 1.5, 1.5, 1, 1, // 1 à 5 : comprendre
-    1, 1, 1, 1, 1, 1, 1, 1, 1, // 6 à 14 : installer et démarrer
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 15 à 27 : les missions
-    1, 1, 0.5 // 28 à 30 : quand ça ne marche pas
+    0.5, 1.5, 1.5, 1.5, 1, 1, // 1 à 6 : comprendre (dont intro harness)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, // 7 à 15 : installer et démarrer
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 16 à 28 : les missions
+    1, 1, 0.5 // 29 à 31 : quand ça ne marche pas
   ],
   parties: [
-    { nom: 'Comprendre', de: 1, a: 5 },
-    { nom: 'Installer et démarrer', de: 6, a: 14 },
-    { nom: 'Les missions', de: 15, a: 27 },
-    { nom: 'Quand ça ne marche pas', de: 28, a: 30 }
+    { nom: 'Comprendre', de: 1, a: 6 },
+    { nom: 'Installer et démarrer', de: 7, a: 15 },
+    { nom: 'Les missions', de: 16, a: 28 },
+    { nom: 'Quand ça ne marche pas', de: 29, a: 31 }
   ],
   bonus: [],
   alerteAmbre: 1.10,
