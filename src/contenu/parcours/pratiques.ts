@@ -21,6 +21,8 @@ export const DATE_VERIFICATION = '2026-11-09';
 
 const LPD = { titre: 'Loi fédérale sur la protection des données (LPD), Fedlex', url: 'https://www.fedlex.admin.ch/eli/cc/2022/491/fr' };
 const IA = { href: '/ia-legislation/ia-donnees/', nom: 'IA, données et responsabilité' };
+const HARNAIS = { href: '/comprendre-ia/le-harnais/', nom: 'Le Harnais' };
+const OWASP_A01 = { titre: 'A01:2025 Broken Access Control, OWASP Top 10', url: 'https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/' };
 
 export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
   {
@@ -29,7 +31,7 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     risque: 'Ce que tu envoies à une IA compte plus que le nom de l’outil. Un vrai fichier client collé dans un service en ligne sort de ton contrôle.',
     exemple: 'Une élève veut trier un fichier de clients. Elle donne à l’IA un tableur de même structure, rempli de faux noms et de fausses adresses, puis applique le résultat à son vrai fichier sur son ordinateur.',
     verifications: ['Le fichier envoyé contient-il de vrais noms, numéros ou adresses ?', 'Un tableur modèle avec de fausses données suffirait-il pour cette tâche ?', 'Pour des données médicales, juridiques ou RH, as-tu envisagé un agent open source avec un modèle européen ou hébergé en Suisse ?'],
-    angles: ['cloud-act', 'confidentialite'], cours: IA,
+    angles: ['cloud-act', 'confidentialite', 'verifier-ia'], cours: IA,
     blocs: [
       { titre: 'Avant d’envoyer', lignes: [
         { nom: 'Les conditions de l’outil', texte: 'Lis ce qu’elles prévoient pour tes données et pour ce que l’outil produit. Elles changent d’un outil et d’une offre à l’autre.' },
@@ -40,6 +42,18 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
       LPD,
       { titre: 'Connaître et faire valoir mes droits, PFPDT', url: 'https://www.edoeb.admin.ch/fr/connaitre-et-faire-valoir-mes-droits' },
       { titre: 'Lire les conditions d’utilisation des plateformes d’IA générative, site PME de la Confédération', url: 'https://www.kmu.admin.ch/fr/il-est-crucial-que-les-entreprises-lisent-les-conditions-dutilisation-des-plateformes-dia-generative' },
+    ],
+  },
+  {
+    id: 'verifier-ia', groupe: 'Principe', titre: 'Vérifier ce que l’IA produit',
+    resume: 'Une réponse sûre d’elle n’est pas une réponse vraie.',
+    risque: 'Une IA peut inventer une source, un chiffre, une fonction ou un paquet logiciel, avec le même aplomb qu’une vraie réponse. Ce que tu publies ou installes reste sous ta responsabilité.',
+    exemple: 'Un élève demande à l’IA une bibliothèque pour lire des PDF. Le nom proposé n’existe pas sur npm : quelqu’un pourrait le publier demain avec du code malveillant. Il vérifie le paquet sur le registre avant de l’installer.',
+    verifications: ['As-tu ouvert chaque source citée par l’IA ?', 'Les chiffres et les dates importants sont-ils vérifiés ailleurs ?', 'Chaque paquet proposé existe-t-il sur son registre officiel, avec un vrai historique ?'],
+    angles: ['verifier-ia', 'injection-prompt', 'agent-droits'], cours: HARNAIS,
+    sources: [
+      { titre: 'LLM09:2025 Misinformation, OWASP GenAI', url: 'https://genai.owasp.org/llmrisk/llm092025-misinformation/' },
+      { titre: 'LLM03:2025 Supply Chain, OWASP GenAI', url: 'https://genai.owasp.org/llmrisk/llm032025-supply-chain/' },
     ],
   },
   {
@@ -82,6 +96,19 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     ],
   },
   {
+    id: 'deux-comptes', groupe: 'Tester', titre: 'Tester avec deux comptes',
+    resume: 'Ce que l’écran cache, le serveur doit le refuser.',
+    risque: 'Une application peut afficher les bons écrans et laisser quand même un compte lire ou modifier les données d’un autre. Seul un test avec deux comptes le montre.',
+    exemple: 'Une élève ouvre une facture avec le compte A et copie son adresse. Connectée avec le compte B, elle colle cette adresse : la facture s’affiche, car le serveur ne vérifie pas à qui elle appartient.',
+    verifications: ['As-tu deux comptes de test, dont un sans droit d’administration ?', 'Le compte B reçoit-il un refus en ouvrant une adresse ou un identifiant du compte A ?', 'Ton agent a-t-il listé chaque action sensible pour la rejouer avec un compte sans droit ?'],
+    angles: ['roles', 'rls', 'multi-clients'],
+    sources: [
+      OWASP_A01,
+      { titre: 'Authorization Testing Automation Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Testing_Automation_Cheat_Sheet.html' },
+      { titre: 'Row Level Security, documentation Supabase', url: 'https://supabase.com/docs/guides/database/postgres/row-level-security' },
+    ],
+  },
+  {
     id: 'cloud-act', groupe: 'Légal et éthique', titre: 'Cloud Act',
     resume: 'Un serveur en Europe ne suffit pas si le fournisseur est américain.',
     risque: 'Les autorités américaines peuvent exiger d’un fournisseur américain des données qu’il contrôle, même stockées hors des États-Unis.',
@@ -117,7 +144,7 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     risque: 'Le règlement européen classe les usages de l’IA selon leur risque. Il peut concerner un projet suisse dont les résultats sont utilisés dans l’UE. Le tri de candidatures fait partie des usages à haut risque, même dans un petit projet.',
     exemple: 'Un outil interne classe des CV et écarte seul une partie des candidats. Ce n’est plus un simple assistant : c’est un usage à vérifier avant de le déployer.',
     verifications: ['Ton outil touche-t-il à l’emploi, à l’éducation ou au crédit ?', 'Une personne relit-elle ce que l’IA décide ?', 'Tes utilisateurs savent-ils quand ils parlent à une IA ou voient un contenu généré (art. 50) ?'],
-    angles: ['decision-auto', 'droits-ia'], cours: IA,
+    angles: ['transparence-ia', 'decision-auto', 'droits-ia'], cours: IA,
     blocs: [
       { titre: 'Les dates', lignes: [
         { nom: '2 février 2025', texte: 'Les pratiques interdites s’appliquent.' },
@@ -208,7 +235,7 @@ export const PRATIQUES: Pratique[] = typoProfonde<Pratique[]>([
     risque: 'Un serveur laissé par défaut expose des services, des secrets ou des failles déjà connues.',
     exemple: 'Un serveur fictif laisse sa base accessible depuis Internet alors que seule l’application en a besoin.',
     verifications: ['Seuls les ports nécessaires sont-ils ouverts ?', 'Les secrets sont-ils hors du code et du dépôt ?', 'Une sauvegarde a-t-elle déjà été restaurée pour de vrai ?'],
-    angles: ['sauvegardes', 'supervision'],
+    angles: ['sauvegardes', 'supervision', 'securite-comptes'],
     sources: [
       { titre: 'OWASP Top 10', url: 'https://owasp.org/Top10/' },
       { titre: 'Secrets Management Cheat Sheet, OWASP', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html' },

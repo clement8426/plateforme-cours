@@ -225,6 +225,40 @@
   ]
  },
  {
+  "id": "transparence-ia",
+  "family": "legal",
+  "title": "Transparence de l’IA",
+  "question": "Tes utilisateurs savent-ils quand ils parlent à une IA ou voient un contenu généré ?",
+  "severity": "important",
+  "show_if": "chatbot ou contenu généré",
+  "when": {
+   "types": [
+    "agent-ia",
+    "campagne"
+   ],
+   "signaux": [
+    "ia"
+   ],
+   "verifier": "Si ton projet a un chatbot ou publie des images, des vidéos ou des textes générés."
+  },
+  "why": "Depuis le 2 août 2026, l’AI Act demande d’annoncer un chatbot et de signaler les deepfakes. Il peut concerner un projet suisse dont les résultats sont utilisés dans l’UE.",
+  "warning": "Ton chatbot porte un prénom et ne dit nulle part qu’il est une IA.",
+  "action": "Annonce l’IA dès le premier message et signale les images, vidéos et sons générés.",
+  "practice": "ai-act",
+  "learn_course_url": "/ia-legislation/ia-donnees/",
+  "swiss_legal_ref": "Art. 50 AI Act (UE)",
+  "sources": [
+   {
+    "titre": "Article 50 : obligations de transparence, AI Act Service Desk",
+    "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50"
+   },
+   {
+    "titre": "Un avant-projet pour réglementer l’IA d’ici début 2027, site PME de la Confédération",
+    "url": "https://www.kmu.admin.ch/fr/un-avant-projet-visant-a-reglementer-lia-sera-elabore-dici-debut-2027"
+   }
+  ]
+ },
+ {
   "id": "cloud-act",
   "family": "souverainete",
   "title": "Hébergeur soumis au Cloud Act",
@@ -436,7 +470,7 @@
   "why": "Masquer un bouton ne protège rien : le serveur doit refuser l’action.",
   "warning": "Changer un identifiant dans l’adresse affiche la fiche d’un autre.",
   "action": "Teste chaque action avec un compte sans droit.",
-  "practice": "rls",
+  "practice": "deux-comptes",
   "learn_course_url": null,
   "swiss_legal_ref": null,
   "sources": [
@@ -468,6 +502,106 @@
    {
     "titre": "Loi fédérale sur la protection des données (LPD), art. 24, Fedlex",
     "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/fr#art_24"
+   }
+  ]
+ },
+ {
+  "id": "agent-droits",
+  "family": "securite",
+  "title": "Droits de ton agent IA",
+  "question": "Ton agent IA peut-il effacer, publier ou dépenser sans te demander ?",
+  "severity": "important",
+  "show_if": "toujours, dès qu’un agent IA travaille sur le projet",
+  "when": {
+   "toujours": true
+  },
+  "why": "Un agent qui agit seul fait aussi ses erreurs seul : un fichier effacé, une clé lue dans un fichier .env, un push en production.",
+  "warning": "L’agent accepte tout sans te demander, et tu ne sais pas dire ce qu’il a le droit de faire.",
+  "action": "Commence en lecture seule, débloque chaque outil après une preuve, garde les secrets hors de sa portée et valide toi-même push et paiements.",
+  "practice": null,
+  "learn_course_url": "/comprendre-ia/le-harnais/",
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "LLM06:2025 Excessive Agency, OWASP GenAI",
+    "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"
+   },
+   {
+    "titre": "Security, documentation Claude Code",
+    "url": "https://code.claude.com/docs/en/security"
+   },
+   {
+    "titre": "Configure permissions, documentation Claude Code",
+    "url": "https://code.claude.com/docs/en/permissions"
+   }
+  ]
+ },
+ {
+  "id": "injection-prompt",
+  "family": "securite",
+  "title": "Injection de prompt",
+  "question": "Ton IA lit-elle des pages, des fichiers ou des e-mails que tu n’as pas écrits ?",
+  "severity": "important",
+  "show_if": "IA qui lit du contenu externe",
+  "when": {
+   "types": [
+    "agent-ia",
+    "automatisation"
+   ],
+   "signaux": [
+    "ia"
+   ],
+   "verifier": "Si une IA lit des pages web, des fichiers ou des messages venant de l’extérieur."
+  },
+  "why": "Un texte lu par l’IA peut contenir des instructions cachées, qu’elle risque de suivre comme si elles venaient de toi.",
+  "warning": "Un résumé d’e-mail déclenche une action que personne n’a demandée.",
+  "action": "Traite tout contenu lu comme une donnée, jamais comme un ordre, et garde une validation humaine avant toute action sensible.",
+  "practice": null,
+  "learn_course_url": "/comprendre-ia/le-harnais/",
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "LLM01:2025 Prompt Injection, OWASP GenAI",
+    "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+   },
+   {
+    "titre": "Security, documentation Claude Code",
+    "url": "https://code.claude.com/docs/en/security"
+   }
+  ]
+ },
+ {
+  "id": "securite-comptes",
+  "family": "securite",
+  "title": "Sécurité des comptes",
+  "question": "Tes comptes de code, d’hébergement et d’IA ont-ils une double authentification et une limite de dépense ?",
+  "severity": "important",
+  "show_if": "toujours",
+  "when": {
+   "toujours": true
+  },
+  "why": "Un seul mot de passe volé ouvre ton code, ta base et tes clés API, et une clé volée peut faire grimper la facture en une nuit.",
+  "warning": "Ton compte GitHub n’a pas de double authentification, ou ta clé API n’a aucun plafond.",
+  "action": "Active la double authentification partout, range les codes de secours hors ligne et fixe une limite de dépense sur chaque service payant.",
+  "practice": null,
+  "learn_course_url": null,
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "Hameçonnage : mesures préventives, Office fédéral de la cybersécurité",
+    "url": "https://www.bacs.admin.ch/fr/phishing-fr"
+   },
+   {
+    "titre": "Configurer l’authentification à deux facteurs, documentation GitHub",
+    "url": "https://docs.github.com/fr/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+   },
+   {
+    "titre": "Spend Management, documentation Vercel",
+    "url": "https://vercel.com/docs/spend-management"
+   },
+   {
+    "titre": "Rate limits et spend limits, documentation Claude",
+    "url": "https://platform.claude.com/docs/en/api/rate-limits"
    }
   ]
  },
@@ -962,5 +1096,40 @@
   "practice": null,
   "learn_course_url": "/ux/ux-ia/",
   "swiss_legal_ref": null
+ },
+ {
+  "id": "verifier-ia",
+  "family": "humain",
+  "title": "Vérifier ce que l’IA produit",
+  "question": "Vérifies-tu les sources, les chiffres et le code que l’IA te donne ?",
+  "severity": "important",
+  "show_if": "IA utilisée",
+  "when": {
+   "types": [
+    "agent-ia",
+    "campagne",
+    "automatisation"
+   ],
+   "signaux": [
+    "ia"
+   ],
+   "verifier": "Si une IA écrit du texte, du code ou des chiffres pour toi."
+  },
+  "why": "Une IA peut inventer une source, un chiffre ou un paquet logiciel qui n’existe pas, avec le même aplomb qu’une vraie réponse.",
+  "warning": "Tu installes un paquet proposé par l’IA sans vérifier qu’il existe.",
+  "action": "Ouvre chaque source citée, vérifie les chiffres clés, relis le code et cherche chaque paquet sur son registre officiel avant de l’installer.",
+  "practice": "verifier-ia",
+  "learn_course_url": "/comprendre-ia/types-ia/",
+  "swiss_legal_ref": null,
+  "sources": [
+   {
+    "titre": "LLM09:2025 Misinformation, OWASP GenAI",
+    "url": "https://genai.owasp.org/llmrisk/llm092025-misinformation/"
+   },
+   {
+    "titre": "LLM03:2025 Supply Chain, OWASP GenAI",
+    "url": "https://genai.owasp.org/llmrisk/llm032025-supply-chain/"
+   }
+  ]
  }
 ]

@@ -129,7 +129,7 @@ for (const chemin of ['/llms.txt', '/api/catalog.json', '/api/rules.json', '/bon
 const guide = await (await p.request.get(`${base}/bonnes-pratiques/index.md`)).text();
 verifier('le guide pour agents couvre le cache et les angles morts', guide.includes('Cache et hard refresh') && guide.includes('## Angles morts') && !/[\u00A0\u202F]/.test(guide));
 const regles = await (await p.request.get(`${base}/api/rules.json`)).json();
-verifier('40 angles morts publics', regles.blind_spots.length === 40);
+verifier('45 angles morts publics', regles.blind_spots.length === 45);
 const usagesConnus = new Set(regles.taxonomy.usages.map((u) => u.id));
 verifier('chaque outil a des usages connus', JSON.parse(readFileSync('data/tools.json', 'utf8')).every((o) => o.usages.length && o.usages.every((u) => usagesConnus.has(u))));
 
