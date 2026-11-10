@@ -1,14 +1,14 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "comptes": {
-  "mcp": 2501,
-  "plugins": 953,
-  "skills": 8696
+  "mcp": 2508,
+  "plugins": 956,
+  "skills": 8698
  },
  "trouves": {
-  "mcp": 53580,
-  "plugins": 19053,
-  "skills": 20047
+  "mcp": 54253,
+  "plugins": 19005,
+  "skills": 20040
  },
  "sources": [
   {
@@ -38,7 +38,7 @@
   },
   {
    "nom": "marketplace cursor/plugins",
-   "n": 131,
+   "n": 134,
    "ok": true
   },
   {
@@ -68,7 +68,7 @@
   },
   {
    "nom": "skills microsoft/skills",
-   "n": 210,
+   "n": 211,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 50847,
+   "n": 51083,
    "ok": true
   }
  ],
