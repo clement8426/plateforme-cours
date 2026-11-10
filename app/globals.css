@@ -957,6 +957,7 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
   --eau: color-mix(in srgb, var(--zone) 27%, var(--surface));
 }
 .carte-liquide { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.cours-carte > .carte-liquide { grid-area: auto; }
 .carte-liquide .eau { fill: var(--eau); stroke: color-mix(in srgb, var(--zone) 55%, white); stroke-width: 2px; }
 .carte-liquide .bulle { fill: color-mix(in srgb, var(--zone) 55%, white); fill-opacity: .42; stroke: color-mix(in srgb, var(--zone) 20%, white); stroke-width: 1.5px; }
 [data-liquide] { --discret: var(--encre); }

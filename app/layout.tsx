@@ -5,6 +5,7 @@ import Avatar from '@/composants/Avatar';
 import BoutonContraste from '@/composants/BoutonContraste';
 import BoutonTheme from '@/composants/BoutonTheme';
 import EnregistrementPwa from '@/composants/EnregistrementPwa';
+import LiquideCartes from '@/composants/LiquideCartes';
 import NavPrincipale from '@/composants/NavPrincipale';
 import StatistiquesVisite from '@/composants/StatistiquesVisite';
 import { CATEGORIES } from '@/contenu/catalogue';
@@ -76,6 +77,7 @@ export default function Racine({ children }: { children: React.ReactNode }) {
           </p>
         </footer>
         <EnregistrementPwa />
+        <LiquideCartes />
         <DonneesStructurees valeur={{ '@context': 'https://schema.org', '@graph': [AUTEUR, { '@type': 'WebSite', '@id': `${ORIGINE}/#site`, name: 'Le Labo', url: ORIGINE, inLanguage: 'fr', publisher: { '@id': AUTEUR['@id'] } }] }} />
         {/* Statistiques de visite de Vercel : anonymes, sans cookie. Elles ne comptent que sur Vercel, une fois Web Analytics activé dans le projet. */}
         <StatistiquesVisite />
