@@ -104,7 +104,8 @@ img, svg, canvas { display: block; }
 .slide { position: absolute; inset: 0; padding: 65px 115px; display: grid; grid-template-rows: 40px 126px minmax(0, 1fr); row-gap: 20px; background: var(--decor, none) var(--ink); color: var(--text); font-size: var(--fs-body); line-height: 1.34; }
 .slide.active { animation: slide-in .3s var(--ease) both; }
 @keyframes slide-in { from { opacity: 0; } to { opacity: 1; } }
-.s-head { display: flex; justify-content: space-between; align-items: center; font-size: var(--fs-meta); color: var(--muted); font-weight: 500; }
+.s-head { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-width: 0; font-size: var(--fs-meta); color: var(--muted); font-weight: 500; }
+.s-head .pastille, .s-num { flex: none; white-space: nowrap; }
 .pastille { display: inline-flex; align-items: center; gap: 12px; height: 40px; padding: 0 18px 0 14px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--accent-soft); color: var(--text); }
 .pastille::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-text); }
 .puce { display: inline-flex; align-items: center; gap: 12px; justify-self: start; width: fit-content; padding: 6px 20px 6px 16px; border-radius: var(--r-pill); background: var(--accent-soft); color: var(--text); font: 600 var(--fs-min)/1.2 var(--font-body); }
@@ -528,7 +529,9 @@ input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius
 .exo-sol, .vf-why { font-size: 26px; }
 
 /* ========== 5 sexies. Sources cliquables et date de mise à jour ========== */
-.s-src { display: flex; gap: 12px; margin-left: auto; margin-right: 36px; }
+.s-src { display: flex; align-items: center; gap: 10px; flex: 0 1 auto; min-width: 0; height: 58px; padding: 4px 4px 8px; margin-left: auto; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--accent-text) var(--surface); }
+.s-head .s-src > a { flex: none; font-size: 22px; }
+.s-src:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; border-radius: 8px; }
 .s-src a, .src { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); color: var(--accent-text); font: 600 24px/1 var(--font-body); text-decoration: none; white-space: nowrap; }
 .s-src a:hover, .src:hover, .s-src a:focus-visible, .src:focus-visible { border-color: var(--accent-text); }
 .s-src .ico, .src .ico { font-size: 22px; stroke-width: 2.25; }
@@ -676,6 +679,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 .chips > .chip:nth-child(6n + 1) { --chip-c: var(--p1); } .chips > .chip:nth-child(6n + 2) { --chip-c: var(--p2); } .chips > .chip:nth-child(6n + 3) { --chip-c: var(--p3); }
 .chips > .chip:nth-child(6n + 4) { --chip-c: var(--p4); } .chips > .chip:nth-child(6n + 5) { --chip-c: var(--p5); } .chips > .chip:nth-child(6n + 6) { --chip-c: var(--p6); }
 </style>
+<link rel="stylesheet" href="./decouverte.css">
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="../lecture.css">
 </head>
@@ -694,7 +698,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="cover-lead">Lire un scan, reconnaître une image, transcrire une voix, parler : des IA font tout cela depuis des années. Le LLM n’est qu’une famille parmi d’autres.</p>
       <p class="cover-name">Clément Bastien</p>
       <p class="cover-def">Vision · voix · images · musique · vidéo · LLM</p>
-      <p class="cover-maj">Mis à jour le 9 novembre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
+      <p class="cover-maj">Mis à jour le 10 novembre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7 cover-col">
       <div class="card cover-vis" role="img" aria-label="Quatre exemples de capacités spécialisées autour de la question : quelle entrée, quelle sortie ? OCR, vision, transcription et synthèse vocale.">
@@ -780,7 +784,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
     <table class="tbl tbl-familles">
       <thead><tr><th>Famille</th><th>Entrée → sortie</th><th>Des exemples</th></tr></thead>
       <tbody>
-        <tr><td>OCR</td><td>image d’un texte → texte</td><td>Tesseract, le scanner du téléphone</td></tr>
+        <tr><td>OCR (reconnaissance optique de caractères)</td><td>image d’un texte → texte</td><td>Tesseract, le scanner du téléphone</td></tr>
         <tr><td>Vision</td><td>image → objets, visages, contours</td><td>le tri des photos, la voiture qui repère un piéton</td></tr>
         <tr><td>Description d’image (captioning)</td><td>image → phrase qui la décrit</td><td>le texte alternatif proposé automatiquement</td></tr>
         <tr><td>Transcription (STT)</td><td>voix → texte (speech-to-text)</td><td>Whisper, Vosk, la dictée du téléphone</td></tr>
@@ -805,10 +809,31 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </ul>
     </div>
     <div class="c5 stack-s">
-      <article class="card preuve" data-step="4">
-        <p class="puce">Exemple</p>
-        <p>« Le Locle » devient « Le Lodje » sur une photocopie. Un nom faux dans un dossier, et c’est tout le dossier qui est faux.</p>
+      <article class="essai essai-ocr">
+        <div class="essai-image"><img src="./menu.png" alt="Menu fictif avec les plats et leurs prix en francs suisses"></div>
+        <div class="essai-cote">
+          <p class="essai-etiquette">Une image → du texte</p>
+          <h3>Un menu à copier</h3>
+          <p>Peut-on chercher un prix sans le recopier ?</p>
+          <details><summary>Voir le texte extrait</summary><pre>LA TABLE DU LABO
+Menu fictif du midi
+ENTRÉES
+Salade de saison
+8.50
+Soupe de légumes
+7.00
+PLATS
+Risotto aux champignons
+24.00
+Truite et pommes vapeur
+28.50
+DESSERT
+Tarte aux abricots
+6.50
+Prix en CHF. Signalez vos allergies avant la commande.</pre><p class="essai-note">Résultat réel de l’Atelier des IA. Vérifiez que les prix sont associés aux bons plats.</p></details>
+        </div>
       </article>
+      <article class="card preuve preuve-courte" data-step="4"><p>Sur une photocopie, « Le Locle » peut devenir « Le Lodje ». Un nom faux change le dossier.</p></article>
     </div>
   </div>
 </section>
@@ -854,10 +879,14 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </ul>
     </div>
     <div class="c5">
-      <article class="card preuve" data-step="4">
-        <p class="puce">Exemple</p>
-        <p>« former opposition » devient « former aux positions ». La phrase reste française, mais elle ne veut plus rien dire.</p>
+      <article class="essai essai-son">
+        <p class="essai-etiquette">Une voix → du texte</p>
+        <h3>Écoutez, puis comparez</h3>
+        <p>Une voix synthétique prononce une phrase de bienvenue.</p>
+        <audio controls preload="none" src="./voix-exemple.wav" aria-label="Écouter la phrase de bienvenue"></audio>
+        <details><summary>Voir la transcription</summary><p class="essai-resultat">« Bonjour, bienvenue dans l’atelier des intelligences artificielles. »</p><p class="essai-note">Transcription corrigée après écoute.</p></details>
       </article>
+      <p class="note" data-step="4">« Former opposition » peut aussi devenir « former aux positions ».</p>
     </div>
   </div>
 </section>
@@ -873,6 +902,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <article class="card" data-step="2">
         <h3><i data-icon="speaker"></i>Aujourd’hui</h3>
         <p>Des modèles neuronaux génèrent une voix et son intonation. Le naturel varie selon le modèle, la langue et le texte.</p>
+        <div class="essai-voix"><p>« Bonjour ! Bienvenue dans l’atelier des intelligences artificielles. »</p><audio controls preload="none" src="./voix-exemple.wav" aria-label="Écouter la voix synthétique de Piper"></audio><p class="essai-note">Voix générée localement par Piper dans l’Atelier des IA.</p></div>
       </article>
     </div>
     <ul class="plain">
@@ -886,7 +916,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Les IA qu’on ne voit pas</h2>
   <div class="body stack-l">
     <div class="places places-4">
-      <article class="card place" data-step="1"><i data-icon="globe"></i><h3>Traduire</h3><p>DeepL, Google Traduction : du texte vers du texte, dans une autre langue.</p></article>
+      <article class="card place" data-step="1"><i data-icon="globe"></i><h3>Traduire</h3><p>DeepL, Google Traduction : du texte vers du texte, dans une autre langue.</p><details><summary>Essayer avec une phrase</summary><p>« The cat is sleeping on the chair. »</p><p><b>→ Le chat dort sur la chaise.</b></p><p>Résultat d’Opus MT dans l’Atelier des IA.</p></details></article>
       <article class="card place" data-step="2"><i data-icon="heart"></i><h3>Recommander</h3><p>La série suivante, la chanson suivante, le produit « souvent acheté avec ».</p></article>
       <article class="card place" data-step="3"><i data-icon="shield"></i><h3>Repérer</h3><p>Une fraude à la carte bancaire, un spam, une pièce défectueuse sur une chaîne.</p></article>
       <article class="card place" data-step="4"><i data-icon="gauge"></i><h3>Prévoir</h3><p>La météo, le trafic, la demande d’électricité de demain.</p></article>
@@ -897,21 +927,23 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 
 <section class="slide" data-part="2" data-key="generation">
   <h2 class="title">Générer des images à partir d’un texte</h2>
-  <div class="body g12">
-    <div class="c7 stack-m">
-      <p class="lead">Un modèle de diffusion part d’un bruit aléatoire et le transforme progressivement en image. C’est une technique de génération d’images, parmi d’autres.</p>
-      <ul class="plain">
-        <li data-step="1">2022 : DALL·E 2 (avril) et Stable Diffusion (août) arrivent, la même année que ChatGPT (novembre).</li>
-        <li data-step="2">Leurs défauts fréquents : du texte déformé, un logo qui change à chaque essai.</li>
-        <li data-step="3">L’image peut être retouchée, parfois par zones. Elle ne fournit généralement pas les objets et calques d’une maquette.</li>
-      </ul>
+  <div class="body image-atelier">
+    <div class="image-exercice">
+      <p class="image-kicker">À VOUS DE JOUER · TEXTE → IMAGE</p>
+      <h3>Quelle consigne décrit le mieux cette image ?</h3>
+      <p>Choisissez, puis observez ce que chaque détail apporte.</p>
+      <div class="image-choix" role="group" aria-label="Choisir une consigne pour l’image">
+        <button type="button" aria-pressed="false" data-prompt="vague"><span>A</span> Un oiseau dans la nature.</button>
+        <button type="button" aria-pressed="false" data-prompt="precis"><span>B</span> Un rouge-gorge en gros plan, sur une branche mouillée, au lever du soleil.</button>
+        <button type="button" aria-pressed="false" data-prompt="contraire"><span>C</span> Un aigle en vol au-dessus d’une ville, de nuit.</button>
+      </div>
+      <p class="image-retour" aria-live="polite">La consigne influence le sujet, le cadrage et l’ambiance.</p>
     </div>
-    <div class="c5">
-      <article class="card preuve" data-step="4">
-        <p class="puce">À retenir</p>
-        <p>Un générateur d’images produit des pixels. Certains comprennent des consignes écrites et rendent du texte : vérifiez sa fidélité.</p>
-      </article>
-    </div>
+    <figure class="image-resultat">
+      <img src="./rouge-gorge-genere.png" alt="Image générée d’un rouge-gorge en gros plan sur une branche humide dans une forêt brumeuse au lever du soleil">
+      <figcaption><b>Une image générée par IA</b><span>Exemple préparé pour le cours · résultat fixe</span></figcaption>
+      <div class="image-modeles"><h3>Cinq repères pour créer des images</h3><ul><li><b>Midjourney</b> · explorer des styles visuels.</li><li><b>GPT Image (OpenAI)</b> · créer et retoucher.</li><li><b>Nano Banana (Google)</b> · modifier par dialogue.</li><li><b>Firefly (Adobe)</b> · créer dans les outils Adobe.</li><li><b>FLUX (Black Forest Labs)</b> · générer et modifier.</li></ul></div>
+    </figure>
   </div>
 </section>
 
@@ -920,7 +952,8 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Générer des sons et de la musique</h2>
   <div class="body g12">
     <div class="c7 stack-m">
-      <p class="lead">« Une pluie douce, puis un coup de tonnerre. » Le modèle produit un son à partir d’une description.</p>
+      <p class="lead">Décrire un style, proposer des paroles, puis obtenir un morceau : les IA musicales produisent de l’audio à partir d’une consigne.</p>
+      <p class="fiche-outil"><b>Suno</b> compose un morceau à partir d’un style musical. On peut fournir ses paroles ou choisir un instrumental. Avec MusicGen, on peut aussi guider la musique par une mélodie.</p>
       <ul class="plain">
         <li data-step="1"><b>Des bruitages</b> : AudioGen génère des sons d’ambiance et des effets.</li>
         <li data-step="2"><b>De la musique</b> : MusicGen peut suivre un texte et une mélodie.</li>
@@ -928,12 +961,7 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       </ul>
       <p class="lead strong" data-step="4">Lire une phrase avec Piper, c’est de la synthèse vocale. Composer un morceau, c’est une autre tâche.</p>
     </div>
-    <figure class="c5 card audio-visual">
-      <p class="puce">Texte → son</p>
-      <div class="audio-bars" aria-hidden="true"><i style="--h:28%"></i><i style="--h:58%"></i><i style="--h:90%"></i><i style="--h:43%"></i><i style="--h:78%"></i><i style="--h:100%"></i><i style="--h:62%"></i><i style="--h:35%"></i><i style="--h:82%"></i><i style="--h:53%"></i><i style="--h:25%"></i></div>
-      <strong>Une voix, un bruit, une musique ?</strong>
-      <figcaption class="note">Trois sorties à distinguer. Schéma illustratif, aucun audio n’est généré ici.</figcaption>
-    </figure>
+    <figure class="c5 studio studio-musique"><div class="studio-art"><div class="disque" aria-hidden="true"><i></i></div><span class="pochette-titre" aria-hidden="true">Bad Times</span></div><figcaption><p class="studio-credit">Exemple musical · lecture directe</p><h3>Bad Times Deep House</h3><audio controls preload="none" src="./bad-times-deep-house.mp3" aria-label="Écouter Bad Times Deep House"></audio><p class="studio-note">Écoutez un extrait : que remarquez-vous dans la voix, les répétitions et la structure du morceau ?</p><p class="studio-note">Outil de production du morceau : non confirmé.</p><a class="course-link" href="https://www.youtube.com/watch?v=8PeU6AVPQVg" target="_blank" rel="noopener noreferrer">Source : YouTube ↗<span class="sr"> (nouvel onglet)</span></a></figcaption></figure>
   </div>
 </section>
 
@@ -941,21 +969,15 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
   <h2 class="title">Générer une vidéo : faire tenir le mouvement</h2>
   <div class="body g12">
     <div class="c7 stack-m">
-      <p class="lead">Un texte, ou une photo de départ, devient une courte séquence. Des modèles comme Wan peuvent générer ces images en mouvement.</p>
+      <p class="lead">Une image fixe devient une séquence animée. Ici, Veo a généré une vidéo à partir de l’image du rouge-gorge.</p>
+      <p class="fiche-outil"><b>Veo</b>, de Google DeepMind, génère une séquence à partir de texte ou d’une image et peut produire le son associé. Décrivez le sujet, son action et le mouvement de caméra.</p>
       <ul class="plain">
         <li data-step="1"><b>Le défi</b> : garder le même visage, le même objet et un mouvement cohérent d’une image à la suivante.</li>
         <li data-step="2"><b>Les pièges</b> : un objet disparaît, une main se transforme, la physique devient étrange.</li>
-        <li data-step="3"><b>Pour ce cours</b> : on analyse des exemples préparés. La génération vidéo dépasse notre cible de portables sans carte graphique dédiée.</li>
+        <li data-step="3"><b>À observer</b> : le bec, les pattes et la branche restent-ils cohérents pendant toute la séquence ?</li>
       </ul>
     </div>
-    <div class="c5 stack-m">
-      <article class="card preuve">
-        <p class="puce">Texte ou image → séquence</p>
-        <div class="video-frames" aria-hidden="true"><div><b></b><span>01</span></div><div><b></b><span>02</span></div><div><b></b><span>03</span></div></div>
-        <p class="note">Schéma du mouvement, pas une vidéo générée.</p>
-      </article>
-      <p class="lead strong" data-step="4">Une belle image ne garantit pas une bonne vidéo.</p>
-    </div>
+    <figure class="c5 studio studio-veo"><video controls playsinline preload="none" poster="./rouge-gorge-genere.png" src="./rouge-gorge-veo.mp4" aria-label="Vidéo du rouge-gorge générée avec Veo à partir d’une image" aria-describedby="veo-description" data-arrows><p>Votre navigateur ne peut pas lire cette vidéo. <a href="./rouge-gorge-veo.mp4">Ouvrir le fichier MP4</a>.</p></video><figcaption><p class="studio-credit">Image → vidéo · Veo · environ 10 secondes</p><h3>Du fixe au mouvement</h3><p id="veo-description" class="studio-note">Un rouge-gorge sur une branche humide, au soleil. Comparez l’image fixe et le mouvement généré.</p><p class="studio-note">Exemple fourni par le formateur, réalisé avec Veo via un accès gratuit.</p><a class="course-link" href="./rouge-gorge-genere.png" target="_blank" rel="noopener noreferrer">Voir l’image de départ ↗<span class="sr"> (nouvel onglet)</span></a></figcaption></figure>
   </div>
 </section>
 
@@ -994,14 +1016,19 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 </section>
 
 <section class="slide" data-part="3" data-key="transformer">
-  <h2 class="title">2017 : le Transformer, à l’origine de GPT</h2>
-  <div class="body stack-l">
-    <p class="lead">Des chercheurs de Google publient le Transformer. Son mécanisme d’attention relie les éléments du contexte autorisé. Des modèles de langage existaient déjà ; le « T » de GPT vient de cette architecture.</p>
+  <h2 class="title">Le Transformer : relier les mots au contexte</h2>
+  <div class="body stack-m transformer-simple">
+    <p class="lead">Un Transformer est une façon de construire un modèle d’IA. Son mécanisme d’<b>attention</b> met les morceaux du texte en relation et donne plus de poids à certains liens.</p>
+    <article class="card transformer-exemple">
+      <p class="transformer-phrase">« Léa pose son sac. <b>Elle le</b> reprend. »</p>
+      <details><summary>À quoi renvoient « elle » et « le » ?</summary><p><b>Elle → Léa.</b> <b>Le → son sac.</b> Les mots précédents aident à interpréter la suite.</p></details>
+      <p class="note">Une illustration du rôle du contexte, pas le calcul réel d’un modèle. Dans GPT, le « T » signifie Transformer.</p>
+    </article>
     <ol class="tl" data-step="1">
-      <li class="card"><p class="tl-date">2017</p><p class="tl-qui">Le Transformer</p><p>« Attention Is All You Need », chez Google.</p></li>
-      <li class="card"><p class="tl-date">2018</p><p class="tl-qui">GPT-1</p><p>Le premier GPT d’OpenAI : un modèle de recherche.</p></li>
-      <li class="card"><p class="tl-date">2020</p><p class="tl-qui">GPT-3</p><p>Assez grand pour écrire des textes crédibles.</p></li>
-      <li class="card accent"><p class="tl-date">2022</p><p class="tl-qui">ChatGPT</p><p>Une interface de discussion : le grand public découvre les LLM.</p></li>
+      <li class="card"><p class="tl-date">2017</p><p class="tl-qui">Transformer</p><p>Publication de l’architecture.</p></li>
+      <li class="card"><p class="tl-date">2018</p><p class="tl-qui">GPT-1</p><p>Un premier modèle de recherche.</p></li>
+      <li class="card"><p class="tl-date">2020</p><p class="tl-qui">GPT-3</p><p>Un modèle de langage plus grand.</p></li>
+      <li class="card accent"><p class="tl-date">2022</p><p class="tl-qui">ChatGPT</p><p>Une interface pour discuter.</p></li>
     </ol>
   </div>
 </section>
@@ -1075,59 +1102,44 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <!-- ================= PARTIE 4 ================= -->
 
 
-<section class="slide" data-part="4" data-key="pratiquer">
-  <h2 class="title">À vous de jouer : deux façons de pratiquer</h2>
+<section class="slide" data-part="4" data-key="huggingface">
+  <h2 class="title">Hugging Face : un lieu pour essayer des IA</h2>
   <div class="body stack-m">
-    <p class="lead">D’abord essayer une capacité. Ensuite comprendre comment un assistant utilise ses outils.</p>
-    <div class="pratique-choix">
-      <article class="card pratique-carte"><span class="numero">01</span><h3>Atelier des IA</h3><p>Classer une image, lire un scan, écouter un texte. Une capacité à la fois.</p><a class="btn primary" href="https://github.com/clement8426/atelier-des-ia" target="_blank" rel="noopener noreferrer">Découvrir l’Atelier <span class="sr">(nouvel onglet)</span>↗</a></article>
-      <article class="card pratique-carte"><span class="numero">02</span><h3>Le Harnais</h3><p>Donner des outils à un assistant et comprendre comment ils se combinent avec le LLM.</p><a class="btn" href="/comprendre-ia/le-harnais/" target="_blank" rel="noopener noreferrer">Ouvrir le cours <span class="sr">(nouvel onglet)</span>↗</a></article>
+    <p class="lead">Une plateforme où des équipes partagent des modèles, des jeux de données et des démonstrations. Chaque démo peut avoir son interface et ses limites.</p>
+    <div class="places places-3">
+      <article class="card place"><h3>Models</h3><p>Les modèles entraînés : les moteurs capables de lire, voir, parler ou créer.</p></article>
+      <article class="card place"><h3>Datasets</h3><p>Des jeux de données pour entraîner, évaluer ou explorer les modèles.</p></article>
+      <article class="card place"><h3>Spaces</h3><p>Des applications de démonstration pour essayer un modèle dans une interface.</p></article>
     </div>
+    <p class="lead strong">Pour l’exercice, ouvrez les Spaces sélectionnés dans la fiche.</p>
   </div>
 </section>
 
-<section class="slide" data-part="4" data-key="atelier">
-  <h2 class="title">Atelier des IA : tester, comparer, comprendre</h2>
-  <div class="body g12">
-    <div class="c6 stack-m">
-      <p class="lead">Pas besoin de discuter avec un chatbot pour utiliser une IA.</p>
-      <ul class="plain">
-        <li data-step="1"><b>Classer</b> avec MobileNetV3 : que voit-il ?</li>
-        <li data-step="2"><b>Lire</b> un scan avec l’OCR : quels mots faut-il corriger ?</li>
-        <li data-step="3"><b>Écouter</b> un texte avec Piper : la prononciation est-elle juste ?</li>
-      </ul>
-      <p data-step="4">On commence avec les exemples fournis, puis on change un détail. Le diagnostic et le test sur l’appareil vérifient ce qui fonctionne sur votre machine.</p>
-      <a class="course-link" href="https://github.com/clement8426/atelier-des-ia" target="_blank" rel="noopener noreferrer">Le projet et son état actuel sur GitHub ↗<span class="sr"> (nouvel onglet)</span></a>
+<section class="slide" data-part="4" data-key="mode-emploi">
+  <h2 class="title">Dans un Space : une entrée, un calcul, un résultat</h2>
+  <div class="body stack-m">
+    <div class="places places-3">
+      <article class="card place"><h3>1. Préparer</h3><p>Ouvrez l’onglet App. Chargez l’exemple fourni ou saisissez la consigne indiquée.</p></article>
+      <article class="card place"><h3>2. Lancer</h3><p>Le bouton peut s’appeler Run, Submit ou Generate. Attendez la fin du calcul.</p></article>
+      <article class="card place"><h3>3. Vérifier</h3><p>Comparez le résultat à votre attente, puis changez un seul élément.</p></article>
     </div>
-    <figure class="c6 atelier-figure">
-      <img class="atelier-shot" src="./atelier-des-ia.png" width="1440" height="900" alt="Accueil du prototype Atelier des IA avec les trois ateliers : classer une image, lire un document, faire parler un texte.">
-      <figcaption>Capture réelle du prototype. Calcul local après téléchargement des modèles.</figcaption>
-      <p class="note"><b>Démo avec le formateur.</b> Code public, installateurs en validation. Génération d’images, de musique et de vidéos non intégrée.</p>
-    </figure>
+    <p class="lead">« Running » signifie que l’application est démarrée. Un calcul peut encore échouer : navigateur incompatible, attente ou quota épuisé.</p>
+    <p>Si un paiement est demandé, choisissez une autre mission. Utilisez des données fictives ou les fichiers d’exemple.</p>
+    <a class="course-link" href="/comprendre-ia/types-ia/exercice-hugging-face/" target="_blank" rel="noopener noreferrer">Ouvrir la fiche d’exercice ↗<span class="sr"> (nouvel onglet)</span></a>
   </div>
 </section>
 
-<section class="slide" data-part="4" data-key="exercice">
-  <h2 class="title">L’exercice : donner des sens à une IA, avec Le Harnais</h2>
-  <div class="body g12">
-    <div class="c7 stack-m">
-      <p class="lead">Le Harnais est une application de bureau. Votre IA y arrive sans aucun outil : vous les débloquez un par un, en vous en servant pour de vrai.</p>
-      <ul class="plain">
-        <li data-step="1"><b>Dicter</b> : votre voix devient du texte, transcrite sur l’ordinateur.</li>
-        <li data-step="1"><b>Écouter</b> : l’IA lit sa réponse à voix haute.</li>
-        <li data-step="1"><b>Lire un document</b> : l’OCR extrait le texte d’un scan, vous le relisez.</li>
-        <li data-step="1"><b>Voir une image</b> : la vision reconnaît les objets d’une photo.</li>
-      </ul>
-      <p class="lead strong" data-step="2">Les outils OCR, transcription et détection traitent les fichiers localement. Leurs textes peuvent partir vers le modèle ; la lecture vocale peut utiliser un service distant.</p>
-    </div>
-    <div class="c5 stack-s">
-      <div class="card estime" data-step="3"><p class="field-label">Durée estimée</p><p class="estime-val">45 min</p><p class="note">le chapitre « Les sens »</p></div>
-      <article class="card preuve" data-step="3">
-        <p class="puce">Prototype, pas fini</p>
-        <p>Windows 10 ou 11 seulement, application non signée. Environ 900 Mo à télécharger, un micro, et une IA à brancher : un abonnement ChatGPT ou une clé d’API.</p>
-        <p class="note"><a class="course-link" href="/comprendre-ia/le-harnais/" target="_blank" rel="noopener noreferrer">Ouvrir le cours Le Harnais ↗<span class="sr"> (nouvel onglet)</span></a> · Conditions sur la page du cours.</p>
-      </article>
-    </div>
+<section class="slide" data-part="4" data-key="pratiquer">
+  <h2 class="title">À vous de jouer : testez trois familles d’IA</h2>
+  <div class="body stack-m">
+    <p class="lead">Sept missions au choix : reconnaître, décrire, lire, localiser, transcrire, faire parler et créer une image.</p>
+    <ol class="keep">
+      <li><span class="keep-n" aria-hidden="true">1</span><p>Avant : formulez le résultat attendu.</p></li>
+      <li><span class="keep-n" aria-hidden="true">2</span><p>Faites deux essais en changeant un seul élément.</p></li>
+      <li><span class="keep-n" aria-hidden="true">3</span><p>Notez un usage utile, une limite et ce qu’il faut vérifier.</p></li>
+    </ol>
+    <a class="btn primary" href="/comprendre-ia/types-ia/exercice-hugging-face/" target="_blank" rel="noopener noreferrer">Commencer l’exercice Hugging Face ↗<span class="sr"> (nouvel onglet)</span></a>
+    <p class="note">30 à 45 minutes · Téléchargez vos observations avant de quitter la fiche.</p>
   </div>
 </section>
 
@@ -1460,9 +1472,9 @@ const CONFIG = {
       "cle": "comparer"
     },
     {
-      "terme": "Harnais",
-      "def": "Le logiciel qui relie un LLM à des outils, et décide de ce qu’il a le droit de faire.",
-      "cle": "exercice"
+      "terme": "Hugging Face",
+      "def": "Une plateforme de modèles, de jeux de données et de démonstrations appelées Spaces.",
+      "cle": "huggingface"
     },
     {
       "terme": "Génération audio",
@@ -1477,15 +1489,23 @@ const CONFIG = {
     {
       "terme": "Classification",
       "def": "Attribuer une catégorie à une image. Cela ne localise pas chaque objet de l’image.",
-      "cle": "atelier"
+      "cle": "vision"
     },
     {
       "terme": "Inférence",
       "def": "Faire fonctionner un modèle déjà entraîné pour obtenir un résultat à partir d’une entrée.",
-      "cle": "atelier"
+      "cle": "vision"
     }
   ],
   references: [
+    {"titre":"GPT Image · génération et retouche","source":"OpenAI Docs","url":"https://developers.openai.com/api/docs/guides/image-generation"},
+    {"titre":"Nano Banana · génération et édition d’images","source":"Google","url":"https://ai.google.dev/gemini-api/docs/image-generation"},
+    {"titre":"FLUX · modèles d’images","source":"Black Forest Labs","url":"https://docs.bfl.ai/quick_start/introduction"},
+    {"titre":"Photographie du rouge-gorge · Charles J. Sharp, CC BY-SA 4.0","source":"Wikimedia Commons","url":"https://commons.wikimedia.org/wiki/File:European_robin_(Erithacus_rubecula).jpg"},
+    {"titre":"Veo · vidéo et audio","source":"Google DeepMind","url":"https://deepmind.google/models/veo/"},
+    {"titre":"Suno · paroles, style et instrumental","source":"Suno","url":"https://help.suno.com/en/articles/3197377"},
+    {"titre":"Firefly · générer une image","source":"Adobe","url":"https://www.adobe.com/products/firefly/features/text-to-image.html"},
+    {"titre":"Midjourney · écrire une consigne","source":"Midjourney","url":"https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics"},
     {
       "titre": "« Computing Machinery and Intelligence »",
       "source": "Alan Turing, Mind, 1950",
@@ -1671,22 +1691,11 @@ const CONFIG = {
       }
     ],
     "generation": [
-      {
-        "t": "Stable Diffusion",
-        "u": "https://stability.ai/news-updates/stable-diffusion-public-release"
-      },
-      {
-        "t": "DALL·E 2",
-        "u": "https://en.wikipedia.org/wiki/DALL-E"
-      },
-      {
-        "t": "Diffusion",
-        "u": "https://arxiv.org/abs/2006.11239"
-      },
-      {
-        "t": "Édition et texte dans les images",
-        "u": "https://developers.openai.com/api/docs/guides/image-generation"
-      }
+      {"t":"Firefly · générer une image","u":"https://www.adobe.com/products/firefly/features/text-to-image.html"},
+      {"t":"Midjourney · écrire une consigne","u":"https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics"},
+      {"t":"GPT Image · OpenAI","u":"https://developers.openai.com/api/docs/guides/image-generation"},
+      {"t":"Nano Banana · Google","u":"https://ai.google.dev/gemini-api/docs/image-generation"},
+      {"t":"FLUX · Black Forest Labs","u":"https://docs.bfl.ai/quick_start/introduction"}
     ],
     "transformer": [
       {
@@ -1724,40 +1733,21 @@ const CONFIG = {
         "u": "https://arxiv.org/abs/2005.14165"
       }
     ],
-    "exercice": [
-      {
-        "t": "Voix locale ou distante",
-        "u": "https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService"
-      }
-    ],
+    "huggingface": [{"t":"Hugging Face · les Spaces","u":"https://huggingface.co/docs/hub/spaces-overview"}],
     "generation-audio": [
-      {
-        "t": "AudioCraft · Meta",
-        "u": "https://github.com/facebookresearch/audiocraft"
-      }
+      {"t":"Bad Times · YouTube","u":"https://www.youtube.com/watch?v=8PeU6AVPQVg"},
+      {"t":"Suno · musique et paroles","u":"https://help.suno.com/en/articles/3197377"},
+      {"t":"AudioCraft · Meta","u":"https://github.com/facebookresearch/audiocraft"}
     ],
     "generation-video": [
+      {"t":"Veo · vidéo et audio","u":"https://deepmind.google/models/veo/"},
       {
         "t": "Wan · capacités et matériel",
         "u": "https://github.com/Wan-Video/Wan2.1"
       }
     ],
-    "atelier": [
-      {
-        "t": "Atelier des IA · README et validation",
-        "u": "https://github.com/clement8426/atelier-des-ia"
-      }
-    ],
-    "pratiquer": [
-      {
-        "t": "Atelier des IA",
-        "u": "https://github.com/clement8426/atelier-des-ia"
-      },
-      {
-        "t": "Le Harnais",
-        "u": "https://github.com/clement8426/le-harnais"
-      }
-    ]
+    "mode-emploi": [{"t":"Hugging Face · les Spaces","u":"https://huggingface.co/docs/hub/spaces-overview"}],
+    "pratiquer": [{"t":"Hugging Face · les Spaces","u":"https://huggingface.co/docs/hub/spaces-overview"}]
   },
   motsCles: [],
   notes: {}
@@ -1873,7 +1863,7 @@ const CONFIG = {
     const srcs = (CONFIG.sources && CONFIG.sources[s.dataset.key]) || [];
     s.prepend(h('div', { class: 's-head' },
       h('span', { class: 'pastille', text: CONFIG.parties[p].hors ? CONFIG.parties[p].nom : 'Partie ' + (p + 1) + ' : ' + CONFIG.parties[p].nom }),
-      srcs.length ? h('span', { class: 's-src' }, srcs.map(x => h('a', { href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))) : null,
+      srcs.length ? h('div', { class: 's-src', role: 'region', 'aria-label': 'Références de la diapo · défilement horizontal', tabindex: '0', 'data-arrows': '' }, srcs.map(x => h('a', { href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))) : null,
       h('span', { class: 's-num', 'aria-label': 'Slide ' + (i + 1) + ' sur ' + N, text: (i + 1) + ' / ' + N })));
     $$('i[data-icon]', s).forEach(el => { const svg = icon(el.dataset.icon); if (el.className) svg.classList.add(...el.className.split(' ')); el.replaceWith(svg); });
   });
@@ -1974,7 +1964,7 @@ const CONFIG = {
     const low = k.length === 1 ? k.toLowerCase() : k;
     if (!grid.hidden) { if (low === 'g') { toggleGrid(false); e.preventDefault(); } return; }
     const inWidget = (t.closest && t.closest('[data-arrows]')) || (tag === 'INPUT' && (t.type === 'range' || t.type === 'color'));
-    const onControl = /^(BUTTON|A|INPUT|SELECT|SUMMARY)$/.test(tag) || (t.getAttribute && t.getAttribute('role') === 'button');
+    const onControl = /^(BUTTON|A|INPUT|SELECT|SUMMARY|VIDEO|AUDIO)$/.test(tag) || (t.getAttribute && t.getAttribute('role') === 'button');
     let done = true;
     if (k === 'ArrowRight' || k === 'ArrowDown') { if (inWidget) return; next(); }
     else if (k === 'ArrowLeft' || k === 'ArrowUp') { if (inWidget) return; prev(); }
@@ -2346,6 +2336,7 @@ const CONFIG = {
   }
 })();
 </script>
+<script src="./decouverte.js" defer></script>
 <script src="../lecture.js" data-retour="/comprendre-ia/types-ia/diapos/" defer></script>
 </body>
 </html>

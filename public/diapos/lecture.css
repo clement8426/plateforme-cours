@@ -14,6 +14,7 @@ body.mode-lecture { overflow: auto; height: auto; background: var(--ink); font-s
 #lecture dt { font-weight: 700; margin-top: 20px; }
 #lecture dd { margin: 8px 0 24px; }
 #lecture img { display: block; max-width: 100%; height: auto; }
+#lecture video { display: block; max-width: 100%; height: auto; }
 #lecture table { width: 100%; display: block; overflow-x: auto; border-collapse: collapse; font-size: 1rem; margin-bottom: 24px; }
 #lecture th, #lecture td { padding: 12px; border: 1px solid var(--edge); text-align: left; min-width: 130px; }
 #lecture pre { white-space: pre-wrap; }

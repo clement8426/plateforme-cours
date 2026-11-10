@@ -1,7 +1,7 @@
 // Service worker de la plateforme : garde une copie des pages et fichiers déjà consultés,
 // pour pouvoir relire un cours sans connexion. Aucune donnée n'est envoyée nulle part.
 // Changer VERSION à chaque mise en ligne importante vide les anciennes copies.
-const VERSION = 'v44';
+const VERSION = 'v55';
 const CACHE = `cours-${VERSION}`;
 const ESSENTIEL = ['/', '/hors-ligne/', '/manifest.webmanifest', '/icones/icone-192.png'];
 
@@ -44,6 +44,8 @@ self.addEventListener('fetch', (evenement) => {
   const requete = evenement.request;
   const adresse = new URL(requete.url);
   if (requete.method !== 'GET' || adresse.origin !== self.location.origin) return;
+  // Laisser le navigateur gérer les lectures partielles des médias.
+  if (requete.headers.has('range')) return;
   // L'annuaire pèse plusieurs mégaoctets : on ne le copie pas sur l'appareil.
   if (adresse.pathname.startsWith('/annuaire/')) return;
   // Pages : toujours la version en ligne si possible, la copie sinon.

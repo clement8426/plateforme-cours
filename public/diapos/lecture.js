@@ -54,6 +54,12 @@
       if(!node.alt)return document.createDocumentFragment();
       const img=h('img');img.src=node.src;img.alt=node.alt;img.loading='lazy';if(node.width)img.width=node.width;if(node.height)img.height=node.height;return img;
     }
+    if((nom==='audio' || nom==='video') && node.getAttribute('src')) {
+      const audio=h(nom);audio.controls=true;audio.preload='none';audio.src=node.src;
+      if(nom==='video'){audio.playsInline=true;if(node.poster)audio.poster=node.poster;}
+      if(node.getAttribute('aria-label'))audio.setAttribute('aria-label',node.getAttribute('aria-label'));
+      return audio;
+    }
     const el=permis.has(nom)?h(nom):document.createDocumentFragment();
     if(nom==='a' && node.getAttribute('href')) {
       const href=node.getAttribute('href');el.href=/^#\d+$/.test(href)?'#lecture-diapo-'+href.slice(1):node.href;

@@ -48,7 +48,7 @@ try {
           }).map(e=>`${e.tagName}.${e.className}: ${e.textContent.trim().slice(0,65)}`);
         });
         if(debords.length) erreurs.push(`${width}×${height} ${theme} ${keys[i]}: ${debords.join(' | ')}`);
-        if (width===1920 && ['generation-audio','generation-video','pratiquer','atelier'].includes(keys[i])) {
+        if (width===1920 && ['generation-audio','generation-video','pratiquer','huggingface','mode-emploi'].includes(keys[i])) {
           const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
           for(const v of axe.violations) erreurs.push(`${theme} ${keys[i]} axe ${v.id}: ${v.nodes.map(n=>n.target.join(' ')).join(', ')}`);
           await page.screenshot({path:resolve(sortie,`${keys[i]}-${theme}.png`)});
@@ -66,8 +66,8 @@ try {
   assert(await page.locator('#grid').isVisible(), 'grille au clavier');
   await page.keyboard.press('Escape');
   await page.keyboard.type('25'); await page.keyboard.press('Enter');
-  await page.waitForFunction(()=>document.querySelector('.slide.active')?.dataset.key==='atelier');
-  assert(await page.locator('.slide.active .course-link').getAttribute('href')==='https://github.com/clement8426/atelier-des-ia');
+  await page.waitForFunction(()=>document.querySelector('.slide.active')?.dataset.key==='mode-emploi');
+  assert(await page.locator('.slide.active .course-link').getAttribute('href')==='/comprendre-ia/types-ia/exercice-hugging-face/');
   await page.keyboard.press('t');
   assert.equal(await page.locator('html').getAttribute('data-deck'),'dark');
   const quiz=await page.locator('[data-comp="quiz"]').textContent();
@@ -96,12 +96,16 @@ try {
       await page.evaluate(t=>localStorage.setItem('theme',t),theme); await page.reload();
       await page.evaluate(()=>document.fonts.ready);
       assert.equal(await page.locator('h1').count(),1);
-      assert.equal(await page.locator('.exercice-hors').count(),2);
-      assert.equal(await page.locator('.exercice-hors a[href="https://github.com/clement8426/atelier-des-ia"]').count(),1);
+      assert.equal(await page.locator('.exercice-hors').count(),1);
+      assert.equal(await page.locator('.exercice-hors a[href="/comprendre-ia/types-ia/exercice-hugging-face/"]').count(),1);
+      assert.equal(await page.getByRole('link',{name:'Ouvrir le cours Le Harnais'}).count(),0);
+      assert.equal(await page.locator('.exercice-hors a[href="https://github.com/clement8426/atelier-des-ia"]').count(),0);
       const apercu=page.locator('a.apercu-diapos');
       assert.equal(await apercu.getAttribute('aria-hidden'),null,'aperçu annoncé aux aides techniques');
       assert.equal(await apercu.getByRole('img',{name:/Ouvrir les diapos/}).count(),1,'texte alternatif de l’image-lien');
-      await page.getByRole('link',{name:'Passer à la pratique',exact:true}).focus();
+      await page.getByRole('link',{name:'Ouvrir les diapos',exact:true}).focus();
+      await page.keyboard.press('Tab');
+      assert.equal(await page.getByRole('link',{name:'Passer à la pratique',exact:true}).evaluate(e=>document.activeElement===e),true,'accès clavier aux exercices');
       await page.keyboard.press('Tab');
       assert.equal(await apercu.evaluate(e=>document.activeElement===e),true,'aperçu dans le parcours Tab');
       assert.notEqual(await apercu.evaluate(e=>getComputedStyle(e).outlineStyle),'none','focus visible sur l’aperçu');

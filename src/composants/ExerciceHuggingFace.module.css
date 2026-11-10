@@ -1,0 +1,23 @@
+.atelier { margin-block: 32px 64px; }
+.barre { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-weight: 600; }
+.info { color: var(--discret); margin-block: 20px; max-width: 85ch; line-height: 1.6; }
+.choix { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 32px; }
+.choix button { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 16px; border: 2px solid var(--ligne); border-radius: 12px; font: inherit; color: var(--encre); background: var(--surface); cursor: pointer; }
+.choix button span { color: var(--discret); }
+.choix button[aria-pressed="true"] { border-color: var(--bleu); background: var(--bleu-doux); }
+.choix button:focus-visible, .notes textarea:focus-visible, .consigne summary:focus-visible { outline: 3px solid var(--bleu); outline-offset: 4px; }
+.mission { border-block: 2px solid var(--ligne); padding-block: 30px; }
+.mission header { max-width: 70ch; margin-bottom: 32px; }
+.mission h2 { font-size: var(--t-section); margin-block: 8px; }
+.flux { color: var(--b-micro); font-weight: 700; }
+.colonnes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 72px); align-items: start; }
+.consigne { display: grid; gap: 16px; line-height: 1.6; }
+.consigne h3 { margin-top: 12px; font-size: 20px; }
+.liens { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.liens a { overflow-wrap: anywhere; }
+.consigne summary { cursor: pointer; padding-block: 12px; min-height: 44px; color: var(--bleu); }
+.notes { display: grid; gap: 20px; padding: 24px; background: var(--surface); border-radius: 16px; border: 1px solid var(--ligne); }
+.notes label { display: grid; gap: 8px; font-weight: 600; }
+.notes textarea { display: block; resize: vertical; width: 100%; min-height: 90px; padding: 12px; border: 1px solid var(--discret); border-radius: 8px; background: var(--fond); color: var(--encre); font: inherit; font-weight: 400; }
+@media (max-width: 760px) { .colonnes { grid-template-columns: minmax(0, 1fr); } .notes { padding: 16px; } }
+@media print { .choix, .liens, .barre button { display: none; } .colonnes { display: block; } }

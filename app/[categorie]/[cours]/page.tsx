@@ -74,7 +74,7 @@ export default async function PageCours(props: ParamsCours) {
           <div className="actions">
             {cours.diapos && <Link className="bouton" href={`${base}/diapos/`}>Ouvrir les diapos</Link>}
             {cours.demos.length > 0 && <Link className="bouton-secondaire" href="#demos">Voir les démonstrations</Link>}
-            {exercices.length > 1 && <Link className="bouton-secondaire" href="#pratique">Passer à la pratique</Link>}
+            {exercices.length > 0 && <Link className="bouton-secondaire" href="#pratique">Passer à la pratique</Link>}
           </div>
         </header>
         {cours.diapos && (
@@ -148,7 +148,7 @@ export default async function PageCours(props: ParamsCours) {
           <h2 id={`titre-exercice-${index}`}>L’exercice : {exercice.titre}</h2>
           <p className="intro-section">{exercice.resume}</p>
           <div className="avis-prototype" role="note">
-            <p className="avis-titre">Prototype</p>
+            <p className="avis-titre">{exercice.lien?.startsWith('/') ? 'Mode d’emploi' : 'Prototype'}</p>
             <p>{exercice.prototype}</p>
             <ul>
               {exercice.conditions.map((c) => <li key={c}>{c}</li>)}
@@ -157,7 +157,7 @@ export default async function PageCours(props: ParamsCours) {
           <div className="actions">
             {exercice.lien && (
               <a className="bouton-secondaire" href={exercice.lien} target="_blank" rel="noreferrer">
-                Ouvrir {exercice.titre} sur GitHub<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
+                Ouvrir {exercice.titre}{exercice.lien.startsWith('https://github.com/') ? ' sur GitHub' : ''}<span className="visuellement-cache"> (nouvel onglet)</span><Externe />
               </a>
             )}
           </div>
