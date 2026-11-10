@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-const CARTES = '.cours-carte:not(.est-vide, .est-prepa), .outil-carte, .demo-carte:not(.est-indisponible), .rayon li';
+const CARTES = '.cours-carte:not(.est-vide, .est-prepa), .outil-carte, .demo-carte:not(.est-indisponible), .carte-choix, .rayon li';
 const NAMESPACE = 'http://www.w3.org/2000/svg';
 const INTERVALLES = 8;
 

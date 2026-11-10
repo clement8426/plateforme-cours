@@ -956,11 +956,11 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
 
 
 /* Le SVG anime la surface et les bulles. La couleur du texte reste lisible pendant la montée. */
-:is(.cours-carte:not(.est-vide, .est-prepa), .outil-carte, .demo-carte:not(.est-indisponible), .rayon li) {
+:is(.cours-carte:not(.est-vide, .est-prepa), .outil-carte, .demo-carte:not(.est-indisponible), .carte-choix, .rayon li) {
   position: relative; isolation: isolate; overflow: hidden;
   --eau: var(--zone);
 }
-:root[data-theme="sombre"] :is(.cours-carte, .outil-carte, .demo-carte, .rayon li) {
+:root[data-theme="sombre"] :is(.cours-carte, .outil-carte, .demo-carte, .carte-choix, .rayon li) {
   --eau: color-mix(in srgb, var(--zone) 27%, var(--surface));
 }
 .carte-liquide { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
@@ -969,7 +969,7 @@ details.plan-plus[open] summary { margin-bottom: 12px; }
 .carte-liquide .bulle { fill: color-mix(in srgb, var(--zone) 55%, white); fill-opacity: .42; stroke: color-mix(in srgb, var(--zone) 20%, white); stroke-width: 1.5px; }
 [data-liquide] { --discret: var(--encre); }
 @media (prefers-reduced-motion: reduce) {
-  :is(.cours-carte:not(.est-vide, .est-prepa), .outil-carte, .demo-carte:not(.est-indisponible), .rayon li):is(:hover, :has(:focus-visible)) {
+  :is(.cours-carte:not(.est-vide, .est-prepa), .outil-carte, .demo-carte:not(.est-indisponible), .carte-choix, .rayon li):is(:hover, :has(:focus-visible)) {
     background: var(--eau); --discret: var(--encre);
   }
 }
