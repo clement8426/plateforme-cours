@@ -1,6 +1,14 @@
 (() => {
   if (new URLSearchParams(location.search).get('lecture') === '1') return;
 
+  const couverture = document.querySelector('.cover-vis');
+  const pauseCouverture = couverture.querySelector('.capacites-pause');
+  pauseCouverture.addEventListener('click', () => {
+    const pause = couverture.classList.toggle('is-paused');
+    pauseCouverture.setAttribute('aria-pressed', String(pause));
+    pauseCouverture.textContent = pause ? 'Reprendre l’animation' : 'Mettre en pause';
+  });
+
   document.querySelectorAll('.slide audio, .slide video').forEach(audio => {
     const slide = audio.closest('.slide');
     new MutationObserver(() => {

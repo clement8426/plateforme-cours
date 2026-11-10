@@ -219,7 +219,7 @@ const typesIa: Cours = {
     'Choisir entre une IA spécialisée et un LLM, et les combiner : les sens sur l’ordinateur, le LLM pour rédiger.',
     'Tester trois familles d’IA dans des Spaces Hugging Face, comparer deux essais et repérer leurs limites.',
   ],
-  diapos: { href: '/diapos/types-ia/', apercu: '/apercus/types-ia-diapos.jpg?v=images-audio1' },
+  diapos: { href: '/diapos/types-ia/', apercu: '/apercus/types-ia-diapos.jpg?v=couverture-animee1' },
   parties: [
     { titre: 'L’IA avant ChatGPT', resume: 'Ce qu’est une IA, plus de soixante-dix ans d’histoire, et l’idée clé : une entrée, une sortie.', duree: '15 min', diapos: [1, 6] },
     { titre: 'Les familles d’IA', resume: 'OCR, vision, voix, traduction, images, sons, musique et vidéo : ce que chacune reçoit, produit, et où elle se trompe.', duree: '30 min', diapos: [7, 17] },

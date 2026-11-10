@@ -701,14 +701,19 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
       <p class="cover-maj">Mis à jour le 10 novembre 2026. Certaines informations peuvent être datées : tout va vite. La curiosité est votre meilleur allié, suivez les sources et vérifiez.</p>
     </div>
     <div class="c7 cover-col">
-      <div class="card cover-vis" role="img" aria-label="Quatre exemples de capacités spécialisées autour de la question : quelle entrée, quelle sortie ? OCR, vision, transcription et synthèse vocale.">
-        <div class="sens" aria-hidden="true">
-          <div class="sens-carte"><b>OCR</b><span>image → texte</span></div>
-          <div class="sens-carte"><b>Vision</b><span>image → objets</span></div>
-          <div class="sens-cerveau"><b>Une tâche</b><span>entrée → sortie</span></div>
-          <div class="sens-carte"><b>Voix</b><span>voix → texte</span></div>
-          <div class="sens-carte"><b>Synthèse</b><span>texte → voix</span></div>
+      <div class="card cover-vis">
+        <div class="capacites-barre" aria-hidden="true"><span></span><span></span><span></span><b>Plusieurs capacités, plusieurs modèles</b></div>
+        <div class="capacites-scene" role="img" aria-label="Illustration animée : quatre capacités entourent une tâche. Lire transforme une image en texte ; reconnaître repère les objets ; transcrire transforme la voix en texte ; faire parler transforme le texte en voix.">
+          <div aria-hidden="true" class="capacites-dessin">
+            <svg class="capacites-liens" viewBox="0 0 1000 600" preserveAspectRatio="none"><path d="M180 150 Q500 90 500 300 M820 150 Q500 90 500 300 M180 450 Q500 510 500 300 M820 450 Q500 510 500 300"/><path class="capacites-flux" d="M180 150 Q500 90 500 300 M820 150 Q500 90 500 300 M180 450 Q500 510 500 300 M820 450 Q500 510 500 300"/></svg>
+            <div class="capacite capacite-lire"><i data-icon="file"></i><b>Lire</b><span>image → texte</span></div>
+            <div class="capacite capacite-voir"><i data-icon="eye"></i><b>Reconnaître</b><span>image → objets</span></div>
+            <div class="capacite-centre"><i data-icon="bolt"></i><b>Une tâche</b><span>un modèle adapté</span></div>
+            <div class="capacite capacite-entendre"><i data-icon="mic"></i><b>Transcrire</b><span>voix → texte</span></div>
+            <div class="capacite capacite-parler"><i data-icon="speaker"></i><b>Faire parler</b><span>texte → voix</span></div>
+          </div>
         </div>
+        <div class="capacites-pied"><p>Quelle entrée ? Quelle sortie ?</p><button type="button" class="capacites-pause" aria-pressed="false">Mettre en pause</button></div>
       </div>
     </div>
   </div>
