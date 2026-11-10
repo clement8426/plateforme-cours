@@ -2,8 +2,10 @@
 // chaque titre, question et option doit être présent, sans reformulation, et dans le même ordre.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const racine = new URL('..', import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1');
+// fileURLToPath décode les accents du chemin (ex. un dossier utilisateur « Clément »).
+const racine = fileURLToPath(new URL('..', import.meta.url));
 const normaliser = (v) => v.normalize('NFC').replace(/\\'/g, "'").replace(/[’]/g, "'").replace(/\*\*/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 const source = normaliser(readFileSync(join(racine, 'src/contenu/parcours/fiches.ts'), 'utf8'));
 const debuts = { '00-test-positionnement.md': "slug: 'test'", '01-fiche-clarifier-idee.md': "slug: 'idee'", '02-fiche-aspect-technique.md': "slug: 'technique'" };

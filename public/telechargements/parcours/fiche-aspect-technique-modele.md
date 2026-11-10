@@ -12,6 +12,11 @@ Nom du projet : ____________________ Date : ____________
 ☐ Application mobile (iPhone, Android)  
 ☐ Logiciel à installer sur ordinateur  
 ☐ Campagne d'emailing ou newsletter  
+☐ Campagne marketing (publicité en ligne, affiche, lancement)  
+☐ Réseaux sociaux ou création de contenu  
+☐ Vidéo, podcast ou média  
+☐ Formation en ligne ou espace membres  
+☐ Jeu ou expérience interactive  
 ☐ Automatisation ou outil interne  
 ☐ Autre, à décrire : ________________________________
 
@@ -107,3 +112,13 @@ ______________________________________________________________
 
 **Quelle question technique veux-tu poser au formateur ?**  
 ______________________________________________________________
+
+## 9. Références
+
+Sites, applications, articles ou exemples qui t'inspirent ou qui expliquent ce que tu veux faire. Ajoute le lien pour pouvoir les retrouver.
+
+| Référence | Lien |
+| --------- | ---- |
+|           |      |
+|           |      |
+|           |      |

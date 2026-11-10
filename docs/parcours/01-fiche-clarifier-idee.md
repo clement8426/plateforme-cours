@@ -60,6 +60,16 @@ ______________________________________________________________
 **Quel ton pour parler à tes clients ?**  
 ☐ Tutoiement, décontracté ☐ Vouvoiement, professionnel ☐ Fun, humour ☐ Expert, rassurant
 
+**As-tu déjà une charte graphique (logo, couleurs, typographies) ?**  
+☐ Oui ☐ Non ☐ En partie
+
+**Choisis jusqu'à 5 couleurs de ta marque, de la plus importante à la moins importante.**  
+1. ______________ (code ou échantillon) : ______________  
+2. ______________  
+3. ______________  
+4. ______________  
+5. ______________
+
 **Quelles couleurs, quelles ambiances te viennent en tête ?**  
 ______________________________________________________________
 

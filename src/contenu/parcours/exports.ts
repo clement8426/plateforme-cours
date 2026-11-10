@@ -17,6 +17,11 @@ export type Bloc =
 
 const texte = (r: Reponses, id: string) => { const v = r[id]; return typeof v === 'string' ? v.trim() : ''; };
 const liste = (r: Reponses, id: string) => { const v = r[id]; return Array.isArray(v) ? v as string[] : []; };
+export type Couleur = { hex: string; nom: string };
+export const nombreLignes = (r: Reponses, id: string, depart: number, max = 50) => Math.min(max, Math.max(depart, Number(texte(r, `${id}.n`)) || 0));
+export const couleurs = (r: Reponses, id: string): Couleur[] => Array.from({ length: Math.min(Number(texte(r, `${id}.n`)) || 0, 5) }, (_, i) => ({ hex: texte(r, `${id}.${i}`) || '#000000', nom: texte(r, `${id}.${i}.nom`) }));
+// Une question conditionnelle est masquée quand la réponse choisie ailleurs fait partie de ses valeurs. Sans réponse, elle reste visible.
+export const visible = (c: Champ, r: Reponses) => { const si = c.masquerSi; if (!si) return true; const v = r[si.id]; return !(Array.isArray(v) && (v as string[]).some((x) => si.valeurs.includes(x))); };
 export const fonctions = (r: Reponses) => { const v = r.fonctionnalites; return Array.isArray(v) ? (v as LigneFonction[]) : []; };
 
 function bloc(champ: Champ, r: Reponses): Bloc | null {
@@ -36,6 +41,14 @@ function bloc(champ: Champ, r: Reponses): Bloc | null {
       return { type: 'table', question: champ.label, colonnes: ['Notion', 'Niveau'], lignes: champ.notions.map((n, i) => [n, texte(r, `${champ.id}.${i}`) || NON_RENSEIGNE]) };
     case 'tableau':
       return { type: 'table', question: champ.label, colonnes: champ.colonnes, lignes: Array.from({ length: champ.lignes }, (_, l) => champ.colonnes.map((__, c) => texte(r, `${champ.id}.${l}.${c}`) || NON_RENSEIGNE)) };
+    case 'couleurs': {
+      const choisies = couleurs(r, champ.id);
+      return { type: 'table', question: champ.label, colonnes: ['Priorité', 'Couleur', 'Nom'], lignes: choisies.length ? choisies.map((c, i) => [String(i + 1), c.hex.toUpperCase(), c.nom || NON_RENSEIGNE]) : [['', NON_RENSEIGNE, '']] };
+    }
+    case 'references': {
+      const lignes = Array.from({ length: nombreLignes(r, champ.id, champ.lignes) }, (_, l) => [texte(r, `${champ.id}.${l}.0`), texte(r, `${champ.id}.${l}.1`)]).filter(([a, b]) => a || b);
+      return { type: 'table', question: champ.label, colonnes: ['Référence', 'Lien'], lignes: lignes.length ? lignes.map(([a, b]) => [a || NON_RENSEIGNE, b || NON_RENSEIGNE]) : [[NON_RENSEIGNE, '']] };
+    }
     case 'fonctionnalites': {
       const remplies = fonctions(r).filter((f) => f.fonction.trim() || f.pourquoi.trim());
       return { type: 'table', question: champ.label, colonnes: ['N°', 'Fonctionnalité', 'Pourquoi l’utilisateur en a besoin', 'MVP', 'Priorité'], lignes: remplies.length ? remplies.map((f, i) => [String(i + 1), f.fonction.trim() || NON_RENSEIGNE, f.pourquoi.trim() || NON_RENSEIGNE, f.mvp ? 'Oui' : 'Non', f.priorite || NON_RENSEIGNE]) : [['', NON_RENSEIGNE, '', '', '']] };
@@ -45,7 +58,7 @@ function bloc(champ: Champ, r: Reponses): Bloc | null {
 
 export const blocs = (fiche: Fiche, r: Reponses): Bloc[] => fiche.sections.flatMap((s) => [
   { type: 'section', titre: s.titre, intro: s.intro } as Bloc,
-  ...s.champs.map((c) => bloc(c, r)).filter((b): b is Bloc => b !== null),
+  ...s.champs.filter((c) => visible(c, r)).map((c) => bloc(c, r)).filter((b): b is Bloc => b !== null),
 ]);
 
 export const identite = (fiche: Fiche, r: Reponses) => [

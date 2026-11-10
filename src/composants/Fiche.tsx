@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useId, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { IDEES_FONCTIONS, LIGNES_DEPART, PRIORITES, QUESTION_CONTROLE, SEUIL_MVP, trouverFiche, type Champ, type Section } from '@/contenu/parcours/fiches';
-import { fonctions, nomFichier, telecharger, versMarkdown, type LigneFonction, type Reponses } from '@/contenu/parcours/exports';
+import { couleurs as lireCouleurs, fonctions, nombreLignes, nomFichier, telecharger, versMarkdown, visible, type LigneFonction, type Reponses } from '@/contenu/parcours/exports';
 import { calculerScore, type Score } from '@/contenu/parcours/score';
 
 const vide = (): LigneFonction => ({ fonction: '', pourquoi: '', mvp: false, priorite: '' });
@@ -19,11 +19,13 @@ function compter(c: Champ, r: Reponses): [number, number] {
     case 'grille': return [c.notions.filter((_, i) => rempli(`${c.id}.${i}`)).length, c.notions.length];
     case 'mots': return [Array.from({ length: c.nombre }, (_, i) => rempli(`${c.id}.${i}`)).some(Boolean) ? 1 : 0, 1];
     case 'tableau': return [Object.keys(r).some((k) => k.startsWith(`${c.id}.`) && rempli(k)) ? 1 : 0, 1];
+    case 'couleurs': return [lireCouleurs(r, c.id).length > 0 ? 1 : 0, 1];
+    case 'references': return [Array.from({ length: nombreLignes(r, c.id, c.lignes) }, (_, l) => rempli(`${c.id}.${l}.0`) || rempli(`${c.id}.${l}.1`)).some(Boolean) ? 1 : 0, 1];
     case 'fonctionnalites': return [fonctions(r).some((f) => f.fonction.trim()) ? 1 : 0, 1];
     default: return [rempli(c.id) ? 1 : 0, 1];
   }
 }
-const avancement = (s: Section, r: Reponses) => s.champs.map((c) => compter(c, r)).reduce(([a, b], [x, y]) => [a + x, b + y], [0, 0]);
+const avancement = (s: Section, r: Reponses) => s.champs.filter((c) => visible(c, r)).map((c) => compter(c, r)).reduce(([a, b], [x, y]) => [a + x, b + y], [0, 0]);
 
 const estCourt = (c: Champ) => c.type === 'ligne' || (c.type === 'choix' && !c.autre && c.options.length <= 4 && c.options.every((o) => o.length < 24));
 
@@ -133,7 +135,7 @@ export default function Fiche({ slug, suite }: { slug: string; suite?: { href: s
                 {s.intro && <p>{s.intro}</p>}
               </header>
               <div className="fiche-champs">
-                {s.champs.map((c) => <div key={c.id} className={estCourt(c) ? 'champ-demi' : 'champ-plein'}><ChampFiche champ={c} r={r} changer={changer} setStatut={setStatut} /></div>)}
+                {s.champs.filter((c) => visible(c, r)).map((c) => <div key={c.id} className={estCourt(c) ? 'champ-demi' : 'champ-plein'}><ChampFiche champ={c} r={r} changer={changer} setStatut={setStatut} /></div>)}
               </div>
             </section>
           ))}
@@ -253,8 +255,68 @@ function ChampFiche({ champ, r, changer, setStatut }: { champ: Champ; r: Reponse
         ))}
       </div>
     );
+    case 'couleurs': return <Palette champ={champ} r={r} changer={changer} setStatut={setStatut} />;
+    case 'references': return <References champ={champ} r={r} changer={changer} setStatut={setStatut} />;
     case 'fonctionnalites': return <Fonctionnalites r={r} changer={(v) => changer(champ.id, v)} setStatut={setStatut} />;
   }
+}
+
+type Props<T extends Champ['type']> = { champ: Extract<Champ, { type: T }>; r: Reponses; changer: (id: string, v: Reponses[string]) => void; setStatut: (s: string) => void };
+
+// Jusqu'à 5 couleurs, rangées par ordre de priorité : la première est la plus importante.
+function Palette({ champ, r, changer, setStatut }: Props<'couleurs'>) {
+  const liste = lireCouleurs(r, champ.id);
+  const ecrire = (l: { hex: string; nom: string }[]) => {
+    changer(`${champ.id}.n`, String(l.length));
+    l.forEach((c, i) => { changer(`${champ.id}.${i}`, c.hex); changer(`${champ.id}.${i}.nom`, c.nom); });
+  };
+  const deplacer = (i: number, sens: -1 | 1) => { const n = [...liste]; [n[i], n[i + sens]] = [n[i + sens], n[i]]; ecrire(n); setStatut(`Couleur ${i + 1} déplacée en position ${i + 1 + sens}.`); };
+  const maj = (i: number, partiel: Partial<{ hex: string; nom: string }>) => ecrire(liste.map((c, n) => (n === i ? { ...c, ...partiel } : c)));
+  return (
+    <fieldset className="champ-groupe palette">
+      <legend>{champ.label}</legend>
+      {champ.aide && <p className="champ-aide">{champ.aide}</p>}
+      <ol className="palette-liste">
+        {liste.map((c, i) => (
+          <li key={i} className="palette-ligne">
+            <span className="fonction-num" aria-hidden="true">{i + 1}</span>
+            <label className="palette-choix"><span className="visuellement-cache">Couleur {i + 1}</span><input type="color" value={c.hex} onChange={(e) => maj(i, { hex: e.target.value })} /></label>
+            <code className="palette-code">{c.hex.toUpperCase()}</code>
+            <Texte label={`Nom de la couleur ${i + 1} (facultatif)`} valeur={c.nom} changer={(v) => maj(i, { nom: v })} />
+            <div className="palette-actions">
+              <button type="button" className="bouton-secondaire" disabled={i === 0} onClick={() => deplacer(i, -1)}>Monter<span className="visuellement-cache"> la couleur {i + 1}</span></button>
+              <button type="button" className="bouton-secondaire" disabled={i === liste.length - 1} onClick={() => deplacer(i, 1)}>Descendre<span className="visuellement-cache"> la couleur {i + 1}</span></button>
+              <button type="button" className="bouton-secondaire" onClick={() => { ecrire(liste.filter((_, n) => n !== i)); setStatut(`Couleur ${i + 1} supprimée.`); }}>Supprimer<span className="visuellement-cache"> la couleur {i + 1}</span></button>
+            </div>
+          </li>
+        ))}
+      </ol>
+      {liste.length < champ.max
+        ? <button type="button" className="bouton-secondaire" onClick={() => { ecrire([...liste, { hex: '#3366cc', nom: '' }]); setStatut('Couleur ajoutée.'); }}>Ajouter une couleur ({liste.length} sur {champ.max})</button>
+        : <p className="champ-aide">{champ.max} couleurs : c’est le maximum.</p>}
+    </fieldset>
+  );
+}
+
+// Des références : un nom et un lien par ligne, avec autant de lignes que nécessaire.
+function References({ champ, r, changer, setStatut }: Props<'references'>) {
+  const nb = nombreLignes(r, champ.id, champ.lignes);
+  return (
+    <div className="champ-lignes">
+      <p className="champ-texte">{champ.label}</p>
+      {champ.aide && <p className="champ-aide">{champ.aide}</p>}
+      {Array.from({ length: nb }, (_, l) => (
+        <fieldset className="champ-groupe" key={l}>
+          <legend>Référence {l + 1}</legend>
+          <div className="champ-mots">
+            <Texte label="Nom" valeur={r[`${champ.id}.${l}.0`]} changer={(v) => changer(`${champ.id}.${l}.0`, v)} />
+            <Texte label="Lien" type="url" valeur={r[`${champ.id}.${l}.1`]} changer={(v) => changer(`${champ.id}.${l}.1`, v)} aide="Exemple : https://exemple.ch" />
+          </div>
+        </fieldset>
+      ))}
+      <div><button type="button" className="bouton-secondaire" onClick={() => { changer(`${champ.id}.n`, String(nb + 1)); setStatut('Référence ajoutée.'); }}>Ajouter une référence</button></div>
+    </div>
+  );
 }
 
 function Fonctionnalites({ r, changer, setStatut }: { r: Reponses; changer: (v: LigneFonction[]) => void; setStatut: (s: string) => void }) {

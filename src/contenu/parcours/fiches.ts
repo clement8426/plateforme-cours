@@ -2,13 +2,18 @@
 // npm run verifier:fiches compare ce fichier aux originaux. Le corrigé du test n'est jamais dans ce dépôt.
 import { typoProfonde } from '../typo';
 
-export type Champ =
+// masquerSi : la question disparaît quand la réponse à une autre question est l'une de ces valeurs.
+export type Condition = { id: string; valeurs: string[] };
+export type Champ = ChampDeBase & { masquerSi?: Condition };
+type ChampDeBase =
   | { id: string; type: 'ligne'; label: string; aide?: string }
   | { id: string; type: 'zone'; label: string; aide?: string; lignes: number; max?: number }
   | { id: string; type: 'choix'; label: string; options: string[]; multiple?: boolean; autre?: string }
   | { id: string; type: 'grille'; label: string; notions: string[] }
   | { id: string; type: 'mots'; label: string; nombre: number }
   | { id: string; type: 'tableau'; label: string; colonnes: string[]; lignes: number }
+  | { id: string; type: 'couleurs'; label: string; aide?: string; max: number }
+  | { id: string; type: 'references'; label: string; aide?: string; lignes: number }
   | { id: string; type: 'fonctionnalites'; label: string }
   | { id: string; type: 'texte'; texte: string };
 
@@ -149,6 +154,8 @@ const brut: Fiche[] = [
           { id: 'mots', type: 'mots', label: 'Ta marque en 3 mots :', nombre: 3 },
           { id: 'ressenti', type: 'choix', multiple: true, autre: 'Autre', label: 'Qu\'est-ce que le client doit ressentir en utilisant ton produit ?', options: ['Confiance', 'Simplicité', 'Plaisir', 'Sérieux', 'Fierté', 'Sécurité', 'Autre'] },
           { id: 'ton', type: 'choix', label: 'Quel ton pour parler à tes clients ?', options: ['Tutoiement, décontracté', 'Vouvoiement, professionnel', 'Fun, humour', 'Expert, rassurant'] },
+          { id: 'charte', type: 'choix', label: 'As-tu déjà une charte graphique (logo, couleurs, typographies) ?', options: ['Oui', 'Non', 'En partie'] },
+          { id: 'palette', type: 'couleurs', label: 'Choisis jusqu\'à 5 couleurs de ta marque, de la plus importante à la moins importante.', aide: 'La couleur 1 est celle qu\'on verra le plus. Si tu n\'as pas encore de charte, choisis celles que tu imagines.', max: 5 },
           { id: 'couleurs', type: 'zone', label: 'Quelles couleurs, quelles ambiances te viennent en tête ?', lignes: 1 },
           { id: 'marques', type: 'zone', label: 'Cite une ou deux marques dont tu aimes l\'image, et pourquoi :', lignes: 1 },
           { id: 'pas-etre', type: 'zone', label: 'Qu\'est-ce que ta marque ne doit surtout pas être ?', lignes: 1 },
@@ -194,7 +201,7 @@ const brut: Fiche[] = [
       {
         titre: '1. Type de produit',
         champs: [
-          { id: 'type', type: 'choix', multiple: true, autre: 'Autre, à décrire', label: 'Type de produit', options: ['Site vitrine (présenter une activité)', 'Site e-commerce (vendre en ligne)', 'Application web (outil utilisé dans le navigateur)', 'Application mobile (iPhone, Android)', 'Logiciel à installer sur ordinateur', 'Campagne d\'emailing ou newsletter', 'Automatisation ou outil interne', 'Autre, à décrire'] },
+          { id: 'type', type: 'choix', multiple: true, autre: 'Autre, à décrire', label: 'Type de produit', options: ['Site vitrine (présenter une activité)', 'Site e-commerce (vendre en ligne)', 'Application web (outil utilisé dans le navigateur)', 'Application mobile (iPhone, Android)', 'Logiciel à installer sur ordinateur', 'Campagne d\'emailing ou newsletter', 'Campagne marketing (publicité en ligne, affiche, lancement)', 'Réseaux sociaux ou création de contenu', 'Vidéo, podcast ou média', 'Formation en ligne ou espace membres', 'Jeu ou expérience interactive', 'Automatisation ou outil interne', 'Autre, à décrire'] },
           { id: 'appareils', type: 'choix', multiple: true, label: 'Sur quels appareils sera-t-il utilisé ?', options: ['Téléphone', 'Tablette', 'Ordinateur'] },
           ouiNon('hors-ligne', 'Doit-il fonctionner sans Internet ?'),
         ],
@@ -203,8 +210,8 @@ const brut: Fiche[] = [
         titre: '2. Utilisateurs et comptes',
         champs: [
           ouiNon('compte', 'Faut-il créer un compte / s\'inscrire ?'),
-          { id: 'connexion', type: 'choix', multiple: true, label: 'Comment se connecter ?', options: ['Email + mot de passe', 'Google / Apple', 'Code par SMS', 'Autre'] },
-          { id: 'roles', type: 'ligne', label: 'Y a-t-il plusieurs types d\'utilisateurs ? (client, admin, vendeur...)' },
+          { id: 'connexion', type: 'choix', multiple: true, label: 'Comment se connecter ?', options: ['Email + mot de passe', 'Google / Apple', 'Code par SMS', 'Autre'], masquerSi: { id: 'compte', valeurs: ['Non'] } },
+          { id: 'roles', type: 'ligne', label: 'Y a-t-il plusieurs types d\'utilisateurs ? (client, admin, vendeur...)', masquerSi: { id: 'compte', valeurs: ['Non'] } },
           { id: 'volume', type: 'ligne', label: 'Combien d\'utilisateurs au début ? Dans un an ?' },
         ],
       },
@@ -213,7 +220,7 @@ const brut: Fiche[] = [
         champs: [
           { id: 'stockage', type: 'zone', label: 'Quelles informations faut-il stocker ? (profils, commandes, photos, messages...)', lignes: 2 },
           ouiNon('sensibles', 'Y a-t-il des données personnelles ou sensibles ?'),
-          { id: 'acces', type: 'ligne', label: 'Qui doit pouvoir voir ou modifier ces données ?' },
+          { id: 'acces', type: 'ligne', label: 'Qui doit pouvoir voir ou modifier ces données ?', masquerSi: { id: 'compte', valeurs: ['Non'] } },
         ],
       },
       {
@@ -263,6 +270,13 @@ const brut: Fiche[] = [
         champs: [
           { id: 'manque', type: 'zone', label: 'Qu\'est-ce que je ne sais pas encore faire pour réaliser ce projet ?', lignes: 2 },
           { id: 'question', type: 'zone', label: 'Quelle question technique veux-tu poser au formateur ?', lignes: 1 },
+        ],
+      },
+      {
+        titre: '9. Références',
+        intro: 'Sites, applications, articles ou exemples qui t\'inspirent ou qui expliquent ce que tu veux faire. Ajoute le lien pour pouvoir les retrouver.',
+        champs: [
+          { id: 'references', type: 'references', label: 'Mes références', aide: 'Un nom et un lien (https://...) par référence.', lignes: 3 },
         ],
       },
     ],

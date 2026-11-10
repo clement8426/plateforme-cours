@@ -91,6 +91,8 @@ export function modeleEnPdf(fiche: Fiche) {
       }
       if (c.type === 'grille') { o.ecrire(c.label, 11, 'normal', 2); tableau(['Notion', '1', '2', '3', '4', '5'], c.notions.map((n) => [n, '', '', '', '', ''])); }
       if (c.type === 'tableau') { o.ecrire(c.label, 11, 'bold', 2); tableau(c.colonnes, Array.from({ length: c.lignes }, () => c.colonnes.map(() => ''))); }
+      if (c.type === 'couleurs') { o.ecrire(c.label, 11, 'bold', 2); tableau(['Priorité', 'Couleur (code ou échantillon)', 'Nom'], Array.from({ length: c.max }, (_, i) => [String(i + 1), '', ''])); }
+      if (c.type === 'references') { o.ecrire(c.label, 11, 'bold', 2); tableau(['Référence', 'Lien'], Array.from({ length: c.lignes }, () => ['', ''])); }
       if (c.type === 'fonctionnalites') tableau(['N°', 'Fonctionnalité', 'Pourquoi l’utilisateur en a besoin', 'MVP', 'Priorité'], Array.from({ length: 15 }, (_, i) => [String(i + 1), '', '', '', '']));
     }
   }
