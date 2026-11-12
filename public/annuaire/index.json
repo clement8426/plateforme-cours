@@ -1,14 +1,14 @@
 {
- "date": "2026-11-11",
+ "date": "2026-11-12",
  "comptes": {
-  "mcp": 2508,
-  "plugins": 954,
-  "skills": 8703
+  "mcp": 2511,
+  "plugins": 958,
+  "skills": 8708
  },
  "trouves": {
-  "mcp": 54879,
-  "plugins": 18994,
-  "skills": 20029
+  "mcp": 55491,
+  "plugins": 18988,
+  "skills": 20000
  },
  "sources": [
   {
@@ -38,7 +38,7 @@
   },
   {
    "nom": "marketplace cursor/plugins",
-   "n": 133,
+   "n": 135,
    "ok": true
   },
   {
@@ -58,12 +58,12 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 194,
+   "n": 198,
    "ok": true
   },
   {
    "nom": "skills aws/agent-toolkit-for-aws",
-   "n": 200,
+   "n": 202,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 51248,
+   "n": 51397,
    "ok": true
   }
  ],
