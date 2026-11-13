@@ -1,14 +1,14 @@
 {
- "date": "2026-11-12",
+ "date": "2026-11-13",
  "comptes": {
-  "mcp": 2511,
+  "mcp": 2519,
   "plugins": 958,
-  "skills": 8708
+  "skills": 8715
  },
  "trouves": {
-  "mcp": 55491,
-  "plugins": 18988,
-  "skills": 20000
+  "mcp": 56028,
+  "plugins": 18980,
+  "skills": 20003
  },
  "sources": [
   {
@@ -23,7 +23,7 @@
   },
   {
    "nom": "marketplace anthropics/claude-plugins-official",
-   "n": 317,
+   "n": 316,
    "ok": true
   },
   {
@@ -38,7 +38,7 @@
   },
   {
    "nom": "marketplace cursor/plugins",
-   "n": 135,
+   "n": 136,
    "ok": true
   },
   {
@@ -58,12 +58,12 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 198,
+   "n": 200,
    "ok": true
   },
   {
    "nom": "skills aws/agent-toolkit-for-aws",
-   "n": 202,
+   "n": 203,
    "ok": true
   },
   {
@@ -73,7 +73,7 @@
   },
   {
    "nom": "skills trailofbits/skills",
-   "n": 98,
+   "n": 99,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 51397,
+   "n": 51529,
    "ok": true
   }
  ],
