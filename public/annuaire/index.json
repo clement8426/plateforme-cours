@@ -1,14 +1,14 @@
 {
- "date": "2026-11-13",
+ "date": "2026-11-14",
  "comptes": {
-  "mcp": 2519,
-  "plugins": 958,
-  "skills": 8715
+  "mcp": 2545,
+  "plugins": 963,
+  "skills": 8718
  },
  "trouves": {
-  "mcp": 56028,
-  "plugins": 18980,
-  "skills": 20003
+  "mcp": 56517,
+  "plugins": 18978,
+  "skills": 19999
  },
  "sources": [
   {
@@ -23,7 +23,7 @@
   },
   {
    "nom": "marketplace anthropics/claude-plugins-official",
-   "n": 316,
+   "n": 317,
    "ok": true
   },
   {
@@ -38,7 +38,7 @@
   },
   {
    "nom": "marketplace cursor/plugins",
-   "n": 136,
+   "n": 139,
    "ok": true
   },
   {
@@ -58,7 +58,7 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 200,
+   "n": 201,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 51529,
+   "n": 51658,
    "ok": true
   }
  ],
