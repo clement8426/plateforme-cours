@@ -1,13 +1,13 @@
 {
- "date": "2026-11-14",
+ "date": "2026-11-15",
  "comptes": {
-  "mcp": 2545,
+  "mcp": 2577,
   "plugins": 963,
-  "skills": 8718
+  "skills": 8724
  },
  "trouves": {
-  "mcp": 56517,
-  "plugins": 18978,
+  "mcp": 56921,
+  "plugins": 18973,
   "skills": 19999
  },
  "sources": [
@@ -58,12 +58,12 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 201,
+   "n": 203,
    "ok": true
   },
   {
    "nom": "skills aws/agent-toolkit-for-aws",
-   "n": 203,
+   "n": 204,
    "ok": true
   },
   {
@@ -78,7 +78,7 @@
   },
   {
    "nom": "skills stripe/ai",
-   "n": 60,
+   "n": 66,
    "ok": true
   },
   {
@@ -128,7 +128,7 @@
   },
   {
    "nom": "connecteurs Claude",
-   "n": 864,
+   "n": 893,
    "ok": true
   },
   {
@@ -152,8 +152,23 @@
    "ok": true
   },
   {
+   "nom": "recherche filename:marketplace.json path:.claude-plugin",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "recherche filename:plugin.json path:.claude-plugin",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "recherche filename:SKILL.md",
+   "n": 0,
+   "ok": true
+  },
+  {
    "nom": "enrichissement GitHub",
-   "n": 51658,
+   "n": 51753,
    "ok": true
   }
  ],
