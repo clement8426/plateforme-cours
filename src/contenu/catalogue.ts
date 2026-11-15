@@ -6,6 +6,7 @@ import sourcesIa from './ia-donnees-sources.json';
 import sourcesUx from './ux-ia-sources.json';
 import sourcesTypes from './types-ia-sources.json';
 import sourcesHarnais from './harnais-sources.json';
+import sourcesPremiersPas from './premiers-pas-ia-sources.json';
 
 export type Reference = { titre: string; source: string; url: string };
 export type Terme = { terme: string; nom?: string; def: string };
@@ -439,6 +440,51 @@ const wordpressBoutique: Cours = {
   enPreparation: true,
 };
 
+const premiersPasIa: Cours = {
+  slug: 'premiers-pas-ia',
+  titre: 'Premiers pas avec l’IA',
+  misAJour: '2026-11-15',
+  accroche: 'Se repérer parmi les outils, utiliser un chat, configurer son premier assistant et vérifier ses réponses avant de découvrir les agents.',
+  duree: 'À votre rythme',
+  public: 'Débutants, aucun prérequis technique',
+  objectifs: [
+    'Distinguer une application, un modèle et les outils disponibles.',
+    'Formuler une demande avec un objectif, du contexte, des contraintes et un format.',
+    'Configurer un assistant réutilisable sans installer d’agent.',
+    'Tester les réponses et repérer une information absente ou inventée.',
+    'Comprendre ce qui change lorsqu’une IA peut agir avec des outils.',
+  ],
+  diapos: { href: '/diapos/premiers-pas-ia/', apercu: '/apercus/premiers-pas-ia-diapos.jpg?v=3' },
+  parties: [
+    { titre: 'Se repérer', resume: 'ChatGPT, Gemini, Claude, Grok et les autres : application, modèle, outils et accès.', duree: 'À votre rythme', diapos: [1, 6] },
+    { titre: 'Utiliser un chat', resume: 'Formuler une demande, comparer deux réponses, comprendre le contexte et vérifier les informations.', duree: 'À votre rythme', diapos: [7, 14] },
+    { titre: 'Configurer un assistant', resume: 'Définir un rôle, écrire des consignes et tester trois situations avec le mini-brief ClairLieu.', duree: 'À votre rythme', diapos: [15, 22] },
+    { titre: 'Agents et mise en pratique', resume: 'Découvrir les actions et les permissions, puis préparer la suite : types d’IA, Hugging Face et mission de projet.', duree: 'À votre rythme', diapos: [23, 28] },
+    { titre: 'Sources et lexique', resume: 'Retrouver les références officielles et les définitions des notions du cours.', duree: 'À votre rythme', diapos: [29, 30] },
+  ],
+  demos: [],
+  exercice: {
+    titre: 'Votre premier assistant',
+    resume: 'Trois exercices : comparer deux demandes, configurer un assistant et vérifier ses réponses avec des données fictives.',
+    prototype: 'Trois exercices guidés, à reprendre librement. Un fichier de consignes et une conversation classique suffisent.',
+    conditions: ['Utilisez un outil déjà accessible et autorisé. Aucun abonnement ni connecteur n’est imposé.', 'Conservez vos consignes et vos résultats dans vos propres fichiers.'],
+    lien: '/comprendre-ia/premiers-pas-ia/exercices/#pratique-guidee',
+  },
+  exercicesComplementaires: [{
+    titre: 'La mission Déclic numérique',
+    resume: 'Préparer un programme, un budget et des supports pour un atelier fictif, puis contrôler et corriger le dossier à deux.',
+    prototype: 'Une mission complète, à mener en une ou plusieurs séances. Le dossier fournit le brief, les prix, les modèles et la grille de vérification.',
+    conditions: ['Travail individuel avec un contrôle croisé en binôme.', 'Aucune réservation, publication ou prise de contact réelle.'],
+    lien: '/comprendre-ia/premiers-pas-ia/exercices/#mission',
+  }],
+  lexique: sourcesPremiersPas.lexique,
+  references: [{ nom: 'Outils, personnalisation et pratique', references: sourcesPremiersPas.references }],
+  voirAussi: [
+    { titre: 'Les types d’IA', texte: 'La suite du parcours : découvrir les familles d’IA et tester trois missions sur Hugging Face.', href: '/comprendre-ia/types-ia/' },
+    { titre: 'Le Harnais', texte: 'Pour approfondir ensuite les agents, leurs outils et leurs permissions.', href: '/comprendre-ia/le-harnais/' },
+  ],
+};
+
 export const CATEGORIES: Categorie[] = typoProfonde([
   {
     slug: 'ux',
@@ -452,7 +498,7 @@ export const CATEGORIES: Categorie[] = typoProfonde([
     nom: 'Comprendre l’IA',
     court: 'Comprendre l’IA',
     description: 'Ce qu’est une IA, ses grandes familles et leurs limites, avant de s’en servir.',
-    cours: [typesIa, leHarnais],
+    cours: [premiersPasIa, typesIa, leHarnais],
   },
   {
     slug: 'ia-legislation',

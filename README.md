@@ -7,6 +7,10 @@ Il s'installe comme une application (PWA) et les pages déjà consultées resten
 Next.js 16, export statique. Polices Bricolage Grotesque et Instrument Sans, servies par le site (aucune requête vers Google).
 
 
+## Premiers pas avec l’IA
+
+Le cours `/comprendre-ia/premiers-pas-ia/` introduit les applications, le chat, les assistants et les agents. Il comprend 30 diapos, trois exercices guidés et une mission facultative modulable. Sa page d’exercices est intégrée au site ; les documents fictifs et le ZIP sont dans `public/diapos/premiers-pas-ia/exercices/`. Le contenu et le relevé de charte sont documentés dans `docs/cours/premiers-pas-ia/`.
+
 ## Pratique UX × IA : Escale
 
 La pratique principale est **Escale**, une boutique Next.js de 18 produits et neuf défauts activables séparément : `/ux/ux-ia/demos/escale/`.

@@ -22,7 +22,7 @@ export default async function PageDiapos(props: ParamsCours) {
   if (!categorie || !cours?.diapos) notFound();
 
   return (
-    <div className="page zone-cours">
+    <div className={`page zone-cours${cours.slug === 'premiers-pas-ia' ? ' page-diapos-intro' : ''}`}>
       <FilAriane etapes={[
         { nom: categorie.nom, href: `/${categorie.slug}/` },
         { nom: cours.titre, href: `/${categorie.slug}/${cours.slug}/` },

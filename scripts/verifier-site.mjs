@@ -19,6 +19,8 @@ const verifier = (nom, bon, detail = '') => { ok.push(bon); console.log(bon ? 'O
 
 const PAGES = ['/', '/cours/', '/demarrer/', '/demarrer/test/', '/demarrer/idee/', '/demarrer/technique/', '/diagnostic/', '/diagnostic/catalogue/', '/bonnes-pratiques/', '/bonnes-pratiques/cache/', '/bonnes-pratiques/cloud-act/', '/bonnes-pratiques/angles-morts/rls/', '/ux/', '/comprendre-ia/', '/comprendre-ia/types-ia/', '/comprendre-ia/types-ia/diapos/', '/comprendre-ia/le-harnais/', '/comprendre-ia/le-harnais/diapos/', '/comprendre-ia/le-harnais/sources/', '/comprendre-ia/types-ia/sources/', '/ux/ux-ia/', '/ux/ux-ia/diapos/', '/ux/ux-ia/demos/affiche/', '/ux/ux-ia/demos/escale/', '/ux/ux-ia/demos/formulaire-adresse/', '/ux/ux-ia/sources/', '/ia-legislation/', '/ia-legislation/ia-donnees/', '/ia-legislation/ia-donnees/diapos/', '/ia-legislation/ia-donnees/sources/', '/ia-legislation/ia-donnees/demos/dossier-exemple/', '/ia-legislation/ia-donnees/demos/reidentification/', '/ia-legislation/ia-donnees/demos/puis-je-l-envoyer/', '/ia-legislation/ia-souveraine/', '/developpement/', '/developpement/app-hebergee-suisse/', '/developpement/wordpress-e-commerce/', '/hors-ligne/', '/page-qui-nexiste-pas/'];
 
+PAGES.push('/comprendre-ia/premiers-pas-ia/', '/comprendre-ia/premiers-pas-ia/diapos/', '/comprendre-ia/premiers-pas-ia/exercices/', '/comprendre-ia/premiers-pas-ia/sources/');
+
 if (!process.argv.includes('--parcours-seulement')) {
 // 1. Accessibilité automatique, deux thèmes, deux tailles
 for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
@@ -101,7 +103,7 @@ for (const [nom, vp, mobile] of [['bureau', { width: 1440, height: 900 }, false]
   const p = await ctx.newPage();
   await p.goto(base + '/cours/');
   await p.waitForLoadState('networkidle');
-  verifier('page Cours : le nom « Le Labo », quatre cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 4 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
+  verifier('page Cours : le nom « Le Labo », cinq cours en ligne et trois en préparation', (await p.locator('.marque').innerText()).includes('Le Labo') && (await p.locator('.cours-carte:not(.est-prepa)').count()) === 5 && (await p.locator('.cours-carte.est-prepa').count()) === 3);
   await p.goto(base + '/ux/ux-ia/demos/affiche/');
   await p.getByRole('button', { name: /Lancer le test/ }).click();
   await p.goto(base + '/ux/ux-ia/demos/escale/');

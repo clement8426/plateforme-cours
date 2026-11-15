@@ -1,0 +1,110 @@
+[
+  {
+    "id": "prompt",
+    "url": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Des demandes claires et une amélioration par itérations"
+  },
+  {
+    "id": "guide",
+    "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Instructions, contexte et format de sortie"
+  },
+  {
+    "id": "tools",
+    "url": "https://developers.openai.com/api/docs/guides/tools",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Les outils accessibles à un modèle"
+  },
+  {
+    "id": "memory",
+    "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Mémoire et personnalisation dans ChatGPT"
+  },
+  {
+    "id": "custom",
+    "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Les instructions personnalisées de ChatGPT"
+  },
+  {
+    "id": "truth",
+    "url": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Fiabilité, erreurs et vérification des réponses"
+  },
+  {
+    "id": "eval",
+    "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Évaluer des cas normaux, limites et contradictoires"
+  },
+  {
+    "id": "agent",
+    "url": "https://www.anthropic.com/research/building-effective-agents",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Les agents : outils, boucle et contrôle humain"
+  },
+  {
+    "id": "long",
+    "url": "https://arxiv.org/abs/2307.03172",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Lost in the Middle : utilisation des contextes longs"
+  },
+  {
+    "id": "privacy",
+    "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Précautions pour utiliser une IA générative"
+  },
+  {
+    "id": "free",
+    "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Accès et limites des fonctions gratuites"
+  },
+  {
+    "id": "gpt",
+    "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Création et modification des GPT"
+  },
+  {
+    "id": "gems",
+    "url": "https://support.google.com/gemini/answer/18560919?hl=fr",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Conversion des Gems en compétences"
+  },
+  {
+    "id": "projects",
+    "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Les projets Claude"
+  },
+  {
+    "id": "grok",
+    "url": "https://x.ai/grok",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Grok"
+  },
+  {
+    "id": "mistral",
+    "url": "https://mistral.ai/products/vibe/",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Vibe, anciennement Le Chat"
+  },
+  {
+    "id": "copilot",
+    "url": "https://www.microsoft.com/en-us/copilot/solutions/individuals",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Microsoft Copilot"
+  },
+  {
+    "id": "spaces",
+    "url": "https://huggingface.co/docs/hub/spaces-overview",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
+    "soutient": "Les Spaces Hugging Face"
+  }
+]

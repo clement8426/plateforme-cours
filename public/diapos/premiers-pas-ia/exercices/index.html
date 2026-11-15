@@ -1,0 +1,257 @@
+<!doctype html><html lang="fr-CH"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Exercices · Premiers pas avec l’IA</title><style>@font-face{font-family:Bricolage;src:url(../../types-ia/polices/bricolage-latin.woff2);font-weight:200 800;font-display:swap}@font-face{font-family:Instrument;src:url(../../types-ia/polices/instrument-latin.woff2);font-weight:400 700;font-display:swap}:root{color-scheme:light;--bg:#F3F4F6;--surface:#fff;--text:#14161B;--muted:#4A505A;--link:#2B44E8;--line:#DCDFE5}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:18px/1.65 Instrument,system-ui,sans-serif}main{max-width:1050px;margin:auto;padding:clamp(20px,5vw,64px)}header{background:#8CBDF2;border-radius:28px;padding:clamp(24px,4vw,48px);margin:28px 0 40px}h1,h2,h3,h4{font-family:Bricolage,system-ui,sans-serif;line-height:1.16}h1{font-size:clamp(36px,6vw,64px);margin:10px 0 20px}h2{font-size:clamp(28px,4vw,40px);margin:44px 0 20px}h3{font-size:26px;margin:32px 0 14px}h4{font-size:22px}a{color:var(--link);text-underline-offset:4px}a:focus-visible,summary:focus-visible,.table-wrap:focus-visible{outline:3px solid var(--link);outline-offset:5px}a{overflow-wrap:anywhere}.actions{display:flex;flex-wrap:wrap;gap:12px}.button{background:var(--surface);border:1px solid var(--line);padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;border-radius:14px;text-decoration:none;font-weight:650}.notice{background:#E2F6EC;padding:22px;border-radius:18px}section{margin-top:44px}details{background:var(--surface);border-radius:18px;padding:18px 22px;margin:20px 0}summary{min-height:44px;cursor:pointer;display:list-item;font-weight:650}details h2{font-size:30px}.downloads{padding-left:24px}.downloads li{margin:12px 0}.downloads a{display:inline-block;min-height:44px;padding:6px 0}.table-wrap{overflow-x:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:16px}th,td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;min-width:110px}th{background:#E4EFFB}code{font-size:.9em;overflow-wrap:anywhere}.small{font-size:15px;color:var(--muted)}li{margin:8px 0}@media print{body{background:#fff;font-size:11pt}main{max-width:none;padding:0}header{background:none;padding:0}nav,.actions,.downloads-section,.print-hide{display:none}details{padding:0;break-before:page}summary{font-size:18pt}details>div{display:block!important}table{font-size:9pt}h2{font-size:22pt}a{color:inherit}header{margin:0}section{margin-top:16px}}</style></head><body><main><nav aria-label="Navigation"><a href="/comprendre-ia/premiers-pas-ia/">← Retour au cours</a></nav><header><p>Le Labo · Premiers pas avec l’IA</p><h1>Votre premier assistant.<br>Puis votre premier dossier.</h1><p>Une progression libre : des exercices pour démarrer, puis une mission pour produire, vérifier et améliorer un résultat.</p><div class="actions"><a class="button" href="#pratique-guidee">Pratique guidée</a><a class="button" href="#mission">Mission de projet</a><a class="button" href="dossier-clairlieu.zip" download>Tout télécharger (.zip)</a></div></header><p class="notice">Toutes les données sont fictives. Aucun horaire n’est imposé au cours. Enregistrez votre travail dans vos fichiers ; aucune réponse n’est recueillie par cette page.</p><section><h2>Documents à télécharger</h2><ul><li><a download href="01-mini-brief.md">01-mini-brief.md</a></li><li><a download href="02-consignes-assistant.md">02-consignes-assistant.md</a></li><li><a download href="03-mission-projet.md">03-mission-projet.md</a></li><li><a download href="04-brief-evenement.md">04-brief-evenement.md</a></li><li><a download href="06-dossier-a-rendre.md">06-dossier-a-rendre.md</a></li><li><a download href="07-grille-verification.md">07-grille-verification.md</a></li><li><a download href="05-prix-et-materiel.csv">05-prix-et-materiel.csv</a></li></ul></section><section id="pratique-guidee"><h2>ClairLieu — mini-brief de pratique guidée</h2>
+<p>Toutes les données de ce document sont fictives.</p>
+<p>L’association ClairLieu souhaite préparer un atelier de découverte du numérique.</p>
+<ul>
+<li>Public : 12 adultes débutants.</li>
+<li>Durée : exactement 90 minutes (contrainte du projet fictif, pas du cours).</li>
+<li>Matériel : six ordinateurs portables, un vidéoprojecteur, douze chaises et une connexion Internet.</li>
+<li>Budget d’achat : 0 CHF. Utiliser le matériel disponible.</li>
+<li>Objectif : apprendre à formuler une demande à une IA et à vérifier une réponse.</li>
+<li>Aucun nom de responsable, numéro de téléphone ou jour de l’atelier n’est fourni.</li>
+<li>Il s’agit de préparer une proposition : aucune réservation ni publication.</li>
+</ul>
+<h3>Exercice 1 — comparer deux demandes</h3>
+<ol>
+<li>Dans une nouvelle conversation : « Organise un atelier IA. »</li>
+<li>Dans une autre conversation : « Propose un atelier de 90 minutes pour 12 adultes débutants. Six ordinateurs sont disponibles. Aucun achat. Présente un tableau avec les horaires, les activités et le matériel. Signale les informations qui manquent. »</li>
+<li>Comparez le public, la durée et le matériel. Relevez une amélioration et une erreur encore présente.</li>
+</ol>
+<h3>Exercice 2 — configurer un assistant</h3>
+<ol>
+<li>Téléchargez <a href="02-consignes-assistant.md" download>02-consignes-assistant.md</a> et personnalisez-les.</li>
+<li>Enregistrez vos consignes dans un fichier local.</li>
+<li>Dans une nouvelle conversation, collez ces consignes, puis ce mini-brief. Si votre compte propose un espace configuré approprié et autorisé, vous pouvez y placer ces éléments.</li>
+<li>Demandez un programme de 90 minutes. Conservez le résultat.</li>
+</ol>
+<p>Une conversation avec un bloc de consignes permet de tester la méthode ; ce n’est pas forcément un assistant enregistré dans l’application. Le support commun reste votre fichier local.</p>
+<h3>Exercice 3 — vérifier l’assistant</h3>
+<p>Dans trois nouvelles conversations utilisant les mêmes consignes et le même mini-brief :</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Test</th><th scope="col">Demande</th><th scope="col">Comportement attendu</th></tr>
+<tr><td>Normal</td><td>Propose le programme de l’atelier.</td><td>90 minutes, six ordinateurs pour douze personnes, sans achat.</td></tr>
+<tr><td>Information absente</td><td>Indique le nom et le téléphone du responsable.</td><td>Signaler que ces informations ne sont pas fournies.</td></tr>
+<tr><td>Contrainte incompatible</td><td>Prévois un ordinateur par personne, sans achat.</td><td>Relever le conflit ; proposer des binômes ou une autre organisation.</td></tr>
+</table></div>
+<p>Conservez les réponses. Si un test échoue, modifiez les consignes et relancez les tests. Les consignes réduisent certains défauts ; elles ne garantissent pas la justesse de toutes les réponses.</p></section><p>Pour comparer les essais, fournissez les mêmes documents et vérifiez les réglages : une nouvelle conversation n’efface pas forcément la mémoire du service.</p><section id="02-consignes-assistant"><h2>Consignes de mon assistant ClairLieu</h2>
+<h3>Rôle</h3>
+<p>Vous aidez l’association fictive ClairLieu à préparer des ateliers numériques pour des adultes débutants. Vous proposez des documents ; l’utilisateur décide et réalise les actions.</p>
+<h3>Références</h3>
+<p>Utilisez uniquement les documents fournis dans la conversation ou l’espace configuré. Distinguez clairement :</p>
+<ol>
+<li>Les faits du brief, avec le nom du document concerné.</li>
+<li>Vos propositions, annoncées comme telles.</li>
+<li>Les informations absentes ou contradictoires, à confirmer.</li>
+</ol>
+<h3>Règles</h3>
+<ul>
+<li>Si une information indispensable manque, posez une question précise ou laissez la mention « À confirmer ».</li>
+<li>N’inventez ni personne, ni contact, ni tarif, ni disponibilité.</li>
+<li>Respectez le public, la durée, le matériel, le budget et les limites du brief.</li>
+<li>Ne réservez rien, ne publiez rien et n’envoyez aucun message.</li>
+<li>Ne demandez ni donnée personnelle réelle ni identifiant de compte.</li>
+<li>N’activez aucun connecteur ou outil d’action externe pour cet exercice.</li>
+</ul>
+<h3>Format</h3>
+<ul>
+<li>Français simple, phrases courtes et titres explicites.</li>
+<li>Programme : tableau avec début, fin, durée, activité et matériel.</li>
+<li>Budget : quantité, unité, prix unitaire, calcul et total.</li>
+<li>Terminez par les points vérifiés et les points à confirmer.</li>
+</ul>
+<h3>Contrôle</h3>
+<p>Avant de proposer une version finale, confrontez-la aux contraintes du brief. Signalez les écarts. L’utilisateur vérifie lui-même les calculs et les informations importantes.</p>
+<p>Mode d’emploi : copiez les consignes ci-dessus dans une nouvelle conversation, puis ajoutez le mini-brief de pratique guidée ou les documents de mise en application. Les interfaces de personnalisation changent ; un fichier texte et une conversation classique suffisent pour tester ce cadre.</p></section><section id="mission"><h2>Mission — préparer « Déclic numérique »</h2>
+<p>Progression libre : en une séance ou en plusieurs étapes, sans horaire imposé.</p>
+<p>Tous les lieux, organismes et prix sont fictifs. Ne contactez personne, ne réservez rien et ne publiez rien.</p>
+<h3>Le mandat</h3>
+<p>L’association ClairLieu souhaite organiser un atelier pour 18 adultes débutants. Vous préparez un dossier qu’une personne pourrait ensuite relire et valider. Utilisez votre assistant pour produire des propositions, puis contrôlez-les vous-même.</p>
+<p>Ce mandat remplace le mini-brief de pratique guidée : le public, la durée et les ressources changent. Chargez les nouveaux documents dans une nouvelle conversation avec vos consignes. Si les deux briefs se mélangent, demandez une clarification ; ne combinez pas leurs chiffres.</p>
+<h3>Documents de travail</h3>
+<ul>
+<li><a href="04-brief-evenement.md" download>04-brief-evenement.md</a> : les contraintes et les objectifs.</li>
+<li><a href="05-prix-et-materiel.csv" download>05-prix-et-materiel.csv</a> : les ressources et les prix fictifs.</li>
+<li><a href="02-consignes-assistant.md" download>02-consignes-assistant.md</a> : une base à adapter à ce mandat.</li>
+<li><a href="06-dossier-a-rendre.md" download>06-dossier-a-rendre.md</a> : le modèle pour conserver votre travail.</li>
+<li><a href="07-grille-verification.md" download>07-grille-verification.md</a> : les critères de contrôle.</li>
+</ul>
+<p>Les fichiers sont petits. Si un outil refuse les pièces jointes, ouvrez-les dans un éditeur et collez leur contenu dans le chat. N’utilisez pas de clé API ou d’offre payante pour contourner un blocage.</p>
+<h3>Déroulé</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Phase</th><th scope="col">Travail</th><th scope="col">Résultat attendu</th></tr>
+<tr><td>Comprendre</td><td>Lire les sources et relever les contraintes.</td><td>Faits, questions et propositions séparés.</td></tr>
+<tr><td>Configurer</td><td>Adapter l’assistant et lancer trois tests.</td><td>Consignes et réponses commentées.</td></tr>
+<tr><td>Produire</td><td>Construire le programme et le budget.</td><td>Tableaux contrôlés manuellement.</td></tr>
+<tr><td>Compléter</td><td>Rédiger l’invitation et les supports.</td><td>Documents adaptés au public.</td></tr>
+<tr><td>Vérifier</td><td>Échanger le dossier et appliquer la grille.</td><td>Preuves et anomalies éventuelles.</td></tr>
+<tr><td>Corriger</td><td>Améliorer le dossier puis refaire les tests.</td><td>Version finale et journal de corrections.</td></tr>
+<tr><td>Présenter</td><td>Expliquer les choix et les limites.</td><td>Dossier et vérifications justifiés.</td></tr>
+</table></div>
+<p>Faites une pause lorsque nécessaire et enregistrez vos fichiers avant de quitter. Les phases peuvent être reprises à un autre moment.</p>
+<p>Travail individuel, avec trois binômes pour le contrôle croisé. Si un compte est bloqué, le travail à deux est possible : l’un formule les demandes, l’autre vérifie, puis les rôles sont inversés. Chaque étudiant rend sa propre grille de vérification.</p>
+<h3>1. Clarifier avant de générer</h3>
+<p>Relevez au moins huit contraintes et trois points à confirmer. Identifiez aussi une différence entre le mini-brief de pratique guidée et ce nouveau mandat. Ne complétez pas une information absente avec une supposition présentée comme vraie.</p>
+<h3>2. Tester l’assistant</h3>
+<p>Lancez ces trois demandes avec les nouveaux documents :</p>
+<ul>
+<li>« Propose un programme pour les 18 participants. »</li>
+<li>« Fournis le nom et le téléphone du responsable. »</li>
+<li>« Prévois un ordinateur par personne et des licences payantes pour tout le groupe. »</li>
+</ul>
+<p>Pour chaque demande : notez ce que vous attendiez, ce que vous avez obtenu, ce qui pose problème et ce que vous modifiez. Une réponse qui relève une contrainte et propose une alternative peut être meilleure qu’une réponse qui obéit sans réserve.</p>
+<h3>3. Produire puis vérifier</h3>
+<p>Préparez les cinq documents suivants :</p>
+<ol>
+<li><strong>Programme</strong> : les 180 minutes de l’atelier fictif, sans trou ni chevauchement, avec une pause de 15 minutes. Indiquez l’organisation autour des six ordinateurs.</li>
+<li><strong>Budget</strong> : les quantités, les prix unitaires et les calculs. Séparez les dépenses et la réserve. Refaites le total avec une calculatrice ou un tableur, sans dépendre du chat.</li>
+<li><strong>Invitation</strong> : 100 à 150 mots, un objet et les informations pratiques. Laissez les informations non confirmées sous forme de champs explicites.</li>
+<li><strong>Aide-mémoire</strong> : une page maximum, avec quatre conseils pour formuler une demande et trois vérifications avant de réutiliser une réponse.</li>
+<li><strong>Fiche d’observation Hugging Face</strong> : un modèle vierge indiquant l’entrée, la sortie attendue, le premier essai, l’unique changement, le second essai et la limite observée. Choisissez une mission découverte le pratique-guidee et prévoyez un repli si le service est indisponible.</li>
+</ol>
+<h3>4. Contrôle croisé</h3>
+<p>Échangez les fichiers avec un autre étudiant, pas vos identifiants. Relisez d’abord les documents sources, puis vérifiez le dossier avec <a href="07-grille-verification.md" download>07-grille-verification.md</a>. Cherchez notamment des faits inventés, un total faux, une contrainte oubliée ou une consigne peu claire. S’il n’y a pas d’anomalie, indiquez les preuves de vos vérifications.</p>
+<h3>5. Présenter</h3>
+<p>Lors de la restitution :</p>
+<ul>
+<li>Montrez une consigne utile de votre assistant.</li>
+<li>Expliquez un résultat qu’il a fallu corriger.</li>
+<li>Montrez un calcul ou un fait que vous avez vérifié vous-même.</li>
+<li>Dites ce qui reste à confirmer avant de pouvoir organiser réellement l’événement.</li>
+</ul>
+<h3>Si vous terminez tôt</h3>
+<p>Un animateur devient indisponible. Proposez une organisation pour un seul animateur, puis relevez ce que cela change. Autre défi : six personnes supplémentaires souhaitent venir ; confrontez cette demande à la capacité de la salle avant de proposer une solution. Gardez la version initiale et expliquez les modifications.</p>
+<h3>Si l’IA est indisponible</h3>
+<p>Continuez avec le brief, les fichiers texte, un tableur ou une calculatrice. Rédigez les consignes et les demandes que vous auriez utilisées. Le dossier et les vérifications restent réalisables ; notez les tests non exécutés au lieu d’inventer leurs résultats.</p></section><section id="04-brief-evenement"><h2>ClairLieu — brief de « Déclic numérique »</h2>
+<p>Document fictif, version 1. Le lieu, les prix et l’événement n’existent pas.</p>
+<h3>Objectif</h3>
+<p>Préparer une initiation où 18 adultes débutants apprennent à formuler une demande à une IA, à comparer deux résultats et à repérer une information incertaine. Ils doivent aussi découvrir une famille d’IA autre que la conversation textuelle.</p>
+<h3>Public et équipe</h3>
+<ul>
+<li>18 participants ; aucune connaissance technique supposée.</li>
+<li>Deux animateurs bénévoles présents pendant tout l’atelier.</li>
+<li>Une personne par groupe lit difficilement les petits caractères : prévoir une présentation lisible et des consignes simples, sans demander d’information médicale.</li>
+<li>Aucun participant n’a l’obligation de créer un compte ni de prendre un abonnement.</li>
+</ul>
+<h3>Contraintes du projet fictif</h3>
+<ul>
+<li>L’atelier dure exactement 180 minutes, à planifier en durées relatives.</li>
+<li>Une pause de 15 minutes doit être incluse.</li>
+<li>Une salle est disponible pour l’atelier ; prévoyez aussi l’installation et le rangement.</li>
+<li>Sa capacité maximale est de 24 personnes, animateurs compris.</li>
+<li>Le lieu de travail est nommé « Salle ClairLieu » ; l’adresse précise et la date ne sont pas encore confirmées.</li>
+</ul>
+<p>Les durées sont des données du problème fictif. Elles ne fixent ni l’horaire ni la durée de votre cours.</p>
+<h3>Matériel</h3>
+<ul>
+<li>Six ordinateurs portables, fonctionnels et connectés, sont prêtés gratuitement.</li>
+<li>Un vidéoprojecteur et un tableau sont disponibles gratuitement.</li>
+<li>La connexion Internet est annoncée, mais sa stabilité n’a pas été testée.</li>
+<li>Aucun téléphone personnel ne doit être indispensable.</li>
+<li>Prévoyez une organisation où chacun manipule ou participe activement.</li>
+<li>Utilisez uniquement des données et des documents fictifs.</li>
+</ul>
+<h3>Budget</h3>
+<ul>
+<li>Enveloppe totale : 150 CHF au maximum, réserve comprise.</li>
+<li>Réserve minimale : 15 CHF, affichée séparément des dépenses.</li>
+<li>Salle, équipement et travail des animateurs : gratuits.</li>
+<li>Une boisson par personne présente, animateurs compris.</li>
+<li>Un aide-mémoire recto par participant, distribué en fin d’atelier.</li>
+<li>Un lot de 20 cartes pour les exercices, pour tout le groupe.</li>
+<li>Aucun achat de logiciel ou d’abonnement. Pas de prestation à commander.</li>
+<li>Les prix complets à utiliser sont dans le fichier CSV : n’ajoutez ni frais ni remise supposés.</li>
+</ul>
+<h3>Supports et communication</h3>
+<ul>
+<li>Invitation : 100 à 150 mots, en français simple.</li>
+<li>Inscription : la modalité sera confirmée plus tard ; ne créez pas de lien ou de contact fictif.</li>
+<li>Prévoir un aide-mémoire lisible et une fiche d’observation.</li>
+<li>Aucun contenu ne doit être publié ou envoyé dans le cadre de cet exercice.</li>
+</ul>
+<h3>Informations à confirmer</h3>
+<p>La date, l’adresse complète, la modalité d’inscription, le contact responsable et la stabilité d’Internet ne sont pas confirmés. Vous pouvez proposer une manière de les vérifier, mais vous ne pouvez pas les annoncer comme acquis.</p></section><section id="06-dossier-a-rendre"><h2>Dossier Déclic numérique</h2>
+<p>Nom ou identifiant de travail : Outil utilisé : Fonctions accessibles sur ce compte : Travail individuel ou binôme :</p>
+<h3>1. Faits, propositions et questions</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Élément</th><th scope="col">Fait / proposition / à confirmer</th><th scope="col">Document et passage</th><th scope="col">Conséquence</th></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<h3>2. Consignes de mon assistant</h3>
+<p>Collez ici votre version. Indiquez comment vous la réutilisez dans une nouvelle conversation.</p>
+<h3>3. Trois tests</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Test</th><th scope="col">Résultat attendu</th><th scope="col">Résultat observé</th><th scope="col">Défaut ou réussite</th><th scope="col">Correction et nouveau test</th></tr>
+<tr><td>Programme normal</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Information absente</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Contrainte incompatible</td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<h3>4. Programme en durées relatives</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Début relatif</th><th scope="col">Fin relative</th><th scope="col">Durée</th><th scope="col">Activité</th><th scope="col">Organisation et matériel</th></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<p>Durée totale calculée : Pause comprise : Organisation des 18 participants sur six ordinateurs : Repli si Internet ne fonctionne pas : Installation et rangement :</p>
+<h3>5. Budget</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Poste</th><th scope="col">Quantité</th><th scope="col">Unité</th><th scope="col">Prix unitaire CHF</th><th scope="col">Calcul</th><th scope="col">Sous-total CHF</th></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<p>Total des dépenses : Réserve : Total engagé, réserve comprise : Marge restante sur l’enveloppe de 150 CHF : Vérification indépendante, outil et calcul :</p>
+<h3>6. Invitation — 100 à 150 mots</h3>
+<p>Objet :</p>
+<p>Texte :</p>
+<p>Nombre de mots vérifié :</p>
+<h3>7. Aide-mémoire — une page maximum</h3>
+<p>Quatre conseils pour formuler une demande :</p>
+<p>Trois vérifications avant de réutiliser une réponse :</p>
+<h3>8. Fiche d’observation Hugging Face</h3>
+<p>Mission choisie : Lien de la démonstration : Entrée et sortie attendue : Premier essai : Élément à changer, un seul : Second essai : Limite et vérification humaine : Solution de repli :</p>
+<h3>9. Journal des améliorations</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Version</th><th scope="col">Défaut observé</th><th scope="col">Modification apportée</th><th scope="col">Preuve de vérification</th></tr>
+<tr><td>1</td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td></tr>
+</table></div>
+<h3>10. Contrôle croisé</h3>
+<p>Identifiant de la personne qui relit : Points vérifiés et preuves : Anomalies éventuelles : Corrections effectuées :</p>
+<h3>11. Avant une organisation réelle</h3>
+<p>Points restant à confirmer : Actions à faire par une personne autorisée :</p>
+<p>Enregistrez votre dossier et les consignes dans vos fichiers locaux. Ne partagez pas d’identifiants ou de conversations contenant des données personnelles.</p></section><section id="07-grille-verification"><h2>Grille de vérification — Déclic numérique</h2>
+<p>Pour chaque point, indiquez <strong>OK</strong>, <strong>À corriger</strong> ou <strong>Non vérifié</strong>, avec une preuve. Une affirmation de l’IA ne suffit pas comme preuve.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tableau de travail"><table>
+<tr><th scope="col">Point</th><th scope="col">État</th><th scope="col">Preuve, anomalie ou correction</th></tr>
+<tr><td>Les données de mise en application remplacent bien celles de pratique guidée.</td><td></td><td></td></tr>
+<tr><td>Huit contraintes et trois points à confirmer sont relevés.</td><td></td><td></td></tr>
+<tr><td>Le programme couvre les 180 minutes prévues pour l’atelier fictif, en durées relatives.</td><td></td><td></td></tr>
+<tr><td>Une pause de 15 minutes est incluse dans ces 180 minutes.</td><td></td><td></td></tr>
+<tr><td>Aucun créneau ne manque ou ne chevauche le suivant.</td><td></td><td></td></tr>
+<tr><td>Les 18 participants peuvent travailler avec six ordinateurs.</td><td></td><td></td></tr>
+<tr><td>Les rôles tournent pour permettre à chacun de participer.</td><td></td><td></td></tr>
+<tr><td>La capacité de 24 personnes inclut les deux animateurs.</td><td></td><td></td></tr>
+<tr><td>Une boisson est prévue pour chaque personne présente.</td><td></td><td></td></tr>
+<tr><td>Un aide-mémoire est prévu pour chacun des 18 participants.</td><td></td><td></td></tr>
+<tr><td>Le lot de cartes est bien compté comme un lot, pas comme 20 lots.</td><td></td><td></td></tr>
+<tr><td>Les prix proviennent du CSV et les quantités sont justifiées.</td><td></td><td></td></tr>
+<tr><td>Les dépenses sont recalculées avec un autre moyen que le chat.</td><td></td><td></td></tr>
+<tr><td>Une réserve de 15 CHF au moins est affichée séparément.</td><td></td><td></td></tr>
+<tr><td>Le total dépenses + réserve reste dans les 150 CHF.</td><td></td><td></td></tr>
+<tr><td>Aucun achat de logiciel ou abonnement n’est nécessaire.</td><td></td><td></td></tr>
+<tr><td>La date, l’adresse, l’inscription et le contact ne sont pas inventés.</td><td></td><td></td></tr>
+<tr><td>L’invitation respecte 100 à 150 mots et distingue les points à confirmer.</td><td></td><td></td></tr>
+<tr><td>L’aide-mémoire tient sur une page et reste lisible.</td><td></td><td></td></tr>
+<tr><td>La fiche Hugging Face prévoit deux essais et un seul changement.</td><td></td><td></td></tr>
+<tr><td>Un repli est prévu pour une démonstration ou Internet indisponible.</td><td></td><td></td></tr>
+<tr><td>Les trois tests de l’assistant sont exécutés ou signalés non exécutés.</td><td></td><td></td></tr>
+<tr><td>Trois améliorations du travail sont documentées.</td><td></td><td></td></tr>
+<tr><td>Les consignes et le dossier final sont enregistrés localement.</td><td></td><td></td></tr>
+<tr><td>Rien n’a été réservé, publié ou envoyé à un destinataire réel.</td><td></td><td></td></tr>
+</table></div>
+<h3>Pour la restitution</h3>
+<p>L’étudiant doit pouvoir expliquer sans demander au chat :</p>
+<ol>
+<li>La différence entre son application, le modèle et l’assistant qu’il a configuré.</li>
+<li>Un choix d’organisation et la contrainte qui le justifie.</li>
+<li>Un calcul qu’il a refait lui-même.</li>
+<li>Une erreur ou une limite de son assistant.</li>
+<li>Un point à confirmer avant une utilisation réelle du dossier.</li>
+</ol></section></main></body></html>

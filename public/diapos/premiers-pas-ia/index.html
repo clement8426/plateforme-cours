@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premiers pas avec l’IA · Le Labo</title>
+<!-- Première rédaction. Gabarits et lecteur repris du cours Le Harnais publié, le 15 novembre 2026. Contenu de ce cours : docs/cours/premiers-pas-ia/contenu.json. -->
+<style>
+@font-face{font-family:Bricolage Grotesque;font-style:normal;font-weight:200 800;font-stretch:100%;font-display:swap;src:url(../types-ia/polices/bricolage-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Instrument Sans;font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(../types-ia/polices/instrument-latin.woff2)format("woff2");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* ========== 1. Variables ==========
+   Le thème par défaut (clair) est défini juste en dessous : couleurs, polices, rayons, ombres.
+   Le thème sombre (touche T) le redéfinit juste après. Aucun composant n'utilise de couleur en dur liée à un thème. */
+/* Direction A, « Agrume » : crème chaude, encre indigo, cobalt, sarcelle, corail */
+:root {
+  color-scheme: light;
+  --ink: #F3F4F6; --surface: #FFFFFF; --surface-2: #E9EBEF; --line: #DCDFE5; --edge: #8B93A1;
+  --text: #14161B; --muted: #4A505A;
+  --p1: #8CBDF2; --p1-text: #24609A; --p1-fill: #8CBDF2; --on-p1: #14161B;
+  --p2: #62D8A2; --p2-text: #2F7356; --p2-fill: #62D8A2; --on-p2: #14161B;
+  --p3: #FF9C73; --p3-text: #A63F17; --p3-fill: #FF9C73; --on-p3: #14161B;
+  --p4: #C3A6F0; --p4-text: #6E4A8E; --p4-fill: #C3A6F0; --on-p4: #14161B;
+  --p5: #FF92B0; --p5-text: #A3304F; --p5-fill: #FF92B0; --on-p5: #14161B;
+  --p6: #E6C85C; --p6-text: #7A6514; --p6-fill: #E6C85C; --on-p6: #14161B;
+  --hot-val: #E6C85C;
+  --ok: #0B6B4F; --ok-fill: #62D8A2; --warn: #A63F17; --warn-fill: #FF9C73; --bad: #A3304F; --bad-fill: #FF92B0; --on-bad: #14161B;
+  --band: #E3E5EA; --logo-bg: #14161B; --sun: #E6C85C; --sun-mix: 70%;
+  --shadow: 0 1px 0 rgba(20, 22, 27, .04), 0 24px 44px -28px rgba(20, 22, 27, .3);
+  --fill-edge: transparent;
+  --soft-mix: 16%;
+  --wash-mix: 16%;
+  --font-title: "Bricolage Grotesque", "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Instrument Sans", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --title-weight: 700;
+  --title-tracking: -.025em;
+  --r-s: 14px;
+  --r-m: 22px;
+  --r-l: 32px;
+  --r-btn: 18px;
+  --r-pill: 999px;
+}
+/* thème sombre (touche T) : mêmes rôles, sur encre indigo */
+:root[data-deck="dark"] {
+  color-scheme: dark;
+  --ink: #1E2129; --surface: #272B35; --surface-2: #323744; --line: #3D4350; --edge: #8E96A6;
+  --text: #EEF0F4; --muted: #BCC1CB;
+  --p1: #8CBDF2; --p1-text: #8CBDF2; --p1-fill: #8CBDF2; --on-p1: #14161B;
+  --p2: #62D8A2; --p2-text: #62D8A2; --p2-fill: #62D8A2; --on-p2: #14161B;
+  --p3: #FF9C73; --p3-text: #FF9C73; --p3-fill: #FF9C73; --on-p3: #14161B;
+  --p4: #C3A6F0; --p4-text: #C3A6F0; --p4-fill: #C3A6F0; --on-p4: #14161B;
+  --p5: #FF92B0; --p5-text: #FF92B0; --p5-fill: #FF92B0; --on-p5: #14161B;
+  --p6: #E6C85C; --p6-text: #E6C85C; --p6-fill: #E6C85C; --on-p6: #14161B;
+  --hot-val: #3D4350;
+  --ok: #5FD3A8; --ok-fill: #62D8A2; --warn: #FF9C73; --warn-fill: #FF9C73; --bad: #FF92B0; --bad-fill: #FF92B0; --on-bad: #14161B;
+  --band: #14161B; --logo-bg: #14161B; --sun: #E6C85C; --sun-mix: 20%;
+  --shadow: none;
+}
+/* signature : un quartier d'agrume safran dans l'angle */
+[data-part] { --decor: radial-gradient(circle at 100% 0, var(--sun) 0 330px, transparent 331px); }
+:root {
+  /* tailles fluides, bornées : 1cqw = 1 % de la largeur de la scène (19,2 px à 1920) */
+  --fs-title: clamp(46px, 2.8cqw, 56px);
+  --fs-big: clamp(40px, 2.4cqw, 48px);
+  --fs-lead: clamp(30px, 1.82cqw, 36px);
+  --fs-body: clamp(28px, 1.62cqw, 32px);
+  --fs-min: clamp(28px, 1.46cqw, 30px);
+  --fs-meta: 24px;
+  --hit: 72px; /* 72 px sur la scène = 48 px réels dans une fenêtre 1280 x 720 */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+/* Une couleur par partie : cobalt, sarcelle, corail, feuille. */
+[data-part="1"] { --accent: var(--p1); --sun: color-mix(in srgb, var(--p1) var(--sun-mix), var(--ink)); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); }
+[data-part="2"] { --accent: var(--p2); --sun: color-mix(in srgb, var(--p2) var(--sun-mix), var(--ink)); --accent-text: var(--p2-text); --accent-fill: var(--p2-fill); --on-accent: var(--on-p2); }
+[data-part="3"] { --accent: var(--p3); --sun: color-mix(in srgb, var(--p3) var(--sun-mix), var(--ink)); --accent-text: var(--p3-text); --accent-fill: var(--p3-fill); --on-accent: var(--on-p3); }
+[data-part="4"] { --accent: var(--p4); --sun: color-mix(in srgb, var(--p4) var(--sun-mix), var(--ink)); --accent-text: var(--p4-text); --accent-fill: var(--p4-fill); --on-accent: var(--on-p4); }
+[data-part="5"] { --accent: var(--p1); --sun: color-mix(in srgb, var(--p1) var(--sun-mix), var(--ink)); --accent-text: var(--p1-text); --accent-fill: var(--p1-fill); --on-accent: var(--on-p1); } /* annexes */
+[data-part] { --accent-soft: color-mix(in srgb, var(--accent) var(--soft-mix), var(--surface)); --accent-wash: color-mix(in srgb, var(--accent) var(--wash-mix), var(--ink)); }
+
+/* ========== 2. Base ========== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--band); color: var(--text); font-family: var(--font-body); overflow: hidden; -webkit-font-smoothing: antialiased; }
+h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+img, svg, canvas { display: block; }
+[hidden] { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:focus { outline: none; }
+:focus-visible { outline: 4px solid var(--text); outline-offset: 4px; }
+.ico { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ========== 3. Scène 16:9 mise à l'échelle ========== */
+#viewport { position: fixed; inset: 0; overflow: hidden; background: var(--band); }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform: translate(-50%, -50%) scale(var(--scale, 1)); transform-origin: center; container-type: size; background: var(--ink); overflow: hidden; }
+.slide { position: absolute; inset: 0; padding: 65px 115px; display: grid; grid-template-rows: 40px 126px minmax(0, 1fr); row-gap: 20px; background: var(--decor, none) var(--ink); color: var(--text); font-size: var(--fs-body); line-height: 1.34; }
+.slide.active { animation: slide-in .3s var(--ease) both; }
+@keyframes slide-in { from { opacity: 0; } to { opacity: 1; } }
+.s-head { display: flex; justify-content: space-between; align-items: center; font-size: var(--fs-meta); color: var(--muted); font-weight: 500; }
+.pastille { display: inline-flex; align-items: center; gap: 12px; height: 40px; padding: 0 18px 0 14px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--accent-soft); color: var(--text); }
+.pastille::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-text); }
+.puce { display: inline-flex; align-items: center; gap: 12px; justify-self: start; width: fit-content; padding: 6px 20px 6px 16px; border-radius: var(--r-pill); background: var(--accent-soft); color: var(--text); font: 600 var(--fs-min)/1.2 var(--font-body); }
+.puce::before { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-text); }
+.s-num { font-variant-numeric: tabular-nums; color: var(--text); }
+.title { grid-row: 2; font: var(--title-weight) var(--fs-title)/1.12 var(--font-title); letter-spacing: var(--title-tracking); text-wrap: balance; max-width: 1560px; }
+.body { grid-row: 3; min-height: 0; min-width: 0; }
+.body > * { max-height: 100%; }
+
+/* étapes d'affichage */
+[data-step]:not([data-keep]) { opacity: 0; transform: translateY(10px); visibility: hidden; transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
+[data-step].on:not([data-keep]) { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+
+/* grille 12 colonnes et piles */
+.g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; row-gap: 24px; min-height: 0; }
+.body.g12 { height: 100%; }
+.c4 { grid-column: span 4; } .c5 { grid-column: span 5; } .c6 { grid-column: span 6; } .c7 { grid-column: span 7; } .c8 { grid-column: span 8; }
+.g12 > * { min-width: 0; min-height: 0; }
+.stack-s, .stack-m, .stack-l { display: flex; flex-direction: column; min-height: 0; }
+.stack-s { gap: 20px; } .stack-m { gap: 28px; } .stack-l { gap: 48px; }
+.body.stack-s, .body.stack-m, .body.stack-l { height: 100%; }
+.fill { flex: 1; min-height: 0; }
+.grow { flex: 1; min-height: 0; }
+
+/* chrome global : progression, chrono, bords cliquables */
+#progress { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; z-index: 5; }
+#progress i { position: absolute; left: 0; height: 6px; top: 0; background: var(--accent-fill); transition: width .3s var(--ease); }
+#progress b { position: absolute; left: 0; height: 4px; top: 6px; background: var(--ok); transition: background-color .3s; }
+#chrono { position: absolute; right: 115px; bottom: 20px; z-index: 5; font: 500 var(--fs-meta)/1 var(--font-body); font-variant-numeric: tabular-nums; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+#chrono::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--ok); }
+#chrono[data-state="warn"]::before, #progress[data-state="warn"] b { background: var(--warn); }
+#chrono[data-state="over"]::before, #progress[data-state="over"] b { background: var(--bad); }
+#chrono[data-state="warn"]::before { border-radius: 3px; }
+#chrono[data-state="over"]::before { border-radius: 0; transform: rotate(45deg); }
+.edge { position: absolute; top: 0; bottom: 0; width: 115px; z-index: 4; border: 0; background: transparent; color: var(--muted); display: grid; place-items: center; font-size: 56px; opacity: 0; transition: opacity .2s; }
+.edge:hover, .edge:focus-visible { opacity: 1; }
+.edge:focus-visible { outline-offset: -8px; }
+#edge-prev { left: 0; } #edge-next { right: 0; }
+
+/* ========== 4. Kit commun ========== */
+.btn { min-height: var(--hit); min-width: var(--hit); padding: 0 30px; border-radius: var(--r-btn); border: 2px solid var(--edge); background: var(--surface); color: var(--text); font: 600 var(--fs-min)/1.1 var(--font-body); display: inline-flex; align-items: center; justify-content: center; gap: 14px; transition: background-color .2s, border-color .2s; }
+.btn:hover { border-color: var(--text); }
+.btn.primary { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+.btn.primary:hover { border-color: var(--text); }
+.btn.sq { padding: 0; width: var(--hit); font-size: 36px; }
+.btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent-text); }
+.btn:disabled { opacity: .45; cursor: default; }
+.switch { min-height: var(--hit); padding: 0 8px 0 0; border: 0; background: transparent; display: inline-flex; align-items: center; gap: 20px; font: 600 var(--fs-min)/1.1 var(--font-body); color: var(--text); border-radius: var(--r-btn); text-align: left; }
+.switch .track { flex: none; width: 104px; height: 56px; border-radius: 999px; border: 2px solid var(--edge); background: var(--surface); position: relative; transition: background-color .2s, border-color .2s; }
+.switch .track::after { content: ""; position: absolute; top: 6px; left: 6px; width: 40px; height: 40px; border-radius: 50%; background: var(--muted); transition: transform .2s var(--ease), background-color .2s; }
+.switch[aria-checked="true"] .track { background: var(--accent-soft); border-color: var(--accent-text); }
+.switch[aria-checked="true"] .track::after { transform: translateX(48px); background: var(--accent-fill); }
+.seg { display: inline-flex; border: 2px solid var(--edge); border-radius: var(--r-btn); overflow: hidden; background: var(--surface); }
+.seg button { min-height: var(--hit); min-width: var(--hit); padding: 0 28px; border: 0; background: transparent; font: 600 var(--fs-min)/1.1 var(--font-body); color: var(--text); }
+.seg button + button { border-left: 2px solid var(--edge); }
+.seg button[aria-pressed="true"] { background: var(--accent-fill); color: var(--on-accent); }
+.seg button:focus-visible { outline-offset: -6px; }
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: var(--hit); margin: 0; background: transparent; cursor: pointer; border-radius: var(--r-btn); }
+input[type="range"]::-webkit-slider-runnable-track { height: 12px; border-radius: 6px; background: var(--surface-2); border: 2px solid var(--edge); }
+input[type="range"]::-moz-range-track { height: 8px; border-radius: 6px; background: var(--surface-2); border: 2px solid var(--edge); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 48px; height: 48px; margin-top: -20px; border-radius: 50%; background: var(--accent-fill); border: 4px solid var(--ink); box-shadow: 0 0 0 2px var(--accent-text); }
+input[type="range"]::-moz-range-thumb { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-fill); border: 4px solid var(--ink); box-shadow: 0 0 0 2px var(--accent-text); }
+.field-label { display: block; font-size: var(--fs-min); color: var(--muted); font-weight: 500; }
+.range-row { display: grid; gap: 4px; }
+.range-row output, .value { font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.chip { display: inline-flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 28px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); font-size: var(--fs-min); font-weight: 500; white-space: nowrap; }
+.chip .ico { font-size: 34px; color: var(--accent-text); }
+.chips { display: flex; flex-wrap: wrap; gap: 16px; }
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-l); padding: 36px 40px; box-shadow: var(--shadow); }
+.lead { font-size: var(--fs-lead); line-height: 1.3; max-width: 34em; }
+.lead.strong { font-family: var(--font-title); font-weight: 600; font-size: var(--fs-big); letter-spacing: -.01em; line-height: 1.15; }
+.with-icon { display: flex; align-items: center; gap: 22px; }
+.with-icon .ico { font-size: 56px; color: var(--accent-text); }
+.ratios { display: flex; flex-wrap: nowrap; gap: 8px 40px; margin: 0; padding: 0; list-style: none; font-size: var(--fs-min); color: var(--muted); }
+.ratios strong { color: var(--text, inherit); font-size: 1.25em; margin-right: 6px; }
+.note { font-size: var(--fs-min); color: var(--muted); }
+.tag { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px; border-radius: 10px; background: var(--surface-2); border: 2px solid var(--line); font-size: var(--fs-min); font-weight: 600; }
+.verdict { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; }
+.verdict.ok { color: var(--ok); } .verdict.ko { color: var(--bad); }
+.verdict .ico { font-size: 34px; stroke-width: 2.5; }
+.panel { background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-l); padding: 28px 32px; box-shadow: var(--shadow); }
+.formula { font-size: var(--fs-min); color: var(--muted); font-variant-numeric: tabular-nums; }
+.formula b { color: var(--text); font-weight: 600; }
+
+/* cases vides */
+.case { position: relative; border: 3px dashed var(--edge); border-radius: var(--r-m); min-height: 150px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; }
+.case[data-kind="img"] { align-content: stretch; }
+.case.filled { border-style: solid; border-color: var(--line); }
+.case-btn { border: 0; background: transparent; border-radius: calc(var(--r-m) - 3px); padding: 8px; display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; min-height: var(--hit); width: 100%; height: 100%; overflow: hidden; }
+.case-btn:focus-visible { outline-offset: -8px; }
+.case.drag { background: var(--accent-soft); border-color: var(--accent-text); }
+.case-id { font: 600 var(--fs-min)/1.15 var(--font-title); color: var(--accent-text); overflow-wrap: anywhere; }
+.case-hint { font-size: var(--fs-min); color: var(--muted); line-height: 1.2; }
+.case img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; border-radius: calc(var(--r-m) - 3px); background: var(--surface); }
+.case-form { padding: 16px 20px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: center; }
+.case-form label { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+.case-row { display: flex; gap: 14px; }
+.case input[type="text"], .case input[type="url"], .case input[type="number"] { flex: 1; min-width: 0; height: var(--hit); padding: 0 24px; border-radius: var(--r-btn); border: 2px solid var(--edge); background: var(--surface); color: var(--text); font-size: var(--fs-body); font-weight: 600; }
+.case input::placeholder { color: var(--muted); font-weight: 400; opacity: 1; }
+.case.narrow { max-width: 1100px; }
+.case-qr { display: grid; place-items: center; padding: 0 20px 20px; }
+.case-qr svg { width: 300px; height: 300px; border-radius: 12px; }
+.case-qr p { font-size: var(--fs-min); color: var(--muted); text-align: center; padding: 20px 0; }
+.spot { position: absolute; z-index: 2; width: var(--hit); height: var(--hit); margin: -36px 0 0 -36px; border-radius: 50%; border: 4px solid var(--ink); background: var(--bad-fill); color: var(--on-bad); font: 700 32px/1 var(--font-title); }
+.spot[aria-pressed="true"] { background: var(--text); color: var(--ink); }
+
+
+/* ========== 5. Composants repris de la template ========== */
+.s-cover .title { font-size: clamp(60px, 3.75cqw, 76px); line-height: 1.06; max-width: 1500px; }
+.s-cover { grid-template-rows: 40px 250px minmax(0, 1fr); }
+.cover-text { align-self: end; padding-bottom: 20px; display: grid; gap: 14px; }
+.cover-name { font: 600 var(--fs-big)/1.1 var(--font-title); }
+.cover-def { color: var(--muted); font-size: var(--fs-min); }
+.paire { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.paire .card h3 { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; font: 600 var(--fs-big)/1.1 var(--font-title); letter-spacing: -.01em; }
+.paire .card h3 .ico { font-size: 52px; color: var(--accent-text); }
+.paire .card p { font-size: var(--fs-lead); line-height: 1.3; }
+.card.accent { border-color: var(--accent-text); background: var(--accent-soft); }
+.preuve { display: grid; gap: 6px; padding: 16px 28px 18px; }
+.preuve p { font: 600 var(--fs-body)/1.25 var(--font-title); }
+.preuve .preuve-src { font: 600 var(--fs-min)/1.2 var(--font-body); color: var(--accent-text); }
+.statement { font: 600 60px/1.16 var(--font-title); letter-spacing: -.02em; margin-top: 30px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.stat { display: grid; gap: 10px; align-content: start; min-height: 230px; padding: 32px 34px 32px; }
+.stat p { font-size: var(--fs-body); line-height: 1.25; }
+.stat .stat-big { font: 700 52px/1.05 var(--font-title); letter-spacing: -.03em; color: var(--accent-text); white-space: nowrap; }
+.fines { display: grid; gap: 16px; }
+.fines-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.fines-head h3 { font: 600 var(--fs-lead)/1.15 var(--font-title); }
+.fines-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.fine { display: grid; gap: 4px; justify-items: start; text-align: left; min-height: 220px; align-content: space-between; padding: 22px 26px; border-radius: var(--r-m); border: 2px solid var(--edge); background: var(--surface); color: var(--text); box-shadow: var(--shadow); transition: background-color .2s, border-color .2s; }
+.fine:hover { border-color: var(--text); }
+.fine-pays { font: 600 var(--fs-lead)/1.1 var(--font-title); }
+.fine-val { font: 700 60px/1 var(--font-title); letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--muted); }
+.fine-det { font-size: var(--fs-min); line-height: 1.2; color: var(--muted); }
+.fine[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--bad); }
+.fine[aria-pressed="true"] .fine-val { color: var(--bad); }
+.fine[aria-pressed="true"] .fine-det { color: var(--text); }
+.plain { display: grid; gap: 12px; }
+.plain li { padding-left: 34px; position: relative; }
+.plain li::before, .points li::before { content: ""; position: absolute; left: 0; top: .52em; width: 14px; height: 14px; border-radius: 4px; background: var(--accent); }
+.points { display: grid; gap: 22px; }
+.points li { position: relative; padding-left: 36px; font-size: var(--fs-lead); line-height: 1.26; }
+.flow { display: grid; gap: 14px; }
+.flow li { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; padding: 14px 22px; border-radius: var(--r-m); background: var(--surface); border: 2px solid var(--line); box-shadow: var(--shadow); }
+.flow-n, .keep-n { flex: none; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-fill); color: var(--on-accent); box-shadow: inset 0 0 0 2px var(--fill-edge); font: 700 32px/1 var(--font-title); }
+.flow p { font-size: var(--fs-min); font-weight: 600; line-height: 1.25; }
+.flow-n { width: 56px; height: 56px; }
+.pipe { display: grid; gap: 26px; height: 100%; grid-template-rows: auto minmax(0, 1fr); }
+.pipe-steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: center; }
+.pipe-steps > .ico { font-size: 56px; color: var(--muted); }
+.pipe-step { min-height: 240px; border-radius: var(--r-l); border: 2px solid var(--edge); background: var(--surface); padding: 28px 32px; display: grid; gap: 12px; align-content: space-between; justify-items: start; text-align: left; transition: background-color .2s, border-color .2s; }
+.pipe-step h3 { font: 700 var(--fs-big)/1 var(--font-title); }
+.pipe-step[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent-text); border-width: 4px; }
+.pipe-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.pipe-cost { font: 700 var(--fs-lead)/1 var(--font-title); color: var(--accent-text); letter-spacing: .06em; }
+.pipe-detail { display: grid; align-content: center; gap: 12px; padding: 30px 40px; }
+.pipe-detail h3 { font: 700 var(--fs-big)/1.1 var(--font-title); color: var(--accent-text); }
+.pipe-detail p { font-size: var(--fs-lead); line-height: 1.3; max-width: 40em; }
+.keep { display: grid; gap: 30px; align-content: center; }
+.keep li { display: flex; align-items: center; gap: 30px; }
+.keep p { font: 700 64px/1.1 var(--font-title); letter-spacing: -.02em; }
+.keep-n { width: 76px; height: 76px; font-size: 38px; }
+/* annexes : lexique et références */
+.lexique { height: 100%; display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); grid-template-rows: minmax(0, 1fr); gap: 32px; }
+.lex-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 14px; align-content: start; }
+.lex-term { justify-content: flex-start; padding: 0 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lex-panel { display: grid; gap: 20px; align-content: start; justify-items: start; padding: 34px 36px; }
+.lex-panel h3 { font: 700 var(--fs-big)/1.08 var(--font-title); letter-spacing: -.01em; color: var(--accent-text); }
+.lex-panel p { font-size: var(--fs-lead); line-height: 1.32; }
+.refs { height: 100%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 20px; }
+.refs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 18px; }
+.refs-grid li { display: grid; min-height: 0; }
+.ref { display: grid; align-content: space-between; gap: 10px; min-height: 150px; padding: 22px 26px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); box-shadow: var(--shadow); color: var(--text); text-decoration: none; transition: border-color .2s; }
+.ref:hover { border-color: var(--accent-text); }
+.ref-titre { font: 600 var(--fs-body)/1.2 var(--font-title); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ref-source { display: flex; align-items: center; gap: 12px; font-size: var(--fs-min); color: var(--accent-text); font-weight: 600; }
+.ref-source .ico { font-size: 30px; }
+.refs-pager { display: flex; align-items: center; justify-content: center; gap: 28px; }
+.refs-info { font-size: var(--fs-min); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* ========== 5 bis. Slides de l'atelier ========== */
+.lead b, .plain b, .flow b { font-weight: 700; }
+.card.accent { border-color: var(--accent-text); background: var(--accent-soft); }
+.card.accent .lead { max-width: none; }
+.note { line-height: 1.3; }
+/* 1 : couverture */
+.cover-lead { font: 600 var(--fs-lead)/1.28 var(--font-title); margin-bottom: 18px; }
+.cover-col { display: grid; }
+.cover-vis { height: 100%; align-self: end; padding: 20px 28px; display: grid; place-items: center; }
+.cover-vis svg { width: 100%; max-height: 480px; }
+.cv-cap { font: 600 28px var(--font-body); fill: var(--muted); }
+.cv-big { font: 700 40px var(--font-title); }
+.cv-small { font: 600 24px var(--font-body); }
+/* 2 : trois pays */
+.places { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.place { display: grid; gap: 10px; align-content: start; padding: 32px 36px; }
+.place .ico { font-size: 56px; color: var(--accent-text); margin-bottom: 6px; }
+.place h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.place p { font-size: var(--fs-body); color: var(--muted); }
+/* 3 : paires de cartes */
+.paire .card h3 { font-size: var(--fs-lead); }
+.paire .card p { font-size: var(--fs-body); }
+.statement { margin-top: 0; }
+/* 5 : niveaux de risque */
+.ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; list-style: none; padding: 0; }
+.ladder li { display: grid; gap: 8px; align-content: start; padding: 26px 28px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); }
+.ladder h3 { font: 700 var(--fs-lead)/1.1 var(--font-title); }
+.ladder p { font-size: var(--fs-min); line-height: 1.25; }
+.ladder li:nth-child(2) { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.ladder li:nth-child(3) { background: color-mix(in srgb, var(--accent) 30%, var(--surface)); }
+.ladder li:nth-child(4) { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+/* 6 : amendes à révéler */
+.fines-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fine { min-height: 250px; }
+.fine-pays { font-size: var(--fs-body); }
+.fine-val { font-size: 64px; }
+/* 7 et 8 : grand chiffre */
+.hero-stat { min-height: 420px; align-self: start; align-content: center; gap: 18px; padding: 44px 44px; }
+.hero-stat .stat-big { font-size: 132px; line-height: .95; letter-spacing: -.03em; }
+.hero-stat .stat-unit { font: 600 var(--fs-lead)/1.25 var(--font-title); }
+.points li { font-size: var(--fs-lead); }
+.plain { gap: 18px; }
+.plain li { font-size: var(--fs-body); line-height: 1.3; }
+/* 9 : qui paie */
+.payers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; max-height: 480px; }
+.payer { display: grid; grid-template-rows: auto auto 1fr; gap: 16px; align-content: start; padding: 38px 40px; }
+.payer-qui { font: 700 var(--fs-lead)/1.15 var(--font-title); }
+.payer-val { font: 700 58px/1 var(--font-title); letter-spacing: -.02em; color: var(--accent-text); white-space: nowrap; }
+.payer p:last-child { font-size: var(--fs-body); line-height: 1.3; color: var(--muted); }
+.payer.hot { background: var(--text); color: var(--ink); border-color: var(--text); }
+.payer.hot .payer-val { color: var(--hot-val); }
+.payer.hot p:last-child { color: var(--ink); }
+/* 10 : la chaîne du Cloud Act */
+.chain { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.chain > .ico { font-size: 52px; color: var(--muted); align-self: center; }
+.node { display: grid; gap: 10px; align-content: start; padding: 28px 32px; }
+.node h3 { font: 700 var(--fs-lead)/1.15 var(--font-title); }
+.node p { font-size: var(--fs-min); line-height: 1.25; color: var(--muted); }
+.node.hot { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+.node.hot p { color: var(--on-accent); }
+.preuve p:not(.puce):not(.preuve-src) { font: 600 var(--fs-body)/1.28 var(--font-title); }
+/* 11 : deux exigences face à face */
+.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.vs .card { display: grid; gap: 18px; align-content: start; }
+.vs h3 { display: flex; align-items: center; gap: 18px; font: 700 var(--fs-lead)/1.15 var(--font-title); }
+.vs h3 .ico { font-size: 48px; color: var(--accent-text); }
+/* 12 : synthèse */
+.flow { gap: 16px; }
+.flow li { padding: 20px 28px; gap: 24px; }
+.flow p { font-size: var(--fs-body); font-weight: 400; line-height: 1.3; }
+/* 14 et 16 : tableaux */
+.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--fs-min); background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-l); overflow: hidden; box-shadow: var(--shadow); }
+.tbl th { text-align: left; padding: 18px 26px; background: var(--text); color: var(--ink); font: 600 var(--fs-min)/1.2 var(--font-body); vertical-align: bottom; }
+.tbl td { padding: 15px 26px; border-top: 2px solid var(--line); line-height: 1.25; vertical-align: top; }
+.tbl tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 60%, var(--surface)); }
+.tbl td:first-child { font: 700 var(--fs-min)/1.2 var(--font-title); }
+.tbl .num { font-weight: 700; color: var(--accent-text); white-space: nowrap; }
+.tbl .ko { color: var(--bad); font-weight: 700; }
+.tbl .ok { color: var(--ok); font-weight: 700; }
+.tbl-3 th:first-child, .tbl-3 td:first-child { width: 290px; }
+.tbl-3 th:last-child, .tbl-3 td:last-child { background: color-mix(in srgb, var(--p4) 10%, var(--surface)); }
+.tbl-3 th:last-child { background: var(--p4-fill); color: var(--on-p4); }
+/* 15 : briques (pipeline) */
+.pipe-step { min-height: 220px; }
+.pipe-step h3 { font-size: var(--fs-lead); }
+.pipe-step .chip { min-height: 56px; padding: 0 22px; }
+.pipe-where { font-size: var(--fs-min); font-weight: 600; color: var(--muted); }
+.pipe-detail h3 { font-size: var(--fs-lead); }
+.pipe-detail p { font-size: var(--fs-body); }
+/* 17 : routage interactif */
+.route { display: grid; gap: 24px; align-content: start; }
+.route-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; min-height: 0; }
+.route-card { display: grid; gap: 16px; align-content: start; padding: 32px 38px; transition: opacity .25s, border-color .25s, background-color .25s; }
+.route-card .tag { justify-self: start; }
+.route-card h3 { font: 700 var(--fs-big)/1.12 var(--font-title); }
+.route-card p { font-size: var(--fs-body); color: var(--muted); line-height: 1.3; }
+.route-card .verdict { font-size: var(--fs-body); line-height: 1.25; }
+.route-card.on { border-color: var(--accent-text); background: var(--accent-soft); }
+.route-card.off { border-style: dashed; background: transparent; box-shadow: none; }
+.route-card.off h3, .route-card.off > p { color: var(--muted); }
+/* 18 : à retenir */
+.keep.compact { gap: 24px; }
+.keep.compact li { gap: 26px; }
+.keep.compact p { font-size: var(--fs-big); line-height: 1.12; }
+.keep.compact .keep-n { width: 68px; height: 68px; font-size: 34px; }
+/* thème sombre : la cellule de tête du tableau suit l'encre */
+:root[data-deck="dark"] .tbl th { background: var(--surface-2); color: var(--text); }
+:root[data-deck="dark"] .tbl-3 th:last-child { background: var(--p4-fill); color: var(--on-p4); }
+:root[data-deck="dark"] .payer.hot { background: var(--surface-2); color: var(--text); border-color: var(--edge); }
+:root[data-deck="dark"] .payer.hot p:last-child { color: var(--text); }
+:root[data-deck="dark"] .payer.hot .payer-val { color: var(--p2-text); }
+
+/* ========== 5 ter. Composants interactifs de l'atelier ========== */
+.meter { height: 36px; border-radius: 12px; background: var(--surface-2); border: 2px solid var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent-fill); transition: width .3s var(--ease), background-color .3s; }
+.meter i.high { background: var(--bad-fill); } .meter i.low { background: var(--ok-fill); }
+.place.hot { background: var(--accent-fill); color: var(--on-accent); border-color: var(--fill-edge); }
+.place.hot .ico, .place.hot p { color: var(--on-accent); }
+.paire .card h3 { display: flex; align-items: center; gap: 16px; }
+.paire .card h3 .ico { font-size: 44px; color: var(--accent-text); flex: none; }
+.rule-card { display: grid; gap: 20px; align-content: start; padding: 40px 44px; }
+.rule-card > p:not(.puce):not(.note) { font: 700 var(--fs-big)/1.2 var(--font-title); }
+/* pipe à cinq étapes : un peu plus serré */
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) { gap: 10px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) > .ico { font-size: 40px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) .pipe-step { padding: 24px 22px; min-height: 200px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) .pipe-step h3 { font-size: 30px; }
+.pipe-steps:has(> .pipe-step:nth-of-type(5)) .chip { padding: 0 16px; }
+.pipe-detail .note { font-size: var(--fs-min); color: var(--muted); }
+/* question d'ouverture */
+.question { display: grid; justify-items: start; gap: 20px; }
+.question .lead { max-width: 38em; }
+/* offres */
+.offres { display: grid; gap: 32px; align-content: start; }
+.offre-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.offre-tile { display: grid; gap: 14px; align-content: start; min-height: 260px; padding: 30px 30px; }
+.offre-tile .lab { font-size: var(--fs-min); color: var(--muted); font-weight: 600; }
+.offre-tile .val { font: 700 var(--fs-lead)/1.18 var(--font-title); }
+.offre-tile .tone { align-self: end; justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-meta); font-weight: 700; padding: 4px 16px 4px 12px; border-radius: var(--r-pill); }
+.offre-tile .tone .ico { font-size: 1.1em; stroke-width: 2.5; }
+.offre-tile.ok .tone { color: var(--ok); background: color-mix(in srgb, var(--ok-fill) 14%, var(--surface)); }
+.offre-tile.mid .tone { color: var(--warn); background: color-mix(in srgb, var(--warn-fill) 14%, var(--surface)); }
+.offre-tile.ko .tone { color: var(--bad); background: color-mix(in srgb, var(--bad-fill) 14%, var(--surface)); }
+.offres > .note { font-size: var(--fs-lead); color: var(--text); font-family: var(--font-title); font-weight: 700; }
+/* vrai ou faux */
+.vf { display: grid; gap: 14px; align-content: start; }
+.vf-row { display: grid; grid-template-columns: minmax(0, 1fr) 720px; gap: 28px; align-items: center; min-height: 118px; padding: 14px 28px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.vf-row > p { font: 700 var(--fs-body)/1.25 var(--font-title); }
+.vf-ans { display: flex; align-items: center; gap: 20px; }
+.vf-tag { flex: none; padding: 8px 20px; border-radius: var(--r-pill); font-weight: 700; font-size: var(--fs-min); }
+.vf-tag.vrai { background: var(--ok-fill); color: var(--on-p4); } .vf-tag.faux { background: var(--bad-fill); color: var(--on-bad); }
+.vf-why { font-size: var(--fs-meta); line-height: 1.25; }
+/* feu tricolore */
+.tri { display: grid; gap: 24px; align-content: start; }
+.tri-head { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.tri-legend { display: flex; gap: 32px; list-style: none; padding: 0; }
+.tri-legend li { display: flex; align-items: center; gap: 12px; font-size: var(--fs-min); }
+.tri-legend li::before { content: ""; width: 28px; height: 28px; border-radius: 50%; flex: none; }
+.tri-legend li span { color: var(--muted); }
+[data-c="vert"] { --c: var(--ok-fill); --c-text: var(--ok); }
+[data-c="orange"] { --c: var(--warn-fill); --c-text: var(--warn); }
+[data-c="rouge"] { --c: var(--bad-fill); --c-text: var(--bad); }
+.tri-legend li::before { background: var(--c); }
+.tri-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.tri-card { display: grid; grid-template-rows: 1fr auto auto; gap: 10px; min-height: 270px; padding: 22px 24px; text-align: left; border-radius: var(--r-m); border: 2px solid var(--edge); background: var(--surface); color: var(--text); box-shadow: var(--shadow); transition: background-color .2s, border-color .2s; }
+.tri-card:hover { border-color: var(--text); }
+.tri-nom { font: 700 var(--fs-min)/1.2 var(--font-title); }
+.tri-badge { justify-self: start; padding: 4px 16px; border-radius: var(--r-pill); background: var(--surface-2); font-weight: 700; font-size: var(--fs-meta); }
+.tri-res { font-size: var(--fs-meta); line-height: 1.25; color: var(--muted); }
+.tri-card[data-c] { border-color: var(--c); border-width: 4px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.tri-card[data-c] .tri-badge { background: var(--c); color: var(--ink); }
+.tri-card[data-c] .tri-res { color: var(--text); }
+/* anonymiser */
+.anon { display: grid; gap: 24px; align-content: start; }
+.anon-text { padding: 34px 40px; font: 400 var(--fs-lead)/1.5 var(--font-title); }
+.anon-text mark { background: color-mix(in srgb, var(--warn-fill) 28%, var(--surface)); color: var(--text); padding: 0 6px; border-radius: 6px; }
+.anon-risk { display: grid; grid-template-columns: 520px minmax(0, 1fr); gap: 28px; align-items: center; }
+.anon-lvl { font-weight: 700; font-size: var(--fs-body); }
+.anon > .note { color: var(--muted); font-size: var(--fs-min); }
+/* injection */
+.inj { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 32px; height: 100%; }
+.inj-doc { display: grid; gap: 16px; align-content: start; padding: 34px 40px; }
+.inj-doc h3 { font: 700 var(--fs-lead)/1.2 var(--font-title); }
+.inj-doc > p:not(.puce) { font-size: var(--fs-min); line-height: 1.35; }
+.inj-hidden { color: var(--surface); font-size: 12px; line-height: 1.2; transition: color .3s, font-size .3s; user-select: none; }
+.inj-doc.reveal .inj-hidden { color: var(--bad); font-size: var(--fs-min); font-weight: 700; background: color-mix(in srgb, var(--bad-fill) 12%, var(--surface)); padding: 4px 8px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.inj-side { display: grid; gap: 20px; align-content: start; }
+.inj-out { display: grid; gap: 10px; padding: 26px 32px; }
+.inj-out h3 { font-size: var(--fs-min); color: var(--muted); font-weight: 600; }
+.inj-out p { font: 700 var(--fs-body)/1.25 var(--font-title); }
+.inj-out.danger { border-color: var(--bad); }
+.inj-out .verdict { font-size: var(--fs-min); }
+/* responsabilité */
+.resp { display: grid; gap: 24px; align-content: start; }
+.resp-panel { display: grid; gap: 20px; align-content: start; padding: 34px 44px; min-height: 540px; }
+.resp-panel h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.resp-sit { font-size: var(--fs-lead); line-height: 1.3; }
+.resp-votes { display: flex; flex-wrap: wrap; gap: 14px; list-style: none; padding: 0; }
+.resp-votes .chip { min-height: 60px; }
+.resp-votes .chip.good { border-color: var(--accent-text); background: var(--accent-soft); font-weight: 700; }
+.resp-votes .chip.off { opacity: .5; }
+.resp-ans { font: 700 var(--fs-body)/1.3 var(--font-title); }
+.resp-lois { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; }
+.resp-panel .btn { justify-self: start; }
+/* arbre */
+.arbre { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; height: 100%; }
+.arbre-q { display: grid; gap: 22px; align-content: center; padding: 44px 52px; }
+.arbre-q h3 { font: 700 var(--fs-big)/1.15 var(--font-title); }
+.arbre-q .note { font-size: var(--fs-body); color: var(--muted); }
+.arbre-btns { display: flex; gap: 18px; }
+.arbre-btns .btn { min-width: 200px; }
+.arbre-q.res { border-width: 4px; }
+.arbre-q.res.vert { --c: var(--ok-fill); } .arbre-q.res.orange { --c: var(--warn-fill); } .arbre-q.res.rouge { --c: var(--bad-fill); }
+.arbre-q.res { border-color: var(--c); background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.arbre-q.res .puce::before { background: var(--c); }
+.arbre-side { display: grid; gap: 16px; align-content: start; }
+.arbre-path { display: grid; gap: 14px; list-style: none; padding: 0; }
+.arbre-path li { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 18px 22px; font-size: var(--fs-meta); line-height: 1.25; }
+.arbre-a { font-weight: 700; font-size: var(--fs-min); color: var(--accent-text); }
+/* exercice */
+.exo { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 32px; height: 100%; }
+.exo-list { display: grid; gap: 12px; list-style: none; padding: 0; align-content: start; }
+.exo-row { display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 20px; align-items: center; min-height: 104px; padding: 10px 24px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); }
+.exo-row > p { font: 700 var(--fs-min)/1.2 var(--font-title); }
+.exo-sol { font-size: var(--fs-meta); line-height: 1.25; font-weight: 600; }
+.exo-slot .btn { min-height: 60px; }
+.cd { display: grid; gap: 22px; justify-items: center; align-content: center; padding: 32px; text-align: center; }
+.cd .cd-time { font: 700 120px/.95 var(--font-title); font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+.cd-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+/* frise des cas réels */
+.tl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; list-style: none; padding: 0; }
+.tl li { display: grid; gap: 10px; align-content: start; padding: 28px 30px; }
+.tl-date { display: flex; align-items: center; gap: 12px; font: 700 var(--fs-lead)/1 var(--font-title); color: var(--accent-text); }
+.tl-qui { font-weight: 700; font-size: var(--fs-min); }
+.tl li p:last-child { font-size: var(--fs-meta); line-height: 1.3; color: var(--muted); }
+:root[data-deck="dark"] .tri-card[data-c] .tri-badge { color: var(--ink); }
+:root[data-deck="dark"] .vf-tag.vrai { color: var(--ink); }
+.inj-doc { align-self: start; }
+.tl li p:last-child { font-size: var(--fs-min); line-height: 1.28; }
+.exo-sol, .vf-why { font-size: 26px; }
+
+/* ========== 5 sexies. Sources cliquables et date de mise à jour ========== */
+.s-src { display: flex; gap: 12px; margin-left: auto; margin-right: 36px; }
+.s-src a, .src { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--surface); color: var(--accent-text); font: 600 24px/1 var(--font-body); text-decoration: none; white-space: nowrap; }
+.s-src a:hover, .src:hover, .s-src a:focus-visible, .src:focus-visible { border-color: var(--accent-text); }
+.s-src .ico, .src .ico { font-size: 22px; stroke-width: 2.25; }
+.src { margin-left: 12px; vertical-align: middle; height: 36px; font-size: 22px; }
+.src-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.src-ligne .src { margin-left: 0; }
+.cover-maj { font-size: 24px; line-height: 1.3; color: var(--muted); }
+
+/* ========== 5 quater. Slides du cours « Les types d'IA » ========== */
+.question { display: grid; justify-items: start; gap: 20px; }
+.question .lead { max-width: 38em; }
+.tl-8 { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 18px; height: 100%; }
+.tl-8 li { padding: 22px 26px; gap: 6px; }
+.tl-8 .tl-date { font-size: var(--fs-big); }
+.tl .card.accent .tl-date, .tl li.accent .tl-date { color: var(--accent-text); }
+.io { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.io li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 22px; padding: 26px 32px; }
+.io .ico { font-size: 44px; color: var(--accent-text); }
+.io-in { font: 700 var(--fs-lead)/1.2 var(--font-title); }
+.io-out { font-size: var(--fs-body); color: var(--muted); }
+.places-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.places-4 .place h3 { font-size: var(--fs-lead); }
+.places-4 .place p { font-size: var(--fs-min); }
+.tbl-familles td:first-child { width: 480px; }
+.tbl-familles th, .tbl-familles td { padding-top: 13px; padding-bottom: 13px; }
+.tbl-familles td:nth-child(2) { font-weight: 600; }
+.tbl-note { margin-top: 22px; }
+.prediction { display: grid; gap: 22px; padding: 36px 40px; }
+.pred-phrase { font: 700 var(--fs-big)/1.15 var(--font-title); }
+.pred-liste { display: grid; gap: 14px; }
+.pred-liste li { display: grid; grid-template-columns: 170px minmax(0, 1fr) 100px; align-items: center; gap: 20px; font-size: var(--fs-body); }
+.pred-liste b { text-align: right; font-variant-numeric: tabular-nums; }
+.pred-liste .meter { height: 28px; }
+.chain-3 { list-style: none; padding: 0; }
+.chain-fleche { display: grid; place-items: center; font-size: 52px; color: var(--muted); }
+.estime { display: grid; gap: 8px; justify-items: center; padding: 32px; text-align: center; }
+.estime-val { font: 700 88px/1 var(--font-title); }
+.vf-tag.rep { background: var(--accent-fill); color: var(--on-accent); }
+.vf-quiz .vf-row { min-height: 100px; padding: 10px 28px; }
+.sens { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 360px minmax(0, 1fr); grid-template-rows: 1fr 1fr; gap: 36px 28px; align-items: center; }
+.sens-carte, .sens-cerveau { display: grid; justify-items: center; gap: 4px; padding: 22px 16px; border-radius: 22px; text-align: center; }
+.sens-carte { border: 2px solid var(--line); background: var(--surface); }
+.sens-carte b { font: 700 var(--fs-lead)/1.1 var(--font-title); color: var(--p2-text); }
+.sens-carte span { font-size: var(--fs-meta); color: var(--muted); }
+.sens-carte:nth-child(1) { grid-area: 1 / 1; } .sens-carte:nth-child(2) { grid-area: 1 / 3; }
+.sens-carte:nth-child(4) { grid-area: 2 / 1; } .sens-carte:nth-child(5) { grid-area: 2 / 3; }
+.sens-cerveau { grid-area: 1 / 2 / 3 / 3; align-self: center; padding: 36px 16px; background: var(--p3-fill); color: var(--on-p3); }
+.sens-cerveau b { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.sens-cerveau span { font-size: var(--fs-min); }
+.tbl-cmp td:first-child { width: 290px; }
+
+/* ========== 5 quinquies. Slides du tuto du Harnais ========== */
+.shot { margin: 0; border-radius: var(--r-m); overflow: hidden; border: 2px solid var(--line); background: #0F1117; box-shadow: var(--shadow); }
+.shot img { width: 100%; height: auto; max-height: 100%; object-fit: contain; }
+.code-ligne, .slide .rule-card > p.code-ligne { font: 600 28px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; padding: 22px 28px; border-radius: var(--r-s); background: var(--surface-2); border: 2px solid var(--line); overflow-wrap: anywhere; }
+.mini-h { font: 700 var(--fs-lead)/1.15 var(--font-title); margin-bottom: 10px; }
+.tbl-parcours td:first-child { width: 440px; }
+.tbl-aide td:first-child { width: 520px; }
+.vs .plain li { font-size: var(--fs-min); line-height: 1.3; }
+.vs .plain { gap: 14px; }
+
+/* ========== 6. Calques : grille, écran noir, saisie de numéro ========== */
+#grid { position: absolute; inset: 0; z-index: 20; background: var(--ink); padding: 50px 115px; overflow: auto; }
+#grid h2 { font: 600 44px/1 var(--font-title); margin-bottom: 26px; }
+#grid ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+#grid button { width: 100%; height: 132px; padding: 14px 18px; border-radius: var(--r-m); border: 2px solid var(--line); background: var(--surface); text-align: left; display: grid; grid-template-rows: auto 1fr; gap: 6px; font-size: 22px; line-height: 1.2; color: var(--text); }
+#grid button b { font: 700 26px/1 var(--font-title); font-variant-numeric: tabular-nums; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+#grid button b::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-text); }
+#grid button span { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+#grid button[aria-current="true"] { border-color: var(--text); background: var(--accent-soft); }
+#black { position: absolute; inset: 0; z-index: 30; background: #000; border: 0; width: 100%; height: 100%; cursor: none; }
+#toast { position: absolute; left: 50%; bottom: 90px; transform: translateX(-50%); z-index: 25; padding: 18px 30px; border-radius: 16px; background: var(--text); color: var(--ink); font: 600 28px/1 var(--font-body); font-variant-numeric: tabular-nums; }
+
+/* ========== 7. Vue présentateur (fenêtre séparée, ou panneau de repli) ========== */
+#pv { display: none; }
+body.pv-window { overflow: auto; background: var(--ink); }
+body.pv-window #viewport { display: none; }
+body.pv-window #pv, #pv.overlay { display: grid; }
+#pv { gap: 16px; padding: 24px; font-size: 18px; line-height: 1.4; color: var(--text); background: var(--ink); align-content: start; }
+#pv.overlay { position: fixed; z-index: 100; top: 0; right: 0; bottom: 0; width: min(520px, 46vw); overflow: auto; border-left: 2px solid var(--edge); box-shadow: -20px 0 60px rgba(0, 0, 0, .45); }
+body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#pv > * { min-width: 0; }
+#pv .pv-wide { grid-column: 1 / -1; }
+#pv h2 { font: 600 clamp(24px, 3.2vw, 38px)/1.15 var(--font-title); letter-spacing: -.01em; }
+#pv h3 { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+#pv .pv-box { border: 2px solid var(--line); border-radius: 16px; background: var(--surface); padding: 16px 18px; }
+#pv .pv-meta { color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 6px; }
+#pv .pv-keys { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+#pv .pv-keys li { padding: 6px 14px; border-radius: 999px; border: 2px solid var(--edge); font-weight: 600; }
+#pv .pv-clock { font: 700 clamp(44px, 7vw, 72px)/1 var(--font-title); font-variant-numeric: tabular-nums; }
+#pv .pv-clock[data-state="ok"] { color: var(--ok); } #pv .pv-clock[data-state="warn"] { color: var(--warn); } #pv .pv-clock[data-state="over"] { color: var(--bad); }
+#pv .pv-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+#pv .pv-btns button { min-height: 48px; min-width: 48px; padding: 0 18px; border-radius: 12px; border: 2px solid var(--edge); background: var(--surface); font-weight: 600; font-size: 16px; }
+#pv .pv-btns button:hover { border-color: var(--text); }
+#pv .pv-notes { white-space: pre-line; }
+#pv .pv-cases { display: grid; gap: 4px; max-height: 260px; overflow: auto; font-variant-numeric: tabular-nums; }
+#pv .pv-cases li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 8px; border-radius: 8px; }
+#pv .pv-cases li.here { background: var(--surface-2); font-weight: 600; }
+#pv .pv-cases span { color: var(--muted); white-space: nowrap; }
+#pv :focus-visible { outline-width: 3px; outline-offset: 2px; }
+
+/* ========== 8. Mouvement réduit ========== */
+@media (prefers-reduced-motion: reduce) {
+  *:not(.spinner), *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
+  .spinner { animation-duration: 1.6s; }
+}
+
+/* ========== 9. Impression : une slide par page A4 paysage ========== */
+@page { size: A4 landscape; margin: 0; }
+@media print {
+  html, body { height: auto; overflow: visible; background: var(--ink); }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; animation: none !important; transition: none !important; }
+  #viewport { position: static; overflow: visible; background: var(--ink); }
+  #stage { position: static; transform: none; width: auto; height: auto; overflow: visible; container-type: normal; }
+  .slide, .slide[hidden] { display: grid !important; position: relative; inset: auto; width: 1920px; height: 1350px; padding-top: 200px; padding-bottom: 200px; zoom: .5846; margin: 0; break-after: page; break-inside: avoid; overflow: hidden; container-type: size; }
+  .slide:last-of-type { break-after: auto; }
+  [data-step] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+  #progress, #chrono, .edge, #grid, #black, #toast, #pv, .skip { display: none !important; }
+}
+
+/* Les nouvelles activités gardent la même scène 16:9 et les mêmes contrôles. */
+.course-link { color: var(--accent-text); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.btn { text-decoration: none; }
+.atelier-shot { width: 100%; height: auto; max-height: 500px; object-fit: contain; border-radius: 18px; border: 2px solid var(--line); box-shadow: var(--shadow); }
+.atelier-figure { display: grid; align-content: center; gap: 18px; }
+.atelier-figure figcaption { font-size: var(--fs-meta); color: var(--muted); }
+.pratique-choix { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pratique-carte { display: grid; grid-template-rows: auto auto 1fr auto; gap: 24px; padding: 48px; }
+.pratique-carte h3 { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.pratique-carte .btn { justify-self: start; margin-top: 10px; }
+.pratique-carte .numero { color: var(--muted); font: 600 var(--fs-min)/1 var(--font-body); }
+.audio-visual { display: grid; align-content: center; gap: 34px; padding: 44px; background: var(--accent-wash); }
+.audio-bars { height: 190px; display: flex; align-items: center; justify-content: center; gap: 13px; }
+.audio-bars i { width: 20px; height: var(--h); border-radius: 12px; background: var(--accent-fill); }
+.audio-visual strong { font: 700 var(--fs-big)/1.1 var(--font-title); }
+.video-frames { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.video-frames div { aspect-ratio: 1; border: 2px solid var(--edge); border-radius: 22px; background: var(--accent-wash); display: grid; align-content: center; justify-items: center; gap: 24px; }
+.video-frames b { width: 60px; height: 60px; border-radius: 50%; background: var(--accent-fill); }
+.video-frames div:nth-child(1) b { transform: translateX(-25px); }
+.video-frames div:nth-child(3) b { transform: translateX(25px); }
+.video-frames span { font-size: var(--fs-meta); color: var(--muted); }
+.cover-vis { background: var(--accent-wash); }
+.sens-cerveau { border-radius: 50%; aspect-ratio: 1; padding: 48px 30px; align-content: center; gap: 18px; }
+.quiz-pager { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+@media print {
+  .vf-quiz { grid-template-columns: 1fr 1fr; }
+  .vf-quiz .vf-row { grid-template-columns: 1fr; min-height: 0; gap: 8px; padding: 14px; }
+  .vf-quiz .vf-row[hidden] { display: grid !important; }
+  .vf-quiz .quiz-pager { display: none !important; }
+}
+/* La palette du site : la bande des six couleurs en haut de chaque slide, et des pastilles qui les reprennent. */
+
+.chips > .chip:not(.good):not(.off):not(.law):not(.bloc) { background: color-mix(in srgb, var(--chip-c, var(--p1)) 26%, var(--surface)); border-color: color-mix(in srgb, var(--chip-c, var(--p1)) 75%, var(--surface)); }
+.chips > .chip:nth-child(6n + 1) { --chip-c: var(--p1); } .chips > .chip:nth-child(6n + 2) { --chip-c: var(--p2); } .chips > .chip:nth-child(6n + 3) { --chip-c: var(--p3); }
+.chips > .chip:nth-child(6n + 4) { --chip-c: var(--p4); } .chips > .chip:nth-child(6n + 5) { --chip-c: var(--p5); } .chips > .chip:nth-child(6n + 6) { --chip-c: var(--p6); }
+
+/* Adaptateurs de contenu uniquement : jetons, scène et lecteur hérités du Harnais publié. */
+.intro-flow{list-style:none;padding:0}.intro-flow li{display:grid;align-content:start;gap:24px;padding:24px 0}.intro-flow strong{font:600 var(--fs-big)/1.1 var(--font-title)}.intro-flow span{font-size:var(--fs-body);line-height:1.4}.intro-sources li{display:grid;gap:12px}.intro-sources span{color:var(--muted);font-size:var(--fs-min)}caption{text-align:left;color:var(--muted);font-size:var(--fs-meta);padding-bottom:16px}.tbl th[scope=row]{background:var(--surface);color:var(--text);font-weight:700;border-top:2px solid var(--line)}.intro-cover{border-radius:var(--r-l)}
+#lecture-cours{position:fixed;right:14px;bottom:18px;z-index:50;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--surface);color:var(--text);font:600 15px/1 var(--font-body);text-decoration:none}.mode-lecture #lecture-cours{display:none}@media print{#lecture-cours{display:none}}
+
+</style>
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="../lecture.css">
+<link rel="stylesheet" href="interactions.css"><link rel="stylesheet" href="ouverture.css">
+</head>
+<body>
+<div id="viewport">
+
+  <main id="stage" tabindex="-1" aria-label="Diapos Premiers pas avec l’IA">
+
+    <h1 class="sr">Premiers pas avec l’IA</h1><div id="slides">
+<section class="slide s-cover" data-part="1" data-key="intro-1"><h2 class="title">Premiers pas avec l’IA</h2><div class="body g12"><div class="launch-copy"><p>Du chat dans le navigateur<br>à votre premier assistant.</p></div>
+<div class="launch-art" aria-hidden="true">
+  <div class="launch-disc"></div>
+  <svg class="launch-path" viewBox="0 0 700 740"><path d="M70 380C-50 100 470 0 590 190S660 690 300 670S0 500 70 380Z"/><circle r="10"><animateMotion dur="12s" repeatCount="indefinite" path="M70 380C-50 100 470 0 590 190S660 690 300 670S0 500 70 380Z"/></circle></svg>
+  <div class="launch-message launch-question"><span>Vous</span><b>Et si on essayait ?<i></i></b></div>
+  <svg class="launch-flask" viewBox="0 0 200 216">
+    <defs><clipPath id="launch-glass"><path d="M80 24H120V82L176 176Q190 204 160 204H40Q10 204 24 176L80 82Z"/></clipPath></defs>
+    <path fill="white" d="M80 24H120V82L176 176Q190 204 160 204H40Q10 204 24 176L80 82Z"/>
+    <g clip-path="url(#launch-glass)"><g class="launch-liquid"><path fill="var(--p5)" d="M-80 116Q0 99 100 116T280 116V240H-80Z"/><path fill="var(--p2)" d="M-80 133Q0 116 100 133T280 133V240H-80Z"/><path fill="var(--p6)" d="M-80 150Q0 133 100 150T280 150V240H-80Z"/><path fill="var(--p1)" d="M-80 167Q0 150 100 167T280 167V240H-80Z"/><path fill="var(--p3)" d="M-80 184Q0 167 100 184T280 184V240H-80Z"/><path fill="var(--p4)" d="M-80 201Q0 184 100 201T280 201V240H-80Z"/></g><g fill="white" opacity=".65"><circle class="launch-bubble bubble-a" cx="64" cy="170" r="5"/><circle class="launch-bubble bubble-b" cx="132" cy="190" r="4"/><circle class="launch-bubble bubble-c" cx="106" cy="150" r="3"/></g></g>
+    <rect x="66" y="10" width="68" height="20" rx="10" fill="white"/>
+    <g fill="var(--on-p1)"><circle cx="89" cy="86" r="6"/><circle cx="111" cy="86" r="6"/></g><path d="M92 97Q100 105 108 97" fill="none" stroke="var(--on-p1)" stroke-width="4.5" stroke-linecap="round"/>
+  </svg>
+  <div class="launch-message launch-answer"><span>Première piste</span><b>Une idée prend forme.</b><div class="launch-lines"><i></i><i></i><i></i></div></div>
+  <div class="launch-star star-a">✳</div><div class="launch-star star-b">✦</div><div class="launch-dot"></div>
+</div>
+<div class="launch-footer"><p>Clément Bastien <span>· Le Labo</span></p><div class="launch-actions"><button type="button" class="launch-start">On commence <span aria-hidden="true">↗</span></button><button type="button" class="launch-pause" aria-pressed="false">Mettre l’animation en pause</button></div></div>
+</div></section>
+
+<section class="slide" data-part="1" data-key="intro-2"><h2 class="title">À la fin, vous saurez…</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Distinguer une application, un modèle et ses outils.</li><li data-step="2">Utiliser un chat et améliorer une demande.</li><li data-step="3">Configurer un assistant réutilisable et le tester.</li><li data-step="4">Reconnaître ce qui change quand une IA devient un agent.</li></ul></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="1" data-key="intro-3"><h2 class="title">Quatre noms à reconnaître</h2><div class="body stack-m"><div class="intro-widget" data-widget="outils"><div class="intro-tabs" role="group" aria-label="Explorer les applications"><button type="button" data-choice="0" aria-pressed="true">ChatGPT</button><button type="button" data-choice="1" aria-pressed="false">Gemini</button><button type="button" data-choice="2" aria-pressed="false">Claude</button><button type="button" data-choice="3" aria-pressed="false">Grok</button><button type="button" data-choice="4" aria-pressed="false">Copilot</button><button type="button" data-choice="5" aria-pressed="false">Mistral</button></div><div class="intro-detail" aria-live="polite"><h3 data-name>ChatGPT</h3><p data-publisher>OpenAI</p><p data-detail></p><p><a data-product-link href="https://chatgpt.com/" target="_blank" rel="noreferrer">Ouvrir le site officiel (nouvel onglet)</a></p></div><p class="intro-hint">Choisissez un nom : distinguez l’application, l’éditeur et le modèle. Aucun classement.</p></div></div></section>
+
+<section class="slide" data-part="1" data-key="intro-4"><h2 class="title">Il existe d’autres portes d’entrée</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Microsoft Copilot : une application et des fonctions intégrées à l’écosystème Microsoft.</li><li data-step="2">Mistral : des modèles et une application, Vibe, anciennement Le Chat.</li><li data-step="3">Les fonctions dépendent du compte, des réglages et des outils disponibles.</li></ul><p class="note">Ces exemples ne forment pas un classement. Noms et accès vérifiés le 15 novembre 2026 ; à revoir avant la séance.</p></div></section>
+
+<section class="slide" data-part="1" data-key="intro-5"><h2 class="title">Application ≠ modèle ≠ outils</h2><div class="body stack-m"><ol class="places intro-flow"><li><strong>L’application</strong><span>L’interface : conversation, fichiers, réglages.</span></li><li><strong>Le modèle</strong><span>Le système entraîné qui produit une réponse.</span></li><li><strong>Les outils</strong><span>Recherche, calcul, lecture de fichiers… si activés.</span></li></ol><p class="note">Une même application peut proposer plusieurs modèles. Le modèle n’a pas automatiquement accès à votre ordinateur.</p></div></section>
+
+<section class="slide" data-part="1" data-key="intro-6"><h2 class="title">Gratuit ou payant : que vérifier ?</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Puis-je faire la tâche avec mon compte actuel ?</li><li data-step="2">Quels fichiers, outils et limites sont disponibles ?</li><li data-step="3">L’établissement autorise-t-il ce service et ce compte ?</li><li data-step="4">En cas de blocage : continuer avec un texte copié ou un outil déjà accessible.</li></ul><p class="note">Aucun abonnement ni clé API n’est nécessaire pour suivre le chemin de base de ce cours.</p></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-7"><h2 class="title">Trois façons de travailler</h2><div class="body stack-m"><div class="intro-widget" data-widget="modes"><div class="intro-tabs" role="group" aria-label="Comparer les façons de travailler"><button type="button" data-choice="chat" aria-pressed="true">Chat</button><button type="button" data-choice="assistant" aria-pressed="false">Assistant</button><button type="button" data-choice="agent" aria-pressed="false">Agent</button></div><div class="intro-detail" aria-live="polite"><h3 data-mode-title></h3><p data-mode-example></p><p data-mode-human></p></div><p class="intro-hint">Même mission : préparer un atelier. Le navigateur est une interface ; les fonctions peuvent se recouper.</p></div></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-8"><h2 class="title">Une conversation dans le navigateur</h2><div class="body stack-m"><div class="capture-layout" data-widget="captures"><div class="capture-guide"><p class="lead">Repérez où commencer.</p><div class="intro-tabs" role="group" aria-label="Choisir une capture"><button type="button" data-choice="grok" aria-pressed="true">Grok</button><button type="button" data-choice="gemini" aria-pressed="false">Gemini</button></div><ol class="plain"><li>La zone pour écrire.</li><li>Les outils proposés.</li><li>Le compte connecté ou non.</li></ol><p class="intro-hint">Une fois la demande envoyée : lisez, vérifiez et précisez ce qui manque.</p></div><figure class="capture-view"><button type="button" class="capture-zoom" aria-label="Agrandir la capture"><img data-capture src="captures/grok-exemple.png" width="1280" height="800" alt="Interface réelle de Grok, sans compte connecté, avec la demande d’atelier préparée dans la zone de saisie."><span>Agrandir ↗</span></button><figcaption data-caption>Grok · capture du 15 novembre 2026. Demande préparée, non envoyée.</figcaption></figure></div></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-9"><h2 class="title">Quatre ingrédients pour démarrer</h2><div class="body stack-m"><div class="intro-widget" data-widget="prompt"><div class="intro-prompt-grid"><div class="intro-fields"><label>Objectif<input data-label="Objectif" aria-label="Objectif" value="Préparer un atelier numérique"></label><label>Public et contexte<input data-label="Public et contexte" aria-label="Public et contexte" value="12 adultes débutants, six ordinateurs"></label><label>Contraintes<input data-label="Contraintes" aria-label="Contraintes" value="90 minutes, aucun achat"></label><label>Format<input data-label="Format" aria-label="Format" value="Tableau avec horaires, activités et matériel"></label></div><div class="intro-preview"><h3>Vos consignes</h3><p data-preview></p><div class="intro-inline-actions"><button type="button" class="intro-action" data-copy>Copier</button><button type="button" class="intro-action" data-save>Télécharger</button></div></div></div><p class="intro-status" role="status" data-status>Aucune IA connectée : vous préparez les consignes à utiliser dans votre outil.</p></div></div></section>
+
+<section class="slide" data-part="2" data-key="intro-10"><h2 class="title">Du vague au vérifiable</h2><div class="body stack-m"><p class="card">« Organise un atelier IA. »</p><p class="card">« Propose un atelier de 90 minutes pour 12 adultes débutants. Six ordinateurs sont disponibles. Aucun achat. Présente un tableau avec les horaires, les activités et le matériel. Signale les informations qui manquent. »</p></div></section>
+
+<section class="slide" data-part="2" data-key="intro-11"><h2 class="title">Essayez, puis améliorez</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Envoyez d’abord la demande vague dans une nouvelle conversation.</li><li data-step="2">Dans une autre conversation, envoyez la demande précise.</li><li data-step="3">Comparez trois points : public, durée et matériel.</li><li data-step="4">Notez une amélioration et une erreur encore présente.</li></ul><p class="note">Un outil suffit. La comparaison de deux marques reste facultative.</p></div></section>
+
+<section class="slide" data-part="2" data-key="intro-12"><h2 class="title">Le contexte a des limites</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Un modèle ne mobilise pas forcément tous les détails d’un long document.</li><li data-step="2">Dans l’étude Lost in the Middle (2023), la position d’une information influençait les résultats des modèles étudiés.</li><li data-step="3">Une nouvelle conversation repart sans ce fil, mais pas forcément sans mémoire ou personnalisation.</li><li data-step="4">Redonnez les faits indispensables et vérifiez les réglages disponibles dans votre application.</li></ul></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-13"><h2 class="title">Une réponse fluide peut être fausse</h2><div class="body stack-m"><div class="intro-widget" data-widget="verifier"><div class="intro-tabs" role="group" aria-label="Vérifier une affirmation"><button type="button" data-choice="oui" aria-pressed="true">Oui, c’est juste</button><button type="button" data-choice="non" aria-pressed="false">Non, je vérifie</button></div><div class="intro-detail"><h3>« Le total est de 40 CHF. »</h3><p>Le document indique six portions à 4 CHF chacune. Une réponse d’IA annonce 40 CHF. Pouvez-vous reprendre ce résultat ?</p></div><p class="intro-verify-answer" aria-live="polite" data-answer>Choisissez une réponse, puis confrontez-la au document.</p><p class="intro-hint">Une réponse assurée ne remplace pas une vérification indépendante.</p></div></div></section>
+
+<section class="slide" data-part="2" data-key="intro-14"><h2 class="title">Pour les essais : du fictif</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Utilisez les exemples et fichiers fournis.</li><li data-step="2">N’envoyez ni mot de passe, ni dossier client, ni donnée personnelle réelle.</li><li data-step="3">Vérifiez ce que l’application reçoit avant de joindre un fichier.</li><li data-step="4">Un abonnement ne suffit pas à déterminer les conditions de traitement.</li></ul><p class="note">Pour approfondir : le cours « IA, données et responsabilité ».</p></div></section>
+
+<section class="slide" data-part="3" data-key="intro-15"><h2 class="title">Un cadre que l’on réutilise</h2><div class="body stack-m"><p class="lead">L’assistant configuré évite de répéter les mêmes consignes.</p><ul class="plain"><li data-step="1">Un rôle : ce qu’il doit aider à faire.</li><li data-step="2">Des règles : ce qu’il doit respecter ou signaler.</li><li data-step="3">Des références : les informations sur lesquelles s’appuyer.</li><li data-step="4">Des tests : les situations où il doit bien répondre.</li></ul><p class="note">Configurer ces consignes ne modifie pas les paramètres du modèle. La réutilisation éventuelle des échanges par le service dépend d’autres réglages.</p></div></section>
+
+<section class="slide" data-part="3" data-key="intro-16"><h2 class="title">Votre premier assistant : Atelier ClairLieu</h2><div class="body stack-m"><p class="lead">ClairLieu est une association fictive.</p><ul class="plain"><li data-step="1">Mission : préparer des ateliers numériques pour débutants.</li><li data-step="2">Public : 12 adultes ; matériel : six ordinateurs.</li><li data-step="3">Règles : aucun achat ; horaires et capacité à respecter.</li><li data-step="4">Toute information absente doit être signalée, pas inventée.</li></ul></div></section>
+
+<section class="slide" data-part="3" data-key="intro-17"><h2 class="title">Des consignes que vous pouvez copier</h2><div class="body stack-m"><p class="card lead">Vous aidez l’association fictive ClairLieu à préparer des ateliers numériques pour débutants. Utilisez uniquement le brief fourni. Distinguez les faits, vos propositions et les points à confirmer. Si une information indispensable manque, posez une question. N’inventez ni contact, ni tarif, ni disponibilité. Ne réservez rien et n’envoyez aucun message.</p></div></section>
+
+<section class="slide" data-part="3" data-key="intro-18"><h2 class="title">Définir la forme du résultat</h2><div class="body stack-m"><p class="card lead">Répondez en français simple. Pour un programme, utilisez un tableau : horaire, activité, matériel. Pour un budget, indiquez quantité × prix unitaire et total. Terminez par les vérifications à effectuer. Vérifiez les contraintes du brief avant de proposer une version finale.</p><p class="note">Les deux blocs de consignes sont téléchargeables dans le dossier d’exercice.</p></div></section>
+
+<section class="slide" data-part="3" data-key="intro-19"><h2 class="title">Où garder ces consignes ?</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Fichier texte : gardez vos consignes et fournissez-les dans le chat.</li><li data-step="2">ChatGPT : les instructions personnalisées peuvent s’appliquer à tous vos chats ; gardez-les adaptées à cet usage.</li><li data-step="3">Claude : instructions de projet ; Gemini : Gems ou compétences, selon le compte et le déploiement.</li><li data-step="4">Ces espaces n’offrent pas tous les mêmes fonctions. Vérifiez ce qui est disponible sur votre compte.</li></ul><p class="note">Les noms et les accès évoluent. Les liens en haut permettent de vérifier la documentation de chaque produit.</p></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="3" data-key="intro-20"><h2 class="title">Configurez votre assistant</h2><div class="body stack-m"><div class="intro-widget" data-widget="assistant"><div class="intro-prompt-grid"><div class="intro-fields"><label>Rôle<textarea data-label="Rôle" aria-label="Rôle" rows="2">Aider ClairLieu à préparer des ateliers numériques</textarea></label><label>Références<textarea data-label="Références" aria-label="Références" rows="2">Mini-brief : 12 débutants, six ordinateurs, 90 minutes</textarea></label><label>Format et limites<textarea data-label="Format et limites" aria-label="Format et limites" rows="2">Programme en tableau. Aucun achat. Informations absentes à confirmer.</textarea></label></div><div class="intro-preview"><h3>Vos consignes</h3><p data-preview></p><div class="intro-inline-actions"><button type="button" class="intro-action" data-copy>Copier</button><button type="button" class="intro-action" data-save>Télécharger</button></div></div></div><p class="intro-status" role="status" data-status>Aucune IA connectée : vous préparez les consignes à utiliser dans votre outil.</p></div></div></section>
+
+<section data-widget-slide="true" class="slide" data-part="3" data-key="intro-21"><h2 class="title">Trois tests avant de lui faire confiance</h2><div class="body stack-m"><div class="intro-widget" data-widget="tests"><div class="intro-tabs" role="group" aria-label="Tester son assistant"><button type="button" data-choice="0" aria-pressed="true">1. Programme</button><button type="button" data-choice="1" aria-pressed="false">2. Information absente</button><button type="button" data-choice="2" aria-pressed="false">3. Conflit</button></div><div class="intro-detail"><h3 data-test-title></h3><p data-test-request></p><button class="intro-action" type="button" data-copy>Copier cette demande</button><p data-test-expected></p></div><label class="intro-check"><input type="checkbox" data-checked>J’ai exécuté ce test et contrôlé la réponse.</label><p class="intro-status" data-status role="status">0 / 3 tests vérifiés par vous.</p><p class="intro-hint">Les tests sont exécutés dans votre assistant, puis évalués par vous. Aucun résultat automatique n’est simulé.</p></div></div></section>
+
+<section class="slide" data-part="3" data-key="intro-22"><h2 class="title">Un assistant utile se teste</h2><div class="body stack-m"><ul class="plain"><li>Le programme couvre exactement la durée demandée.</li><li>Le matériel et les effectifs sont respectés.</li><li>Les informations absentes ne sont pas inventées.</li><li>Les propositions sont distinguées des faits.</li></ul><p class="note">Si un test échoue : précisez les consignes et recommencez dans un nouveau chat.</p></div></section>
+
+<section class="slide" data-part="4" data-key="intro-23"><h2 class="title">Quand l’IA commence à agir</h2><div class="body stack-m"><p class="lead">Un agent peut utiliser un outil, observer le résultat et décider de la suite.</p><ol class="places intro-flow"><li><strong>Objectif</strong><span>Un résultat attendu et des limites.</span></li><li><strong>Action</strong><span>Un outil autorisé est utilisé.</span></li><li><strong>Observation</strong><span>Le résultat est contrôlé avant de continuer ou de s’arrêter.</span></li></ol></div></section>
+
+<section class="slide" data-part="4" data-key="intro-24"><h2 class="title">Plus d’actions, plus de décisions à cadrer</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Quels fichiers peut-il lire ou modifier ?</li><li data-step="2">Quelles actions exigent votre confirmation ?</li><li data-step="3">Comment vérifiez-vous le résultat ?</li><li data-step="4">Quand doit-il s’arrêter ?</li></ul><p class="note">Dans ce premier cours : configurer et tester un assistant. Les agents seront approfondis dans « Le Harnais ».</p></div></section>
+
+<section class="slide" data-part="4" data-key="intro-25"><h2 class="title">Ensuite : les types d’IA</h2><div class="body stack-m"><p class="lead">Le chat n’est qu’une porte d’entrée.</p><ul class="plain"><li data-step="1">Découvrez ce que les modèles reçoivent et produisent : texte, image, voix…</li><li data-step="2">Réutilisez le cours « Les types d’IA ».</li><li data-step="3">Sur Hugging Face : choisissez trois missions, dont une générative.</li><li data-step="4">Pour chaque mission : deux essais, un seul changement, une limite observée.</li></ul><p><a href="/comprendre-ia/types-ia/">Ouvrir le cours existant</a></p></div></section>
+
+<section class="slide" data-part="4" data-key="intro-26"><h2 class="title">Préparez un vrai dossier… pour un projet fictif</h2><div class="body stack-m"><p class="lead">ClairLieu organise « Déclic numérique », un atelier pour 18 adultes débutants.</p><ul class="plain"><li data-step="1">Vous disposez d’un brief, d’un inventaire et d’une liste de prix fictifs.</li><li data-step="2">Configurez votre assistant, puis produisez un programme et un budget.</li><li data-step="3">Créez les supports et vérifiez toutes les contraintes.</li><li data-step="4">Échangez votre dossier pour un contrôle croisé.</li></ul><p><a href="/comprendre-ia/premiers-pas-ia/exercices/">Ouvrir le dossier complet</a></p></div></section>
+
+<section class="slide" data-part="4" data-key="intro-27"><h2 class="title">Construire, tester, corriger : à votre rythme</h2><div class="body stack-m"><ol class="plain"><li><strong>Comprendre</strong> — Lire le brief et relever les contraintes.</li><li><strong>Configurer</strong> — Préparer l’assistant et tester ses limites.</li><li><strong>Produire</strong> — Programme, budget et supports.</li><li><strong>Vérifier</strong> — Recalculer et faire relire le dossier.</li><li><strong>Corriger</strong> — Refaire les tests après chaque amélioration.</li><li><strong>Expliquer</strong> — Présenter les choix et les points à confirmer.</li></ol></div></section>
+
+<section class="slide" data-part="4" data-key="intro-28"><h2 class="title">Ce que vous rendrez</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Les consignes de votre assistant et trois tests commentés.</li><li data-step="2">Le programme, le budget et les supports demandés.</li><li data-step="3">Un journal de trois améliorations apportées aux réponses.</li><li data-step="4">Une liste des faits vérifiés et des points restant à confirmer.</li></ul><p class="note">La qualité se mesure au respect du brief et aux vérifications, pas à la longueur des réponses.</p></div></section>
+
+<section class="slide" data-part="5" data-key="intro-29"><h2 class="title">Retrouver les sources et le lexique</h2><div class="body stack-m"><div class="refs" data-comp="refs"></div></div></section>
+
+<section class="slide" data-part="5" data-key="intro-30"><h2 class="title">Les mots du cours</h2><div class="body stack-m"><p class="lead">Choisissez une notion pour retrouver sa définition.</p><div class="lexique" data-comp="lexique"></div></div></section>
+    </div>
+    <button type="button" class="edge" id="edge-prev" aria-label="Slide ou étape précédente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="edge" id="edge-next" aria-label="Slide ou étape suivante"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div id="progress" aria-hidden="true"><i></i><b></b></div>
+    <div id="chrono" role="timer" hidden>00:00</div>
+    <div id="grid" role="dialog" aria-modal="true" aria-labelledby="grid-title" hidden></div>
+    <button type="button" id="black" aria-label="Écran noir : appuyer sur une touche pour revenir" hidden></button>
+    <div id="toast" role="status" hidden></div>
+  </main>
+</div>
+<aside id="pv" aria-label="Vue présentateur"></aside>
+<div id="live" class="sr" aria-live="polite" aria-atomic="true"></div>
+<script>
+/* =====================================================================
+   CONFIG : tout ce qui se règle sans toucher au reste du fichier.
+   - minutes : budget de chaque slide (index 0 = slide 1).
+   - notes : ce qui se dit à l'oral, affiché dans la vue présentateur (touche N).
+   ===================================================================== */
+const CONFIG = {
+  "auteur": "Clément Bastien",
+  "theme": "light",
+  "policesUrl": "",
+  "minutes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "parties": [
+    {
+      "nom": "Se repérer",
+      "de": 1,
+      "a": 6
+    },
+    {
+      "nom": "Utiliser un chat",
+      "de": 7,
+      "a": 14
+    },
+    {
+      "nom": "Configurer un assistant",
+      "de": 15,
+      "a": 22
+    },
+    {
+      "nom": "Agents et mise en pratique",
+      "de": 23,
+      "a": 28
+    },
+    {
+      "nom": "Sources",
+      "de": 29,
+      "a": 30,
+      "hors": true
+    }
+  ],
+  "bonus": [],
+  "alerteAmbre": 1.1,
+  "alerteRouge": 1.25,
+  "textes": {},
+  "urls": {},
+  "images": {},
+  "sources": {
+    "intro-2": [
+      {
+        "t": "OpenAI · demandes",
+        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
+      }
+    ],
+    "intro-3": [
+      {
+        "t": "OpenAI · GPT",
+        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+      },
+      {
+        "t": "Grok · application",
+        "u": "https://x.ai/grok"
+      }
+    ],
+    "intro-4": [
+      {
+        "t": "Microsoft · Copilot",
+        "u": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
+      },
+      {
+        "t": "Mistral · application",
+        "u": "https://mistral.ai/products/vibe/"
+      }
+    ],
+    "intro-5": [
+      {
+        "t": "OpenAI · outils",
+        "u": "https://developers.openai.com/api/docs/guides/tools"
+      },
+      {
+        "t": "OpenAI · consignes",
+        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      }
+    ],
+    "intro-6": [
+      {
+        "t": "OpenAI · accès",
+        "u": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ],
+    "intro-7": [
+      {
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+      },
+      {
+        "t": "Anthropic · agents",
+        "u": "https://www.anthropic.com/research/building-effective-agents"
+      }
+    ],
+    "intro-8": [
+      {
+        "t": "Grok · application",
+        "u": "https://x.ai/grok"
+      },
+      {
+        "t": "Google · personnaliser",
+        "u": "https://support.google.com/gemini/answer/18560919?hl=fr"
+      }
+    ],
+    "intro-9": [
+      {
+        "t": "OpenAI · consignes",
+        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      }
+    ],
+    "intro-10": [
+      {
+        "t": "OpenAI · demandes",
+        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
+      }
+    ],
+    "intro-11": [
+      {
+        "t": "OpenAI · demandes",
+        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
+      }
+    ],
+    "intro-12": [
+      {
+        "t": "OpenAI · mémoire",
+        "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
+      },
+      {
+        "t": "Étude · contexte long",
+        "u": "https://arxiv.org/abs/2307.03172"
+      }
+    ],
+    "intro-13": [
+      {
+        "t": "OpenAI · fiabilité",
+        "u": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
+      }
+    ],
+    "intro-14": [
+      {
+        "t": "CNIL · précautions",
+        "u": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative"
+      }
+    ],
+    "intro-15": [
+      {
+        "t": "Claude · projets",
+        "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+      },
+      {
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+      }
+    ],
+    "intro-16": [
+      {
+        "t": "Brief fictif · ClairLieu",
+        "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
+      }
+    ],
+    "intro-17": [
+      {
+        "t": "OpenAI · consignes",
+        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      }
+    ],
+    "intro-18": [
+      {
+        "t": "OpenAI · consignes",
+        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      }
+    ],
+    "intro-19": [
+      {
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+      },
+      {
+        "t": "Google · personnaliser",
+        "u": "https://support.google.com/gemini/answer/18560919?hl=fr"
+      }
+    ],
+    "intro-20": [
+      {
+        "t": "Claude · projets",
+        "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+      },
+      {
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+      }
+    ],
+    "intro-21": [
+      {
+        "t": "OpenAI · évaluer",
+        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+      }
+    ],
+    "intro-22": [
+      {
+        "t": "OpenAI · évaluer",
+        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+      }
+    ],
+    "intro-23": [
+      {
+        "t": "Anthropic · agents",
+        "u": "https://www.anthropic.com/research/building-effective-agents"
+      }
+    ],
+    "intro-24": [
+      {
+        "t": "Anthropic · agents",
+        "u": "https://www.anthropic.com/research/building-effective-agents"
+      }
+    ],
+    "intro-25": [
+      {
+        "t": "Hugging Face · Spaces",
+        "u": "https://huggingface.co/docs/hub/spaces-overview"
+      }
+    ],
+    "intro-26": [
+      {
+        "t": "Brief fictif · ClairLieu",
+        "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+      }
+    ],
+    "intro-27": [
+      {
+        "t": "Brief fictif · ClairLieu",
+        "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+      }
+    ],
+    "intro-28": [
+      {
+        "t": "Brief fictif · ClairLieu",
+        "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+      },
+      {
+        "t": "OpenAI · évaluer",
+        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+      }
+    ],
+    "intro-29": [
+      {
+        "t": "OpenAI · GPT",
+        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+      },
+      {
+        "t": "Claude · projets",
+        "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+      }
+    ],
+    "intro-30": [
+      {
+        "t": "Hugging Face · Spaces",
+        "u": "https://huggingface.co/docs/hub/spaces-overview"
+      },
+      {
+        "t": "Grok · application",
+        "u": "https://x.ai/grok"
+      }
+    ]
+  },
+  "motsCles": [
+    [
+      "Découvrir",
+      "Premiers pas avec l’IA"
+    ],
+    [
+      "01 · Se repérer",
+      "À la fin, vous saurez…"
+    ],
+    [
+      "01 · Se repérer",
+      "Quatre noms à reconnaître"
+    ],
+    [
+      "01 · Se repérer",
+      "Il existe d’autres portes d’entrée"
+    ],
+    [
+      "01 · Se repérer",
+      "Application ≠ modèle ≠ outils"
+    ],
+    [
+      "01 · Se repérer",
+      "Gratuit ou payant : que vérifier ?"
+    ],
+    [
+      "02 · Du chat à l’agent",
+      "Trois façons de travailler"
+    ],
+    [
+      "02 · Le chat",
+      "Une conversation dans le navigateur"
+    ],
+    [
+      "02 · Le chat",
+      "Quatre ingrédients pour démarrer"
+    ],
+    [
+      "02 · Le chat",
+      "Du vague au vérifiable"
+    ],
+    [
+      "Exercice 1",
+      "Essayez, puis améliorez"
+    ],
+    [
+      "02 · Le chat",
+      "Le contexte a des limites"
+    ],
+    [
+      "02 · Le chat",
+      "Une réponse fluide peut être fausse"
+    ],
+    [
+      "02 · Le chat",
+      "Pour les essais : du fictif"
+    ],
+    [
+      "03 · L’assistant",
+      "Un cadre que l’on réutilise"
+    ],
+    [
+      "03 · L’assistant",
+      "Votre premier assistant : Atelier ClairLieu"
+    ],
+    [
+      "03 · L’assistant",
+      "Des consignes que vous pouvez copier"
+    ],
+    [
+      "03 · L’assistant",
+      "Définir la forme du résultat"
+    ],
+    [
+      "03 · L’assistant",
+      "Où garder ces consignes ?"
+    ],
+    [
+      "Exercice 2",
+      "Configurez votre assistant"
+    ],
+    [
+      "Exercice 3",
+      "Trois tests avant de lui faire confiance"
+    ],
+    [
+      "03 · L’assistant",
+      "Un assistant utile se teste"
+    ],
+    [
+      "04 · Les agents",
+      "Quand l’IA commence à agir"
+    ],
+    [
+      "04 · Les agents",
+      "Plus d’actions, plus de décisions à cadrer"
+    ],
+    [
+      "05 · La suite",
+      "Ensuite : les types d’IA"
+    ],
+    [
+      "06 · Mission de projet",
+      "Préparez un vrai dossier… pour un projet fictif"
+    ],
+    [
+      "06 · Mission de projet",
+      "Construire, tester, corriger : à votre rythme"
+    ],
+    [
+      "06 · Mission de projet",
+      "Ce que vous rendrez"
+    ],
+    [
+      "Sources · vérifiées le 15 novembre 2026",
+      "Retrouver les sources et le lexique"
+    ],
+    [
+      "Sources · vérifiées le 15 novembre 2026",
+      "Les mots du cours"
+    ]
+  ],
+  "notes": {},
+  "question": "",
+  "vraiFaux": [],
+  "quiz": [],
+  "lexique": [
+    {
+      "terme": "Application",
+      "def": "L’interface qui permet d’utiliser un modèle et ses outils : conversation, documents et réglages."
+    },
+    {
+      "terme": "Modèle",
+      "def": "Un système entraîné qui produit une sortie à partir des informations reçues."
+    },
+    {
+      "terme": "Prompt",
+      "def": "La demande ou les consignes adressées à une IA."
+    },
+    {
+      "terme": "Contexte",
+      "def": "Les informations et consignes disponibles pour produire une réponse."
+    },
+    {
+      "terme": "Assistant configuré",
+      "def": "Un cadre réutilisable qui associe un rôle, des consignes et éventuellement des documents."
+    },
+    {
+      "terme": "Agent",
+      "def": "Un système qui peut enchaîner des actions avec des outils pour atteindre un objectif, dans des limites définies."
+    },
+    {
+      "terme": "Hallucination",
+      "def": "Une information inventée ou incorrecte présentée comme une réponse plausible."
+    },
+    {
+      "terme": "Outil",
+      "def": "Une fonction accessible à l’IA, par exemple pour rechercher, calculer ou lire un fichier."
+    }
+  ],
+  "references": [
+    {
+      "titre": "Création et modification des GPT",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+    },
+    {
+      "titre": "Conversion des Gems en compétences",
+      "source": "Google · vérifié le 15 novembre 2026",
+      "url": "https://support.google.com/gemini/answer/18560919?hl=fr"
+    },
+    {
+      "titre": "Les projets Claude",
+      "source": "Anthropic · vérifié le 15 novembre 2026",
+      "url": "https://support.claude.com/en/articles/9517075-what-are-projects"
+    },
+    {
+      "titre": "Grok",
+      "source": "xAI · vérifié le 15 novembre 2026",
+      "url": "https://x.ai/grok"
+    },
+    {
+      "titre": "Vibe, anciennement Le Chat",
+      "source": "Mistral · vérifié le 15 novembre 2026",
+      "url": "https://mistral.ai/products/vibe/"
+    },
+    {
+      "titre": "Microsoft Copilot",
+      "source": "Microsoft · vérifié le 15 novembre 2026",
+      "url": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
+    },
+    {
+      "titre": "Les Spaces Hugging Face",
+      "source": "Hugging Face · vérifié le 15 novembre 2026",
+      "url": "https://huggingface.co/docs/hub/spaces-overview"
+    },
+    {
+      "titre": "Des demandes claires et une amélioration par itérations",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
+    },
+    {
+      "titre": "Instructions, contexte et format de sortie",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+    },
+    {
+      "titre": "Les outils accessibles à un modèle",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://developers.openai.com/api/docs/guides/tools"
+    },
+    {
+      "titre": "Mémoire et personnalisation dans ChatGPT",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
+    },
+    {
+      "titre": "Les instructions personnalisées de ChatGPT",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+    },
+    {
+      "titre": "Fiabilité, erreurs et vérification des réponses",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
+    },
+    {
+      "titre": "Évaluer des cas normaux, limites et contradictoires",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    },
+    {
+      "titre": "Les agents : outils, boucle et contrôle humain",
+      "source": "Anthropic · vérifié le 15 novembre 2026",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    {
+      "titre": "Lost in the Middle : utilisation des contextes longs",
+      "source": "Liu et al. · étude 2023 · vérifié le 15 novembre 2026",
+      "url": "https://arxiv.org/abs/2307.03172"
+    },
+    {
+      "titre": "Précautions pour utiliser une IA générative",
+      "source": "CNIL · vérifié le 15 novembre 2026",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative"
+    },
+    {
+      "titre": "Accès et limites des fonctions gratuites",
+      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+    }
+  ]
+};
+
+(() => {
+  'use strict';
+
+  /* ---------- Outils ---------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const NB = ' ', NNB = ' ';
+  // typographie française : espaces insécables avant : ; ? ! et dans les guillemets
+  const fr = s => String(s).replace(/ ([;?!])/g, NNB + '$1').replace(/ :/g, NB + ':').replace(/« /g, '«' + NB).replace(/ »/g, NB + '»');
+  const num = (n, d = 0) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const mmss = ms => { const s = Math.max(0, Math.round(ms / 1000)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+  const RM = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function h(tag, props, ...kids) {
+    const e = document.createElement(tag);
+    for (const k in props || {}) {
+      const v = props[k];
+      if (v == null || v === false) continue;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = fr(v);
+      else if (k === 'html') e.innerHTML = v;
+      else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? '' : v);
+    }
+    kids.flat().forEach(c => { if (c != null && c !== false) e.append(c.nodeType ? c : fr(c)); });
+    return e;
+  }
+
+  const ICONS = {
+    compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+    code: '<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12"/>',
+    shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2.2 2.2L15 10.5"/>',
+    hand: '<path d="M8 13V6.5a1.5 1.5 0 013 0V11m0-5.5v-1a1.5 1.5 0 013 0V11m0-4.5a1.5 1.5 0 013 0V14c0 4-2.5 7-6 7s-5-2-6.5-5l-1.6-3.2a1.4 1.4 0 012.4-1.4L8 13"/>',
+    users: '<circle cx="9" cy="7.5" r="3.5"/><path d="M2.5 20c.5-3.5 3-5.5 6.5-5.5s6 2 6.5 5.5M16 4.2a3.5 3.5 0 010 6.6M18 14.8c2 .7 3.2 2.5 3.5 5.2"/>',
+    frame: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 8.5h18M8 21h8M12 17v4"/>',
+    user: '<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-4 3.5-6 7.5-6s6.9 2 7.5 6"/>',
+    list: '<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',
+    arrow: '<path d="M4 12h16M14 6l6 6-6 6"/>',
+    swatch: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="3.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><path d="M13 16.5h7M16.5 13v7"/>',
+    fork: '<path d="M12 21v-8l-6-6V3M12 13l6-6V3M3.5 5.5L6 3l2.5 2.5M15.5 5.5L18 3l2.5 2.5"/>',
+    eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    cursor: '<path d="M5 3l14 8-6 2-2 6z"/><path d="M14.5 14.5L20 20"/>',
+    text: '<path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/>',
+    gauge: '<path d="M4.5 18a8.5 8.5 0 1115 0M12 17l3.5-6.5M3 21h18"/>',
+    image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-8 9"/>',
+    contrast: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" fill="currentColor"/>',
+    keyboard: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>',
+    search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    cross: '<path d="M6 6l12 12M18 6L6 18"/>',
+    play: '<path d="M7 5l12 7-12 7z"/>',
+    pause: '<path d="M8 5v14M16 5v14"/>',
+    reset: '<path d="M4 5v5h5M5 13a7.5 7.5 0 102-6.5L4 10"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    minus: '<path d="M5 12h14"/>',
+    external: '<path d="M14 4h6v6M20 4l-9 9M18 13v6H5V6h6"/>',
+    chevL: '<path d="M15 5l-7 7 7 7"/>',
+    chevR: '<path d="M9 5l7 7-7 7"/>',
+    alert: '<path d="M12 4l9 16H3zM12 10v4M12 17h.01"/>',
+    speaker: '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 9a4 4 0 0 1 0 6M19.5 6a8 8 0 0 1 0 12"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+    file: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/>',
+    mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21M8.5 21h7"/>',
+    building: '<path d="M4 21V8l8-5 8 5v13M4 21h16M9 21v-5h6v5M8 11h.01M12 11h.01M16 11h.01"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
+    lock: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 018 0v3M12 14.5v2.5"/>',
+    chat: '<path d="M4 5h16v11H10l-5 4v-4H4z"/>',
+    bolt: '<path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/>',
+    heart: '<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0112 7.3 4.3 4.3 0 0119.5 10c0 5.4-7.5 10-7.5 10z"/>',
+    key: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16.5 6.5l2.5 2.5M14 9l2 2"/>',
+    server: '<rect x="4" y="4" width="16" height="7" rx="1.5"/><rect x="4" y="13" width="16" height="7" rx="1.5"/><path d="M8 7.5h.01M8 16.5h.01"/>',
+    dot: '<circle cx="12" cy="12" r="8"/>'
+  };
+  function icon(name) {
+    const t = document.createElement('template');
+    t.innerHTML = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICONS[name] + '</svg>';
+    return t.content.firstChild;
+  }
+  const btn = (label, onclick, cls, ic) => h('button', { type: 'button', class: 'btn ' + (cls || ''), onclick }, ic ? icon(ic) : null, h('span', { text: label }));
+  const verdict = (ok, label) => h('span', { class: 'verdict ' + (ok ? 'ok' : 'ko') }, icon(ok ? 'check' : 'cross'), h('span', { text: label }));
+
+  /* ---------- Données des slides ---------- */
+  const IS_PV = new URLSearchParams(location.search).has('presentateur');
+  const root = document.documentElement;
+  const stage = $('#stage');
+  const slides = $$('.slide');
+  const N = slides.length;
+  const titles = slides.map(s => $('.title', s).textContent.replace(/\s+/g, ' ').trim());
+  const minutes = slides.map((s, i) => Number(CONFIG.minutes[i]) || 0);
+  const cum = []; minutes.reduce((a, m, i) => (cum[i] = a + m), 0);
+  const TOTAL = cum[N - 1] || 1;
+  const partOf = i => CONFIG.parties.findIndex(p => i + 1 >= p.de && i + 1 <= p.a);
+  const maxStep = slides.map(s => Math.max(0, ...$$('[data-step]', s).map(e => Number(e.dataset.step))));
+  const hooks = {}; // hooks[n] = { enter(), leave() } pour la slide n
+  const at = el => slides.indexOf(el.closest('.slide')) + 1; // numéro de la slide qui contient un composant
+  const isBonus = i => (CONFIG.bonus || []).includes(i + 1);
+  root.lang = 'fr';
+  root.dataset.deck = CONFIG.theme === 'dark' ? 'dark' : 'light';
+
+  slides.forEach((s, i) => {
+    const p = partOf(i);
+    s.id = 's' + (i + 1);
+    s.dataset.minutes = minutes[i];
+    s.setAttribute('aria-roledescription', 'slide');
+    const t = $('.title', s); t.id = 'titre-' + (i + 1); s.setAttribute('aria-labelledby', t.id);
+    const srcs = (CONFIG.sources && CONFIG.sources[s.dataset.key]) || [];
+    s.prepend(h('div', { class: 's-head' },
+      h('span', { class: 'pastille', text: CONFIG.parties[p].hors ? CONFIG.parties[p].nom : 'Partie ' + (p + 1) + ' : ' + CONFIG.parties[p].nom }),
+      srcs.length ? h('span', { class: 's-src' }, srcs.map(x => h('a', { href: x.u, target: '_blank', rel: 'noopener noreferrer', 'aria-label': fr('Source : ' + x.t + ' (nouvel onglet)') }, icon('external'), h('span', { text: x.t })))) : null,
+      h('span', { class: 's-num', 'aria-label': 'Slide ' + (i + 1) + ' sur ' + N, text: (i + 1) + ' / ' + N })));
+    $$('i[data-icon]', s).forEach(el => { const svg = icon(el.dataset.icon); if (el.className) svg.classList.add(...el.className.split(' ')); el.replaceWith(svg); });
+  });
+
+  /* ---------- État, navigation, étapes ---------- */
+  const state = { i: -1, step: 0 };
+  const timer = { running: false, base: 0, t0: 0 };
+  const elapsed = (t = timer) => t.base + (t.running ? Date.now() - t.t0 : 0);
+  const timeState = (ms, i) => { const r = ms / (cum[i] * 60000); return r > CONFIG.alerteRouge ? 'over' : r > CONFIG.alerteAmbre ? 'warn' : 'ok'; };
+
+  function applySteps() {
+    $$('[data-step]', slides[state.i]).forEach(e => {
+      const n = Number(e.dataset.step);
+      e.classList.toggle('on', n <= state.step);
+      e.inert = n > state.step; // Une étape invisible ne doit pas recevoir le focus ni être annoncée.
+      e.classList.toggle('step-current', n === state.step);
+    });
+  }
+  function show(i, step) {
+    i = clamp(i, 0, N - 1);
+    const prev = state.i, changed = i !== prev;
+    state.i = i; state.step = clamp(step == null ? 0 : step, 0, maxStep[i]);
+    if (changed) {
+      const hadFocus = prev >= 0 && slides[prev].contains(document.activeElement);
+      slides.forEach((s, k) => { s.hidden = k !== i; s.classList.toggle('active', k === i); });
+      stage.dataset.part = slides[i].dataset.part;
+      if (hadFocus) stage.focus({ preventScroll: true });
+      if (prev >= 0 && hooks[prev + 1] && hooks[prev + 1].leave) hooks[prev + 1].leave();
+      if (hooks[i + 1] && hooks[i + 1].enter) hooks[i + 1].enter();
+      try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) { location.hash = '#' + (i + 1); }
+      $('#live').textContent = fr('Slide ' + (i + 1) + ' sur ' + N + ' : ' + titles[i]);
+      document.title = (i + 1) + '. ' + titles[i];
+    }
+    applySteps();
+    $('#progress i').style.width = (cum[i] / TOTAL * 100) + '%';
+    tick(); sync();
+  }
+  function next() { if (state.step < maxStep[state.i]) show(state.i, state.step + 1); else if (state.i < N - 1) show(state.i + 1, 0); }
+  function prev() { if (state.step > 0) show(state.i, state.step - 1); else if (state.i > 0) show(state.i - 1, maxStep[state.i - 1]); }
+  const jump = n => show(n - 1, maxStep[clamp(n - 1, 0, N - 1)]);
+
+  function fit() { stage.style.setProperty('--scale', Math.min(window.innerWidth / 1600, window.innerHeight / 1100)); }
+
+  /* ---------- Chronomètre global ---------- */
+  function timerToggle() { if (timer.running) { timer.base = elapsed(); timer.running = false; } else { timer.t0 = Date.now(); timer.running = true; } tick(); sync(); }
+  function timerReset() { timer.base = 0; timer.t0 = Date.now(); tick(); sync(); }
+  function tick() {
+    if (IS_PV || state.i < 0) return;
+    const ms = elapsed(), st = timeState(ms, state.i), c = $('#chrono'), p = $('#progress');
+    c.hidden = ms === 0 && !timer.running;
+    c.textContent = mmss(ms); c.dataset.state = st; p.dataset.state = st;
+    c.setAttribute('aria-label', 'Temps écoulé ' + mmss(ms));
+    $('b', p).style.width = clamp(ms / (TOTAL * 60000) * 100, 0, 100) + '%';
+    if (pv.classList.contains('overlay')) renderPV(snapshot());
+  }
+
+  /* ---------- Calques : grille, écran noir, saisie de numéro ---------- */
+  const grid = $('#grid'), black = $('#black'), toast = $('#toast'), slidesBox = $('#slides');
+  function buildGrid() {
+    const ol = h('ol');
+    slides.forEach((s, i) => ol.append(h('li', {}, h('button', { type: 'button', 'data-part': s.dataset.part, 'aria-label': 'Slide ' + (i + 1) + ' : ' + titles[i], onclick: () => { toggleGrid(false); jump(i + 1); } }, h('b', { text: String(i + 1) + (isBonus(i) ? ' (bonus)' : '') }), h('span', { text: titles[i] })))));
+    grid.append(h('h2', { id: 'grid-title', text: 'Toutes les slides' }), ol);
+  }
+  function toggleGrid(force) {
+    const open = force == null ? grid.hidden : force;
+    grid.hidden = !open; slidesBox.inert = open; $$('.edge').forEach(e => e.hidden = open);
+    if (open) { $$('button', grid).forEach((b, k) => { if (k === state.i) { b.setAttribute('aria-current', 'true'); b.focus(); b.scrollIntoView({ block: 'center' }); } else b.removeAttribute('aria-current'); }); }
+    else stage.focus({ preventScroll: true });
+  }
+  function toggleBlack(force) { const on = force == null ? black.hidden : force; black.hidden = !on; if (on) black.focus(); else stage.focus({ preventScroll: true }); }
+  let numBuf = '', numT = 0;
+  function numKey(d) {
+    numBuf = (numBuf + d).slice(-2); toast.hidden = false;
+    toast.textContent = fr('Aller à la slide ' + numBuf + ' : Entrée');
+    clearTimeout(numT); numT = setTimeout(numClear, 4000);
+  }
+  function numClear() { numBuf = ''; toast.hidden = true; clearTimeout(numT); }
+  function toggleTheme() { root.dataset.deck = root.dataset.deck === 'dark' ? 'light' : 'dark'; sync(); }
+  function toggleFull() {
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (root.requestFullscreen) { const p = root.requestFullscreen(); if (p && p.catch) p.catch(() => {}); }
+    } catch (e) { /* plein écran indisponible */ }
+  }
+
+  /* ---------- Clavier, bords, tactile ---------- */
+  function onKey(e) {
+    if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target, tag = t.tagName || '', k = e.key;
+    const typing = (tag === 'INPUT' && !/^(range|color|checkbox|radio|file|button)$/.test(t.type)) || tag === 'TEXTAREA';
+    if (k === 'Escape') {
+      if (numBuf) numClear(); else if (!grid.hidden) toggleGrid(false); else if (!black.hidden) toggleBlack(false);
+      else if (pv.classList.contains('overlay')) pv.classList.remove('overlay'); else if (typing) t.blur();
+      return;
+    }
+    if (typing) return;
+    if (!black.hidden) { toggleBlack(false); e.preventDefault(); return; }
+    const low = k.length === 1 ? k.toLowerCase() : k;
+    if (!grid.hidden) { if (low === 'g') { toggleGrid(false); e.preventDefault(); } return; }
+    const inWidget = (t.closest && t.closest('[data-arrows]')) || (tag === 'INPUT' && (t.type === 'range' || t.type === 'color'));
+    const onControl = /^(BUTTON|A|INPUT|SELECT|SUMMARY)$/.test(tag) || (t.getAttribute && t.getAttribute('role') === 'button');
+    let done = true;
+    if (k === 'ArrowRight' || k === 'ArrowDown') { if (inWidget) return; next(); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp') { if (inWidget) return; prev(); }
+    else if (k === 'PageDown') next();
+    else if (k === 'PageUp') prev();
+    else if (k === ' ') { if (onControl) return; if (e.shiftKey) prev(); else next(); }
+    else if (k === 'Enter') { if (numBuf) { const n = Number(numBuf); numClear(); if (n >= 1 && n <= N) jump(n); } else return; }
+    else if (k === 'Home') { if (inWidget) return; show(0, 0); }
+    else if (k === 'End') { if (inWidget) return; jump(N); }
+    else if (/^[0-9]$/.test(k)) numKey(k);
+    else if (low === 'g') toggleGrid();
+    else if (low === 'f') toggleFull();
+    else if (low === 't') toggleTheme();
+    else if (low === 'b') toggleBlack();
+    else if (low === 's') return;
+    else if (low === 'n') togglePresenter(e.shiftKey);
+    else done = false;
+    if (done) e.preventDefault();
+  }
+  function bindPointer() {
+    $('#edge-prev').addEventListener('click', prev);
+    $('#edge-next').addEventListener('click', next);
+    black.addEventListener('click', () => toggleBlack(false));
+    let tx = null, ty = 0;
+    stage.addEventListener('touchstart', e => {
+      tx = (e.touches.length === 1 && !e.target.closest('input, button, a, [data-arrows], [tabindex="0"]')) ? e.touches[0].clientX : null;
+      if (tx != null) ty = e.touches[0].clientY;
+    }, { passive: true });
+    stage.addEventListener('touchend', e => {
+      if (tx == null) return;
+      const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) next(); else prev(); }
+    }, { passive: true });
+  }
+
+  /* ---------- Vue présentateur : synchronisation ---------- */
+  const pv = $('#pv');
+  let bc = null, pvWin = null, pvState = null, pvBuilt = false;
+  const seen = new Set();
+  try { bc = new BroadcastChannel('iad-deck'); } catch (e) { bc = null; }
+  function post(msg) {
+    msg.src = 'iad'; msg.id = Math.random().toString(36).slice(2) + Date.now();
+    try { if (bc) bc.postMessage(msg); } catch (e) { /* canal indisponible */ }
+    const w = IS_PV ? window.opener : pvWin;
+    try { if (w && !w.closed) w.postMessage(msg, '*'); } catch (e) { /* fenêtre fermée */ }
+  }
+  function onMsg(m) {
+    if (!m || m.src !== 'iad' || seen.has(m.id)) return;
+    seen.add(m.id); if (seen.size > 500) seen.clear();
+    if (IS_PV) { if (m.t === 'state') { pvState = m; root.dataset.deck = m.theme; renderPV(m); } return; }
+    if (m.t === 'hello') sync();
+    else if (m.t === 'cmd') command(m.c);
+  }
+  function command(c) { if (c === 'next') next(); else if (c === 'prev') prev();  }
+  function snapshot() {
+    return { t: 'state', i: state.i, step: state.step, max: maxStep[state.i], timer: { running: timer.running, base: timer.base, t0: timer.t0 }, empties: cases.filter(c => c.empty()).map(c => ({ id: c.id, slide: c.slide, opt: c.opt })), theme: root.dataset.deck };
+  }
+  function sync() { if (IS_PV || state.i < 0) return; const s = snapshot(); post(s); if (pv.classList.contains('overlay')) renderPV(s); }
+  function togglePresenter(forceOverlay) {
+    if (pv.classList.contains('overlay')) { pv.classList.remove('overlay'); stage.focus({ preventScroll: true }); return; }
+    if (!forceOverlay) {
+      if (pvWin && !pvWin.closed) { pvWin.focus(); return; }
+      let w = null;
+      try { w = window.open(location.href.split('#')[0].split('?')[0] + '?presentateur=1', 'iad-presentateur', 'width=1000,height=780'); } catch (e) { w = null; }
+      if (w) { pvWin = w; setTimeout(sync, 800); return; }
+    }
+    pv.classList.add('overlay'); renderPV(snapshot()); // repli : panneau superposé, masquable avec N ou Échap
+  }
+  function buildPV() {
+    pvBuilt = true;
+    const send = c => () => { if (IS_PV) post({ t: 'cmd', c }); else command(c); };
+    pv.append(
+      h('div', { class: 'pv-wide' }, h('p', { class: 'pv-meta', id: 'pv-meta' }), h('h2', { id: 'pv-title' }), h('ul', { class: 'pv-keys', id: 'pv-keys', 'aria-label': 'Mots-clés' })),
+      h('div', { class: 'pv-box' }, h('h3', { text: 'Progression libre' }), h('p', { class: 'pv-clock', id: 'pv-clock', text: '00:00' }), h('p', { id: 'pv-budget' }),
+        h('div', { class: 'pv-btns', style: 'margin-top:12px' },
+          h('button', { type: 'button', id: 'pv-toggle', onclick: send('timer'), text: 'Démarrer' }),
+          h('button', { type: 'button', onclick: send('reset'), text: 'Remettre à zéro' }))),
+      h('div', { class: 'pv-box' }, h('h3', { text: 'Ensuite' }), h('p', { id: 'pv-next' }),
+        h('div', { class: 'pv-btns', style: 'margin-top:12px' },
+          h('button', { type: 'button', onclick: send('prev'), text: 'Précédent' }),
+          h('button', { type: 'button', onclick: send('next'), text: 'Suivant' }))),
+      h('div', { class: 'pv-box pv-wide', id: 'pv-notes-box' }, h('h3', { text: 'Ce qui se dit à l’oral' }), h('p', { class: 'pv-notes', id: 'pv-notes' })),
+      h('div', { class: 'pv-box pv-wide' }, h('h3', { id: 'pv-cases-title' }), h('ul', { class: 'pv-cases', id: 'pv-cases' })));
+  }
+  function renderPV(st) {
+    if (!pvBuilt) buildPV();
+    if (!st || st.i == null) return;
+    const i = st.i, p = partOf(i), ms = st.timer.base + (st.timer.running ? Date.now() - st.timer.t0 : 0), ts = timeState(ms, i);
+    $('#pv-meta').textContent = fr('Slide ' + (i + 1) + ' / ' + N + ', ' + CONFIG.parties[p].nom.toLowerCase()  + ' étape ' + st.step + ' sur ' + st.max + (isBonus(i) ? '. Bonus : à passer si le temps manque' : ''));
+    $('#pv-title').textContent = titles[i];
+    const keys = $('#pv-keys'); keys.textContent = ''; (CONFIG.motsCles[i] || []).forEach(k => keys.append(h('li', { text: k })));
+    const clock = $('#pv-clock'); clock.textContent = mmss(ms); clock.dataset.state = ts;
+    $('#pv-budget').textContent = fr((ts === 'ok' ? 'Dans le budget' : ts === 'warn' ? 'Dépassement de plus de 10 %' : 'Dépassement de plus de 25 %') + '. Budget cumulé : ' + num(cum[i], 1) + ' min sur ' + num(TOTAL, 1) + '.');
+    $('#pv-toggle').textContent = st.timer.running ? 'Pause' : 'Démarrer';
+    $('#pv-next').textContent = i < N - 1 ? fr((i + 2) + '. ' + titles[i + 1]) : 'Fin de la présentation.';
+    const note = CONFIG.notes[i + 1]; $('#pv-notes-box').hidden = !note; $('#pv-notes').textContent = note ? fr(note) : '';
+    const list = $('#pv-cases'); list.textContent = '';
+    const em = st.empties.slice().sort((a, b) => (b.slide === i + 1) - (a.slide === i + 1) || a.slide - b.slide);
+    $('#pv-cases').parentNode.hidden = !em.length;
+    $('#pv-cases-title').textContent = fr('Cases vides restantes : ' + em.length);
+    em.forEach(c => list.append(h('li', { class: c.slide === i + 1 ? 'here' : '' }, h('b', { text: c.id }), h('span', { text: 'slide ' + c.slide + (c.opt ? ', optionnelle' : '') }))));
+    if (!em.length) list.append(h('li', { text: 'Toutes les cases sont remplies.' }));
+  }
+
+  /* ---------- Cases vides ---------- */
+  const cases = [];
+  const caseOf = id => cases.find(c => c.id === id);
+  function initCases() {
+    $$('.case[data-case]').forEach(box => {
+      const id = box.dataset.case, kind = box.dataset.kind, opt = box.hasAttribute('data-opt');
+      const slide = slides.indexOf(box.closest('.slide')) + 1;
+      const c = { id, kind, opt, slide, box, value: '', listeners: [], empty: () => !c.value };
+      const changed = () => { box.classList.toggle('filled', !!c.value); c.listeners.forEach(f => f(c.value)); sync(); };
+      if (kind === 'img') {
+        const idEl = h('span', { class: 'case-id', text: id });
+        const hint = h('span', { class: 'case-hint', text: 'Dépose une image ici' + (opt ? ' (optionnelle)' : '') });
+        const img = h('img', { alt: box.dataset.alt || id, hidden: true });
+        const file = h('input', { type: 'file', accept: 'image/*', hidden: true, tabindex: '-1', 'aria-hidden': 'true' });
+        const b = h('button', { type: 'button', class: 'case-btn', onclick: () => file.click() }, idEl, hint, img);
+        const set = src => {
+          c.value = src || ''; img.hidden = !src; idEl.hidden = hint.hidden = !!src;
+          if (src) img.src = src; else img.removeAttribute('src');
+          b.setAttribute('aria-label', fr(id + (src ? ' : changer l’image. ' + img.alt : ' : case vide, déposer ou choisir une image')));
+          changed();
+        };
+        const take = f => { if (f && /^image\//.test(f.type)) set(URL.createObjectURL(f)); };
+        img.addEventListener('error', () => set(''));
+        file.addEventListener('change', () => take(file.files[0]));
+        box.addEventListener('dragover', e => { e.preventDefault(); box.classList.add('drag'); });
+        box.addEventListener('dragleave', () => box.classList.remove('drag'));
+        box.addEventListener('drop', e => { e.preventDefault(); box.classList.remove('drag'); take(e.dataTransfer.files[0]); });
+        box.append(b, file); c.set = set; cases.push(c);
+        set(CONFIG.images[id] || (typeof IMAGES_INTEGREES !== 'undefined' && IMAGES_INTEGREES[id]) || '');
+      } else {
+        const isUrl = kind === 'link' || kind === 'qr';
+        const input = h('input', { id: 'case-' + id, type: kind === 'number' ? 'number' : isUrl ? 'url' : 'text', autocomplete: 'off', spellcheck: 'false', placeholder: isUrl ? 'https://' : kind === 'number' ? '' : 'À compléter', min: kind === 'number' ? 1 : null, max: kind === 'number' ? 90 : null, inputmode: kind === 'number' ? 'numeric' : null });
+        const open = isUrl ? h('a', { class: 'btn primary', target: '_blank', rel: 'noopener noreferrer', hidden: true, 'aria-label': 'Ouvrir le lien dans un nouvel onglet' }, icon('external'), h('span', { text: 'Ouvrir' })) : null;
+        const qr = kind === 'qr' ? h('div', { class: 'case-qr', 'aria-live': 'polite' }) : null;
+        const validUrl = v => { try { const u = new URL(v); return /^https?:$/.test(u.protocol) && (u.hostname.includes('.') || u.hostname === 'localhost'); } catch (e) { return false; } };
+        const update = () => {
+          c.value = input.value.trim();
+          if (open) { const ok = validUrl(c.value); open.hidden = !ok; if (ok) open.href = c.value; else open.removeAttribute('href'); }
+          if (qr) {
+            const svg = validUrl(c.value) ? QR.svg(c.value) : null;
+            if (svg) qr.innerHTML = svg;
+            else { qr.textContent = ''; qr.append(h('p', { text: validUrl(c.value) ? 'Adresse trop longue pour le QR code.' : 'Saisis une adresse : le QR code apparaît ici.' })); }
+          }
+          changed();
+        };
+        input.addEventListener('input', update);
+        box.append(h('div', { class: 'case-form' },
+          h('label', { for: 'case-' + id }, h('span', { class: 'case-id', text: id }), h('span', { class: 'case-hint', text: box.dataset.label || '' })),
+          h('div', { class: 'case-row' }, input, open)));
+        if (qr) box.append(qr);
+        c.set = v => { input.value = v; update(); }; c.input = input; cases.push(c);
+        c.set((kind === 'link' || kind === 'qr' ? CONFIG.urls[id] : CONFIG.textes[id]) || '');
+      }
+    });
+  }
+
+  /* =====================================================================
+     COMPOSANTS
+     ===================================================================== */
+  function toggleSwitch(labelOff, labelOn, on, cb, name) {
+    const lab = h('span', {});
+    const b = h('button', { type: 'button', class: 'switch', role: 'switch', 'aria-label': name ? fr(name) : null }, h('span', { class: 'track' }), lab);
+    const set = v => { on = v; b.setAttribute('aria-checked', String(on)); lab.textContent = fr(on ? labelOn : labelOff); cb(on); };
+    b.addEventListener('click', () => set(!on)); set(on);
+    return b;
+  }
+  function segmented(name, options, value, cb) {
+    const g = h('div', { class: 'seg', role: 'group', 'aria-label': fr(name) });
+    const set = v => { value = v; $$('button', g).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === v))); cb(v); };
+    options.forEach(o => g.append(h('button', { type: 'button', 'data-v': o[0], text: o[1], onclick: () => set(o[0]) })));
+    set(value);
+    return g;
+  }
+  function range(id, label, min, max, value, step, fmt, cb) {
+    const out = h('output', { for: id });
+    const input = h('input', { type: 'range', id, min, max, step, value });
+    const upd = () => { out.textContent = fr(fmt(Number(input.value))); input.setAttribute('aria-valuetext', out.textContent); cb(Number(input.value)); };
+    input.addEventListener('input', upd);
+    const row = h('div', { class: 'range-row' }, h('label', { class: 'field-label', for: id }, label + ' : ', out), input);
+    row.refresh = upd;
+    return row;
+  }
+
+  const printers = []; // ce qui doit tout révéler avant l'impression
+  window.addEventListener('beforeprint', () => printers.forEach(f => f()));
+
+  /* --- Question d'ouverture : la réponse se révèle --- */
+  function initQuestion() {
+    const el = $('[data-comp="question"]');
+    if (!el) return;
+    const reveal = () => { el.textContent = ''; el.append(h('p', { class: 'lead', text: fr(CONFIG.question) })); };
+    el.append(btn('Révéler la réponse', reveal, 'primary'));
+    printers.push(reveal);
+  }
+
+  /* --- Étapes cliquables (trajet d'un prompt, briques de la démo) --- */
+  function initSteps() {
+    $$('[data-comp="steps"]').forEach(el => {
+      const data = CONFIG[el.dataset.src];
+      const detail = h('div', { class: 'panel pipe-detail', 'aria-live': 'polite' }), steps = h('div', { class: 'pipe-steps' }), btns = [];
+      steps.style.gridTemplateColumns = data.map(() => 'minmax(0, 1fr)').join(' auto ');
+      const pick = k => {
+        btns.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k)));
+        const d = data[k]; detail.textContent = '';
+        detail.append(h('h3', { text: d.titre }), h('p', { text: d.txt }));
+        if (d.note) detail.append(h('p', { class: 'note', text: d.note }));
+      };
+      data.forEach((d, k) => {
+        const b = h('button', { type: 'button', class: 'pipe-step', onclick: () => pick(k) }, h('h3', { text: (k + 1) + '. ' + d.nom }),
+          h('span', { class: 'pipe-meta' }, h('span', { class: 'chip', text: d.chip })),
+          h('span', { class: 'pipe-meta' }, h('span', { class: 'pipe-where', text: d.ou }), d.cout ? h('span', { class: 'pipe-cost', text: d.cout }) : null));
+        btns.push(b); if (k) steps.append(icon('arrow')); steps.append(b);
+      });
+      el.append(steps, detail); pick(0);
+    });
+  }
+
+  /* --- Vrai ou faux : une affirmation, la réponse se révèle --- */
+  function initVraiFaux() {
+    const el = $('[data-comp="vraifaux"]');
+    if (!el) return;
+    CONFIG.vraiFaux.forEach(q => {
+      const ans = h('div', { class: 'vf-ans' });
+      const reveal = () => {
+        ans.textContent = '';
+        ans.append(h('span', { class: 'vf-tag ' + (q.vrai ? 'vrai' : 'faux'), text: q.vrai ? 'Vrai' : 'Faux' }), h('span', { class: 'vf-why', text: q.why }));
+      };
+      const b = btn('Révéler', reveal, 'primary');
+      b.setAttribute('aria-label', fr('Révéler la réponse : ' + q.txt));
+      ans.append(b); printers.push(reveal);
+      el.append(h('div', { class: 'vf-row' }, h('p', { text: q.txt }), ans));
+    });
+  }
+
+  /* --- Quelle IA pour cette tâche ? Une tâche, la famille se révèle --- */
+  function initQuiz() {
+    const el = $('[data-comp="quiz"]');
+    if (!el) return;
+    CONFIG.quiz.forEach(q => {
+      const ans = h('div', { class: 'vf-ans' });
+      const reveal = () => { ans.textContent = ''; ans.append(h('span', { class: 'vf-tag rep', text: q.rep }), h('span', { class: 'vf-why', text: q.why })); };
+      const b = btn('Révéler', reveal, 'primary');
+      b.setAttribute('aria-label', fr('Révéler la réponse : ' + q.txt));
+      ans.append(b); printers.push(reveal);
+      el.append(h('div', { class: 'vf-row' }, h('p', { text: q.txt }), ans));
+    });
+  }
+
+  /* --- Lexique : un terme, une phrase, et un raccourci vers la slide qui l'explique --- */
+  function initLexique() {
+    const el = $('[data-comp="lexique"]');
+    if (!el) return;
+    const termes = CONFIG.lexique.slice().sort((a, b) => a.terme.localeCompare(b.terme, 'fr'));
+    const panel = h('div', { class: 'panel lex-panel', 'aria-live': 'polite' }), btns = [];
+    const pick = k => {
+      btns.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k)));
+      const t = termes[k], n = slides.findIndex(s => s.dataset.key === t.cle) + 1;
+      panel.textContent = '';
+      panel.append(h('h3', { text: t.nom || t.terme }), h('p', { text: t.def }));
+      if (n) panel.append(btn('Voir la slide ' + n, () => jump(n), 'lex-go', 'arrow'));
+    };
+    const grid = h('div', { class: 'lex-grid', role: 'group', 'aria-label': 'Termes du lexique, par ordre alphabétique' });
+    termes.forEach((t, k) => { const b = h('button', { type: 'button', class: 'btn lex-term', text: t.terme, onclick: () => pick(k) }); btns.push(b); grid.append(b); });
+    el.append(grid, panel); pick(0);
+  }
+
+  /* --- Sources : liens cliquables, neuf par page --- */
+  function initRefs() {
+    const el = $('[data-comp="refs"]');
+    if (!el) return;
+    const PAR = 9, refs = CONFIG.references, pages = Math.max(1, Math.ceil(refs.length / PAR)); let page = 0;
+    const grid = h('ul', { class: 'refs-grid' }), info = h('span', { class: 'refs-info', 'aria-live': 'polite' });
+    const avant = btn('Précédentes', () => { page--; draw(); }, '', 'chevL'), apres = btn('Suivantes', () => { page++; draw(); }, '', 'chevR');
+    const draw = () => {
+      grid.textContent = '';
+      refs.slice(page * PAR, (page + 1) * PAR).forEach(r => grid.append(h('li', {}, h('a', { class: 'ref', href: r.url, target: '_blank', rel: 'noopener noreferrer' },
+        h('span', { class: 'ref-titre', text: r.titre }), h('span', { class: 'ref-source' }, icon('external'), h('span', { text: r.source }))))));
+      info.textContent = fr('Page ' + (page + 1) + ' sur ' + pages);
+      avant.style.visibility = page === 0 ? 'hidden' : 'visible'; apres.style.visibility = page === pages - 1 ? 'hidden' : 'visible';
+    };
+    el.append(grid); if (pages > 1) el.append(h('div', { class: 'refs-pager' }, avant, info, apres));
+    draw();
+  }
+
+  /* ---------- Démarrage ---------- */
+  function loadFonts() {
+    if (!navigator.onLine || !CONFIG.policesUrl) return; // hors ligne : polices système de repli
+    const l = h('link', { rel: 'stylesheet', href: CONFIG.policesUrl });
+    document.head.append(h('link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }), l);
+  }
+  function init() {
+    loadFonts();
+    if (bc) bc.onmessage = e => onMsg(e.data);
+    window.addEventListener('message', e => onMsg(e.data));
+    if (IS_PV) {
+      document.body.classList.add('pv-window'); document.title = 'Vue présentateur';
+      buildPV(); $('#pv-title').textContent = fr('En attente de la présentation : garde l’autre fenêtre ouverte.');
+      setInterval(() => { if (pvState) renderPV(pvState); }, 500);
+      document.addEventListener('keydown', e => {
+        if (e.ctrlKey || e.metaKey || e.altKey || e.target.tagName === 'BUTTON' && (e.key === ' ' || e.key === 'Enter')) return;
+        const c = { ArrowRight: 'next', ArrowDown: 'next', PageDown: 'next', ' ': 'next', ArrowLeft: 'prev', ArrowUp: 'prev', PageUp: 'prev' }[e.key];
+        if (c) { e.preventDefault(); post({ t: 'cmd', c }); }
+      });
+      post({ t: 'hello' }); setTimeout(() => { if (!pvState) post({ t: 'hello' }); }, 1000);
+      return;
+    }
+    initCases();
+    [initLexique, initRefs].forEach(f => f());
+    // une image lâchée hors d'une case ne doit pas remplacer la présentation
+    ['dragover', 'drop'].forEach(t => window.addEventListener(t, e => e.preventDefault()));
+    buildGrid(); bindPointer(); fit();
+    window.addEventListener('resize', fit);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n >= 1 && n <= N && n - 1 !== state.i) jump(n); });
+    setInterval(tick, 500);
+    const n0 = parseInt(location.hash.slice(1), 10);
+    if (n0 >= 1 && n0 <= N) jump(n0); else show(0, 0);
+  }
+  init();
+})();
+</script>
+
+
+<script id="pont-plateforme">
+/* Ajouté par la plateforme (scripts/integrer-diapos.mjs). Aucune donnée n'est envoyée : messages internes à la page. */
+(() => {
+  const dansCadre = window.parent !== window;
+  const $ = (id) => document.getElementById(id);
+  const saisie = (e) => { const t = e.target, tag = t.tagName || ''; return tag === 'TEXTAREA' || (tag === 'INPUT' && !/^(range|color|checkbox|radio|file|button)$/.test(t.type)); };
+  // Rien n'est ouvert dans les diapos (grille, écran noir, saisie d'un numéro, vue présentateur) ?
+  const libre = () => $('grid')?.hidden !== false && $('black')?.hidden !== false && $('toast')?.hidden !== false && !$('pv')?.classList.contains('overlay');
+  if (dansCadre) {
+    // Dans la plateforme : F et Échap sont confiés au lecteur, qui garde un bouton « Quitter » visible.
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
+      if ((e.key === 'f' || e.key === 'F') && !saisie(e)) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        parent.postMessage({ type: 'diapos:plein-ecran' }, location.origin);
+      } else if (e.key === 'Escape' && libre()) {
+        parent.postMessage({ type: 'diapos:quitter' }, location.origin);
+      }
+    }, true);
+  } else {
+    // Ouvertes seules : un lien de retour toujours visible.
+    const a = document.createElement('a');
+    a.id = 'retour-cours';
+    a.href = "/comprendre-ia/premiers-pas-ia/";
+    a.textContent = '← Retour au cours';
+    a.style.cssText = 'position:fixed;left:14px;bottom:18px;z-index:50;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:14px;background:var(--surface);color:var(--text);border:1px solid var(--line);font:600 15px/1 system-ui,sans-serif;text-decoration:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.5)';
+    document.body.append(a);
+  }
+})();
+</script>
+<script src="interactions.js" defer></script>
+<script src="../lecture.js" data-retour="/comprendre-ia/premiers-pas-ia/" defer></script>
+<a id="lecture-cours" href="?lecture=1">Lire le texte</a>
+</body>
+</html>

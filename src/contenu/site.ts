@@ -43,6 +43,7 @@ export function pagesIndexables() {
       const base = `/${categorie.slug}/${cours.slug}/`;
       pages.push({ chemin: base, date: cours.misAJour }, { chemin: base + 'sources/', date: cours.misAJour });
       if (cours.diapos) pages.push({ chemin: base + 'diapos/', date: cours.misAJour });
+      if (cours.slug === 'premiers-pas-ia') pages.push({ chemin: base + 'exercices/', date: cours.misAJour });
       for (const demo of cours.demos.filter(d => !d.indisponible)) pages.push({ chemin: base + `demos/${demo.slug}/`, date: cours.misAJour });
     }
   }

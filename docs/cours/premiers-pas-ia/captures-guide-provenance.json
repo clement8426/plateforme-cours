@@ -1,0 +1,38 @@
+[
+  {
+    "fichier": "01-ouvrir-gemini.png",
+    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
+    "date": "2026-11-15",
+    "etat": "Accueil, aucune saisie"
+  },
+  {
+    "fichier": "02-ecrire-demande.png",
+    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
+    "date": "2026-11-15",
+    "etat": "Demande vague préparée, non envoyée"
+  },
+  {
+    "fichier": "03-lire-reponse.png",
+    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
+    "date": "2026-11-15",
+    "etat": "Réponse réellement générée à la demande vague"
+  },
+  {
+    "fichier": "04-demande-precise.png",
+    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
+    "date": "2026-11-15",
+    "etat": "Demande précise préparée, non envoyée"
+  },
+  {
+    "fichier": "06-coller-consignes-v2.png",
+    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
+    "date": "2026-11-15",
+    "etat": "Consignes initiales lues directement dans le guide, collées dans Gemini ; identité des mots vérifiée, message non envoyé."
+  },
+  {
+    "fichier": "07-tester-information-absente.png",
+    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
+    "date": "2026-11-15",
+    "etat": "Test réel, brief et question fournis ensemble ; information absente signalée"
+  }
+]

@@ -1,0 +1,11 @@
+categorie;article;unite;disponible_gratuitement;prix_unitaire_chf;precision
+Materiel;Ordinateur portable;piece;6;0;Pret gratuit pour cet atelier fictif
+Materiel;Videoprojecteur;piece;1;0;Pret gratuit pour cet atelier fictif
+Materiel;Tableau;piece;1;0;Disponible dans la salle
+Lieu;Salle ClairLieu;atelier;1;0;Capacite de 24 personnes animateurs compris
+Impression;Aide-memoire A4 recto noir et blanc;page;0;0.15;Un exemplaire par participant obligatoire
+Impression;Fiche observation A4 recto noir et blanc;page;0;0.15;Quantite a justifier selon organisation
+Fourniture;Cartes vierges;lot de 20 cartes;0;3.50;Un lot obligatoire pour tout le groupe
+Boisson;Eau ou boisson simple;portion par personne;0;1.20;Une portion par personne animateurs compris
+Collation;Biscuit;portion par personne;0;0.80;Facultatif
+Fourniture;Stylo;piece;20;0;Vingt stylos pretes gratuitement
