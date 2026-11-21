@@ -1,14 +1,14 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "comptes": {
-  "mcp": 2702,
-  "plugins": 987,
-  "skills": 8782
+  "mcp": 2766,
+  "plugins": 990,
+  "skills": 8784
  },
  "trouves": {
-  "mcp": 60377,
-  "plugins": 18958,
-  "skills": 20068
+  "mcp": 60880,
+  "plugins": 18956,
+  "skills": 20069
  },
  "sources": [
   {
@@ -38,7 +38,7 @@
   },
   {
    "nom": "marketplace cursor/plugins",
-   "n": 154,
+   "n": 155,
    "ok": true
   },
   {
@@ -58,12 +58,12 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 223,
+   "n": 225,
    "ok": true
   },
   {
    "nom": "skills aws/agent-toolkit-for-aws",
-   "n": 219,
+   "n": 221,
    "ok": true
   },
   {
@@ -78,7 +78,7 @@
   },
   {
    "nom": "skills stripe/ai",
-   "n": 66,
+   "n": 77,
    "ok": true
   },
   {
@@ -128,7 +128,7 @@
   },
   {
    "nom": "connecteurs Claude",
-   "n": 893,
+   "n": 956,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 52715,
+   "n": 52806,
    "ok": true
   }
  ],
