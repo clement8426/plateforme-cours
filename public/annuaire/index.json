@@ -1,14 +1,14 @@
 {
- "date": "2026-11-21",
+ "date": "2026-11-22",
  "comptes": {
-  "mcp": 2766,
-  "plugins": 990,
-  "skills": 8784
+  "mcp": 2769,
+  "plugins": 1000,
+  "skills": 8785
  },
  "trouves": {
-  "mcp": 60880,
-  "plugins": 18956,
-  "skills": 20069
+  "mcp": 61280,
+  "plugins": 19773,
+  "skills": 20062
  },
  "sources": [
   {
@@ -152,8 +152,23 @@
    "ok": true
   },
   {
+   "nom": "recherche filename:marketplace.json path:.claude-plugin",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "recherche filename:plugin.json path:.claude-plugin",
+   "n": 0,
+   "ok": true
+  },
+  {
+   "nom": "recherche filename:SKILL.md",
+   "n": 0,
+   "ok": true
+  },
+  {
    "nom": "enrichissement GitHub",
-   "n": 52806,
+   "n": 53041,
    "ok": true
   }
  ],
