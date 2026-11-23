@@ -1,14 +1,14 @@
 {
- "date": "2026-11-22",
+ "date": "2026-11-23",
  "comptes": {
-  "mcp": 2749,
-  "plugins": 1001,
-  "skills": 8734
+  "mcp": 2755,
+  "plugins": 1002,
+  "skills": 8737
  },
  "trouves": {
-  "mcp": 61349,
-  "plugins": 19770,
-  "skills": 20100
+  "mcp": 61905,
+  "plugins": 19768,
+  "skills": 20099
  },
  "sources": [
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 53026,
+   "n": 53130,
    "ok": true
   }
  ],
