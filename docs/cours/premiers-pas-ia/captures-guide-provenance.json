@@ -88,41 +88,5 @@
     "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
     "date": "2026-11-24",
     "etat": "Tests réels : information absente signalée"
-  },
-  {
-    "fichier": "01-ouvrir-gemini.png",
-    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
-    "date": "2026-11-15",
-    "etat": "Accueil, aucune saisie Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
-  },
-  {
-    "fichier": "02-ecrire-demande.png",
-    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
-    "date": "2026-11-15",
-    "etat": "Demande vague préparée, non envoyée Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
-  },
-  {
-    "fichier": "03-lire-reponse.png",
-    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
-    "date": "2026-11-15",
-    "etat": "Réponse réellement générée à la demande vague Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
-  },
-  {
-    "fichier": "04-demande-precise.png",
-    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
-    "date": "2026-11-15",
-    "etat": "Demande précise préparée, non envoyée Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
-  },
-  {
-    "fichier": "06-coller-consignes-v2.png",
-    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
-    "date": "2026-11-15",
-    "etat": "Consignes initiales lues directement dans le guide, collées dans Gemini ; identité des mots vérifiée, message non envoyé. Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
-  },
-  {
-    "fichier": "07-tester-information-absente.png",
-    "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
-    "date": "2026-11-15",
-    "etat": "Test réel, brief et question fournis ensemble ; information absente signalée Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   }
 ]
