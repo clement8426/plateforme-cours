@@ -69,7 +69,7 @@
     "id": "gpt",
     "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts",
     "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
-    "soutient": "Création et modification des GPT"
+    "soutient": "Création des GPT fermée aux comptes personnels ; retrait standard annoncé pour le 11 décembre 2026 ; remplacement par les plugins (page relue le 24 novembre 2026)"
   },
   {
     "id": "gems",
@@ -102,9 +102,15 @@
     "soutient": "Microsoft Copilot"
   },
   {
-    "id": "spaces",
-    "url": "https://huggingface.co/docs/hub/spaces-overview",
-    "verification": "Page primaire ouverte et contenu pertinent lu le 15 novembre 2026",
-    "soutient": "Les Spaces Hugging Face"
+    "id": "projets",
+    "url": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 24 novembre 2026",
+    "soutient": "Créer un projet, ajouter des instructions dans Paramètres du projet, mémoire du projet ; réservé aux utilisateurs connectés selon l’offre"
+  },
+  {
+    "id": "retrait-gpt",
+    "url": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq",
+    "verification": "Page primaire ouverte et contenu pertinent lu le 24 novembre 2026",
+    "soutient": "Retrait des GPT le 11 décembre 2026, migration vers les plugins, projet proposé pour un travail continu"
   }
 ]

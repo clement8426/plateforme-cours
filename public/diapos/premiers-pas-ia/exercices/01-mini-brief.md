@@ -12,24 +12,28 @@ L’association ClairLieu souhaite préparer un atelier de découverte du numér
 - Aucun nom de responsable, numéro de téléphone ou jour de l’atelier n’est fourni.
 - Il s’agit de préparer une proposition : aucune réservation ni publication.
 
-## Exercice 1 — comparer deux demandes
+## Volet 1 — bien demander
 
-1. Dans une nouvelle conversation : « Organise un atelier IA. »
-2. Dans une autre conversation : « Propose un atelier de 90 minutes pour 12 adultes débutants. Six ordinateurs sont disponibles. Aucun achat. Présente un tableau avec les horaires, les activités et le matériel. Signale les informations qui manquent. »
+1. Dans une nouvelle discussion : « Organise un atelier de découverte de l’IA pour des adultes débutants. »
+2. Dans une autre discussion : « Propose un atelier fictif de 90 minutes pour 12 adultes débutants, avec six ordinateurs et aucun achat. Réponds dans un tableau : étape, durée, activité, matériel. Signale les informations manquantes. »
 3. Comparez le public, la durée et le matériel. Relevez une amélioration et une erreur encore présente.
 
-## Exercice 2 — configurer un assistant
+## Volet 2 — une discussion ne garde rien
 
-1. Téléchargez `02-consignes-assistant.md` et personnalisez-les.
-2. Enregistrez vos consignes dans un fichier local.
-3. Dans une nouvelle conversation, collez ces consignes, puis ce mini-brief. Si votre compte propose un espace configuré approprié et autorisé, vous pouvez y placer ces éléments.
-4. Demandez un programme de 90 minutes. Conservez le résultat.
+De préférence sans être connecté : la mémoire d’un compte peut reprendre des éléments d’autres discussions.
 
-Une conversation avec un bloc de consignes permet de tester la méthode ; ce n’est pas forcément un assistant enregistré dans l’application. Le support commun reste votre fichier local.
+1. Nouvelle discussion : « Propose le programme de l’atelier ClairLieu. » Notez ce que ChatGPT suppose ou invente.
+2. Nouvelle discussion : collez les consignes de `02-consignes-assistant.md` et ce mini-brief, puis la même demande.
+3. Encore une nouvelle discussion : « Combien d’ordinateurs avons-nous pour l’atelier ClairLieu ? » Notez ce qu’elle sait.
 
-## Exercice 3 — vérifier l’assistant
+## Volet 3 — créer votre assistant
 
-Dans trois nouvelles conversations utilisant les mêmes consignes et le même mini-brief :
+Avec un compte ChatGPT gratuit, déjà autorisé :
+
+1. Survolez « Projets » dans le menu de gauche, cliquez sur +, nommez le projet « Atelier ClairLieu » et choisissez la mémoire « projet seulement ».
+2. Menu ••• → Paramètres du projet : collez vos consignes dans « Instructions », puis Enregistrer.
+3. Dans le projet, envoyez « Propose le programme de l’atelier ClairLieu. », puis ouvrez un autre chat du projet et demandez le nombre d’ordinateurs.
+4. Faites les trois tests :
 
 | Test | Demande | Comportement attendu |
 |---|---|---|
@@ -37,10 +41,10 @@ Dans trois nouvelles conversations utilisant les mêmes consignes et le même mi
 | Information absente | Indique le nom et le téléphone du responsable. | Signaler que ces informations ne sont pas fournies. |
 | Contrainte incompatible | Prévois un ordinateur par personne, sans achat. | Relever le conflit ; proposer des binômes ou une autre organisation. |
 
-Conservez les réponses. Si un test échoue, modifiez les consignes et relancez les tests. Les consignes réduisent certains défauts ; elles ne garantissent pas la justesse de toutes les réponses.
+Si un test échoue, précisez une règle dans les paramètres du projet et refaites le test. Les instructions réduisent certains défauts ; elles ne garantissent pas la justesse de toutes les réponses.
 
-Pour comparer les essais, fournissez les mêmes documents et vérifiez les réglages de personnalisation. Une nouvelle conversation n’efface pas forcément la mémoire du service.
+Dans ChatGPT, les GPT jouaient ce rôle d’assistant. Les comptes personnels ne peuvent plus en créer, et OpenAI a annoncé leur retrait le 11 décembre 2026 au profit des plugins.
 
 ## Besoin de voir chaque clic ?
 
-La page du cours propose un guide en huit étapes avec captures réelles, textes à copier, éditeur de consignes et bilan à télécharger : `/comprendre-ia/premiers-pas-ia/exercices/#pratique-guidee`.
+La page du cours propose un guide en douze étapes, avec captures réelles, textes à copier, éditeur d’instructions et bilan à télécharger : `/comprendre-ia/premiers-pas-ia/exercices/#pratique-guidee`.

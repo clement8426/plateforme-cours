@@ -34,4 +34,4 @@ Avant de proposer une version finale, confrontez-la aux contraintes du brief. Si
 
 ---
 
-Mode d’emploi : copiez les consignes ci-dessus dans une nouvelle conversation, puis ajoutez le mini-brief de pratique guidée ou les documents de mise en application. Les interfaces de personnalisation changent ; un fichier texte et une conversation classique suffisent pour tester ce cadre.
+Mode d’emploi : collez les consignes ci-dessus dans les instructions d’un projet ChatGPT (menu ••• → Paramètres du projet), avec le mini-brief. Sans projet, collez-les au début d’une nouvelle discussion : elles ne vaudront que pour cette discussion. Les interfaces changent ; gardez ce fichier.

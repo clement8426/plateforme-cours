@@ -4,15 +4,15 @@
 
 ## Livrables
 
-- `public/diapos/premiers-pas-ia/index.html` : 30 diapos, avec trois exercices à votre rythme.
+- `public/diapos/premiers-pas-ia/index.html` : 32 diapos, avec un seul exercice en trois volets.
 - `?lecture=1` : lecture continue, adaptée à la relecture et au redimensionnement du texte.
-- `public/diapos/premiers-pas-ia/exercices/index.html` : exercices de pratique guidée, documents et mission de mise en application.
-- Le ZIP contient six fichiers Markdown et un CSV, tous fictifs. Les réponses restent dans les fichiers des étudiants, pas sur le site.
-- `diapos.md` et `contenu.json` : contenu éditorial de cette première version.
+- Pratique guidée : `/comprendre-ia/premiers-pas-ia/exercices/` (composant `src/composants/PratiqueGuideeIa.tsx`), douze étapes.
+- `exercices/01-mini-brief.md` et `exercices/02-consignes-assistant.md` : documents de travail, fictifs.
+- `diapos.md` et `contenu.json` : contenu éditorial.
 
 ## Progression modulable
 
-Le cours s’utilise à n’importe quel moment, en une ou plusieurs séances : découverte des outils, pratique guidée, types d’IA et Hugging Face, puis mission de projet. Aucun horaire ni chronomètre n’est imposé. Les durées du brief fictif sont uniquement des contraintes de l’exercice.
+Le cours s’utilise à n’importe quel moment, en une ou plusieurs séances. Aucun horaire ni chronomètre n’est imposé. Les durées du brief fictif sont uniquement des contraintes de l’exercice.
 
 ## Présentation
 
@@ -65,3 +65,16 @@ Aucun horaire de cours, créneau de journée ou chronomètre. Les phases de trav
 ## Guide illustré pour débutants
 
 La pratique guidée du site comprend huit étapes avec six captures réelles : ouvrir Gemini, copier/coller et envoyer une demande, lire la réponse, préciser la demande, préparer les consignes localement, les fournir dans un nouveau chat, tester et enregistrer le bilan. Le guide explique les onglets, les raccourcis Windows/Mac, le téléchargement, les résultats attendus et les blocages. Ses saisies restent en mémoire de page et s’exportent en texte ; aucun envoi du guide vers un serveur. La provenance des captures est dans captures-guide-provenance.json. Les réponses d’exemple sont réellement générées ; elles ne sont pas un corrigé.
+
+## Révision du 24 novembre 2026 : un seul cours, un seul exercice en trois volets
+
+Demandes de Clément : un ordre plus logique pour les débutants, ChatGPT à la place de Gemini, retirer la mission Déclic numérique et faire un seul exercice « Votre premier assistant » en volets, pour montrer qu’une discussion ne garde rien, puis faire créer un assistant. Non publié.
+
+- **32 diapos** : essayer un chat (1 à 7, volet 1 en diapo 7), vérifier et se repérer (8 à 12), de la discussion à l’assistant (13 à 26 : volet 2 en diapo 13, GPT, projet et plugin en 17 et 18, volet 3 en 23 et 24), agents et suite (27 à 30), sources (31 et 32).
+- **Mission retirée** : les diapos de la mission et de Hugging Face, la section de la page des exercices, l’exercice complémentaire du catalogue. Les fichiers `03` à `07`, `dossier-clairlieu.zip` et `exercices/index.html` restent dans `public/` mais ne sont plus reliés : à supprimer si Clément le confirme.
+- **Pratique guidée, douze étapes** : volet 1 « Bien demander » (1 à 4), volet 2 « Une discussion ne garde rien » (5 à 7 : demande sans cadre, cadre recollé, nouvelle discussion qui a oublié), volet 3 « Créer votre assistant » (8 à 11 : projet, instructions, deux conversations, trois tests), bilan (12).
+- **Pourquoi un projet et pas un GPT** : d’après l’aide d’OpenAI lue le 24 novembre 2026, les comptes personnels ne peuvent plus créer de GPT ; retrait standard le 11 décembre 2026 au profit des plugins ; OpenAI propose le projet pour un travail continu. Choix validé par Clément.
+- **Projet de démonstration** : « Atelier ClairLieu », créé dans le compte ChatGPT de Clément le 24 novembre 2026, mémoire « projet seulement », avec deux conversations de test. Il peut être supprimé depuis ses paramètres une fois les captures validées.
+- **Captures** : volets 1 et 2 sans compte (1280 × 850). Volet 3 dans le panneau navigateur avec le compte de Clément (800 × 531) ; l’historique et l’avatar sont recouverts de barres neutres. Détail dans `captures-guide-provenance.json`. Les anciennes captures Gemini ne sont plus utilisées.
+- **Après le 11 décembre 2026** : relire les diapos 17 et 18 (GPT, plugins) et l’introduction du guide.
+- Modules interactifs : 3 (captures), 5 (demande), 8 (vérifier), 11 (outils), 22 (instructions), 24 (tests), 27 (chat, assistant, agent). Service worker : v66.

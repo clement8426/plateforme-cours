@@ -23,7 +23,7 @@
   const gallery=$('[data-widget="captures"]');
   if(gallery){
     const img=$('[data-capture]',gallery);
-    tabs(gallery,'button[data-choice]',name=>{const label=name==='grok'?'Grok':'Gemini';img.src='captures/'+name+'-exemple.png';img.alt='Interface réelle de '+label+', sans compte connecté, avec la demande d’atelier préparée dans la zone de saisie.';text('[data-caption]',label+' · capture du 15 novembre 2026. Demande préparée, non envoyée.',gallery)});
+    tabs(gallery,'button[data-choice]',name=>{const label={chatgpt:'ChatGPT',gemini:'Gemini',grok:'Grok'}[name],jour=name==='chatgpt'?'24':'15';img.src='captures/'+name+'-exemple.png';img.alt='Interface réelle de '+label+', sans compte connecté, avec la demande d’atelier préparée dans la zone de saisie.';text('[data-caption]',label+' · capture du '+jour+' novembre 2026. Demande préparée, non envoyée.',gallery)});
     const dialog=document.createElement('dialog');dialog.className='capture-dialog';dialog.setAttribute('aria-label','Capture agrandie de l’interface');const close=document.createElement('button');close.type='button';close.textContent='Fermer la capture';const big=document.createElement('img');dialog.append(close,big);document.body.append(dialog);close.addEventListener('click',()=>dialog.close());dialog.addEventListener('keydown',e=>e.stopPropagation());$('.capture-zoom',gallery).addEventListener('click',()=>{big.src=img.src;big.alt=img.alt;dialog.showModal()});
   }
   const tools = [
@@ -37,7 +37,7 @@
   const app=$('[data-widget="outils"]');
   if(app)tabs(app,'button[data-choice]',choice=>{const d=tools[+choice];text('[data-name]',d[0],app);text('[data-publisher]',d[1],app);text('[data-detail]',d[2],app);$('[data-product-link]',app).href=d[3];});
   const ways=$('[data-widget="modes"]');
-  const scenarios={chat:['Un échange à la fois','« Propose un atelier de 90 minutes. » Vous lisez la proposition et précisez ce qu’il faut changer.','Vous donnez les informations utiles dans la conversation.'],assistant:['Un cadre réutilisable','Vous chargez le brief ClairLieu et les règles de votre assistant. Il prépare ses propositions dans ce cadre.','Vous réutilisez les mêmes consignes et vérifiez les réponses.'],agent:['Des actions avec des outils','L’IA pourrait créer un fichier, observer le résultat puis le corriger, si ces actions sont autorisées.','Vous fixez les permissions, les validations et la condition d’arrêt.']};
+  const scenarios={chat:['Un échange à la fois','« Propose un atelier de 90 minutes. » Vous lisez la proposition et précisez ce qu’il faut changer.','Vous donnez les informations utiles dans la conversation.'],assistant:['Un cadre réutilisable','Le projet Atelier ClairLieu contient déjà le brief et les règles. Dans chaque nouvelle conversation du projet, vous écrivez seulement : « Propose le programme. »','Vous ne répétez plus les consignes. Vous vérifiez toujours les réponses.'],agent:['Des actions avec des outils','L’IA pourrait créer un fichier, observer le résultat puis le corriger, si ces actions sont autorisées.','Vous fixez les permissions, les validations et la condition d’arrêt.']};
   if(ways)tabs(ways,'button[data-choice]',choice=>{const d=scenarios[choice];text('[data-mode-title]',d[0],ways);text('[data-mode-example]',d[1],ways);text('[data-mode-human]',d[2],ways);});
   function download(value,name){const u=URL.createObjectURL(new Blob([value],{type:'text/markdown;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
   let dirty=false;

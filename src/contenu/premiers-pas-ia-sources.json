@@ -18,7 +18,19 @@
     },
     {
       "terme": "Assistant configuré",
-      "def": "Un cadre réutilisable qui associe un rôle, des consignes et éventuellement des documents."
+      "def": "Un cadre réutilisable qui associe un rôle, des consignes et éventuellement des documents. Contrairement à une discussion, il garde ce cadre d’une conversation à l’autre."
+    },
+    {
+      "terme": "GPT",
+      "def": "Dans ChatGPT, un assistant configuré : des instructions, des fichiers de référence et des fonctions. Le mot désigne aussi la famille de modèles d’OpenAI. OpenAI a annoncé leur retrait au profit des plugins."
+    },
+    {
+      "terme": "Projet",
+      "def": "Dans ChatGPT, un espace qui regroupe des conversations, des fichiers et des instructions. Chaque nouvelle conversation du projet reprend ses instructions."
+    },
+    {
+      "terme": "Plugin",
+      "def": "Dans ChatGPT, le format annoncé pour remplacer les GPT : des consignes réutilisables, des fichiers de référence et des applications connectées."
     },
     {
       "terme": "Agent",
@@ -35,9 +47,19 @@
   ],
   "references": [
     {
-      "titre": "Création et modification des GPT",
-      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "titre": "Les GPT : création restreinte et retrait annoncé au profit des plugins",
+      "source": "OpenAI · vérifié le 24 novembre 2026",
       "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+    },
+    {
+      "titre": "Les projets dans ChatGPT : instructions et mémoire du projet",
+      "source": "OpenAI · vérifié le 24 novembre 2026",
+      "url": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+    },
+    {
+      "titre": "Retrait des GPT, migration vers les plugins et projets",
+      "source": "OpenAI · vérifié le 24 novembre 2026",
+      "url": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
     },
     {
       "titre": "Conversion des Gems en compétences",
@@ -63,11 +85,6 @@
       "titre": "Microsoft Copilot",
       "source": "Microsoft · vérifié le 15 novembre 2026",
       "url": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
-    },
-    {
-      "titre": "Les Spaces Hugging Face",
-      "source": "Hugging Face · vérifié le 15 novembre 2026",
-      "url": "https://huggingface.co/docs/hub/spaces-overview"
     },
     {
       "titre": "Des demandes claires et une amélioration par itérations",

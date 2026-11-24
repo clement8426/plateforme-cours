@@ -1,5 +1,13 @@
 [
   {
+    "name": "chatgpt",
+    "url": "https://chatgpt.com/",
+    "draftPrepared": true,
+    "messageSent": false,
+    "capturedOn": "2026-11-24",
+    "account": "non connecté"
+  },
+  {
     "name": "gemini",
     "url": "https://gemini.google.com/app",
     "draftPrepared": true,

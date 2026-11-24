@@ -7,8 +7,8 @@
   ],
   "intro-3": [
     {
-      "t": "OpenAI · GPT",
-      "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+      "t": "ChatGPT · application",
+      "u": "https://chatgpt.com/"
     },
     {
       "t": "Grok · application",
@@ -17,19 +17,11 @@
   ],
   "intro-4": [
     {
-      "t": "Microsoft · Copilot",
-      "u": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
-    },
-    {
-      "t": "Mistral · application",
-      "u": "https://mistral.ai/products/vibe/"
+      "t": "CNIL · précautions",
+      "u": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative"
     }
   ],
   "intro-5": [
-    {
-      "t": "OpenAI · outils",
-      "u": "https://developers.openai.com/api/docs/guides/tools"
-    },
     {
       "t": "OpenAI · consignes",
       "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
@@ -37,49 +29,23 @@
   ],
   "intro-6": [
     {
-      "t": "OpenAI · accès",
-      "u": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      "t": "OpenAI · demandes",
+      "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
     }
   ],
   "intro-7": [
     {
-      "t": "OpenAI · personnaliser",
-      "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
-    },
-    {
-      "t": "Anthropic · agents",
-      "u": "https://www.anthropic.com/research/building-effective-agents"
+      "t": "OpenAI · demandes",
+      "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
     }
   ],
   "intro-8": [
     {
-      "t": "Grok · application",
-      "u": "https://x.ai/grok"
-    },
-    {
-      "t": "Google · personnaliser",
-      "u": "https://support.google.com/gemini/answer/18560919?hl=fr"
+      "t": "OpenAI · fiabilité",
+      "u": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
     }
   ],
   "intro-9": [
-    {
-      "t": "OpenAI · consignes",
-      "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
-    }
-  ],
-  "intro-10": [
-    {
-      "t": "OpenAI · demandes",
-      "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
-    }
-  ],
-  "intro-11": [
-    {
-      "t": "OpenAI · demandes",
-      "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
-    }
-  ],
-  "intro-12": [
     {
       "t": "OpenAI · mémoire",
       "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
@@ -89,16 +55,58 @@
       "u": "https://arxiv.org/abs/2307.03172"
     }
   ],
+  "intro-10": [
+    {
+      "t": "OpenAI · outils",
+      "u": "https://developers.openai.com/api/docs/guides/tools"
+    },
+    {
+      "t": "OpenAI · consignes",
+      "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+    }
+  ],
+  "intro-11": [
+    {
+      "t": "OpenAI · GPT",
+      "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+    },
+    {
+      "t": "Grok · application",
+      "u": "https://x.ai/grok"
+    },
+    {
+      "t": "Microsoft · Copilot",
+      "u": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
+    },
+    {
+      "t": "Mistral · application",
+      "u": "https://mistral.ai/products/vibe/"
+    }
+  ],
+  "intro-12": [
+    {
+      "t": "OpenAI · accès",
+      "u": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+    }
+  ],
   "intro-13": [
     {
-      "t": "OpenAI · fiabilité",
-      "u": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
+      "t": "OpenAI · mémoire",
+      "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
+    },
+    {
+      "t": "Brief fictif · ClairLieu",
+      "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
     }
   ],
   "intro-14": [
     {
-      "t": "CNIL · précautions",
-      "u": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative"
+      "t": "OpenAI · mémoire",
+      "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
+    },
+    {
+      "t": "OpenAI · personnaliser",
+      "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
     }
   ],
   "intro-15": [
@@ -113,23 +121,85 @@
   ],
   "intro-16": [
     {
+      "t": "OpenAI · projets",
+      "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+    },
+    {
       "t": "Brief fictif · ClairLieu",
       "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
     }
   ],
   "intro-17": [
     {
-      "t": "OpenAI · consignes",
-      "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      "t": "OpenAI · GPT",
+      "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+    },
+    {
+      "t": "OpenAI · projets",
+      "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+    },
+    {
+      "t": "OpenAI · retrait des GPT",
+      "u": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
     }
   ],
   "intro-18": [
+    {
+      "t": "OpenAI · retrait des GPT",
+      "u": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
+    },
+    {
+      "t": "OpenAI · GPT",
+      "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+    }
+  ],
+  "intro-19": [
+    {
+      "t": "Brief fictif · ClairLieu",
+      "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
+    }
+  ],
+  "intro-20": [
     {
       "t": "OpenAI · consignes",
       "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
     }
   ],
-  "intro-19": [
+  "intro-21": [
+    {
+      "t": "OpenAI · consignes",
+      "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+    }
+  ],
+  "intro-22": [
+    {
+      "t": "Claude · projets",
+      "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+    },
+    {
+      "t": "OpenAI · personnaliser",
+      "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+    }
+  ],
+  "intro-23": [
+    {
+      "t": "OpenAI · projets",
+      "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+    }
+  ],
+  "intro-24": [
+    {
+      "t": "OpenAI · évaluer",
+      "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "intro-25": [
+    {
+      "t": "OpenAI · évaluer",
+      "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "intro-26": [
     {
       "t": "OpenAI · personnaliser",
       "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
@@ -137,88 +207,52 @@
     {
       "t": "Google · personnaliser",
       "u": "https://support.google.com/gemini/answer/18560919?hl=fr"
-    }
-  ],
-  "intro-20": [
-    {
-      "t": "Claude · projets",
-      "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
     },
     {
-      "t": "OpenAI · personnaliser",
-      "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
-    }
-  ],
-  "intro-21": [
-    {
-      "t": "OpenAI · évaluer",
-      "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
-    }
-  ],
-  "intro-22": [
-    {
-      "t": "OpenAI · évaluer",
-      "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
-    }
-  ],
-  "intro-23": [
-    {
-      "t": "Anthropic · agents",
-      "u": "https://www.anthropic.com/research/building-effective-agents"
-    }
-  ],
-  "intro-24": [
-    {
-      "t": "Anthropic · agents",
-      "u": "https://www.anthropic.com/research/building-effective-agents"
-    }
-  ],
-  "intro-25": [
-    {
-      "t": "Hugging Face · Spaces",
-      "u": "https://huggingface.co/docs/hub/spaces-overview"
-    }
-  ],
-  "intro-26": [
-    {
-      "t": "Brief fictif · ClairLieu",
-      "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+      "t": "OpenAI · GPT",
+      "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
     }
   ],
   "intro-27": [
     {
-      "t": "Brief fictif · ClairLieu",
-      "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+      "t": "OpenAI · personnaliser",
+      "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+    },
+    {
+      "t": "Anthropic · agents",
+      "u": "https://www.anthropic.com/research/building-effective-agents"
     }
   ],
   "intro-28": [
     {
-      "t": "Brief fictif · ClairLieu",
-      "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
-    },
-    {
-      "t": "OpenAI · évaluer",
-      "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+      "t": "Anthropic · agents",
+      "u": "https://www.anthropic.com/research/building-effective-agents"
     }
   ],
   "intro-29": [
+    {
+      "t": "Anthropic · agents",
+      "u": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ],
+  "intro-31": [
     {
       "t": "OpenAI · GPT",
       "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
     },
     {
-      "t": "Claude · projets",
-      "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+      "t": "OpenAI · projets",
+      "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
     }
   ],
-  "intro-30": [
+  "intro-32": [
     {
-      "t": "Hugging Face · Spaces",
-      "u": "https://huggingface.co/docs/hub/spaces-overview"
+      "t": "OpenAI · projets",
+      "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
     },
     {
-      "t": "Grok · application",
-      "u": "https://x.ai/grok"
+      "t": "OpenAI · retrait des GPT",
+      "u": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
     }
   ]
 }

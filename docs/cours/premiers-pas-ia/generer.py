@@ -4,7 +4,7 @@ root=Path(__file__).resolve().parents[3]
 reference=(root/'public/diapos/harnais/index.html').read_text(encoding='utf-8')
 slides=json.loads((root/'docs/cours/premiers-pas-ia/contenu.json').read_text(encoding='utf-8'))
 from html import escape as e
-parts=[{'nom':'Se repérer','de':1,'a':6},{'nom':'Utiliser un chat','de':7,'a':14},{'nom':'Configurer un assistant','de':15,'a':22},{'nom':'Agents et mise en pratique','de':23,'a':28},{'nom':'Sources','de':29,'a':len(slides),'hors':True}]
+parts=[{'nom':'Essayer un chat','de':1,'a':7},{'nom':'Vérifier et se repérer','de':8,'a':12},{'nom':'De la discussion à l’assistant','de':13,'a':26},{'nom':'Agents et suite','de':27,'a':30},{'nom':'Sources','de':31,'a':len(slides),'hors':True}]
 widgets=json.loads((root/'docs/cours/premiers-pas-ia/interactions.json').read_text(encoding='utf-8'))
 new=[]
 for i,s in enumerate(slides):

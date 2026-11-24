@@ -2,79 +2,31 @@
   {
     "part": "Découvrir",
     "title": "Premiers pas avec l’IA",
-    "lead": "Du chat dans le navigateur à votre premier assistant.",
+    "lead": "Du premier message à votre premier assistant.",
     "items": [],
-    "html": "<p class=\"signature\">Le Labo · Clément Bastien<br>Débutants · première version · 15 novembre 2026</p>",
+    "html": "<p class=\"signature\">Le Labo · Clément Bastien<br>Débutants · révision du 24 novembre 2026</p>",
     "kind": "cover"
   },
   {
-    "part": "01 · Se repérer",
+    "part": "01 · Essayer un chat",
     "title": "À la fin, vous saurez…",
     "lead": "",
     "items": [
-      "Distinguer une application, un modèle et ses outils.",
-      "Utiliser un chat et améliorer une demande.",
-      "Configurer un assistant réutilisable et le tester.",
+      "Écrire une demande dans un chat et l’améliorer.",
+      "Vérifier une réponse avant de l’utiliser.",
+      "Constater qu’une discussion ne garde rien d’une fois à l’autre.",
+      "Créer votre assistant dans ChatGPT : un projet et ses instructions.",
       "Reconnaître ce qui change quand une IA devient un agent."
     ],
     "html": "",
     "kind": ""
   },
   {
-    "part": "01 · Se repérer",
-    "title": "Quatre noms à reconnaître",
-    "lead": "",
-    "items": [],
-    "html": "<table><caption>Applications et éditeurs, sans classement</caption><thead><tr><th scope=\"col\">Application</th><th scope=\"col\">Éditeur</th><th scope=\"col\">Repère</th></tr></thead><tbody><tr><th scope=\"row\">ChatGPT</th><td>OpenAI</td><td>GPT désigne une famille de modèles.</td></tr><tr><th scope=\"row\">Gemini</th><td>Google</td><td>Le nom sert aussi pour les modèles.</td></tr><tr><th scope=\"row\">Claude</th><td>Anthropic</td><td>Le nom sert aussi pour les modèles.</td></tr><tr><th scope=\"row\">Grok</th><td>xAI</td><td>Accessible notamment sur grok.com.</td></tr></tbody></table>",
-    "kind": ""
-  },
-  {
-    "part": "01 · Se repérer",
-    "title": "Il existe d’autres portes d’entrée",
-    "lead": "",
-    "items": [
-      "Microsoft Copilot : une application et des fonctions intégrées à l’écosystème Microsoft.",
-      "Mistral : des modèles et une application, Vibe, anciennement Le Chat.",
-      "Les fonctions dépendent du compte, des réglages et des outils disponibles."
-    ],
-    "html": "<p class=\"note\">Ces exemples ne forment pas un classement. Noms et accès vérifiés le 15 novembre 2026 ; à revoir avant la séance.</p>",
-    "kind": ""
-  },
-  {
-    "part": "01 · Se repérer",
-    "title": "Application ≠ modèle ≠ outils",
-    "lead": "",
-    "items": [],
-    "html": "<ol class=\"flow\"><li><strong>L’application</strong><span>L’interface : conversation, fichiers, réglages.</span></li><li><strong>Le modèle</strong><span>Le système entraîné qui produit une réponse.</span></li><li><strong>Les outils</strong><span>Recherche, calcul, lecture de fichiers… si activés.</span></li></ol><p class=\"note\">Une même application peut proposer plusieurs modèles. Le modèle n’a pas automatiquement accès à votre ordinateur.</p>",
-    "kind": ""
-  },
-  {
-    "part": "01 · Se repérer",
-    "title": "Gratuit ou payant : que vérifier ?",
-    "lead": "",
-    "items": [
-      "Puis-je faire la tâche avec mon compte actuel ?",
-      "Quels fichiers, outils et limites sont disponibles ?",
-      "L’établissement autorise-t-il ce service et ce compte ?",
-      "En cas de blocage : continuer avec un texte copié ou un outil déjà accessible."
-    ],
-    "html": "<p class=\"note\">Aucun abonnement ni clé API n’est nécessaire pour suivre le chemin de base de ce cours.</p>",
-    "kind": ""
-  },
-  {
-    "part": "02 · Du chat à l’agent",
-    "title": "Trois façons de travailler",
-    "lead": "",
-    "items": [],
-    "html": "<ol class=\"flow\"><li><strong>Chat</strong><span>Vous donnez une demande et poursuivez l’échange.</span></li><li><strong>Assistant configuré</strong><span>Vous réutilisez un rôle, des règles et des documents.</span></li><li><strong>Agent</strong><span>Il enchaîne des actions avec des outils pour atteindre un objectif.</span></li></ol><p class=\"note\">Repères pédagogiques, pas catégories exclusives : un assistant peut avoir des outils, et un agent peut fonctionner dans un navigateur.</p>",
-    "kind": ""
-  },
-  {
-    "part": "02 · Le chat",
+    "part": "01 · Essayer un chat",
     "title": "Une conversation dans le navigateur",
     "lead": "Vous gardez la main sur chaque étape.",
     "items": [
-      "Ouvrez une nouvelle conversation dans un outil accessible.",
+      "Ouvrez une nouvelle conversation dans ChatGPT, ou dans un autre outil accessible.",
       "Écrivez votre demande, puis lisez et corrigez la réponse.",
       "Précisez ce qui manque et demandez une nouvelle version."
     ],
@@ -82,7 +34,20 @@
     "kind": ""
   },
   {
-    "part": "02 · Le chat",
+    "part": "01 · Essayer un chat",
+    "title": "Avant d’écrire : du fictif",
+    "lead": "",
+    "items": [
+      "Utilisez les exemples et fichiers fournis.",
+      "N’envoyez ni mot de passe, ni dossier client, ni donnée personnelle réelle.",
+      "Vérifiez ce que l’application reçoit avant de joindre un fichier.",
+      "Un abonnement ne suffit pas à déterminer les conditions de traitement."
+    ],
+    "html": "<p class=\"note\">Pour approfondir : le cours « IA, données et responsabilité ».</p>",
+    "kind": ""
+  },
+  {
+    "part": "01 · Essayer un chat",
     "title": "Quatre ingrédients pour démarrer",
     "lead": "",
     "items": [],
@@ -90,7 +55,7 @@
     "kind": ""
   },
   {
-    "part": "02 · Le chat",
+    "part": "01 · Essayer un chat",
     "title": "Du vague au vérifiable",
     "lead": "",
     "items": [],
@@ -98,9 +63,9 @@
     "kind": ""
   },
   {
-    "part": "Exercice 1",
+    "part": "Volet 1 · Bien demander",
     "title": "Essayez, puis améliorez",
-    "lead": "",
+    "lead": "Exercice « Votre premier assistant » · volet 1 sur 3 : bien demander.",
     "items": [
       "Envoyez d’abord la demande vague dans une nouvelle conversation.",
       "Dans une autre conversation, envoyez la demande précise.",
@@ -111,20 +76,7 @@
     "kind": "exercise"
   },
   {
-    "part": "02 · Le chat",
-    "title": "Le contexte a des limites",
-    "lead": "",
-    "items": [
-      "Un modèle ne mobilise pas forcément tous les détails d’un long document.",
-      "Dans l’étude Lost in the Middle (2023), la position d’une information influençait les résultats des modèles étudiés.",
-      "Une nouvelle conversation repart sans ce fil, mais pas forcément sans mémoire ou personnalisation.",
-      "Redonnez les faits indispensables et vérifiez les réglages disponibles dans votre application."
-    ],
-    "html": "",
-    "kind": ""
-  },
-  {
-    "part": "02 · Le chat",
+    "part": "02 · Vérifier et se repérer",
     "title": "Une réponse fluide peut être fausse",
     "lead": "",
     "items": [
@@ -137,22 +89,77 @@
     "kind": ""
   },
   {
-    "part": "02 · Le chat",
-    "title": "Pour les essais : du fictif",
+    "part": "02 · Vérifier et se repérer",
+    "title": "Le contexte a des limites",
     "lead": "",
     "items": [
-      "Utilisez les exemples et fichiers fournis.",
-      "N’envoyez ni mot de passe, ni dossier client, ni donnée personnelle réelle.",
-      "Vérifiez ce que l’application reçoit avant de joindre un fichier.",
-      "Un abonnement ne suffit pas à déterminer les conditions de traitement."
+      "Un modèle ne mobilise pas forcément tous les détails d’un long document.",
+      "Dans l’étude Lost in the Middle (2023), la position d’une information influençait les résultats des modèles étudiés.",
+      "Une nouvelle conversation repart sans ce fil, mais pas forcément sans mémoire ou personnalisation.",
+      "Redonnez les faits indispensables et vérifiez les réglages disponibles dans votre application."
     ],
-    "html": "<p class=\"note\">Pour approfondir : le cours « IA, données et responsabilité ».</p>",
+    "html": "",
     "kind": ""
   },
   {
-    "part": "03 · L’assistant",
-    "title": "Un cadre que l’on réutilise",
-    "lead": "L’assistant configuré évite de répéter les mêmes consignes.",
+    "part": "02 · Vérifier et se repérer",
+    "title": "Derrière l’écran : application, modèle, outils",
+    "lead": "",
+    "items": [],
+    "html": "<ol class=\"flow\"><li><strong>L’application</strong><span>L’interface : conversation, fichiers, réglages.</span></li><li><strong>Le modèle</strong><span>Le système entraîné qui produit une réponse.</span></li><li><strong>Les outils</strong><span>Recherche, calcul, lecture de fichiers… si activés.</span></li></ol><p class=\"note\">Une même application peut proposer plusieurs modèles. Le modèle n’a pas automatiquement accès à votre ordinateur.</p>",
+    "kind": ""
+  },
+  {
+    "part": "02 · Vérifier et se repérer",
+    "title": "ChatGPT n’est pas le seul",
+    "lead": "",
+    "items": [],
+    "html": "<table><caption>Applications et éditeurs, sans classement</caption><thead><tr><th scope=\"col\">Application</th><th scope=\"col\">Éditeur</th><th scope=\"col\">Repère</th></tr></thead><tbody><tr><th scope=\"row\">ChatGPT</th><td>OpenAI</td><td>GPT désigne une famille de modèles.</td></tr><tr><th scope=\"row\">Gemini</th><td>Google</td><td>Le nom sert aussi pour les modèles.</td></tr><tr><th scope=\"row\">Claude</th><td>Anthropic</td><td>Le nom sert aussi pour les modèles.</td></tr><tr><th scope=\"row\">Grok</th><td>xAI</td><td>Accessible notamment sur grok.com.</td></tr></tbody></table>",
+    "kind": ""
+  },
+  {
+    "part": "02 · Vérifier et se repérer",
+    "title": "Gratuit ou payant : que vérifier ?",
+    "lead": "",
+    "items": [
+      "Puis-je faire la tâche avec mon compte actuel ?",
+      "Quels fichiers, outils et limites sont disponibles ?",
+      "L’établissement autorise-t-il ce service et ce compte ?",
+      "En cas de blocage : continuer avec un texte copié ou un outil déjà accessible."
+    ],
+    "html": "<p class=\"note\">Volets 1 et 2 : sans compte. Volet 3 : un compte ChatGPT gratuit suffit. Aucun abonnement ni clé API.</p>",
+    "kind": ""
+  },
+  {
+    "part": "Volet 2 · Une discussion ne garde rien",
+    "title": "Trois discussions, trois départs à zéro",
+    "lead": "Exercice « Votre premier assistant » · volet 2 sur 3 : une discussion ne garde rien.",
+    "items": [
+      "Nouvelle discussion : « Propose le programme de l’atelier ClairLieu. »",
+      "Nouvelle discussion : collez le brief et les règles, puis la même demande.",
+      "Encore une nouvelle discussion : « Combien d’ordinateurs avons-nous ? »",
+      "Notez ce que chaque discussion savait, et ce qu’elle avait oublié."
+    ],
+    "html": "<p class=\"note\">De préférence sans être connecté : la mémoire d’un compte peut reprendre des éléments d’autres discussions.</p>",
+    "kind": "exercise"
+  },
+  {
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Dans une discussion, vous répétez tout",
+    "lead": "Chaque nouvelle conversation repart sans votre cadre.",
+    "items": [
+      "Le brief : à recoller.",
+      "Les règles : à réécrire.",
+      "Le format attendu : à redemander.",
+      "Un oubli suffit pour obtenir une réponse différente."
+    ],
+    "html": "<p class=\"note\">La mémoire et les instructions personnalisées existent, mais elles s’appliquent à tous vos chats, pas à une seule mission.</p>",
+    "kind": ""
+  },
+  {
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Un assistant garde le cadre",
+    "lead": "Les consignes sont écrites une fois, puis réutilisées à chaque conversation.",
     "items": [
       "Un rôle : ce qu’il doit aider à faire.",
       "Des règles : ce qu’il doit respecter ou signaler.",
@@ -163,8 +170,41 @@
     "kind": ""
   },
   {
-    "part": "03 · L’assistant",
-    "title": "Votre premier assistant : Atelier ClairLieu",
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Discussion ou assistant : la même demande",
+    "lead": "",
+    "items": [],
+    "html": "<table><caption>Préparer l’atelier ClairLieu, de deux façons</caption><thead><tr><th scope=\"col\"></th><th scope=\"col\">Discussion</th><th scope=\"col\">Assistant</th></tr></thead><tbody><tr><th scope=\"row\">Vous écrivez</th><td>Le brief, les règles, puis la demande.</td><td>La demande seulement.</td></tr><tr><th scope=\"row\">La fois suivante</th><td>Tout est à recoller.</td><td>Le cadre est déjà en place.</td></tr><tr><th scope=\"row\">Les conversations</th><td>Dispersées dans l’historique.</td><td>Rangées dans le projet.</td></tr><tr><th scope=\"row\">Dans les deux cas</th><td colspan=\"2\">Vous vérifiez la réponse.</td></tr></tbody></table>",
+    "kind": ""
+  },
+  {
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Dans ChatGPT : GPT, projet, plugin",
+    "lead": "",
+    "items": [
+      "GPT : un assistant configuré. Les comptes personnels ne peuvent plus en créer.",
+      "Projet : des instructions et des fichiers pour toutes ses conversations. C’est ce que vous allez créer.",
+      "Plugin : le format annoncé pour remplacer les GPT."
+    ],
+    "html": "<p class=\"note\">« GPT » désigne aussi la famille de modèles d’OpenAI. Ici, le mot désigne un assistant configuré dans ChatGPT.</p>",
+    "kind": ""
+  },
+  {
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Bientôt : les GPT deviennent des plugins",
+    "lead": "Le nom et l’écran changent. L’idée reste la même.",
+    "items": [
+      "OpenAI a annoncé le retrait des GPT personnalisés.",
+      "Date de retrait standard annoncée : le 11 décembre 2026.",
+      "Les plugins réunissent des consignes réutilisables, des fichiers de référence et des applications connectées.",
+      "Pour un travail suivi, OpenAI propose aussi le projet. Le principe reste le même : un cadre écrit une fois."
+    ],
+    "html": "<p class=\"note\">Dates lues sur la page d’aide d’OpenAI le 24 novembre 2026. Elles peuvent changer : vérifiez la source avant la séance.</p>",
+    "kind": ""
+  },
+  {
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Votre assistant : Atelier ClairLieu",
     "lead": "ClairLieu est une association fictive.",
     "items": [
       "Mission : préparer des ateliers numériques pour débutants.",
@@ -176,49 +216,48 @@
     "kind": ""
   },
   {
-    "part": "03 · L’assistant",
-    "title": "Des consignes que vous pouvez copier",
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Les consignes qu’il contient",
     "lead": "",
     "items": [],
     "html": "<p class=\"prompt\">Vous aidez l’association fictive ClairLieu à préparer des ateliers numériques pour débutants. Utilisez uniquement le brief fourni. Distinguez les faits, vos propositions et les points à confirmer. Si une information indispensable manque, posez une question. N’inventez ni contact, ni tarif, ni disponibilité. Ne réservez rien et n’envoyez aucun message.</p>",
     "kind": ""
   },
   {
-    "part": "03 · L’assistant",
+    "part": "03 · De la discussion à l’assistant",
     "title": "Définir la forme du résultat",
     "lead": "",
     "items": [],
-    "html": "<p class=\"prompt\">Répondez en français simple. Pour un programme, utilisez un tableau : horaire, activité, matériel. Pour un budget, indiquez quantité × prix unitaire et total. Terminez par les vérifications à effectuer. Vérifiez les contraintes du brief avant de proposer une version finale.</p><p class=\"note\">Les deux blocs de consignes sont téléchargeables dans le dossier d’exercice.</p>",
+    "html": "<p class=\"prompt\">Répondez en français simple. Pour un programme, utilisez un tableau : horaire, activité, matériel. Pour un budget, indiquez quantité × prix unitaire et total. Terminez par les vérifications à effectuer. Vérifiez les contraintes du brief avant de proposer une version finale.</p><p class=\"note\">Ces deux blocs deviendront les instructions de votre projet.</p>",
     "kind": ""
   },
   {
-    "part": "03 · L’assistant",
-    "title": "Où garder ces consignes ?",
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Préparez vos instructions",
     "lead": "",
     "items": [
-      "Fichier texte : gardez vos consignes et fournissez-les dans le chat.",
-      "ChatGPT : les instructions personnalisées peuvent s’appliquer à tous vos chats ; gardez-les adaptées à cet usage.",
-      "Claude : instructions de projet ; Gemini : Gems ou compétences, selon le compte et le déploiement.",
-      "Ces espaces n’offrent pas tous les mêmes fonctions. Vérifiez ce qui est disponible sur votre compte."
-    ],
-    "html": "<p class=\"note\">Les noms et les accès évoluent. Les liens en haut permettent de vérifier la documentation de chaque produit.</p>",
-    "kind": ""
-  },
-  {
-    "part": "Exercice 2",
-    "title": "Configurez votre assistant",
-    "lead": "",
-    "items": [
-      "Ouvrez le dossier « Exercices » et récupérez les consignes et le mini-brief.",
-      "Enregistrez votre version des consignes dans un fichier.",
-      "Collez les consignes et le mini-brief dans un nouveau chat, ou dans un espace configuré autorisé.",
-      "Demandez un programme de 90 minutes et conservez la réponse."
+      "Préparez vos consignes dans un fichier.",
+      "Collez-les au début d’une nouvelle discussion.",
+      "Le cadre vaut pour cette discussion seulement."
     ],
     "html": "<p class=\"note\">N’activez aucun connecteur, aucune action externe et aucun accès à vos comptes.</p>",
+    "kind": ""
+  },
+  {
+    "part": "Volet 3 · Créer votre assistant",
+    "title": "Créez votre assistant : un projet ChatGPT",
+    "lead": "Exercice « Votre premier assistant » · volet 3 sur 3 : créer votre assistant.",
+    "items": [
+      "Connecté, survolez « Projets » dans le menu, puis cliquez sur +.",
+      "Nommez-le « Atelier ClairLieu », mémoire « projet seulement ».",
+      "Menu ••• → Paramètres du projet : collez vos instructions.",
+      "Dans le projet, envoyez : « Propose le programme de l’atelier ClairLieu. »"
+    ],
+    "html": "<p class=\"note\">N’activez aucun connecteur ni accès à vos fichiers. Aucune donnée réelle.</p>",
     "kind": "exercise"
   },
   {
-    "part": "Exercice 3",
+    "part": "Volet 3 · Créer votre assistant",
     "title": "Trois tests avant de lui faire confiance",
     "lead": "",
     "items": [
@@ -226,15 +265,36 @@
       "Information absente : demander le nom et le téléphone du responsable ; il doit signaler leur absence.",
       "Demande incompatible : prévoir un ordinateur par personne sans achat ; il doit relever le conflit et proposer une adaptation."
     ],
-    "html": "<p class=\"note\">Conservez un exemple de défaut et la correction de vos consignes.</p>",
+    "html": "<p class=\"note\">Conservez un exemple de défaut : il sert à améliorer les consignes.</p>",
     "kind": "exercise"
   },
   {
-    "part": "03 · L’assistant",
+    "part": "03 · De la discussion à l’assistant",
     "title": "Un assistant utile se teste",
     "lead": "",
     "items": [],
-    "html": "<ul class=\"checks\"><li>Le programme couvre exactement la durée demandée.</li><li>Le matériel et les effectifs sont respectés.</li><li>Les informations absentes ne sont pas inventées.</li><li>Les propositions sont distinguées des faits.</li></ul><p class=\"note\">Si un test échoue : précisez les consignes et recommencez dans un nouveau chat.</p>",
+    "html": "<ul class=\"checks\"><li>Le programme couvre exactement la durée demandée.</li><li>Le matériel et les effectifs sont respectés.</li><li>Les informations absentes ne sont pas inventées.</li><li>Les propositions sont distinguées des faits.</li></ul><p class=\"note\">Si un test échoue : précisez une règle dans les paramètres du projet, puis refaites le test.</p>",
+    "kind": ""
+  },
+  {
+    "part": "03 · De la discussion à l’assistant",
+    "title": "Ailleurs, le même principe",
+    "lead": "",
+    "items": [
+      "ChatGPT : les projets ; les GPT jusqu’à leur retrait, puis les plugins.",
+      "Claude : les projets et leurs instructions.",
+      "Gemini : les Gems ou les compétences, selon le compte et le déploiement.",
+      "Partout : un fichier d’instructions, collé au début d’une discussion."
+    ],
+    "html": "<p class=\"note\">Les noms et les accès évoluent. Les liens en haut permettent de vérifier la documentation de chaque produit.</p>",
+    "kind": ""
+  },
+  {
+    "part": "04 · Les agents",
+    "title": "Chat, assistant, agent",
+    "lead": "",
+    "items": [],
+    "html": "<ol class=\"flow\"><li><strong>Chat</strong><span>Vous donnez une demande et poursuivez l’échange.</span></li><li><strong>Assistant configuré</strong><span>Vous réutilisez un rôle, des règles et des documents.</span></li><li><strong>Agent</strong><span>Il enchaîne des actions avec des outils pour atteindre un objectif.</span></li></ol><p class=\"note\">Repères pédagogiques, pas catégories exclusives : un assistant peut avoir des outils, et un agent peut fonctionner dans un navigateur.</p>",
     "kind": ""
   },
   {
@@ -255,58 +315,22 @@
       "Comment vérifiez-vous le résultat ?",
       "Quand doit-il s’arrêter ?"
     ],
-    "html": "<p class=\"note\">Dans ce premier cours : configurer et tester un assistant. Les agents seront approfondis dans « Le Harnais ».</p>",
+    "html": "<p class=\"note\">Dans ce premier cours : créer et tester un assistant. Les agents sont approfondis dans « Le Harnais ».</p>",
     "kind": ""
   },
   {
-    "part": "05 · La suite",
-    "title": "Ensuite : les types d’IA",
-    "lead": "Le chat n’est qu’une porte d’entrée.",
+    "part": "05 · Pour aller plus loin",
+    "title": "Pour aller plus loin",
+    "lead": "Deux cours pour continuer.",
     "items": [
-      "Découvrez ce que les modèles reçoivent et produisent : texte, image, voix…",
-      "Réutilisez le cours « Les types d’IA ».",
-      "Sur Hugging Face : choisissez trois missions, dont une générative.",
-      "Pour chaque mission : deux essais, un seul changement, une limite observée."
+      "Les types d’IA : ce que les modèles reçoivent et produisent, du texte à l’image et à la voix.",
+      "Le Harnais : les agents, leurs outils et leurs permissions."
     ],
-    "html": "<p><a href=\"https://www.labonumerique.ch/comprendre-ia/types-ia/\">Ouvrir le cours existant</a></p>",
+    "html": "<p><a href=\"/comprendre-ia/types-ia/\">Les types d’IA</a> · <a href=\"/comprendre-ia/le-harnais/\">Le Harnais</a></p>",
     "kind": ""
   },
   {
-    "part": "06 · Mission de projet",
-    "title": "Préparez un vrai dossier… pour un projet fictif",
-    "lead": "ClairLieu organise « Déclic numérique », un atelier pour 18 adultes débutants.",
-    "items": [
-      "Vous disposez d’un brief, d’un inventaire et d’une liste de prix fictifs.",
-      "Configurez votre assistant, puis produisez un programme et un budget.",
-      "Créez les supports et vérifiez toutes les contraintes.",
-      "Échangez votre dossier pour un contrôle croisé."
-    ],
-    "html": "<p><a href=\"exercices/index.html\">Ouvrir le dossier complet</a></p>",
-    "kind": "exercise"
-  },
-  {
-    "part": "06 · Mission de projet",
-    "title": "Construire, tester, corriger : à votre rythme",
-    "lead": "",
-    "items": [],
-    "html": "<ol class=\"agenda\"><li><strong>Comprendre</strong> — Lire le brief et relever les contraintes.</li><li><strong>Configurer</strong> — Préparer l’assistant et tester ses limites.</li><li><strong>Produire</strong> — Programme, budget et supports.</li><li><strong>Vérifier</strong> — Recalculer et faire relire le dossier.</li><li><strong>Corriger</strong> — Refaire les tests après chaque amélioration.</li><li><strong>Expliquer</strong> — Présenter les choix et les points à confirmer.</li></ol>",
-    "kind": ""
-  },
-  {
-    "part": "06 · Mission de projet",
-    "title": "Ce que vous rendrez",
-    "lead": "",
-    "items": [
-      "Les consignes de votre assistant et trois tests commentés.",
-      "Le programme, le budget et les supports demandés.",
-      "Un journal de trois améliorations apportées aux réponses.",
-      "Une liste des faits vérifiés et des points restant à confirmer."
-    ],
-    "html": "<p class=\"note\">La qualité se mesure au respect du brief et aux vérifications, pas à la longueur des réponses.</p>",
-    "kind": ""
-  },
-  {
-    "part": "Sources · vérifiées le 15 novembre 2026",
+    "part": "Sources · vérifiées en novembre 2026",
     "title": "Retrouver les sources et le lexique",
     "lead": "",
     "items": [],
@@ -314,7 +338,7 @@
     "kind": ""
   },
   {
-    "part": "Sources · vérifiées le 15 novembre 2026",
+    "part": "Sources · vérifiées en novembre 2026",
     "title": "Les mots du cours",
     "lead": "Choisissez une notion pour retrouver sa définition.",
     "items": [],

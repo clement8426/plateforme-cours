@@ -712,63 +712,67 @@ body.pv-window #pv { min-height: 100%; max-width: 1100px; margin: 0 auto; grid-t
 <div class="launch-footer"><p>Clément Bastien <span>· Le Labo</span></p><div class="launch-actions"><button type="button" class="launch-start">On commence <span aria-hidden="true">↗</span></button><button type="button" class="launch-pause" aria-pressed="false">Mettre l’animation en pause</button></div></div>
 </div></section>
 
-<section class="slide" data-part="1" data-key="intro-2"><h2 class="title">À la fin, vous saurez…</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Distinguer une application, un modèle et ses outils.</li><li data-step="2">Utiliser un chat et améliorer une demande.</li><li data-step="3">Configurer un assistant réutilisable et le tester.</li><li data-step="4">Reconnaître ce qui change quand une IA devient un agent.</li></ul></div></section>
+<section class="slide" data-part="1" data-key="intro-2"><h2 class="title">À la fin, vous saurez…</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Écrire une demande dans un chat et l’améliorer.</li><li data-step="2">Vérifier une réponse avant de l’utiliser.</li><li data-step="3">Constater qu’une discussion ne garde rien d’une fois à l’autre.</li><li data-step="4">Créer votre assistant dans ChatGPT : un projet et ses instructions.</li><li data-step="5">Reconnaître ce qui change quand une IA devient un agent.</li></ul></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="1" data-key="intro-3"><h2 class="title">Quatre noms à reconnaître</h2><div class="body stack-m"><div class="intro-widget" data-widget="outils"><div class="intro-tabs" role="group" aria-label="Explorer les applications"><button type="button" data-choice="0" aria-pressed="true">ChatGPT</button><button type="button" data-choice="1" aria-pressed="false">Gemini</button><button type="button" data-choice="2" aria-pressed="false">Claude</button><button type="button" data-choice="3" aria-pressed="false">Grok</button><button type="button" data-choice="4" aria-pressed="false">Copilot</button><button type="button" data-choice="5" aria-pressed="false">Mistral</button></div><div class="intro-detail" aria-live="polite"><h3 data-name>ChatGPT</h3><p data-publisher>OpenAI</p><p data-detail></p><p><a data-product-link href="https://chatgpt.com/" target="_blank" rel="noreferrer">Ouvrir le site officiel (nouvel onglet)</a></p></div><p class="intro-hint">Choisissez un nom : distinguez l’application, l’éditeur et le modèle. Aucun classement.</p></div></div></section>
+<section data-widget-slide="true" class="slide" data-part="1" data-key="intro-3"><h2 class="title">Une conversation dans le navigateur</h2><div class="body stack-m"><div class="capture-layout" data-widget="captures"><div class="capture-guide"><p class="lead">Repérez où commencer.</p><div class="intro-tabs" role="group" aria-label="Choisir une capture"><button type="button" data-choice="chatgpt" aria-pressed="true">ChatGPT</button><button type="button" data-choice="gemini" aria-pressed="false">Gemini</button><button type="button" data-choice="grok" aria-pressed="false">Grok</button></div><ol class="plain"><li>La zone pour écrire.</li><li>Les outils proposés.</li><li>Le compte connecté ou non.</li></ol><p class="intro-hint">Une fois la demande envoyée : lisez, vérifiez et précisez ce qui manque.</p></div><figure class="capture-view"><button type="button" class="capture-zoom" aria-label="Agrandir la capture"><img data-capture src="captures/chatgpt-exemple.png" width="1280" height="800" alt="Interface réelle de ChatGPT, sans compte connecté, avec la demande d’atelier préparée dans la zone de saisie."><span>Agrandir ↗</span></button><figcaption data-caption>ChatGPT · capture du 24 novembre 2026. Demande préparée, non envoyée.</figcaption></figure></div></div></section>
 
-<section class="slide" data-part="1" data-key="intro-4"><h2 class="title">Il existe d’autres portes d’entrée</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Microsoft Copilot : une application et des fonctions intégrées à l’écosystème Microsoft.</li><li data-step="2">Mistral : des modèles et une application, Vibe, anciennement Le Chat.</li><li data-step="3">Les fonctions dépendent du compte, des réglages et des outils disponibles.</li></ul><p class="note">Ces exemples ne forment pas un classement. Noms et accès vérifiés le 15 novembre 2026 ; à revoir avant la séance.</p></div></section>
+<section class="slide" data-part="1" data-key="intro-4"><h2 class="title">Avant d’écrire : du fictif</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Utilisez les exemples et fichiers fournis.</li><li data-step="2">N’envoyez ni mot de passe, ni dossier client, ni donnée personnelle réelle.</li><li data-step="3">Vérifiez ce que l’application reçoit avant de joindre un fichier.</li><li data-step="4">Un abonnement ne suffit pas à déterminer les conditions de traitement.</li></ul><p class="note">Pour approfondir : le cours « IA, données et responsabilité ».</p></div></section>
 
-<section class="slide" data-part="1" data-key="intro-5"><h2 class="title">Application ≠ modèle ≠ outils</h2><div class="body stack-m"><ol class="places intro-flow"><li><strong>L’application</strong><span>L’interface : conversation, fichiers, réglages.</span></li><li><strong>Le modèle</strong><span>Le système entraîné qui produit une réponse.</span></li><li><strong>Les outils</strong><span>Recherche, calcul, lecture de fichiers… si activés.</span></li></ol><p class="note">Une même application peut proposer plusieurs modèles. Le modèle n’a pas automatiquement accès à votre ordinateur.</p></div></section>
+<section data-widget-slide="true" class="slide" data-part="1" data-key="intro-5"><h2 class="title">Quatre ingrédients pour démarrer</h2><div class="body stack-m"><div class="intro-widget" data-widget="prompt"><div class="intro-prompt-grid"><div class="intro-fields"><label>Objectif<input data-label="Objectif" aria-label="Objectif" value="Préparer un atelier numérique"></label><label>Public et contexte<input data-label="Public et contexte" aria-label="Public et contexte" value="12 adultes débutants, six ordinateurs"></label><label>Contraintes<input data-label="Contraintes" aria-label="Contraintes" value="90 minutes, aucun achat"></label><label>Format<input data-label="Format" aria-label="Format" value="Tableau avec horaires, activités et matériel"></label></div><div class="intro-preview"><h3>Vos consignes</h3><p data-preview></p><div class="intro-inline-actions"><button type="button" class="intro-action" data-copy>Copier</button><button type="button" class="intro-action" data-save>Télécharger</button></div></div></div><p class="intro-status" role="status" data-status>Aucune IA connectée : vous préparez les consignes à utiliser dans votre outil.</p></div></div></section>
 
-<section class="slide" data-part="1" data-key="intro-6"><h2 class="title">Gratuit ou payant : que vérifier ?</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Puis-je faire la tâche avec mon compte actuel ?</li><li data-step="2">Quels fichiers, outils et limites sont disponibles ?</li><li data-step="3">L’établissement autorise-t-il ce service et ce compte ?</li><li data-step="4">En cas de blocage : continuer avec un texte copié ou un outil déjà accessible.</li></ul><p class="note">Aucun abonnement ni clé API n’est nécessaire pour suivre le chemin de base de ce cours.</p></div></section>
+<section class="slide" data-part="1" data-key="intro-6"><h2 class="title">Du vague au vérifiable</h2><div class="body stack-m"><p class="card">« Organise un atelier IA. »</p><p class="card">« Propose un atelier de 90 minutes pour 12 adultes débutants. Six ordinateurs sont disponibles. Aucun achat. Présente un tableau avec les horaires, les activités et le matériel. Signale les informations qui manquent. »</p></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-7"><h2 class="title">Trois façons de travailler</h2><div class="body stack-m"><div class="intro-widget" data-widget="modes"><div class="intro-tabs" role="group" aria-label="Comparer les façons de travailler"><button type="button" data-choice="chat" aria-pressed="true">Chat</button><button type="button" data-choice="assistant" aria-pressed="false">Assistant</button><button type="button" data-choice="agent" aria-pressed="false">Agent</button></div><div class="intro-detail" aria-live="polite"><h3 data-mode-title></h3><p data-mode-example></p><p data-mode-human></p></div><p class="intro-hint">Même mission : préparer un atelier. Le navigateur est une interface ; les fonctions peuvent se recouper.</p></div></div></section>
+<section class="slide" data-part="1" data-key="intro-7"><h2 class="title">Essayez, puis améliorez</h2><div class="body stack-m"><p class="lead">Exercice « Votre premier assistant » · volet 1 sur 3 : bien demander.</p><ul class="plain"><li data-step="1">Envoyez d’abord la demande vague dans une nouvelle conversation.</li><li data-step="2">Dans une autre conversation, envoyez la demande précise.</li><li data-step="3">Comparez trois points : public, durée et matériel.</li><li data-step="4">Notez une amélioration et une erreur encore présente.</li></ul><p class="note">Un outil suffit. La comparaison de deux marques reste facultative.</p></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-8"><h2 class="title">Une conversation dans le navigateur</h2><div class="body stack-m"><div class="capture-layout" data-widget="captures"><div class="capture-guide"><p class="lead">Repérez où commencer.</p><div class="intro-tabs" role="group" aria-label="Choisir une capture"><button type="button" data-choice="grok" aria-pressed="true">Grok</button><button type="button" data-choice="gemini" aria-pressed="false">Gemini</button></div><ol class="plain"><li>La zone pour écrire.</li><li>Les outils proposés.</li><li>Le compte connecté ou non.</li></ol><p class="intro-hint">Une fois la demande envoyée : lisez, vérifiez et précisez ce qui manque.</p></div><figure class="capture-view"><button type="button" class="capture-zoom" aria-label="Agrandir la capture"><img data-capture src="captures/grok-exemple.png" width="1280" height="800" alt="Interface réelle de Grok, sans compte connecté, avec la demande d’atelier préparée dans la zone de saisie."><span>Agrandir ↗</span></button><figcaption data-caption>Grok · capture du 15 novembre 2026. Demande préparée, non envoyée.</figcaption></figure></div></div></section>
+<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-8"><h2 class="title">Une réponse fluide peut être fausse</h2><div class="body stack-m"><div class="intro-widget" data-widget="verifier"><div class="intro-tabs" role="group" aria-label="Vérifier une affirmation"><button type="button" data-choice="oui" aria-pressed="true">Oui, c’est juste</button><button type="button" data-choice="non" aria-pressed="false">Non, je vérifie</button></div><div class="intro-detail"><h3>« Le total est de 40 CHF. »</h3><p>Le document indique six portions à 4 CHF chacune. Une réponse d’IA annonce 40 CHF. Pouvez-vous reprendre ce résultat ?</p></div><p class="intro-verify-answer" aria-live="polite" data-answer>Choisissez une réponse, puis confrontez-la au document.</p><p class="intro-hint">Une réponse assurée ne remplace pas une vérification indépendante.</p></div></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-9"><h2 class="title">Quatre ingrédients pour démarrer</h2><div class="body stack-m"><div class="intro-widget" data-widget="prompt"><div class="intro-prompt-grid"><div class="intro-fields"><label>Objectif<input data-label="Objectif" aria-label="Objectif" value="Préparer un atelier numérique"></label><label>Public et contexte<input data-label="Public et contexte" aria-label="Public et contexte" value="12 adultes débutants, six ordinateurs"></label><label>Contraintes<input data-label="Contraintes" aria-label="Contraintes" value="90 minutes, aucun achat"></label><label>Format<input data-label="Format" aria-label="Format" value="Tableau avec horaires, activités et matériel"></label></div><div class="intro-preview"><h3>Vos consignes</h3><p data-preview></p><div class="intro-inline-actions"><button type="button" class="intro-action" data-copy>Copier</button><button type="button" class="intro-action" data-save>Télécharger</button></div></div></div><p class="intro-status" role="status" data-status>Aucune IA connectée : vous préparez les consignes à utiliser dans votre outil.</p></div></div></section>
+<section class="slide" data-part="2" data-key="intro-9"><h2 class="title">Le contexte a des limites</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Un modèle ne mobilise pas forcément tous les détails d’un long document.</li><li data-step="2">Dans l’étude Lost in the Middle (2023), la position d’une information influençait les résultats des modèles étudiés.</li><li data-step="3">Une nouvelle conversation repart sans ce fil, mais pas forcément sans mémoire ou personnalisation.</li><li data-step="4">Redonnez les faits indispensables et vérifiez les réglages disponibles dans votre application.</li></ul></div></section>
 
-<section class="slide" data-part="2" data-key="intro-10"><h2 class="title">Du vague au vérifiable</h2><div class="body stack-m"><p class="card">« Organise un atelier IA. »</p><p class="card">« Propose un atelier de 90 minutes pour 12 adultes débutants. Six ordinateurs sont disponibles. Aucun achat. Présente un tableau avec les horaires, les activités et le matériel. Signale les informations qui manquent. »</p></div></section>
+<section class="slide" data-part="2" data-key="intro-10"><h2 class="title">Derrière l’écran : application, modèle, outils</h2><div class="body stack-m"><ol class="places intro-flow"><li><strong>L’application</strong><span>L’interface : conversation, fichiers, réglages.</span></li><li><strong>Le modèle</strong><span>Le système entraîné qui produit une réponse.</span></li><li><strong>Les outils</strong><span>Recherche, calcul, lecture de fichiers… si activés.</span></li></ol><p class="note">Une même application peut proposer plusieurs modèles. Le modèle n’a pas automatiquement accès à votre ordinateur.</p></div></section>
 
-<section class="slide" data-part="2" data-key="intro-11"><h2 class="title">Essayez, puis améliorez</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Envoyez d’abord la demande vague dans une nouvelle conversation.</li><li data-step="2">Dans une autre conversation, envoyez la demande précise.</li><li data-step="3">Comparez trois points : public, durée et matériel.</li><li data-step="4">Notez une amélioration et une erreur encore présente.</li></ul><p class="note">Un outil suffit. La comparaison de deux marques reste facultative.</p></div></section>
+<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-11"><h2 class="title">ChatGPT n’est pas le seul</h2><div class="body stack-m"><div class="intro-widget" data-widget="outils"><div class="intro-tabs" role="group" aria-label="Explorer les applications"><button type="button" data-choice="0" aria-pressed="true">ChatGPT</button><button type="button" data-choice="1" aria-pressed="false">Gemini</button><button type="button" data-choice="2" aria-pressed="false">Claude</button><button type="button" data-choice="3" aria-pressed="false">Grok</button><button type="button" data-choice="4" aria-pressed="false">Copilot</button><button type="button" data-choice="5" aria-pressed="false">Mistral</button></div><div class="intro-detail" aria-live="polite"><h3 data-name>ChatGPT</h3><p data-publisher>OpenAI</p><p data-detail></p><p><a data-product-link href="https://chatgpt.com/" target="_blank" rel="noreferrer">Ouvrir le site officiel (nouvel onglet)</a></p></div><p class="intro-hint">Choisissez un nom : distinguez l’application, l’éditeur et le modèle. Aucun classement.</p></div></div></section>
 
-<section class="slide" data-part="2" data-key="intro-12"><h2 class="title">Le contexte a des limites</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Un modèle ne mobilise pas forcément tous les détails d’un long document.</li><li data-step="2">Dans l’étude Lost in the Middle (2023), la position d’une information influençait les résultats des modèles étudiés.</li><li data-step="3">Une nouvelle conversation repart sans ce fil, mais pas forcément sans mémoire ou personnalisation.</li><li data-step="4">Redonnez les faits indispensables et vérifiez les réglages disponibles dans votre application.</li></ul></div></section>
+<section class="slide" data-part="2" data-key="intro-12"><h2 class="title">Gratuit ou payant : que vérifier ?</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Puis-je faire la tâche avec mon compte actuel ?</li><li data-step="2">Quels fichiers, outils et limites sont disponibles ?</li><li data-step="3">L’établissement autorise-t-il ce service et ce compte ?</li><li data-step="4">En cas de blocage : continuer avec un texte copié ou un outil déjà accessible.</li></ul><p class="note">Volets 1 et 2 : sans compte. Volet 3 : un compte ChatGPT gratuit suffit. Aucun abonnement ni clé API.</p></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="2" data-key="intro-13"><h2 class="title">Une réponse fluide peut être fausse</h2><div class="body stack-m"><div class="intro-widget" data-widget="verifier"><div class="intro-tabs" role="group" aria-label="Vérifier une affirmation"><button type="button" data-choice="oui" aria-pressed="true">Oui, c’est juste</button><button type="button" data-choice="non" aria-pressed="false">Non, je vérifie</button></div><div class="intro-detail"><h3>« Le total est de 40 CHF. »</h3><p>Le document indique six portions à 4 CHF chacune. Une réponse d’IA annonce 40 CHF. Pouvez-vous reprendre ce résultat ?</p></div><p class="intro-verify-answer" aria-live="polite" data-answer>Choisissez une réponse, puis confrontez-la au document.</p><p class="intro-hint">Une réponse assurée ne remplace pas une vérification indépendante.</p></div></div></section>
+<section class="slide" data-part="3" data-key="intro-13"><h2 class="title">Trois discussions, trois départs à zéro</h2><div class="body stack-m"><p class="lead">Exercice « Votre premier assistant » · volet 2 sur 3 : une discussion ne garde rien.</p><ul class="plain"><li data-step="1">Nouvelle discussion : « Propose le programme de l’atelier ClairLieu. »</li><li data-step="2">Nouvelle discussion : collez le brief et les règles, puis la même demande.</li><li data-step="3">Encore une nouvelle discussion : « Combien d’ordinateurs avons-nous ? »</li><li data-step="4">Notez ce que chaque discussion savait, et ce qu’elle avait oublié.</li></ul><p class="note">De préférence sans être connecté : la mémoire d’un compte peut reprendre des éléments d’autres discussions.</p></div></section>
 
-<section class="slide" data-part="2" data-key="intro-14"><h2 class="title">Pour les essais : du fictif</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Utilisez les exemples et fichiers fournis.</li><li data-step="2">N’envoyez ni mot de passe, ni dossier client, ni donnée personnelle réelle.</li><li data-step="3">Vérifiez ce que l’application reçoit avant de joindre un fichier.</li><li data-step="4">Un abonnement ne suffit pas à déterminer les conditions de traitement.</li></ul><p class="note">Pour approfondir : le cours « IA, données et responsabilité ».</p></div></section>
+<section class="slide" data-part="3" data-key="intro-14"><h2 class="title">Dans une discussion, vous répétez tout</h2><div class="body stack-m"><p class="lead">Chaque nouvelle conversation repart sans votre cadre.</p><ul class="plain"><li data-step="1">Le brief : à recoller.</li><li data-step="2">Les règles : à réécrire.</li><li data-step="3">Le format attendu : à redemander.</li><li data-step="4">Un oubli suffit pour obtenir une réponse différente.</li></ul><p class="note">La mémoire et les instructions personnalisées existent, mais elles s’appliquent à tous vos chats, pas à une seule mission.</p></div></section>
 
-<section class="slide" data-part="3" data-key="intro-15"><h2 class="title">Un cadre que l’on réutilise</h2><div class="body stack-m"><p class="lead">L’assistant configuré évite de répéter les mêmes consignes.</p><ul class="plain"><li data-step="1">Un rôle : ce qu’il doit aider à faire.</li><li data-step="2">Des règles : ce qu’il doit respecter ou signaler.</li><li data-step="3">Des références : les informations sur lesquelles s’appuyer.</li><li data-step="4">Des tests : les situations où il doit bien répondre.</li></ul><p class="note">Configurer ces consignes ne modifie pas les paramètres du modèle. La réutilisation éventuelle des échanges par le service dépend d’autres réglages.</p></div></section>
+<section class="slide" data-part="3" data-key="intro-15"><h2 class="title">Un assistant garde le cadre</h2><div class="body stack-m"><p class="lead">Les consignes sont écrites une fois, puis réutilisées à chaque conversation.</p><ul class="plain"><li data-step="1">Un rôle : ce qu’il doit aider à faire.</li><li data-step="2">Des règles : ce qu’il doit respecter ou signaler.</li><li data-step="3">Des références : les informations sur lesquelles s’appuyer.</li><li data-step="4">Des tests : les situations où il doit bien répondre.</li></ul><p class="note">Configurer ces consignes ne modifie pas les paramètres du modèle. La réutilisation éventuelle des échanges par le service dépend d’autres réglages.</p></div></section>
 
-<section class="slide" data-part="3" data-key="intro-16"><h2 class="title">Votre premier assistant : Atelier ClairLieu</h2><div class="body stack-m"><p class="lead">ClairLieu est une association fictive.</p><ul class="plain"><li data-step="1">Mission : préparer des ateliers numériques pour débutants.</li><li data-step="2">Public : 12 adultes ; matériel : six ordinateurs.</li><li data-step="3">Règles : aucun achat ; horaires et capacité à respecter.</li><li data-step="4">Toute information absente doit être signalée, pas inventée.</li></ul></div></section>
+<section class="slide" data-part="3" data-key="intro-16"><h2 class="title">Discussion ou assistant : la même demande</h2><div class="body stack-m"><table class="tbl"><caption>Préparer l’atelier ClairLieu, de deux façons</caption><thead><tr><th scope="col"></th><th scope="col">Discussion</th><th scope="col">Assistant</th></tr></thead><tbody><tr><th scope="row">Vous écrivez</th><td>Le brief, les règles, puis la demande.</td><td>La demande seulement.</td></tr><tr><th scope="row">La fois suivante</th><td>Tout est à recoller.</td><td>Le cadre est déjà en place.</td></tr><tr><th scope="row">Les conversations</th><td>Dispersées dans l’historique.</td><td>Rangées dans le projet.</td></tr><tr><th scope="row">Dans les deux cas</th><td colspan="2">Vous vérifiez la réponse.</td></tr></tbody></table></div></section>
 
-<section class="slide" data-part="3" data-key="intro-17"><h2 class="title">Des consignes que vous pouvez copier</h2><div class="body stack-m"><p class="card lead">Vous aidez l’association fictive ClairLieu à préparer des ateliers numériques pour débutants. Utilisez uniquement le brief fourni. Distinguez les faits, vos propositions et les points à confirmer. Si une information indispensable manque, posez une question. N’inventez ni contact, ni tarif, ni disponibilité. Ne réservez rien et n’envoyez aucun message.</p></div></section>
+<section class="slide" data-part="3" data-key="intro-17"><h2 class="title">Dans ChatGPT : GPT, projet, plugin</h2><div class="body stack-m"><ul class="plain"><li data-step="1">GPT : un assistant configuré. Les comptes personnels ne peuvent plus en créer.</li><li data-step="2">Projet : des instructions et des fichiers pour toutes ses conversations. C’est ce que vous allez créer.</li><li data-step="3">Plugin : le format annoncé pour remplacer les GPT.</li></ul><p class="note">« GPT » désigne aussi la famille de modèles d’OpenAI. Ici, le mot désigne un assistant configuré dans ChatGPT.</p></div></section>
 
-<section class="slide" data-part="3" data-key="intro-18"><h2 class="title">Définir la forme du résultat</h2><div class="body stack-m"><p class="card lead">Répondez en français simple. Pour un programme, utilisez un tableau : horaire, activité, matériel. Pour un budget, indiquez quantité × prix unitaire et total. Terminez par les vérifications à effectuer. Vérifiez les contraintes du brief avant de proposer une version finale.</p><p class="note">Les deux blocs de consignes sont téléchargeables dans le dossier d’exercice.</p></div></section>
+<section class="slide" data-part="3" data-key="intro-18"><h2 class="title">Bientôt : les GPT deviennent des plugins</h2><div class="body stack-m"><p class="lead">Le nom et l’écran changent. L’idée reste la même.</p><ul class="plain"><li data-step="1">OpenAI a annoncé le retrait des GPT personnalisés.</li><li data-step="2">Date de retrait standard annoncée : le 11 décembre 2026.</li><li data-step="3">Les plugins réunissent des consignes réutilisables, des fichiers de référence et des applications connectées.</li><li data-step="4">Pour un travail suivi, OpenAI propose aussi le projet. Le principe reste le même : un cadre écrit une fois.</li></ul><p class="note">Dates lues sur la page d’aide d’OpenAI le 24 novembre 2026. Elles peuvent changer : vérifiez la source avant la séance.</p></div></section>
 
-<section class="slide" data-part="3" data-key="intro-19"><h2 class="title">Où garder ces consignes ?</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Fichier texte : gardez vos consignes et fournissez-les dans le chat.</li><li data-step="2">ChatGPT : les instructions personnalisées peuvent s’appliquer à tous vos chats ; gardez-les adaptées à cet usage.</li><li data-step="3">Claude : instructions de projet ; Gemini : Gems ou compétences, selon le compte et le déploiement.</li><li data-step="4">Ces espaces n’offrent pas tous les mêmes fonctions. Vérifiez ce qui est disponible sur votre compte.</li></ul><p class="note">Les noms et les accès évoluent. Les liens en haut permettent de vérifier la documentation de chaque produit.</p></div></section>
+<section class="slide" data-part="3" data-key="intro-19"><h2 class="title">Votre assistant : Atelier ClairLieu</h2><div class="body stack-m"><p class="lead">ClairLieu est une association fictive.</p><ul class="plain"><li data-step="1">Mission : préparer des ateliers numériques pour débutants.</li><li data-step="2">Public : 12 adultes ; matériel : six ordinateurs.</li><li data-step="3">Règles : aucun achat ; horaires et capacité à respecter.</li><li data-step="4">Toute information absente doit être signalée, pas inventée.</li></ul></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="3" data-key="intro-20"><h2 class="title">Configurez votre assistant</h2><div class="body stack-m"><div class="intro-widget" data-widget="assistant"><div class="intro-prompt-grid"><div class="intro-fields"><label>Rôle<textarea data-label="Rôle" aria-label="Rôle" rows="2">Aider ClairLieu à préparer des ateliers numériques</textarea></label><label>Références<textarea data-label="Références" aria-label="Références" rows="2">Mini-brief : 12 débutants, six ordinateurs, 90 minutes</textarea></label><label>Format et limites<textarea data-label="Format et limites" aria-label="Format et limites" rows="2">Programme en tableau. Aucun achat. Informations absentes à confirmer.</textarea></label></div><div class="intro-preview"><h3>Vos consignes</h3><p data-preview></p><div class="intro-inline-actions"><button type="button" class="intro-action" data-copy>Copier</button><button type="button" class="intro-action" data-save>Télécharger</button></div></div></div><p class="intro-status" role="status" data-status>Aucune IA connectée : vous préparez les consignes à utiliser dans votre outil.</p></div></div></section>
+<section class="slide" data-part="3" data-key="intro-20"><h2 class="title">Les consignes qu’il contient</h2><div class="body stack-m"><p class="card lead">Vous aidez l’association fictive ClairLieu à préparer des ateliers numériques pour débutants. Utilisez uniquement le brief fourni. Distinguez les faits, vos propositions et les points à confirmer. Si une information indispensable manque, posez une question. N’inventez ni contact, ni tarif, ni disponibilité. Ne réservez rien et n’envoyez aucun message.</p></div></section>
 
-<section data-widget-slide="true" class="slide" data-part="3" data-key="intro-21"><h2 class="title">Trois tests avant de lui faire confiance</h2><div class="body stack-m"><div class="intro-widget" data-widget="tests"><div class="intro-tabs" role="group" aria-label="Tester son assistant"><button type="button" data-choice="0" aria-pressed="true">1. Programme</button><button type="button" data-choice="1" aria-pressed="false">2. Information absente</button><button type="button" data-choice="2" aria-pressed="false">3. Conflit</button></div><div class="intro-detail"><h3 data-test-title></h3><p data-test-request></p><button class="intro-action" type="button" data-copy>Copier cette demande</button><p data-test-expected></p></div><label class="intro-check"><input type="checkbox" data-checked>J’ai exécuté ce test et contrôlé la réponse.</label><p class="intro-status" data-status role="status">0 / 3 tests vérifiés par vous.</p><p class="intro-hint">Les tests sont exécutés dans votre assistant, puis évalués par vous. Aucun résultat automatique n’est simulé.</p></div></div></section>
+<section class="slide" data-part="3" data-key="intro-21"><h2 class="title">Définir la forme du résultat</h2><div class="body stack-m"><p class="card lead">Répondez en français simple. Pour un programme, utilisez un tableau : horaire, activité, matériel. Pour un budget, indiquez quantité × prix unitaire et total. Terminez par les vérifications à effectuer. Vérifiez les contraintes du brief avant de proposer une version finale.</p><p class="note">Ces deux blocs deviendront les instructions de votre projet.</p></div></section>
 
-<section class="slide" data-part="3" data-key="intro-22"><h2 class="title">Un assistant utile se teste</h2><div class="body stack-m"><ul class="plain"><li>Le programme couvre exactement la durée demandée.</li><li>Le matériel et les effectifs sont respectés.</li><li>Les informations absentes ne sont pas inventées.</li><li>Les propositions sont distinguées des faits.</li></ul><p class="note">Si un test échoue : précisez les consignes et recommencez dans un nouveau chat.</p></div></section>
+<section data-widget-slide="true" class="slide" data-part="3" data-key="intro-22"><h2 class="title">Préparez vos instructions</h2><div class="body stack-m"><div class="intro-widget" data-widget="assistant"><div class="intro-prompt-grid"><div class="intro-fields"><label>Rôle<textarea data-label="Rôle" aria-label="Rôle" rows="2">Aider ClairLieu à préparer des ateliers numériques</textarea></label><label>Références<textarea data-label="Références" aria-label="Références" rows="2">Mini-brief : 12 débutants, six ordinateurs, 90 minutes</textarea></label><label>Format et limites<textarea data-label="Format et limites" aria-label="Format et limites" rows="2">Programme en tableau. Aucun achat. Informations absentes à confirmer.</textarea></label></div><div class="intro-preview"><h3>Vos consignes</h3><p data-preview></p><div class="intro-inline-actions"><button type="button" class="intro-action" data-copy>Copier</button><button type="button" class="intro-action" data-save>Télécharger</button></div></div></div><p class="intro-status" role="status" data-status>Aucune IA connectée : vous préparez les consignes à utiliser dans votre outil.</p></div></div></section>
 
-<section class="slide" data-part="4" data-key="intro-23"><h2 class="title">Quand l’IA commence à agir</h2><div class="body stack-m"><p class="lead">Un agent peut utiliser un outil, observer le résultat et décider de la suite.</p><ol class="places intro-flow"><li><strong>Objectif</strong><span>Un résultat attendu et des limites.</span></li><li><strong>Action</strong><span>Un outil autorisé est utilisé.</span></li><li><strong>Observation</strong><span>Le résultat est contrôlé avant de continuer ou de s’arrêter.</span></li></ol></div></section>
+<section class="slide" data-part="3" data-key="intro-23"><h2 class="title">Créez votre assistant : un projet ChatGPT</h2><div class="body stack-m"><p class="lead">Exercice « Votre premier assistant » · volet 3 sur 3 : créer votre assistant.</p><ul class="plain"><li data-step="1">Connecté, survolez « Projets » dans le menu, puis cliquez sur +.</li><li data-step="2">Nommez-le « Atelier ClairLieu », mémoire « projet seulement ».</li><li data-step="3">Menu ••• → Paramètres du projet : collez vos instructions.</li><li data-step="4">Dans le projet, envoyez : « Propose le programme de l’atelier ClairLieu. »</li></ul><p class="note">N’activez aucun connecteur ni accès à vos fichiers. Aucune donnée réelle.</p></div></section>
 
-<section class="slide" data-part="4" data-key="intro-24"><h2 class="title">Plus d’actions, plus de décisions à cadrer</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Quels fichiers peut-il lire ou modifier ?</li><li data-step="2">Quelles actions exigent votre confirmation ?</li><li data-step="3">Comment vérifiez-vous le résultat ?</li><li data-step="4">Quand doit-il s’arrêter ?</li></ul><p class="note">Dans ce premier cours : configurer et tester un assistant. Les agents seront approfondis dans « Le Harnais ».</p></div></section>
+<section data-widget-slide="true" class="slide" data-part="3" data-key="intro-24"><h2 class="title">Trois tests avant de lui faire confiance</h2><div class="body stack-m"><div class="intro-widget" data-widget="tests"><div class="intro-tabs" role="group" aria-label="Tester son assistant"><button type="button" data-choice="0" aria-pressed="true">1. Programme</button><button type="button" data-choice="1" aria-pressed="false">2. Information absente</button><button type="button" data-choice="2" aria-pressed="false">3. Conflit</button></div><div class="intro-detail"><h3 data-test-title></h3><p data-test-request></p><button class="intro-action" type="button" data-copy>Copier cette demande</button><p data-test-expected></p></div><label class="intro-check"><input type="checkbox" data-checked>J’ai exécuté ce test et contrôlé la réponse.</label><p class="intro-status" data-status role="status">0 / 3 tests vérifiés par vous.</p><p class="intro-hint">Les tests sont exécutés dans votre assistant, puis évalués par vous. Aucun résultat automatique n’est simulé.</p></div></div></section>
 
-<section class="slide" data-part="4" data-key="intro-25"><h2 class="title">Ensuite : les types d’IA</h2><div class="body stack-m"><p class="lead">Le chat n’est qu’une porte d’entrée.</p><ul class="plain"><li data-step="1">Découvrez ce que les modèles reçoivent et produisent : texte, image, voix…</li><li data-step="2">Réutilisez le cours « Les types d’IA ».</li><li data-step="3">Sur Hugging Face : choisissez trois missions, dont une générative.</li><li data-step="4">Pour chaque mission : deux essais, un seul changement, une limite observée.</li></ul><p><a href="/comprendre-ia/types-ia/">Ouvrir le cours existant</a></p></div></section>
+<section class="slide" data-part="3" data-key="intro-25"><h2 class="title">Un assistant utile se teste</h2><div class="body stack-m"><ul class="plain"><li>Le programme couvre exactement la durée demandée.</li><li>Le matériel et les effectifs sont respectés.</li><li>Les informations absentes ne sont pas inventées.</li><li>Les propositions sont distinguées des faits.</li></ul><p class="note">Si un test échoue : précisez une règle dans les paramètres du projet, puis refaites le test.</p></div></section>
 
-<section class="slide" data-part="4" data-key="intro-26"><h2 class="title">Préparez un vrai dossier… pour un projet fictif</h2><div class="body stack-m"><p class="lead">ClairLieu organise « Déclic numérique », un atelier pour 18 adultes débutants.</p><ul class="plain"><li data-step="1">Vous disposez d’un brief, d’un inventaire et d’une liste de prix fictifs.</li><li data-step="2">Configurez votre assistant, puis produisez un programme et un budget.</li><li data-step="3">Créez les supports et vérifiez toutes les contraintes.</li><li data-step="4">Échangez votre dossier pour un contrôle croisé.</li></ul><p><a href="/comprendre-ia/premiers-pas-ia/exercices/">Ouvrir le dossier complet</a></p></div></section>
+<section class="slide" data-part="3" data-key="intro-26"><h2 class="title">Ailleurs, le même principe</h2><div class="body stack-m"><ul class="plain"><li data-step="1">ChatGPT : les projets ; les GPT jusqu’à leur retrait, puis les plugins.</li><li data-step="2">Claude : les projets et leurs instructions.</li><li data-step="3">Gemini : les Gems ou les compétences, selon le compte et le déploiement.</li><li data-step="4">Partout : un fichier d’instructions, collé au début d’une discussion.</li></ul><p class="note">Les noms et les accès évoluent. Les liens en haut permettent de vérifier la documentation de chaque produit.</p></div></section>
 
-<section class="slide" data-part="4" data-key="intro-27"><h2 class="title">Construire, tester, corriger : à votre rythme</h2><div class="body stack-m"><ol class="plain"><li><strong>Comprendre</strong> — Lire le brief et relever les contraintes.</li><li><strong>Configurer</strong> — Préparer l’assistant et tester ses limites.</li><li><strong>Produire</strong> — Programme, budget et supports.</li><li><strong>Vérifier</strong> — Recalculer et faire relire le dossier.</li><li><strong>Corriger</strong> — Refaire les tests après chaque amélioration.</li><li><strong>Expliquer</strong> — Présenter les choix et les points à confirmer.</li></ol></div></section>
+<section data-widget-slide="true" class="slide" data-part="4" data-key="intro-27"><h2 class="title">Chat, assistant, agent</h2><div class="body stack-m"><div class="intro-widget" data-widget="modes"><div class="intro-tabs" role="group" aria-label="Comparer les façons de travailler"><button type="button" data-choice="chat" aria-pressed="true">Chat</button><button type="button" data-choice="assistant" aria-pressed="false">Assistant</button><button type="button" data-choice="agent" aria-pressed="false">Agent</button></div><div class="intro-detail" aria-live="polite"><h3 data-mode-title></h3><p data-mode-example></p><p data-mode-human></p></div><p class="intro-hint">Même mission : préparer un atelier. Le navigateur est une interface ; les fonctions peuvent se recouper.</p></div></div></section>
 
-<section class="slide" data-part="4" data-key="intro-28"><h2 class="title">Ce que vous rendrez</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Les consignes de votre assistant et trois tests commentés.</li><li data-step="2">Le programme, le budget et les supports demandés.</li><li data-step="3">Un journal de trois améliorations apportées aux réponses.</li><li data-step="4">Une liste des faits vérifiés et des points restant à confirmer.</li></ul><p class="note">La qualité se mesure au respect du brief et aux vérifications, pas à la longueur des réponses.</p></div></section>
+<section class="slide" data-part="4" data-key="intro-28"><h2 class="title">Quand l’IA commence à agir</h2><div class="body stack-m"><p class="lead">Un agent peut utiliser un outil, observer le résultat et décider de la suite.</p><ol class="places intro-flow"><li><strong>Objectif</strong><span>Un résultat attendu et des limites.</span></li><li><strong>Action</strong><span>Un outil autorisé est utilisé.</span></li><li><strong>Observation</strong><span>Le résultat est contrôlé avant de continuer ou de s’arrêter.</span></li></ol></div></section>
 
-<section class="slide" data-part="5" data-key="intro-29"><h2 class="title">Retrouver les sources et le lexique</h2><div class="body stack-m"><div class="refs" data-comp="refs"></div></div></section>
+<section class="slide" data-part="4" data-key="intro-29"><h2 class="title">Plus d’actions, plus de décisions à cadrer</h2><div class="body stack-m"><ul class="plain"><li data-step="1">Quels fichiers peut-il lire ou modifier ?</li><li data-step="2">Quelles actions exigent votre confirmation ?</li><li data-step="3">Comment vérifiez-vous le résultat ?</li><li data-step="4">Quand doit-il s’arrêter ?</li></ul><p class="note">Dans ce premier cours : créer et tester un assistant. Les agents sont approfondis dans « Le Harnais ».</p></div></section>
 
-<section class="slide" data-part="5" data-key="intro-30"><h2 class="title">Les mots du cours</h2><div class="body stack-m"><p class="lead">Choisissez une notion pour retrouver sa définition.</p><div class="lexique" data-comp="lexique"></div></div></section>
+<section class="slide" data-part="4" data-key="intro-30"><h2 class="title">Pour aller plus loin</h2><div class="body stack-m"><p class="lead">Deux cours pour continuer.</p><ul class="plain"><li data-step="1">Les types d’IA : ce que les modèles reçoivent et produisent, du texte à l’image et à la voix.</li><li data-step="2">Le Harnais : les agents, leurs outils et leurs permissions.</li></ul><p><a href="/comprendre-ia/types-ia/">Les types d’IA</a> · <a href="/comprendre-ia/le-harnais/">Le Harnais</a></p></div></section>
+
+<section class="slide" data-part="5" data-key="intro-31"><h2 class="title">Retrouver les sources et le lexique</h2><div class="body stack-m"><div class="refs" data-comp="refs"></div></div></section>
+
+<section class="slide" data-part="5" data-key="intro-32"><h2 class="title">Les mots du cours</h2><div class="body stack-m"><p class="lead">Choisissez une notion pour retrouver sa définition.</p><div class="lexique" data-comp="lexique"></div></div></section>
     </div>
     <button type="button" class="edge" id="edge-prev" aria-label="Slide ou étape précédente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button type="button" class="edge" id="edge-next" aria-label="Slide ou étape suivante"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -821,33 +825,35 @@ const CONFIG = {
     1,
     1,
     1,
+    1,
+    1,
     1
   ],
   "parties": [
     {
-      "nom": "Se repérer",
+      "nom": "Essayer un chat",
       "de": 1,
-      "a": 6
+      "a": 7
     },
     {
-      "nom": "Utiliser un chat",
-      "de": 7,
-      "a": 14
+      "nom": "Vérifier et se repérer",
+      "de": 8,
+      "a": 12
     },
     {
-      "nom": "Configurer un assistant",
-      "de": 15,
-      "a": 22
+      "nom": "De la discussion à l’assistant",
+      "de": 13,
+      "a": 26
     },
     {
-      "nom": "Agents et mise en pratique",
-      "de": 23,
-      "a": 28
+      "nom": "Agents et suite",
+      "de": 27,
+      "a": 30
     },
     {
       "nom": "Sources",
-      "de": 29,
-      "a": 30,
+      "de": 31,
+      "a": 32,
       "hors": true
     }
   ],
@@ -866,8 +872,8 @@ const CONFIG = {
     ],
     "intro-3": [
       {
-        "t": "OpenAI · GPT",
-        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+        "t": "ChatGPT · application",
+        "u": "https://chatgpt.com/"
       },
       {
         "t": "Grok · application",
@@ -876,19 +882,11 @@ const CONFIG = {
     ],
     "intro-4": [
       {
-        "t": "Microsoft · Copilot",
-        "u": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
-      },
-      {
-        "t": "Mistral · application",
-        "u": "https://mistral.ai/products/vibe/"
+        "t": "CNIL · précautions",
+        "u": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative"
       }
     ],
     "intro-5": [
-      {
-        "t": "OpenAI · outils",
-        "u": "https://developers.openai.com/api/docs/guides/tools"
-      },
       {
         "t": "OpenAI · consignes",
         "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
@@ -896,49 +894,23 @@ const CONFIG = {
     ],
     "intro-6": [
       {
-        "t": "OpenAI · accès",
-        "u": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+        "t": "OpenAI · demandes",
+        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
       }
     ],
     "intro-7": [
       {
-        "t": "OpenAI · personnaliser",
-        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
-      },
-      {
-        "t": "Anthropic · agents",
-        "u": "https://www.anthropic.com/research/building-effective-agents"
+        "t": "OpenAI · demandes",
+        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
       }
     ],
     "intro-8": [
       {
-        "t": "Grok · application",
-        "u": "https://x.ai/grok"
-      },
-      {
-        "t": "Google · personnaliser",
-        "u": "https://support.google.com/gemini/answer/18560919?hl=fr"
+        "t": "OpenAI · fiabilité",
+        "u": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
       }
     ],
     "intro-9": [
-      {
-        "t": "OpenAI · consignes",
-        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
-      }
-    ],
-    "intro-10": [
-      {
-        "t": "OpenAI · demandes",
-        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
-      }
-    ],
-    "intro-11": [
-      {
-        "t": "OpenAI · demandes",
-        "u": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt"
-      }
-    ],
-    "intro-12": [
       {
         "t": "OpenAI · mémoire",
         "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
@@ -948,16 +920,58 @@ const CONFIG = {
         "u": "https://arxiv.org/abs/2307.03172"
       }
     ],
+    "intro-10": [
+      {
+        "t": "OpenAI · outils",
+        "u": "https://developers.openai.com/api/docs/guides/tools"
+      },
+      {
+        "t": "OpenAI · consignes",
+        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      }
+    ],
+    "intro-11": [
+      {
+        "t": "OpenAI · GPT",
+        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+      },
+      {
+        "t": "Grok · application",
+        "u": "https://x.ai/grok"
+      },
+      {
+        "t": "Microsoft · Copilot",
+        "u": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
+      },
+      {
+        "t": "Mistral · application",
+        "u": "https://mistral.ai/products/vibe/"
+      }
+    ],
+    "intro-12": [
+      {
+        "t": "OpenAI · accès",
+        "u": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ],
     "intro-13": [
       {
-        "t": "OpenAI · fiabilité",
-        "u": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth"
+        "t": "OpenAI · mémoire",
+        "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
+      },
+      {
+        "t": "Brief fictif · ClairLieu",
+        "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
       }
     ],
     "intro-14": [
       {
-        "t": "CNIL · précautions",
-        "u": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative"
+        "t": "OpenAI · mémoire",
+        "u": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
+      },
+      {
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
       }
     ],
     "intro-15": [
@@ -972,23 +986,85 @@ const CONFIG = {
     ],
     "intro-16": [
       {
+        "t": "OpenAI · projets",
+        "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+      },
+      {
         "t": "Brief fictif · ClairLieu",
         "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
       }
     ],
     "intro-17": [
       {
-        "t": "OpenAI · consignes",
-        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+        "t": "OpenAI · GPT",
+        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+      },
+      {
+        "t": "OpenAI · projets",
+        "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+      },
+      {
+        "t": "OpenAI · retrait des GPT",
+        "u": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
       }
     ],
     "intro-18": [
+      {
+        "t": "OpenAI · retrait des GPT",
+        "u": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "t": "OpenAI · GPT",
+        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+      }
+    ],
+    "intro-19": [
+      {
+        "t": "Brief fictif · ClairLieu",
+        "u": "/diapos/premiers-pas-ia/exercices/01-mini-brief.md"
+      }
+    ],
+    "intro-20": [
       {
         "t": "OpenAI · consignes",
         "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
       }
     ],
-    "intro-19": [
+    "intro-21": [
+      {
+        "t": "OpenAI · consignes",
+        "u": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+      }
+    ],
+    "intro-22": [
+      {
+        "t": "Claude · projets",
+        "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+      },
+      {
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+      }
+    ],
+    "intro-23": [
+      {
+        "t": "OpenAI · projets",
+        "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+      }
+    ],
+    "intro-24": [
+      {
+        "t": "OpenAI · évaluer",
+        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+      }
+    ],
+    "intro-25": [
+      {
+        "t": "OpenAI · évaluer",
+        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+      }
+    ],
+    "intro-26": [
       {
         "t": "OpenAI · personnaliser",
         "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
@@ -996,88 +1072,52 @@ const CONFIG = {
       {
         "t": "Google · personnaliser",
         "u": "https://support.google.com/gemini/answer/18560919?hl=fr"
-      }
-    ],
-    "intro-20": [
-      {
-        "t": "Claude · projets",
-        "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
       },
       {
-        "t": "OpenAI · personnaliser",
-        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
-      }
-    ],
-    "intro-21": [
-      {
-        "t": "OpenAI · évaluer",
-        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
-      }
-    ],
-    "intro-22": [
-      {
-        "t": "OpenAI · évaluer",
-        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
-      }
-    ],
-    "intro-23": [
-      {
-        "t": "Anthropic · agents",
-        "u": "https://www.anthropic.com/research/building-effective-agents"
-      }
-    ],
-    "intro-24": [
-      {
-        "t": "Anthropic · agents",
-        "u": "https://www.anthropic.com/research/building-effective-agents"
-      }
-    ],
-    "intro-25": [
-      {
-        "t": "Hugging Face · Spaces",
-        "u": "https://huggingface.co/docs/hub/spaces-overview"
-      }
-    ],
-    "intro-26": [
-      {
-        "t": "Brief fictif · ClairLieu",
-        "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+        "t": "OpenAI · GPT",
+        "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
       }
     ],
     "intro-27": [
       {
-        "t": "Brief fictif · ClairLieu",
-        "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
+        "t": "OpenAI · personnaliser",
+        "u": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+      },
+      {
+        "t": "Anthropic · agents",
+        "u": "https://www.anthropic.com/research/building-effective-agents"
       }
     ],
     "intro-28": [
       {
-        "t": "Brief fictif · ClairLieu",
-        "u": "/diapos/premiers-pas-ia/exercices/04-brief-evenement.md"
-      },
-      {
-        "t": "OpenAI · évaluer",
-        "u": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+        "t": "Anthropic · agents",
+        "u": "https://www.anthropic.com/research/building-effective-agents"
       }
     ],
     "intro-29": [
+      {
+        "t": "Anthropic · agents",
+        "u": "https://www.anthropic.com/research/building-effective-agents"
+      }
+    ],
+    "intro-31": [
       {
         "t": "OpenAI · GPT",
         "u": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
       },
       {
-        "t": "Claude · projets",
-        "u": "https://support.claude.com/en/articles/9517075-what-are-projects"
+        "t": "OpenAI · projets",
+        "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
       }
     ],
-    "intro-30": [
+    "intro-32": [
       {
-        "t": "Hugging Face · Spaces",
-        "u": "https://huggingface.co/docs/hub/spaces-overview"
+        "t": "OpenAI · projets",
+        "u": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
       },
       {
-        "t": "Grok · application",
-        "u": "https://x.ai/grok"
+        "t": "OpenAI · retrait des GPT",
+        "u": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
       }
     ]
   },
@@ -1087,88 +1127,108 @@ const CONFIG = {
       "Premiers pas avec l’IA"
     ],
     [
-      "01 · Se repérer",
+      "01 · Essayer un chat",
       "À la fin, vous saurez…"
     ],
     [
-      "01 · Se repérer",
-      "Quatre noms à reconnaître"
-    ],
-    [
-      "01 · Se repérer",
-      "Il existe d’autres portes d’entrée"
-    ],
-    [
-      "01 · Se repérer",
-      "Application ≠ modèle ≠ outils"
-    ],
-    [
-      "01 · Se repérer",
-      "Gratuit ou payant : que vérifier ?"
-    ],
-    [
-      "02 · Du chat à l’agent",
-      "Trois façons de travailler"
-    ],
-    [
-      "02 · Le chat",
+      "01 · Essayer un chat",
       "Une conversation dans le navigateur"
     ],
     [
-      "02 · Le chat",
+      "01 · Essayer un chat",
+      "Avant d’écrire : du fictif"
+    ],
+    [
+      "01 · Essayer un chat",
       "Quatre ingrédients pour démarrer"
     ],
     [
-      "02 · Le chat",
+      "01 · Essayer un chat",
       "Du vague au vérifiable"
     ],
     [
-      "Exercice 1",
+      "Volet 1 · Bien demander",
       "Essayez, puis améliorez"
     ],
     [
-      "02 · Le chat",
-      "Le contexte a des limites"
-    ],
-    [
-      "02 · Le chat",
+      "02 · Vérifier et se repérer",
       "Une réponse fluide peut être fausse"
     ],
     [
-      "02 · Le chat",
-      "Pour les essais : du fictif"
+      "02 · Vérifier et se repérer",
+      "Le contexte a des limites"
     ],
     [
-      "03 · L’assistant",
-      "Un cadre que l’on réutilise"
+      "02 · Vérifier et se repérer",
+      "Derrière l’écran : application, modèle, outils"
     ],
     [
-      "03 · L’assistant",
-      "Votre premier assistant : Atelier ClairLieu"
+      "02 · Vérifier et se repérer",
+      "ChatGPT n’est pas le seul"
     ],
     [
-      "03 · L’assistant",
-      "Des consignes que vous pouvez copier"
+      "02 · Vérifier et se repérer",
+      "Gratuit ou payant : que vérifier ?"
     ],
     [
-      "03 · L’assistant",
+      "Volet 2 · Une discussion ne garde rien",
+      "Trois discussions, trois départs à zéro"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Dans une discussion, vous répétez tout"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Un assistant garde le cadre"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Discussion ou assistant : la même demande"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Dans ChatGPT : GPT, projet, plugin"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Bientôt : les GPT deviennent des plugins"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Votre assistant : Atelier ClairLieu"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Les consignes qu’il contient"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
       "Définir la forme du résultat"
     ],
     [
-      "03 · L’assistant",
-      "Où garder ces consignes ?"
+      "03 · De la discussion à l’assistant",
+      "Préparez vos instructions"
     ],
     [
-      "Exercice 2",
-      "Configurez votre assistant"
+      "Volet 3 · Créer votre assistant",
+      "Créez votre assistant : un projet ChatGPT"
     ],
     [
-      "Exercice 3",
+      "Volet 3 · Créer votre assistant",
       "Trois tests avant de lui faire confiance"
     ],
     [
-      "03 · L’assistant",
+      "03 · De la discussion à l’assistant",
       "Un assistant utile se teste"
+    ],
+    [
+      "03 · De la discussion à l’assistant",
+      "Ailleurs, le même principe"
+    ],
+    [
+      "04 · Les agents",
+      "Chat, assistant, agent"
     ],
     [
       "04 · Les agents",
@@ -1179,27 +1239,15 @@ const CONFIG = {
       "Plus d’actions, plus de décisions à cadrer"
     ],
     [
-      "05 · La suite",
-      "Ensuite : les types d’IA"
+      "05 · Pour aller plus loin",
+      "Pour aller plus loin"
     ],
     [
-      "06 · Mission de projet",
-      "Préparez un vrai dossier… pour un projet fictif"
-    ],
-    [
-      "06 · Mission de projet",
-      "Construire, tester, corriger : à votre rythme"
-    ],
-    [
-      "06 · Mission de projet",
-      "Ce que vous rendrez"
-    ],
-    [
-      "Sources · vérifiées le 15 novembre 2026",
+      "Sources · vérifiées en novembre 2026",
       "Retrouver les sources et le lexique"
     ],
     [
-      "Sources · vérifiées le 15 novembre 2026",
+      "Sources · vérifiées en novembre 2026",
       "Les mots du cours"
     ]
   ],
@@ -1226,7 +1274,19 @@ const CONFIG = {
     },
     {
       "terme": "Assistant configuré",
-      "def": "Un cadre réutilisable qui associe un rôle, des consignes et éventuellement des documents."
+      "def": "Un cadre réutilisable qui associe un rôle, des consignes et éventuellement des documents. Contrairement à une discussion, il garde ce cadre d’une conversation à l’autre."
+    },
+    {
+      "terme": "GPT",
+      "def": "Dans ChatGPT, un assistant configuré : des instructions, des fichiers de référence et des fonctions. Le mot désigne aussi la famille de modèles d’OpenAI. OpenAI a annoncé leur retrait au profit des plugins."
+    },
+    {
+      "terme": "Projet",
+      "def": "Dans ChatGPT, un espace qui regroupe des conversations, des fichiers et des instructions. Chaque nouvelle conversation du projet reprend ses instructions."
+    },
+    {
+      "terme": "Plugin",
+      "def": "Dans ChatGPT, le format annoncé pour remplacer les GPT : des consignes réutilisables, des fichiers de référence et des applications connectées."
     },
     {
       "terme": "Agent",
@@ -1243,9 +1303,19 @@ const CONFIG = {
   ],
   "references": [
     {
-      "titre": "Création et modification des GPT",
-      "source": "OpenAI · vérifié le 15 novembre 2026",
+      "titre": "Les GPT : création restreinte et retrait annoncé au profit des plugins",
+      "source": "OpenAI · vérifié le 24 novembre 2026",
       "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+    },
+    {
+      "titre": "Les projets dans ChatGPT : instructions et mémoire du projet",
+      "source": "OpenAI · vérifié le 24 novembre 2026",
+      "url": "https://help.openai.com/fr-fr/articles/10169521-projects-in-chatgpt"
+    },
+    {
+      "titre": "Retrait des GPT, migration vers les plugins et projets",
+      "source": "OpenAI · vérifié le 24 novembre 2026",
+      "url": "https://help.openai.com/fr-fr/articles/20001519-custom-gpt-retirement-and-migration-faq"
     },
     {
       "titre": "Conversion des Gems en compétences",
@@ -1271,11 +1341,6 @@ const CONFIG = {
       "titre": "Microsoft Copilot",
       "source": "Microsoft · vérifié le 15 novembre 2026",
       "url": "https://www.microsoft.com/en-us/copilot/solutions/individuals"
-    },
-    {
-      "titre": "Les Spaces Hugging Face",
-      "source": "Hugging Face · vérifié le 15 novembre 2026",
-      "url": "https://huggingface.co/docs/hub/spaces-overview"
     },
     {
       "titre": "Des demandes claires et une amélioration par itérations",

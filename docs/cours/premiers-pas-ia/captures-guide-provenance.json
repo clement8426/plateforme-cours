@@ -1,38 +1,128 @@
 [
   {
+    "fichier": "chatgpt-01-accueil.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Accueil, cookies non essentiels refusés, aucune saisie"
+  },
+  {
+    "fichier": "chatgpt-02-demande.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Demande vague préparée, non envoyée"
+  },
+  {
+    "fichier": "chatgpt-03-reponse.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Réponse réellement générée à la demande vague ; images de la réponse masquées par une règle CSS avant la capture (photos de personnes)"
+  },
+  {
+    "fichier": "chatgpt-04-demande-precise.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Demande précise préparée, non envoyée"
+  },
+  {
+    "fichier": "chatgpt-05-sans-cadre.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Réponse réellement générée à « Propose le programme de l’atelier ClairLieu. » dans une nouvelle discussion, sans brief ; images de la réponse masquées par une règle CSS"
+  },
+  {
+    "fichier": "chatgpt-06-consignes.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Consignes initiales du guide et demande de programme collées, non envoyées"
+  },
+  {
+    "fichier": "chatgpt-07-oubli.png",
+    "origine": "Capture réelle ChatGPT (chatgpt.com), sans compte connecté, texte fictif, 1280 × 850",
+    "date": "2026-11-24",
+    "etat": "Réponse réelle à « Combien d’ordinateurs avons-nous pour l’atelier ClairLieu ? » dans une nouvelle discussion ; images éventuelles masquées par une règle CSS"
+  },
+  {
+    "fichier": "projet-01-ajouter.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Menu Projets survolé, bouton + visible"
+  },
+  {
+    "fichier": "projet-02-creer.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Fenêtre Créer un projet : nom Atelier ClairLieu, mémoire « projet seulement »"
+  },
+  {
+    "fichier": "projet-03-menu.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Menu ••• ouvert : Paramètres du projet"
+  },
+  {
+    "fichier": "projet-04-instructions.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Instructions ClairLieu collées, avant Enregistrer"
+  },
+  {
+    "fichier": "projet-05-demande.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Demande courte écrite dans le projet, avant envoi"
+  },
+  {
+    "fichier": "projet-06-reponse.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Réponse réelle dans le projet"
+  },
+  {
+    "fichier": "projet-07-deuxieme-chat.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Réponse réelle dans une deuxième conversation du projet"
+  },
+  {
+    "fichier": "projet-08-tests.png",
+    "origine": "Capture réelle ChatGPT dans le panneau navigateur, compte de Clément connecté, 800 × 531 ; historique des discussions et avatar recouverts par des barres neutres",
+    "date": "2026-11-24",
+    "etat": "Tests réels : information absente signalée"
+  },
+  {
     "fichier": "01-ouvrir-gemini.png",
     "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
     "date": "2026-11-15",
-    "etat": "Accueil, aucune saisie"
+    "etat": "Accueil, aucune saisie Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   },
   {
     "fichier": "02-ecrire-demande.png",
     "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
     "date": "2026-11-15",
-    "etat": "Demande vague préparée, non envoyée"
+    "etat": "Demande vague préparée, non envoyée Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   },
   {
     "fichier": "03-lire-reponse.png",
     "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
     "date": "2026-11-15",
-    "etat": "Réponse réellement générée à la demande vague"
+    "etat": "Réponse réellement générée à la demande vague Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   },
   {
     "fichier": "04-demande-precise.png",
     "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
     "date": "2026-11-15",
-    "etat": "Demande précise préparée, non envoyée"
+    "etat": "Demande précise préparée, non envoyée Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   },
   {
     "fichier": "06-coller-consignes-v2.png",
     "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
     "date": "2026-11-15",
-    "etat": "Consignes initiales lues directement dans le guide, collées dans Gemini ; identité des mots vérifiée, message non envoyé."
+    "etat": "Consignes initiales lues directement dans le guide, collées dans Gemini ; identité des mots vérifiée, message non envoyé. Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   },
   {
     "fichier": "07-tester-information-absente.png",
     "origine": "Capture réelle Gemini, sans compte connecté, texte fictif",
     "date": "2026-11-15",
-    "etat": "Test réel, brief et question fournis ensemble ; information absente signalée"
+    "etat": "Test réel, brief et question fournis ensemble ; information absente signalée Capture retirée du guide le 24 novembre 2026 (remplacée par ChatGPT)."
   }
 ]
