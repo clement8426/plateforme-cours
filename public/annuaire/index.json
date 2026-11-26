@@ -1,14 +1,14 @@
 {
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "comptes": {
-  "mcp": 2829,
-  "plugins": 1006,
-  "skills": 8743
+  "mcp": 2830,
+  "plugins": 1007,
+  "skills": 8746
  },
  "trouves": {
-  "mcp": 63681,
-  "plugins": 19760,
-  "skills": 20086
+  "mcp": 64711,
+  "plugins": 19757,
+  "skills": 20084
  },
  "sources": [
   {
@@ -38,7 +38,7 @@
   },
   {
    "nom": "marketplace cursor/plugins",
-   "n": 159,
+   "n": 160,
    "ok": true
   },
   {
@@ -58,7 +58,7 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 225,
+   "n": 226,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 53516,
+   "n": 53761,
    "ok": true
   }
  ],
