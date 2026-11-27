@@ -1,14 +1,14 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "comptes": {
-  "mcp": 2830,
-  "plugins": 1007,
-  "skills": 8746
+  "mcp": 2803,
+  "plugins": 1008,
+  "skills": 8748
  },
  "trouves": {
-  "mcp": 64711,
-  "plugins": 19757,
-  "skills": 20084
+  "mcp": 65365,
+  "plugins": 19718,
+  "skills": 20076
  },
  "sources": [
   {
@@ -58,12 +58,12 @@
   },
   {
    "nom": "skills google/skills",
-   "n": 226,
+   "n": 227,
    "ok": true
   },
   {
    "nom": "skills aws/agent-toolkit-for-aws",
-   "n": 224,
+   "n": 225,
    "ok": true
   },
   {
@@ -128,7 +128,7 @@
   },
   {
    "nom": "connecteurs Claude",
-   "n": 956,
+   "n": 975,
    "ok": true
   },
   {
@@ -153,7 +153,7 @@
   },
   {
    "nom": "enrichissement GitHub",
-   "n": 53761,
+   "n": 53929,
    "ok": true
   }
  ],
